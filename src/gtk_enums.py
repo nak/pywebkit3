@@ -1,0 +1,84 @@
+from ctypes import c_int
+
+GTK_ICON_SIZE_INVALID = c_int(0)
+GTK_ICON_SIZE_MENU = c_int(1)
+GTK_ICON_SIZE_SMALL_TOOLBAR = c_int(2)
+GTK_ICON_SIZE_LARGE_TOOLBAR = c_int(3)
+GTK_ICON_SIZE_BUTTON = c_int(c_int(4))
+GTK_ICON_SIZE_DND = c_int(5)
+GTK_ICON_SIZE_DIALOG = c_int(6)
+
+#GtkWindowType
+GTK_WINDOW_TOPLEVEL = c_int(0)
+GTK_WINDOW_POPUP = c_int(1)
+
+#GdkGravity
+GDK_GRAVITY_NORTH_WEST = c_int(1)
+GDK_GRAVITY_NORTH = c_int(2)
+GDK_GRAVITY_NORTH_EAST = c_int(3)
+GDK_GRAVITY_WEST = c_int(4)
+GDK_GRAVITY_CENTER = 5
+GDK_GRAVITY_EAST = 6
+GDK_GRAVITY_SOUTH_WEST = 7
+GDK_GRAVITY_SOUTH = 8
+GDK_GRAVITY_SOUTH_EAST = 9
+GDK_GRAVITY_STATIC = c_int(10)
+
+#GdkModifierType
+GDK_SHIFT_MASK    = 1 << c_int(0)
+GDK_CONTROL_MASK  = 1 << c_int(2)
+GDK_MOD1_MASK     = 1 << c_int(3)
+GDK_MOD2_MASK     = 1 << c_int(4)
+GDK_MOD3_MASK     = 1 << c_int(5)
+GDK_MOD4_MASK     = 1 << c_int(6)
+GDK_MOD5_MASK     = 1 << c_int(7)
+GDK_BUTTON1_MASK  = 1 << c_int(8)
+GDK_BUTTON2_MASK  = 1 << c_int(9)
+GDK_BUTTON3_MASK  = 1 << c_int(10)
+GDK_BUTTON4_MASK  = 1 << c_int(11)
+GDK_BUTTON5_MASK  = 1 << c_int(12)
+
+GDK_MODIFIER_RESERVED_13_MASK  = c_int( 1<< 13)
+GDK_MODIFIER_RESERVED_14_MASK  = c_int( 1<< 14)
+GDK_MODIFIER_RESERVED_15_MASK  = c_int( 1<< 15)
+GDK_MODIFIER_RESERVED_16_MASK  = c_int( 1<< 16)
+GDK_MODIFIER_RESERVED_17_MASK  = c_int( 1<< 17)
+GDK_MODIFIER_RESERVED_18_MASK  = c_int( 1<< 18)
+GDK_MODIFIER_RESERVED_19_MASK  = c_int( 1<< 19)
+GDK_MODIFIER_RESERVED_20_MASK  = c_int( 1<< 20)
+GDK_MODIFIER_RESERVED_21_MASK  = c_int( 1<< 21)
+GDK_MODIFIER_RESERVED_22_MASK  = c_int( 1<< 22)
+GDK_MODIFIER_RESERVED_23_MASK  = c_int( 1<< 23)
+GDK_MODIFIER_RESERVED_24_MASK  = c_int( 1<< 24)
+GDK_MODIFIER_RESERVED_25_MASK  = c_int( 1<< 25)
+
+# The next few modifiers are used by XKB, so we skip to the end.
+#   Bits 15 - 25 are currently unused. Bit 29 is used internally.
+  
+GDK_SUPER_MASK    = c_int( 1<< 26 )
+GDK_HYPER_MASK    = c_int( 1<< 27 )
+GDK_META_MASK     = c_int( 1<< 28 )
+
+GDK_MODIFIER_RESERVED_29_MASK  = c_int( 1<< 29 )
+GDK_RELEASE_MASK  = c_int( 1<< 30 )
+
+# Combination of GDK_SHIFT_MASK..GDK_BUTTON5_MASK + GDK_SUPER_MASK
+#     + GDK_HYPER_MASK + GDK_META_MASK + GDK_RELEASE_MASK */
+GDK_MODIFIER_MASK = c_int(0x5c001fff)
+
+
+#GdkTypeHint
+GDK_WINDOW_TYPE_HINT_NORMAL = c_int(0)
+GDK_WINDOW_TYPE_HINT_DIALOG = c_int(1)
+GDK_WINDOW_TYPE_HINT_MENU = 2 #Torn off menu
+GDK_WINDOW_TYPE_HINT_TOOLBAR= c_int(3)
+GDK_WINDOW_TYPE_HINT_SPLASHSCREEN = c_int(4)
+GDK_WINDOW_TYPE_HINT_UTILITY = c_int(5)
+GDK_WINDOW_TYPE_HINT_DOCK = c_int(6)
+GDK_WINDOW_TYPE_HINT_DESKTOP = c_int(7)
+GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU = c_int(8) #  A drop down menu (from a menubar) 
+GDK_WINDOW_TYPE_HINT_POPUP_MENU = c_int(9) # A popup menu (from right-click) 
+GDK_WINDOW_TYPE_HINT_TOOLTIP = c_int(10)
+GDK_WINDOW_TYPE_HINT_NOTIFICATION = c_int(11)
+GDK_WINDOW_TYPE_HINT_COMBO = c_int(12)
+GDK_WINDOW_TYPE_HINT_DND = c_int(13)
