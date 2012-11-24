@@ -1,0 +1,129 @@
+enum                WebKitNavigationResponse;
+enum                WebKitWebViewTargetInfo;
+enum                WebKitWebViewViewMode;
+          
+gboolean            webkit_web_view_can_copy_clipboard  (WebKitWebView *web_view);
+gboolean            webkit_web_view_can_cut_clipboard   (WebKitWebView *web_view);
+gboolean            webkit_web_view_can_go_back         (WebKitWebView *web_view);
+gboolean            webkit_web_view_can_go_back_or_forward
+                                                        (WebKitWebView *web_view,
+                                                         gint steps);
+gboolean            webkit_web_view_can_go_forward      (WebKitWebView *web_view);
+gboolean            webkit_web_view_can_paste_clipboard (WebKitWebView *web_view);
+gboolean            webkit_web_view_can_redo            (WebKitWebView *web_view);
+gboolean            webkit_web_view_can_show_mime_type  (WebKitWebView *web_view,
+                                                         const gchar *mime_type);
+gboolean            webkit_web_view_can_undo            (WebKitWebView *web_view);
+void                webkit_web_view_copy_clipboard      (WebKitWebView *web_view);
+void                webkit_web_view_cut_clipboard       (WebKitWebView *web_view);
+void                webkit_web_view_delete_selection    (WebKitWebView *web_view);
+void                webkit_web_view_execute_script      (WebKitWebView *web_view,
+                                                         const gchar *script);
+WebKitWebBackForwardList * webkit_web_view_get_back_forward_list
+                                                        (WebKitWebView *web_view);
+GtkTargetList *     webkit_web_view_get_copy_target_list
+                                                        (WebKitWebView *web_view);
+const char *        webkit_web_view_get_custom_encoding (WebKitWebView *web_view);
+WebKitDOMDocument * webkit_web_view_get_dom_document    (WebKitWebView *web_view);
+gboolean            webkit_web_view_get_editable        (WebKitWebView *web_view);
+const gchar *       webkit_web_view_get_encoding        (WebKitWebView *web_view);
+WebKitWebFrame *    webkit_web_view_get_focused_frame   (WebKitWebView *web_view);
+gboolean            webkit_web_view_get_full_content_zoom
+                                                        (WebKitWebView *web_view);
+WebKitHitTestResult * webkit_web_view_get_hit_test_result
+                                                        (WebKitWebView *web_view,
+                                                         GdkEventButton *event);
+GdkPixbuf *         webkit_web_view_get_icon_pixbuf     (WebKitWebView *web_view);
+const gchar *       webkit_web_view_get_icon_uri        (WebKitWebView *web_view);
+WebKitWebInspector * webkit_web_view_get_inspector      (WebKitWebView *web_view);
+WebKitLoadStatus    webkit_web_view_get_load_status     (WebKitWebView *web_view);
+WebKitWebFrame *    webkit_web_view_get_main_frame      (WebKitWebView *web_view);
+GtkTargetList *     webkit_web_view_get_paste_target_list
+                                                        (WebKitWebView *web_view);
+gdouble             webkit_web_view_get_progress        (WebKitWebView *web_view);
+WebKitWebSettings * webkit_web_view_get_settings        (WebKitWebView *web_view);
+const gchar *       webkit_web_view_get_title           (WebKitWebView *web_view);
+gboolean            webkit_web_view_get_transparent     (WebKitWebView *web_view);
+const gchar *       webkit_web_view_get_uri             (WebKitWebView *web_view);
+WebKitWebViewViewMode webkit_web_view_get_view_mode     (WebKitWebView *web_view);
+gboolean            webkit_web_view_get_view_source_mode
+                                                        (WebKitWebView *web_view);
+WebKitViewportAttributes * webkit_web_view_get_viewport_attributes
+                                                        (WebKitWebView *web_view);
+gfloat              webkit_web_view_get_zoom_level      (WebKitWebView *web_view);
+void                webkit_web_view_go_back             (WebKitWebView *web_view);
+void                webkit_web_view_go_back_or_forward  (WebKitWebView *web_view,
+                                                         gint steps);
+void                webkit_web_view_go_forward          (WebKitWebView *web_view);
+gboolean            webkit_web_view_go_to_back_forward_item
+                                                        (WebKitWebView *web_view,
+                                                         WebKitWebHistoryItem *item);
+gboolean            webkit_web_view_has_selection       (WebKitWebView *web_view);
+void                webkit_web_view_load_html_string    (WebKitWebView *web_view,
+                                                         const gchar *content,
+                                                         const gchar *base_uri);
+void                webkit_web_view_load_request        (WebKitWebView *web_view,
+                                                         WebKitNetworkRequest *request);
+void                webkit_web_view_load_string         (WebKitWebView *web_view,
+                                                         const gchar *content,
+                                                         const gchar *mime_type,
+                                                         const gchar *encoding,
+                                                         const gchar *base_uri);
+void                webkit_web_view_load_uri            (WebKitWebView *web_view,
+                                                         const gchar *uri);
+guint               webkit_web_view_mark_text_matches   (WebKitWebView *web_view,
+                                                         const gchar *string,
+                                                         gboolean case_sensitive,
+                                                         guint limit);
+void                webkit_web_view_move_cursor         (WebKitWebView *web_view,
+                                                         GtkMovementStep step,
+                                                         gint count);
+GtkWidget *         webkit_web_view_new                 (void);
+void                webkit_web_view_open                (WebKitWebView *web_view,
+                                                         const gchar *uri);
+void                webkit_web_view_paste_clipboard     (WebKitWebView *web_view);
+void                webkit_web_view_redo                (WebKitWebView *web_view);
+void                webkit_web_view_reload              (WebKitWebView *web_view);
+void                webkit_web_view_reload_bypass_cache (WebKitWebView *web_view);
+gboolean            webkit_web_view_search_text         (WebKitWebView *web_view,
+                                                         const gchar *text,
+                                                         gboolean case_sensitive,
+                                                         gboolean forward,
+                                                         gboolean wrap);
+void                webkit_web_view_select_all          (WebKitWebView *web_view);
+void                webkit_web_view_set_custom_encoding (WebKitWebView *web_view,
+                                                         const gchar *encoding);
+void                webkit_web_view_set_editable        (WebKitWebView *web_view,
+                                                         gboolean flag);
+void                webkit_web_view_set_full_content_zoom
+                                                        (WebKitWebView *web_view,
+                                                         gboolean full_content_zoom);
+void                webkit_web_view_set_highlight_text_matches
+                                                        (WebKitWebView *web_view,
+                                                         gboolean highlight);
+void                webkit_web_view_set_maintains_back_forward_list
+                                                        (WebKitWebView *web_view,
+                                                         gboolean flag);
+void                webkit_web_view_set_settings        (WebKitWebView *web_view,
+                                                         WebKitWebSettings *settings);
+void                webkit_web_view_set_transparent     (WebKitWebView *web_view,
+                                                         gboolean flag);
+void                webkit_web_view_set_view_mode       (WebKitWebView *web_view,
+                                                         WebKitWebViewViewMode mode);
+void                webkit_web_view_set_view_source_mode
+                                                        (WebKitWebView *web_view,
+                                                         gboolean view_source_mode);
+void                webkit_web_view_set_zoom_level      (WebKitWebView *web_view,
+                                                         gfloat zoom_level);
+void                webkit_web_view_stop_loading        (WebKitWebView *web_view);
+GdkPixbuf *         webkit_web_view_try_get_favicon_pixbuf
+                                                        (WebKitWebView *web_view,
+                                                         guint width,
+                                                         guint height);
+void                webkit_web_view_undo                (WebKitWebView *web_view);
+void                webkit_web_view_unmark_text_matches (WebKitWebView *web_view);
+void                webkit_web_view_zoom_in             (WebKitWebView *web_view);
+void                webkit_web_view_zoom_out            (WebKitWebView *web_view);
+WebKitWebWindowFeatures * webkit_web_view_get_window_features
+                                                        (WebKitWebView *web_view);
+cairo_surface_t *   webkit_web_view_get_snapshot        (WebKitWebView *web_view);
