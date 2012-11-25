@@ -249,11 +249,14 @@ def emit_python(namespace):
     global classname
     if not classname:
         classname = ""
-    with open(os.path.join('src','_%s_%s.py'%(namespace,classname)),'w') as f:
+    if classname== "void":
+        classname= ""
+    with open(os.path.join('pywebkit3','_%s_%s.py'%(namespace,classname)),'w') as f:
         prefix = "_".join(l.lower() for l in re.findall('[A-Z][^A-Z]*', classname.replace('WebKit','Webkit')))
-        prefix += '_' 
+        prefix += '_'
+        assert(namespace != 'gtk')
         f.write("""from ctypes import *
-from gtk_types import *
+from gtk3_types import *
 from %s_types import *
 
 """%namespace)
@@ -334,7 +337,7 @@ from %s_types import *
         else:
             for methodname in staticmethods.iterkeys():
                 f.write("\n")
-                prefix='gtk_'
+                prefix='gtk3_'
                 text,_ =gen_params(methodname, LIB_NAME)
                 f.write("def %s(%s):\n"%(methodname.replace(prefix,''), text))
                 if staticmethods[methodname][0]:
@@ -364,6 +367,8 @@ with open (sys.argv[1],'r') as f:
                 to_python(line.replace('const',''))
                 line="" 
     namespace = sys.argv[1][1:].split('_')[0]
+    assert(namespace !="gtk")
+
     emit_python(namespace)
 
 

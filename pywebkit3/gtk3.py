@@ -1,5 +1,5 @@
-from gtk_types import * 
-from gtk_enums import *
+from gtk3_types import * 
+from gtk3_enums import *
 from gtk3_types import *
 from _gtk3_GtkAboutDialog import *
 from gtk3_types import *

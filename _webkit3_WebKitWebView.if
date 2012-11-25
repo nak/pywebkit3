@@ -2,7 +2,7 @@ enum                WebKitNavigationResponse;
 enum                WebKitWebViewTargetInfo;
 enum                WebKitWebViewViewMode;
                     WebKitWebView;
-inherit             gtk.GtkContainer;
+inherit             gtk3.GtkContainer;
 gboolean            webkit_web_view_can_copy_clipboard  (WebKitWebView *web_view);
 gboolean            webkit_web_view_can_cut_clipboard   (WebKitWebView *web_view);
 gboolean            webkit_web_view_can_go_back         (WebKitWebView *web_view);

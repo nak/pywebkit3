@@ -1,4 +1,4 @@
-from webkit_types import *
+from webkit3_types import *
 from webkit3_types import *
 from _webkit3_WebKitGeolocationPolicyDecision import *
 from webkit3_types import *
