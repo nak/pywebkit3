@@ -1,0 +1,133 @@
+
+enum                GtkDestDefaults;
+enum                GtkTargetFlags;
+
+void                gtk_drag_dest_set                   (GtkWidget *widget,
+                                                         GtkDestDefaults flags,
+                                                         const GtkTargetEntry *targets,
+                                                         gint n_targets,
+                                                         GdkDragAction actions);
+void                gtk_drag_dest_set_proxy             (GtkWidget *widget,
+                                                         GdkWindow *proxy_window,
+                                                         GdkDragProtocol protocol,
+                                                         gboolean use_coordinates);
+void                gtk_drag_dest_unset                 (GtkWidget *widget);
+GdkAtom             gtk_drag_dest_find_target           (GtkWidget *widget,
+                                                         GdkDragContext *context,
+                                                         GtkTargetList *target_list);
+GtkTargetList *     gtk_drag_dest_get_target_list       (GtkWidget *widget);
+void                gtk_drag_dest_set_target_list       (GtkWidget *widget,
+                                                         GtkTargetList *target_list);
+void                gtk_drag_dest_add_text_targets      (GtkWidget *widget);
+void                gtk_drag_dest_add_image_targets     (GtkWidget *widget);
+void                gtk_drag_dest_add_uri_targets       (GtkWidget *widget);
+void                gtk_drag_dest_set_track_motion      (GtkWidget *widget,
+                                                         gboolean track_motion);
+gboolean            gtk_drag_dest_get_track_motion      (GtkWidget *widget);
+void                gtk_drag_finish                     (GdkDragContext *context,
+                                                         gboolean success,
+                                                         gboolean del,
+                                                         guint32 time_);
+void                gtk_drag_get_data                   (GtkWidget *widget,
+                                                         GdkDragContext *context,
+                                                         GdkAtom target,
+                                                         guint32 time_);
+GtkWidget *         gtk_drag_get_source_widget          (GdkDragContext *context);
+void                gtk_drag_highlight                  (GtkWidget *widget);
+void                gtk_drag_unhighlight                (GtkWidget *widget);
+
+GdkDragContext *    gtk_drag_begin                      (GtkWidget *widget,
+                                                         GtkTargetList *targets,
+                                                         GdkDragAction actions,
+                                                         gint button,
+                                                         GdkEvent *event);
+void                gtk_drag_set_icon_widget            (GdkDragContext *context,
+                                                         GtkWidget *widget,
+                                                         gint hot_x,
+                                                         gint hot_y);
+void                gtk_drag_set_icon_pixbuf            (GdkDragContext *context,
+                                                         GdkPixbuf *pixbuf,
+                                                         gint hot_x,
+                                                         gint hot_y);
+void                gtk_drag_set_icon_stock             (GdkDragContext *context,
+                                                         const gchar *stock_id,
+                                                         gint hot_x,
+                                                         gint hot_y);
+void                gtk_drag_set_icon_surface           (GdkDragContext *context,
+                                                         cairo_surface_t *surface);
+void                gtk_drag_set_icon_name              (GdkDragContext *context,
+                                                         const gchar *icon_name,
+                                                         gint hot_x,
+                                                         gint hot_y);
+void                gtk_drag_set_icon_gicon             (GdkDragContext *context,
+                                                         GIcon *icon,
+                                                         gint hot_x,
+                                                         gint hot_y);
+void                gtk_drag_set_icon_default           (GdkDragContext *context);
+gboolean            gtk_drag_check_threshold            (GtkWidget *widget,
+                                                         gint start_x,
+                                                         gint start_y,
+                                                         gint current_x,
+                                                         gint current_y);
+void                gtk_drag_source_set                 (GtkWidget *widget,
+                                                         GdkModifierType start_button_mask,
+                                                         const GtkTargetEntry *targets,
+                                                         gint n_targets,
+                                                         GdkDragAction actions);
+void                gtk_drag_source_set_icon_pixbuf     (GtkWidget *widget,
+                                                         GdkPixbuf *pixbuf);
+void                gtk_drag_source_set_icon_stock      (GtkWidget *widget,
+                                                         const gchar *stock_id);
+void                gtk_drag_source_set_icon_name       (GtkWidget *widget,
+                                                         const gchar *icon_name);
+void                gtk_drag_source_set_icon_gicon      (GtkWidget *widget,
+                                                         GIcon *icon);
+void                gtk_drag_source_unset               (GtkWidget *widget);
+void                gtk_drag_source_set_target_list     (GtkWidget *widget,
+                                                         GtkTargetList *target_list);
+GtkTargetList *     gtk_drag_source_get_target_list     (GtkWidget *widget);
+void                gtk_drag_source_add_text_targets    (GtkWidget *widget);
+void                gtk_drag_source_add_image_targets   (GtkWidget *widget);
+void                gtk_drag_source_add_uri_targets     (GtkWidget *widget);
+
+
+
+
+void                gtk_disable_setlocale               ();
+PangoLanguage *     gtk_get_default_language            ();
+GOptionGroup *      gtk_get_option_group                (gboolean open_default_display);
+gboolean            gtk_events_pending                  ();
+guint               gtk_main_level                      ();
+gboolean            gtk_main_iteration                  ();
+gboolean            gtk_main_iteration_do               (gboolean blocking);
+void                gtk_main_do_event                   (GdkEvent *event);
+void                (*GtkModuleDisplayInitFunc)         (GdkDisplay *display);
+
+gboolean            gtk_true                            ();
+gboolean            gtk_false                           ();
+
+void                gtk_grab_add                        (GtkWidget *widget);
+GtkWidget *         gtk_grab_get_current                ();
+void                gtk_grab_remove                     (GtkWidget *widget);
+void                gtk_device_grab_add                 (GtkWidget *widget,
+                                                         GdkDevice *device,
+                                                         gboolean block_others);
+void                gtk_device_grab_remove              (GtkWidget *widget,
+                                                         GdkDevice *device);
+
+#define             GTK_PRIORITY_RESIZE
+
+guint               gtk_key_snooper_install             (GtkKeySnoopFunc snooper,
+                                                         gpointer func_data);
+gint                (*GtkKeySnoopFunc)                  (GtkWidget *grab_widget,
+                                                         GdkEventKey *event,
+                                                         gpointer func_data);
+void                gtk_key_snooper_remove              (guint snooper_handler_id);
+
+GdkEvent *          gtk_get_current_event               ();
+guint32             gtk_get_current_event_time          ();
+gboolean            gtk_get_current_event_state         (GdkModifierType *state);
+GdkDevice *         gtk_get_current_event_device        ();
+GtkWidget *         gtk_get_event_widget                (GdkEvent *event);
+void                gtk_propagate_event                 (GtkWidget *widget,
+                                                         GdkEvent *event);

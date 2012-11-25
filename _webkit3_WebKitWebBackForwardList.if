@@ -1,0 +1,43 @@
+                   WebKitWebBackForwardList;
+inherit            gobject.GObject;
+
+void                webkit_web_back_forward_list_add_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         WebKitWebHistoryItem *history_item);
+void                webkit_web_back_forward_list_clear  (WebKitWebBackForwardList *web_back_forward_list);
+gboolean            webkit_web_back_forward_list_contains_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         WebKitWebHistoryItem *history_item);
+WebKitWebHistoryItem * webkit_web_back_forward_list_get_back_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+gint                webkit_web_back_forward_list_get_back_length
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+GList *             webkit_web_back_forward_list_get_back_list_with_limit
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         gint limit);
+WebKitWebHistoryItem * webkit_web_back_forward_list_get_current_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+WebKitWebHistoryItem * webkit_web_back_forward_list_get_forward_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+gint                webkit_web_back_forward_list_get_forward_length
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+GList *             webkit_web_back_forward_list_get_forward_list_with_limit
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         gint limit);
+gint                webkit_web_back_forward_list_get_limit
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+WebKitWebHistoryItem * webkit_web_back_forward_list_get_nth_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         gint index);
+void                webkit_web_back_forward_list_go_back
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+void                webkit_web_back_forward_list_go_forward
+                                                        (WebKitWebBackForwardList *web_back_forward_list);
+void                webkit_web_back_forward_list_go_to_item
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         WebKitWebHistoryItem *history_item);
+WebKitWebBackForwardList * webkit_web_back_forward_list_new_with_web_view
+                                                        (WebKitWebView *web_view);
+void                webkit_web_back_forward_list_set_limit
+                                                        (WebKitWebBackForwardList *web_back_forward_list,
+                                                         gint limit);

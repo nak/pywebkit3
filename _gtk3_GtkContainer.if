@@ -1,9 +1,6 @@
 
 struct              GtkContainer;
-#define             GTK_IS_RESIZE_CONTAINER             (widget)
-#define             GTK_CONTAINER_WARN_INVALID_CHILD_PROPERTY_ID(object,
-                                                         property_id,
-                                                         pspec)
+inherit             gtk3.GtkWidget;
 void                gtk_container_add                   (GtkContainer *container,
                                                          GtkWidget *widget);
 void                gtk_container_remove                (GtkContainer *container,

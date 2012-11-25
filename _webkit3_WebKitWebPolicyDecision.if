@@ -1,0 +1,5 @@
+                    WebKitWebPolicyDecision;
+inherit             gobject.GObject;
+void                webkit_web_policy_decision_download (WebKitWebPolicyDecision *decision);
+void                webkit_web_policy_decision_ignore   (WebKitWebPolicyDecision *decision);
+void                webkit_web_policy_decision_use      (WebKitWebPolicyDecision *decision);

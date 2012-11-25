@@ -1,0 +1,19 @@
+                   WebKitWebHistoryItem;
+inherit            gobject.GObject;
+
+WebKitWebHistoryItem * webkit_web_history_item_copy     (WebKitWebHistoryItem *web_history_item);
+const gchar *       webkit_web_history_item_get_alternate_title
+                                                        (WebKitWebHistoryItem *web_history_item);
+gdouble             webkit_web_history_item_get_last_visited_time
+                                                        (WebKitWebHistoryItem *web_history_item);
+const gchar *       webkit_web_history_item_get_original_uri
+                                                        (WebKitWebHistoryItem *web_history_item);
+const gchar *       webkit_web_history_item_get_title   (WebKitWebHistoryItem *web_history_item);
+const gchar *       webkit_web_history_item_get_uri     (WebKitWebHistoryItem *web_history_item);
+WebKitWebHistoryItem * webkit_web_history_item_new      (void);
+WebKitWebHistoryItem * webkit_web_history_item_new_with_data
+                                                        (const gchar *uri,
+                                                         const gchar *title);
+void                webkit_web_history_item_set_alternate_title
+                                                        (WebKitWebHistoryItem *web_history_item,
+                                                         const gchar *title);

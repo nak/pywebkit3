@@ -1,6 +1,6 @@
 
                     GtkWidget;
-struct              GtkWidgetClass;
+inherit gobject.GObject
 void                (*GtkCallback)                      (GtkWidget *widget,
                                                          gpointer data);
 struct              GtkRequisition;

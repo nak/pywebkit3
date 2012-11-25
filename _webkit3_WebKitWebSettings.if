@@ -1,0 +1,7 @@
+                   WebKitWebSettings;
+inherit            gobject.GObject;
+
+enum                WebKitEditingBehavior;
+WebKitWebSettings * webkit_web_settings_copy            (WebKitWebSettings *web_settings);
+WebKitWebSettings * webkit_web_settings_new             (void);
+const gchar *       webkit_web_settings_get_user_agent  (WebKitWebSettings *web_settings);

@@ -1,0 +1,5 @@
+            WebKitGeolocationPolicyDecision;
+inherit     gobject.GObject;
+
+void                webkit_geolocation_policy_allow     (WebKitGeolocationPolicyDecision *decision);
+void                webkit_geolocation_policy_deny      (WebKitGeolocationPolicyDecision *decision);

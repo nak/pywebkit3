@@ -1,0 +1,14 @@
+                    WebKitWebInspector;
+inherit gobject.GObject;
+
+const gchar *       webkit_web_inspector_get_inspected_uri
+                                                        (WebKitWebInspector *web_inspector);
+WebKitWebView *     webkit_web_inspector_get_web_view   (WebKitWebInspector *web_inspector);
+void                webkit_web_inspector_inspect_coordinates
+                                                        (WebKitWebInspector *web_inspector,
+                                                         gdouble x,
+                                                         gdouble y);
+void                webkit_web_inspector_show           (WebKitWebInspector *web_inspector);
+void                webkit_web_inspector_close          (WebKitWebInspector *web_inspector);
+void                webkit_web_inspector_inspect_node   (WebKitWebInspector *web_inspector,
+                                                         WebKitDOMNode *node);

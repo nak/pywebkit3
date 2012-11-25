@@ -4,13 +4,30 @@ GTK_ICON_SIZE_INVALID = c_int(0)
 GTK_ICON_SIZE_MENU = c_int(1)
 GTK_ICON_SIZE_SMALL_TOOLBAR = c_int(2)
 GTK_ICON_SIZE_LARGE_TOOLBAR = c_int(3)
-GTK_ICON_SIZE_BUTTON = c_int(c_int(4))
+GTK_ICON_SIZE_BUTTON = c_int(4)
 GTK_ICON_SIZE_DND = c_int(5)
 GTK_ICON_SIZE_DIALOG = c_int(6)
 
 #GtkWindowType
 GTK_WINDOW_TOPLEVEL = c_int(0)
 GTK_WINDOW_POPUP = c_int(1)
+
+#GtkDirectionType
+GTK_DIR_TAB_FORWARD = c_int(0)
+GTK_DIR_TAB_BACKWARD = c_int(1)
+GTK_DIR_UP = c_int(2)
+GTK_DIR_DOWN = c_int(3)
+GTK_DIR_LEFT = c_int(4)
+GTK_DIR_RIGHT = c_int(5)
+
+#GtkOrientation
+GTK_ORIENTATION_HORIZONTAL = c_int(0)
+GTK_ORIENTATION_VERTICAL = c_int(1)
+
+#GtkResizeMode
+GTK_RESIZE_PARENT = c_int(0)
+GTK_RESIZE_QUEUE = c_int(1)
+GTK_RESIZE_IMMEDIATE = c_int(2)
 
 #GdkGravity
 GDK_GRAVITY_NORTH_WEST = c_int(1)
@@ -25,18 +42,18 @@ GDK_GRAVITY_SOUTH_EAST = 9
 GDK_GRAVITY_STATIC = c_int(10)
 
 #GdkModifierType
-GDK_SHIFT_MASK    = 1 << c_int(0)
-GDK_CONTROL_MASK  = 1 << c_int(2)
-GDK_MOD1_MASK     = 1 << c_int(3)
-GDK_MOD2_MASK     = 1 << c_int(4)
-GDK_MOD3_MASK     = 1 << c_int(5)
-GDK_MOD4_MASK     = 1 << c_int(6)
-GDK_MOD5_MASK     = 1 << c_int(7)
-GDK_BUTTON1_MASK  = 1 << c_int(8)
-GDK_BUTTON2_MASK  = 1 << c_int(9)
-GDK_BUTTON3_MASK  = 1 << c_int(10)
-GDK_BUTTON4_MASK  = 1 << c_int(11)
-GDK_BUTTON5_MASK  = 1 << c_int(12)
+GDK_SHIFT_MASK    = c_int(1 << 0)
+GDK_CONTROL_MASK  = c_int(1 << 2)
+GDK_MOD1_MASK     = c_int(1 << 3)
+GDK_MOD2_MASK     = c_int(1 << 4)
+GDK_MOD3_MASK     = c_int(1 << 5)
+GDK_MOD4_MASK     = c_int(1 << 6)
+GDK_MOD5_MASK     = c_int(1 << 7)
+GDK_BUTTON1_MASK  = c_int(1 << 8)
+GDK_BUTTON2_MASK  = c_int(1 << 9)
+GDK_BUTTON3_MASK  = c_int(1 << 10)
+GDK_BUTTON4_MASK  = c_int(1 << 11)
+GDK_BUTTON5_MASK  = c_int(1 << 12)
 
 GDK_MODIFIER_RESERVED_13_MASK  = c_int( 1<< 13)
 GDK_MODIFIER_RESERVED_14_MASK  = c_int( 1<< 14)

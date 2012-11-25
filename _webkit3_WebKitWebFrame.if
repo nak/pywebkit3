@@ -1,0 +1,46 @@
+enum                WebKitLoadStatus;
+                    WebKitWebFrame;
+inherit             gobject.GObject;
+WebKitWebFrame *    webkit_web_frame_find_frame         (WebKitWebFrame *frame,
+                                                         const gchar *name);
+WebKitWebDataSource * webkit_web_frame_get_data_source  (WebKitWebFrame *frame);
+WebKitDOMDocument * webkit_web_frame_get_dom_document   (WebKitWebFrame *frame);
+JSGlobalContextRef  webkit_web_frame_get_global_context (WebKitWebFrame *frame);
+GtkPolicyType       webkit_web_frame_get_horizontal_scrollbar_policy
+                                                        (WebKitWebFrame *frame);
+WebKitLoadStatus    webkit_web_frame_get_load_status    (WebKitWebFrame *frame);
+const gchar *       webkit_web_frame_get_name           (WebKitWebFrame *frame);
+WebKitNetworkResponse * webkit_web_frame_get_network_response
+                                                        (WebKitWebFrame *frame);
+WebKitWebFrame *    webkit_web_frame_get_parent         (WebKitWebFrame *frame);
+WebKitWebDataSource * webkit_web_frame_get_provisional_data_source
+                                                        (WebKitWebFrame *frame);
+WebKitSecurityOrigin * webkit_web_frame_get_security_origin
+                                                        (WebKitWebFrame *frame);
+const gchar *       webkit_web_frame_get_title          (WebKitWebFrame *frame);
+const gchar *       webkit_web_frame_get_uri            (WebKitWebFrame *frame);
+GtkPolicyType       webkit_web_frame_get_vertical_scrollbar_policy
+                                                        (WebKitWebFrame *frame);
+WebKitWebView *     webkit_web_frame_get_web_view       (WebKitWebFrame *frame);
+void                webkit_web_frame_load_alternate_string
+                                                        (WebKitWebFrame *frame,
+                                                         const gchar *content,
+                                                         const gchar *base_url,
+                                                         const gchar *unreachable_url);
+void                webkit_web_frame_load_request       (WebKitWebFrame *frame,
+                                                         WebKitNetworkRequest *request);
+void                webkit_web_frame_load_string        (WebKitWebFrame *frame,
+                                                         const gchar *content,
+                                                         const gchar *mime_type,
+                                                         const gchar *encoding,
+                                                         const gchar *base_uri);
+void                webkit_web_frame_load_uri           (WebKitWebFrame *frame,
+                                                         const gchar *uri);
+WebKitWebFrame *    webkit_web_frame_new                (WebKitWebView *web_view);
+void                webkit_web_frame_print              (WebKitWebFrame *frame);
+GtkPrintOperationResult webkit_web_frame_print_full     (WebKitWebFrame *frame,
+                                                         GtkPrintOperation *operation,
+                                                         GtkPrintOperationAction action,
+                                                         GError **error);
+void                webkit_web_frame_reload             (WebKitWebFrame *frame);
+void                webkit_web_frame_stop_loading       (WebKitWebFrame *frame);

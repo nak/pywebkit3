@@ -1,0 +1,7 @@
+                    WebKitNetworkRequest;
+inherit gobject.GObject;
+WebKitNetworkRequest * webkit_network_request_new       (const gchar *uri);
+const gchar *       webkit_network_request_get_uri      (WebKitNetworkRequest *request);
+SoupMessage *       webkit_network_request_get_message  (WebKitNetworkRequest *request);
+void                webkit_network_request_set_uri      (WebKitNetworkRequest *request,
+                                                         const gchar *uri);

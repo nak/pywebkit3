@@ -1,0 +1,19 @@
+struct              WebKitWebNavigationAction;
+inherit             gobject.GObject;
+enum                WebKitWebNavigationReason;
+gint                webkit_web_navigation_action_get_button
+                                                        (WebKitWebNavigationAction *navigationAction);
+gint                webkit_web_navigation_action_get_modifier_state
+                                                        (WebKitWebNavigationAction *navigationAction);
+const gchar *       webkit_web_navigation_action_get_original_uri
+                                                        (WebKitWebNavigationAction *navigationAction);
+WebKitWebNavigationReason webkit_web_navigation_action_get_reason
+                                                        (WebKitWebNavigationAction *navigationAction);
+const gchar *       webkit_web_navigation_action_get_target_frame
+                                                        (WebKitWebNavigationAction *navigationAction);
+void                webkit_web_navigation_action_set_original_uri
+                                                        (WebKitWebNavigationAction *navigationAction,
+                                                         const gchar *originalUri);
+void                webkit_web_navigation_action_set_reason
+                                                        (WebKitWebNavigationAction *navigationAction,
+                                                         WebKitWebNavigationReason reason);

@@ -1,0 +1,10 @@
+
+        WebKitNetworkResponse;
+inherit gobject.GObject;
+
+const gchar *       webkit_network_response_get_uri     (WebKitNetworkResponse *response);
+SoupMessage *       webkit_network_response_get_message (WebKitNetworkResponse *response);
+const char *        webkit_network_response_get_suggested_filename
+                                                        (WebKitNetworkResponse *response);
+void                webkit_network_response_set_uri     (WebKitNetworkResponse *response,
+                                                         const gchar *uri);

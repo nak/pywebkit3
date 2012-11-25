@@ -1,7 +1,9 @@
 from ctypes import *
+from gdk_types import *
+from gobject_types import *
 
-cdll.LoadLibrary("libwebkitgtk-3.0.so.0")
-libwebkit = CDLL("libwebkitgtk-3.0.so.0")
+cdll.LoadLibrary("libgtk-3.so")
+libgtk3 = CDLL("libgtk-3.so")
 
 GDestroyNotifyCB = CFUNCTYPE(None, c_void_p)
 GDuplicateFunc = CFUNCTYPE( c_void_p, c_void_p, c_void_p)
@@ -33,8 +35,14 @@ gboolean = c_int
 
 GtkIconSize = c_int
 GtkWindowType = c_int
-GdkGravity = c_int
-GdkWindowTypeHint = c_int
-GdkModifierType = c_int
+GtkDirectinoType = c_int
+GtkOrientation = c_int
 
-from gi.repository import Gtk
+
+libgtk3.gtk_init(0,0)
+
+def main():
+    libgtk3.gtk_main()
+    
+def main_quit():
+    libgtk3.gtk_main_quit()
