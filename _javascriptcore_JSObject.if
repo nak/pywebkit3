@@ -13,15 +13,15 @@ JSObject * JSObjectMakeFunctionWithCallback(JSContext * ctx, JSString * name, JS
 
 JSObject * JSObjectMakeConstructor(JSContext * ctx, JSClass * jsClass, JSObjectCallAsConstructorCallback callAsConstructor);
 
-JSObject * JSObjectMakeArray(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+JSObject * JSObjectMakeArray(JSContext * ctx, size_t argumentCount, const JSValue ** arguments, JSValue ** exception);
 
-JSObject * JSObjectMakeDate(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+JSObject * JSObjectMakeDate(JSContext * ctx, size_t argumentCount, const JSValue ** arguments, JSValue ** exception);
 
-JSObject * JSObjectMakeError(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+JSObject * JSObjectMakeError(JSContext * ctx, size_t argumentCount, const JSValue ** arguments, JSValue ** exception);
 
-JSObject * JSObjectMakeRegExp(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+JSObject * JSObjectMakeRegExp(JSContext * ctx, size_t argumentCount, const JSValue ** arguments, JSValue ** exception);
 
-JSObject * JSObjectMakeFunction(JSContext * ctx, JSString * name, unsigned parameterCount, const JSString * parameterNames[], JSString * body, JSString * sourceURL, int startingLineNumber, JSValue ** exception);
+JSObject * JSObjectMakeFunction(JSContext * ctx, JSString * name, unsigned parameterCount, const JSString ** parameterNames, JSString * body, JSString * sourceURL, int startingLineNumber, JSValue ** exception);
 
 JSValue * JSObjectGetPrototype(JSContext * ctx, JSObject * object);
 
@@ -45,11 +45,11 @@ bool JSObjectSetPrivate(JSObject * object, void* data);
 
 bool JSObjectIsFunction(JSContext * ctx, JSObject * object);
 
-JSValue * JSObjectCallAsFunction(JSContext * ctx, JSObject * object, JSObject * thisObject, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+JSValue * JSObjectCallAsFunction(JSContext * ctx, JSObject * object, JSObject * thisObject, size_t argumentCount, const JSValue ** arguments, JSValue ** exception);
 
 bool JSObjectIsConstructor(JSContext * ctx, JSObject * object);
 
-JSObject * JSObjectCallAsConstructor(JSContext * ctx, JSObject * object, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+JSObject * JSObjectCallAsConstructor(JSContext * ctx, JSObject * object, size_t argumentCount, const JSValue ** arguments, JSValue ** exception);
 
 JSPropertyNameArray * JSObjectCopyPropertyNames(JSContext * ctx, JSObject * object);
 
