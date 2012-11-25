@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup( name = "PyWebKit3",
-    version = "0.0",
+    version = "0.1",
     packages = ["pywebkit3"],# find_packages(),
     scripts = [],
 

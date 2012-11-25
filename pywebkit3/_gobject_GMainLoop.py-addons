@@ -1,0 +1,12 @@
+cfuncs = []
+
+def idle_add( func , *args):
+    cfunc = c_void_p()
+    def C_Callable( param ):
+        func( *args )
+        cfuncs.remove(cfunc)
+        return 0
+    cfunc = GSourceFunc(C_Callable)
+    cfuncs.append(cfunc)
+    GMainLoop.g_idle_add(cfunc, cfunc )
+    

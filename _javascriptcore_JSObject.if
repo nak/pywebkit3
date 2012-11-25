@@ -1,0 +1,65 @@
+struct JSObject;
+inherit object;
+
+JSClass * JSClassCreate(const JSClassDefinition* definition);
+
+JSClass * JSClassRetain(JSClass * jsClass);
+
+void JSClassRelease(JSClass * jsClass);
+
+JSObject * JSObjectMake(JSContext * ctx, JSClass * jsClass, void* data);
+
+JSObject * JSObjectMakeFunctionWithCallback(JSContext * ctx, JSString * name, JSObjectCallAsFunctionCallback callAsFunction);
+
+JSObject * JSObjectMakeConstructor(JSContext * ctx, JSClass * jsClass, JSObjectCallAsConstructorCallback callAsConstructor);
+
+JSObject * JSObjectMakeArray(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+
+JSObject * JSObjectMakeDate(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+
+JSObject * JSObjectMakeError(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+
+JSObject * JSObjectMakeRegExp(JSContext * ctx, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+
+JSObject * JSObjectMakeFunction(JSContext * ctx, JSString * name, unsigned parameterCount, const JSString * parameterNames[], JSString * body, JSString * sourceURL, int startingLineNumber, JSValue ** exception);
+
+JSValue * JSObjectGetPrototype(JSContext * ctx, JSObject * object);
+
+void JSObjectSetPrototype(JSContext * ctx, JSObject * object, JSValue * value);
+
+bool JSObjectHasProperty(JSContext * ctx, JSObject * object, JSString * propertyName);
+
+JSValue * JSObjectGetProperty(JSContext * ctx, JSObject * object, JSString * propertyName, JSValue ** exception);
+
+void JSObjectSetProperty(JSContext * ctx, JSObject * object, JSString * propertyName, JSValue * value, JSPropertyAttributes attributes, JSValue ** exception);
+
+bool JSObjectDeleteProperty(JSContext * ctx, JSObject * object, JSString * propertyName, JSValue ** exception);
+
+JSValue * JSObjectGetPropertyAtIndex(JSContext * ctx, JSObject * object, unsigned propertyIndex, JSValue ** exception);
+
+void JSObjectSetPropertyAtIndex(JSContext * ctx, JSObject * object, unsigned propertyIndex, JSValue * value, JSValue ** exception);
+
+void* JSObjectGetPrivate(JSObject * object);
+
+bool JSObjectSetPrivate(JSObject * object, void* data);
+
+bool JSObjectIsFunction(JSContext * ctx, JSObject * object);
+
+JSValue * JSObjectCallAsFunction(JSContext * ctx, JSObject * object, JSObject * thisObject, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+
+bool JSObjectIsConstructor(JSContext * ctx, JSObject * object);
+
+JSObject * JSObjectCallAsConstructor(JSContext * ctx, JSObject * object, size_t argumentCount, const JSValue * arguments[], JSValue ** exception);
+
+JSPropertyNameArray * JSObjectCopyPropertyNames(JSContext * ctx, JSObject * object);
+
+JSPropertyNameArray * JSPropertyNameArrayRetain(JSPropertyNameArray * array);
+
+void JSPropertyNameArrayRelease(JSPropertyNameArray * array);
+
+size_t JSPropertyNameArrayGetCount(JSPropertyNameArray * array);
+
+JSString * JSPropertyNameArrayGetNameAtIndex(JSPropertyNameArray * array, size_t index);
+
+void JSPropertyNameAccumulatorAddName(JSPropertyNameAccumulator * accumulator, JSString * propertyName);
+

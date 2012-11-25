@@ -1,5 +1,9 @@
 #!/usr/bin/python
-
+# Copyright, John Rusnak, 2012
+# This code is available under the license agreement of the LGPL,
+# with the additional constraint that any derivatives of this work aimed
+# at providing bindings to GObject, GTK, GDK, or WebKit be strictly
+# python-only bindings with no native code.
 import os.path
 from ctypes import *
 import logging
@@ -15,41 +19,82 @@ classname=None
 KEY_WORDS=['print']
 
 DEFAULT_TYPES=['gboolean',
-                      'gint',
-                      'guint' ,
-                      'gpointer' ,
-                      'gconstpointer',
-                      'gchar',
-                      'guchar',
-                      'gshort',
-                      'gushort',
-                      'glong',
-                      'gulong',
-                      'gint8',
-                      'guint8',
-                      'gint16',
-                      'guint16',
-                      'gint32',
-                      'guint32',
-                      'gfloat',
-                      'gdouble',
-                      'gsize',
-                      'GdkGravity',
-                      'GQuark',
-                      'GtkIconSize',
-                      'GDestroyNotify',
-                      'GDuplicateFunc',
-                      'GtkWindowType',
-                      'GdkModifierType',
-                      'GtkDirectionType',
-                      'GtkOrientation',
-                      'GtkResizeType',
-                      'GType'
-                    ]
+               'gint',
+               'guint' ,
+               'gpointer' ,
+               'gconstpointer',
+               'gchar',
+               'guchar',
+               'gshort',
+               'gushort',
+               'glong',
+               'gulong',
+               'gint8',
+               'guint8',
+               'gint16',
+               'guint16',
+               'gint32',
+               'guint32',
+               'gfloat',
+               'gdouble',
+               'gsize',
+               'GdkGravity',
+               'GQuark',
+               'GtkIconSize',
+               'GDestroyNotify',
+               'GDuplicateFunc',
+               'GSourceFunc',
+               'GtkWindowType',
+               'GdkModifierType',
+               'GtkDirectionType',
+               'GtkOrientation',
+               'GtkResizeType',
+               'GType',
+
+               'size_t',
+               'JSPropertyAttributes',
+               'JSClassAttributes',
+               'JSChar',
+               'JSType',
+               'JSObjectInitializeCallback',
+               'JSObjectFinalizeCallback',
+               'JSObjectHasPropertyCallback',
+               'JSObjectGetPropertyCallback'
+               'JSObjectSetPropertyCallback',
+               'JSObjectDeletePropertyCallback',
+               'JSObjectGetPropertyNamesCallback',
+               'JSObjectCallAsFunctionCallback',
+               'JSObjectCallAsConstructorCallback',
+               'JSObjectHasInstanceCallback'
+               'JSObjectConvertToTypeCallback',
+               'JSStaticValue',
+               'JSStaticFunction',
+               'JSClassDefinition',
+
+               ]
 
 inheritances={'GObject': 'object' }
 
 def parse_params( methodname, returntype, api, position):
+    def get_param_elements( tokens ):
+        if len(tokens) >=3:
+            typename = tokens[0]
+            if typename in DEFAULT_TYPES:
+                if typename == "gchar":
+                    paramname = 'c_char_p'
+                else:
+                    paramname = "POINTER(%s)"%tokens[-1]
+            else:
+                paramname = '_%s'%tokens[-1]
+        elif len(tokens) > 1:
+            typename = tokens[0]
+            paramname = tokens[-1]
+        else:
+            logging.error("Unable to parse '%s'"%api)
+            typename = None
+            paramname = None
+        return (paramname, typename)
+        
     global classname
     global DEFAULT_TYPES
     assert(methodname != "*")
@@ -80,13 +125,15 @@ def parse_params( methodname, returntype, api, position):
                     paramname = "POINTER(%s)"%tokens[-1]
             else:
                 paramname = '_%s'%tokens[-1]
-                
         elif len(tokens) > 1:
             typename = tokens[0]
             paramname = tokens[-1]
         else:
             logging.error("Unable to parse '%s'"%api)
             return
+        if not typename in DEFAULT_TYPES:
+            ptr_types[typename] = 'c_void_p'
+            typename = "_%s"%typename
         constructors[methodname].append((paramname, typename))
         return
     elif tokens[0] in DEFAULT_TYPES and tokens[1] !='*':
@@ -120,14 +167,18 @@ def parse_params( methodname, returntype, api, position):
     if(paramname =='*'):
         logging.error("UNABLE TO PARSE %s: %s"%(api,tokens)) 
     assert(paramname !='*')
-    if position == 0:
+    if position == 0 and not methods.has_key(methodname):
         if not staticmethods.has_key(methodname) and not constructors.has_key(methodname):
+            
             staticmethods[methodname] = [returntype]
             staticmethods[methodname].append((paramname, typename))
     elif constructors.has_key(methodname):
         constructors[methodname].append((paramname,typename))
     elif methods.has_key(methodname):
         methods[methodname].append((paramname, typename))
+    elif staticmethods.has_key(methodname):
+        staticmethods[methodname].append((paramname, typename))
+        
     else:
         if not staticmethods.has_key(methodname) and not constructors.has_key(methodname):
             staticmethods[methodname] = [returntype]
@@ -167,13 +218,13 @@ def to_python( api ):
             ptr_types[declaration[0]] = 'c_void_p'
             methodname = declaration[-1]
             #methods[methodname] = ['_%s'%declaration[0]]
-            returntype = ['_%s'%declaration[0]]
+            returntype = '_%s'%declaration[0]
         elif declaration[0] in DEFAULT_TYPES and declaration[1] == '*':
             methodname = declaration[-1]
             if declaration[0] != 'gchar':
-                returntype = ['POINTER(%s)'%declaration[0]]
+                returntype = 'POINTER(%s)'%declaration[0]
             else:
-                returntype = ['c_char_p']
+                returntype = 'c_char_p'
             #returntype = methods[methodname][0]
         else:
             logging.error("ERROR: parsing line %s",api)
@@ -193,23 +244,22 @@ def emit_python(namespace):
     LIB_NAME = "lib%s"%namespace
     def gen_params_constructor(index):
         text = ""
-        callable_text = ""
+        eval_text = ""
         assertions = []
         for cmethod,params in constructors.iteritems():
             for param in params:
              
-                if (param[1] in DEFAULT_TYPES) or (param[1] == 'c_char_p'):
-                    callable_text += "%s, "%param[0]
-                else:
-                        callable_text += "%s._object, "%(param[0])
-                
+                if not((param[1] in DEFAULT_TYPES) or (param[1] == 'c_char_p')):
+                    eval_text +="""        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
+                    eval_text += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
                 text += "%s, "%param[0]
-                assertions.append("assert(isinstance(%s, %s))"%(param[0], param[1]))
-        return (text, callable_text, assertions)
+                #assertions.append("assert(isinstance(%s, %s))"%(param[0], param[1]))
+        return (text, eval_text, assertions)
     
     def gen_params(methodname, LIB_NAME, callable= False):
         text = ""
         pretext = ""
+        evaltext= ""
         if methods.has_key(methodname):
             m = methods
             is_static = False
@@ -220,10 +270,11 @@ def emit_python(namespace):
             if callable:
                 if param[0]=='*args':
                     text +="*args"
-                elif param[1] in DEFAULT_TYPES or param[1] == 'c_char_p':
-                    text += "%s, "%param[0]
                 else:
-                    text += "%s._object, "%param[0]
+                    if not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
+                        evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
+                        evaltext += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
+                    text += "%s, "%param[0]
             else:
                 if param[0] == '*args':
                     known_types = ['c_void_p']
@@ -243,9 +294,12 @@ def emit_python(namespace):
 'methodname':methodname, 'return_type': m[methodname][0]}
                     text += "*args "
                 else:
+                    if not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
+                        evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
+                        evaltext += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
                     text += " %s,"%param[0]
                     
-        return (text, pretext)
+        return (text, pretext, evaltext)
     global classname
     if not classname:
         classname = ""
@@ -255,6 +309,12 @@ def emit_python(namespace):
         prefix = "_".join(l.lower() for l in re.findall('[A-Z][^A-Z]*', classname.replace('WebKit','Webkit')))
         prefix += '_'
         assert(namespace != 'gtk')
+        f.write("""# Copyright, John Rusnak, 2012
+# This code is available under the license agreement of the LGPL,
+# with the additional constraint that any derivatives of this work aimed
+# at providing bindings to GObject, GTK, GDK, or WebKit be strictly
+# python-only bindings with no native code.
+""")
         f.write("""from ctypes import *
 from gtk3_types import *
 from %s_types import *
@@ -285,14 +345,15 @@ from %s_types import *
             f.write('    """Class %s Constructors"""\n'%classname)
             index = 0
             for c_name, param in constructors.iteritems():
-                (text, callable_text, assertions) = gen_params_constructor(index)
+                (text, eval_text, assertions) = gen_params_constructor(index)
                 f.write( "    def __init__( self, %s):\n"%text)
                 for assertion in assertions:
                     f.write("        %s\n"%assertion)
                 f.write( "        %s.%s.restype = c_void_p\n"%(LIB_NAME,c_name ))
+                f.write(eval_text+"\n")
                 if len(param)>0:
                     f.write( "        %s.%s.argtypes = [%s]\n"%( LIB_NAME,c_name, ','.join([p[1] for p in param])))
-                f.write("        self._object = %s.%s(%s)\n"%(LIB_NAME, c_name, callable_text))
+                f.write("        self._object = %s.%s(%s)\n"%(LIB_NAME, c_name, text))
                 index += 1
                 
             f.write("\n")
@@ -302,8 +363,10 @@ from %s_types import *
                 if methodname2 in KEY_WORDS:
                     methodname2 = "py_%s"%methodname2
             
-                text, pretext =  gen_params(methodname, LIB_NAME)
+                text, pretext, evaltext =  gen_params(methodname, LIB_NAME)
+                
                 f.write("    def %s(self, %s):\n"%(methodname2,text))
+                f.write(evaltext + "\n")                        
                 if pretext == "":
                     if methods[methodname][0]:
                         f.write( "        %s.%s.restype = %s\n"%(LIB_NAME,methodname,methods[methodname][0]))
@@ -313,7 +376,7 @@ from %s_types import *
                         ret = "return "
                     else:
                         ret=""
-                    text,_ = gen_params(methodname, LIB_NAME,callable=True)
+                    text,_,_ = gen_params(methodname, LIB_NAME,callable=True)
                     f.write("        %s%s.%s(self._object, %s)\n"%(ret, LIB_NAME,methodname, text))
                 else:
                     f.write(pretext+"\n")
@@ -321,8 +384,9 @@ from %s_types import *
                 f.write("\n")
             for methodname in staticmethods.iterkeys():
                 f.write("    @staticmethod\n")
-                text,pretext = gen_params(methodname, LIB_NAME)
+                text,pretext,evaltext = gen_params(methodname, LIB_NAME)
                 f.write("    def %s(%s):\n"%(methodname.replace(prefix,''), text))
+                f.write(evaltext)
                 if staticmethods[methodname][0]:
                     f.write( "        %s.%s.restype = %s\n"%(LIB_NAME,methodname, staticmethods[methodname][0]))
                 if len(staticmethods[methodname])>1:
@@ -331,15 +395,16 @@ from %s_types import *
                     ret = "return "
                 else:
                     ret=""
-                text,pretext = gen_params(methodname, LIB_NAME, callable= True)
+                text,pretext,_ = gen_params(methodname, LIB_NAME, callable= True)
                 f.write("        %s%s.%s(%s)\n"%(ret, LIB_NAME,methodname, text)) 
                 f.write("\n")
         else:
             for methodname in staticmethods.iterkeys():
                 f.write("\n")
                 prefix='gtk3_'
-                text,_ =gen_params(methodname, LIB_NAME)
+                text,_,evaltext =gen_params(methodname, LIB_NAME)
                 f.write("def %s(%s):\n"%(methodname.replace(prefix,''), text))
+                f.write(evaltext.replace("        ","    "))
                 if staticmethods[methodname][0]:
                     f.write( "    %s.%s.restype = %s\n"%(LIB_NAME,methodname, staticmethods[methodname][0]))
                 if len(staticmethods[methodname])>1:

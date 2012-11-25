@@ -3,6 +3,8 @@ from gtk3_enums import *
 from gtk3_types import *
 from _gtk3_GtkAboutDialog import *
 from gtk3_types import *
+from _gtk3_GtkAdjustment import *
+from gtk3_types import *
 from _gtk3_GtkAssistant import *
 from gtk3_types import *
 from _gtk3_GtkBin import *
@@ -16,6 +18,8 @@ from gtk3_types import *
 from _gtk3_GtkMessageDialog import *
 from gtk3_types import *
 from _gtk3_GtkOffscreenWindow import *
+from gtk3_types import *
+from _gtk3_GtkScrolledWindow import *
 from gtk3_types import *
 from _gtk3_GtkWidget import *
 from gtk3_types import *

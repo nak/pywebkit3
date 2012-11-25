@@ -1,12 +1,11 @@
 from ctypes import *
+c_void_p = c_ulonglong
 from gdk_types import *
 from gobject_types import *
 
 cdll.LoadLibrary("libgtk-3.so")
 libgtk3 = CDLL("libgtk-3.so")
 
-GDestroyNotifyCB = CFUNCTYPE(None, c_void_p)
-GDuplicateFunc = CFUNCTYPE( c_void_p, c_void_p, c_void_p)
 """default gtk types"""
 
 guint16 = c_ushort

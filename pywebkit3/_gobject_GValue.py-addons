@@ -1,0 +1,8 @@
+    def __init__(self, type):
+        cdll.LoadLibrary('libc.so.6')
+        libc = CDLL('libc.so.6')
+        libc.restype = c_void_p
+        self._object = libc.malloc(64)
+        libc.memset.argtypes = [c_void_p, c_int, c_int]
+        libc.memset( self._object, 0, 64)
+        self.init( libgobject.g_type_fundamental( type )  )
