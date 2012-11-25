@@ -1,0 +1,3 @@
+    def __del__(self):
+        libgtk3.gtk_widget_destroy(self._object)
+        self._object = None
