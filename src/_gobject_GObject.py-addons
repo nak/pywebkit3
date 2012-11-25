@@ -1,0 +1,16 @@
+    def connect(self,  name, func):
+        libgobject.g_object_connect.restype = c_ulong
+        libgobject.g_object_connect.argtypes = [c_void_p, c_char_p, CFUNCTYPE(None)]
+        return libgobject.g_signal_connect_data(self._object, name, CFUNCTYPE(None)(func), 0,0)
+ 
+    def disconnect(self, handlerid):
+        libgobject.g_object_connect.restype = None
+        libgobject.g_object_connect.argtypes = [c_void_p, c_ulong]
+        libgobject.g_signal_handler_disconnect(self._object, handlerid)
+    	
+
+    def __del__(self):
+        if self._object:
+           libgobject.g_object_unref( self._object )
+
+        self._objet = None
