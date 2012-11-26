@@ -1,4 +1,4 @@
-from ctypes import c_int, CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort
+from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER
 from webkit3_types import libwebkit3
 
 libjavascriptcore = libwebkit3
@@ -29,12 +29,13 @@ class JSStaticValue(Structure):
 
 class JSStaticFunction(Structure):
     _fields_ = [ ('name', c_char_p),
+                 ('callAsFunction',JSObjectCallAsFunctionCallback),
                  ('attributes', JSPropertyAttributes)]
     
 
 
 class JSClassDefinition(Structure):
-    _fields = [('version',c_int),
+    _fields_ = [('version',c_int),
                ('attributes', JSClassAttributes),
                
                ('className', c_char_p),
@@ -55,4 +56,8 @@ class JSClassDefinition(Structure):
 
 
 kJSClassDefinitionEmpty = libwebkit3.kJSClassDefinitionEmpty
+
+NULL = c_void_p()
+def null_cb(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
+    pass
 

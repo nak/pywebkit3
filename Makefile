@@ -5,6 +5,8 @@ all:
 	echo "from webkit3_types import *"> pywebkit3/webkit3.py
 	echo "from gtk3_types import * "> pywebkit3/gtk3.py
 	echo "from gtk3_enums import *">>pywebkit3/gtk3.py
+	echo "from javascriptcore_enums import *">pywebkit3/javascriptcore.py
+	echo "from javascriptcore_types import *">>pywebkit3/javascriptcore.py
 	for file in $(IF_FILES); do \
 	  echo "Converting file $$file";\
 	  ./c2py.py $$file || exit 9; \
@@ -19,4 +21,5 @@ all:
 
 
 egg:
-	
+	./setup.py clean --all
+	./setup.py bdist_egg upload

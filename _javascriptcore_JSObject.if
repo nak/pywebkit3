@@ -1,13 +1,13 @@
 struct JSObject;
 inherit object;
 
-JSClass * JSClassCreate(const JSClassDefinition* definition);
+JSClass * JSClassCreate(const JSClassDefinition * definition);
 
 JSClass * JSClassRetain(JSClass * jsClass);
 
 void JSClassRelease(JSClass * jsClass);
 
-JSObject * JSObjectMake(JSContext * ctx, JSClass * jsClass, void* data);
+JSObject * JSObjectMake(JSContext * ctx, JSClass * jsClass, gchar * data);
 
 JSObject * JSObjectMakeFunctionWithCallback(JSContext * ctx, JSString * name, JSObjectCallAsFunctionCallback callAsFunction);
 
@@ -39,9 +39,9 @@ JSValue * JSObjectGetPropertyAtIndex(JSContext * ctx, JSObject * object, unsigne
 
 void JSObjectSetPropertyAtIndex(JSContext * ctx, JSObject * object, unsigned propertyIndex, JSValue * value, JSValue ** exception);
 
-void* JSObjectGetPrivate(JSObject * object);
+c_char_p JSObjectGetPrivate(JSObject * object);
 
-bool JSObjectSetPrivate(JSObject * object, void* data);
+bool JSObjectSetPrivate(JSObject * object, gchar* data);
 
 bool JSObjectIsFunction(JSContext * ctx, JSObject * object);
 

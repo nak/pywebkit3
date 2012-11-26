@@ -29,6 +29,8 @@ WebKitDOMDocument * webkit_web_view_get_dom_document    (WebKitWebView *web_view
 gboolean            webkit_web_view_get_editable        (WebKitWebView *web_view);
 const gchar *       webkit_web_view_get_encoding        (WebKitWebView *web_view);
 WebKitWebFrame *    webkit_web_view_get_focused_frame   (WebKitWebView *web_view);
+
+JSContext *    webkit_web_view_get_javascript_global_context   (WebKitWebView *web_view);
 gboolean            webkit_web_view_get_full_content_zoom
                                                         (WebKitWebView *web_view);
 WebKitHitTestResult * webkit_web_view_get_hit_test_result

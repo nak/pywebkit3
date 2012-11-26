@@ -1,18 +1,18 @@
-from ctypes import c_int
+from ctypes import c_int, c_uint
 
-kJSPropertyAttributeNone         = c_int(0)
-kJSPropertyAttributeReadOnly     = c_int(1 << 1)
-kJSPropertyAttributeDontEnum     = c_int(1 << 2)
-kJSPropertyAttributeDontDelete   = c_int(1 << 3)
+kJSPropertyAttributeNone         = c_uint(0)
+kJSPropertyAttributeReadOnly     = c_uint(1 << 1)
+kJSPropertyAttributeDontEnum     = c_uint(1 << 2)
+kJSPropertyAttributeDontDelete   = c_uint(1 << 3)
 
 
-kJSClassAttributeNone = c_int(0)
-kJSClassAttributeNoAutomaticPrototype = c_int(1 << 1)
+kJSClassAttributeNone = c_uint(0)
+kJSClassAttributeNoAutomaticPrototype = c_uint(1 << 1)
 
-kJSTypeUndefined = c_int(0)
-kJSTypeNull = c_int(1)
-kJSTypeBoolean = c_int(2)
-kJSTypeNumber = c_int(3)
-kJSTypeString = c_int(4)
-kJSTypeObject = c_int(5)
+kJSTypeUndefined = c_uint(0)
+kJSTypeNull = c_uint(1)
+kJSTypeBoolean = c_uint(2)
+kJSTypeNumber = c_uint(3)
+kJSTypeString = c_uint(4)
+kJSTypeObject = c_uint(5)
 

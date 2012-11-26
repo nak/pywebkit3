@@ -1,3 +1,6 @@
+struct JSContext;
+inherit javascriptcore.JSObject;
+
 JSContextGroup * JSContextGroupCreate();
 
 JSContextGroup * JSContextGroupRetain(JSContextGroup * group);
