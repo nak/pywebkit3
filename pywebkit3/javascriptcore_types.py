@@ -58,6 +58,3 @@ class JSClassDefinition(Structure):
 kJSClassDefinitionEmpty = libwebkit3.kJSClassDefinitionEmpty
 
 NULL = c_void_p()
-def null_cb(arg1, arg2, arg3, arg4, arg5, arg6, arg7):
-    pass
-
