@@ -1,0 +1,190 @@
+# Copyright, John Rusnak, 2012
+    # This code binding is available under the license agreement of the LGPL with
+    # an additional constraint described below,
+    # and with the understanding that the webkit API is copyright protected
+    # by Apple Computer, Inc. (see below).
+    # There is an  additional constraint that any derivatives of this work aimed
+    # at providing bindings to GObject, GTK, GDK, or WebKit be strictly
+    # python-only bindings with no native code.
+    # * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY
+    # * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    # * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    # * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+    # * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+    # * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+    # * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    # * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+    # * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    # * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    #
+    # ******************************************************
+    # For the API:
+    # /*
+    # * Copyright (C) 2006 Apple Computer, Inc.  All rights reserved.
+    # *
+    # * Redistribution and use in source and binary forms, with or without
+    # * modification, are permitted provided that the following conditions
+    # * are met:
+    # * 1. Redistributions of source code must retain the above copyright
+    # *    notice, this list of conditions and the following disclaimer.
+    # * 2. Redistributions in binary form must reproduce the above copyright
+    # *    notice, this list of conditions and the following disclaimer in the
+    # *    documentation and/or other materials provided with the distribution.
+    # *
+    # * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
+    # * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    # * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    # * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+    # * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+    # * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+    # * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    # * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+    # * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    # * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    # */
+from ctypes import *
+from gtk3_types import *
+from gtk3_types import *
+    
+    
+"""Derived Pointer Types"""
+__GdkScreen = c_void_p
+__GtkWidget = c_void_p
+_GtkWidget = c_void_p
+__GtkWindow = c_void_p
+"""Enumerations"""
+GtkDialogFlags = c_int
+GtkResponseType = c_int
+
+import _gtk3_GtkBin
+class GtkDialog( _gtk3_GtkBin.GtkBin):
+    """Class GtkDialog Constructors"""
+    def __init__( self,  obj = None):
+        if obj: self._object = obj
+        else:
+            libgtk3.gtk_dialog_new.restype = c_void_p
+
+        libgtk3.gtk_dialog_new.argtypes = []
+        self._object = libgtk3.gtk_dialog_new()
+
+    """Methods"""
+    def add_action_widget(self,  child, response_id,):
+        if child : child = child._object
+        else : child = c_void_p()
+
+        libgtk3.gtk_dialog_add_action_widget.argtypes = [c_void_p, _GtkWidget,gint]
+        
+        libgtk3.gtk_dialog_add_action_widget(self._object,  child, response_id,)
+
+    def set_alternative_button_order(self,  first_response_id,*args ):
+
+
+        def callit( first_response_id, *args ):
+                libgtk3.gtk_dialog_set_alternative_button_order.restype = None
+                libgtk3.gtk_dialog_set_alternative_button_order.argtypes = [c_void_p, c_void_p, gint]
+                for arg in args:
+                     libgtk3.gtk_dialog_set_alternative_button_order.argtypes.append(args[1])
+                return libgtk3.gtk_dialog_set_alternative_button_order(self._object, first_response_id, *args)
+    
+        return callit( first_response_id,*args )
+
+    def set_response_sensitive(self,  response_id, setting,):
+
+        libgtk3.gtk_dialog_set_response_sensitive.argtypes = [c_void_p, gint,gboolean]
+        
+        libgtk3.gtk_dialog_set_response_sensitive(self._object,  response_id, setting,)
+
+    def add_button(self,  button_text, response_id,):
+
+        libgtk3.gtk_dialog_add_button.restype = _GtkWidget
+        libgtk3.gtk_dialog_add_button.argtypes = [c_void_p, c_char_p,gint]
+        from pywebkit3.gtk3 import GtkWidget
+        return GtkWidget(None, obj=libgtk3.gtk_dialog_add_button(self._object,  button_text, response_id,) or c_void_p())
+
+    def set_default_response(self,  response_id,):
+
+        libgtk3.gtk_dialog_set_default_response.argtypes = [c_void_p, gint]
+        
+        libgtk3.gtk_dialog_set_default_response(self._object,  response_id,)
+
+    def run(self, ):
+
+        libgtk3.gtk_dialog_run.restype = gint
+        libgtk3.gtk_dialog_run.argtypes = [c_void_p]
+        
+        return libgtk3.gtk_dialog_run(self._object, )
+
+    def get_content_area(self, ):
+
+        libgtk3.gtk_dialog_get_content_area.restype = _GtkWidget
+        libgtk3.gtk_dialog_get_content_area.argtypes = [c_void_p]
+        from pywebkit3.gtk3 import GtkWidget
+        return GtkWidget( obj=libgtk3.gtk_dialog_get_content_area(self._object, ) or c_void_p())
+
+    def response(self,  response_id,):
+
+        libgtk3.gtk_dialog_response.argtypes = [c_void_p, gint]
+        
+        libgtk3.gtk_dialog_response(self._object,  response_id,)
+
+    def get_response_for_widget(self,  widget,):
+        if widget : widget = widget._object
+        else : widget = c_void_p()
+
+        libgtk3.gtk_dialog_get_response_for_widget.restype = gint
+        libgtk3.gtk_dialog_get_response_for_widget.argtypes = [c_void_p, _GtkWidget]
+        
+        return libgtk3.gtk_dialog_get_response_for_widget(self._object,  widget,)
+
+    def set_alternative_button_order_from_array(self,  n_params, new_order,):
+        if new_order : new_order = new_order._object
+        else : new_order = c_void_p()
+
+        libgtk3.gtk_dialog_set_alternative_button_order_from_array.argtypes = [c_void_p, gint,POITNER(gint)]
+        
+        libgtk3.gtk_dialog_set_alternative_button_order_from_array(self._object,  n_params, new_order,)
+
+    def get_action_area(self, ):
+
+        libgtk3.gtk_dialog_get_action_area.restype = _GtkWidget
+        libgtk3.gtk_dialog_get_action_area.argtypes = [c_void_p]
+        from pywebkit3.gtk3 import GtkWidget
+        return GtkWidget( obj=libgtk3.gtk_dialog_get_action_area(self._object, ) or c_void_p())
+
+    def get_widget_for_response(self,  response_id,):
+
+        libgtk3.gtk_dialog_get_widget_for_response.restype = _GtkWidget
+        libgtk3.gtk_dialog_get_widget_for_response.argtypes = [c_void_p, gint]
+        from pywebkit3.gtk3 import GtkWidget
+        return GtkWidget( obj=libgtk3.gtk_dialog_get_widget_for_response(self._object,  response_id,) or c_void_p())
+
+    def add_buttons(self,  first_button_text,*args ):
+
+
+        def callit( first_button_text, *args ):
+                libgtk3.gtk_dialog_add_buttons.restype = None
+                libgtk3.gtk_dialog_add_buttons.argtypes = [c_void_p, c_void_p, c_char_p]
+                for arg in args:
+                     libgtk3.gtk_dialog_add_buttons.argtypes.append(args[1])
+                return libgtk3.gtk_dialog_add_buttons(self._object, first_button_text, *args)
+    
+        return callit( first_button_text,*args )
+
+    @staticmethod
+    def gtk_alternative_dialog_button_order( screen,):
+        if screen : screen = screen._object
+        else : screen = c_void_p()
+        libgtk3.gtk_alternative_dialog_button_order.restype = gboolean
+        libgtk3.gtk_alternative_dialog_button_order.argtypes = [_GdkScreen]
+        return libgtk3.gtk_alternative_dialog_button_order(screen, )
+
+    @staticmethod
+    def new_with_buttons( title, parent, flags, first_button_text,*args ):
+        if parent : parent = parent._object
+        else : parent = c_void_p()
+        libgtk3.gtk_dialog_new_with_buttons.restype = _GtkWidget
+        libgtk3.gtk_dialog_new_with_buttons.argtypes = [c_char_p,_GtkWindow,GtkDialogFlags,c_char_p,]
+        return libgtk3.gtk_dialog_new_with_buttons(title, parent, flags, first_button_text, *args)
+
