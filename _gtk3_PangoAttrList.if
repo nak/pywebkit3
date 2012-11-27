@@ -1,0 +1,2 @@
+struct PangoAttrList;
+inherit gobject.GObject;

@@ -1,0 +1,11 @@
+
+struct              GtkApplication;
+inherit   gobject.GApplication;
+
+GtkApplication *    gtk_application_new                 (const gchar *application_id,
+                                                         GApplicationFlags flags);
+void                gtk_application_add_window          (GtkApplication *application,
+                                                         GtkWindow *window);
+void                gtk_application_remove_window       (GtkApplication *application,
+                                                         GtkWindow *window);
+GList *             gtk_application_get_windows         (GtkApplication *application);

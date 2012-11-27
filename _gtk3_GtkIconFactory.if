@@ -1,0 +1,12 @@
+struct GtkIconFactory;
+inherit gobject.GObject;
+
+void                gtk_icon_factory_add                (GtkIconFactory *factory,
+                                                         const gchar *stock_id,
+                                                         GtkIconSet *icon_set);
+void                gtk_icon_factory_add_default        (GtkIconFactory *factory);
+GtkIconSet *        gtk_icon_factory_lookup             (GtkIconFactory *factory,
+                                                         const gchar *stock_id);
+GtkIconSet *        gtk_icon_factory_lookup_default     (const gchar *stock_id);
+GtkIconFactory *    gtk_icon_factory_new                (void);
+void                gtk_icon_factory_remove_default     (GtkIconFactory *factory);

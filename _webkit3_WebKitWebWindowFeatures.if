@@ -1,0 +1,7 @@
+struct           WebKitWebWindowFeatures;
+inherit gobject.GObject;
+
+gboolean            webkit_web_window_features_equal    (WebKitWebWindowFeatures *features1,
+                                                         WebKitWebWindowFeatures *features2);
+WebKitWebWindowFeatures * webkit_web_window_features_new
+                                                        (void);

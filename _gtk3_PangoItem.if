@@ -1,0 +1,9 @@
+struct              PangoItem;
+inherit gobejct.GBoxed;
+
+void                pango_item_free                     (PangoItem *item);
+PangoItem *         pango_item_copy                     (PangoItem *item);
+PangoItem *         pango_item_new                      (void);
+PangoItem *         pango_item_split                    (PangoItem *orig,
+                                                         int split_index,
+                                                         int split_offset);

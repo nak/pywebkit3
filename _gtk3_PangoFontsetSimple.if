@@ -1,0 +1,7 @@
+struct                    PangoFontsetSimple;
+inherit gtk3.PangoFontSet;
+
+PangoFontsetSimple * pango_fontset_simple_new           (PangoLanguage *language);
+void                pango_fontset_simple_append         (PangoFontsetSimple *fontset,
+                                                         PangoFont *font);
+int                 pango_fontset_simple_size           (PangoFontsetSimple *fontset);

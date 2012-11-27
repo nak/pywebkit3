@@ -1,0 +1,10 @@
+
+    struct                GtkSettings;
+inherit gobject.GObject;
+
+GtkSettings *       gtk_settings_get_default            (void);
+GtkSettings *       gtk_settings_get_for_screen         (GdkScreen *screen);
+void                gtk_settings_install_property       (GParamSpec *pspec);
+void                gtk_settings_install_property_parser
+                                                        (GParamSpec *pspec,
+                                                         GtkRcPropertyParser parser);

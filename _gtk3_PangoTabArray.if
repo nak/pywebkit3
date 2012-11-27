@@ -1,0 +1,2 @@
+struct PangoTabArray;
+inherit gobject.GObject;

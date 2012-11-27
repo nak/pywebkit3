@@ -1,0 +1,2 @@
+struct WebKitDOMDocument;
+inherit obejct;

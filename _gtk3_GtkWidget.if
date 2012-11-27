@@ -1,12 +1,8 @@
 
-                    GtkWidget;
+struct                    GtkWidget;
 inherit gobject.GObject
-void                (*GtkCallback)                      (GtkWidget *widget,
                                                          gpointer data);
-struct              GtkRequisition;
-typedef             GtkAllocation;
-                    GtkSelectionData;
-struct              GtkWidgetAuxInfo;
+typedef             GtkAlleocation;
 enum                GtkWidgetHelpType;
 GtkWidget *         gtk_widget_new                      (GType type,
                                                          const gchar *first_property_name,
@@ -214,8 +210,6 @@ GParamSpec *        gtk_widget_class_find_style_property
 GParamSpec **       gtk_widget_class_list_style_properties
                                                         (GtkWidgetClass *klass,
                                                          guint *n_properties);
-cairo_region_t *    gtk_widget_region_intersect         (GtkWidget *widget,
-                                                         const cairo_region_t *region);
 gint                gtk_widget_send_expose              (GtkWidget *widget,
                                                          GdkEvent *event);
 gboolean            gtk_widget_send_focus_change        (GtkWidget *widget,
@@ -236,7 +230,6 @@ void                gtk_widget_class_set_accessible_type
 void                gtk_widget_class_set_accessible_role
                                                         (GtkWidgetClass *widget_class,
                                                          AtkRole role);
-AtkObject *         gtk_widget_get_accessible           (GtkWidget *widget);
 gboolean            gtk_widget_child_focus              (GtkWidget *widget,
                                                          GtkDirectionType direction);
 void                gtk_widget_child_notify             (GtkWidget *widget,
@@ -350,12 +343,7 @@ GtkWidgetPath *     gtk_widget_get_path                 (GtkWidget *widget);
 GtkStyleContext *   gtk_widget_get_style_context        (GtkWidget *widget);
 void                gtk_widget_reset_style              (GtkWidget *widget);
 
-GtkRequisition *    gtk_requisition_new                 (void);
-GtkRequisition *    gtk_requisition_copy                (const GtkRequisition *requisition);
-void                gtk_requisition_free                (GtkRequisition *requisition);
-
 enum                GtkSizeRequestMode;
-struct              GtkRequestedSize;
 void                gtk_widget_get_preferred_height     (GtkWidget *widget,
                                                          gint *minimum_height,
                                                          gint *natural_height);

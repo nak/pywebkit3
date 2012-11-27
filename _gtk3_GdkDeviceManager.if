@@ -1,0 +1,9 @@
+    struct           GdkDeviceManager;
+inherit gobject.GObject;
+
+void                gdk_disable_multidevice             (void);
+GdkDisplay *        gdk_device_manager_get_display      (GdkDeviceManager *device_manager);
+GList *             gdk_device_manager_list_devices     (GdkDeviceManager *device_manager,
+                                                         GdkDeviceType type);
+GdkDevice *         gdk_device_manager_get_client_pointer
+                                                        (GdkDeviceManager *device_manager);

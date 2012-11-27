@@ -1,0 +1,8 @@
+struct              PangoFontset;
+inherit  gobject.GObject;
+
+PangoFont *         pango_fontset_get_font              (PangoFontset *fontset,
+                                                         guint wc);
+PangoFontMetrics *  pango_fontset_get_metrics           (PangoFontset *fontset);
+void                pango_fontset_foreach               (PangoFontset *fontset,
+                                                         PangoFontsetForeachFunc func,

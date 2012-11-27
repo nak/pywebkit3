@@ -2,25 +2,6 @@
 struct              GObject;
 struct              GObjectClass;
 struct              GObjectConstructParam;
-void                (*GObjectGetPropertyFunc)           (GObject *object,
-                                                         guint property_id,
-                                                         GValue *value,
-                                                         GParamSpec *pspec);
-void                (*GObjectSetPropertyFunc)           (GObject *object,
-                                                         guint property_id,
-                                                         const GValue *value,
-                                                         GParamSpec *pspec);
-void                (*GObjectFinalizeFunc)              (GObject *object);
-#define             G_TYPE_IS_OBJECT                    (type)
-#define             G_OBJECT                            (object)
-#define             G_IS_OBJECT                         (object)
-#define             G_OBJECT_CLASS                      (class)
-#define             G_IS_OBJECT_CLASS                   (class)
-#define             G_OBJECT_GET_CLASS                  (object)
-#define             G_OBJECT_TYPE                       (object)
-#define             G_OBJECT_TYPE_NAME                  (object)
-#define             G_OBJECT_CLASS_TYPE                 (class)
-#define             G_OBJECT_CLASS_NAME                 (class)
 void                g_object_class_install_property     (GObjectClass *oclass,
                                                          guint property_id,
                                                          GParamSpec *pspec);
@@ -56,7 +37,6 @@ typedef             GInitiallyUnownedClass;
 #define             G_TYPE_INITIALLY_UNOWNED
 gboolean            g_object_is_floating                (gpointer object);
 void                g_object_force_floating             (GObject *object);
-void                (*GWeakNotify)                      (gpointer data,
                                                          GObject *where_the_object_was);
 void                g_object_weak_ref                   (GObject *object,
                                                          GWeakNotify notify,
@@ -68,9 +48,6 @@ void                g_object_add_weak_pointer           (GObject *object,
                                                          gpointer *weak_pointer_location);
 void                g_object_remove_weak_pointer        (GObject *object,
                                                          gpointer *weak_pointer_location);
-void                (*GToggleNotify)                    (gpointer data,
-                                                         GObject *object,
-                                                         gboolean is_last_ref);
 void                g_object_add_toggle_ref             (GObject *object,
                                                          GToggleNotify notify,
                                                          gpointer data);
@@ -159,7 +136,6 @@ void                g_object_run_dispose                (GObject *object);
                                                          property_id,
                                                          pspec)
 
-                    GWeakRef;
 void                g_weak_ref_init                     (GWeakRef *weak_ref,
                                                          gpointer object);
 void                g_weak_ref_clear                    (GWeakRef *weak_ref);

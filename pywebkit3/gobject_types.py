@@ -1,4 +1,4 @@
-from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p
+from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure
 
 cdll.LoadLibrary("libgobject-2.0.so")
 libgobject = CDLL("libgobject-2.0.so")
@@ -31,7 +31,14 @@ G_TYPE_VARIANT                  = c_int (21)
 GSourceFunc = CFUNCTYPE(c_int, c_void_p)
 GDestroyNotifyCB = CFUNCTYPE(None, c_void_p)
 GDuplicateFunc = CFUNCTYPE( c_void_p, c_void_p, c_void_p)
-
+GPollFunc = CFUNCTYPE(c_int, c_void_p, c_uint, c_int)
+GObjectGetPropertyFunc = CFUNCTYPE( None,  c_void_p, c_uint, c_void_p, c_void_p)
+GObjectSetPropertyFunc = CFUNCTYPE( None,  c_void_p, c_uint, c_void_p, c_void_p)
+GWeakNotify = CFUNCTYPE(None, c_void_p, c_void_p)
+GTogleNotify = CFUNCTYPE( None, c_void_p, c_void_p, c_int)
+GValueTransform = CFUNCTYPE( None, c_void_p, c_void_p)
+GCompareFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
+GCompareDataFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 
 def gvalue_from_int( val):
     from _gtk3_GValue import GValue
@@ -39,5 +46,4 @@ def gvalue_from_int( val):
     gavl.init(G_TYPE_INT)
     gval.set_int( val)
     return gval
-    
     

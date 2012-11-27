@@ -1,0 +1,73 @@
+
+struct                    GdkDisplay;
+inherit         gobject.GObject;
+
+GdkDisplay *        gdk_display_open                    (const gchar *display_name);
+GdkDisplay *        gdk_display_get_default             (void);
+const gchar *       gdk_display_get_name                (GdkDisplay *display);
+gint                gdk_display_get_n_screens           (GdkDisplay *display);
+GdkScreen *         gdk_display_get_screen              (GdkDisplay *display,
+                                                         gint screen_num);
+GdkScreen *         gdk_display_get_default_screen      (GdkDisplay *display);
+GdkDeviceManager *  gdk_display_get_device_manager      (GdkDisplay *display);
+void                gdk_display_pointer_ungrab          (GdkDisplay *display,
+                                                         guint32 time_);
+void                gdk_display_keyboard_ungrab         (GdkDisplay *display,
+                                                         guint32 time_);
+gboolean            gdk_display_pointer_is_grabbed      (GdkDisplay *display);
+gboolean            gdk_display_device_is_grabbed       (GdkDisplay *display,
+                                                         GdkDevice *device);
+void                gdk_display_beep                    (GdkDisplay *display);
+void                gdk_display_sync                    (GdkDisplay *display);
+void                gdk_display_flush                   (GdkDisplay *display);
+void                gdk_display_close                   (GdkDisplay *display);
+gboolean            gdk_display_is_closed               (GdkDisplay *display);
+GdkEvent *          gdk_display_get_event               (GdkDisplay *display);
+GdkEvent *          gdk_display_peek_event              (GdkDisplay *display);
+void                gdk_display_put_event               (GdkDisplay *display,
+                                                         const GdkEvent *event);
+gboolean            gdk_display_has_pending             (GdkDisplay *display);
+void                gdk_display_set_double_click_time   (GdkDisplay *display,
+                                                         guint msec);
+void                gdk_display_set_double_click_distance
+                                                        (GdkDisplay *display,
+                                                         guint distance);
+void                gdk_display_get_pointer             (GdkDisplay *display,
+                                                         GdkScreen **screen,
+                                                         gint *x,
+                                                         gint *y,
+                                                         GdkModifierType *mask);
+GList *             gdk_display_list_devices            (GdkDisplay *display);
+GdkWindow *         gdk_display_get_window_at_pointer   (GdkDisplay *display,
+                                                         gint *win_x,
+                                                         gint *win_y);
+void                gdk_display_warp_pointer            (GdkDisplay *display,
+                                                         GdkScreen *screen,
+                                                         gint x,
+                                                         gint y);
+gboolean            gdk_display_supports_cursor_color   (GdkDisplay *display);
+gboolean            gdk_display_supports_cursor_alpha   (GdkDisplay *display);
+guint               gdk_display_get_default_cursor_size (GdkDisplay *display);
+void                gdk_display_get_maximal_cursor_size (GdkDisplay *display,
+                                                         guint *width,
+                                                         guint *height);
+GdkWindow *         gdk_display_get_default_group       (GdkDisplay *display);
+gboolean            gdk_display_supports_selection_notification
+                                                        (GdkDisplay *display);
+gboolean            gdk_display_request_selection_notification
+                                                        (GdkDisplay *display,
+                                                         GdkAtom selection);
+gboolean            gdk_display_supports_clipboard_persistence
+                                                        (GdkDisplay *display);
+void                gdk_display_store_clipboard         (GdkDisplay *display,
+                                                         GdkWindow *clipboard_window,
+                                                         guint32 time_,
+                                                         const GdkAtom *targets,
+                                                         gint n_targets);
+gboolean            gdk_display_supports_shapes         (GdkDisplay *display);
+gboolean            gdk_display_supports_input_shapes   (GdkDisplay *display);
+gboolean            gdk_display_supports_composite      (GdkDisplay *display);
+GdkAppLaunchContext * gdk_display_get_app_launch_context
+                                                        (GdkDisplay *display);
+void                gdk_display_notify_startup_complete (GdkDisplay *display,
+                                                         const gchar *startup_id);

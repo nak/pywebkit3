@@ -1,0 +1,19 @@
+
+struct                    GdkAppLaunchContext;
+inherit gobject.GObject;
+
+GdkAppLaunchContext * gdk_app_launch_context_new        (void);
+void                gdk_app_launch_context_set_display  (GdkAppLaunchContext *context,
+                                                         GdkDisplay *display);
+void                gdk_app_launch_context_set_screen   (GdkAppLaunchContext *context,
+                                                         GdkScreen *screen);
+void                gdk_app_launch_context_set_desktop  (GdkAppLaunchContext *context,
+                                                         gint desktop);
+void                gdk_app_launch_context_set_timestamp
+                                                        (GdkAppLaunchContext *context,
+                                                         guint32 timestamp);
+void                gdk_app_launch_context_set_icon     (GdkAppLaunchContext *context,
+                                                         GIcon *icon);
+void                gdk_app_launch_context_set_icon_name
+                                                        (GdkAppLaunchContext *context,
+                                                         const char *icon_name);

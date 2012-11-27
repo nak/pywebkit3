@@ -5,7 +5,7 @@ WebKitWebFrame *    webkit_web_frame_find_frame         (WebKitWebFrame *frame,
                                                          const gchar *name);
 WebKitWebDataSource * webkit_web_frame_get_data_source  (WebKitWebFrame *frame);
 WebKitDOMDocument * webkit_web_frame_get_dom_document   (WebKitWebFrame *frame);
-JSGlobalContextRef  webkit_web_frame_get_global_context (WebKitWebFrame *frame);
+JSGlobalContext *  webkit_web_frame_get_global_context (WebKitWebFrame *frame);
 GtkPolicyType       webkit_web_frame_get_horizontal_scrollbar_policy
                                                         (WebKitWebFrame *frame);
 WebKitLoadStatus    webkit_web_frame_get_load_status    (WebKitWebFrame *frame);

@@ -18,8 +18,6 @@ gboolean            g_value_type_transformable          (GType src_type,
                                                          GType dest_type);
 gboolean            g_value_transform                   (const GValue *src_value,
                                                          GValue *dest_value);
-void                (*GValueTransform)                  (const GValue *src_value,
-                                                         GValue *dest_value);
 void                g_value_register_transform_func     (GType src_type,
                                                          GType dest_type,
                                                          GValueTransform transform_func);

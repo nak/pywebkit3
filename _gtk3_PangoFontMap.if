@@ -1,0 +1,16 @@
+struct         PangoFontMap;
+inherit gobject.GObject;
+
+PangoContext *      pango_font_map_create_context       (PangoFontMap *fontmap);
+PangoFont *         pango_font_map_load_font            (PangoFontMap *fontmap,
+                                                         PangoContext *context,
+                                                         const PangoFontDescription *desc);
+PangoFontset *      pango_font_map_load_fontset         (PangoFontMap *fontmap,
+                                                         PangoContext *context,
+                                                         const PangoFontDescription *desc,
+                                                         PangoLanguage *language);
+void                pango_font_map_list_families        (PangoFontMap *fontmap,
+                                                         PangoFontFamily ***families,
+                                                         int *n_families);
+const char *        pango_font_map_get_shape_engine_type
+                                                        (PangoFontMap *fontmap);

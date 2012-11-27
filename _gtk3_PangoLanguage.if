@@ -1,0 +1,2 @@
+struct PangoLanguage;
+inherit gobject.GObject;

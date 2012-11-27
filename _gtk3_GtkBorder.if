@@ -1,0 +1,7 @@
+  
+struct              GtkBorder;
+inherit   gobject.GBoxed;
+
+GtkBorder *         gtk_border_new                      (void);
+GtkBorder *         gtk_border_copy                     (const GtkBorder *border_);
+void                gtk_border_free                     (GtkBorder *border_);

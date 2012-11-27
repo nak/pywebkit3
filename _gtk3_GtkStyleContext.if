@@ -1,0 +1,120 @@
+
+struct              GtkStyleContext;
+inherit             gobject.GObject;
+
+GtkStyleContext *   gtk_style_context_new               (void);
+void                gtk_style_context_add_provider      (GtkStyleContext *context,
+                                                         GtkStyleProvider *provider,
+                                                         guint priority);
+void                gtk_style_context_add_provider_for_screen
+                                                        (GdkScreen *screen,
+                                                         GtkStyleProvider *provider,
+                                                         guint priority);
+void                gtk_style_context_get               (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         ...);
+GtkTextDirection    gtk_style_context_get_direction     (GtkStyleContext *context);
+GtkJunctionSides    gtk_style_context_get_junction_sides
+                                                        (GtkStyleContext *context);
+const GtkWidgetPath * gtk_style_context_get_path        (GtkStyleContext *context);
+void                gtk_style_context_get_property      (GtkStyleContext *context,
+                                                         const gchar *property,
+                                                         GtkStateFlags state,
+                                                         GValue *value);
+GdkScreen *         gtk_style_context_get_screen        (GtkStyleContext *context);
+GtkStateFlags       gtk_style_context_get_state         (GtkStyleContext *context);
+void                gtk_style_context_get_style         (GtkStyleContext *context,
+                                                         ...);
+void                gtk_style_context_get_style_property
+                                                        (GtkStyleContext *context,
+                                                         const gchar *property_name,
+                                                         GValue *value);
+void                gtk_style_context_get_style_valist  (GtkStyleContext *context,
+                                                         va_list args);
+void                gtk_style_context_get_valist        (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         va_list args);
+void                gtk_style_context_get_color         (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         GdkRGBA *color);
+void                gtk_style_context_get_background_color
+                                                        (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         GdkRGBA *color);
+void                gtk_style_context_get_border_color  (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         GdkRGBA *color);
+void                gtk_style_context_get_border        (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         GtkBorder *border);
+void                gtk_style_context_get_padding       (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         GtkBorder *padding);
+void                gtk_style_context_get_margin        (GtkStyleContext *context,
+                                                         GtkStateFlags state,
+                                                         GtkBorder *margin);
+const PangoFontDescription * gtk_style_context_get_font (GtkStyleContext *context,
+                                                         GtkStateFlags state);
+void                gtk_style_context_invalidate        (GtkStyleContext *context);
+gboolean            gtk_style_context_state_is_running  (GtkStyleContext *context,
+                                                         GtkStateType state,
+                                                         gdouble *progress);
+gboolean            gtk_style_context_lookup_color      (GtkStyleContext *context,
+                                                         const gchar *color_name,
+                                                         GdkRGBA *color);
+GtkIconSet *        gtk_style_context_lookup_icon_set   (GtkStyleContext *context,
+                                                         const gchar *stock_id);
+void                gtk_style_context_notify_state_change
+                                                        (GtkStyleContext *context,
+                                                         GdkWindow *window,
+                                                         gpointer region_id,
+                                                         GtkStateType state,
+                                                         gboolean state_value);
+void                gtk_style_context_pop_animatable_region
+                                                        (GtkStyleContext *context);
+void                gtk_style_context_push_animatable_region
+                                                        (GtkStyleContext *context,
+                                                         gpointer region_id);
+void                gtk_style_context_cancel_animations (GtkStyleContext *context,
+                                                         gpointer region_id);
+void                gtk_style_context_scroll_animations (GtkStyleContext *context,
+                                                         GdkWindow *window,
+                                                         gint dx,
+                                                         gint dy);
+void                gtk_style_context_remove_provider   (GtkStyleContext *context,
+                                                         GtkStyleProvider *provider);
+void                gtk_style_context_remove_provider_for_screen
+                                                        (GdkScreen *screen,
+                                                         GtkStyleProvider *provider);
+void                gtk_style_context_reset_widgets     (GdkScreen *screen);
+void                gtk_style_context_set_background    (GtkStyleContext *context,
+                                                         GdkWindow *window);
+void                gtk_style_context_restore           (GtkStyleContext *context);
+void                gtk_style_context_save              (GtkStyleContext *context);
+void                gtk_style_context_set_direction     (GtkStyleContext *context,
+                                                         GtkTextDirection direction);
+void                gtk_style_context_set_junction_sides
+                                                        (GtkStyleContext *context,
+                                                         GtkJunctionSides sides);
+void                gtk_style_context_set_path          (GtkStyleContext *context,
+                                                         GtkWidgetPath *path);
+void                gtk_style_context_add_class         (GtkStyleContext *context,
+                                                         const gchar *class_name);
+void                gtk_style_context_remove_class      (GtkStyleContext *context,
+                                                         const gchar *class_name);
+gboolean            gtk_style_context_has_class         (GtkStyleContext *context,
+                                                         const gchar *class_name);
+GList *             gtk_style_context_list_classes      (GtkStyleContext *context);
+void                gtk_style_context_add_region        (GtkStyleContext *context,
+                                                         const gchar *region_name,
+                                                         GtkRegionFlags flags);
+void                gtk_style_context_remove_region     (GtkStyleContext *context,
+                                                         const gchar *region_name);
+gboolean            gtk_style_context_has_region        (GtkStyleContext *context,
+                                                         const gchar *region_name,
+                                                         GtkRegionFlags *flags_return);
+GList *             gtk_style_context_list_regions      (GtkStyleContext *context);
+void                gtk_style_context_set_screen        (GtkStyleContext *context,
+                                                         GdkScreen *screen);
+void                gtk_style_context_set_state         (GtkStyleContext *context,
+                                                         GtkStateFlags flags);

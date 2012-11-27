@@ -1,0 +1,9 @@
+
+struct              PangoFontFamily;
+inherit gobejct.GObject;
+
+const char *        pango_font_family_get_name          (PangoFontFamily *family);
+gboolean            pango_font_family_is_monospace      (PangoFontFamily *family);
+void                pango_font_family_list_faces        (PangoFontFamily *family,
+                                                         PangoFontFace ***faces,
+                                                         int *n_faces);

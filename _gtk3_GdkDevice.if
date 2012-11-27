@@ -1,0 +1,79 @@
+
+struct                    GdkDevice;
+inherit gobject.GObject;
+
+enum                GdkInputSource;
+enum                GdkInputMode;
+enum                GdkAxisUse;
+enum                GdkDeviceType;
+enum                GdkGrabOwnership;
+
+const gchar *       gdk_device_get_name                 (GdkDevice *device);
+GdkInputSource      gdk_device_get_source               (GdkDevice *device);
+gboolean            gdk_device_set_mode                 (GdkDevice *device,
+                                                         GdkInputMode mode);
+GdkInputMode        gdk_device_get_mode                 (GdkDevice *device);
+void                gdk_device_set_key                  (GdkDevice *device,
+                                                         guint index_,
+                                                         guint keyval,
+                                                         GdkModifierType modifiers);
+gboolean            gdk_device_get_key                  (GdkDevice *device,
+                                                         guint index_,
+                                                         guint *keyval,
+                                                         GdkModifierType *modifiers);
+void                gdk_device_set_axis_use             (GdkDevice *device,
+                                                         guint index_,
+                                                         GdkAxisUse use);
+GdkAxisUse          gdk_device_get_axis_use             (GdkDevice *device,
+                                                         guint index_);
+GdkDevice *         gdk_device_get_associated_device    (GdkDevice *device);
+GList *             gdk_device_list_slave_devices       (GdkDevice *device);
+GdkDeviceType       gdk_device_get_device_type          (GdkDevice *device);
+GdkDisplay *        gdk_device_get_display              (GdkDevice *device);
+gboolean            gdk_device_get_has_cursor           (GdkDevice *device);
+gint                gdk_device_get_n_axes               (GdkDevice *device);
+gint                gdk_device_get_n_keys               (GdkDevice *device);
+void                gdk_device_warp                     (GdkDevice *device,
+                                                         GdkScreen *screen,
+                                                         gint x,
+                                                         gint y);
+
+GdkGrabStatus       gdk_device_grab                     (GdkDevice *device,
+                                                         GdkWindow *window,
+                                                         GdkGrabOwnership grab_ownership,
+                                                         gboolean owner_events,
+                                                         GdkEventMask event_mask,
+                                                         GdkCursor *cursor,
+                                                         guint32 time_);
+void                gdk_device_ungrab                   (GdkDevice *device,
+                                                         guint32 time_);
+
+void                gdk_device_get_state                (GdkDevice *device,
+                                                         GdkWindow *window,
+                                                         gdouble *axes,
+                                                         GdkModifierType *mask);
+void                gdk_device_get_position             (GdkDevice *device,
+                                                         GdkScreen **screen,
+                                                         gint *x,
+                                                         gint *y);
+GdkWindow *         gdk_device_get_window_at_position   (GdkDevice *device,
+                                                         gint *win_x,
+                                                         gint *win_y);
+gboolean            gdk_device_get_history              (GdkDevice *device,
+                                                         GdkWindow *window,
+                                                         guint32 start,
+                                                         guint32 stop,
+                                                         GdkTimeCoord ***events,
+                                                         gint *n_events);
+void                gdk_device_free_history             (GdkTimeCoord **events,
+                                                         gint n_events);
+struct              GdkTimeCoord;
+gboolean            gdk_device_get_axis                 (GdkDevice *device,
+                                                         gdouble *axes,
+                                                         GdkAxisUse use,
+                                                         gdouble *value);
+GList *             gdk_device_list_axes                (GdkDevice *device);
+gboolean            gdk_device_get_axis_value           (GdkDevice *device,
+                                                         gdouble *axes,
+                                                         GdkAtom axis_label,
+                                                         gdouble *value);

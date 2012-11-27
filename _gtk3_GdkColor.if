@@ -1,0 +1,11 @@
+struct GdkColor;
+inherit object;
+
+GdkColor *          gdk_color_copy                      (const GdkColor *color);
+void                gdk_color_free                      (GdkColor *color);
+gboolean            gdk_color_parse                     (const gchar *spec,
+                                                         GdkColor *color);
+gboolean            gdk_color_equal                     (const GdkColor *colora,
+                                                         const GdkColor *colorb);
+guint               gdk_color_hash                      (const GdkColor *color);
+gchar *             gdk_color_to_string                 (const GdkColor *color);

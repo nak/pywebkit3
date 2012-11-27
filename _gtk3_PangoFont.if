@@ -1,0 +1,15 @@
+struct                   PangoFont;
+inherit gobject.GObject;
+
+PangoFontDescription * pango_font_describe              (PangoFont *font);
+PangoFontDescription * pango_font_describe_with_absolute_size
+                                                        (PangoFont *font);
+PangoCoverage *     pango_font_get_coverage             (PangoFont *font,
+                                                         PangoLanguage *language);
+void                pango_font_get_glyph_extents        (PangoFont *font,
+                                                         PangoGlyph glyph,
+                                                         PangoRectangle *ink_rect,
+                                                         PangoRectangle *logical_rect);
+PangoFontMetrics *  pango_font_get_metrics              (PangoFont *font,
+                                                         PangoLanguage *language);
+PangoFontMap *      pango_font_get_font_map             (PangoFont *font);

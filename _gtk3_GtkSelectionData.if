@@ -1,0 +1,2 @@
+struct GtkSelectionData;
+inherit object;

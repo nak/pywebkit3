@@ -1,0 +1,88 @@
+struct                 PangoContext;
+inherit gobject.GObject;
+
+GList *             pango_itemize                       (PangoContext *context,
+                                                         const char *text,
+                                                         int start_index,
+                                                         int length,
+                                                         PangoAttrList *attrs,
+                                                         PangoAttrIterator *cached_iter);
+GList *             pango_itemize_with_base_dir         (PangoContext *context,
+                                                         PangoDirection base_dir,
+                                                         const char *text,
+                                                         int start_index,
+                                                         int length,
+                                                         PangoAttrList *attrs,
+                                                         PangoAttrIterator *cached_iter);
+
+
+GList *             pango_reorder_items                 (GList *logical_items);
+
+PangoContext *      pango_context_new                   (void);
+void                pango_context_set_font_map          (PangoContext *context,
+                                                         PangoFontMap *font_map);
+PangoFontMap *      pango_context_get_font_map          (PangoContext *context);
+PangoFontDescription * pango_context_get_font_description
+                                                        (PangoContext *context);
+void                pango_context_set_font_description  (PangoContext *context,
+                                                         const PangoFontDescription *desc);
+PangoLanguage *     pango_context_get_language          (PangoContext *context);
+void                pango_context_set_language          (PangoContext *context,
+                                                         PangoLanguage *language);
+PangoDirection      pango_context_get_base_dir          (PangoContext *context);
+void                pango_context_set_base_dir          (PangoContext *context,
+                                                         PangoDirection direction);
+PangoGravity        pango_context_get_base_gravity      (PangoContext *context);
+void                pango_context_set_base_gravity      (PangoContext *context,
+                                                         PangoGravity gravity);
+PangoGravity        pango_context_get_gravity           (PangoContext *context);
+PangoGravityHint    pango_context_get_gravity_hint      (PangoContext *context);
+void                pango_context_set_gravity_hint      (PangoContext *context,
+                                                         PangoGravityHint hint);
+const PangoMatrix * pango_context_get_matrix            (PangoContext *context);
+void                pango_context_set_matrix            (PangoContext *context,
+                                                         const PangoMatrix *matrix);
+PangoFont *         pango_context_load_font             (PangoContext *context,
+                                                         const PangoFontDescription *desc);
+PangoFontset *      pango_context_load_fontset          (PangoContext *context,
+                                                         const PangoFontDescription *desc,
+                                                         PangoLanguage *language);
+PangoFontMetrics *  pango_context_get_metrics           (PangoContext *context,
+                                                         const PangoFontDescription *desc,
+                                                         PangoLanguage *language);
+void                pango_context_list_families         (PangoContext *context,
+                                                         PangoFontFamily ***families,
+                                                         int *n_families);
+
+
+void                pango_break                         (const gchar *text,
+                                                         int length,
+                                                         PangoAnalysis *analysis,
+                                                         PangoLogAttr *attrs,
+                                                         int attrs_len);
+void                pango_get_log_attrs                 (const char *text,
+                                                         int length,
+                                                         int level,
+                                                         PangoLanguage *language,
+                                                         PangoLogAttr *log_attrs,
+                                                         int attrs_len);
+void                pango_find_paragraph_boundary       (const gchar *text,
+                                                         gint length,
+                                                         gint *paragraph_delimiter_index,
+                                                         gint *next_paragraph_start);
+void                pango_default_break                 (const gchar *text,
+                                                         int length,
+                                                         PangoAnalysis *analysis,
+                                                         PangoLogAttr *attrs,
+                                                         int attrs_len);
+
+void                pango_shape                         (const gchar *text,
+                                                         gint length,
+                                                         const PangoAnalysis *analysis,
+                                                         PangoGlyphString *glyphs);
+void                pango_shape_full                    (const gchar *item_text,
+                                                         gint item_length,
+                                                         const gchar *paragraph_text,
+                                                         gint paragraph_length,
+                                                         const PangoAnalysis *analysis,
+                                                         PangoGlyphString *glyphs);

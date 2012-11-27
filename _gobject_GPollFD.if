@@ -1,0 +1,6 @@
+
+struct              GPollFD;
+inherit             gobject.GObject;
+gint                g_poll                              (GPollFD *fds,
+                                                         guint nfds,
+                                                         gint timeout);

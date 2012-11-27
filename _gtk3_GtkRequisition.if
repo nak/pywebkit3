@@ -1,0 +1,6 @@
+struct              GtkRequisition;
+inherit             gobject.GObject;
+GtkRequisition *    gtk_requisition_new                 (void);
+GtkRequisition *    gtk_requisition_copy                (const GtkRequisition *requisition);
+void                gtk_requisition_free                (GtkRequisition *requisition);
+

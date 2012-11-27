@@ -1,0 +1,27 @@
+struct              PangoMatrix;
+inherit gobject.GBoxed;
+
+PangoMatrix *       pango_matrix_copy                   (const PangoMatrix *matrix);
+void                pango_matrix_free                   (PangoMatrix *matrix);
+void                pango_matrix_translate              (PangoMatrix *matrix,
+                                                         gdouble tx,
+                                                         gdouble ty);
+void                pango_matrix_scale                  (PangoMatrix *matrix,
+                                                         double scale_x,
+                                                         double scale_y);
+void                pango_matrix_rotate                 (PangoMatrix *matrix,
+                                                         double degrees);
+void                pango_matrix_concat                 (PangoMatrix *matrix,
+                                                         const PangoMatrix *new_matrix);
+void                pango_matrix_transform_point        (const PangoMatrix *matrix,
+                                                         double *x,
+                                                         double *y);
+void                pango_matrix_transform_distance     (const PangoMatrix *matrix,
+                                                         double *dx,
+                                                         double *dy);
+void                pango_matrix_transform_rectangle    (const PangoMatrix *matrix,
+                                                         PangoRectangle *rect);
+void                pango_matrix_transform_pixel_rectangle
+                                                        (const PangoMatrix *matrix,
+                                                         PangoRectangle *rect);
+double              pango_matrix_get_font_scale_factor  (const PangoMatrix *matrix);

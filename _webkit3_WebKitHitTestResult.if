@@ -1,0 +1,2 @@
+struct WebKitHitTestResult;
+inherit object;

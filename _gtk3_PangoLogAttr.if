@@ -1,0 +1,2 @@
+struct                    PangoLogAttr;
+inherit gobject.GObject;

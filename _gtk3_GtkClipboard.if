@@ -1,0 +1,74 @@
+struct                   GtkClipboard;
+inherit   gobject.GObject;
+
+GtkClipboard *      gtk_clipboard_get                   (GdkAtom selection);
+GtkClipboard *      gtk_clipboard_get_for_display       (GdkDisplay *display,
+                                                         GdkAtom selection);
+GdkDisplay *        gtk_clipboard_get_display           (GtkClipboard *clipboard);
+gboolean            gtk_clipboard_set_with_data         (GtkClipboard *clipboard,
+                                                         const GtkTargetEntry *targets,
+                                                         guint n_targets,
+                                                         GtkClipboardGetFunc get_func,
+                                                         GtkClipboardClearFunc clear_func,
+                                                         gpointer user_data);
+gboolean            gtk_clipboard_set_with_owner        (GtkClipboard *clipboard,
+                                                         const GtkTargetEntry *targets,
+                                                         guint n_targets,
+                                                         GtkClipboardGetFunc get_func,
+                                                         GtkClipboardClearFunc clear_func,
+                                                         GObject *owner);
+GObject *           gtk_clipboard_get_owner             (GtkClipboard *clipboard);
+void                gtk_clipboard_clear                 (GtkClipboard *clipboard);
+void                gtk_clipboard_set_text              (GtkClipboard *clipboard,
+                                                         const gchar *text,
+                                                         gint len);
+void                gtk_clipboard_set_image             (GtkClipboard *clipboard,
+                                                         GdkPixbuf *pixbuf);
+void                gtk_clipboard_request_contents      (GtkClipboard *clipboard,
+                                                         GdkAtom target,
+                                                         GtkClipboardReceivedFunc callback,
+                                                         gpointer user_data);
+void                gtk_clipboard_request_text          (GtkClipboard *clipboard,
+                                                         GtkClipboardTextReceivedFunc callback,
+                                                         gpointer user_data);
+void                gtk_clipboard_request_image         (GtkClipboard *clipboard,
+                                                         GtkClipboardImageReceivedFunc callback,
+                                                         gpointer user_data);
+void                gtk_clipboard_request_targets       (GtkClipboard *clipboard,
+                                                         GtkClipboardTargetsReceivedFunc callback,
+                                                         gpointer user_data);
+void                gtk_clipboard_request_rich_text     (GtkClipboard *clipboard,
+                                                         GtkTextBuffer *buffer,
+                                                         GtkClipboardRichTextReceivedFunc callback,
+                                                         gpointer user_data);
+void                gtk_clipboard_request_uris          (GtkClipboard *clipboard,
+                                                         GtkClipboardURIReceivedFunc callback,
+                                                         gpointer user_data);
+GtkSelectionData *  gtk_clipboard_wait_for_contents     (GtkClipboard *clipboard,
+                                                         GdkAtom target);
+gchar *             gtk_clipboard_wait_for_text         (GtkClipboard *clipboard);
+GdkPixbuf *         gtk_clipboard_wait_for_image        (GtkClipboard *clipboard);
+guint8 *            gtk_clipboard_wait_for_rich_text    (GtkClipboard *clipboard,
+                                                         GtkTextBuffer *buffer,
+                                                         GdkAtom *format,
+                                                         gsize *length);
+gchar **            gtk_clipboard_wait_for_uris         (GtkClipboard *clipboard);
+gboolean            gtk_clipboard_wait_is_text_available
+                                                        (GtkClipboard *clipboard);
+gboolean            gtk_clipboard_wait_is_image_available
+                                                        (GtkClipboard *clipboard);
+gboolean            gtk_clipboard_wait_is_rich_text_available
+                                                        (GtkClipboard *clipboard,
+                                                         GtkTextBuffer *buffer);
+gboolean            gtk_clipboard_wait_is_uris_available
+                                                        (GtkClipboard *clipboard);
+gboolean            gtk_clipboard_wait_for_targets      (GtkClipboard *clipboard,
+                                                         GdkAtom **targets,
+                                                         gint *n_targets);
+gboolean            gtk_clipboard_wait_is_target_available
+                                                        (GtkClipboard *clipboard,
+                                                         GdkAtom target);
+void                gtk_clipboard_set_can_store         (GtkClipboard *clipboard,
+                                                         const GtkTargetEntry *targets,
+                                                         gint n_targets);
+void                gtk_clipboard_store                 (GtkClipboard *clipboard);

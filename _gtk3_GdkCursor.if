@@ -1,0 +1,19 @@
+
+struct                    GdkCursor;
+inherit gobject.GObject;
+
+enum                GdkCursorType;
+GdkCursor *         gdk_cursor_new                      (GdkCursorType cursor_type);
+GdkCursor *         gdk_cursor_new_from_pixbuf          (GdkDisplay *display,
+                                                         GdkPixbuf *pixbuf,
+                                                         gint x,
+                                                         gint y);
+GdkCursor *         gdk_cursor_new_from_name            (GdkDisplay *display,
+                                                         const gchar *name);
+GdkCursor *         gdk_cursor_new_for_display          (GdkDisplay *display,
+                                                         GdkCursorType cursor_type);
+GdkDisplay *        gdk_cursor_get_display              (GdkCursor *cursor);
+GdkPixbuf *         gdk_cursor_get_image                (GdkCursor *cursor);
+GdkCursorType       gdk_cursor_get_cursor_type          (GdkCursor *cursor);
+GdkCursor *         gdk_cursor_ref                      (GdkCursor *cursor);
+void                gdk_cursor_unref                    (GdkCursor *cursor);
