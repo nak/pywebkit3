@@ -635,3 +635,15 @@ from javascriptcore_types import *
 from _javascriptcore_JSString import *
 from javascriptcore_types import *
 from _javascriptcore_JSValue import *
+from javascriptcore_types import *
+from _javascriptcore_JSContextGroup import *
+from javascriptcore_types import *
+from _javascriptcore_JSContext import *
+from javascriptcore_types import *
+from _javascriptcore_JSGlobalContext import *
+from javascriptcore_types import *
+from _javascriptcore_JSObject import *
+from javascriptcore_types import *
+from _javascriptcore_JSString import *
+from javascriptcore_types import *
+from _javascriptcore_JSValue import *

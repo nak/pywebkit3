@@ -108,6 +108,7 @@ class GMainLoop( _gobject_GObject.GObject):
 
 cfuncs = []
 
+from .gobject import GMainContextd
 def idle_add( func , *args):
     cfunc = c_void_p()
     def C_Callable( param ):
@@ -116,5 +117,5 @@ def idle_add( func , *args):
         return 0
     cfunc = GSourceFunc(C_Callable)
     cfuncs.append(cfunc)
-    GMainLoop.g_idle_add(cfunc, cfunc )
+    GMainContext.g_idle_add(cfunc, cfunc )
     
