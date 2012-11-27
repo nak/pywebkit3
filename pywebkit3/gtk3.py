@@ -47,8 +47,6 @@ from _gtk3_GtkIconFactory import *
 from gtk3_types import *
 from _gtk3_GtkIconSet import *
 from gtk3_types import *
-from _gtk3_GtkIconSize import *
-from gtk3_types import *
 from _gtk3_GtkIconSource import *
 from gtk3_types import *
 from _gtk3_GtkInvisible import *
@@ -60,8 +58,6 @@ from gtk3_types import *
 from _gtk3_GtkRcStyle import *
 from gtk3_types import *
 from _gtk3_GtkRequisition import *
-from gtk3_types import *
-from _gtk3_GtkRequstedSize import *
 from gtk3_types import *
 from _gtk3_GtkScrolledWindow import *
 from gtk3_types import *

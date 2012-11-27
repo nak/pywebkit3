@@ -10,9 +10,10 @@ from ctypes import *
 import logging
 
 
-KEY_WORDS=['print']
+KEY_WORDS=['print','raise']
 
 DEFAULT_TYPES=['gboolean',
+               'bool',
                'int',
                'long',
                'short'
@@ -57,10 +58,13 @@ DEFAULT_TYPES=['gboolean',
                'GtkDirectionType',
                'GtkOrientation',
                'GtkResizeType',
+               'GtkRequestedSize',
                'GtkJunctionSides',
                'GtkStateFlags',
                'GtkResizeMode',
                'GtkTextDirection',
+               'GtkPolicyType',
+               'GtkPrintOperationResult',
                
                'GtkClipboardReceivedFunc',
                'GtkClipboardTextReceivedFunc',
@@ -88,6 +92,8 @@ DEFAULT_TYPES=['gboolean',
                'PangoDirection',
                'PangoGravity',
                'PangoGravityHint',
+
+               'WebKitLoadStatus',
                
                'size_t',
                'JSPropertyAttributes',
@@ -169,7 +175,7 @@ class Parser:
         else:
             dependent = returntype[1:]
             
-            print "WRAPPING ########## %s %s"%(returntype, statement)
+            #print "WRAPPING ########## %s %s"%(returntype, statement)
             returnmethod = constructormapping.get(dependent)
             if dependent == self._classname:
                 numfuncargs = len(statement.split(','))-1
@@ -197,16 +203,19 @@ class Parser:
         if returntype in DEFAULT_TYPES:
             return ( "return %s"%statement, "")
         elif returntype.startswith("_WebKit"):
-            return ( "return %s(%s obj=%s)"%(dependent, paramtext, statement),
+            return ( "return %s(%s obj=%s or c_void_p() )"%(dependent, paramtext, statement),
                      "from pywebkit3.webkit3 import %s"%dependent)
+        elif returntype.startswith ("_Pango"):
+            return ( "return %s(%s obj=%s  or c_void_p())"%(dependent, paramtext, statement),
+                     "from pywebkit3.gtk3 import %s"%dependent)
         elif returntype.startswith ("_JS"):
-            return ( "return %s(%s obj=%s)"%(dependent, paramtext, statement),
+            return ( "return %s(%s obj=%s  or c_void_p())"%(dependent, paramtext, statement),
                      "from pywebkit3.javascriptcore import %s"%dependent)
         elif returntype.startswith ("_Gtk"):
-            return ( "return %s(%s obj=%s)"%(returntype[1:],paramtext, statement),
+            return ( "return %s(%s obj=%s or c_void_p())"%(returntype[1:],paramtext, statement),
                      "from pywebkit3.gtk3 import %s"%dependent)
         elif returntype.startswith ("_G"):
-            return ( "return %s(%s obj=%s)"%(returntype[1:], paramtext, statement),
+            return ( "return %s(%s obj=%s or c_void_p())"%(returntype[1:], paramtext, statement),
                      "from pywebkit3.gobject import %s"%dependent)
         else:
             return ("return %s"%statement,"")
@@ -223,8 +232,15 @@ class Parser:
         if tokens[0] == '...' and self._methods.has_key(methodname):
             self._methods[methodname].append(("*args",''))
             return
-        elif (tokens[0] == 'void' and methodname.endswith('new') and position==0 and self._constructor==None) or (methodname.endswith('new') and returntype[1:] == self._classname):
-            all_constructors[self._classname]=[]
+        elif (tokens[0] == 'void' and methodname.endswith('new') and position==0 and self._constructor==None) or (methodname.endswith('new') and returntype[1:] == self._classname) or (methodname.endswith('Create') and returntype[1:].startswith('JS') and (tokens[0] == returntype[1:] or tokens[1] == returntype[1:])):
+            if tokens[0].startswith('JS') and tokens[0] != returntype[1:]:
+                tmp = tokens[0]
+                tokens[0] = tokens[1]
+                tokens[1] = tmp
+            all_constructors[self._classname]=[methodname]
+            if len(tokens)>1:
+                paramname, typename = self.parse_as_typedef_or_function_decl(tokens)
+                all_constructors[self._classname].append( (paramname, typename))
             constructormapping[self._classname]=methodname
             self._constructor = all_constructors[self._classname]
             return 
@@ -234,7 +250,7 @@ class Parser:
             return
         elif tokens[0] != self._classname and methodname.endswith('new'):
             if position == 0:
-                all_constructors[self._classname] = []
+                all_constructors[self._classname] = [methodname]
                 constructormapping[self._classname]=methodname
                 self._constructor = all_constructors[self._classname]
             (paramname, typename) = self.parse_as_typedef_or_function_decl( tokens )
@@ -296,7 +312,7 @@ class Parser:
                 self._staticmethods[methodname].append((paramname, typename))
         elif all_constructors.has_key(methodname):
             all_constructors[self._classname].append((paramname,typename))
-            self._constructor = all_consructors[methodname]
+            self._constructor = all_constructors[methodname]
         elif self._methods.has_key(methodname):
             self._methods[methodname].append((paramname, typename))
         elif self._staticmethods.has_key(methodname):
@@ -381,8 +397,9 @@ class Parser:
             eval_text = ""
             assertions = []
             cmethod = self._constructor[0]
+            print "XXXXXXXXXXXX %s %s"%(self._constructor, all_constructors[self._classname])
             for param in self._constructor[1:]:
-                if not((param[1] in DEFAULT_TYPES) or (param[1] == 'c_char_p')):
+                if (not param[0].strip() == '*args') and  not((param[1] in DEFAULT_TYPES) or (param[1] == 'c_char_p')):
                     eval_text +="""        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
                     eval_text += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
                 text += "%s, "%param[0]
@@ -404,7 +421,7 @@ class Parser:
                     if param[0]=='*args':
                         text +="*args"
                     else:
-                        if not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
+                        if not(param[0].strip()=='*args') and not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
                             evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
                             evaltext += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
                         text += "%s, "%param[0]
@@ -416,18 +433,20 @@ class Parser:
                             if p[0] != '*args':
                                 known_types.append(p[1])
                                 known_args.append(p[0])
+                        args = ', '.join(known_args)
+                        if args: args += ','
                         pretext = """
-            def callit( %(args)s, *args ):
+        def callit( %(args)s *args ):
                 %(lib_name)s.%(methodname)s.restype = %(return_type)s
                 %(lib_name)s.%(methodname)s.argtypes = [c_void_p, %(known_types)s]
                 for arg in args:
                      %(lib_name)s.%(methodname)s.argtypes.append(args[1])
-                return %(lib_name)s.%(methodname)s(self._object, %(args)s, *args)
-    """%{'lib_name':LIB_NAME,'known_types':', '.join(known_types), 'args':', '.join(known_args),
+                return %(lib_name)s.%(methodname)s(self._object, %(args)s *args)
+    """%{'lib_name':LIB_NAME,'known_types':', '.join(known_types), 'args':args,
     'methodname':methodname, 'return_type': m[methodname][0]}
                         text += "*args "
                     else:
-                        if not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
+                        if not(param[0].strip()=="*args") and  not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
                             evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
                             evaltext += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
                         text += " %s,"%param[0]
@@ -486,12 +505,10 @@ class Parser:
     # * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
     # * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-    # */
-    
-    """)
+    # */\n""")
             f.write("""from ctypes import *
-    from gtk3_types import *
-    from %s_types import *
+from gtk3_types import *
+from %s_types import *
     
     """%namespace)
                 
@@ -521,20 +538,28 @@ class Parser:
                 #for c_name, param in self._constructor:
                 if self._constructor:
                     (text, eval_text, assertions) = gen_params_constructor()
-                    f.write( "    def __init__( self, %s obj=None):\n"%text)
+                    calltext = text
+                    if text.find("*args,")>=0:
+                        text = text.replace("*args,","")
+                        text += "obj=None, *args"
+                    else:
+                        text += " obj = None"
+                    f.write( "    def __init__( self, %s):\n"%text)
                     f.write("        if obj: self._object = obj\n")
-                    f.write("        else:")
+                    f.write("        else:\n")
                     for assertion in assertions:
                         f.write("            %s\n"%assertion)
                     c_name = self._constructor[0]
+                    
                     f.write( "            %s.%s.restype = c_void_p\n"%(LIB_NAME,c_name ))
                     f.write(eval_text+"\n")
                     if len(self._constructor)>0:
                         f.write( "        %s.%s.argtypes = [%s]\n"%( LIB_NAME,c_name, ','.join([p[1] for p in self._constructor[1:]])))
-                    f.write("        self._object = %s.%s(%s)\n"%(LIB_NAME, c_name, text))
+                    calltext = calltext.replace("*args,","*args")
+                    f.write("        self._object = %s.%s(%s)\n"%(LIB_NAME, c_name, calltext))
                 else:
-                    f.write("    def __init__(self):\n")
-                    f.write("        self._object = None")
+                    f.write("    def __init__(self, obj = None):\n")
+                    f.write("        self._object = obj")
                     all_constructors[self._classname] = []
                     constructormapping[self._classname] = ""
                 f.write("\n")

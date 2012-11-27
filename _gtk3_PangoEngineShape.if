@@ -1,2 +1,2 @@
 struct PangoEngineShape ;
-inherit gobjet.GObject;
+inherit gobject.GObject;

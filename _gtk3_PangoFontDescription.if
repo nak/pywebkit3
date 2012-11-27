@@ -1,5 +1,5 @@
 struct       PangoFontDescription;
-inherit gobejct.GBoxed;
+inherit gobject.GBoxed;
 enum                PangoStyle;
 enum                PangoWeight;
 enum                PangoVariant;

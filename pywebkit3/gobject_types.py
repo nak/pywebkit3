@@ -1,4 +1,4 @@
-from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure
+from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint
 
 cdll.LoadLibrary("libgobject-2.0.so")
 libgobject = CDLL("libgobject-2.0.so")
@@ -39,6 +39,7 @@ GTogleNotify = CFUNCTYPE( None, c_void_p, c_void_p, c_int)
 GValueTransform = CFUNCTYPE( None, c_void_p, c_void_p)
 GCompareFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 GCompareDataFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
+GFunc = CFUNCTYPE( None, c_void_p, c_void_p)
 
 def gvalue_from_int( val):
     from _gtk3_GValue import GValue

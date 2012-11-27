@@ -9,7 +9,7 @@ libgtk3 = CDLL("libgtk-3.so")
 """default gtk types"""
 guint32 = c_uint
 guint64 = c_ulong
-gint 64 = c_long
+gint64 = c_long
 guint16 = c_ushort
 gfloat = c_float
 guint = c_uint
@@ -42,7 +42,7 @@ GtkOrientation = c_int
 
 PangoFontsetForeachFunc = CFUNCTYPE( c_int, c_void_p, c_void_p, c_void_p, c_void_p)
 
-GdkWindowChildFunc = CFUNCTPE( c_int, c_void_p, c_void_p)
+GdkWindowChildFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 GdkFilterFunc = CFUNCTYPE( c_int, c_void_p, c_void_p, c_void_p)
 
 GtkAssistantPageFunc = CFUNCTYPE( c_int, c_int, c_void_p)
@@ -56,7 +56,7 @@ GtkClipboardURIReceivedFunc =  CFUNCTYPE(  None, c_void_p, c_void_p, c_void_p)
 GtkClipboardTargetsReceivedFunc = CFUNCTYPE( None, c_void_p, c_void_p, c_int, c_void_p)
 
 GtkClipboardRichTextReceivedFunc = CFUNCTYPE( None, c_void_p, c_void_p, c_void_p, c_uint, c_void_p)
-GtkClipboardGetFunc = = CFUNCTYPE( None, c_void_p, c_void_p, c_uint, c_void_p)
+GtkClipboardGetFunc = CFUNCTYPE( None, c_void_p, c_void_p, c_uint, c_void_p)
 GtkClipboardClearFunc = CFUNCTYPE( None, c_void_p, c_void_p)
 
 libgtk3.gtk_init(0,0)

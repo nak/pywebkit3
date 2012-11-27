@@ -1,2 +1,2 @@
 struct WebKitDOMDocument;
-inherit obejct;
+inherit object;

@@ -1,5 +1,5 @@
 struct              PangoItem;
-inherit gobejct.GBoxed;
+inherit gobject.GBoxed;
 
 void                pango_item_free                     (PangoItem *item);
 PangoItem *         pango_item_copy                     (PangoItem *item);

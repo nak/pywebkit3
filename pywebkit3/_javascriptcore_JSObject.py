@@ -1,68 +1,74 @@
 # Copyright, John Rusnak, 2012
-# This code binding is available under the license agreement of the LGPL with
-# an additional constraint described below,
-# and with the understanding that the webkit API is copyright protected
-# by Apple Computer, Inc. (see below).
-# There is an  additional constraint that any derivatives of this work aimed
-# at providing bindings to GObject, GTK, GDK, or WebKit be strictly
-# python-only bindings with no native code.
-# * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY
-# * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
-# * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-# * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
-# * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-# * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-# ******************************************************
-# For the API:
-# /*
-# * Copyright (C) 2006 Apple Computer, Inc.  All rights reserved.
-# *
-# * Redistribution and use in source and binary forms, with or without
-# * modification, are permitted provided that the following conditions
-# * are met:
-# * 1. Redistributions of source code must retain the above copyright
-# *    notice, this list of conditions and the following disclaimer.
-# * 2. Redistributions in binary form must reproduce the above copyright
-# *    notice, this list of conditions and the following disclaimer in the
-# *    documentation and/or other materials provided with the distribution.
-# *
-# * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
-# * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
-# * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
-# * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-# * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
-# * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-# * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-# * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-# */
-
+    # This code binding is available under the license agreement of the LGPL with
+    # an additional constraint described below,
+    # and with the understanding that the webkit API is copyright protected
+    # by Apple Computer, Inc. (see below).
+    # There is an  additional constraint that any derivatives of this work aimed
+    # at providing bindings to GObject, GTK, GDK, or WebKit be strictly
+    # python-only bindings with no native code.
+    # * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY
+    # * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    # * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    # * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+    # * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+    # * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+    # * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    # * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+    # * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    # * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    #
+    # ******************************************************
+    # For the API:
+    # /*
+    # * Copyright (C) 2006 Apple Computer, Inc.  All rights reserved.
+    # *
+    # * Redistribution and use in source and binary forms, with or without
+    # * modification, are permitted provided that the following conditions
+    # * are met:
+    # * 1. Redistributions of source code must retain the above copyright
+    # *    notice, this list of conditions and the following disclaimer.
+    # * 2. Redistributions in binary form must reproduce the above copyright
+    # *    notice, this list of conditions and the following disclaimer in the
+    # *    documentation and/or other materials provided with the distribution.
+    # *
+    # * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
+    # * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+    # * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+    # * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+    # * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+    # * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+    # * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+    # * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+    # * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    # * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+    # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    # */
 from ctypes import *
 from gtk3_types import *
 from javascriptcore_types import *
-
-
+    
+    
 """Derived Pointer Types"""
-_JSPropertyNameArray = c_void_p
-_JSContext = c_void_p
+__JSString = c_void_p
+__JSValue = c_void_p
 _JSClass = c_void_p
-_JSPropertyNameAccumulator = c_void_p
+__JSContext = c_void_p
+_JSPropertyNameArray = c_void_p
+__JSObject = c_void_p
+__JSPropertyNameArray = c_void_p
 _JSString = c_void_p
+_char = c_void_p
 _JSValue = c_void_p
 _JSObject = c_void_p
+__JSPropertyNameAccumulator = c_void_p
+__JSClass = c_void_p
 """Enumerations"""
 
 class JSObject( object):
     """Class JSObject Constructors"""
-
+    def __init__(self, obj = None):
+        self._object = obj
     """Methods"""
     def JSPropertyNameAccumulatorAddName(self,  accumulator, propertyName,):
         if accumulator : accumulator = accumulator._object
@@ -71,7 +77,8 @@ class JSObject( object):
         else : propertyName = c_void_p()
 
         libjavascriptcore.JSPropertyNameAccumulatorAddName.argtypes = [c_void_p, _JSPropertyNameAccumulator,_JSString]
-        libjavascriptcore.JSPropertyNameAccumulatorAddName(self._object, accumulator, propertyName, )
+        
+        libjavascriptcore.JSPropertyNameAccumulatorAddName(self._object,  accumulator, propertyName,)
 
     def JSObjectSetPrototype(self,  ctx, object, value,):
         if ctx : ctx = ctx._object
@@ -82,50 +89,70 @@ class JSObject( object):
         else : value = c_void_p()
 
         libjavascriptcore.JSObjectSetPrototype.argtypes = [c_void_p, _JSContext,_JSObject,_JSValue]
-        libjavascriptcore.JSObjectSetPrototype(self._object, ctx, object, value, )
+        
+        libjavascriptcore.JSObjectSetPrototype(self._object,  ctx, object, value,)
 
     def JSPropertyNameArrayRelease(self,  array,):
         if array : array = array._object
         else : array = c_void_p()
 
         libjavascriptcore.JSPropertyNameArrayRelease.argtypes = [c_void_p, _JSPropertyNameArray]
-        libjavascriptcore.JSPropertyNameArrayRelease(self._object, array, )
+        
+        libjavascriptcore.JSPropertyNameArrayRelease(self._object,  array,)
 
-    def JSObjectSetPropertyAtIndex(self,  ctx, object, value, exception,):
+    def JSObjectSetPropertyAtIndex(self,  ctx, object, propertyIndex, value, exception,):
         if ctx : ctx = ctx._object
         else : ctx = c_void_p()
         if object : object = object._object
         else : object = c_void_p()
+        if propertyIndex : propertyIndex = propertyIndex._object
+        else : propertyIndex = c_void_p()
         if value : value = value._object
         else : value = c_void_p()
         if exception : exception = exception._object
         else : exception = c_void_p()
 
-        libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [c_void_p, _JSContext,_JSObject,_JSValue,JSValue]
-        libjavascriptcore.JSObjectSetPropertyAtIndex(self._object, ctx, object, value, exception, )
+        libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [c_void_p, _JSContext,_JSObject,unsigned,_JSValue,POITNER(_JSValue)]
+        
+        libjavascriptcore.JSObjectSetPropertyAtIndex(self._object,  ctx, object, propertyIndex, value, exception,)
 
-    def JSObjectSetPrivate(self, ):
+    def JSObjectSetPrivate(self,  data,):
 
         libjavascriptcore.JSObjectSetPrivate.restype = bool
-        return libjavascriptcore.JSObjectSetPrivate(self._object, )
+        libjavascriptcore.JSObjectSetPrivate.argtypes = [c_void_p, c_char_p]
+        
+        return libjavascriptcore.JSObjectSetPrivate(self._object,  data,)
 
     def JSClassRelease(self,  jsClass,):
         if jsClass : jsClass = jsClass._object
         else : jsClass = c_void_p()
 
         libjavascriptcore.JSClassRelease.argtypes = [c_void_p, _JSClass]
-        libjavascriptcore.JSClassRelease(self._object, jsClass, )
+        
+        libjavascriptcore.JSClassRelease(self._object,  jsClass,)
 
     def JSObjectGetPrivate(self, ):
 
-        libjavascriptcore.JSObjectGetPrivate.restype = c_char_p
+        libjavascriptcore.JSObjectGetPrivate.restype = _char
+        libjavascriptcore.JSObjectGetPrivate.argtypes = [c_void_p]
+        
         return libjavascriptcore.JSObjectGetPrivate(self._object, )
 
-    @staticmethod
-    def JSObjectSetProperty(ctx, object, propertyName, value, attributes, exception,):
-        libjavascriptcore.JSObjectSetProperty.restype = c_void_p
-        libjavascriptcore.JSObjectSetProperty.argtypes = [ _JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes, c_void_p]
-        libjavascriptcore.JSObjectSetProperty( ctx, object, propertyName, value, attributes, exception, )
+    def JSObjectSetProperty(self,  ctx, object, propertyName, value, attributes, exception,):
+        if ctx : ctx = ctx._object
+        else : ctx = c_void_p()
+        if object : object = object._object
+        else : object = c_void_p()
+        if propertyName : propertyName = propertyName._object
+        else : propertyName = c_void_p()
+        if value : value = value._object
+        else : value = c_void_p()
+        if exception : exception = exception._object
+        else : exception = c_void_p()
+
+        libjavascriptcore.JSObjectSetProperty.argtypes = [c_void_p, _JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,POITNER(_JSValue)]
+        
+        libjavascriptcore.JSObjectSetProperty(self._object,  ctx, object, propertyName, value, attributes, exception,)
 
     @staticmethod
     def JSClassRetain( jsClass,):
@@ -165,8 +192,12 @@ class JSObject( object):
 
     @staticmethod
     def JSObjectMake( ctx, jsClass, data,):
+        if ctx : ctx = ctx._object
+        else : ctx = c_void_p()
+        if jsClass : jsClass = jsClass._object
+        else : jsClass = c_void_p()
         libjavascriptcore.JSObjectMake.restype = _JSObject
-        libjavascriptcore.JSObjectMake.argtypes = [_JSContext,_JSClass,_JSContext]
+        libjavascriptcore.JSObjectMake.argtypes = [_JSContext,_JSClass,c_char_p]
         return libjavascriptcore.JSObjectMake(ctx, jsClass, data, )
 
     @staticmethod
@@ -198,7 +229,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeArray.restype = _JSObject
-        libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,JSValue,JSValue]
+        libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
         return libjavascriptcore.JSObjectMakeArray(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -220,7 +251,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectCallAsConstructor.restype = _JSObject
-        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,JSValue,JSValue]
+        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,POITNER(_JSValue),POITNER(_JSValue)]
         return libjavascriptcore.JSObjectCallAsConstructor(ctx, object, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -232,13 +263,15 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeRegExp.restype = _JSObject
-        libjavascriptcore.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,JSValue,JSValue]
+        libjavascriptcore.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
         return libjavascriptcore.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
     def JSClassCreate( definition,):
+        if definition : definition = definition._object
+        else : definition = c_void_p()
         libjavascriptcore.JSClassCreate.restype = _JSClass
-        libjavascriptcore.JSClassCreate.argtypes = [POINTER(JSClassDefinition)]
+        libjavascriptcore.JSClassCreate.argtypes = [POITNER(JSClassDefinition)]
         return libjavascriptcore.JSClassCreate(definition, )
 
     @staticmethod
@@ -250,7 +283,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeError.restype = _JSObject
-        libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,JSValue,JSValue]
+        libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
         return libjavascriptcore.JSObjectMakeError(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -264,7 +297,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectDeleteProperty.restype = bool
-        libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,JSValue]
+        libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,POITNER(_JSValue)]
         return libjavascriptcore.JSObjectDeleteProperty(ctx, object, propertyName, exception, )
 
     @staticmethod
@@ -278,11 +311,13 @@ class JSObject( object):
         return libjavascriptcore.JSObjectMakeConstructor(ctx, jsClass, callAsConstructor, )
 
     @staticmethod
-    def JSObjectMakeFunction( ctx, name, parameterNames, body, sourceURL, exception,):
+    def JSObjectMakeFunction( ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception,):
         if ctx : ctx = ctx._object
         else : ctx = c_void_p()
         if name : name = name._object
         else : name = c_void_p()
+        if parameterCount : parameterCount = parameterCount._object
+        else : parameterCount = c_void_p()
         if parameterNames : parameterNames = parameterNames._object
         else : parameterNames = c_void_p()
         if body : body = body._object
@@ -292,20 +327,22 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeFunction.restype = _JSObject
-        libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,JSString,_JSString,_JSString,JSValue]
-        return libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterNames, body, sourceURL, exception, )
+        libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,POITNER(_JSString),_JSString,_JSString,int,POITNER(_JSValue)]
+        return libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
 
     @staticmethod
-    def JSObjectGetPropertyAtIndex( ctx, object, exception,):
+    def JSObjectGetPropertyAtIndex( ctx, object, propertyIndex, exception,):
         if ctx : ctx = ctx._object
         else : ctx = c_void_p()
         if object : object = object._object
         else : object = c_void_p()
+        if propertyIndex : propertyIndex = propertyIndex._object
+        else : propertyIndex = c_void_p()
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectGetPropertyAtIndex.restype = _JSValue
-        libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,JSValue]
-        return libjavascriptcore.JSObjectGetPropertyAtIndex(ctx, object, exception, )
+        libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,POITNER(_JSValue)]
+        return libjavascriptcore.JSObjectGetPropertyAtIndex(ctx, object, propertyIndex, exception, )
 
     @staticmethod
     def JSObjectGetProperty( ctx, object, propertyName, exception,):
@@ -318,7 +355,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectGetProperty.restype = _JSValue
-        libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,JSValue]
+        libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,POITNER(_JSValue)]
         return libjavascriptcore.JSObjectGetProperty(ctx, object, propertyName, exception, )
 
     @staticmethod
@@ -352,7 +389,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeDate.restype = _JSObject
-        libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,JSValue,JSValue]
+        libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
         return libjavascriptcore.JSObjectMakeDate(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -368,7 +405,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
-        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,JSValue,JSValue]
+        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,POITNER(_JSValue),POITNER(_JSValue)]
         return libjavascriptcore.JSObjectCallAsFunction(ctx, object, thisObject, argumentCount, arguments, exception, )
 
     @staticmethod
