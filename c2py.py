@@ -135,7 +135,6 @@ class Parser:
         self._namespace = namespace
 
     def parse_as_typedef_or_function_decl(self,  tokens ):
-        #print "XXXXXXXXXXXXXX PARSING %s"%tokens
         if tokens[0]=='...':
             assert(len(tokens)==1)
             return ("*args","")
@@ -333,7 +332,7 @@ class Parser:
         if api.find('va_list') >=0:
             logging.error("Unable to parse variable arguments for %s"%api)
             return
-        tokens = api.replace('const','').replace('volatile','').replace('*','* ').replace('*  *','*').replace(';','').replace('(','|').replace(')','|').replace('  ',' ').split('|')
+        tokens = api.replace('const','').replace('volatile','').replace('*',' * ').replace('*  *','*').replace(';','').replace('(','|').replace(')','|').replace('  ',' ').split('|')
         declaration = tokens[0].split()
         if declaration[0] == 'enum':
             enum_types.append(declaration[1])

@@ -95,7 +95,7 @@ class JSValue( _javascriptcore_JSObject.JSObject):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSValueToObject.restype = _JSObject
-        libjavascriptcore.JSValueToObject.argtypes = [_JSContext,_JSValue,POITNER(_JSValue)]
+        libjavascriptcore.JSValueToObject.argtypes = [_JSContext,_JSValue,_JSValue]
         return libjavascriptcore.JSValueToObject(ctx, value, exception, )
 
     @staticmethod
@@ -109,7 +109,7 @@ class JSValue( _javascriptcore_JSObject.JSObject):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSValueCreateJSONString.restype = _JSString
-        libjavascriptcore.JSValueCreateJSONString.argtypes = [_JSContext,_JSValue,unsigned,POITNER(_JSValue)]
+        libjavascriptcore.JSValueCreateJSONString.argtypes = [_JSContext,_JSValue,unsigned,_JSValue]
         return libjavascriptcore.JSValueCreateJSONString(ctx, value, indent, exception, )
 
     @staticmethod
@@ -225,7 +225,7 @@ class JSValue( _javascriptcore_JSObject.JSObject):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSValueToStringCopy.restype = _JSString
-        libjavascriptcore.JSValueToStringCopy.argtypes = [_JSContext,_JSValue,POITNER(_JSValue)]
+        libjavascriptcore.JSValueToStringCopy.argtypes = [_JSContext,_JSValue,_JSValue]
         return libjavascriptcore.JSValueToStringCopy(ctx, value, exception, )
 
     @staticmethod
@@ -259,7 +259,7 @@ class JSValue( _javascriptcore_JSObject.JSObject):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSValueIsEqual.restype = bool
-        libjavascriptcore.JSValueIsEqual.argtypes = [_JSContext,_JSValue,_JSValue,POITNER(_JSValue)]
+        libjavascriptcore.JSValueIsEqual.argtypes = [_JSContext,_JSValue,_JSValue,_JSValue]
         return libjavascriptcore.JSValueIsEqual(ctx, a, b, exception, )
 
     @staticmethod
@@ -271,7 +271,7 @@ class JSValue( _javascriptcore_JSObject.JSObject):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSValueToNumber.restype = double
-        libjavascriptcore.JSValueToNumber.argtypes = [_JSContext,_JSValue,POITNER(_JSValue)]
+        libjavascriptcore.JSValueToNumber.argtypes = [_JSContext,_JSValue,_JSValue]
         return libjavascriptcore.JSValueToNumber(ctx, value, exception, )
 
     @staticmethod
@@ -285,7 +285,7 @@ class JSValue( _javascriptcore_JSObject.JSObject):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSValueIsInstanceOfConstructor.restype = bool
-        libjavascriptcore.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,POITNER(_JSValue)]
+        libjavascriptcore.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,_JSValue]
         return libjavascriptcore.JSValueIsInstanceOfConstructor(ctx, value, ructor, exception, )
 
     @staticmethod

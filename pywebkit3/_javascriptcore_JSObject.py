@@ -112,7 +112,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
 
-        libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [c_void_p, _JSContext,_JSObject,unsigned,_JSValue,POITNER(_JSValue)]
+        libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [c_void_p, _JSContext,_JSObject,unsigned,_JSValue,_JSValue]
         
         libjavascriptcore.JSObjectSetPropertyAtIndex(self._object,  ctx, object, propertyIndex, value, exception,)
 
@@ -150,7 +150,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
 
-        libjavascriptcore.JSObjectSetProperty.argtypes = [c_void_p, _JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,POITNER(_JSValue)]
+        libjavascriptcore.JSObjectSetProperty.argtypes = [c_void_p, _JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
         
         libjavascriptcore.JSObjectSetProperty(self._object,  ctx, object, propertyName, value, attributes, exception,)
 
@@ -229,7 +229,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeArray.restype = _JSObject
-        libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
+        libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         return libjavascriptcore.JSObjectMakeArray(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -251,7 +251,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectCallAsConstructor.restype = _JSObject
-        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,POITNER(_JSValue),POITNER(_JSValue)]
+        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue,_JSValue]
         return libjavascriptcore.JSObjectCallAsConstructor(ctx, object, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -263,7 +263,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeRegExp.restype = _JSObject
-        libjavascriptcore.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
+        libjavascriptcore.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         return libjavascriptcore.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -283,7 +283,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeError.restype = _JSObject
-        libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
+        libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         return libjavascriptcore.JSObjectMakeError(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -297,7 +297,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectDeleteProperty.restype = bool
-        libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,POITNER(_JSValue)]
+        libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
         return libjavascriptcore.JSObjectDeleteProperty(ctx, object, propertyName, exception, )
 
     @staticmethod
@@ -327,7 +327,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeFunction.restype = _JSObject
-        libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,POITNER(_JSString),_JSString,_JSString,int,POITNER(_JSValue)]
+        libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,_JSString,_JSString,_JSString,int,_JSValue]
         return libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
 
     @staticmethod
@@ -341,7 +341,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectGetPropertyAtIndex.restype = _JSValue
-        libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,POITNER(_JSValue)]
+        libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
         return libjavascriptcore.JSObjectGetPropertyAtIndex(ctx, object, propertyIndex, exception, )
 
     @staticmethod
@@ -355,7 +355,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectGetProperty.restype = _JSValue
-        libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,POITNER(_JSValue)]
+        libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
         return libjavascriptcore.JSObjectGetProperty(ctx, object, propertyName, exception, )
 
     @staticmethod
@@ -389,7 +389,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectMakeDate.restype = _JSObject
-        libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,POITNER(_JSValue),POITNER(_JSValue)]
+        libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         return libjavascriptcore.JSObjectMakeDate(ctx, argumentCount, arguments, exception, )
 
     @staticmethod
@@ -405,7 +405,7 @@ class JSObject( object):
         if exception : exception = exception._object
         else : exception = c_void_p()
         libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
-        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,POITNER(_JSValue),POITNER(_JSValue)]
+        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,_JSValue,_JSValue]
         return libjavascriptcore.JSObjectCallAsFunction(ctx, object, thisObject, argumentCount, arguments, exception, )
 
     @staticmethod
