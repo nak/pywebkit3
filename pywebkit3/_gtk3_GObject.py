@@ -50,120 +50,125 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__GtkRcStyle = c_void_p
-__GdkGeometry = c_void_p
-_GdkPixbuf = c_void_p
-__GtkRequisition = c_void_p
-_GtkRcStyle = c_void_p
-__GtkRegionFlags = c_void_p
-_GdkEvent = c_void_p
-_GtkWindow = c_void_p
-__cairo_font_options_t = c_void_p
-__GdkAtom = c_void_p
-__GdkTimeCoord = c_void_p
-__GtkWidgetPath = c_void_p
-__GClosure = c_void_p
-_GdkDisplay = c_void_p
-__GtkStyleProvider = c_void_p
-_GScanner = c_void_p
-_PangoFont = c_void_p
-_GtkStyleContext = c_void_p
-__GtkTextBuffer = c_void_p
-_guchar = c_void_p
-_GdkAppLaunchContext = c_void_p
-__GObject = c_void_p
-__PangoLayout = c_void_p
-__GParamSpec = c_void_p
-__PangoAttrIterator = c_void_p
-__GtkWindow = c_void_p
-_GtkSelectionData = c_void_p
-_GtkWindowGroup = c_void_p
-__PangoContext = c_void_p
-__GtkPathPriorityType = c_void_p
-__GtkSettings = c_void_p
-__PangoFontMap = c_void_p
-__PangoAttrList = c_void_p
-_PangoMatrix = c_void_p
-_GtkApplication = c_void_p
-__PangoAnalysis = c_void_p
-_PangoFontDescription = c_void_p
-__GdkCursor = c_void_p
-_guint8 = c_void_p
-__GScanner = c_void_p
-__GtkWidgetClass = c_void_p
-__GdkEventKey = c_void_p
-__GdkDisplay = c_void_p
-_GtkWidgetPath = c_void_p
-_GdkScreen = c_void_p
-_PangoFontMetrics = c_void_p
-_GdkVisual = c_void_p
-_PangoFontMap = c_void_p
-_GSList = c_void_p
-_GtkWidget = c_void_p
-__GdkWindow = c_void_p
-__PangoFontFamily = c_void_p
-__cairo_region_t = c_void_p
-_PangoFontset = c_void_p
-_GdkWindow = c_void_p
-__PangoFontDescription = c_void_p
-__GtkBorder = c_void_p
-__GError = c_void_p
-__PangoCoverage = c_void_p
-__cairo_t = c_void_p
-__GWeakRef = c_void_p
-__GdkVisual = c_void_p
-_GdkDevice = c_void_p
-_GList = c_void_p
-__GtkAccelGroup = c_void_p
-_GObject = c_void_p
-_GtkIconSet = c_void_p
-__GtkAllocation = c_void_p
-__GtkWidget = c_void_p
-_gchar = c_void_p
-__GValue = c_void_p
-_GdkDeviceManager = c_void_p
-_GdkCursor = c_void_p
-__PangoMatrix = c_void_p
-_PangoContext = c_void_p
-__GList = c_void_p
-_PangoCoverage = c_void_p
-_GParamSpec = c_void_p
-__PangoRectangle = c_void_p
-__GtkIconSource = c_void_p
-_char = c_void_p
-__PangoGlyphString = c_void_p
-__GObjectClass = c_void_p
-__GSList = c_void_p
-__GdkRGBA = c_void_p
-__GdkWindowAttr = c_void_p
-__GdkColor = c_void_p
-__GdkRectangle = c_void_p
-__PangoLanguage = c_void_p
-__GdkWMDecoration = c_void_p
-__PangoLogAttr = c_void_p
-_PangoLayout = c_void_p
-_GtkStyle = c_void_p
-__GParameter = c_void_p
-__GtkStyle = c_void_p
-__GIcon = c_void_p
-__cairo_pattern_t = c_void_p
-__GdkPixbuf = c_void_p
-_GtkSettings = c_void_p
-__GtkTargetEntry = c_void_p
-__GtkApplication = c_void_p
-_GtkClipboard = c_void_p
-__GdkScreen = c_void_p
-_PangoLanguage = c_void_p
-__GdkDevice = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
 GtkAlign = c_int
-GdkPixbufError = c_int
-GdkColorspace = c_int
-GdkPixbufAlphaMode = c_int
-GtkIconSize = c_int
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
 GdkWindowHints = c_int
@@ -181,8 +186,6 @@ GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
 GdkCursorType = c_int
-GdkVisualType = c_int
-GdkByteOrder = c_int
 PangoStyle = c_int
 PangoWeight = c_int
 PangoVariant = c_int
@@ -196,372 +199,373 @@ class GObject( object):
     def __init__( self, object_type, first_property_name,  obj=None, *args):
         if obj: self._object = obj
         else:
-            libgtk3.g_object_new.restype = c_void_p
-
-        libgtk3.g_object_new.argtypes = [GType,c_char_p,]
-        self._object = libgtk3.g_object_new(object_type, first_property_name, *args )
+            libgtk3.g_object_new.restype = POINTER(c_int)
+            
+            libgtk3.g_object_new.argtypes = [GType,c_char_p,]
+            self._object = libgtk3.g_object_new(object_type, first_property_name, *args )
 
     """Methods"""
-    def add_toggle_ref(self,  notify, data,):
+    def add_toggle_ref(  self, notify, data, ):
 
-        libgtk3.g_object_add_toggle_ref.argtypes = [c_void_p, GToggleNotify,gpointer]
+        libgtk3.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
         
-        libgtk3.g_object_add_toggle_ref(self._object,  notify, data,)
+        libgtk3.g_object_add_toggle_ref( self._object,notify,data )
 
-    def set_qdata_full(self,  quark, data, destroy,):
+    def set_qdata_full(  self, quark, data, destroy, ):
 
-        libgtk3.g_object_set_qdata_full.argtypes = [c_void_p, GQuark,gpointer,GDestroyNotify]
+        libgtk3.g_object_set_qdata_full.argtypes = [_GObject,GQuark,gpointer,GDestroyNotify]
         
-        libgtk3.g_object_set_qdata_full(self._object,  quark, data, destroy,)
+        libgtk3.g_object_set_qdata_full( self._object,quark,data,destroy )
 
-    def weak_unref(self,  notify, data,):
+    def weak_unref(  self, notify, data, ):
 
-        libgtk3.g_object_weak_unref.argtypes = [c_void_p, GWeakNotify,gpointer]
+        libgtk3.g_object_weak_unref.argtypes = [_GObject,GWeakNotify,gpointer]
         
-        libgtk3.g_object_weak_unref(self._object,  notify, data,)
+        libgtk3.g_object_weak_unref( self._object,notify,data )
 
-    def steal_data(self,  key,):
+    def steal_data(  self, key, ):
 
         libgtk3.g_object_steal_data.restype = gpointer
-        libgtk3.g_object_steal_data.argtypes = [c_void_p, c_char_p]
+        libgtk3.g_object_steal_data.argtypes = [_GObject,c_char_p]
         
-        return libgtk3.g_object_steal_data(self._object,  key,)
+        return libgtk3.g_object_steal_data( self._object,key )
 
-    def run_dispose(self, ):
+    def run_dispose(  self, ):
 
-        libgtk3.g_object_run_dispose.argtypes = [c_void_p]
+        libgtk3.g_object_run_dispose.argtypes = [_GObject]
         
-        libgtk3.g_object_run_dispose(self._object, )
+        libgtk3.g_object_run_dispose( self._object )
 
-    def set_qdata(self,  quark, data,):
+    def set_qdata(  self, quark, data, ):
 
-        libgtk3.g_object_set_qdata.argtypes = [c_void_p, GQuark,gpointer]
+        libgtk3.g_object_set_qdata.argtypes = [_GObject,GQuark,gpointer]
         
-        libgtk3.g_object_set_qdata(self._object,  quark, data,)
+        libgtk3.g_object_set_qdata( self._object,quark,data )
 
-    def g_clear_object(self, ):
+    def g_clear_object(  self, ):
 
-        libgtk3.g_clear_object.argtypes = [c_void_p]
+        libgtk3.g_clear_object.argtypes = [_GObject]
         
-        libgtk3.g_clear_object(self._object, )
+        libgtk3.g_clear_object( self._object )
 
-    def set_data(self,  key, data,):
+    def set_data(  self, key, data, ):
 
-        libgtk3.g_object_set_data.argtypes = [c_void_p, c_char_p,gpointer]
+        libgtk3.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
         
-        libgtk3.g_object_set_data(self._object,  key, data,)
+        libgtk3.g_object_set_data( self._object,key,data )
 
-    def steal_qdata(self,  quark,):
+    def steal_qdata(  self, quark, ):
 
         libgtk3.g_object_steal_qdata.restype = gpointer
-        libgtk3.g_object_steal_qdata.argtypes = [c_void_p, GQuark]
+        libgtk3.g_object_steal_qdata.argtypes = [_GObject,GQuark]
         
-        return libgtk3.g_object_steal_qdata(self._object,  quark,)
+        return libgtk3.g_object_steal_qdata( self._object,quark )
 
-    def notify(self,  property_name,):
+    def notify(  self, property_name, ):
 
-        libgtk3.g_object_notify.argtypes = [c_void_p, c_char_p]
+        libgtk3.g_object_notify.argtypes = [_GObject,c_char_p]
         
-        libgtk3.g_object_notify(self._object,  property_name,)
+        libgtk3.g_object_notify( self._object,property_name )
 
-    def class_install_properties(self,  oclass, n_pspecs, pspecs,):
-        if oclass : oclass = oclass._object
-        else : oclass = c_void_p()
-        if pspecs : pspecs = pspecs._object
-        else : pspecs = c_void_p()
+    def class_install_properties(  self, oclass, n_pspecs, pspecs, ):
+        if oclass: oclass = oclass._object
+        else: oclass = POINTER(c_int)()
+        if pspecs: pspecs = pspecs._object
+        else: pspecs = POINTER(c_int)()
 
-        libgtk3.g_object_class_install_properties.argtypes = [c_void_p, _GObjectClass,guint,_GParamSpec]
+        libgtk3.g_object_class_install_properties.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
         
-        libgtk3.g_object_class_install_properties(self._object,  oclass, n_pspecs, pspecs,)
+        libgtk3.g_object_class_install_properties( self._object,oclass,n_pspecs,pspecs )
 
-    def replace_data(self,  key, oldval, newval, destroy, old_destroy,):
-        if old_destroy : old_destroy = old_destroy._object
-        else : old_destroy = c_void_p()
+    def replace_data(  self, key, oldval, newval, destroy, old_destroy, ):
 
         libgtk3.g_object_replace_data.restype = gboolean
-        libgtk3.g_object_replace_data.argtypes = [c_void_p, c_char_p,gpointer,gpointer,GDestroyNotify,POITNER(GDestroyNotify)]
+        libgtk3.g_object_replace_data.argtypes = [_GObject,c_char_p,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
         
-        return libgtk3.g_object_replace_data(self._object,  key, oldval, newval, destroy, old_destroy,)
+        return libgtk3.g_object_replace_data( self._object,key,oldval,newval,destroy,old_destroy )
 
-    def interface_install_property(self,  g_iface, pspec,):
-        if pspec : pspec = pspec._object
-        else : pspec = c_void_p()
+    def interface_install_property(  self, g_iface, pspec, ):
+        if pspec: pspec = pspec._object
+        else: pspec = POINTER(c_int)()
 
-        libgtk3.g_object_interface_install_property.argtypes = [c_void_p, gpointer,_GParamSpec]
+        libgtk3.g_object_interface_install_property.argtypes = [_GObject,gpointer,_GParamSpec]
         
-        libgtk3.g_object_interface_install_property(self._object,  g_iface, pspec,)
+        libgtk3.g_object_interface_install_property( self._object,g_iface,pspec )
 
-    def get_qdata(self,  quark,):
+    def get_qdata(  self, quark, ):
 
         libgtk3.g_object_get_qdata.restype = gpointer
-        libgtk3.g_object_get_qdata.argtypes = [c_void_p, GQuark]
+        libgtk3.g_object_get_qdata.argtypes = [_GObject,GQuark]
         
-        return libgtk3.g_object_get_qdata(self._object,  quark,)
+        return libgtk3.g_object_get_qdata( self._object,quark )
 
-    def set_property(self,  property_name, value,):
-        if value : value = value._object
-        else : value = c_void_p()
+    def set_property(  self, property_name, value, ):
+        if value: value = value._object
+        else: value = POINTER(c_int)()
 
-        libgtk3.g_object_set_property.argtypes = [c_void_p, c_char_p,_GValue]
+        libgtk3.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
         
-        libgtk3.g_object_set_property(self._object,  property_name, value,)
+        libgtk3.g_object_set_property( self._object,property_name,value )
 
-    def set(self,  object, first_property_name,*args ):
+    def set(  self, object, first_property_name,*args  ):
 
 
         def callit( object, first_property_name, *args ):
                 libgtk3.g_object_set.restype = None
-                libgtk3.g_object_set.argtypes = [c_void_p, c_void_p, gpointer, c_char_p]
+                libgtk3.g_object_set.argtypes = [ POINTER(c_int), gpointer, c_char_p]
                 for arg in args:
                      libgtk3.g_object_set.argtypes.append(args[1])
-                return libgtk3.g_object_set(self._object, object, first_property_name, *args)
+                return libgtk3.g_object_set( object, first_property_name, *args)
     
-        return callit( object, first_property_name,*args )
+        return callit( self._object, object, first_property_name,*args )
 
-    def disconnect(self,  object, signal_spec,*args ):
+    def disconnect(  self, object, signal_spec,*args  ):
 
 
         def callit( object, signal_spec, *args ):
                 libgtk3.g_object_disconnect.restype = None
-                libgtk3.g_object_disconnect.argtypes = [c_void_p, c_void_p, gpointer, c_char_p]
+                libgtk3.g_object_disconnect.argtypes = [ POINTER(c_int), gpointer, c_char_p]
                 for arg in args:
                      libgtk3.g_object_disconnect.argtypes.append(args[1])
-                return libgtk3.g_object_disconnect(self._object, object, signal_spec, *args)
+                return libgtk3.g_object_disconnect( object, signal_spec, *args)
     
-        return callit( object, signal_spec,*args )
+        return callit( self._object, object, signal_spec,*args )
 
-    def weak_ref(self,  notify, data,):
+    def weak_ref(  self, notify, data, ):
 
-        libgtk3.g_object_weak_ref.argtypes = [c_void_p, GWeakNotify,gpointer]
+        libgtk3.g_object_weak_ref.argtypes = [_GObject,GWeakNotify,gpointer]
         
-        libgtk3.g_object_weak_ref(self._object,  notify, data,)
+        libgtk3.g_object_weak_ref( self._object,notify,data )
 
-    def add_weak_pointer(self,  weak_pointer_location,):
-        if weak_pointer_location : weak_pointer_location = weak_pointer_location._object
-        else : weak_pointer_location = c_void_p()
+    def add_weak_pointer(  self, weak_pointer_location, ):
 
-        libgtk3.g_object_add_weak_pointer.argtypes = [c_void_p, POITNER(gpointer)]
+        libgtk3.g_object_add_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
         
-        libgtk3.g_object_add_weak_pointer(self._object,  weak_pointer_location,)
+        libgtk3.g_object_add_weak_pointer( self._object,weak_pointer_location )
 
-    def remove_weak_pointer(self,  weak_pointer_location,):
-        if weak_pointer_location : weak_pointer_location = weak_pointer_location._object
-        else : weak_pointer_location = c_void_p()
+    def remove_weak_pointer(  self, weak_pointer_location, ):
 
-        libgtk3.g_object_remove_weak_pointer.argtypes = [c_void_p, POITNER(gpointer)]
+        libgtk3.g_object_remove_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
         
-        libgtk3.g_object_remove_weak_pointer(self._object,  weak_pointer_location,)
+        libgtk3.g_object_remove_weak_pointer( self._object,weak_pointer_location )
 
-    def class_install_property(self,  oclass, property_id, pspec,):
-        if oclass : oclass = oclass._object
-        else : oclass = c_void_p()
-        if pspec : pspec = pspec._object
-        else : pspec = c_void_p()
+    def class_install_property(  self, oclass, property_id, pspec, ):
+        if oclass: oclass = oclass._object
+        else: oclass = POINTER(c_int)()
+        if pspec: pspec = pspec._object
+        else: pspec = POINTER(c_int)()
 
-        libgtk3.g_object_class_install_property.argtypes = [c_void_p, _GObjectClass,guint,_GParamSpec]
+        libgtk3.g_object_class_install_property.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
         
-        libgtk3.g_object_class_install_property(self._object,  oclass, property_id, pspec,)
+        libgtk3.g_object_class_install_property( self._object,oclass,property_id,pspec )
 
-    def freeze_notify(self, ):
+    def freeze_notify(  self, ):
 
-        libgtk3.g_object_freeze_notify.argtypes = [c_void_p]
+        libgtk3.g_object_freeze_notify.argtypes = [_GObject]
         
-        libgtk3.g_object_freeze_notify(self._object, )
+        libgtk3.g_object_freeze_notify( self._object )
 
-    def notify_by_pspec(self,  pspec,):
-        if pspec : pspec = pspec._object
-        else : pspec = c_void_p()
+    def notify_by_pspec(  self, pspec, ):
+        if pspec: pspec = pspec._object
+        else: pspec = POINTER(c_int)()
 
-        libgtk3.g_object_notify_by_pspec.argtypes = [c_void_p, _GParamSpec]
+        libgtk3.g_object_notify_by_pspec.argtypes = [_GObject,_GParamSpec]
         
-        libgtk3.g_object_notify_by_pspec(self._object,  pspec,)
+        libgtk3.g_object_notify_by_pspec( self._object,pspec )
 
-    def remove_toggle_ref(self,  notify, data,):
+    def remove_toggle_ref(  self, notify, data, ):
 
-        libgtk3.g_object_remove_toggle_ref.argtypes = [c_void_p, GToggleNotify,gpointer]
+        libgtk3.g_object_remove_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
         
-        libgtk3.g_object_remove_toggle_ref(self._object,  notify, data,)
+        libgtk3.g_object_remove_toggle_ref( self._object,notify,data )
 
-    def thaw_notify(self, ):
+    def thaw_notify(  self, ):
 
-        libgtk3.g_object_thaw_notify.argtypes = [c_void_p]
+        libgtk3.g_object_thaw_notify.argtypes = [_GObject]
         
-        libgtk3.g_object_thaw_notify(self._object, )
+        libgtk3.g_object_thaw_notify( self._object )
 
-    def dup_qdata(self,  quark, dup_func, user_data,):
+    def dup_qdata(  self, quark, dup_func, user_data, ):
 
         libgtk3.g_object_dup_qdata.restype = gpointer
-        libgtk3.g_object_dup_qdata.argtypes = [c_void_p, GQuark,GDuplicateFunc,gpointer]
+        libgtk3.g_object_dup_qdata.argtypes = [_GObject,GQuark,GDuplicateFunc,gpointer]
         
-        return libgtk3.g_object_dup_qdata(self._object,  quark, dup_func, user_data,)
+        return libgtk3.g_object_dup_qdata( self._object,quark,dup_func,user_data )
 
-    def unref(self,  object,):
+    def unref(  self, object, ):
 
-        libgtk3.g_object_unref.argtypes = [c_void_p, gpointer]
+        libgtk3.g_object_unref.argtypes = [_GObject,gpointer]
         
-        libgtk3.g_object_unref(self._object,  object,)
+        libgtk3.g_object_unref( self._object,object )
 
-    def get(self,  object, first_property_name,*args ):
+    def get(  self, object, first_property_name,*args  ):
 
 
         def callit( object, first_property_name, *args ):
                 libgtk3.g_object_get.restype = None
-                libgtk3.g_object_get.argtypes = [c_void_p, c_void_p, gpointer, c_char_p]
+                libgtk3.g_object_get.argtypes = [ POINTER(c_int), gpointer, c_char_p]
                 for arg in args:
                      libgtk3.g_object_get.argtypes.append(args[1])
-                return libgtk3.g_object_get(self._object, object, first_property_name, *args)
+                return libgtk3.g_object_get( object, first_property_name, *args)
     
-        return callit( object, first_property_name,*args )
+        return callit( self._object, object, first_property_name,*args )
 
-    def g_weak_ref_set(self,  weak_ref, object,):
-        if weak_ref : weak_ref = weak_ref._object
-        else : weak_ref = c_void_p()
+    def g_weak_ref_set(  self, weak_ref, object, ):
+        if weak_ref: weak_ref = weak_ref._object
+        else: weak_ref = POINTER(c_int)()
 
-        libgtk3.g_weak_ref_set.argtypes = [c_void_p, _GWeakRef,gpointer]
+        libgtk3.g_weak_ref_set.argtypes = [_GObject,_GWeakRef,gpointer]
         
-        libgtk3.g_weak_ref_set(self._object,  weak_ref, object,)
+        libgtk3.g_weak_ref_set( self._object,weak_ref,object )
 
-    def dup_data(self,  key, dup_func, user_data,):
+    def dup_data(  self, key, dup_func, user_data, ):
 
         libgtk3.g_object_dup_data.restype = gpointer
-        libgtk3.g_object_dup_data.argtypes = [c_void_p, c_char_p,GDuplicateFunc,gpointer]
+        libgtk3.g_object_dup_data.argtypes = [_GObject,c_char_p,GDuplicateFunc,gpointer]
         
-        return libgtk3.g_object_dup_data(self._object,  key, dup_func, user_data,)
+        return libgtk3.g_object_dup_data( self._object,key,dup_func,user_data )
 
-    def replace_qdata(self,  quark, oldval, newval, destroy, old_destroy,):
-        if old_destroy : old_destroy = old_destroy._object
-        else : old_destroy = c_void_p()
+    def replace_qdata(  self, quark, oldval, newval, destroy, old_destroy, ):
 
         libgtk3.g_object_replace_qdata.restype = gboolean
-        libgtk3.g_object_replace_qdata.argtypes = [c_void_p, GQuark,gpointer,gpointer,GDestroyNotify,POITNER(GDestroyNotify)]
+        libgtk3.g_object_replace_qdata.argtypes = [_GObject,GQuark,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
         
-        return libgtk3.g_object_replace_qdata(self._object,  quark, oldval, newval, destroy, old_destroy,)
+        return libgtk3.g_object_replace_qdata( self._object,quark,oldval,newval,destroy,old_destroy )
 
-    def get_data(self,  key,):
+    def get_data(  self, key, ):
 
         libgtk3.g_object_get_data.restype = gpointer
-        libgtk3.g_object_get_data.argtypes = [c_void_p, c_char_p]
+        libgtk3.g_object_get_data.argtypes = [_GObject,c_char_p]
         
-        return libgtk3.g_object_get_data(self._object,  key,)
+        return libgtk3.g_object_get_data( self._object,key )
 
-    def get_property(self,  property_name, value,):
-        if value : value = value._object
-        else : value = c_void_p()
+    def get_property(  self, property_name, value, ):
+        if value: value = value._object
+        else: value = POINTER(c_int)()
 
-        libgtk3.g_object_get_property.argtypes = [c_void_p, c_char_p,_GValue]
+        libgtk3.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
         
-        libgtk3.g_object_get_property(self._object,  property_name, value,)
+        libgtk3.g_object_get_property( self._object,property_name,value )
 
-    def watch_closure(self,  closure,):
-        if closure : closure = closure._object
-        else : closure = c_void_p()
+    def watch_closure(  self, closure, ):
+        if closure: closure = closure._object
+        else: closure = POINTER(c_int)()
 
-        libgtk3.g_object_watch_closure.argtypes = [c_void_p, _GClosure]
+        libgtk3.g_object_watch_closure.argtypes = [_GObject,_GClosure]
         
-        libgtk3.g_object_watch_closure(self._object,  closure,)
+        libgtk3.g_object_watch_closure( self._object,closure )
 
-    def g_weak_ref_clear(self,  weak_ref,):
-        if weak_ref : weak_ref = weak_ref._object
-        else : weak_ref = c_void_p()
+    def g_weak_ref_clear(  self, weak_ref, ):
+        if weak_ref: weak_ref = weak_ref._object
+        else: weak_ref = POINTER(c_int)()
 
-        libgtk3.g_weak_ref_clear.argtypes = [c_void_p, _GWeakRef]
+        libgtk3.g_weak_ref_clear.argtypes = [_GObject,_GWeakRef]
         
-        libgtk3.g_weak_ref_clear(self._object,  weak_ref,)
+        libgtk3.g_weak_ref_clear( self._object,weak_ref )
 
-    def set_data_full(self,  key, data, destroy,):
+    def set_data_full(  self, key, data, destroy, ):
 
-        libgtk3.g_object_set_data_full.argtypes = [c_void_p, c_char_p,gpointer,GDestroyNotify]
+        libgtk3.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
         
-        libgtk3.g_object_set_data_full(self._object,  key, data, destroy,)
+        libgtk3.g_object_set_data_full( self._object,key,data,destroy )
 
-    def force_floating(self, ):
+    def g_weak_ref_init(  self, weak_ref, object, ):
+        if weak_ref: weak_ref = weak_ref._object
+        else: weak_ref = POINTER(c_int)()
 
-        libgtk3.g_object_force_floating.argtypes = [c_void_p]
+        libgtk3.g_weak_ref_init.argtypes = [_GObject,_GWeakRef,gpointer]
         
-        libgtk3.g_object_force_floating(self._object, )
+        libgtk3.g_weak_ref_init( self._object,weak_ref,object )
 
-    def class_override_property(self,  oclass, property_id, name,):
-        if oclass : oclass = oclass._object
-        else : oclass = c_void_p()
+    def force_floating(  self, ):
 
-        libgtk3.g_object_class_override_property.argtypes = [c_void_p, _GObjectClass,guint,c_char_p]
+        libgtk3.g_object_force_floating.argtypes = [_GObject]
         
-        libgtk3.g_object_class_override_property(self._object,  oclass, property_id, name,)
+        libgtk3.g_object_force_floating( self._object )
+
+    def class_override_property(  self, oclass, property_id, name, ):
+        if oclass: oclass = oclass._object
+        else: oclass = POINTER(c_int)()
+
+        libgtk3.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
+        
+        libgtk3.g_object_class_override_property( self._object,oclass,property_id,name )
 
     @staticmethod
     def is_floating( object,):
         libgtk3.g_object_is_floating.restype = gboolean
         libgtk3.g_object_is_floating.argtypes = [gpointer]
-        return libgtk3.g_object_is_floating(object, )
+        
+        return     libgtk3.g_object_is_floating(object, )
 
     @staticmethod
     def class_find_property( oclass, property_name,):
-        if oclass : oclass = oclass._object
-        else : oclass = c_void_p()
+        if oclass: oclass = oclass._object
+        else: oclass = POINTER(c_int)()
         libgtk3.g_object_class_find_property.restype = _GParamSpec
         libgtk3.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
-        return libgtk3.g_object_class_find_property(oclass, property_name, )
-
+        from pywebkit3.gobject import GParamSpec
+        return GParamSpec( obj=    libgtk3.g_object_class_find_property(oclass, property_name, )
+ or POINTER(c_int)())
     @staticmethod
     def interface_list_properties( g_iface, n_properties_p,):
-        if n_properties_p : n_properties_p = n_properties_p._object
-        else : n_properties_p = c_void_p()
         libgtk3.g_object_interface_list_properties.restype = _GParamSpec
-        libgtk3.g_object_interface_list_properties.argtypes = [gpointer,POITNER(guint)]
-        return libgtk3.g_object_interface_list_properties(g_iface, n_properties_p, )
-
+        libgtk3.g_object_interface_list_properties.argtypes = [gpointer,POINTER(guint)]
+        from pywebkit3.gobject import GParamSpec
+        return GParamSpec( obj=    libgtk3.g_object_interface_list_properties(g_iface, n_properties_p, )
+ or POINTER(c_int)())
     @staticmethod
     def newv( object_type, n_parameters, parameters,):
-        if parameters : parameters = parameters._object
-        else : parameters = c_void_p()
+        if parameters: parameters = parameters._object
+        else: parameters = POINTER(c_int)()
         libgtk3.g_object_newv.restype = gpointer
         libgtk3.g_object_newv.argtypes = [GType,guint,_GParameter]
-        return libgtk3.g_object_newv(object_type, n_parameters, parameters, )
-
-    @staticmethod
-    def pspec():
-        libgtk3.pspec.restype = property_id,
-        return libgtk3.pspec()
+        
+        return     libgtk3.g_object_newv(object_type, n_parameters, parameters, )
 
     @staticmethod
     def class_list_properties( oclass, n_properties,):
-        if oclass : oclass = oclass._object
-        else : oclass = c_void_p()
-        if n_properties : n_properties = n_properties._object
-        else : n_properties = c_void_p()
+        if oclass: oclass = oclass._object
+        else: oclass = POINTER(c_int)()
         libgtk3.g_object_class_list_properties.restype = _GParamSpec
-        libgtk3.g_object_class_list_properties.argtypes = [_GObjectClass,POITNER(guint)]
-        return libgtk3.g_object_class_list_properties(oclass, n_properties, )
-
+        libgtk3.g_object_class_list_properties.argtypes = [_GObjectClass,POINTER(guint)]
+        from pywebkit3.gobject import GParamSpec
+        return GParamSpec( obj=    libgtk3.g_object_class_list_properties(oclass, n_properties, )
+ or POINTER(c_int)())
     @staticmethod
     def ref( object,):
         libgtk3.g_object_ref.restype = gpointer
         libgtk3.g_object_ref.argtypes = [gpointer]
-        return libgtk3.g_object_ref(object, )
+        
+        return     libgtk3.g_object_ref(object, )
 
     @staticmethod
     def interface_find_property( g_iface, property_name,):
         libgtk3.g_object_interface_find_property.restype = _GParamSpec
         libgtk3.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
-        return libgtk3.g_object_interface_find_property(g_iface, property_name, )
-
+        from pywebkit3.gobject import GParamSpec
+        return GParamSpec( obj=    libgtk3.g_object_interface_find_property(g_iface, property_name, )
+ or POINTER(c_int)())
     @staticmethod
     def g_weak_ref_get( weak_ref,):
-        if weak_ref : weak_ref = weak_ref._object
-        else : weak_ref = c_void_p()
+        if weak_ref: weak_ref = weak_ref._object
+        else: weak_ref = POINTER(c_int)()
         libgtk3.g_weak_ref_get.restype = gpointer
         libgtk3.g_weak_ref_get.argtypes = [_GWeakRef]
-        return libgtk3.g_weak_ref_get(weak_ref, )
+        
+        return     libgtk3.g_weak_ref_get(weak_ref, )
 
     @staticmethod
     def ref_sink( object,):
         libgtk3.g_object_ref_sink.restype = gpointer
         libgtk3.g_object_ref_sink.argtypes = [gpointer]
-        return libgtk3.g_object_ref_sink(object, )
+        
+        return     libgtk3.g_object_ref_sink(object, )
 
     @staticmethod
     def connect( object, signal_spec,*args ):
         libgtk3.g_object_connect.restype = gpointer
         libgtk3.g_object_connect.argtypes = [gpointer,c_char_p,]
-        return libgtk3.g_object_connect(object, signal_spec, *args)
+        
+        return     libgtk3.g_object_connect(object, signal_spec, *args)
 

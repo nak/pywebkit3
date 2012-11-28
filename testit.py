@@ -18,16 +18,15 @@ web.show_all()
 frame = web.get_main_frame()
 context =frame.get_global_context()
 
-#from javascript import JavascriptClass
-#class Test( JavascriptClass ):
-#
-#    def __init__(self, arg1, arg2, arg3):
-#        JavascriptClass.__init__(self)
-#        print "%s %s %s"%(arg1, arg2, arg3)
+from javascript import JavascriptClass
+class Test( JavascriptClass ):
+
+    def __init__(self, arg1, arg2, arg3):
+        JavascriptClass.__init__(self)
+        print "%s %s %s"%(arg1, arg2, arg3)
 
 
-#Test.create( context, "testinstance", 1, "HI", 2.34)
-#print "XXXXXXXXXXXXX"
+Test.create( context, "testinstance", 1, "HI", 2.34)
 
 
 gtk3.main()

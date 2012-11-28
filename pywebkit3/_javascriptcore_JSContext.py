@@ -50,13 +50,230 @@ from javascriptcore_types import *
     
     
 """Derived Pointer Types"""
-__JSContextGroup = c_void_p
-_JSObject = c_void_p
-_JSContextGroup = c_void_p
-_JSGlobalContext = c_void_p
-__JSGlobalContext = c_void_p
-__JSClass = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__PangoFont = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+_PangoFontsetSimple = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__PangoFontFace = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+WebKitLoadStatus = c_int
 
 import _javascriptcore_JSObject
 class JSContext( _javascriptcore_JSObject.JSObject):
@@ -64,67 +281,71 @@ class JSContext( _javascriptcore_JSObject.JSObject):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def JSGlobalContextRelease(self,  ctx,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
+    def JSGlobalContextRelease(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
 
-        libjavascriptcore.JSGlobalContextRelease.argtypes = [c_void_p, _JSGlobalContext]
+        libjavascriptcore.JSGlobalContextRelease.argtypes = [_JSContext,_JSGlobalContext]
         
-        libjavascriptcore.JSGlobalContextRelease(self._object,  ctx,)
+        libjavascriptcore.JSGlobalContextRelease( self._object,ctx )
 
-    def JSContextGroupRelease(self,  group,):
-        if group : group = group._object
-        else : group = c_void_p()
+    def GroupRelease(  self, group, ):
+        if group: group = group._object
+        else: group = POINTER(c_int)()
 
-        libjavascriptcore.JSContextGroupRelease.argtypes = [c_void_p, _JSContextGroup]
+        libjavascriptcore.JSContextGroupRelease.argtypes = [_JSContext,_JSContextGroup]
         
-        libjavascriptcore.JSContextGroupRelease(self._object,  group,)
+        libjavascriptcore.JSContextGroupRelease( self._object,group )
 
-    def JSContextGetGroup(self, ):
+    def GetGroup(  self, ):
 
         libjavascriptcore.JSContextGetGroup.restype = _JSContextGroup
-        libjavascriptcore.JSContextGetGroup.argtypes = [c_void_p]
+        libjavascriptcore.JSContextGetGroup.argtypes = [_JSContext]
         from pywebkit3.javascriptcore import JSContextGroup
-        return JSContextGroup( obj=libjavascriptcore.JSContextGetGroup(self._object, )  or c_void_p())
+        return JSContextGroup( obj=libjavascriptcore.JSContextGetGroup( self._object )  or POINTER(c_int)())
 
-    def JSContextGetGlobalObject(self, ):
+    def GetGlobalObject(  self, ):
 
         libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
-        libjavascriptcore.JSContextGetGlobalObject.argtypes = [c_void_p]
+        libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
         from pywebkit3.javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSContextGetGlobalObject(self._object, )  or c_void_p())
+        return JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object )  or POINTER(c_int)())
 
     @staticmethod
     def JSGlobalContextCreate( globalObjectClass,):
-        if globalObjectClass : globalObjectClass = globalObjectClass._object
-        else : globalObjectClass = c_void_p()
+        if globalObjectClass: globalObjectClass = globalObjectClass._object
+        else: globalObjectClass = POINTER(c_int)()
         libjavascriptcore.JSGlobalContextCreate.restype = _JSGlobalContext
         libjavascriptcore.JSGlobalContextCreate.argtypes = [_JSClass]
-        return libjavascriptcore.JSGlobalContextCreate(globalObjectClass, )
-
+        from pywebkit3.javascriptcore import JSGlobalContext
+        return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextCreate(globalObjectClass, )
+  or POINTER(c_int)())
     @staticmethod
     def JSGlobalContextCreateInGroup( group, globalObjectClass,):
-        if group : group = group._object
-        else : group = c_void_p()
-        if globalObjectClass : globalObjectClass = globalObjectClass._object
-        else : globalObjectClass = c_void_p()
+        if group: group = group._object
+        else: group = POINTER(c_int)()
+        if globalObjectClass: globalObjectClass = globalObjectClass._object
+        else: globalObjectClass = POINTER(c_int)()
         libjavascriptcore.JSGlobalContextCreateInGroup.restype = _JSGlobalContext
         libjavascriptcore.JSGlobalContextCreateInGroup.argtypes = [_JSContextGroup,_JSClass]
-        return libjavascriptcore.JSGlobalContextCreateInGroup(group, globalObjectClass, )
-
+        from pywebkit3.javascriptcore import JSGlobalContext
+        return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextCreateInGroup(group, globalObjectClass, )
+  or POINTER(c_int)())
     @staticmethod
-    def JSContextGroupRetain( group,):
-        if group : group = group._object
-        else : group = c_void_p()
+    def GroupRetain( group,):
+        if group: group = group._object
+        else: group = POINTER(c_int)()
         libjavascriptcore.JSContextGroupRetain.restype = _JSContextGroup
         libjavascriptcore.JSContextGroupRetain.argtypes = [_JSContextGroup]
-        return libjavascriptcore.JSContextGroupRetain(group, )
-
+        from pywebkit3.javascriptcore import JSContextGroup
+        return JSContextGroup( obj=    libjavascriptcore.JSContextGroupRetain(group, )
+  or POINTER(c_int)())
     @staticmethod
     def JSGlobalContextRetain( ctx,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
         libjavascriptcore.JSGlobalContextRetain.restype = _JSGlobalContext
         libjavascriptcore.JSGlobalContextRetain.argtypes = [_JSGlobalContext]
-        return libjavascriptcore.JSGlobalContextRetain(ctx, )
-
+        from pywebkit3.javascriptcore import JSGlobalContext
+        return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextRetain(ctx, )
+  or POINTER(c_int)())

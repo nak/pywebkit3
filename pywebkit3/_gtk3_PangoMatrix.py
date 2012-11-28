@@ -50,10 +50,238 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__PangoMatrix = c_void_p
-__PangoRectangle = c_void_p
-_PangoMatrix = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+_GtkDialog = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__PangoFont = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GValue = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+_PangoFontsetSimple = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+_PangoLayoutRun = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__PangoFontFace = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+WebKitLoadStatus = c_int
+GtkDialogFlags = c_int
+GtkResponseType = c_int
+WebKitEditingBehavior = c_int
 
 import _gobject_GBoxed
 class PangoMatrix( _gobject_GBoxed.GBoxed):
@@ -61,85 +289,77 @@ class PangoMatrix( _gobject_GBoxed.GBoxed):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def transform_pixel_rectangle(self,  rect,):
-        if rect : rect = rect._object
-        else : rect = c_void_p()
+    def transform_pixel_rectangle(  self, rect, ):
+        if rect: rect = rect._object
+        else: rect = POINTER(c_int)()
 
-        libgtk3.pango_matrix_transform_pixel_rectangle.argtypes = [c_void_p, _PangoRectangle]
+        libgtk3.pango_matrix_transform_pixel_rectangle.argtypes = [_PangoMatrix,_PangoRectangle]
         
-        libgtk3.pango_matrix_transform_pixel_rectangle(self._object,  rect,)
+        libgtk3.pango_matrix_transform_pixel_rectangle( self._object,rect )
 
-    def rotate(self,  degrees,):
+    def rotate(  self, degrees, ):
 
-        libgtk3.pango_matrix_rotate.argtypes = [c_void_p, double]
+        libgtk3.pango_matrix_rotate.argtypes = [_PangoMatrix,double]
         
-        libgtk3.pango_matrix_rotate(self._object,  degrees,)
+        libgtk3.pango_matrix_rotate( self._object,degrees )
 
-    def transform_distance(self,  dx, dy,):
-        if dx : dx = dx._object
-        else : dx = c_void_p()
-        if dy : dy = dy._object
-        else : dy = c_void_p()
+    def transform_distance(  self, dx, dy, ):
 
-        libgtk3.pango_matrix_transform_distance.argtypes = [c_void_p, POITNER(double),POITNER(double)]
+        libgtk3.pango_matrix_transform_distance.argtypes = [_PangoMatrix,POINTER(double),POINTER(double)]
         
-        libgtk3.pango_matrix_transform_distance(self._object,  dx, dy,)
+        libgtk3.pango_matrix_transform_distance( self._object,dx,dy )
 
-    def translate(self,  tx, ty,):
+    def translate(  self, tx, ty, ):
 
-        libgtk3.pango_matrix_translate.argtypes = [c_void_p, gdouble,gdouble]
+        libgtk3.pango_matrix_translate.argtypes = [_PangoMatrix,gdouble,gdouble]
         
-        libgtk3.pango_matrix_translate(self._object,  tx, ty,)
+        libgtk3.pango_matrix_translate( self._object,tx,ty )
 
-    def transform_rectangle(self,  rect,):
-        if rect : rect = rect._object
-        else : rect = c_void_p()
+    def transform_rectangle(  self, rect, ):
+        if rect: rect = rect._object
+        else: rect = POINTER(c_int)()
 
-        libgtk3.pango_matrix_transform_rectangle.argtypes = [c_void_p, _PangoRectangle]
+        libgtk3.pango_matrix_transform_rectangle.argtypes = [_PangoMatrix,_PangoRectangle]
         
-        libgtk3.pango_matrix_transform_rectangle(self._object,  rect,)
+        libgtk3.pango_matrix_transform_rectangle( self._object,rect )
 
-    def transform_point(self,  x, y,):
-        if x : x = x._object
-        else : x = c_void_p()
-        if y : y = y._object
-        else : y = c_void_p()
+    def transform_point(  self, x, y, ):
 
-        libgtk3.pango_matrix_transform_point.argtypes = [c_void_p, POITNER(double),POITNER(double)]
+        libgtk3.pango_matrix_transform_point.argtypes = [_PangoMatrix,POINTER(double),POINTER(double)]
         
-        libgtk3.pango_matrix_transform_point(self._object,  x, y,)
+        libgtk3.pango_matrix_transform_point( self._object,x,y )
 
-    def scale(self,  scale_x, scale_y,):
+    def scale(  self, scale_x, scale_y, ):
 
-        libgtk3.pango_matrix_scale.argtypes = [c_void_p, double,double]
+        libgtk3.pango_matrix_scale.argtypes = [_PangoMatrix,double,double]
         
-        libgtk3.pango_matrix_scale(self._object,  scale_x, scale_y,)
+        libgtk3.pango_matrix_scale( self._object,scale_x,scale_y )
 
-    def copy(self, ):
+    def copy(  self, ):
 
         libgtk3.pango_matrix_copy.restype = _PangoMatrix
-        libgtk3.pango_matrix_copy.argtypes = [c_void_p]
+        libgtk3.pango_matrix_copy.argtypes = [_PangoMatrix]
         from pywebkit3.gtk3 import PangoMatrix
-        return PangoMatrix(None, obj=libgtk3.pango_matrix_copy(self._object, )  or c_void_p())
+        return PangoMatrix( obj=libgtk3.pango_matrix_copy( self._object )  or POINTER(c_int)())
 
-    def get_font_scale_factor(self, ):
+    def get_font_scale_factor(  self, ):
 
         libgtk3.pango_matrix_get_font_scale_factor.restype = double
-        libgtk3.pango_matrix_get_font_scale_factor.argtypes = [c_void_p]
+        libgtk3.pango_matrix_get_font_scale_factor.argtypes = [_PangoMatrix]
         
-        return libgtk3.pango_matrix_get_font_scale_factor(self._object, )
+        return libgtk3.pango_matrix_get_font_scale_factor( self._object )
 
-    def free(self, ):
+    def free(  self, ):
 
-        libgtk3.pango_matrix_free.argtypes = [c_void_p]
+        libgtk3.pango_matrix_free.argtypes = [_PangoMatrix]
         
-        libgtk3.pango_matrix_free(self._object, )
+        libgtk3.pango_matrix_free( self._object )
 
-    def concat(self,  new_matrix,):
-        if new_matrix : new_matrix = new_matrix._object
-        else : new_matrix = c_void_p()
+    def concat(  self, new_matrix, ):
+        if new_matrix: new_matrix = new_matrix._object
+        else: new_matrix = POINTER(c_int)()
 
-        libgtk3.pango_matrix_concat.argtypes = [c_void_p, _PangoMatrix]
+        libgtk3.pango_matrix_concat.argtypes = [_PangoMatrix,_PangoMatrix]
         
-        libgtk3.pango_matrix_concat(self._object,  new_matrix,)
+        libgtk3.pango_matrix_concat( self._object,new_matrix )
 

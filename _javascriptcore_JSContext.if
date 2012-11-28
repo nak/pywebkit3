@@ -1,0 +1,21 @@
+struct JSContext;
+inherit javascriptcore.JSObject;
+
+JSContextGroup * JSContextGroupCreate();
+
+JSContextGroup * JSContextGroupRetain(JSContextGroup * group);
+
+void JSContextGroupRelease(JSContextGroup * group);
+
+JSGlobalContext * JSGlobalContextCreate(JSClass * globalObjectClass);
+
+JSGlobalContext * JSGlobalContextCreateInGroup(JSContextGroup * group, JSClass * globalObjectClass);
+
+JSGlobalContext * JSGlobalContextRetain(JSGlobalContext * ctx);
+
+void JSGlobalContextRelease(JSGlobalContext * ctx);
+
+JSObject * JSContextGetGlobalObject(JSContext * ctx);
+
+JSContextGroup * JSContextGetGroup(JSContext * ctx);
+

@@ -50,13 +50,165 @@ from gobject_types import *
     
     
 """Derived Pointer Types"""
-_gchar = c_void_p
-__GCancellable = c_void_p
-__GActionGroup = c_void_p
-_GApplication = c_void_p
-__GFile = c_void_p
-__GError = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
 GApplicationFlags = c_int
 
 import _gobject_GObject
@@ -65,137 +217,139 @@ class GApplication( _gobject_GObject.GObject):
     def __init__( self, flags,  obj = None):
         if obj: self._object = obj
         else:
-            libgobject.g_application_new.restype = c_void_p
-
-        libgobject.g_application_new.argtypes = [GApplicationFlags]
-        self._object = libgobject.g_application_new(flags, )
+            libgobject.g_application_new.restype = POINTER(c_int)
+            
+            libgobject.g_application_new.argtypes = [GApplicationFlags]
+            self._object = libgobject.g_application_new(flags, )
 
     """Methods"""
-    def activate(self, ):
+    def activate(  self, ):
 
-        libgobject.g_application_activate.argtypes = [c_void_p]
+        libgobject.g_application_activate.argtypes = [_GApplication]
         
-        libgobject.g_application_activate(self._object, )
+        libgobject.g_application_activate( self._object )
 
-    def hold(self, ):
+    def hold(  self, ):
 
-        libgobject.g_application_hold.argtypes = [c_void_p]
+        libgobject.g_application_hold.argtypes = [_GApplication]
         
-        libgobject.g_application_hold(self._object, )
+        libgobject.g_application_hold( self._object )
 
-    def get_application_id(self, ):
+    def get_application_id(  self, ):
 
-        libgobject.g_application_get_application_id.restype = _gchar
-        libgobject.g_application_get_application_id.argtypes = [c_void_p]
+        libgobject.g_application_get_application_id.restype = c_char_p
+        libgobject.g_application_get_application_id.argtypes = [_GApplication]
         
-        return libgobject.g_application_get_application_id(self._object, )
+        return libgobject.g_application_get_application_id( self._object )
 
-    def set_default(self, ):
+    def set_default(  self, ):
 
-        libgobject.g_application_set_default.argtypes = [c_void_p]
+        libgobject.g_application_set_default.argtypes = [_GApplication]
         
-        libgobject.g_application_set_default(self._object, )
+        libgobject.g_application_set_default( self._object )
 
-    def get_flags(self, ):
+    def get_flags(  self, ):
 
         libgobject.g_application_get_flags.restype = GApplicationFlags
-        libgobject.g_application_get_flags.argtypes = [c_void_p]
+        libgobject.g_application_get_flags.argtypes = [_GApplication]
         
-        return libgobject.g_application_get_flags(self._object, )
+        return libgobject.g_application_get_flags( self._object )
 
-    def register(self,  cancellable, error,):
-        if cancellable : cancellable = cancellable._object
-        else : cancellable = c_void_p()
-        if error : error = error._object
-        else : error = c_void_p()
+    def register(  self, cancellable, error, ):
+        if cancellable: cancellable = cancellable._object
+        else: cancellable = POINTER(c_int)()
+        if error: error = error._object
+        else: error = POINTER(c_int)()
 
         libgobject.g_application_register.restype = gboolean
-        libgobject.g_application_register.argtypes = [c_void_p, _GCancellable,_GError]
+        libgobject.g_application_register.argtypes = [_GApplication,_GCancellable,_GError]
         
-        return libgobject.g_application_register(self._object,  cancellable, error,)
+        return libgobject.g_application_register( self._object,cancellable,error )
 
-    def set_application_id(self,  application_id,):
+    def set_application_id(  self, application_id, ):
 
-        libgobject.g_application_set_application_id.argtypes = [c_void_p, c_char_p]
+        libgobject.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
         
-        libgobject.g_application_set_application_id(self._object,  application_id,)
+        libgobject.g_application_set_application_id( self._object,application_id )
 
-    def release(self, ):
+    def release(  self, ):
 
-        libgobject.g_application_release.argtypes = [c_void_p]
+        libgobject.g_application_release.argtypes = [_GApplication]
         
-        libgobject.g_application_release(self._object, )
+        libgobject.g_application_release( self._object )
 
-    def set_action_group(self,  action_group,):
-        if action_group : action_group = action_group._object
-        else : action_group = c_void_p()
+    def set_action_group(  self, action_group, ):
+        if action_group: action_group = action_group._object
+        else: action_group = POINTER(c_int)()
 
-        libgobject.g_application_set_action_group.argtypes = [c_void_p, _GActionGroup]
+        libgobject.g_application_set_action_group.argtypes = [_GApplication,_GActionGroup]
         
-        libgobject.g_application_set_action_group(self._object,  action_group,)
+        libgobject.g_application_set_action_group( self._object,action_group )
 
-    def get_is_remote(self, ):
+    def get_is_remote(  self, ):
 
         libgobject.g_application_get_is_remote.restype = gboolean
-        libgobject.g_application_get_is_remote.argtypes = [c_void_p]
+        libgobject.g_application_get_is_remote.argtypes = [_GApplication]
         
-        return libgobject.g_application_get_is_remote(self._object, )
+        return libgobject.g_application_get_is_remote( self._object )
 
-    def set_inactivity_timeout(self,  inactivity_timeout,):
+    def set_inactivity_timeout(  self, inactivity_timeout, ):
 
-        libgobject.g_application_set_inactivity_timeout.argtypes = [c_void_p, guint]
+        libgobject.g_application_set_inactivity_timeout.argtypes = [_GApplication,guint]
         
-        libgobject.g_application_set_inactivity_timeout(self._object,  inactivity_timeout,)
+        libgobject.g_application_set_inactivity_timeout( self._object,inactivity_timeout )
 
-    def get_is_registered(self, ):
+    def get_is_registered(  self, ):
 
         libgobject.g_application_get_is_registered.restype = gboolean
-        libgobject.g_application_get_is_registered.argtypes = [c_void_p]
+        libgobject.g_application_get_is_registered.argtypes = [_GApplication]
         
-        return libgobject.g_application_get_is_registered(self._object, )
+        return libgobject.g_application_get_is_registered( self._object )
 
-    def quit(self, ):
+    def quit(  self, ):
 
-        libgobject.g_application_quit.argtypes = [c_void_p]
+        libgobject.g_application_quit.argtypes = [_GApplication]
         
-        libgobject.g_application_quit(self._object, )
+        libgobject.g_application_quit( self._object )
 
-    def get_inactivity_timeout(self, ):
+    def get_inactivity_timeout(  self, ):
 
         libgobject.g_application_get_inactivity_timeout.restype = guint
-        libgobject.g_application_get_inactivity_timeout.argtypes = [c_void_p]
+        libgobject.g_application_get_inactivity_timeout.argtypes = [_GApplication]
         
-        return libgobject.g_application_get_inactivity_timeout(self._object, )
+        return libgobject.g_application_get_inactivity_timeout( self._object )
 
-    def run(self,  argc, argv,):
+    def run(  self, argc, argv, ):
 
         libgobject.g_application_run.restype = int
-        libgobject.g_application_run.argtypes = [c_void_p, int,c_char_p]
+        libgobject.g_application_run.argtypes = [_GApplication,int,c_char_p]
         
-        return libgobject.g_application_run(self._object,  argc, argv,)
+        return libgobject.g_application_run( self._object,argc,argv )
 
-    def open(self,  files, n_files, hint,):
-        if files : files = files._object
-        else : files = c_void_p()
+    def open(  self, files, n_files, hint, ):
+        if files: files = files._object
+        else: files = POINTER(c_int)()
 
-        libgobject.g_application_open.argtypes = [c_void_p, _GFile,gint,c_char_p]
+        libgobject.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
         
-        libgobject.g_application_open(self._object,  files, n_files, hint,)
+        libgobject.g_application_open( self._object,files,n_files,hint )
 
-    def set_flags(self,  flags,):
+    def set_flags(  self, flags, ):
 
-        libgobject.g_application_set_flags.argtypes = [c_void_p, GApplicationFlags]
+        libgobject.g_application_set_flags.argtypes = [_GApplication,GApplicationFlags]
         
-        libgobject.g_application_set_flags(self._object,  flags,)
+        libgobject.g_application_set_flags( self._object,flags )
 
     @staticmethod
     def get_default():
         libgobject.g_application_get_default.restype = _GApplication
-        return libgobject.g_application_get_default()
-
+        from pywebkit3.gobject import GApplication
+        return GApplication(None, obj=    libgobject.g_application_get_default()
+ or POINTER(c_int)())
     @staticmethod
     def id_is_valid( application_id,):
         libgobject.g_application_id_is_valid.restype = gboolean
         libgobject.g_application_id_is_valid.argtypes = [c_char_p]
-        return libgobject.g_application_id_is_valid(application_id, )
+        
+        return     libgobject.g_application_id_is_valid(application_id, )
 

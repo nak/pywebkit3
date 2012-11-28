@@ -50,45 +50,257 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-_PangoContext = c_void_p
-_PangoFontMap = c_void_p
-__PangoAttrList = c_void_p
-__GList = c_void_p
-__PangoAttrIterator = c_void_p
-_GSList = c_void_p
-__PangoRectangle = c_void_p
-_char = c_void_p
-__PangoGlyphString = c_void_p
-_PangoLogAttr = c_void_p
-_PangoLayoutIter = c_void_p
-__PangoFontFamily = c_void_p
-__PangoContext = c_void_p
-_PangoFontset = c_void_p
-__PangoFontDescription = c_void_p
-__PangoFontMap = c_void_p
-__PangoLanguage = c_void_p
-_PangoAttrList = c_void_p
-__gunichar = c_void_p
-__PangoLogAttr = c_void_p
-_PangoLayout = c_void_p
-_PangoMatrix = c_void_p
-_PangoCoverage = c_void_p
-__PangoAnalysis = c_void_p
-_PangoFontDescription = c_void_p
-_GList = c_void_p
-_PangoLayoutRun = c_void_p
-_PangoFont = c_void_p
-_PangoLayoutLine = c_void_p
-__PangoTabArray = c_void_p
-__PangoLayout = c_void_p
-__PangoMatrix = c_void_p
-_PangoLanguage = c_void_p
-_PangoTabArray = c_void_p
-_PangoFontMetrics = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+_GMainLoop = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+_GdkColor = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+_PangoItem = POINTER(c_int)
+__GClosure = POINTER(c_int)
+__GMainContext = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+_GtkDialog = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+_GMainContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__PangoFont = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GSource = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+_GSource = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+__GMutex = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
+_GOptionGroup = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GtkAssistant = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+__GCond = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__GPollFD = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GValue = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+_PangoFontsetSimple = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__GTimeVal = POINTER(c_int)
+__GSourceFuncs = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+_PangoLayoutRun = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GSourceCallbackFuncs = POINTER(c_int)
+__PangoFontFace = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+_WebKitNetworkRequest = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
 PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+WebKitLoadStatus = c_int
+GtkDialogFlags = c_int
+GtkResponseType = c_int
+WebKitEditingBehavior = c_int
+GtkAssistantPageType = c_int
+GdkCursorType = c_int
 
 import _gobject_GObject
 class PangoFont( _gobject_GObject.GObject):
@@ -96,54 +308,54 @@ class PangoFont( _gobject_GObject.GObject):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def get_font_map(self, ):
+    def get_font_map(  self, ):
 
         libgtk3.pango_font_get_font_map.restype = _PangoFontMap
-        libgtk3.pango_font_get_font_map.argtypes = [c_void_p]
+        libgtk3.pango_font_get_font_map.argtypes = [_PangoFont]
         from pywebkit3.gtk3 import PangoFontMap
-        return PangoFontMap( obj=libgtk3.pango_font_get_font_map(self._object, )  or c_void_p())
+        return PangoFontMap( obj=libgtk3.pango_font_get_font_map( self._object )  or POINTER(c_int)())
 
-    def get_glyph_extents(self,  glyph, ink_rect, logical_rect,):
-        if glyph : glyph = glyph._object
-        else : glyph = c_void_p()
-        if ink_rect : ink_rect = ink_rect._object
-        else : ink_rect = c_void_p()
-        if logical_rect : logical_rect = logical_rect._object
-        else : logical_rect = c_void_p()
+    def get_glyph_extents(  self, glyph, ink_rect, logical_rect, ):
+        if glyph: glyph = glyph._object
+        else: glyph = POINTER(c_int)()
+        if ink_rect: ink_rect = ink_rect._object
+        else: ink_rect = POINTER(c_int)()
+        if logical_rect: logical_rect = logical_rect._object
+        else: logical_rect = POINTER(c_int)()
 
-        libgtk3.pango_font_get_glyph_extents.argtypes = [c_void_p, PangoGlyph,_PangoRectangle,_PangoRectangle]
+        libgtk3.pango_font_get_glyph_extents.argtypes = [_PangoFont,PangoGlyph,_PangoRectangle,_PangoRectangle]
         
-        libgtk3.pango_font_get_glyph_extents(self._object,  glyph, ink_rect, logical_rect,)
+        libgtk3.pango_font_get_glyph_extents( self._object,glyph,ink_rect,logical_rect )
 
-    def get_coverage(self,  language,):
-        if language : language = language._object
-        else : language = c_void_p()
+    def get_coverage(  self, language, ):
+        if language: language = language._object
+        else: language = POINTER(c_int)()
 
         libgtk3.pango_font_get_coverage.restype = _PangoCoverage
-        libgtk3.pango_font_get_coverage.argtypes = [c_void_p, _PangoLanguage]
+        libgtk3.pango_font_get_coverage.argtypes = [_PangoFont,_PangoLanguage]
         from pywebkit3.gtk3 import PangoCoverage
-        return PangoCoverage(None, obj=libgtk3.pango_font_get_coverage(self._object,  language,)  or c_void_p())
+        return PangoCoverage(None, obj=libgtk3.pango_font_get_coverage( self._object,language )  or POINTER(c_int)())
 
-    def describe(self, ):
+    def describe(  self, ):
 
         libgtk3.pango_font_describe.restype = _PangoFontDescription
-        libgtk3.pango_font_describe.argtypes = [c_void_p]
+        libgtk3.pango_font_describe.argtypes = [_PangoFont]
         from pywebkit3.gtk3 import PangoFontDescription
-        return PangoFontDescription(None, obj=libgtk3.pango_font_describe(self._object, )  or c_void_p())
+        return PangoFontDescription(None, obj=libgtk3.pango_font_describe( self._object )  or POINTER(c_int)())
 
-    def get_metrics(self,  language,):
-        if language : language = language._object
-        else : language = c_void_p()
+    def get_metrics(  self, language, ):
+        if language: language = language._object
+        else: language = POINTER(c_int)()
 
         libgtk3.pango_font_get_metrics.restype = _PangoFontMetrics
-        libgtk3.pango_font_get_metrics.argtypes = [c_void_p, _PangoLanguage]
+        libgtk3.pango_font_get_metrics.argtypes = [_PangoFont,_PangoLanguage]
         from pywebkit3.gtk3 import PangoFontMetrics
-        return PangoFontMetrics( obj=libgtk3.pango_font_get_metrics(self._object,  language,)  or c_void_p())
+        return PangoFontMetrics( obj=libgtk3.pango_font_get_metrics( self._object,language )  or POINTER(c_int)())
 
-    def describe_with_absolute_size(self, ):
+    def describe_with_absolute_size(  self, ):
 
         libgtk3.pango_font_describe_with_absolute_size.restype = _PangoFontDescription
-        libgtk3.pango_font_describe_with_absolute_size.argtypes = [c_void_p]
+        libgtk3.pango_font_describe_with_absolute_size.argtypes = [_PangoFont]
         from pywebkit3.gtk3 import PangoFontDescription
-        return PangoFontDescription( obj=libgtk3.pango_font_describe_with_absolute_size(self._object, )  or c_void_p())
+        return PangoFontDescription( obj=libgtk3.pango_font_describe_with_absolute_size( self._object )  or POINTER(c_int)())
 

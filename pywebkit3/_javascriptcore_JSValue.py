@@ -50,15 +50,216 @@ from javascriptcore_types import *
     
     
 """Derived Pointer Types"""
-__JSString = c_void_p
-__JSValue = c_void_p
-__JSContext = c_void_p
-__JSObject = c_void_p
-_JSString = c_void_p
-_JSValue = c_void_p
-_JSObject = c_void_p
-__JSClass = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
 
 import _javascriptcore_JSObject
 class JSValue( _javascriptcore_JSObject.JSObject):
@@ -66,257 +267,243 @@ class JSValue( _javascriptcore_JSObject.JSObject):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def JSValueUnprotect(self,  ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
+    def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if ructor: ructor = ructor._object
+        else: ructor = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
 
-        libjavascriptcore.JSValueUnprotect.argtypes = [c_void_p, _JSContext,_JSValue]
-        
-        libjavascriptcore.JSValueUnprotect(self._object,  ctx, value,)
-
-    def JSValueProtect(self,  ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-
-        libjavascriptcore.JSValueProtect.argtypes = [c_void_p, _JSContext,_JSValue]
-        
-        libjavascriptcore.JSValueProtect(self._object,  ctx, value,)
-
-    @staticmethod
-    def JSValueToObject( ctx, value, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSValueToObject.restype = _JSObject
-        libjavascriptcore.JSValueToObject.argtypes = [_JSContext,_JSValue,_JSValue]
-        return libjavascriptcore.JSValueToObject(ctx, value, exception, )
-
-    @staticmethod
-    def JSValueCreateJSONString( ctx, value, indent, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if indent : indent = indent._object
-        else : indent = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSValueCreateJSONString.restype = _JSString
-        libjavascriptcore.JSValueCreateJSONString.argtypes = [_JSContext,_JSValue,unsigned,_JSValue]
-        return libjavascriptcore.JSValueCreateJSONString(ctx, value, indent, exception, )
-
-    @staticmethod
-    def JSValueIsObject( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        libjavascriptcore.JSValueIsObject.restype = bool
-        libjavascriptcore.JSValueIsObject.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueIsObject(ctx, value, )
-
-    @staticmethod
-    def JSValueToBoolean( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        libjavascriptcore.JSValueToBoolean.restype = bool
-        libjavascriptcore.JSValueToBoolean.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueToBoolean(ctx, value, )
-
-    @staticmethod
-    def JSValueIsString( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        libjavascriptcore.JSValueIsString.restype = bool
-        libjavascriptcore.JSValueIsString.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueIsString(ctx, value, )
-
-    @staticmethod
-    def JSValueMakeString( ctx, string,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if string : string = string._object
-        else : string = c_void_p()
-        libjavascriptcore.JSValueMakeString.restype = _JSValue
-        libjavascriptcore.JSValueMakeString.argtypes = [_JSContext,_JSString]
-        return libjavascriptcore.JSValueMakeString(ctx, string, )
-
-    @staticmethod
-    def JSValueIsUndefined( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        libjavascriptcore.JSValueIsUndefined.restype = bool
-        libjavascriptcore.JSValueIsUndefined.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueIsUndefined(ctx, value, )
-
-    @staticmethod
-    def JSValueIsObjectOfClass( ctx, value, jsClass,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if jsClass : jsClass = jsClass._object
-        else : jsClass = c_void_p()
-        libjavascriptcore.JSValueIsObjectOfClass.restype = bool
-        libjavascriptcore.JSValueIsObjectOfClass.argtypes = [_JSContext,_JSValue,_JSClass]
-        return libjavascriptcore.JSValueIsObjectOfClass(ctx, value, jsClass, )
-
-    @staticmethod
-    def JSValueMakeNull( ctx,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        libjavascriptcore.JSValueMakeNull.restype = _JSValue
-        libjavascriptcore.JSValueMakeNull.argtypes = [_JSContext]
-        return libjavascriptcore.JSValueMakeNull(ctx, )
-
-    @staticmethod
-    def JSValueMakeBoolean( ctx, boolean,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        libjavascriptcore.JSValueMakeBoolean.restype = _JSValue
-        libjavascriptcore.JSValueMakeBoolean.argtypes = [_JSContext,bool]
-        return libjavascriptcore.JSValueMakeBoolean(ctx, boolean, )
-
-    @staticmethod
-    def JSValueMakeNumber( ctx, number,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        libjavascriptcore.JSValueMakeNumber.restype = _JSValue
-        libjavascriptcore.JSValueMakeNumber.argtypes = [_JSContext,double]
-        return libjavascriptcore.JSValueMakeNumber(ctx, number, )
-
-    @staticmethod
-    def JSValueIsNull( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        libjavascriptcore.JSValueIsNull.restype = bool
-        libjavascriptcore.JSValueIsNull.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueIsNull(ctx, value, )
-
-    @staticmethod
-    def JSValueMakeUndefined( ctx,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        libjavascriptcore.JSValueMakeUndefined.restype = _JSValue
-        libjavascriptcore.JSValueMakeUndefined.argtypes = [_JSContext]
-        return libjavascriptcore.JSValueMakeUndefined(ctx, )
-
-    @staticmethod
-    def JSValueToStringCopy( ctx, value, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSValueToStringCopy.restype = _JSString
-        libjavascriptcore.JSValueToStringCopy.argtypes = [_JSContext,_JSValue,_JSValue]
-        return libjavascriptcore.JSValueToStringCopy(ctx, value, exception, )
-
-    @staticmethod
-    def JSValueMakeFromJSONString( ctx, string,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if string : string = string._object
-        else : string = c_void_p()
-        libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
-        libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext,_JSString]
-        return libjavascriptcore.JSValueMakeFromJSONString(ctx, string, )
-
-    @staticmethod
-    def JSValueIsNumber( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        libjavascriptcore.JSValueIsNumber.restype = bool
-        libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueIsNumber(ctx, value, )
-
-    @staticmethod
-    def JSValueIsEqual( ctx, a, b, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if a : a = a._object
-        else : a = c_void_p()
-        if b : b = b._object
-        else : b = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSValueIsEqual.restype = bool
-        libjavascriptcore.JSValueIsEqual.argtypes = [_JSContext,_JSValue,_JSValue,_JSValue]
-        return libjavascriptcore.JSValueIsEqual(ctx, a, b, exception, )
-
-    @staticmethod
-    def JSValueToNumber( ctx, value, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSValueToNumber.restype = double
-        libjavascriptcore.JSValueToNumber.argtypes = [_JSContext,_JSValue,_JSValue]
-        return libjavascriptcore.JSValueToNumber(ctx, value, exception, )
-
-    @staticmethod
-    def JSValueIsInstanceOfConstructor( ctx, value, ructor, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if ructor : ructor = ructor._object
-        else : ructor = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
         libjavascriptcore.JSValueIsInstanceOfConstructor.restype = bool
         libjavascriptcore.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,_JSValue]
-        return libjavascriptcore.JSValueIsInstanceOfConstructor(ctx, value, ructor, exception, )
+        
+        return libjavascriptcore.JSValueIsInstanceOfConstructor( ctx,self._object,ructor,exception )
 
-    @staticmethod
-    def JSValueIsStrictEqual( ctx, a, b,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if a : a = a._object
-        else : a = c_void_p()
-        if b : b = b._object
-        else : b = c_void_p()
+    def ToObject(  self, ctx, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSValueToObject.restype = _JSObject
+        libjavascriptcore.JSValueToObject.argtypes = [_JSContext,_JSValue,_JSValue]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx,self._object,exception )  or POINTER(c_int)())
+
+    def IsUndefined(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsUndefined.restype = bool
+        libjavascriptcore.JSValueIsUndefined.argtypes = [_JSContext,_JSValue]
+        
+        return libjavascriptcore.JSValueIsUndefined( ctx,self._object )
+
+    def IsObjectOfClass(  self, ctx, jsClass, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if jsClass: jsClass = jsClass._object
+        else: jsClass = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsObjectOfClass.restype = bool
+        libjavascriptcore.JSValueIsObjectOfClass.argtypes = [_JSContext,_JSValue,_JSClass]
+        
+        return libjavascriptcore.JSValueIsObjectOfClass( ctx,self._object,jsClass )
+
+    def IsStrictEqual(  self, ctx, b, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if b: b = b._object
+        else: b = POINTER(c_int)()
+
         libjavascriptcore.JSValueIsStrictEqual.restype = bool
         libjavascriptcore.JSValueIsStrictEqual.argtypes = [_JSContext,_JSValue,_JSValue]
-        return libjavascriptcore.JSValueIsStrictEqual(ctx, a, b, )
+        
+        return libjavascriptcore.JSValueIsStrictEqual( ctx,self._object,b )
 
-    @staticmethod
-    def JSValueIsBoolean( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
+    def IsNull(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsNull.restype = bool
+        libjavascriptcore.JSValueIsNull.argtypes = [_JSContext,_JSValue]
+        
+        return libjavascriptcore.JSValueIsNull( ctx,self._object )
+
+    def Protect(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueProtect.argtypes = [_JSContext,_JSValue]
+        
+        libjavascriptcore.JSValueProtect( ctx,self._object )
+
+    def IsObject(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsObject.restype = bool
+        libjavascriptcore.JSValueIsObject.argtypes = [_JSContext,_JSValue]
+        
+        return libjavascriptcore.JSValueIsObject( ctx,self._object )
+
+    def IsBoolean(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
         libjavascriptcore.JSValueIsBoolean.restype = bool
         libjavascriptcore.JSValueIsBoolean.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueIsBoolean(ctx, value, )
+        
+        return libjavascriptcore.JSValueIsBoolean( ctx,self._object )
 
-    @staticmethod
-    def JSValueGetType( ctx, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
+    def IsString(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsString.restype = bool
+        libjavascriptcore.JSValueIsString.argtypes = [_JSContext,_JSValue]
+        
+        return libjavascriptcore.JSValueIsString( ctx,self._object )
+
+    def ToStringCopy(  self, ctx, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSValueToStringCopy.restype = _JSString
+        libjavascriptcore.JSValueToStringCopy.argtypes = [_JSContext,_JSValue,_JSValue]
+        from pywebkit3.javascriptcore import JSString
+        return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object,exception )  or POINTER(c_int)())
+
+    def ToBoolean(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueToBoolean.restype = bool
+        libjavascriptcore.JSValueToBoolean.argtypes = [_JSContext,_JSValue]
+        
+        return libjavascriptcore.JSValueToBoolean( ctx,self._object )
+
+    def IsNumber(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsNumber.restype = bool
+        libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
+        
+        return libjavascriptcore.JSValueIsNumber( ctx,self._object )
+
+    def IsEqual(  self, ctx, b, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if b: b = b._object
+        else: b = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSValueIsEqual.restype = bool
+        libjavascriptcore.JSValueIsEqual.argtypes = [_JSContext,_JSValue,_JSValue,_JSValue]
+        
+        return libjavascriptcore.JSValueIsEqual( ctx,self._object,b,exception )
+
+    def CreateJSONString(  self, ctx, indent, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if indent: indent = indent._object
+        else: indent = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSValueCreateJSONString.restype = _JSString
+        libjavascriptcore.JSValueCreateJSONString.argtypes = [_JSContext,_JSValue,unsigned,_JSValue]
+        from pywebkit3.javascriptcore import JSString
+        return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx,self._object,indent,exception )  or POINTER(c_int)())
+
+    def Unprotect(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
+        
+        libjavascriptcore.JSValueUnprotect( ctx,self._object )
+
+    def GetType(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
         libjavascriptcore.JSValueGetType.restype = JSType
         libjavascriptcore.JSValueGetType.argtypes = [_JSContext,_JSValue]
-        return libjavascriptcore.JSValueGetType(ctx, value, )
+        
+        return libjavascriptcore.JSValueGetType( ctx,self._object )
 
+    def ToNumber(  self, ctx, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSValueToNumber.restype = double
+        libjavascriptcore.JSValueToNumber.argtypes = [_JSContext,_JSValue,_JSValue]
+        
+        return libjavascriptcore.JSValueToNumber( ctx,self._object,exception )
+
+    @staticmethod
+    def MakeNumber( ctx, number,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        libjavascriptcore.JSValueMakeNumber.restype = _JSValue
+        libjavascriptcore.JSValueMakeNumber.argtypes = [_JSContext,double]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeNumber(ctx, number, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeUndefined( ctx,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        libjavascriptcore.JSValueMakeUndefined.restype = _JSValue
+        libjavascriptcore.JSValueMakeUndefined.argtypes = [_JSContext]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeUndefined(ctx, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeNull( ctx,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        libjavascriptcore.JSValueMakeNull.restype = _JSValue
+        libjavascriptcore.JSValueMakeNull.argtypes = [_JSContext]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeNull(ctx, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeFromJSONString( ctx, string,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if string: string = string._object
+        else: string = POINTER(c_int)()
+        libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
+        libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext,_JSString]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeFromJSONString(ctx, string, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeBoolean( ctx, boolean,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        libjavascriptcore.JSValueMakeBoolean.restype = _JSValue
+        libjavascriptcore.JSValueMakeBoolean.argtypes = [_JSContext,bool]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx, boolean, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeString( ctx, string,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if string: string = string._object
+        else: string = POINTER(c_int)()
+        libjavascriptcore.JSValueMakeString.restype = _JSValue
+        libjavascriptcore.JSValueMakeString.argtypes = [_JSContext,_JSString]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx, string, )
+  or POINTER(c_int)())

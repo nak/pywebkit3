@@ -50,116 +50,218 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__GtkRcStyle = c_void_p
-__GdkGeometry = c_void_p
-_GdkPixbuf = c_void_p
-__GtkRequisition = c_void_p
-_GtkRcStyle = c_void_p
-__GtkRegionFlags = c_void_p
-_GdkEvent = c_void_p
-_GtkWindow = c_void_p
-__cairo_font_options_t = c_void_p
-__GdkAtom = c_void_p
-__GdkTimeCoord = c_void_p
-__GtkWidgetPath = c_void_p
-_GdkDisplay = c_void_p
-__GtkStyleProvider = c_void_p
-_GScanner = c_void_p
-_PangoFont = c_void_p
-_GtkStyleContext = c_void_p
-__GtkTextBuffer = c_void_p
-_guchar = c_void_p
-_GdkAppLaunchContext = c_void_p
-__GObject = c_void_p
-__PangoLayout = c_void_p
-__GParamSpec = c_void_p
-__PangoAttrIterator = c_void_p
-__GtkWindow = c_void_p
-_GtkSelectionData = c_void_p
-_GtkWindowGroup = c_void_p
-__PangoContext = c_void_p
-__GtkPathPriorityType = c_void_p
-__GtkSettings = c_void_p
-__PangoFontMap = c_void_p
-__PangoAttrList = c_void_p
-_PangoMatrix = c_void_p
-_GtkApplication = c_void_p
-__PangoAnalysis = c_void_p
-_PangoFontDescription = c_void_p
-__GdkCursor = c_void_p
-_guint8 = c_void_p
-__GScanner = c_void_p
-__GtkWidgetClass = c_void_p
-__GdkEventKey = c_void_p
-__GdkDisplay = c_void_p
-_GtkWidgetPath = c_void_p
-_GdkScreen = c_void_p
-_PangoFontMetrics = c_void_p
-_GdkVisual = c_void_p
-_PangoFontMap = c_void_p
-_GSList = c_void_p
-_GtkWidget = c_void_p
-__GdkWindow = c_void_p
-__PangoFontFamily = c_void_p
-__cairo_region_t = c_void_p
-_PangoFontset = c_void_p
-_GdkWindow = c_void_p
-__PangoFontDescription = c_void_p
-__GtkBorder = c_void_p
-__GError = c_void_p
-__PangoCoverage = c_void_p
-__cairo_t = c_void_p
-__GdkVisual = c_void_p
-_GdkDevice = c_void_p
-_GList = c_void_p
-__GtkAccelGroup = c_void_p
-_GObject = c_void_p
-_GtkIconSet = c_void_p
-__GtkAllocation = c_void_p
-__GtkWidget = c_void_p
-_gchar = c_void_p
-__GValue = c_void_p
-_GdkDeviceManager = c_void_p
-_GdkCursor = c_void_p
-__PangoMatrix = c_void_p
-_PangoContext = c_void_p
-__GList = c_void_p
-_PangoCoverage = c_void_p
-_GParamSpec = c_void_p
-__PangoRectangle = c_void_p
-__GtkIconSource = c_void_p
-_char = c_void_p
-__PangoGlyphString = c_void_p
-__GSList = c_void_p
-__GdkRGBA = c_void_p
-__GdkWindowAttr = c_void_p
-__GdkColor = c_void_p
-__GdkRectangle = c_void_p
-__PangoLanguage = c_void_p
-__GdkWMDecoration = c_void_p
-__PangoLogAttr = c_void_p
-_PangoLayout = c_void_p
-_GtkStyle = c_void_p
-__GtkStyle = c_void_p
-__GIcon = c_void_p
-__cairo_pattern_t = c_void_p
-__GdkPixbuf = c_void_p
-_GtkSettings = c_void_p
-__GtkTargetEntry = c_void_p
-__GtkApplication = c_void_p
-_GtkClipboard = c_void_p
-__GdkScreen = c_void_p
-_PangoLanguage = c_void_p
-__GdkDevice = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+_PangoEngineShape = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkMessageDialog = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+_GMainLoop = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+_GdkColor = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+_PangoItem = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GtkAboutDialog = POINTER(c_int)
+__GMainContext = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+_GtkDialog = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+_GMainContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__PangoFont = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GSource = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+_GSource = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+__GMutex = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
+_GOptionGroup = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GtkAssistant = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+__GCond = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__GPollFD = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GValue = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+_PangoFontsetSimple = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__GTimeVal = POINTER(c_int)
+_GtkInvisible = POINTER(c_int)
+__GSourceFuncs = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_WebKitWebNavigationAction = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+_PangoLayoutRun = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GSourceCallbackFuncs = POINTER(c_int)
+__PangoFontFace = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+_WebKitNetworkRequest = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
 GtkAlign = c_int
-GdkPixbufError = c_int
-GdkColorspace = c_int
-GdkPixbufAlphaMode = c_int
-GtkIconSize = c_int
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
 GdkWindowHints = c_int
@@ -177,8 +279,6 @@ GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
 GdkCursorType = c_int
-GdkVisualType = c_int
-GdkByteOrder = c_int
 PangoStyle = c_int
 PangoWeight = c_int
 PangoVariant = c_int
@@ -186,6 +286,40 @@ PangoStretch = c_int
 PangoFontMask = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+WebKitLoadStatus = c_int
+GtkDialogFlags = c_int
+GtkResponseType = c_int
+WebKitEditingBehavior = c_int
+GtkAssistantPageType = c_int
+GdkCursorType = c_int
+GtkMessageType = c_int
+GtkButtonsType = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+WebKitWebNavigationReason = c_int
+GtkIconSize = c_int
+GtkLicense = c_int
 
 import _gobject_GObject
 class GtkClipboard( _gobject_GObject.GObject):
@@ -193,222 +327,220 @@ class GtkClipboard( _gobject_GObject.GObject):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def set_with_owner(self,  targets, n_targets, get_func, clear_func, owner,):
-        if targets : targets = targets._object
-        else : targets = c_void_p()
-        if owner : owner = owner._object
-        else : owner = c_void_p()
+    def set_with_owner(  self, targets, n_targets, get_func, clear_func, owner, ):
+        if targets: targets = targets._object
+        else: targets = POINTER(c_int)()
+        if owner: owner = owner._object
+        else: owner = POINTER(c_int)()
 
         libgtk3.gtk_clipboard_set_with_owner.restype = gboolean
-        libgtk3.gtk_clipboard_set_with_owner.argtypes = [c_void_p, _GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,_GObject]
+        libgtk3.gtk_clipboard_set_with_owner.argtypes = [_GtkClipboard,_GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,_GObject]
         
-        return libgtk3.gtk_clipboard_set_with_owner(self._object,  targets, n_targets, get_func, clear_func, owner,)
+        return libgtk3.gtk_clipboard_set_with_owner( self._object,targets,n_targets,get_func,clear_func,owner )
 
-    def store(self, ):
+    def store(  self, ):
 
-        libgtk3.gtk_clipboard_store.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_store.argtypes = [_GtkClipboard]
         
-        libgtk3.gtk_clipboard_store(self._object, )
+        libgtk3.gtk_clipboard_store( self._object )
 
-    def get_owner(self, ):
+    def get_owner(  self, ):
 
         libgtk3.gtk_clipboard_get_owner.restype = _GObject
-        libgtk3.gtk_clipboard_get_owner.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_get_owner.argtypes = [_GtkClipboard]
         from pywebkit3.gobject import GObject
-        return GObject(None,None,None,None, obj=libgtk3.gtk_clipboard_get_owner(self._object, ) or c_void_p())
+        return GObject(None,None,None,None, obj=libgtk3.gtk_clipboard_get_owner( self._object ) or POINTER(c_int)())
 
-    def wait_is_target_available(self,  target,):
-        if target : target = target._object
-        else : target = c_void_p()
+    def wait_is_target_available(  self, target, ):
+        if target: target = target._object
+        else: target = POINTER(c_int)()
 
         libgtk3.gtk_clipboard_wait_is_target_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_target_available.argtypes = [c_void_p, c_void_p]
+        libgtk3.gtk_clipboard_wait_is_target_available.argtypes = [_GtkClipboard,POINTER(c_int)]
         
-        return libgtk3.gtk_clipboard_wait_is_target_available(self._object,  target,)
+        return libgtk3.gtk_clipboard_wait_is_target_available( self._object,target )
 
-    def request_contents(self,  target, callback, user_data,):
-        if target : target = target._object
-        else : target = c_void_p()
+    def request_contents(  self, target, callback, user_data, ):
+        if target: target = target._object
+        else: target = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_request_contents.argtypes = [c_void_p, c_void_p,GtkClipboardReceivedFunc,gpointer]
+        libgtk3.gtk_clipboard_request_contents.argtypes = [_GtkClipboard,POINTER(c_int),GtkClipboardReceivedFunc,gpointer]
         
-        libgtk3.gtk_clipboard_request_contents(self._object,  target, callback, user_data,)
+        libgtk3.gtk_clipboard_request_contents( self._object,target,callback,user_data )
 
-    def clear(self, ):
+    def clear(  self, ):
 
-        libgtk3.gtk_clipboard_clear.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_clear.argtypes = [_GtkClipboard]
         
-        libgtk3.gtk_clipboard_clear(self._object, )
+        libgtk3.gtk_clipboard_clear( self._object )
 
-    def set_text(self,  text, len,):
+    def set_text(  self, text, len, ):
 
-        libgtk3.gtk_clipboard_set_text.argtypes = [c_void_p, c_char_p,gint]
+        libgtk3.gtk_clipboard_set_text.argtypes = [_GtkClipboard,c_char_p,gint]
         
-        libgtk3.gtk_clipboard_set_text(self._object,  text, len,)
+        libgtk3.gtk_clipboard_set_text( self._object,text,len )
 
-    def request_text(self,  callback, user_data,):
+    def request_text(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_text.argtypes = [c_void_p, GtkClipboardTextReceivedFunc,gpointer]
+        libgtk3.gtk_clipboard_request_text.argtypes = [_GtkClipboard,GtkClipboardTextReceivedFunc,gpointer]
         
-        libgtk3.gtk_clipboard_request_text(self._object,  callback, user_data,)
+        libgtk3.gtk_clipboard_request_text( self._object,callback,user_data )
 
-    def wait_for_targets(self,  targets, n_targets,):
-        if targets : targets = targets._object
-        else : targets = c_void_p()
-        if n_targets : n_targets = n_targets._object
-        else : n_targets = c_void_p()
+    def wait_for_targets(  self, targets, n_targets, ):
+        if targets: targets = targets._object
+        else: targets = POINTER(c_int)()
 
         libgtk3.gtk_clipboard_wait_for_targets.restype = gboolean
-        libgtk3.gtk_clipboard_wait_for_targets.argtypes = [c_void_p, _GdkAtom,POITNER(gint)]
+        libgtk3.gtk_clipboard_wait_for_targets.argtypes = [_GtkClipboard,_GdkAtom,POINTER(gint)]
         
-        return libgtk3.gtk_clipboard_wait_for_targets(self._object,  targets, n_targets,)
+        return libgtk3.gtk_clipboard_wait_for_targets( self._object,targets,n_targets )
 
-    def wait_for_contents(self,  target,):
-        if target : target = target._object
-        else : target = c_void_p()
+    def wait_for_contents(  self, target, ):
+        if target: target = target._object
+        else: target = POINTER(c_int)()
 
         libgtk3.gtk_clipboard_wait_for_contents.restype = _GtkSelectionData
-        libgtk3.gtk_clipboard_wait_for_contents.argtypes = [c_void_p, c_void_p]
+        libgtk3.gtk_clipboard_wait_for_contents.argtypes = [_GtkClipboard,POINTER(c_int)]
         from pywebkit3.gtk3 import GtkSelectionData
-        return GtkSelectionData( obj=libgtk3.gtk_clipboard_wait_for_contents(self._object,  target,) or c_void_p())
+        return GtkSelectionData( obj=libgtk3.gtk_clipboard_wait_for_contents( self._object,target ) or POINTER(c_int)())
 
-    def set_can_store(self,  targets, n_targets,):
-        if targets : targets = targets._object
-        else : targets = c_void_p()
+    def set_can_store(  self, targets, n_targets, ):
+        if targets: targets = targets._object
+        else: targets = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_set_can_store.argtypes = [c_void_p, _GtkTargetEntry,gint]
+        libgtk3.gtk_clipboard_set_can_store.argtypes = [_GtkClipboard,_GtkTargetEntry,gint]
         
-        libgtk3.gtk_clipboard_set_can_store(self._object,  targets, n_targets,)
+        libgtk3.gtk_clipboard_set_can_store( self._object,targets,n_targets )
 
-    def request_targets(self,  callback, user_data,):
+    def request_targets(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_targets.argtypes = [c_void_p, GtkClipboardTargetsReceivedFunc,gpointer]
+        libgtk3.gtk_clipboard_request_targets.argtypes = [_GtkClipboard,GtkClipboardTargetsReceivedFunc,gpointer]
         
-        libgtk3.gtk_clipboard_request_targets(self._object,  callback, user_data,)
+        libgtk3.gtk_clipboard_request_targets( self._object,callback,user_data )
 
-    def wait_is_rich_text_available(self,  buffer,):
-        if buffer : buffer = buffer._object
-        else : buffer = c_void_p()
+    def wait_is_rich_text_available(  self, buffer, ):
+        if buffer: buffer = buffer._object
+        else: buffer = POINTER(c_int)()
 
         libgtk3.gtk_clipboard_wait_is_rich_text_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_rich_text_available.argtypes = [c_void_p, _GtkTextBuffer]
+        libgtk3.gtk_clipboard_wait_is_rich_text_available.argtypes = [_GtkClipboard,_GtkTextBuffer]
         
-        return libgtk3.gtk_clipboard_wait_is_rich_text_available(self._object,  buffer,)
+        return libgtk3.gtk_clipboard_wait_is_rich_text_available( self._object,buffer )
 
-    def wait_for_image(self, ):
+    def wait_for_image(  self, ):
 
         libgtk3.gtk_clipboard_wait_for_image.restype = _GdkPixbuf
-        libgtk3.gtk_clipboard_wait_for_image.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_wait_for_image.argtypes = [_GtkClipboard]
         from pywebkit3.gobject import GdkPixbuf
-        return GdkPixbuf( obj=libgtk3.gtk_clipboard_wait_for_image(self._object, ) or c_void_p())
+        return GdkPixbuf( obj=libgtk3.gtk_clipboard_wait_for_image( self._object ) or POINTER(c_int)())
 
-    def wait_for_rich_text(self,  buffer, format, length,):
-        if buffer : buffer = buffer._object
-        else : buffer = c_void_p()
-        if format : format = format._object
-        else : format = c_void_p()
-        if length : length = length._object
-        else : length = c_void_p()
+    def wait_for_rich_text(  self, buffer, format, length, ):
+        if buffer: buffer = buffer._object
+        else: buffer = POINTER(c_int)()
+        if format: format = format._object
+        else: format = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_wait_for_rich_text.restype = _guint8
-        libgtk3.gtk_clipboard_wait_for_rich_text.argtypes = [c_void_p, _GtkTextBuffer,_GdkAtom,POITNER(gsize)]
+        libgtk3.gtk_clipboard_wait_for_rich_text.restype = POINTER(guint8)
+        libgtk3.gtk_clipboard_wait_for_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,_GdkAtom,POINTER(gsize)]
         
-        return libgtk3.gtk_clipboard_wait_for_rich_text(self._object,  buffer, format, length,)
+        return libgtk3.gtk_clipboard_wait_for_rich_text( self._object,buffer,format,length )
 
-    def wait_for_text(self, ):
+    def wait_for_text(  self, ):
 
-        libgtk3.gtk_clipboard_wait_for_text.restype = _gchar
-        libgtk3.gtk_clipboard_wait_for_text.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_wait_for_text.restype = c_char_p
+        libgtk3.gtk_clipboard_wait_for_text.argtypes = [_GtkClipboard]
         
-        return libgtk3.gtk_clipboard_wait_for_text(self._object, )
+        return libgtk3.gtk_clipboard_wait_for_text( self._object )
 
-    def get_display(self, ):
+    def get_display(  self, ):
 
         libgtk3.gtk_clipboard_get_display.restype = _GdkDisplay
-        libgtk3.gtk_clipboard_get_display.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_get_display.argtypes = [_GtkClipboard]
         from pywebkit3.gobject import GdkDisplay
-        return GdkDisplay( obj=libgtk3.gtk_clipboard_get_display(self._object, ) or c_void_p())
+        return GdkDisplay( obj=libgtk3.gtk_clipboard_get_display( self._object ) or POINTER(c_int)())
 
-    def wait_for_uris(self, ):
+    def wait_for_uris(  self, ):
 
-        libgtk3.gtk_clipboard_wait_for_uris.restype = _gchar
-        libgtk3.gtk_clipboard_wait_for_uris.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_wait_for_uris.restype = c_char_p
+        libgtk3.gtk_clipboard_wait_for_uris.argtypes = [_GtkClipboard]
         
-        return libgtk3.gtk_clipboard_wait_for_uris(self._object, )
+        return libgtk3.gtk_clipboard_wait_for_uris( self._object )
 
-    def set_with_data(self,  targets, n_targets, get_func, clear_func, user_data,):
-        if targets : targets = targets._object
-        else : targets = c_void_p()
+    def set_with_data(  self, targets, n_targets, get_func, clear_func, user_data, ):
+        if targets: targets = targets._object
+        else: targets = POINTER(c_int)()
 
         libgtk3.gtk_clipboard_set_with_data.restype = gboolean
-        libgtk3.gtk_clipboard_set_with_data.argtypes = [c_void_p, _GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,gpointer]
+        libgtk3.gtk_clipboard_set_with_data.argtypes = [_GtkClipboard,_GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,gpointer]
         
-        return libgtk3.gtk_clipboard_set_with_data(self._object,  targets, n_targets, get_func, clear_func, user_data,)
+        return libgtk3.gtk_clipboard_set_with_data( self._object,targets,n_targets,get_func,clear_func,user_data )
 
-    def wait_is_text_available(self, ):
+    def wait_is_text_available(  self, ):
 
         libgtk3.gtk_clipboard_wait_is_text_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_text_available.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_wait_is_text_available.argtypes = [_GtkClipboard]
         
-        return libgtk3.gtk_clipboard_wait_is_text_available(self._object, )
+        return libgtk3.gtk_clipboard_wait_is_text_available( self._object )
 
-    def request_uris(self,  callback, user_data,):
+    def request_uris(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_uris.argtypes = [c_void_p, GtkClipboardURIReceivedFunc,gpointer]
+        libgtk3.gtk_clipboard_request_uris.argtypes = [_GtkClipboard,GtkClipboardURIReceivedFunc,gpointer]
         
-        libgtk3.gtk_clipboard_request_uris(self._object,  callback, user_data,)
+        libgtk3.gtk_clipboard_request_uris( self._object,callback,user_data )
 
-    def wait_is_uris_available(self, ):
+    def wait_is_uris_available(  self, ):
 
         libgtk3.gtk_clipboard_wait_is_uris_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_uris_available.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_wait_is_uris_available.argtypes = [_GtkClipboard]
         
-        return libgtk3.gtk_clipboard_wait_is_uris_available(self._object, )
+        return libgtk3.gtk_clipboard_wait_is_uris_available( self._object )
 
-    def wait_is_image_available(self, ):
+    def wait_is_image_available(  self, ):
 
         libgtk3.gtk_clipboard_wait_is_image_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_image_available.argtypes = [c_void_p]
+        libgtk3.gtk_clipboard_wait_is_image_available.argtypes = [_GtkClipboard]
         
-        return libgtk3.gtk_clipboard_wait_is_image_available(self._object, )
+        return libgtk3.gtk_clipboard_wait_is_image_available( self._object )
 
-    def request_rich_text(self,  buffer, callback, user_data,):
-        if buffer : buffer = buffer._object
-        else : buffer = c_void_p()
+    def request_rich_text(  self, buffer, callback, user_data, ):
+        if buffer: buffer = buffer._object
+        else: buffer = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_request_rich_text.argtypes = [c_void_p, _GtkTextBuffer,GtkClipboardRichTextReceivedFunc,gpointer]
+        libgtk3.gtk_clipboard_request_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,GtkClipboardRichTextReceivedFunc,gpointer]
         
-        libgtk3.gtk_clipboard_request_rich_text(self._object,  buffer, callback, user_data,)
+        libgtk3.gtk_clipboard_request_rich_text( self._object,buffer,callback,user_data )
 
-    def set_image(self,  pixbuf,):
-        if pixbuf : pixbuf = pixbuf._object
-        else : pixbuf = c_void_p()
+    def set_image(  self, pixbuf, ):
+        if pixbuf: pixbuf = pixbuf._object
+        else: pixbuf = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_set_image.argtypes = [c_void_p, _GdkPixbuf]
+        libgtk3.gtk_clipboard_set_image.argtypes = [_GtkClipboard,_GdkPixbuf]
         
-        libgtk3.gtk_clipboard_set_image(self._object,  pixbuf,)
+        libgtk3.gtk_clipboard_set_image( self._object,pixbuf )
 
-    def request_image(self,  callback, user_data,):
+    def request_image(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_image.argtypes = [c_void_p, GtkClipboardImageReceivedFunc,gpointer]
+        libgtk3.gtk_clipboard_request_image.argtypes = [_GtkClipboard,GtkClipboardImageReceivedFunc,gpointer]
         
-        libgtk3.gtk_clipboard_request_image(self._object,  callback, user_data,)
+        libgtk3.gtk_clipboard_request_image( self._object,callback,user_data )
 
     @staticmethod
     def get( selection,):
-        if selection : selection = selection._object
-        else : selection = c_void_p()
+        if selection: selection = selection._object
+        else: selection = POINTER(c_int)()
         libgtk3.gtk_clipboard_get.restype = _GtkClipboard
-        libgtk3.gtk_clipboard_get.argtypes = [c_void_p]
-        return libgtk3.gtk_clipboard_get(selection, )
-
+        libgtk3.gtk_clipboard_get.argtypes = [POINTER(c_int)]
+        from pywebkit3.gtk3 import GtkClipboard
+        return GtkClipboard( obj=    libgtk3.gtk_clipboard_get(selection, )
+ or POINTER(c_int)())
     @staticmethod
     def get_for_display( display, selection,):
-        if display : display = display._object
-        else : display = c_void_p()
-        if selection : selection = selection._object
-        else : selection = c_void_p()
+        if display: display = display._object
+        else: display = POINTER(c_int)()
+        if selection: selection = selection._object
+        else: selection = POINTER(c_int)()
         libgtk3.gtk_clipboard_get_for_display.restype = _GtkClipboard
-        libgtk3.gtk_clipboard_get_for_display.argtypes = [_GdkDisplay,c_void_p]
-        return libgtk3.gtk_clipboard_get_for_display(display, selection, )
-
+        libgtk3.gtk_clipboard_get_for_display.argtypes = [_GdkDisplay,POINTER(c_int)]
+        from pywebkit3.gtk3 import GtkClipboard
+        return GtkClipboard( obj=    libgtk3.gtk_clipboard_get_for_display(display, selection, )
+ or POINTER(c_int)())

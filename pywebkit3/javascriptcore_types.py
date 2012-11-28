@@ -9,17 +9,17 @@ JSChar = c_ushort;
 JSType = c_int;
 size_t = c_uint
 
-JSObjectInitializeCallback = CFUNCTYPE( None, c_void_p, c_void_p)
-JSObjectFinalizeCallback = CFUNCTYPE( None, c_void_p)
-JSObjectHasPropertyCallback = CFUNCTYPE( c_ubyte, c_void_p, c_void_p, c_void_p)
-JSObjectGetPropertyCallback = CFUNCTYPE( c_void_p, c_void_p, c_void_p, c_void_p, c_void_p)
-JSObjectSetPropertyCallback = CFUNCTYPE( c_ubyte, c_void_p, c_void_p, c_void_p, c_void_p)
-JSObjectDeletePropertyCallback = CFUNCTYPE( c_ubyte, c_void_p, c_void_p, c_void_p, c_void_p)
-JSObjectGetPropertyNamesCallback = CFUNCTYPE( c_ubyte, c_void_p, c_void_p, c_void_p)
-JSObjectCallAsFunctionCallback = CFUNCTYPE( c_void_p, c_void_p, c_void_p, c_void_p, c_uint , c_void_p, c_void_p)
-JSObjectCallAsConstructorCallback = CFUNCTYPE( c_void_p, c_void_p, c_void_p, c_uint , c_void_p, c_void_p)
-JSObjectHasInstanceCallback = CFUNCTYPE( c_ubyte, c_void_p, c_void_p, c_void_p, c_void_p)
-JSObjectConvertToTypeCallback =  CFUNCTYPE( c_void_p, c_void_p, c_uint , c_void_p, c_void_p)
+JSObjectInitializeCallback = CFUNCTYPE( None, POINTER(c_int), POINTER(c_int))
+JSObjectFinalizeCallback = CFUNCTYPE( None, POINTER(c_int))
+JSObjectHasPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectGetPropertyCallback = CFUNCTYPE( POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectSetPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectDeletePropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectGetPropertyNamesCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectCallAsFunctionCallback = CFUNCTYPE( c_void_p, POINTER(c_int), POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectCallAsConstructorCallback = CFUNCTYPE( POINTER(c_int), POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectHasInstanceCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectConvertToTypeCallback =  CFUNCTYPE( POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
 
 class JSStaticValue(Structure):
     _fields_  = [('name', c_char_p),
@@ -39,7 +39,7 @@ class JSClassDefinition(Structure):
                ('attributes', JSClassAttributes),
                
                ('className', c_char_p),
-               ('parentClass', c_void_p),
+               ('parentClass', POINTER(c_int)),
                ('staticValues', POINTER(JSStaticValue)),
                ('staticFunctions', POINTER( JSStaticFunction)),
                ('initialize', JSObjectInitializeCallback ),
@@ -57,4 +57,4 @@ class JSClassDefinition(Structure):
 
 kJSClassDefinitionEmpty = libwebkit3.kJSClassDefinitionEmpty
 
-NULL = c_void_p()
+NULL = POINTER(c_int)()

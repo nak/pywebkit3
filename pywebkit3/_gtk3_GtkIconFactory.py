@@ -50,10 +50,16 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__GtkIconSet = c_void_p
-_GtkIconFactory = c_void_p
-_GtkIconSet = c_void_p
+_GdkVisual = POINTER(c_int)
+__GList = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_GList = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
 
 import _gobject_GObject
 class GtkIconFactory( _gobject_GObject.GObject):
@@ -61,42 +67,43 @@ class GtkIconFactory( _gobject_GObject.GObject):
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gtk_icon_factory_new.restype = c_void_p
-
-        libgtk3.gtk_icon_factory_new.argtypes = []
-        self._object = libgtk3.gtk_icon_factory_new()
+            libgtk3.gtk_icon_factory_new.restype = POINTER(c_int)
+            
+            libgtk3.gtk_icon_factory_new.argtypes = []
+            self._object = libgtk3.gtk_icon_factory_new()
 
     """Methods"""
-    def remove_default(self, ):
+    def remove_default(  self, ):
 
-        libgtk3.gtk_icon_factory_remove_default.argtypes = [c_void_p]
+        libgtk3.gtk_icon_factory_remove_default.argtypes = [_GtkIconFactory]
         
-        libgtk3.gtk_icon_factory_remove_default(self._object, )
+        libgtk3.gtk_icon_factory_remove_default( self._object )
 
-    def add(self,  stock_id, icon_set,):
-        if icon_set : icon_set = icon_set._object
-        else : icon_set = c_void_p()
+    def add(  self, stock_id, icon_set, ):
+        if icon_set: icon_set = icon_set._object
+        else: icon_set = POINTER(c_int)()
 
-        libgtk3.gtk_icon_factory_add.argtypes = [c_void_p, c_char_p,_GtkIconSet]
+        libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,c_char_p,_GtkIconSet]
         
-        libgtk3.gtk_icon_factory_add(self._object,  stock_id, icon_set,)
+        libgtk3.gtk_icon_factory_add( self._object,stock_id,icon_set )
 
-    def add_default(self, ):
+    def add_default(  self, ):
 
-        libgtk3.gtk_icon_factory_add_default.argtypes = [c_void_p]
+        libgtk3.gtk_icon_factory_add_default.argtypes = [_GtkIconFactory]
         
-        libgtk3.gtk_icon_factory_add_default(self._object, )
+        libgtk3.gtk_icon_factory_add_default( self._object )
 
-    def lookup(self,  stock_id,):
+    def lookup(  self, stock_id, ):
 
         libgtk3.gtk_icon_factory_lookup.restype = _GtkIconSet
-        libgtk3.gtk_icon_factory_lookup.argtypes = [c_void_p, c_char_p]
+        libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,c_char_p]
         from pywebkit3.gtk3 import GtkIconSet
-        return GtkIconSet(None, obj=libgtk3.gtk_icon_factory_lookup(self._object,  stock_id,) or c_void_p())
+        return GtkIconSet(None, obj=libgtk3.gtk_icon_factory_lookup( self._object,stock_id ) or POINTER(c_int)())
 
     @staticmethod
     def lookup_default( stock_id,):
         libgtk3.gtk_icon_factory_lookup_default.restype = _GtkIconSet
         libgtk3.gtk_icon_factory_lookup_default.argtypes = [c_char_p]
-        return libgtk3.gtk_icon_factory_lookup_default(stock_id, )
-
+        from pywebkit3.gtk3 import GtkIconSet
+        return GtkIconSet( obj=    libgtk3.gtk_icon_factory_lookup_default(stock_id, )
+ or POINTER(c_int)())

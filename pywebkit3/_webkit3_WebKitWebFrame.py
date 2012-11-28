@@ -50,36 +50,222 @@ from webkit3_types import *
     
     
 """Derived Pointer Types"""
-_WebKitNetworkResponse = c_void_p
-_WebKitWebWindowFeatures = c_void_p
-_GdkPixbuf = c_void_p
-_WebKitWebFrame = c_void_p
-_char = c_void_p
-_GtkTargetList = c_void_p
-_GtkWidget = c_void_p
-_JSGlobalContext = c_void_p
-_WebKitSecurityOrigin = c_void_p
-__WebKitNetworkRequest = c_void_p
-_JSContext = c_void_p
-_WebKitWebDataSource = c_void_p
-_WebKitWebSettings = c_void_p
-__WebKitWebHistoryItem = c_void_p
-__GdkEventButton = c_void_p
-_WebKitViewportAttributes = c_void_p
-_WebKitWebInspector = c_void_p
-__GError = c_void_p
-__WebKitWebSettings = c_void_p
-_gchar = c_void_p
-__WebKitWebView = c_void_p
-_WebKitHitTestResult = c_void_p
-_WebKitDOMDocument = c_void_p
-__GtkPrintOperation = c_void_p
-_WebKitWebBackForwardList = c_void_p
-_WebKitWebView = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
 WebKitNavigationResponse = c_int
 WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
 WebKitLoadStatus = c_int
 
 import _gobject_GObject
@@ -88,173 +274,174 @@ class WebKitWebFrame( _gobject_GObject.GObject):
     def __init__( self, web_view,  obj = None):
         if obj: self._object = obj
         else:
-            libwebkit3.webkit_web_frame_new.restype = c_void_p
-        if web_view : web_view = web_view._object
-        else : web_view = c_void_p()
+            libwebkit3.webkit_web_frame_new.restype = POINTER(c_int)
+            
+            if web_view : web_view = web_view._object
+            else :  web_view = POINTER(c_int)()
 
-        libwebkit3.webkit_web_frame_new.argtypes = [_WebKitWebView]
-        self._object = libwebkit3.webkit_web_frame_new(web_view, )
+            libwebkit3.webkit_web_frame_new.argtypes = [_WebKitWebView]
+            self._object = libwebkit3.webkit_web_frame_new(web_view, )
 
     """Methods"""
-    def load_request(self,  request,):
-        if request : request = request._object
-        else : request = c_void_p()
+    def load_request(  self, request, ):
+        if request: request = request._object
+        else: request = POINTER(c_int)()
 
-        libwebkit3.webkit_web_frame_load_request.argtypes = [c_void_p, _WebKitNetworkRequest]
+        libwebkit3.webkit_web_frame_load_request.argtypes = [_WebKitWebFrame,_WebKitNetworkRequest]
         
-        libwebkit3.webkit_web_frame_load_request(self._object,  request,)
+        libwebkit3.webkit_web_frame_load_request( self._object,request )
 
-    def load_alternate_string(self,  content, base_url, unreachable_url,):
+    def load_alternate_string(  self, content, base_url, unreachable_url, ):
 
-        libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [c_void_p, c_char_p,c_char_p,c_char_p]
+        libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p]
         
-        libwebkit3.webkit_web_frame_load_alternate_string(self._object,  content, base_url, unreachable_url,)
+        libwebkit3.webkit_web_frame_load_alternate_string( self._object,content,base_url,unreachable_url )
 
-    def find_frame(self,  name,):
+    def find_frame(  self, name, ):
 
         libwebkit3.webkit_web_frame_find_frame.restype = _WebKitWebFrame
-        libwebkit3.webkit_web_frame_find_frame.argtypes = [c_void_p, c_char_p]
+        libwebkit3.webkit_web_frame_find_frame.argtypes = [_WebKitWebFrame,c_char_p]
         from pywebkit3.webkit3 import WebKitWebFrame
-        return WebKitWebFrame(None,None, obj=libwebkit3.webkit_web_frame_find_frame(self._object,  name,) or c_void_p() )
+        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_frame_find_frame( self._object,name ) or POINTER(c_int)() )
 
-    def get_uri(self, ):
+    def get_uri(  self, ):
 
-        libwebkit3.webkit_web_frame_get_uri.restype = _gchar
-        libwebkit3.webkit_web_frame_get_uri.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_uri.restype = c_char_p
+        libwebkit3.webkit_web_frame_get_uri.argtypes = [_WebKitWebFrame]
         
-        return libwebkit3.webkit_web_frame_get_uri(self._object, )
+        return libwebkit3.webkit_web_frame_get_uri( self._object )
 
-    def get_data_source(self, ):
+    def get_data_source(  self, ):
 
         libwebkit3.webkit_web_frame_get_data_source.restype = _WebKitWebDataSource
-        libwebkit3.webkit_web_frame_get_data_source.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_data_source.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitWebDataSource
-        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_data_source(self._object, ) or c_void_p() )
+        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_data_source( self._object ) or POINTER(c_int)() )
 
-    def stop_loading(self, ):
+    def stop_loading(  self, ):
 
-        libwebkit3.webkit_web_frame_stop_loading.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_stop_loading.argtypes = [_WebKitWebFrame]
         
-        libwebkit3.webkit_web_frame_stop_loading(self._object, )
+        libwebkit3.webkit_web_frame_stop_loading( self._object )
 
-    def get_web_view(self, ):
+    def get_web_view(  self, ):
 
         libwebkit3.webkit_web_frame_get_web_view.restype = _WebKitWebView
-        libwebkit3.webkit_web_frame_get_web_view.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_web_view.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitWebView
-        return WebKitWebView( obj=libwebkit3.webkit_web_frame_get_web_view(self._object, ) or c_void_p() )
+        return WebKitWebView(None, obj=libwebkit3.webkit_web_frame_get_web_view( self._object ) or POINTER(c_int)() )
 
-    def get_horizontal_scrollbar_policy(self, ):
+    def get_horizontal_scrollbar_policy(  self, ):
 
         libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.restype = GtkPolicyType
-        libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.argtypes = [_WebKitWebFrame]
         
-        return libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy(self._object, )
+        return libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy( self._object )
 
-    def get_security_origin(self, ):
+    def get_security_origin(  self, ):
 
         libwebkit3.webkit_web_frame_get_security_origin.restype = _WebKitSecurityOrigin
-        libwebkit3.webkit_web_frame_get_security_origin.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_security_origin.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitSecurityOrigin
-        return WebKitSecurityOrigin( obj=libwebkit3.webkit_web_frame_get_security_origin(self._object, ) or c_void_p() )
+        return WebKitSecurityOrigin( obj=libwebkit3.webkit_web_frame_get_security_origin( self._object ) or POINTER(c_int)() )
 
-    def get_parent(self, ):
+    def get_parent(  self, ):
 
         libwebkit3.webkit_web_frame_get_parent.restype = _WebKitWebFrame
-        libwebkit3.webkit_web_frame_get_parent.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_parent.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitWebFrame
-        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_frame_get_parent(self._object, ) or c_void_p() )
+        return WebKitWebFrame( obj=libwebkit3.webkit_web_frame_get_parent( self._object ) or POINTER(c_int)() )
 
-    def get_network_response(self, ):
+    def get_network_response(  self, ):
 
         libwebkit3.webkit_web_frame_get_network_response.restype = _WebKitNetworkResponse
-        libwebkit3.webkit_web_frame_get_network_response.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_network_response.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitNetworkResponse
-        return WebKitNetworkResponse( obj=libwebkit3.webkit_web_frame_get_network_response(self._object, ) or c_void_p() )
+        return WebKitNetworkResponse( obj=libwebkit3.webkit_web_frame_get_network_response( self._object ) or POINTER(c_int)() )
 
-    def py_print(self, ):
+    def py_print(  self, ):
 
-        libwebkit3.webkit_web_frame_print.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_print.argtypes = [_WebKitWebFrame]
         
-        libwebkit3.webkit_web_frame_print(self._object, )
+        libwebkit3.webkit_web_frame_print( self._object )
 
-    def get_provisional_data_source(self, ):
+    def get_provisional_data_source(  self, ):
 
         libwebkit3.webkit_web_frame_get_provisional_data_source.restype = _WebKitWebDataSource
-        libwebkit3.webkit_web_frame_get_provisional_data_source.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_provisional_data_source.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitWebDataSource
-        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_provisional_data_source(self._object, ) or c_void_p() )
+        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_provisional_data_source( self._object ) or POINTER(c_int)() )
 
-    def get_name(self, ):
+    def get_name(  self, ):
 
-        libwebkit3.webkit_web_frame_get_name.restype = _gchar
-        libwebkit3.webkit_web_frame_get_name.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_name.restype = c_char_p
+        libwebkit3.webkit_web_frame_get_name.argtypes = [_WebKitWebFrame]
         
-        return libwebkit3.webkit_web_frame_get_name(self._object, )
+        return libwebkit3.webkit_web_frame_get_name( self._object )
 
-    def load_string(self,  content, mime_type, encoding, base_uri,):
+    def load_string(  self, content, mime_type, encoding, base_uri, ):
 
-        libwebkit3.webkit_web_frame_load_string.argtypes = [c_void_p, c_char_p,c_char_p,c_char_p,c_char_p]
+        libwebkit3.webkit_web_frame_load_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p,c_char_p]
         
-        libwebkit3.webkit_web_frame_load_string(self._object,  content, mime_type, encoding, base_uri,)
+        libwebkit3.webkit_web_frame_load_string( self._object,content,mime_type,encoding,base_uri )
 
-    def get_dom_document(self, ):
+    def get_dom_document(  self, ):
 
         libwebkit3.webkit_web_frame_get_dom_document.restype = _WebKitDOMDocument
-        libwebkit3.webkit_web_frame_get_dom_document.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_dom_document.argtypes = [_WebKitWebFrame]
         from pywebkit3.webkit3 import WebKitDOMDocument
-        return WebKitDOMDocument( obj=libwebkit3.webkit_web_frame_get_dom_document(self._object, ) or c_void_p() )
+        return WebKitDOMDocument( obj=libwebkit3.webkit_web_frame_get_dom_document( self._object ) or POINTER(c_int)() )
 
-    def reload(self, ):
+    def reload(  self, ):
 
-        libwebkit3.webkit_web_frame_reload.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_reload.argtypes = [_WebKitWebFrame]
         
-        libwebkit3.webkit_web_frame_reload(self._object, )
+        libwebkit3.webkit_web_frame_reload( self._object )
 
-    def get_global_context(self, ):
+    def get_global_context(  self, ):
 
         libwebkit3.webkit_web_frame_get_global_context.restype = _JSGlobalContext
-        libwebkit3.webkit_web_frame_get_global_context.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_global_context.argtypes = [_WebKitWebFrame]
         from pywebkit3.javascriptcore import JSGlobalContext
-        return JSGlobalContext( obj=libwebkit3.webkit_web_frame_get_global_context(self._object, )  or c_void_p())
+        return JSGlobalContext( obj=libwebkit3.webkit_web_frame_get_global_context( self._object )  or POINTER(c_int)())
 
-    def get_vertical_scrollbar_policy(self, ):
+    def get_vertical_scrollbar_policy(  self, ):
 
         libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.restype = GtkPolicyType
-        libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.argtypes = [_WebKitWebFrame]
         
-        return libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy(self._object, )
+        return libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy( self._object )
 
-    def print_full(self,  operation, action, error,):
-        if operation : operation = operation._object
-        else : operation = c_void_p()
-        if action : action = action._object
-        else : action = c_void_p()
-        if error : error = error._object
-        else : error = c_void_p()
+    def print_full(  self, operation, action, error, ):
+        if operation: operation = operation._object
+        else: operation = POINTER(c_int)()
+        if action: action = action._object
+        else: action = POINTER(c_int)()
+        if error: error = error._object
+        else: error = POINTER(c_int)()
 
         libwebkit3.webkit_web_frame_print_full.restype = GtkPrintOperationResult
-        libwebkit3.webkit_web_frame_print_full.argtypes = [c_void_p, _GtkPrintOperation,GtkPrintOperationAction,_GError]
+        libwebkit3.webkit_web_frame_print_full.argtypes = [_WebKitWebFrame,_GtkPrintOperation,GtkPrintOperationAction,_GError]
         
-        return libwebkit3.webkit_web_frame_print_full(self._object,  operation, action, error,)
+        return libwebkit3.webkit_web_frame_print_full( self._object,operation,action,error )
 
-    def get_load_status(self, ):
+    def get_load_status(  self, ):
 
         libwebkit3.webkit_web_frame_get_load_status.restype = WebKitLoadStatus
-        libwebkit3.webkit_web_frame_get_load_status.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_load_status.argtypes = [_WebKitWebFrame]
         
-        return libwebkit3.webkit_web_frame_get_load_status(self._object, )
+        return libwebkit3.webkit_web_frame_get_load_status( self._object )
 
-    def load_uri(self,  uri,):
+    def load_uri(  self, uri, ):
 
-        libwebkit3.webkit_web_frame_load_uri.argtypes = [c_void_p, c_char_p]
+        libwebkit3.webkit_web_frame_load_uri.argtypes = [_WebKitWebFrame,c_char_p]
         
-        libwebkit3.webkit_web_frame_load_uri(self._object,  uri,)
+        libwebkit3.webkit_web_frame_load_uri( self._object,uri )
 
-    def get_title(self, ):
+    def get_title(  self, ):
 
-        libwebkit3.webkit_web_frame_get_title.restype = _gchar
-        libwebkit3.webkit_web_frame_get_title.argtypes = [c_void_p]
+        libwebkit3.webkit_web_frame_get_title.restype = c_char_p
+        libwebkit3.webkit_web_frame_get_title.argtypes = [_WebKitWebFrame]
         
-        return libwebkit3.webkit_web_frame_get_title(self._object, )
+        return libwebkit3.webkit_web_frame_get_title( self._object )
 

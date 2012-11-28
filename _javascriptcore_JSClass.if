@@ -1,0 +1,2 @@
+struct JSClass;
+inherit object;

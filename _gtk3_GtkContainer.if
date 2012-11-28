@@ -77,10 +77,10 @@ void                gtk_container_unset_focus_chain     (GtkContainer *container
 GParamSpec *        gtk_container_class_find_child_property
                                                         (GObjectClass *cclass,
                                                          const gchar *property_name);
-void                gtk_container_class_install_child_property
-                                                        (GtkContainerClass *cclass,
+void                gtk_container_class_install_child_property (GtkContainerClass *cclass,
                                                          guint property_id,
                                                          GParamSpec *pspec);
+
 GParamSpec **       gtk_container_class_list_child_properties
                                                         (GObjectClass *cclass,
                                                          guint *n_properties);

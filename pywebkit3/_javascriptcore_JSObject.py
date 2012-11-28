@@ -50,369 +50,572 @@ from javascriptcore_types import *
     
     
 """Derived Pointer Types"""
-__JSString = c_void_p
-__JSValue = c_void_p
-_JSClass = c_void_p
-__JSContext = c_void_p
-_JSPropertyNameArray = c_void_p
-__JSObject = c_void_p
-__JSPropertyNameArray = c_void_p
-_JSString = c_void_p
-_char = c_void_p
-_JSValue = c_void_p
-_JSObject = c_void_p
-__JSPropertyNameAccumulator = c_void_p
-__JSClass = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__PangoFontFace = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+WebKitLoadStatus = c_int
 
 class JSObject( object):
     """Class JSObject Constructors"""
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def JSPropertyNameAccumulatorAddName(self,  accumulator, propertyName,):
-        if accumulator : accumulator = accumulator._object
-        else : accumulator = c_void_p()
-        if propertyName : propertyName = propertyName._object
-        else : propertyName = c_void_p()
+    def GetProperty(  self, ctx, propertyName, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if propertyName: propertyName = propertyName._object
+        else: propertyName = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
 
-        libjavascriptcore.JSPropertyNameAccumulatorAddName.argtypes = [c_void_p, _JSPropertyNameAccumulator,_JSString]
+        libjavascriptcore.JSObjectGetProperty.restype = _JSValue
+        libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=libjavascriptcore.JSObjectGetProperty( ctx,self._object,propertyName,exception )  or POINTER(c_int)())
+
+    def JSPropertyNameAccumulatorAddName(  self, accumulator, propertyName, ):
+        if accumulator: accumulator = accumulator._object
+        else: accumulator = POINTER(c_int)()
+        if propertyName: propertyName = propertyName._object
+        else: propertyName = POINTER(c_int)()
+
+        libjavascriptcore.JSPropertyNameAccumulatorAddName.argtypes = [_JSObject,_JSPropertyNameAccumulator,_JSString]
         
-        libjavascriptcore.JSPropertyNameAccumulatorAddName(self._object,  accumulator, propertyName,)
+        libjavascriptcore.JSPropertyNameAccumulatorAddName( self._object,accumulator,propertyName )
 
-    def JSObjectSetPrototype(self,  ctx, object, value,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
+    def SetPrototype(  self, ctx, value, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if value: value = value._object
+        else: value = POINTER(c_int)()
 
-        libjavascriptcore.JSObjectSetPrototype.argtypes = [c_void_p, _JSContext,_JSObject,_JSValue]
+        libjavascriptcore.JSObjectSetPrototype.argtypes = [_JSContext,_JSObject,_JSValue]
         
-        libjavascriptcore.JSObjectSetPrototype(self._object,  ctx, object, value,)
+        libjavascriptcore.JSObjectSetPrototype( ctx,self._object,value )
 
-    def JSPropertyNameArrayRelease(self,  array,):
-        if array : array = array._object
-        else : array = c_void_p()
+    def HasProperty(  self, ctx, propertyName, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if propertyName: propertyName = propertyName._object
+        else: propertyName = POINTER(c_int)()
 
-        libjavascriptcore.JSPropertyNameArrayRelease.argtypes = [c_void_p, _JSPropertyNameArray]
+        libjavascriptcore.JSObjectHasProperty.restype = bool
+        libjavascriptcore.JSObjectHasProperty.argtypes = [_JSContext,_JSObject,_JSString]
         
-        libjavascriptcore.JSPropertyNameArrayRelease(self._object,  array,)
+        return libjavascriptcore.JSObjectHasProperty( ctx,self._object,propertyName )
 
-    def JSObjectSetPropertyAtIndex(self,  ctx, object, propertyIndex, value, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if propertyIndex : propertyIndex = propertyIndex._object
-        else : propertyIndex = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
+    def GetPrototype(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
 
-        libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [c_void_p, _JSContext,_JSObject,unsigned,_JSValue,_JSValue]
+        libjavascriptcore.JSObjectGetPrototype.restype = _JSValue
+        libjavascriptcore.JSObjectGetPrototype.argtypes = [_JSContext,_JSObject]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=libjavascriptcore.JSObjectGetPrototype( ctx,self._object )  or POINTER(c_int)())
+
+    def CallAsConstructor(  self, ctx, argumentCount, arguments, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if arguments: arguments = arguments._object
+        else: arguments = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectCallAsConstructor.restype = _JSObject
+        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue,_JSValue]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject(None,None,None,None, obj=libjavascriptcore.JSObjectCallAsConstructor( ctx,self._object,argumentCount,arguments,exception )  or POINTER(c_int)())
+
+    def JSPropertyNameArrayRelease(  self, array, ):
+        if array: array = array._object
+        else: array = POINTER(c_int)()
+
+        libjavascriptcore.JSPropertyNameArrayRelease.argtypes = [_JSObject,_JSPropertyNameArray]
         
-        libjavascriptcore.JSObjectSetPropertyAtIndex(self._object,  ctx, object, propertyIndex, value, exception,)
+        libjavascriptcore.JSPropertyNameArrayRelease( self._object,array )
 
-    def JSObjectSetPrivate(self,  data,):
+    def DeleteProperty(  self, ctx, propertyName, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if propertyName: propertyName = propertyName._object
+        else: propertyName = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectDeleteProperty.restype = bool
+        libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
+        
+        return libjavascriptcore.JSObjectDeleteProperty( ctx,self._object,propertyName,exception )
+
+    def IsConstructor(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectIsConstructor.restype = bool
+        libjavascriptcore.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
+        
+        return libjavascriptcore.JSObjectIsConstructor( ctx,self._object )
+
+    def SetPropertyAtIndex(  self, ctx, propertyIndex, value, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if propertyIndex: propertyIndex = propertyIndex._object
+        else: propertyIndex = POINTER(c_int)()
+        if value: value = value._object
+        else: value = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue,_JSValue]
+        
+        libjavascriptcore.JSObjectSetPropertyAtIndex( ctx,self._object,propertyIndex,value,exception )
+
+    def SetPrivate(  self, data, ):
 
         libjavascriptcore.JSObjectSetPrivate.restype = bool
-        libjavascriptcore.JSObjectSetPrivate.argtypes = [c_void_p, c_char_p]
+        libjavascriptcore.JSObjectSetPrivate.argtypes = [_JSObject,c_char_p]
         
-        return libjavascriptcore.JSObjectSetPrivate(self._object,  data,)
+        return libjavascriptcore.JSObjectSetPrivate( self._object,data )
 
-    def JSClassRelease(self,  jsClass,):
-        if jsClass : jsClass = jsClass._object
-        else : jsClass = c_void_p()
+    def JSClassRelease(  self, jsClass, ):
+        if jsClass: jsClass = jsClass._object
+        else: jsClass = POINTER(c_int)()
 
-        libjavascriptcore.JSClassRelease.argtypes = [c_void_p, _JSClass]
+        libjavascriptcore.JSClassRelease.argtypes = [_JSObject,_JSClass]
         
-        libjavascriptcore.JSClassRelease(self._object,  jsClass,)
+        libjavascriptcore.JSClassRelease( self._object,jsClass )
 
-    def JSObjectGetPrivate(self, ):
+    def CallAsFunction(  self, ctx, thisObject, argumentCount, arguments, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if thisObject: thisObject = thisObject._object
+        else: thisObject = POINTER(c_int)()
+        if arguments: arguments = arguments._object
+        else: arguments = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
 
-        libjavascriptcore.JSObjectGetPrivate.restype = _char
-        libjavascriptcore.JSObjectGetPrivate.argtypes = [c_void_p]
+        libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
+        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,_JSValue,_JSValue]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=libjavascriptcore.JSObjectCallAsFunction( ctx,self._object,thisObject,argumentCount,arguments,exception )  or POINTER(c_int)())
+
+    def CopyPropertyNames(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectCopyPropertyNames.restype = _JSPropertyNameArray
+        libjavascriptcore.JSObjectCopyPropertyNames.argtypes = [_JSContext,_JSObject]
+        from pywebkit3.javascriptcore import JSPropertyNameArray
+        return JSPropertyNameArray( obj=libjavascriptcore.JSObjectCopyPropertyNames( ctx,self._object )  or POINTER(c_int)())
+
+    def GetPropertyAtIndex(  self, ctx, propertyIndex, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if propertyIndex: propertyIndex = propertyIndex._object
+        else: propertyIndex = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectGetPropertyAtIndex.restype = _JSValue
+        libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
+        from pywebkit3.javascriptcore import JSValue
+        return JSValue( obj=libjavascriptcore.JSObjectGetPropertyAtIndex( ctx,self._object,propertyIndex,exception )  or POINTER(c_int)())
+
+    def GetPrivate(  self, ):
+
+        libjavascriptcore.JSObjectGetPrivate.restype = c_char_p
+        libjavascriptcore.JSObjectGetPrivate.argtypes = [_JSObject]
         
-        return libjavascriptcore.JSObjectGetPrivate(self._object, )
+        return libjavascriptcore.JSObjectGetPrivate( self._object )
 
-    def JSObjectSetProperty(self,  ctx, object, propertyName, value, attributes, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if propertyName : propertyName = propertyName._object
-        else : propertyName = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
+    def SetProperty(  self, ctx, propertyName, value, attributes, exception, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if propertyName: propertyName = propertyName._object
+        else: propertyName = POINTER(c_int)()
+        if value: value = value._object
+        else: value = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
 
-        libjavascriptcore.JSObjectSetProperty.argtypes = [c_void_p, _JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
+        libjavascriptcore.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
         
-        libjavascriptcore.JSObjectSetProperty(self._object,  ctx, object, propertyName, value, attributes, exception,)
+        libjavascriptcore.JSObjectSetProperty( ctx,self._object,propertyName,value,attributes,exception )
+
+    def IsFunction(  self, ctx, ):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+
+        libjavascriptcore.JSObjectIsFunction.restype = bool
+        libjavascriptcore.JSObjectIsFunction.argtypes = [_JSContext,_JSObject]
+        
+        return libjavascriptcore.JSObjectIsFunction( ctx,self._object )
 
     @staticmethod
     def JSClassRetain( jsClass,):
-        if jsClass : jsClass = jsClass._object
-        else : jsClass = c_void_p()
+        if jsClass: jsClass = jsClass._object
+        else: jsClass = POINTER(c_int)()
         libjavascriptcore.JSClassRetain.restype = _JSClass
         libjavascriptcore.JSClassRetain.argtypes = [_JSClass]
-        return libjavascriptcore.JSClassRetain(jsClass, )
-
+        from pywebkit3.javascriptcore import JSClass
+        return JSClass( obj=    libjavascriptcore.JSClassRetain(jsClass, )
+  or POINTER(c_int)())
     @staticmethod
-    def JSObjectMakeFunctionWithCallback( ctx, name, callAsFunction,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if name : name = name._object
-        else : name = c_void_p()
-        libjavascriptcore.JSObjectMakeFunctionWithCallback.restype = _JSObject
-        libjavascriptcore.JSObjectMakeFunctionWithCallback.argtypes = [_JSContext,_JSString,JSObjectCallAsFunctionCallback]
-        return libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx, name, callAsFunction, )
-
-    @staticmethod
-    def JSPropertyNameArrayRetain( array,):
-        if array : array = array._object
-        else : array = c_void_p()
-        libjavascriptcore.JSPropertyNameArrayRetain.restype = _JSPropertyNameArray
-        libjavascriptcore.JSPropertyNameArrayRetain.argtypes = [_JSPropertyNameArray]
-        return libjavascriptcore.JSPropertyNameArrayRetain(array, )
-
-    @staticmethod
-    def JSObjectCopyPropertyNames( ctx, object,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        libjavascriptcore.JSObjectCopyPropertyNames.restype = _JSPropertyNameArray
-        libjavascriptcore.JSObjectCopyPropertyNames.argtypes = [_JSContext,_JSObject]
-        return libjavascriptcore.JSObjectCopyPropertyNames(ctx, object, )
-
-    @staticmethod
-    def JSObjectMake( ctx, jsClass, data,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if jsClass : jsClass = jsClass._object
-        else : jsClass = c_void_p()
-        libjavascriptcore.JSObjectMake.restype = _JSObject
-        libjavascriptcore.JSObjectMake.argtypes = [_JSContext,_JSClass,c_char_p]
-        return libjavascriptcore.JSObjectMake(ctx, jsClass, data, )
-
-    @staticmethod
-    def JSObjectIsFunction( ctx, object,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        libjavascriptcore.JSObjectIsFunction.restype = bool
-        libjavascriptcore.JSObjectIsFunction.argtypes = [_JSContext,_JSObject]
-        return libjavascriptcore.JSObjectIsFunction(ctx, object, )
-
-    @staticmethod
-    def JSObjectGetPrototype( ctx, object,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        libjavascriptcore.JSObjectGetPrototype.restype = _JSValue
-        libjavascriptcore.JSObjectGetPrototype.argtypes = [_JSContext,_JSObject]
-        return libjavascriptcore.JSObjectGetPrototype(ctx, object, )
-
-    @staticmethod
-    def JSObjectMakeArray( ctx, argumentCount, arguments, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if arguments : arguments = arguments._object
-        else : arguments = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectMakeArray.restype = _JSObject
-        libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
-        return libjavascriptcore.JSObjectMakeArray(ctx, argumentCount, arguments, exception, )
-
-    @staticmethod
-    def JSPropertyNameArrayGetNameAtIndex( array, index,):
-        if array : array = array._object
-        else : array = c_void_p()
-        libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.restype = _JSString
-        libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.argtypes = [_JSPropertyNameArray,size_t]
-        return libjavascriptcore.JSPropertyNameArrayGetNameAtIndex(array, index, )
-
-    @staticmethod
-    def JSObjectCallAsConstructor( ctx, object, argumentCount, arguments, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if arguments : arguments = arguments._object
-        else : arguments = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectCallAsConstructor.restype = _JSObject
-        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue,_JSValue]
-        return libjavascriptcore.JSObjectCallAsConstructor(ctx, object, argumentCount, arguments, exception, )
-
-    @staticmethod
-    def JSObjectMakeRegExp( ctx, argumentCount, arguments, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if arguments : arguments = arguments._object
-        else : arguments = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectMakeRegExp.restype = _JSObject
-        libjavascriptcore.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
-        return libjavascriptcore.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )
-
-    @staticmethod
-    def JSClassCreate( definition,):
-        if definition : definition = definition._object
-        else : definition = c_void_p()
-        libjavascriptcore.JSClassCreate.restype = _JSClass
-        libjavascriptcore.JSClassCreate.argtypes = [POITNER(JSClassDefinition)]
-        return libjavascriptcore.JSClassCreate(definition, )
-
-    @staticmethod
-    def JSObjectMakeError( ctx, argumentCount, arguments, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if arguments : arguments = arguments._object
-        else : arguments = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
+    def MakeError( ctx, argumentCount, arguments, exception,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if arguments: arguments = arguments._object
+        else: arguments = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeError.restype = _JSObject
         libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
-        return libjavascriptcore.JSObjectMakeError(ctx, argumentCount, arguments, exception, )
-
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeError(ctx, argumentCount, arguments, exception, )
+  or POINTER(c_int)())
     @staticmethod
-    def JSObjectDeleteProperty( ctx, object, propertyName, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if propertyName : propertyName = propertyName._object
-        else : propertyName = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectDeleteProperty.restype = bool
-        libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
-        return libjavascriptcore.JSObjectDeleteProperty(ctx, object, propertyName, exception, )
-
+    def MakeFunctionWithCallback( ctx, name, callAsFunction,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if name: name = name._object
+        else: name = POINTER(c_int)()
+        libjavascriptcore.JSObjectMakeFunctionWithCallback.restype = _JSObject
+        libjavascriptcore.JSObjectMakeFunctionWithCallback.argtypes = [_JSContext,_JSString,JSObjectCallAsFunctionCallback]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx, name, callAsFunction, )
+  or POINTER(c_int)())
     @staticmethod
-    def JSObjectMakeConstructor( ctx, jsClass, callAsConstructor,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if jsClass : jsClass = jsClass._object
-        else : jsClass = c_void_p()
+    def MakeArray( ctx, argumentCount, arguments, exception,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if arguments: arguments = arguments._object
+        else: arguments = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+        libjavascriptcore.JSObjectMakeArray.restype = _JSObject
+        libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeArray(ctx, argumentCount, arguments, exception, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeConstructor( ctx, jsClass, callAsConstructor,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if jsClass: jsClass = jsClass._object
+        else: jsClass = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeConstructor.restype = _JSObject
         libjavascriptcore.JSObjectMakeConstructor.argtypes = [_JSContext,_JSClass,JSObjectCallAsConstructorCallback]
-        return libjavascriptcore.JSObjectMakeConstructor(ctx, jsClass, callAsConstructor, )
-
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeConstructor(ctx, jsClass, callAsConstructor, )
+  or POINTER(c_int)())
     @staticmethod
-    def JSObjectMakeFunction( ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if name : name = name._object
-        else : name = c_void_p()
-        if parameterCount : parameterCount = parameterCount._object
-        else : parameterCount = c_void_p()
-        if parameterNames : parameterNames = parameterNames._object
-        else : parameterNames = c_void_p()
-        if body : body = body._object
-        else : body = c_void_p()
-        if sourceURL : sourceURL = sourceURL._object
-        else : sourceURL = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectMakeFunction.restype = _JSObject
-        libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,_JSString,_JSString,_JSString,int,_JSValue]
-        return libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
-
-    @staticmethod
-    def JSObjectGetPropertyAtIndex( ctx, object, propertyIndex, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if propertyIndex : propertyIndex = propertyIndex._object
-        else : propertyIndex = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectGetPropertyAtIndex.restype = _JSValue
-        libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
-        return libjavascriptcore.JSObjectGetPropertyAtIndex(ctx, object, propertyIndex, exception, )
-
-    @staticmethod
-    def JSObjectGetProperty( ctx, object, propertyName, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if propertyName : propertyName = propertyName._object
-        else : propertyName = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectGetProperty.restype = _JSValue
-        libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
-        return libjavascriptcore.JSObjectGetProperty(ctx, object, propertyName, exception, )
-
-    @staticmethod
-    def JSObjectHasProperty( ctx, object, propertyName,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if propertyName : propertyName = propertyName._object
-        else : propertyName = c_void_p()
-        libjavascriptcore.JSObjectHasProperty.restype = bool
-        libjavascriptcore.JSObjectHasProperty.argtypes = [_JSContext,_JSObject,_JSString]
-        return libjavascriptcore.JSObjectHasProperty(ctx, object, propertyName, )
-
-    @staticmethod
-    def JSObjectIsConstructor( ctx, object,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        libjavascriptcore.JSObjectIsConstructor.restype = bool
-        libjavascriptcore.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
-        return libjavascriptcore.JSObjectIsConstructor(ctx, object, )
-
-    @staticmethod
-    def JSObjectMakeDate( ctx, argumentCount, arguments, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if arguments : arguments = arguments._object
-        else : arguments = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
+    def MakeDate( ctx, argumentCount, arguments, exception,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if arguments: arguments = arguments._object
+        else: arguments = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeDate.restype = _JSObject
         libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
-        return libjavascriptcore.JSObjectMakeDate(ctx, argumentCount, arguments, exception, )
-
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeDate(ctx, argumentCount, arguments, exception, )
+  or POINTER(c_int)())
     @staticmethod
-    def JSObjectCallAsFunction( ctx, object, thisObject, argumentCount, arguments, exception,):
-        if ctx : ctx = ctx._object
-        else : ctx = c_void_p()
-        if object : object = object._object
-        else : object = c_void_p()
-        if thisObject : thisObject = thisObject._object
-        else : thisObject = c_void_p()
-        if arguments : arguments = arguments._object
-        else : arguments = c_void_p()
-        if exception : exception = exception._object
-        else : exception = c_void_p()
-        libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
-        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,_JSValue,_JSValue]
-        return libjavascriptcore.JSObjectCallAsFunction(ctx, object, thisObject, argumentCount, arguments, exception, )
-
+    def JSPropertyNameArrayRetain( array,):
+        if array: array = array._object
+        else: array = POINTER(c_int)()
+        libjavascriptcore.JSPropertyNameArrayRetain.restype = _JSPropertyNameArray
+        libjavascriptcore.JSPropertyNameArrayRetain.argtypes = [_JSPropertyNameArray]
+        from pywebkit3.javascriptcore import JSPropertyNameArray
+        return JSPropertyNameArray( obj=    libjavascriptcore.JSPropertyNameArrayRetain(array, )
+  or POINTER(c_int)())
+    @staticmethod
+    def JSPropertyNameArrayGetNameAtIndex( array, index,):
+        if array: array = array._object
+        else: array = POINTER(c_int)()
+        libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.restype = _JSString
+        libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.argtypes = [_JSPropertyNameArray,size_t]
+        from pywebkit3.javascriptcore import JSString
+        return JSString( obj=    libjavascriptcore.JSPropertyNameArrayGetNameAtIndex(array, index, )
+  or POINTER(c_int)())
+    @staticmethod
+    def MakeFunction( ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if name: name = name._object
+        else: name = POINTER(c_int)()
+        if parameterCount: parameterCount = parameterCount._object
+        else: parameterCount = POINTER(c_int)()
+        if parameterNames: parameterNames = parameterNames._object
+        else: parameterNames = POINTER(c_int)()
+        if body: body = body._object
+        else: body = POINTER(c_int)()
+        if sourceURL: sourceURL = sourceURL._object
+        else: sourceURL = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+        libjavascriptcore.JSObjectMakeFunction.restype = _JSObject
+        libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,_JSString,_JSString,_JSString,int,_JSValue]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
+  or POINTER(c_int)())
+    @staticmethod
+    def Make( ctx, jsClass, data,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if jsClass: jsClass = jsClass._object
+        else: jsClass = POINTER(c_int)()
+        libjavascriptcore.JSObjectMake.restype = _JSObject
+        libjavascriptcore.JSObjectMake.argtypes = [_JSContext,_JSClass,c_char_p]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMake(ctx, jsClass, data, )
+  or POINTER(c_int)())
     @staticmethod
     def JSPropertyNameArrayGetCount( array,):
-        if array : array = array._object
-        else : array = c_void_p()
+        if array: array = array._object
+        else: array = POINTER(c_int)()
         libjavascriptcore.JSPropertyNameArrayGetCount.restype = size_t
         libjavascriptcore.JSPropertyNameArrayGetCount.argtypes = [_JSPropertyNameArray]
-        return libjavascriptcore.JSPropertyNameArrayGetCount(array, )
+        
+        return     libjavascriptcore.JSPropertyNameArrayGetCount(array, )
 
+    @staticmethod
+    def MakeRegExp( ctx, argumentCount, arguments, exception,):
+        if ctx: ctx = ctx._object
+        else: ctx = POINTER(c_int)()
+        if arguments: arguments = arguments._object
+        else: arguments = POINTER(c_int)()
+        if exception: exception = exception._object
+        else: exception = POINTER(c_int)()
+        libjavascriptcore.JSObjectMakeRegExp.restype = _JSObject
+        libjavascriptcore.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
+        from pywebkit3.javascriptcore import JSObject
+        return JSObject( obj=    libjavascriptcore.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )
+  or POINTER(c_int)())
+    @staticmethod
+    def JSClassCreate( definition,):
+        libjavascriptcore.JSClassCreate.restype = _JSClass
+        libjavascriptcore.JSClassCreate.argtypes = [POINTER(JSClassDefinition)]
+        from pywebkit3.javascriptcore import JSClass
+        return JSClass( obj=    libjavascriptcore.JSClassCreate(definition, )
+  or POINTER(c_int)())

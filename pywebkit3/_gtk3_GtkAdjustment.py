@@ -50,128 +50,182 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__GtkRcStyle = c_void_p
-__GdkGeometry = c_void_p
-_GdkPixbuf = c_void_p
-__GtkRequisition = c_void_p
-_GtkRcStyle = c_void_p
-__GtkRegionFlags = c_void_p
-_GdkEvent = c_void_p
-_GtkWindow = c_void_p
-__cairo_font_options_t = c_void_p
-__GdkAtom = c_void_p
-__GdkTimeCoord = c_void_p
-__GtkWidgetPath = c_void_p
-__GClosure = c_void_p
-_GdkDisplay = c_void_p
-__GtkStyleProvider = c_void_p
-_GScanner = c_void_p
-_PangoFont = c_void_p
-_GtkStyleContext = c_void_p
-__GtkTextBuffer = c_void_p
-_guchar = c_void_p
-_GdkAppLaunchContext = c_void_p
-__GObject = c_void_p
-__PangoLayout = c_void_p
-__GParamSpec = c_void_p
-__PangoAttrIterator = c_void_p
-_GtkIconSet = c_void_p
-_GtkSelectionData = c_void_p
-_GtkWindowGroup = c_void_p
-_GtkAdjustment = c_void_p
-_PangoLogAttr = c_void_p
-__PangoContext = c_void_p
-__GtkPathPriorityType = c_void_p
-__GtkSettings = c_void_p
-__PangoFontMap = c_void_p
-__PangoAttrList = c_void_p
-_PangoMatrix = c_void_p
-_GtkApplication = c_void_p
-__PangoAnalysis = c_void_p
-_PangoFontDescription = c_void_p
-__GdkCursor = c_void_p
-_guint8 = c_void_p
-__GScanner = c_void_p
-__GtkWidgetClass = c_void_p
-__GdkEventKey = c_void_p
-__GtkAdjustment = c_void_p
-__GdkDisplay = c_void_p
-_GtkWidgetPath = c_void_p
-_GdkScreen = c_void_p
-_PangoFontMetrics = c_void_p
-_GdkVisual = c_void_p
-_PangoFontMap = c_void_p
-_GSList = c_void_p
-_GtkWidget = c_void_p
-__GdkWindow = c_void_p
-__PangoFontFamily = c_void_p
-__cairo_region_t = c_void_p
-_PangoFontset = c_void_p
-_GdkWindow = c_void_p
-__PangoFontDescription = c_void_p
-__GtkBorder = c_void_p
-__GError = c_void_p
-__PangoCoverage = c_void_p
-__cairo_t = c_void_p
-__GWeakRef = c_void_p
-__GdkVisual = c_void_p
-_GdkDevice = c_void_p
-_GList = c_void_p
-__GtkAccelGroup = c_void_p
-_GObject = c_void_p
-__GtkIconSource = c_void_p
-__GtkAllocation = c_void_p
-__GtkWidget = c_void_p
-_PangoLayoutLine = c_void_p
-_gchar = c_void_p
-__PangoTabArray = c_void_p
-__GValue = c_void_p
-_GdkDeviceManager = c_void_p
-_GdkCursor = c_void_p
-__PangoMatrix = c_void_p
-_PangoContext = c_void_p
-__GList = c_void_p
-_PangoCoverage = c_void_p
-_GParamSpec = c_void_p
-__PangoRectangle = c_void_p
-__GdkRGBA = c_void_p
-_char = c_void_p
-__PangoGlyphString = c_void_p
-__GObjectClass = c_void_p
-__GSList = c_void_p
-__GdkWindowAttr = c_void_p
-__GdkColor = c_void_p
-__GdkRectangle = c_void_p
-__PangoLanguage = c_void_p
-_PangoAttrList = c_void_p
-__gunichar = c_void_p
-__GdkWMDecoration = c_void_p
-__PangoLogAttr = c_void_p
-_PangoLayout = c_void_p
-_GtkStyle = c_void_p
-__GParameter = c_void_p
-__GtkStyle = c_void_p
-__GIcon = c_void_p
-__GtkWindow = c_void_p
-__cairo_pattern_t = c_void_p
-__GdkPixbuf = c_void_p
-_GtkSettings = c_void_p
-__GtkTargetEntry = c_void_p
-__GtkApplication = c_void_p
-_GtkClipboard = c_void_p
-__GdkScreen = c_void_p
-_PangoLanguage = c_void_p
-__GdkDevice = c_void_p
-_PangoTabArray = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+__JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__JSClass = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__JSString = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__JSContextGroup = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__JSContext = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__JSPropertyNameAccumulator = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__JSGlobalContext = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+__JSObject = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
 GtkAlign = c_int
-GdkPixbufError = c_int
-GdkColorspace = c_int
-GdkPixbufAlphaMode = c_int
-GtkIconSize = c_int
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
 GdkWindowHints = c_int
@@ -189,8 +243,6 @@ GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
 GdkCursorType = c_int
-GdkVisualType = c_int
-GdkByteOrder = c_int
 PangoStyle = c_int
 PangoWeight = c_int
 PangoVariant = c_int
@@ -201,6 +253,20 @@ GtkRcTokenType = c_int
 PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
+GApplicationFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitLoadStatus = c_int
+WebKitEditingBehavior = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+WebKitLoadStatus = c_int
 
 import _gobject_GObject
 class GtkAdjustment( _gobject_GObject.GObject):
@@ -208,111 +274,111 @@ class GtkAdjustment( _gobject_GObject.GObject):
     def __init__( self, page_size,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gtk_adjustment_new.restype = c_void_p
-
-        libgtk3.gtk_adjustment_new.argtypes = [gdouble]
-        self._object = libgtk3.gtk_adjustment_new(page_size, )
+            libgtk3.gtk_adjustment_new.restype = POINTER(c_int)
+            
+            libgtk3.gtk_adjustment_new.argtypes = [gdouble]
+            self._object = libgtk3.gtk_adjustment_new(page_size, )
 
     """Methods"""
-    def get_page_size(self, ):
+    def get_page_size(  self, ):
 
         libgtk3.gtk_adjustment_get_page_size.restype = gdouble
-        libgtk3.gtk_adjustment_get_page_size.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_get_page_size.argtypes = [_GtkAdjustment]
         
-        return libgtk3.gtk_adjustment_get_page_size(self._object, )
+        return libgtk3.gtk_adjustment_get_page_size( self._object )
 
-    def get_value(self, ):
+    def get_value(  self, ):
 
         libgtk3.gtk_adjustment_get_value.restype = gdouble
-        libgtk3.gtk_adjustment_get_value.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_get_value.argtypes = [_GtkAdjustment]
         
-        return libgtk3.gtk_adjustment_get_value(self._object, )
+        return libgtk3.gtk_adjustment_get_value( self._object )
 
-    def get_upper(self, ):
+    def get_upper(  self, ):
 
         libgtk3.gtk_adjustment_get_upper.restype = gdouble
-        libgtk3.gtk_adjustment_get_upper.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_get_upper.argtypes = [_GtkAdjustment]
         
-        return libgtk3.gtk_adjustment_get_upper(self._object, )
+        return libgtk3.gtk_adjustment_get_upper( self._object )
 
-    def configure(self,  value, lower, upper, step_increment, page_increment, page_size,):
+    def configure(  self, value, lower, upper, step_increment, page_increment, page_size, ):
 
-        libgtk3.gtk_adjustment_configure.argtypes = [c_void_p, gdouble,gdouble,gdouble,gdouble,gdouble,gdouble]
+        libgtk3.gtk_adjustment_configure.argtypes = [_GtkAdjustment,gdouble,gdouble,gdouble,gdouble,gdouble,gdouble]
         
-        libgtk3.gtk_adjustment_configure(self._object,  value, lower, upper, step_increment, page_increment, page_size,)
+        libgtk3.gtk_adjustment_configure( self._object,value,lower,upper,step_increment,page_increment,page_size )
 
-    def set_upper(self,  upper,):
+    def set_upper(  self, upper, ):
 
-        libgtk3.gtk_adjustment_set_upper.argtypes = [c_void_p, gdouble]
+        libgtk3.gtk_adjustment_set_upper.argtypes = [_GtkAdjustment,gdouble]
         
-        libgtk3.gtk_adjustment_set_upper(self._object,  upper,)
+        libgtk3.gtk_adjustment_set_upper( self._object,upper )
 
-    def get_page_increment(self, ):
+    def get_page_increment(  self, ):
 
         libgtk3.gtk_adjustment_get_page_increment.restype = gdouble
-        libgtk3.gtk_adjustment_get_page_increment.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_get_page_increment.argtypes = [_GtkAdjustment]
         
-        return libgtk3.gtk_adjustment_get_page_increment(self._object, )
+        return libgtk3.gtk_adjustment_get_page_increment( self._object )
 
-    def value_changed(self, ):
+    def value_changed(  self, ):
 
-        libgtk3.gtk_adjustment_value_changed.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_value_changed.argtypes = [_GtkAdjustment]
         
-        libgtk3.gtk_adjustment_value_changed(self._object, )
+        libgtk3.gtk_adjustment_value_changed( self._object )
 
-    def set_page_size(self,  page_size,):
+    def set_page_size(  self, page_size, ):
 
-        libgtk3.gtk_adjustment_set_page_size.argtypes = [c_void_p, gdouble]
+        libgtk3.gtk_adjustment_set_page_size.argtypes = [_GtkAdjustment,gdouble]
         
-        libgtk3.gtk_adjustment_set_page_size(self._object,  page_size,)
+        libgtk3.gtk_adjustment_set_page_size( self._object,page_size )
 
-    def set_page_increment(self,  page_increment,):
+    def set_page_increment(  self, page_increment, ):
 
-        libgtk3.gtk_adjustment_set_page_increment.argtypes = [c_void_p, gdouble]
+        libgtk3.gtk_adjustment_set_page_increment.argtypes = [_GtkAdjustment,gdouble]
         
-        libgtk3.gtk_adjustment_set_page_increment(self._object,  page_increment,)
+        libgtk3.gtk_adjustment_set_page_increment( self._object,page_increment )
 
-    def get_lower(self, ):
+    def get_lower(  self, ):
 
         libgtk3.gtk_adjustment_get_lower.restype = gdouble
-        libgtk3.gtk_adjustment_get_lower.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_get_lower.argtypes = [_GtkAdjustment]
         
-        return libgtk3.gtk_adjustment_get_lower(self._object, )
+        return libgtk3.gtk_adjustment_get_lower( self._object )
 
-    def changed(self, ):
+    def changed(  self, ):
 
-        libgtk3.gtk_adjustment_changed.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_changed.argtypes = [_GtkAdjustment]
         
-        libgtk3.gtk_adjustment_changed(self._object, )
+        libgtk3.gtk_adjustment_changed( self._object )
 
-    def get_step_increment(self, ):
+    def get_step_increment(  self, ):
 
         libgtk3.gtk_adjustment_get_step_increment.restype = gdouble
-        libgtk3.gtk_adjustment_get_step_increment.argtypes = [c_void_p]
+        libgtk3.gtk_adjustment_get_step_increment.argtypes = [_GtkAdjustment]
         
-        return libgtk3.gtk_adjustment_get_step_increment(self._object, )
+        return libgtk3.gtk_adjustment_get_step_increment( self._object )
 
-    def set_value(self,  value,):
+    def set_value(  self, value, ):
 
-        libgtk3.gtk_adjustment_set_value.argtypes = [c_void_p, gdouble]
+        libgtk3.gtk_adjustment_set_value.argtypes = [_GtkAdjustment,gdouble]
         
-        libgtk3.gtk_adjustment_set_value(self._object,  value,)
+        libgtk3.gtk_adjustment_set_value( self._object,value )
 
-    def set_step_increment(self,  step_increment,):
+    def set_step_increment(  self, step_increment, ):
 
-        libgtk3.gtk_adjustment_set_step_increment.argtypes = [c_void_p, gdouble]
+        libgtk3.gtk_adjustment_set_step_increment.argtypes = [_GtkAdjustment,gdouble]
         
-        libgtk3.gtk_adjustment_set_step_increment(self._object,  step_increment,)
+        libgtk3.gtk_adjustment_set_step_increment( self._object,step_increment )
 
-    def clamp_page(self,  lower, upper,):
+    def clamp_page(  self, lower, upper, ):
 
-        libgtk3.gtk_adjustment_clamp_page.argtypes = [c_void_p, gdouble,gdouble]
+        libgtk3.gtk_adjustment_clamp_page.argtypes = [_GtkAdjustment,gdouble,gdouble]
         
-        libgtk3.gtk_adjustment_clamp_page(self._object,  lower, upper,)
+        libgtk3.gtk_adjustment_clamp_page( self._object,lower,upper )
 
-    def set_lower(self,  lower,):
+    def set_lower(  self, lower, ):
 
-        libgtk3.gtk_adjustment_set_lower.argtypes = [c_void_p, gdouble]
+        libgtk3.gtk_adjustment_set_lower.argtypes = [_GtkAdjustment,gdouble]
         
-        libgtk3.gtk_adjustment_set_lower(self._object,  lower,)
+        libgtk3.gtk_adjustment_set_lower( self._object,lower )
 

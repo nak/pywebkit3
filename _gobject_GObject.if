@@ -34,7 +34,6 @@ gpointer            g_object_ref_sink                   (gpointer object);
 void                g_clear_object                      (volatile GObject **object_ptr);
 typedef             GInitiallyUnowned;
 typedef             GInitiallyUnownedClass;
-#define             G_TYPE_INITIALLY_UNOWNED
 gboolean            g_object_is_floating                (gpointer object);
 void                g_object_force_floating             (GObject *object);
                                                          GObject *where_the_object_was);
@@ -132,9 +131,6 @@ void                g_object_get_valist                 (GObject *object,
 void                g_object_watch_closure              (GObject *object,
                                                          GClosure *closure);
 void                g_object_run_dispose                (GObject *object);
-#define             G_OBJECT_WARN_INVALID_PROPERTY_ID   (object,
-                                                         property_id,
-                                                         pspec)
 
 void                g_weak_ref_init                     (GWeakRef *weak_ref,
                                                          gpointer object);

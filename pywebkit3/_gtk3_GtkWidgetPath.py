@@ -50,105 +50,138 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__GtkRcStyle = c_void_p
-__GdkGeometry = c_void_p
-_GdkPixbuf = c_void_p
-__GtkRequisition = c_void_p
-_GtkRcStyle = c_void_p
-__GtkRegionFlags = c_void_p
-_GdkEvent = c_void_p
-_GtkWindow = c_void_p
-__cairo_font_options_t = c_void_p
-__GdkAtom = c_void_p
-__GdkTimeCoord = c_void_p
-__GtkWidgetPath = c_void_p
-_GdkDisplay = c_void_p
-__GtkStyleProvider = c_void_p
-_PangoFont = c_void_p
-_GtkStyleContext = c_void_p
-_guchar = c_void_p
-_GdkAppLaunchContext = c_void_p
-__PangoLayout = c_void_p
-__GParamSpec = c_void_p
-__PangoAttrIterator = c_void_p
-__GtkWindow = c_void_p
-_GtkWindowGroup = c_void_p
-__PangoContext = c_void_p
-__PangoFontMap = c_void_p
-__PangoAttrList = c_void_p
-_PangoMatrix = c_void_p
-_GtkApplication = c_void_p
-__PangoAnalysis = c_void_p
-_PangoFontDescription = c_void_p
-__GdkCursor = c_void_p
-__GtkWidgetClass = c_void_p
-__GdkEventKey = c_void_p
-__GdkDisplay = c_void_p
-_GtkWidgetPath = c_void_p
-_GdkScreen = c_void_p
-_PangoFontMetrics = c_void_p
-_GdkVisual = c_void_p
-_PangoFontMap = c_void_p
-_GSList = c_void_p
-_GtkWidget = c_void_p
-__GdkWindow = c_void_p
-__PangoFontFamily = c_void_p
-__cairo_region_t = c_void_p
-_PangoFontset = c_void_p
-_GdkWindow = c_void_p
-__PangoFontDescription = c_void_p
-__GtkBorder = c_void_p
-__GError = c_void_p
-__PangoCoverage = c_void_p
-__cairo_t = c_void_p
-__GdkVisual = c_void_p
-_GdkDevice = c_void_p
-_GList = c_void_p
-__GtkAccelGroup = c_void_p
-_GtkIconSet = c_void_p
-__GtkAllocation = c_void_p
-__GtkWidget = c_void_p
-_gchar = c_void_p
-__GValue = c_void_p
-_GdkDeviceManager = c_void_p
-_GdkCursor = c_void_p
-__PangoMatrix = c_void_p
-_PangoContext = c_void_p
-__GList = c_void_p
-_PangoCoverage = c_void_p
-_GParamSpec = c_void_p
-__PangoRectangle = c_void_p
-__GtkIconSource = c_void_p
-_char = c_void_p
-__PangoGlyphString = c_void_p
-__GdkRGBA = c_void_p
-__GdkWindowAttr = c_void_p
-__GdkColor = c_void_p
-__GdkRectangle = c_void_p
-__PangoLanguage = c_void_p
-__GdkWMDecoration = c_void_p
-__PangoLogAttr = c_void_p
-_PangoLayout = c_void_p
-_GtkStyle = c_void_p
-__GtkStyle = c_void_p
-__GIcon = c_void_p
-__cairo_pattern_t = c_void_p
-__GdkPixbuf = c_void_p
-_GtkSettings = c_void_p
-__GtkApplication = c_void_p
-_GtkClipboard = c_void_p
-__GdkScreen = c_void_p
-_PangoLanguage = c_void_p
-__GdkDevice = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
 GtkAlign = c_int
-GdkPixbufError = c_int
-GdkColorspace = c_int
-GdkPixbufAlphaMode = c_int
-GtkIconSize = c_int
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
 GdkWindowHints = c_int
@@ -166,200 +199,204 @@ GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
 GdkCursorType = c_int
-GdkVisualType = c_int
-GdkByteOrder = c_int
 PangoStyle = c_int
 PangoWeight = c_int
 PangoVariant = c_int
 PangoStretch = c_int
 PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
 
 class GtkWidgetPath( object):
     """Class GtkWidgetPath Constructors"""
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gtk_widget_path_new.restype = c_void_p
-
-        libgtk3.gtk_widget_path_new.argtypes = []
-        self._object = libgtk3.gtk_widget_path_new()
+            libgtk3.gtk_widget_path_new.restype = POINTER(c_int)
+            
+            libgtk3.gtk_widget_path_new.argtypes = []
+            self._object = libgtk3.gtk_widget_path_new()
 
     """Methods"""
-    def iter_has_qname(self,  pos, qname,):
+    def iter_has_qname(  self, pos, qname, ):
 
         libgtk3.gtk_widget_path_iter_has_qname.restype = gboolean
-        libgtk3.gtk_widget_path_iter_has_qname.argtypes = [c_void_p, gint,GQuark]
+        libgtk3.gtk_widget_path_iter_has_qname.argtypes = [_GtkWidgetPath,gint,GQuark]
         
-        return libgtk3.gtk_widget_path_iter_has_qname(self._object,  pos, qname,)
+        return libgtk3.gtk_widget_path_iter_has_qname( self._object,pos,qname )
 
-    def iter_add_region(self,  pos, name, flags,):
-        if flags : flags = flags._object
-        else : flags = c_void_p()
+    def iter_add_region(  self, pos, name, flags, ):
+        if flags: flags = flags._object
+        else: flags = POINTER(c_int)()
 
-        libgtk3.gtk_widget_path_iter_add_region.argtypes = [c_void_p, gint,c_char_p,GtkRegionFlags]
+        libgtk3.gtk_widget_path_iter_add_region.argtypes = [_GtkWidgetPath,gint,c_char_p,GtkRegionFlags]
         
-        libgtk3.gtk_widget_path_iter_add_region(self._object,  pos, name, flags,)
+        libgtk3.gtk_widget_path_iter_add_region( self._object,pos,name,flags )
 
-    def iter_clear_regions(self,  pos,):
+    def iter_clear_regions(  self, pos, ):
 
-        libgtk3.gtk_widget_path_iter_clear_regions.argtypes = [c_void_p, gint]
+        libgtk3.gtk_widget_path_iter_clear_regions.argtypes = [_GtkWidgetPath,gint]
         
-        libgtk3.gtk_widget_path_iter_clear_regions(self._object,  pos,)
+        libgtk3.gtk_widget_path_iter_clear_regions( self._object,pos )
 
-    def iter_has_name(self,  pos, name,):
+    def iter_has_name(  self, pos, name, ):
 
         libgtk3.gtk_widget_path_iter_has_name.restype = gboolean
-        libgtk3.gtk_widget_path_iter_has_name.argtypes = [c_void_p, gint,c_char_p]
+        libgtk3.gtk_widget_path_iter_has_name.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
-        return libgtk3.gtk_widget_path_iter_has_name(self._object,  pos, name,)
+        return libgtk3.gtk_widget_path_iter_has_name( self._object,pos,name )
 
-    def iter_has_qregion(self,  pos, qname, flags,):
-        if flags : flags = flags._object
-        else : flags = c_void_p()
+    def iter_has_qregion(  self, pos, qname, flags, ):
+        if flags: flags = flags._object
+        else: flags = POINTER(c_int)()
 
         libgtk3.gtk_widget_path_iter_has_qregion.restype = gboolean
-        libgtk3.gtk_widget_path_iter_has_qregion.argtypes = [c_void_p, gint,GQuark,_GtkRegionFlags]
+        libgtk3.gtk_widget_path_iter_has_qregion.argtypes = [_GtkWidgetPath,gint,GQuark,_GtkRegionFlags]
         
-        return libgtk3.gtk_widget_path_iter_has_qregion(self._object,  pos, qname, flags,)
+        return libgtk3.gtk_widget_path_iter_has_qregion( self._object,pos,qname,flags )
 
-    def iter_remove_region(self,  pos, name,):
+    def iter_remove_region(  self, pos, name, ):
 
-        libgtk3.gtk_widget_path_iter_remove_region.argtypes = [c_void_p, gint,c_char_p]
+        libgtk3.gtk_widget_path_iter_remove_region.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
-        libgtk3.gtk_widget_path_iter_remove_region(self._object,  pos, name,)
+        libgtk3.gtk_widget_path_iter_remove_region( self._object,pos,name )
 
-    def is_type(self,  type,):
+    def is_type(  self, type, ):
 
         libgtk3.gtk_widget_path_is_type.restype = gboolean
-        libgtk3.gtk_widget_path_is_type.argtypes = [c_void_p, GType]
+        libgtk3.gtk_widget_path_is_type.argtypes = [_GtkWidgetPath,GType]
         
-        return libgtk3.gtk_widget_path_is_type(self._object,  type,)
+        return libgtk3.gtk_widget_path_is_type( self._object,type )
 
-    def has_parent(self,  type,):
+    def has_parent(  self, type, ):
 
         libgtk3.gtk_widget_path_has_parent.restype = gboolean
-        libgtk3.gtk_widget_path_has_parent.argtypes = [c_void_p, GType]
+        libgtk3.gtk_widget_path_has_parent.argtypes = [_GtkWidgetPath,GType]
         
-        return libgtk3.gtk_widget_path_has_parent(self._object,  type,)
+        return libgtk3.gtk_widget_path_has_parent( self._object,type )
 
-    def iter_get_name(self,  pos,):
+    def iter_get_name(  self, pos, ):
 
-        libgtk3.gtk_widget_path_iter_get_name.restype = _gchar
-        libgtk3.gtk_widget_path_iter_get_name.argtypes = [c_void_p, gint]
+        libgtk3.gtk_widget_path_iter_get_name.restype = c_char_p
+        libgtk3.gtk_widget_path_iter_get_name.argtypes = [_GtkWidgetPath,gint]
         
-        return libgtk3.gtk_widget_path_iter_get_name(self._object,  pos,)
+        return libgtk3.gtk_widget_path_iter_get_name( self._object,pos )
 
-    def iter_has_qclass(self,  pos, qname,):
+    def iter_has_qclass(  self, pos, qname, ):
 
         libgtk3.gtk_widget_path_iter_has_qclass.restype = gboolean
-        libgtk3.gtk_widget_path_iter_has_qclass.argtypes = [c_void_p, gint,GQuark]
+        libgtk3.gtk_widget_path_iter_has_qclass.argtypes = [_GtkWidgetPath,gint,GQuark]
         
-        return libgtk3.gtk_widget_path_iter_has_qclass(self._object,  pos, qname,)
+        return libgtk3.gtk_widget_path_iter_has_qclass( self._object,pos,qname )
 
-    def iter_clear_classes(self,  pos,):
+    def iter_clear_classes(  self, pos, ):
 
-        libgtk3.gtk_widget_path_iter_clear_classes.argtypes = [c_void_p, gint]
+        libgtk3.gtk_widget_path_iter_clear_classes.argtypes = [_GtkWidgetPath,gint]
         
-        libgtk3.gtk_widget_path_iter_clear_classes(self._object,  pos,)
+        libgtk3.gtk_widget_path_iter_clear_classes( self._object,pos )
 
-    def free(self, ):
+    def free(  self, ):
 
-        libgtk3.gtk_widget_path_free.argtypes = [c_void_p]
+        libgtk3.gtk_widget_path_free.argtypes = [_GtkWidgetPath]
         
-        libgtk3.gtk_widget_path_free(self._object, )
+        libgtk3.gtk_widget_path_free( self._object )
 
-    def prepend_type(self,  type,):
+    def prepend_type(  self, type, ):
 
-        libgtk3.gtk_widget_path_prepend_type.argtypes = [c_void_p, GType]
+        libgtk3.gtk_widget_path_prepend_type.argtypes = [_GtkWidgetPath,GType]
         
-        libgtk3.gtk_widget_path_prepend_type(self._object,  type,)
+        libgtk3.gtk_widget_path_prepend_type( self._object,type )
 
-    def iter_get_object_type(self,  pos,):
+    def iter_get_object_type(  self, pos, ):
 
         libgtk3.gtk_widget_path_iter_get_object_type.restype = GType
-        libgtk3.gtk_widget_path_iter_get_object_type.argtypes = [c_void_p, gint]
+        libgtk3.gtk_widget_path_iter_get_object_type.argtypes = [_GtkWidgetPath,gint]
         
-        return libgtk3.gtk_widget_path_iter_get_object_type(self._object,  pos,)
+        return libgtk3.gtk_widget_path_iter_get_object_type( self._object,pos )
 
-    def append_type(self,  type,):
+    def append_type(  self, type, ):
 
         libgtk3.gtk_widget_path_append_type.restype = gint
-        libgtk3.gtk_widget_path_append_type.argtypes = [c_void_p, GType]
+        libgtk3.gtk_widget_path_append_type.argtypes = [_GtkWidgetPath,GType]
         
-        return libgtk3.gtk_widget_path_append_type(self._object,  type,)
+        return libgtk3.gtk_widget_path_append_type( self._object,type )
 
-    def iter_set_object_type(self,  pos, type,):
+    def iter_set_object_type(  self, pos, type, ):
 
-        libgtk3.gtk_widget_path_iter_set_object_type.argtypes = [c_void_p, gint,GType]
+        libgtk3.gtk_widget_path_iter_set_object_type.argtypes = [_GtkWidgetPath,gint,GType]
         
-        libgtk3.gtk_widget_path_iter_set_object_type(self._object,  pos, type,)
+        libgtk3.gtk_widget_path_iter_set_object_type( self._object,pos,type )
 
-    def iter_remove_class(self,  pos, name,):
+    def iter_remove_class(  self, pos, name, ):
 
-        libgtk3.gtk_widget_path_iter_remove_class.argtypes = [c_void_p, gint,c_char_p]
+        libgtk3.gtk_widget_path_iter_remove_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
-        libgtk3.gtk_widget_path_iter_remove_class(self._object,  pos, name,)
+        libgtk3.gtk_widget_path_iter_remove_class( self._object,pos,name )
 
-    def iter_list_regions(self,  pos,):
+    def iter_list_regions(  self, pos, ):
 
         libgtk3.gtk_widget_path_iter_list_regions.restype = _GSList
-        libgtk3.gtk_widget_path_iter_list_regions.argtypes = [c_void_p, gint]
+        libgtk3.gtk_widget_path_iter_list_regions.argtypes = [_GtkWidgetPath,gint]
         from pywebkit3.gobject import GSList
-        return GSList( obj=libgtk3.gtk_widget_path_iter_list_regions(self._object,  pos,) or c_void_p())
+        return GSList( obj=libgtk3.gtk_widget_path_iter_list_regions( self._object,pos ) or POINTER(c_int)())
 
-    def iter_has_region(self,  pos, name, flags,):
-        if flags : flags = flags._object
-        else : flags = c_void_p()
+    def iter_has_region(  self, pos, name, flags, ):
+        if flags: flags = flags._object
+        else: flags = POINTER(c_int)()
 
         libgtk3.gtk_widget_path_iter_has_region.restype = gboolean
-        libgtk3.gtk_widget_path_iter_has_region.argtypes = [c_void_p, gint,c_char_p,_GtkRegionFlags]
+        libgtk3.gtk_widget_path_iter_has_region.argtypes = [_GtkWidgetPath,gint,c_char_p,_GtkRegionFlags]
         
-        return libgtk3.gtk_widget_path_iter_has_region(self._object,  pos, name, flags,)
+        return libgtk3.gtk_widget_path_iter_has_region( self._object,pos,name,flags )
 
-    def iter_set_name(self,  pos, name,):
+    def iter_set_name(  self, pos, name, ):
 
-        libgtk3.gtk_widget_path_iter_set_name.argtypes = [c_void_p, gint,c_char_p]
+        libgtk3.gtk_widget_path_iter_set_name.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
-        libgtk3.gtk_widget_path_iter_set_name(self._object,  pos, name,)
+        libgtk3.gtk_widget_path_iter_set_name( self._object,pos,name )
 
-    def get_object_type(self, ):
+    def get_object_type(  self, ):
 
         libgtk3.gtk_widget_path_get_object_type.restype = GType
-        libgtk3.gtk_widget_path_get_object_type.argtypes = [c_void_p]
+        libgtk3.gtk_widget_path_get_object_type.argtypes = [_GtkWidgetPath]
         
-        return libgtk3.gtk_widget_path_get_object_type(self._object, )
+        return libgtk3.gtk_widget_path_get_object_type( self._object )
 
-    def iter_list_classes(self,  pos,):
+    def iter_list_classes(  self, pos, ):
 
         libgtk3.gtk_widget_path_iter_list_classes.restype = _GSList
-        libgtk3.gtk_widget_path_iter_list_classes.argtypes = [c_void_p, gint]
+        libgtk3.gtk_widget_path_iter_list_classes.argtypes = [_GtkWidgetPath,gint]
         from pywebkit3.gobject import GSList
-        return GSList( obj=libgtk3.gtk_widget_path_iter_list_classes(self._object,  pos,) or c_void_p())
+        return GSList( obj=libgtk3.gtk_widget_path_iter_list_classes( self._object,pos ) or POINTER(c_int)())
 
-    def iter_add_class(self,  pos, name,):
+    def iter_add_class(  self, pos, name, ):
 
-        libgtk3.gtk_widget_path_iter_add_class.argtypes = [c_void_p, gint,c_char_p]
+        libgtk3.gtk_widget_path_iter_add_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
-        libgtk3.gtk_widget_path_iter_add_class(self._object,  pos, name,)
+        libgtk3.gtk_widget_path_iter_add_class( self._object,pos,name )
 
-    def iter_has_class(self,  pos, name,):
+    def iter_has_class(  self, pos, name, ):
 
         libgtk3.gtk_widget_path_iter_has_class.restype = gboolean
-        libgtk3.gtk_widget_path_iter_has_class.argtypes = [c_void_p, gint,c_char_p]
+        libgtk3.gtk_widget_path_iter_has_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
-        return libgtk3.gtk_widget_path_iter_has_class(self._object,  pos, name,)
+        return libgtk3.gtk_widget_path_iter_has_class( self._object,pos,name )
 
-    def copy(self, ):
+    def copy(  self, ):
 
         libgtk3.gtk_widget_path_copy.restype = _GtkWidgetPath
-        libgtk3.gtk_widget_path_copy.argtypes = [c_void_p]
+        libgtk3.gtk_widget_path_copy.argtypes = [_GtkWidgetPath]
         from pywebkit3.gtk3 import GtkWidgetPath
-        return GtkWidgetPath(None, obj=libgtk3.gtk_widget_path_copy(self._object, ) or c_void_p())
+        return GtkWidgetPath( obj=libgtk3.gtk_widget_path_copy( self._object ) or POINTER(c_int)())
 
-    def length(self, ):
+    def length(  self, ):
 
         libgtk3.gtk_widget_path_length.restype = gint
-        libgtk3.gtk_widget_path_length.argtypes = [c_void_p]
+        libgtk3.gtk_widget_path_length.argtypes = [_GtkWidgetPath]
         
-        return libgtk3.gtk_widget_path_length(self._object, )
+        return libgtk3.gtk_widget_path_length( self._object )
 

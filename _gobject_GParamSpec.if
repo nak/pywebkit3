@@ -1,0 +1,2 @@
+struct GParamSpec;
+inherit object;

@@ -50,20 +50,38 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-__GParamSpec = c_void_p
-_GtkAdjustment = c_void_p
-__GtkWidget = c_void_p
-__cairo_t = c_void_p
-__GtkContainerClass = c_void_p
-__GValue = c_void_p
-_GList = c_void_p
-_GParamSpec = c_void_p
-__GObjectClass = c_void_p
-__GList = c_void_p
-__GtkAdjustment = c_void_p
-_GtkWidget = c_void_p
-_GtkWidgetPath = c_void_p
+__GParamSpec = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+__GList = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+_GList = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GBytes = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
 
 import _gtk3_GtkWidget
 class GtkContainer( _gtk3_GtkWidget.GtkWidget):
@@ -71,286 +89,286 @@ class GtkContainer( _gtk3_GtkWidget.GtkWidget):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def unset_focus_chain(self, ):
+    def unset_focus_chain(  self, ):
 
-        libgtk3.gtk_container_unset_focus_chain.argtypes = [c_void_p]
+        libgtk3.gtk_container_unset_focus_chain.argtypes = [_GtkContainer]
         
-        libgtk3.gtk_container_unset_focus_chain(self._object, )
+        libgtk3.gtk_container_unset_focus_chain( self._object )
 
-    def add_with_properties(self,  widget, first_prop_name,*args ):
-        if widget : widget = widget._object
-        else : widget = c_void_p()
+    def add_with_properties(  self, widget, first_prop_name,*args  ):
+        if widget: widget = widget._object
+        else: widget = POINTER(c_int)()
 
 
         def callit( widget, first_prop_name, *args ):
                 libgtk3.gtk_container_add_with_properties.restype = None
-                libgtk3.gtk_container_add_with_properties.argtypes = [c_void_p, c_void_p, _GtkWidget, c_char_p]
+                libgtk3.gtk_container_add_with_properties.argtypes = [ POINTER(c_int), _GtkWidget, c_char_p]
                 for arg in args:
                      libgtk3.gtk_container_add_with_properties.argtypes.append(args[1])
-                return libgtk3.gtk_container_add_with_properties(self._object, widget, first_prop_name, *args)
+                return libgtk3.gtk_container_add_with_properties( widget, first_prop_name, *args)
     
-        return callit( widget, first_prop_name,*args )
+        return callit( self._object, widget, first_prop_name,*args )
 
-    def child_notify(self,  child, child_property,):
-        if child : child = child._object
-        else : child = c_void_p()
+    def child_notify(  self, child, child_property, ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
 
-        libgtk3.gtk_container_child_notify.argtypes = [c_void_p, _GtkWidget,c_char_p]
+        libgtk3.gtk_container_child_notify.argtypes = [_GtkContainer,_GtkWidget,c_char_p]
         
-        libgtk3.gtk_container_child_notify(self._object,  child, child_property,)
+        libgtk3.gtk_container_child_notify( self._object,child,child_property )
 
-    def propagate_draw(self,  child, cr,):
-        if child : child = child._object
-        else : child = c_void_p()
-        if cr : cr = cr._object
-        else : cr = c_void_p()
+    def propagate_draw(  self, child, cr, ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
+        if cr: cr = cr._object
+        else: cr = POINTER(c_int)()
 
-        libgtk3.gtk_container_propagate_draw.argtypes = [c_void_p, _GtkWidget,_cairo_t]
+        libgtk3.gtk_container_propagate_draw.argtypes = [_GtkContainer,_GtkWidget,_cairo_t]
         
-        libgtk3.gtk_container_propagate_draw(self._object,  child, cr,)
+        libgtk3.gtk_container_propagate_draw( self._object,child,cr )
 
-    def set_focus_hadjustment(self,  adjustment,):
-        if adjustment : adjustment = adjustment._object
-        else : adjustment = c_void_p()
+    def set_focus_hadjustment(  self, adjustment, ):
+        if adjustment: adjustment = adjustment._object
+        else: adjustment = POINTER(c_int)()
 
-        libgtk3.gtk_container_set_focus_hadjustment.argtypes = [c_void_p, _GtkAdjustment]
+        libgtk3.gtk_container_set_focus_hadjustment.argtypes = [_GtkContainer,_GtkAdjustment]
         
-        libgtk3.gtk_container_set_focus_hadjustment(self._object,  adjustment,)
+        libgtk3.gtk_container_set_focus_hadjustment( self._object,adjustment )
 
-    def forall(self,  callback, callback_data,):
-        if callback : callback = callback._object
-        else : callback = c_void_p()
+    def forall(  self, callback, callback_data, ):
+        if callback: callback = callback._object
+        else: callback = POINTER(c_int)()
 
-        libgtk3.gtk_container_forall.argtypes = [c_void_p, GtkCallback,gpointer]
+        libgtk3.gtk_container_forall.argtypes = [_GtkContainer,GtkCallback,gpointer]
         
-        libgtk3.gtk_container_forall(self._object,  callback, callback_data,)
+        libgtk3.gtk_container_forall( self._object,callback,callback_data )
 
-    def resize_children(self, ):
+    def resize_children(  self, ):
 
-        libgtk3.gtk_container_resize_children.argtypes = [c_void_p]
+        libgtk3.gtk_container_resize_children.argtypes = [_GtkContainer]
         
-        libgtk3.gtk_container_resize_children(self._object, )
+        libgtk3.gtk_container_resize_children( self._object )
 
-    def child_set_property(self,  child, property_name, value,):
-        if child : child = child._object
-        else : child = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
+    def child_set_property(  self, child, property_name, value, ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
+        if value: value = value._object
+        else: value = POINTER(c_int)()
 
-        libgtk3.gtk_container_child_set_property.argtypes = [c_void_p, _GtkWidget,c_char_p,_GValue]
+        libgtk3.gtk_container_child_set_property.argtypes = [_GtkContainer,_GtkWidget,c_char_p,_GValue]
         
-        libgtk3.gtk_container_child_set_property(self._object,  child, property_name, value,)
+        libgtk3.gtk_container_child_set_property( self._object,child,property_name,value )
 
-    def set_resize_mode(self,  resize_mode,):
+    def set_resize_mode(  self, resize_mode, ):
 
-        libgtk3.gtk_container_set_resize_mode.argtypes = [c_void_p, GtkResizeMode]
+        libgtk3.gtk_container_set_resize_mode.argtypes = [_GtkContainer,GtkResizeMode]
         
-        libgtk3.gtk_container_set_resize_mode(self._object,  resize_mode,)
+        libgtk3.gtk_container_set_resize_mode( self._object,resize_mode )
 
-    def get_border_width(self, ):
+    def get_border_width(  self, ):
 
         libgtk3.gtk_container_get_border_width.restype = guint
-        libgtk3.gtk_container_get_border_width.argtypes = [c_void_p]
+        libgtk3.gtk_container_get_border_width.argtypes = [_GtkContainer]
         
-        return libgtk3.gtk_container_get_border_width(self._object, )
+        return libgtk3.gtk_container_get_border_width( self._object )
 
-    def set_border_width(self,  border_width,):
+    def set_border_width(  self, border_width, ):
 
-        libgtk3.gtk_container_set_border_width.argtypes = [c_void_p, guint]
+        libgtk3.gtk_container_set_border_width.argtypes = [_GtkContainer,guint]
         
-        libgtk3.gtk_container_set_border_width(self._object,  border_width,)
+        libgtk3.gtk_container_set_border_width( self._object,border_width )
 
-    def check_resize(self, ):
+    def check_resize(  self, ):
 
-        libgtk3.gtk_container_check_resize.argtypes = [c_void_p]
+        libgtk3.gtk_container_check_resize.argtypes = [_GtkContainer]
         
-        libgtk3.gtk_container_check_resize(self._object, )
+        libgtk3.gtk_container_check_resize( self._object )
 
-    def child_get_property(self,  child, property_name, value,):
-        if child : child = child._object
-        else : child = c_void_p()
-        if value : value = value._object
-        else : value = c_void_p()
+    def child_get_property(  self, child, property_name, value, ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
+        if value: value = value._object
+        else: value = POINTER(c_int)()
 
-        libgtk3.gtk_container_child_get_property.argtypes = [c_void_p, _GtkWidget,c_char_p,_GValue]
+        libgtk3.gtk_container_child_get_property.argtypes = [_GtkContainer,_GtkWidget,c_char_p,_GValue]
         
-        libgtk3.gtk_container_child_get_property(self._object,  child, property_name, value,)
+        libgtk3.gtk_container_child_get_property( self._object,child,property_name,value )
 
-    def set_focus_chain(self,  focusable_widgets,):
-        if focusable_widgets : focusable_widgets = focusable_widgets._object
-        else : focusable_widgets = c_void_p()
+    def set_focus_chain(  self, focusable_widgets, ):
+        if focusable_widgets: focusable_widgets = focusable_widgets._object
+        else: focusable_widgets = POINTER(c_int)()
 
-        libgtk3.gtk_container_set_focus_chain.argtypes = [c_void_p, _GList]
+        libgtk3.gtk_container_set_focus_chain.argtypes = [_GtkContainer,_GList]
         
-        libgtk3.gtk_container_set_focus_chain(self._object,  focusable_widgets,)
+        libgtk3.gtk_container_set_focus_chain( self._object,focusable_widgets )
 
-    def class_handle_border_width(self,  klass,):
-        if klass : klass = klass._object
-        else : klass = c_void_p()
+    def class_handle_border_width(  self, klass, ):
+        if klass: klass = klass._object
+        else: klass = POINTER(c_int)()
 
-        libgtk3.gtk_container_class_handle_border_width.argtypes = [c_void_p, _GtkContainerClass]
+        libgtk3.gtk_container_class_handle_border_width.argtypes = [_GtkContainer,_GtkContainerClass]
         
-        libgtk3.gtk_container_class_handle_border_width(self._object,  klass,)
+        libgtk3.gtk_container_class_handle_border_width( self._object,klass )
 
-    def get_focus_chain(self,  focusable_widgets,):
-        if focusable_widgets : focusable_widgets = focusable_widgets._object
-        else : focusable_widgets = c_void_p()
+    def get_focus_chain(  self, focusable_widgets, ):
+        if focusable_widgets: focusable_widgets = focusable_widgets._object
+        else: focusable_widgets = POINTER(c_int)()
 
         libgtk3.gtk_container_get_focus_chain.restype = gboolean
-        libgtk3.gtk_container_get_focus_chain.argtypes = [c_void_p, _GList]
+        libgtk3.gtk_container_get_focus_chain.argtypes = [_GtkContainer,_GList]
         
-        return libgtk3.gtk_container_get_focus_chain(self._object,  focusable_widgets,)
+        return libgtk3.gtk_container_get_focus_chain( self._object,focusable_widgets )
 
-    def set_focus_child(self,  child,):
-        if child : child = child._object
-        else : child = c_void_p()
+    def set_focus_child(  self, child, ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
 
-        libgtk3.gtk_container_set_focus_child.argtypes = [c_void_p, _GtkWidget]
+        libgtk3.gtk_container_set_focus_child.argtypes = [_GtkContainer,_GtkWidget]
         
-        libgtk3.gtk_container_set_focus_child(self._object,  child,)
+        libgtk3.gtk_container_set_focus_child( self._object,child )
 
-    def set_reallocate_redraws(self,  needs_redraws,):
+    def set_reallocate_redraws(  self, needs_redraws, ):
 
-        libgtk3.gtk_container_set_reallocate_redraws.argtypes = [c_void_p, gboolean]
+        libgtk3.gtk_container_set_reallocate_redraws.argtypes = [_GtkContainer,gboolean]
         
-        libgtk3.gtk_container_set_reallocate_redraws(self._object,  needs_redraws,)
+        libgtk3.gtk_container_set_reallocate_redraws( self._object,needs_redraws )
 
-    def child_get(self,  child, first_prop_name,*args ):
-        if child : child = child._object
-        else : child = c_void_p()
+    def child_get(  self, child, first_prop_name,*args  ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
 
 
         def callit( child, first_prop_name, *args ):
                 libgtk3.gtk_container_child_get.restype = None
-                libgtk3.gtk_container_child_get.argtypes = [c_void_p, c_void_p, _GtkWidget, c_char_p]
+                libgtk3.gtk_container_child_get.argtypes = [ POINTER(c_int), _GtkWidget, c_char_p]
                 for arg in args:
                      libgtk3.gtk_container_child_get.argtypes.append(args[1])
-                return libgtk3.gtk_container_child_get(self._object, child, first_prop_name, *args)
+                return libgtk3.gtk_container_child_get( child, first_prop_name, *args)
     
-        return callit( child, first_prop_name,*args )
+        return callit( self._object, child, first_prop_name,*args )
 
-    def get_path_for_child(self,  child,):
-        if child : child = child._object
-        else : child = c_void_p()
+    def get_path_for_child(  self, child, ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
 
         libgtk3.gtk_container_get_path_for_child.restype = _GtkWidgetPath
-        libgtk3.gtk_container_get_path_for_child.argtypes = [c_void_p, _GtkWidget]
+        libgtk3.gtk_container_get_path_for_child.argtypes = [_GtkContainer,_GtkWidget]
         from pywebkit3.gtk3 import GtkWidgetPath
-        return GtkWidgetPath(None, obj=libgtk3.gtk_container_get_path_for_child(self._object,  child,) or c_void_p())
+        return GtkWidgetPath(None, obj=libgtk3.gtk_container_get_path_for_child( self._object,child ) or POINTER(c_int)())
 
-    def foreach(self,  callback, callback_data,):
-        if callback : callback = callback._object
-        else : callback = c_void_p()
+    def foreach(  self, callback, callback_data, ):
+        if callback: callback = callback._object
+        else: callback = POINTER(c_int)()
 
-        libgtk3.gtk_container_foreach.argtypes = [c_void_p, GtkCallback,gpointer]
+        libgtk3.gtk_container_foreach.argtypes = [_GtkContainer,GtkCallback,gpointer]
         
-        libgtk3.gtk_container_foreach(self._object,  callback, callback_data,)
+        libgtk3.gtk_container_foreach( self._object,callback,callback_data )
 
-    def class_install_child_property(self,  cclass, property_id, pspec,):
-        if cclass : cclass = cclass._object
-        else : cclass = c_void_p()
-        if pspec : pspec = pspec._object
-        else : pspec = c_void_p()
+    def class_install_child_property(  self, cclass, property_id, pspec, ):
+        if cclass: cclass = cclass._object
+        else: cclass = POINTER(c_int)()
+        if pspec: pspec = pspec._object
+        else: pspec = POINTER(c_int)()
 
-        libgtk3.gtk_container_class_install_child_property.argtypes = [c_void_p, _GtkContainerClass,guint,_GParamSpec]
+        libgtk3.gtk_container_class_install_child_property.argtypes = [_GtkContainer,_GtkContainerClass,guint,_GParamSpec]
         
-        libgtk3.gtk_container_class_install_child_property(self._object,  cclass, property_id, pspec,)
+        libgtk3.gtk_container_class_install_child_property( self._object,cclass,property_id,pspec )
 
-    def add(self,  widget,):
-        if widget : widget = widget._object
-        else : widget = c_void_p()
+    def add(  self, widget, ):
+        if widget: widget = widget._object
+        else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_container_add.argtypes = [c_void_p, _GtkWidget]
+        libgtk3.gtk_container_add.argtypes = [_GtkContainer,_GtkWidget]
         
-        libgtk3.gtk_container_add(self._object,  widget,)
+        libgtk3.gtk_container_add( self._object,widget )
 
-    def get_resize_mode(self, ):
+    def get_resize_mode(  self, ):
 
         libgtk3.gtk_container_get_resize_mode.restype = GtkResizeMode
-        libgtk3.gtk_container_get_resize_mode.argtypes = [c_void_p]
+        libgtk3.gtk_container_get_resize_mode.argtypes = [_GtkContainer]
         
-        return libgtk3.gtk_container_get_resize_mode(self._object, )
+        return libgtk3.gtk_container_get_resize_mode( self._object )
 
-    def get_focus_vadjustment(self, ):
+    def get_focus_vadjustment(  self, ):
 
         libgtk3.gtk_container_get_focus_vadjustment.restype = _GtkAdjustment
-        libgtk3.gtk_container_get_focus_vadjustment.argtypes = [c_void_p]
+        libgtk3.gtk_container_get_focus_vadjustment.argtypes = [_GtkContainer]
         from pywebkit3.gtk3 import GtkAdjustment
-        return GtkAdjustment(None,None, obj=libgtk3.gtk_container_get_focus_vadjustment(self._object, ) or c_void_p())
+        return GtkAdjustment(None,None, obj=libgtk3.gtk_container_get_focus_vadjustment( self._object ) or POINTER(c_int)())
 
-    def set_focus_vadjustment(self,  adjustment,):
-        if adjustment : adjustment = adjustment._object
-        else : adjustment = c_void_p()
+    def set_focus_vadjustment(  self, adjustment, ):
+        if adjustment: adjustment = adjustment._object
+        else: adjustment = POINTER(c_int)()
 
-        libgtk3.gtk_container_set_focus_vadjustment.argtypes = [c_void_p, _GtkAdjustment]
+        libgtk3.gtk_container_set_focus_vadjustment.argtypes = [_GtkContainer,_GtkAdjustment]
         
-        libgtk3.gtk_container_set_focus_vadjustment(self._object,  adjustment,)
+        libgtk3.gtk_container_set_focus_vadjustment( self._object,adjustment )
 
-    def child_type(self, ):
+    def child_type(  self, ):
 
         libgtk3.gtk_container_child_type.restype = GType
-        libgtk3.gtk_container_child_type.argtypes = [c_void_p]
+        libgtk3.gtk_container_child_type.argtypes = [_GtkContainer]
         
-        return libgtk3.gtk_container_child_type(self._object, )
+        return libgtk3.gtk_container_child_type( self._object )
 
-    def remove(self,  widget,):
-        if widget : widget = widget._object
-        else : widget = c_void_p()
+    def remove(  self, widget, ):
+        if widget: widget = widget._object
+        else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_container_remove.argtypes = [c_void_p, _GtkWidget]
+        libgtk3.gtk_container_remove.argtypes = [_GtkContainer,_GtkWidget]
         
-        libgtk3.gtk_container_remove(self._object,  widget,)
+        libgtk3.gtk_container_remove( self._object,widget )
 
-    def child_set(self,  child, first_prop_name,*args ):
-        if child : child = child._object
-        else : child = c_void_p()
+    def child_set(  self, child, first_prop_name,*args  ):
+        if child: child = child._object
+        else: child = POINTER(c_int)()
 
 
         def callit( child, first_prop_name, *args ):
                 libgtk3.gtk_container_child_set.restype = None
-                libgtk3.gtk_container_child_set.argtypes = [c_void_p, c_void_p, _GtkWidget, c_char_p]
+                libgtk3.gtk_container_child_set.argtypes = [ POINTER(c_int), _GtkWidget, c_char_p]
                 for arg in args:
                      libgtk3.gtk_container_child_set.argtypes.append(args[1])
-                return libgtk3.gtk_container_child_set(self._object, child, first_prop_name, *args)
+                return libgtk3.gtk_container_child_set( child, first_prop_name, *args)
     
-        return callit( child, first_prop_name,*args )
+        return callit( self._object, child, first_prop_name,*args )
 
-    def get_focus_hadjustment(self, ):
+    def get_focus_hadjustment(  self, ):
 
         libgtk3.gtk_container_get_focus_hadjustment.restype = _GtkAdjustment
-        libgtk3.gtk_container_get_focus_hadjustment.argtypes = [c_void_p]
+        libgtk3.gtk_container_get_focus_hadjustment.argtypes = [_GtkContainer]
         from pywebkit3.gtk3 import GtkAdjustment
-        return GtkAdjustment(None, obj=libgtk3.gtk_container_get_focus_hadjustment(self._object, ) or c_void_p())
+        return GtkAdjustment(None, obj=libgtk3.gtk_container_get_focus_hadjustment( self._object ) or POINTER(c_int)())
 
-    def get_children(self, ):
+    def get_children(  self, ):
 
         libgtk3.gtk_container_get_children.restype = _GList
-        libgtk3.gtk_container_get_children.argtypes = [c_void_p]
+        libgtk3.gtk_container_get_children.argtypes = [_GtkContainer]
         from pywebkit3.gobject import GList
-        return GList( obj=libgtk3.gtk_container_get_children(self._object, ) or c_void_p())
+        return GList( obj=libgtk3.gtk_container_get_children( self._object ) or POINTER(c_int)())
 
-    def get_focus_child(self, ):
+    def get_focus_child(  self, ):
 
         libgtk3.gtk_container_get_focus_child.restype = _GtkWidget
-        libgtk3.gtk_container_get_focus_child.argtypes = [c_void_p]
+        libgtk3.gtk_container_get_focus_child.argtypes = [_GtkContainer]
         from pywebkit3.gtk3 import GtkWidget
-        return GtkWidget(None, obj=libgtk3.gtk_container_get_focus_child(self._object, ) or c_void_p())
+        return GtkWidget(None, obj=libgtk3.gtk_container_get_focus_child( self._object ) or POINTER(c_int)())
 
     @staticmethod
     def class_list_child_properties( cclass, n_properties,):
-        if cclass : cclass = cclass._object
-        else : cclass = c_void_p()
-        if n_properties : n_properties = n_properties._object
-        else : n_properties = c_void_p()
+        if cclass: cclass = cclass._object
+        else: cclass = POINTER(c_int)()
         libgtk3.gtk_container_class_list_child_properties.restype = _GParamSpec
-        libgtk3.gtk_container_class_list_child_properties.argtypes = [_GObjectClass,POITNER(guint)]
-        return libgtk3.gtk_container_class_list_child_properties(cclass, n_properties, )
-
+        libgtk3.gtk_container_class_list_child_properties.argtypes = [_GObjectClass,POINTER(guint)]
+        from pywebkit3.gobject import GParamSpec
+        return GParamSpec( obj=    libgtk3.gtk_container_class_list_child_properties(cclass, n_properties, )
+ or POINTER(c_int)())
     @staticmethod
     def class_find_child_property( cclass, property_name,):
-        if cclass : cclass = cclass._object
-        else : cclass = c_void_p()
+        if cclass: cclass = cclass._object
+        else: cclass = POINTER(c_int)()
         libgtk3.gtk_container_class_find_child_property.restype = _GParamSpec
         libgtk3.gtk_container_class_find_child_property.argtypes = [_GObjectClass,c_char_p]
-        return libgtk3.gtk_container_class_find_child_property(cclass, property_name, )
-
+        from pywebkit3.gobject import GParamSpec
+        return GParamSpec( obj=    libgtk3.gtk_container_class_find_child_property(cclass, property_name, )
+ or POINTER(c_int)())

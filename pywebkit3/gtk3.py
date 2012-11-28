@@ -3,6 +3,8 @@ from gtk3_enums import *
 from gtk3_types import *
 from _gtk3_GdkAppLaunchContext import *
 from gtk3_types import *
+from _gtk3_GdkAtom import *
+from gtk3_types import *
 from _gtk3_GdkColor import *
 from gtk3_types import *
 from _gtk3_GdkCursor import *
@@ -12,6 +14,8 @@ from gtk3_types import *
 from _gtk3_GdkDeviceManager import *
 from gtk3_types import *
 from _gtk3_GdkDisplay import *
+from gtk3_types import *
+from _gtk3_GdkDragContext import *
 from gtk3_types import *
 from _gtk3_GdkGeometry import *
 from gtk3_types import *

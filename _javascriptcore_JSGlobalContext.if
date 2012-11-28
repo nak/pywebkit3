@@ -1,0 +1,3 @@
+struct JSGlobalContext;
+inherit javascriptcore.JSContext;
+

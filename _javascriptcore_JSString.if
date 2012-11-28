@@ -1,0 +1,23 @@
+struct JSString;
+inherit javascriptcore.JSObject;
+
+JSString * JSStringCreateWithCharacters(const JSChar * chars, size_t numChars);
+
+JSString * JSStringCreateWithUTF8CString(const gchar * string);
+
+JSString * JSStringRetain(JSString * string);
+eys
+void JSStringRelease(JSString * string);
+
+
+size_t JSStringGetLength(JSString * string);
+
+const JSChar * JSStringGetCharactersPtr(JSString * string);
+
+size_t JSStringGetMaximumUTF8CStringSize(JSString * string);
+
+size_t JSStringGetUTF8CString(JSString * string, gchar * buffer, size_t bufferSize);
+
+bool JSStringIsEqual(JSString * a, JSString * b);
+
+bool JSStringIsEqualToUTF8CString(JSString * a, const gchar * b);

@@ -50,9 +50,166 @@ from gtk3_types import *
     
     
 """Derived Pointer Types"""
-_PangoLayoutLine = c_void_p
-__PangoRectangle = c_void_p
+__GtkRcStyle = POINTER(c_int)
+__GdkGeometry = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+__GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+__GtkRegionFlags = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+__cairo_font_options_t = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+__GdkAtom = POINTER(c_int)
+__GdkTimeCoord = POINTER(c_int)
+__GtkWidgetPath = POINTER(c_int)
+__GClosure = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+__GtkStyleProvider = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+__GtkTextBuffer = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+__PangoLayout = POINTER(c_int)
+__GParamSpec = POINTER(c_int)
+__PangoAttrIterator = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+__PangoContext = POINTER(c_int)
+__GtkPathPriorityType = POINTER(c_int)
+__GtkSettings = POINTER(c_int)
+__PangoFontMap = POINTER(c_int)
+__PangoAttrList = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+__GObject = POINTER(c_int)
+__GtkContainerClass = POINTER(c_int)
+__PangoAnalysis = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+__GdkCursor = POINTER(c_int)
+__GScanner = POINTER(c_int)
+__GtkWidgetClass = POINTER(c_int)
+__GObjectClass = POINTER(c_int)
+__GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+__GdkDisplay = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+__GdkWindow = POINTER(c_int)
+__PangoFontFamily = POINTER(c_int)
+__cairo_region_t = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+__PangoFontDescription = POINTER(c_int)
+__GtkBorder = POINTER(c_int)
+__GError = POINTER(c_int)
+__PangoCoverage = POINTER(c_int)
+__cairo_t = POINTER(c_int)
+__GWeakRef = POINTER(c_int)
+__GdkVisual = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+__GIcon = POINTER(c_int)
+_GList = POINTER(c_int)
+__GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+__GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
+__GtkAllocation = POINTER(c_int)
+__GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+__GtkIconSet = POINTER(c_int)
+__PangoTabArray = POINTER(c_int)
+__GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+__PangoMatrix = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+__GList = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GdkRGBA = POINTER(c_int)
+__PangoGlyphString = POINTER(c_int)
+__GdkEventKey = POINTER(c_int)
+__GSList = POINTER(c_int)
+__GdkWindowAttr = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+__GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__GdkRectangle = POINTER(c_int)
+__PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+__gunichar = POINTER(c_int)
+__GdkWMDecoration = POINTER(c_int)
+__PangoLogAttr = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+__GParameter = POINTER(c_int)
+__GtkStyle = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+__GtkWindow = POINTER(c_int)
+__cairo_pattern_t = POINTER(c_int)
+__GdkPixbuf = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+__GtkTargetEntry = POINTER(c_int)
+__GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+__GdkDevice = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GtkIconSize = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkWidgetHelpType = c_int
+GtkTextDirection = c_int
+GtkSizeRequestMode = c_int
+GtkAlign = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GApplicationFlags = c_int
 
 import _gobject_GBoxed
 class PangoLayoutLine( _gobject_GBoxed.GBoxed):
@@ -60,65 +217,55 @@ class PangoLayoutLine( _gobject_GBoxed.GBoxed):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def index_to_x(self,  index_, trailing, x_pos,):
-        if x_pos : x_pos = x_pos._object
-        else : x_pos = c_void_p()
+    def index_to_x(  self, index_, trailing, x_pos, ):
 
-        libgtk3.pango_layout_line_index_to_x.argtypes = [c_void_p, int,gboolean,POITNER(int)]
+        libgtk3.pango_layout_line_index_to_x.argtypes = [_PangoLayoutLine,int,gboolean,POINTER(int)]
         
-        libgtk3.pango_layout_line_index_to_x(self._object,  index_, trailing, x_pos,)
+        libgtk3.pango_layout_line_index_to_x( self._object,index_,trailing,x_pos )
 
-    def get_extents(self,  ink_rect, logical_rect,):
-        if ink_rect : ink_rect = ink_rect._object
-        else : ink_rect = c_void_p()
-        if logical_rect : logical_rect = logical_rect._object
-        else : logical_rect = c_void_p()
+    def get_extents(  self, ink_rect, logical_rect, ):
+        if ink_rect: ink_rect = ink_rect._object
+        else: ink_rect = POINTER(c_int)()
+        if logical_rect: logical_rect = logical_rect._object
+        else: logical_rect = POINTER(c_int)()
 
-        libgtk3.pango_layout_line_get_extents.argtypes = [c_void_p, _PangoRectangle,_PangoRectangle]
+        libgtk3.pango_layout_line_get_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
         
-        libgtk3.pango_layout_line_get_extents(self._object,  ink_rect, logical_rect,)
+        libgtk3.pango_layout_line_get_extents( self._object,ink_rect,logical_rect )
 
-    def x_to_index(self,  x_pos, index_, trailing,):
-        if index_ : index_ = index_._object
-        else : index_ = c_void_p()
-        if trailing : trailing = trailing._object
-        else : trailing = c_void_p()
+    def x_to_index(  self, x_pos, index_, trailing, ):
 
         libgtk3.pango_layout_line_x_to_index.restype = gboolean
-        libgtk3.pango_layout_line_x_to_index.argtypes = [c_void_p, int,POITNER(int),POITNER(int)]
+        libgtk3.pango_layout_line_x_to_index.argtypes = [_PangoLayoutLine,int,POINTER(int),POINTER(int)]
         
-        return libgtk3.pango_layout_line_x_to_index(self._object,  x_pos, index_, trailing,)
+        return libgtk3.pango_layout_line_x_to_index( self._object,x_pos,index_,trailing )
 
-    def unref(self, ):
+    def unref(  self, ):
 
-        libgtk3.pango_layout_line_unref.argtypes = [c_void_p]
+        libgtk3.pango_layout_line_unref.argtypes = [_PangoLayoutLine]
         
-        libgtk3.pango_layout_line_unref(self._object, )
+        libgtk3.pango_layout_line_unref( self._object )
 
-    def get_x_ranges(self,  start_index, end_index, ranges, n_ranges,):
-        if ranges : ranges = ranges._object
-        else : ranges = c_void_p()
-        if n_ranges : n_ranges = n_ranges._object
-        else : n_ranges = c_void_p()
+    def get_x_ranges(  self, start_index, end_index, ranges, n_ranges, ):
 
-        libgtk3.pango_layout_line_get_x_ranges.argtypes = [c_void_p, int,int,POITNER(int),POITNER(int)]
+        libgtk3.pango_layout_line_get_x_ranges.argtypes = [_PangoLayoutLine,int,int,POINTER(int),POINTER(int)]
         
-        libgtk3.pango_layout_line_get_x_ranges(self._object,  start_index, end_index, ranges, n_ranges,)
+        libgtk3.pango_layout_line_get_x_ranges( self._object,start_index,end_index,ranges,n_ranges )
 
-    def ref(self, ):
+    def ref(  self, ):
 
         libgtk3.pango_layout_line_ref.restype = _PangoLayoutLine
-        libgtk3.pango_layout_line_ref.argtypes = [c_void_p]
+        libgtk3.pango_layout_line_ref.argtypes = [_PangoLayoutLine]
         from pywebkit3.gtk3 import PangoLayoutLine
-        return PangoLayoutLine(None, obj=libgtk3.pango_layout_line_ref(self._object, )  or c_void_p())
+        return PangoLayoutLine( obj=libgtk3.pango_layout_line_ref( self._object )  or POINTER(c_int)())
 
-    def get_pixel_extents(self,  ink_rect, logical_rect,):
-        if ink_rect : ink_rect = ink_rect._object
-        else : ink_rect = c_void_p()
-        if logical_rect : logical_rect = logical_rect._object
-        else : logical_rect = c_void_p()
+    def get_pixel_extents(  self, ink_rect, logical_rect, ):
+        if ink_rect: ink_rect = ink_rect._object
+        else: ink_rect = POINTER(c_int)()
+        if logical_rect: logical_rect = logical_rect._object
+        else: logical_rect = POINTER(c_int)()
 
-        libgtk3.pango_layout_line_get_pixel_extents.argtypes = [c_void_p, _PangoRectangle,_PangoRectangle]
+        libgtk3.pango_layout_line_get_pixel_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
         
-        libgtk3.pango_layout_line_get_pixel_extents(self._object,  ink_rect, logical_rect,)
+        libgtk3.pango_layout_line_get_pixel_extents( self._object,ink_rect,logical_rect )
 

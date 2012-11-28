@@ -50,40 +50,52 @@ from webkit3_types import *
     
     
 """Derived Pointer Types"""
-_WebKitNetworkResponse = c_void_p
-_WebKitWebWindowFeatures = c_void_p
-_GdkPixbuf = c_void_p
-_WebKitWebFrame = c_void_p
-_GList = c_void_p
-_char = c_void_p
-_GtkTargetList = c_void_p
-_GtkWidget = c_void_p
-_JSGlobalContext = c_void_p
-__WebKitDOMNode = c_void_p
-_WebKitSecurityOrigin = c_void_p
-__WebKitNetworkRequest = c_void_p
-_JSContext = c_void_p
-_SoupMessage = c_void_p
-_WebKitWebDataSource = c_void_p
-_WebKitWebSettings = c_void_p
-__WebKitWebHistoryItem = c_void_p
-__GList = c_void_p
-__WebKitWebWindowFeatures = c_void_p
-_WebKitWebHistoryItem = c_void_p
-__GdkEventButton = c_void_p
-_WebKitViewportAttributes = c_void_p
-_WebKitWebInspector = c_void_p
-__GError = c_void_p
-__WebKitWebSettings = c_void_p
-_gchar = c_void_p
-__WebKitWebView = c_void_p
-_guchar = c_void_p
-_WebKitHitTestResult = c_void_p
-_WebKitDOMDocument = c_void_p
-__GtkPrintOperation = c_void_p
-_WebKitWebBackForwardList = c_void_p
-_WebKitWebView = c_void_p
+_GdkVisual = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+__PangoRectangle = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+__WebKitDOMNode = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+__WebKitNetworkRequest = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+__WebKitWebHistoryItem = POINTER(c_int)
+__GList = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+__WebKitWebWindowFeatures = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+__GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
+_GList = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+__GFile = POINTER(c_int)
+__GError = POINTER(c_int)
+__GtkPrintOperation = POINTER(c_int)
+__WebKitWebSettings = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+__WebKitWebView = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+__GdkScreen = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 """Enumerations"""
+GdkVisualType = c_int
+GdkByteOrder = c_int
+GApplicationFlags = c_int
 WebKitNavigationResponse = c_int
 WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
@@ -99,82 +111,80 @@ class GdkPixbuf( _gobject_GObject.GObject):
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
-    def get_bits_per_sample(self, ):
+    def get_bits_per_sample(  self, ):
 
         libwebkit3.gdk_pixbuf_get_bits_per_sample.restype = int
-        libwebkit3.gdk_pixbuf_get_bits_per_sample.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_bits_per_sample.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_bits_per_sample(self._object, )
+        return libwebkit3.gdk_pixbuf_get_bits_per_sample( self._object )
 
-    def get_pixels(self, ):
+    def get_pixels(  self, ):
 
-        libwebkit3.gdk_pixbuf_get_pixels.restype = _guchar
-        libwebkit3.gdk_pixbuf_get_pixels.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_pixels.restype = POINTER(guchar)
+        libwebkit3.gdk_pixbuf_get_pixels.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_pixels(self._object, )
+        return libwebkit3.gdk_pixbuf_get_pixels( self._object )
 
-    def get_pixels_with_length(self,  length,):
-        if length : length = length._object
-        else : length = c_void_p()
+    def get_pixels_with_length(  self, length, ):
 
-        libwebkit3.gdk_pixbuf_get_pixels_with_length.restype = _guchar
-        libwebkit3.gdk_pixbuf_get_pixels_with_length.argtypes = [c_void_p, POITNER(guint)]
+        libwebkit3.gdk_pixbuf_get_pixels_with_length.restype = POINTER(guchar)
+        libwebkit3.gdk_pixbuf_get_pixels_with_length.argtypes = [_GdkPixbuf,POINTER(guint)]
         
-        return libwebkit3.gdk_pixbuf_get_pixels_with_length(self._object,  length,)
+        return libwebkit3.gdk_pixbuf_get_pixels_with_length( self._object,length )
 
-    def get_rowstride(self, ):
+    def get_rowstride(  self, ):
 
         libwebkit3.gdk_pixbuf_get_rowstride.restype = int
-        libwebkit3.gdk_pixbuf_get_rowstride.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_rowstride.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_rowstride(self._object, )
+        return libwebkit3.gdk_pixbuf_get_rowstride( self._object )
 
-    def get_height(self, ):
+    def get_height(  self, ):
 
         libwebkit3.gdk_pixbuf_get_height.restype = int
-        libwebkit3.gdk_pixbuf_get_height.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_height.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_height(self._object, )
+        return libwebkit3.gdk_pixbuf_get_height( self._object )
 
-    def get_byte_length(self, ):
+    def get_byte_length(  self, ):
 
         libwebkit3.gdk_pixbuf_get_byte_length.restype = gsize
-        libwebkit3.gdk_pixbuf_get_byte_length.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_byte_length.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_byte_length(self._object, )
+        return libwebkit3.gdk_pixbuf_get_byte_length( self._object )
 
-    def get_n_channels(self, ):
+    def get_n_channels(  self, ):
 
         libwebkit3.gdk_pixbuf_get_n_channels.restype = int
-        libwebkit3.gdk_pixbuf_get_n_channels.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_n_channels.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_n_channels(self._object, )
+        return libwebkit3.gdk_pixbuf_get_n_channels( self._object )
 
-    def get_has_alpha(self, ):
+    def get_has_alpha(  self, ):
 
         libwebkit3.gdk_pixbuf_get_has_alpha.restype = gboolean
-        libwebkit3.gdk_pixbuf_get_has_alpha.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_has_alpha.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_has_alpha(self._object, )
+        return libwebkit3.gdk_pixbuf_get_has_alpha( self._object )
 
-    def get_width(self, ):
+    def get_width(  self, ):
 
         libwebkit3.gdk_pixbuf_get_width.restype = int
-        libwebkit3.gdk_pixbuf_get_width.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_width.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_width(self._object, )
+        return libwebkit3.gdk_pixbuf_get_width( self._object )
 
-    def get_option(self,  key,):
+    def get_option(  self, key, ):
 
-        libwebkit3.gdk_pixbuf_get_option.restype = _gchar
-        libwebkit3.gdk_pixbuf_get_option.argtypes = [c_void_p, c_char_p]
+        libwebkit3.gdk_pixbuf_get_option.restype = c_char_p
+        libwebkit3.gdk_pixbuf_get_option.argtypes = [_GdkPixbuf,c_char_p]
         
-        return libwebkit3.gdk_pixbuf_get_option(self._object,  key,)
+        return libwebkit3.gdk_pixbuf_get_option( self._object,key )
 
-    def get_colorspace(self, ):
+    def get_colorspace(  self, ):
 
         libwebkit3.gdk_pixbuf_get_colorspace.restype = GdkColorspace
-        libwebkit3.gdk_pixbuf_get_colorspace.argtypes = [c_void_p]
+        libwebkit3.gdk_pixbuf_get_colorspace.argtypes = [_GdkPixbuf]
         
-        return libwebkit3.gdk_pixbuf_get_colorspace(self._object, )
+        return libwebkit3.gdk_pixbuf_get_colorspace( self._object )
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # Copyright, John Rusnak, 2012
-# This code is available under the license agreement of the LGPL,
+# This code is avail under the license agreement of the LGPL,
 # with the additional constraint that any derivatives of this work aimed
 # at providing bindings to GObject, GTK, GDK, or WebKit be strictly
 # python-only bindings with no native code.
@@ -8,11 +8,12 @@ import os.path, sys, re
 
 from ctypes import *
 import logging
-
+import glob
 
 KEY_WORDS=['print','raise']
 
 DEFAULT_TYPES=['gboolean',
+               'char',
                'bool',
                'int',
                'long',
@@ -152,69 +153,71 @@ class Parser:
             typename = 'c_char_p'
         elif pointer_depth and not typename in DEFAULT_TYPES:
             typename = "_"+typename
-            ptr_types[typename] = 'c_void_p'
+            ptr_types[typename] = 'POINTER(c_int)'
             pointer_depth -= 1
         while pointer_depth:
-            typename = "POITNER(%s)"%typename
+            typename = "POINTER(%s)"%typename
             pointer_depth -= 1
         return (name, typename)
     
-    def wrap( self, returntype, statement):
+    def wrap( self, returntype, statement, is_static = False):
         global constructormapping
         global all_onstructors
         global current_file
-        if not returntype:
+        if returntype:
+            basetype = returntype.replace('POINTER(','').replace(')','')
+            if basetype.startswith('_'):
+                basetype = basetype[1:]
+        else:
+            basetype = None
+        #print "############# RET: %s"%returntype
+        if basetype==None or basetype=='void':
             numfuncargs = 0
-        elif returntype in DEFAULT_TYPES:
-            return ("return %s"%statement, "")
-        elif returntype == None:
             return (statement,"")
-        elif returntype[1:] in DEFAULT_TYPES:
+        elif basetype in DEFAULT_TYPES or returntype=='c_char_p':
+            return ("return %s"%statement, "")
+        elif basetype in DEFAULT_TYPES:
             return ( "return %s"%statement,"")
         else:
-            dependent = returntype[1:]
+            dependent = basetype
             
-            #print "WRAPPING ########## %s %s"%(returntype, statement)
             returnmethod = constructormapping.get(dependent)
-            if dependent == self._classname:
+            if dependent == self._classname and not is_static:
                 numfuncargs = len(statement.split(','))-1
             elif returnmethod != None:
                 numfuncargs = len(all_constructors[dependent])-1
             else:
-                import glob
-                for f in glob.glob('*%s.if'%returntype):
-                    if f != current_file:
-                        print "Processing %s: %s from %s: %s"%(f, current_file, statement, all_constructors)
-                        namespac = f[1:].split('_')[0]
-                        Parser(namespac).process(f)
+                for f in glob.glob('*%s.if'%basetype):
+                    global remainingfiles
+                    if f != current_file and f in remainingfiles:
+                        #print "Processing %s: %s from %s: %s"%(f, current_file, statement, all_constructors)
+                        ns = f[1:].split('_')[0]
+                        Parser(ns).process(f)
                 if all_constructors.get(dependent)==None:
                     raise Exception("Unknown class/constructor %s to return from %s; %s"%(dependent,statement,all_constructors))
                 if not constructormapping.get(dependent):
                     constructormapping[dependent] = ""
                 numfuncargs = len(all_constructors[dependent])
-        if not returntype:
-            return (statement, "")
+        if numfuncargs>0:
+            paramtext = ",".join( ["None" for i in xrange(numfuncargs)]) +","
         else:
-            if numfuncargs>0:
-                paramtext = ",".join( ["None" for i in xrange(numfuncargs)]) +","
-            else:
-                paramtext = ""
-        if returntype in DEFAULT_TYPES:
+            paramtext = ""
+        if basetype in DEFAULT_TYPES:
             return ( "return %s"%statement, "")
         elif returntype.startswith("_WebKit"):
-            return ( "return %s(%s obj=%s or c_void_p() )"%(dependent, paramtext, statement),
+            return ( "return %s(%s obj=%s or POINTER(c_int)() )"%(dependent, paramtext, statement),
                      "from pywebkit3.webkit3 import %s"%dependent)
         elif returntype.startswith ("_Pango"):
-            return ( "return %s(%s obj=%s  or c_void_p())"%(dependent, paramtext, statement),
+            return ( "return %s(%s obj=%s  or POINTER(c_int)())"%(dependent, paramtext, statement),
                      "from pywebkit3.gtk3 import %s"%dependent)
         elif returntype.startswith ("_JS"):
-            return ( "return %s(%s obj=%s  or c_void_p())"%(dependent, paramtext, statement),
+            return ( "return %s(%s obj=%s  or POINTER(c_int)())"%(dependent, paramtext, statement),
                      "from pywebkit3.javascriptcore import %s"%dependent)
         elif returntype.startswith ("_Gtk"):
-            return ( "return %s(%s obj=%s or c_void_p())"%(returntype[1:],paramtext, statement),
+            return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:],paramtext, statement),
                      "from pywebkit3.gtk3 import %s"%dependent)
         elif returntype.startswith ("_G"):
-            return ( "return %s(%s obj=%s or c_void_p())"%(returntype[1:], paramtext, statement),
+            return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:], paramtext, statement),
                      "from pywebkit3.gobject import %s"%dependent)
         else:
             return ("return %s"%statement,"")
@@ -228,14 +231,11 @@ class Parser:
         if not tokens:
             return
         #print "TOKENS %s: %s: %s"%(tokens, returntype, self._classname)
+
         if tokens[0] == '...' and self._methods.has_key(methodname):
             self._methods[methodname].append(("*args",''))
             return
-        elif (tokens[0] == 'void' and methodname.endswith('new') and position==0 and self._constructor==None) or (methodname.endswith('new') and returntype[1:] == self._classname) or (methodname.endswith('Create') and returntype[1:].startswith('JS') and (tokens[0] == returntype[1:] or tokens[1] == returntype[1:])):
-            if tokens[0].startswith('JS') and tokens[0] != returntype[1:]:
-                tmp = tokens[0]
-                tokens[0] = tokens[1]
-                tokens[1] = tmp
+        elif (tokens[0] == 'void' and methodname.endswith('new') and position==0 and self._constructor==None) or (methodname.endswith('new') and returntype[1:] == self._classname) or (methodname.endswith('Create') and returntype[1:]==self._classname):
             all_constructors[self._classname]=[methodname]
             if len(tokens)>1:
                 paramname, typename = self.parse_as_typedef_or_function_decl(tokens)
@@ -245,7 +245,10 @@ class Parser:
             return 
         elif tokens[0] == 'void':
             assert(position == 0)
-            self._staticmethods[methodname] = [returntype]
+            if returntype != 'void':
+                self._staticmethods[methodname] = [returntype]
+            else:
+                self._staticmethods[methodname] = [None]
             return
         elif tokens[0] != self._classname and methodname.endswith('new'):
             if position == 0:
@@ -276,10 +279,13 @@ class Parser:
             typename=tokens[0]
             paramname = tokens[-1]
         elif tokens[0] in ['GdkAtom'] and tokens[1] != '*':
-            typename = 'c_void_p'
+            typename = 'POINTER(c_int)'
             paramname = tokens[-1]
         elif tokens[0] == self._classname and position == 0:
-            self._methods[methodname] = [returntype]
+            if returntype != 'void':
+                self._methods[methodname] = [returntype]
+            else:
+                self._methods[methodname] = [None]
             return
         else:
             (paramname, typename) = self.parse_as_typedef_or_function_decl(tokens)
@@ -306,8 +312,10 @@ class Parser:
         assert(paramname !='*')
         if position == 0 and not self._methods.has_key(methodname):
             if not self._staticmethods.has_key(methodname) and not all_constructors.has_key(methodname):
-                
-                self._staticmethods[methodname] = [returntype]
+                if returntype != 'void':
+                    self._staticmethods[methodname] = [returntype]
+                else:
+                    self._staticmethods[methodname] = [None]
                 self._staticmethods[methodname].append((paramname, typename))
         elif all_constructors.has_key(methodname):
             all_constructors[self._classname].append((paramname,typename))
@@ -319,7 +327,10 @@ class Parser:
             
         else:
             if not self._staticmethods.has_key(methodname) and not all_constructors.has_key(methodname):
-                self._staticmethods[methodname] = [returntype]
+                if returntype != 'void':
+                    self._staticmethods[methodname] = [returntype]
+                else:
+                    self._staticmethods[methodname] = [None]
                 self._staticmethods[methodname].append((paramname, typename))
              
     
@@ -358,18 +369,22 @@ class Parser:
                 methodname = declaration[-1]
                 self._methods[methodname] = [None]
                 returntype = None
+            if declaration[0] == 'char' and declaration[1] == '*':
+                methodname = declaration[-1]
+                self._methods[methodname] = [None]
+                returntype = 'c_char_p'
             elif len(declaration) == 2:
                 methodname = declaration[-1]
                 #methods[methodname] = [declaration[0]]
                 returntype = declaration[0]
-            elif(declaration[1] == '*'):
-                ptr_types[declaration[0]] = 'c_void_p'
+            elif(declaration[0] not in DEFAULT_TYPES and declaration[1] == '*'):
+                ptr_types[declaration[0]] = 'POINTER(c_int)'
                 methodname = declaration[-1]
                 #methods[methodname] = ['_%s'%declaration[0]]
                 returntype = '_%s'%declaration[0]
             elif declaration[0] in DEFAULT_TYPES and declaration[1] == '*':
                 methodname = declaration[-1]
-                if declaration[0] != 'gchar':
+                if declaration[0] != 'gchar' and declaration[0] != 'char':
                     returntype = 'POINTER(%s)'%declaration[0]
                 else:
                     returntype = 'c_char_p'
@@ -381,6 +396,10 @@ class Parser:
             if len(tokens)>1:
                 params = tokens[1].split(',')
                 index = 0
+                if len(params)>1  and params[0].strip().startswith('JSContext') and params[1].strip().startswith(self._classname):
+                    tmp = params[0]
+                    params[0] = params[1]
+                    params[1] = tmp
                 for paramline in params:
                     self.parse_params(methodname, returntype, paramline, index)
                     index += 1
@@ -391,16 +410,31 @@ class Parser:
         global all_constructors
         global constructormapping
         LIB_NAME = "lib%s"%namespace
+        global ptr_types
+        if self._classname:
+            ptr_types[self._classname] = 'POINTER(c_int)'
+        def get_param_list(methodname):
+            #handle js quirk:
+            m = self._methods
+            params = [('self._object','_%s'%self._classname)] + m[methodname][1:]
+            if self._methods.has_key(methodname) and \
+                methodname.startswith('JS') and \
+                len(params) > 1 and \
+                params[1][1] == "_JSContext":
+                tmp = params[0]
+                params[0] = params[1]
+                params[1] = tmp
+            return params
+        
         def gen_params_constructor():
             text = ""
             eval_text = ""
             assertions = []
             cmethod = self._constructor[0]
-            print "XXXXXXXXXXXX %s %s"%(self._constructor, all_constructors[self._classname])
             for param in self._constructor[1:]:
-                if (not param[0].strip() == '*args') and  not((param[1] in DEFAULT_TYPES) or (param[1] == 'c_char_p')):
-                    eval_text +="""        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
-                    eval_text += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
+                if (not param[0].strip() == '*args') and  not((param[1] in DEFAULT_TYPES) or (param[1].replace('(','').replace(')','').replace('POINTER','') in DEFAULT_TYPES) or (param[1] == 'c_char_p')) and not param[0].startswith('self'):
+                    eval_text +="""\n            if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
+                    eval_text += """            else :  %(paramname)s = POINTER(c_int)()\n"""%{'paramname':param[0]}
                 text += "%s, "%param[0]
                 #assertions.append("assert(isinstance(%s, %s))"%(param[0], param[1]))
             return (text, eval_text, assertions)
@@ -412,21 +446,29 @@ class Parser:
             if self._methods.has_key(methodname):
                 m = self._methods
                 is_static = False
+                untouchedparams = [('self._object','UNUSED')] + self._methods[methodname][1:]
+                params = get_param_list(methodname)
             else:
                 m = self._staticmethods
-                is_static = True
-            for param in m[methodname][1:]:
+                is_static = True                
+                params = self._staticmethods[methodname][1:]
+                untouchedparams = params
+            index = 0
+            for param in params:
+                untouchedparam = untouchedparams[index]
+                index += 1
                 if callable:
                     if param[0]=='*args':
                         text +="*args"
                     else:
-                        if not(param[0].strip()=='*args') and not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
-                            evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
-                            evaltext += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
-                        text += "%s, "%param[0]
+                        
+                        if (param[0].strip()!='*args') and not((param[1] in DEFAULT_TYPES) or (param[1].replace('(','').replace(')','').replace('POINTER','') in DEFAULT_TYPES) or (param[1] == 'c_char_p')) and (not untouchedparam[0].startswith('self')):
+                            evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':untouchedparam[0]}
+                            evaltext += """        else : %(paramname)s = POINTER(c_int)()\n"""%{'paramname':untouchedparam[0]}
+                        text += "%s, "%untouchedparam[0]
                 else:
                     if param[0] == '*args':
-                        known_types = ['c_void_p']
+                        known_types = ['POINTER(c_int)']
                         known_args = []
                         for p in m[methodname][1:]:
                             if p[0] != '*args':
@@ -437,20 +479,22 @@ class Parser:
                         pretext = """
         def callit( %(args)s *args ):
                 %(lib_name)s.%(methodname)s.restype = %(return_type)s
-                %(lib_name)s.%(methodname)s.argtypes = [c_void_p, %(known_types)s]
+                %(lib_name)s.%(methodname)s.argtypes = [ %(known_types)s]
                 for arg in args:
                      %(lib_name)s.%(methodname)s.argtypes.append(args[1])
-                return %(lib_name)s.%(methodname)s(self._object, %(args)s *args)
+                return %(lib_name)s.%(methodname)s( %(args)s *args)
     """%{'lib_name':LIB_NAME,'known_types':', '.join(known_types), 'args':args,
     'methodname':methodname, 'return_type': m[methodname][0]}
                         text += "*args "
                     else:
-                        if not(param[0].strip()=="*args") and  not(param[1] in DEFAULT_TYPES or param[1] == 'c_char_p'):
-                            evaltext += """        if %(paramname)s : %(paramname)s = %(paramname)s._object\n"""%{'paramname':param[0]}
-                            evaltext += """        else : %(paramname)s = c_void_p()\n"""%{'paramname':param[0]}
-                        text += " %s,"%param[0]
+                        if not(param[0].strip()=="*args") and  not(param[1] in DEFAULT_TYPES or param[1].replace('POINTER(','').replace(')','') in DEFAULT_TYPES or  param[1] == 'c_char_p') and not untouchedparam[0].startswith('self'):
+                            evaltext += """        if %(paramname)s: %(paramname)s = %(paramname)s._object\n"""%{'paramname':untouchedparam[0]}
+                            evaltext += """        else: %(paramname)s = POINTER(c_int)()\n"""%{'paramname':untouchedparam[0]}
+                        text += " %s,"%untouchedparam[0]
                         
             return (text, pretext, evaltext)
+
+            
         if not self._classname:
             self._classname = ""
         if self._classname== "void":
@@ -550,12 +594,12 @@ from %s_types import *
                         f.write("            %s\n"%assertion)
                     c_name = self._constructor[0]
                     
-                    f.write( "            %s.%s.restype = c_void_p\n"%(LIB_NAME,c_name ))
-                    f.write(eval_text+"\n")
+                    f.write( "            %s.%s.restype = POINTER(c_int)\n"%(LIB_NAME,c_name ))
+                    f.write("            "+eval_text+"\n")
                     if len(self._constructor)>0:
-                        f.write( "        %s.%s.argtypes = [%s]\n"%( LIB_NAME,c_name, ','.join([p[1] for p in self._constructor[1:]])))
+                        f.write( "            %s.%s.argtypes = [%s]\n"%( LIB_NAME,c_name, ','.join([p[1] for p in self._constructor[1:]])))
                     calltext = calltext.replace("*args,","*args")
-                    f.write("        self._object = %s.%s(%s)\n"%(LIB_NAME, c_name, calltext))
+                    f.write("            self._object = %s.%s(%s)\n"%(LIB_NAME, c_name, calltext))
                 else:
                     f.write("    def __init__(self, obj = None):\n")
                     f.write("        self._object = obj")
@@ -567,19 +611,19 @@ from %s_types import *
                     methodname2 = methodname.replace(prefix,'')
                     if methodname2 in KEY_WORDS:
                         methodname2 = "py_%s"%methodname2
-                
+                    if methodname2 and self._classname:
+                        methodname2 = methodname2.replace(self._classname, "")
+
                     text, pretext, evaltext =  gen_params(methodname, LIB_NAME)
                     
-                    f.write("    def %s(self, %s):\n"%(methodname2,text))
-                    f.write(evaltext + "\n")                        
+                    f.write("    def %s( %s ):\n"%(methodname2,text.replace('._object','')))
+                    f.write(evaltext + "\n")
+                    params = get_param_list(methodname)
                     if pretext == "":
                         if self._methods[methodname][0]:
                             f.write( "        %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
-                        if len(self._methods[methodname])>1:
-                            f.write("        %s.%s.argtypes = [c_void_p, %s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in self._methods[methodname][1:]])))
-                        else:
-                            f.write("        %s.%s.argtypes = [c_void_p]\n"%(LIB_NAME,methodname))
-                        statement = "%s.%s(self._object, %s)"%( LIB_NAME,methodname, text)
+                        f.write("        %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
+                        statement = "%s.%s( %s )"%( LIB_NAME,methodname, ",".join([p[0] for p in params]))
                         (statement, importstatement) = self.wrap( self._methods[methodname][0], statement)
                         text,_,_ = gen_params(methodname, LIB_NAME,callable=True)
                         f.write("        %s\n"%importstatement)
@@ -588,45 +632,44 @@ from %s_types import *
                         f.write(pretext+"\n")
                         f.write("        return callit(%s)\n"%text)
                     f.write("\n")
-                for methodname in self._staticmethods.iterkeys():
-                    f.write("    @staticmethod\n")
-                    text,pretext,evaltext = gen_params(methodname, LIB_NAME)
-                    f.write("    def %s(%s):\n"%(methodname.replace(prefix,''), text))
-                    f.write(evaltext)
-                    if self._staticmethods[methodname][0]:
-                        f.write( "        %s.%s.restype = %s\n"%(LIB_NAME, methodname, self._staticmethods[methodname][0]))
-                    if len(self._staticmethods[methodname])>1:
-                        f.write("        %s.%s.argtypes = [%s]\n"%(LIB_NAME, methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
-                    if self._staticmethods[methodname][0]:
-                        ret = "return "
-                    else:
-                        ret=""
-                    text,pretext,_ = gen_params(methodname, LIB_NAME, callable= True)
-                    f.write("        %s%s.%s(%s)\n"%(ret, LIB_NAME,methodname, text)) 
-                    f.write("\n")
-            else:
-                for methodname in self._staticmethods.iterkeys():
-                    f.write("\n")
-                    prefix='gtk3_'
-                    text,_,evaltext =gen_params(methodname, LIB_NAME)
-                    f.write("def %s(%s):\n"%(methodname.replace(prefix,''), text))
-                    f.write(evaltext.replace("        ","    "))
-                    if self._staticmethods[methodname][0]:
-                        f.write( "    %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._staticmethods[methodname][0]))
-                    if len(self._staticmethods[methodname])>1:
-                        f.write("    %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in self._staticmethods[methodname][1:]])))
-                    if self._staticmethods[methodname][0]:
-                        ret = "return "
-                    else:
-                        ret=""
-                    gen_params(methodname, LIB_NAME,callable=True)
-                    f.write("    %s%s.%s(%s)\n"%(ret, LIB_NAME,methodname, text)) 
-                    f.write("\n")
-    
+            for methodname in self._staticmethods.iterkeys():
+                text,pretext,evaltext = gen_params(methodname, LIB_NAME)
+                if self._classname:
+                    SPACING = "    "
+                    f.write( "    @staticmethod\n")
+                else:
+                    SPACING = ""
+                    evaltext = evaltext.replace("        ","    ")
+                if methodname and self._classname:
+                    methodname2 = methodname.replace(self._classname, "")
+                else:
+                    methodname2 = methodname
+                f.write(SPACING + "def %s(%s):\n"%(methodname2.replace(prefix,''), text))
+                f.write(evaltext)
+                print "XXXXXXXXXX %s"%methodname
+                if self._staticmethods[methodname][0]:
+                    f.write( SPACING + "    %s.%s.restype = %s\n"%(LIB_NAME, methodname, self._staticmethods[methodname][0]))
+                if len(self._staticmethods[methodname])>1:
+                    f.write(SPACING + "    %s.%s.argtypes = [%s]\n"%(LIB_NAME, methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
+                if self._staticmethods[methodname][0]:
+                    ret = "return "
+                else:
+                    ret=""
+                text,pretext,_ = gen_params(methodname, LIB_NAME, callable= True)
+                statement = "    %s.%s(%s)\n"%( LIB_NAME,methodname, text)
+                (statement, importstatement) = self.wrap( self._staticmethods[methodname][0], statement, is_static = True)
+                f.write(SPACING + "    "+importstatement+"\n")
+                f.write(SPACING + "    "+statement) 
+                f.write("\n")
 
     
     def process(self, filename):
         global current_file
+        global remainingfiles
+        try:
+            remainingfiles.remove(filename)
+        except:
+            pass
         current_file = filename
         with open ( filename, 'r') as f:
             line = ""
@@ -642,10 +685,16 @@ from %s_types import *
                         line="" 
         
             self.emit_python(namespace)
-    
 
-namespace = sys.argv[1][1:].split('_')[0]
+files = glob.glob("_*.if")
+remainingfiles = glob.glob("_*.if")
+
+for fil in files:
+    print "------------------"
+    print "Processing %s"%fil
+    namespace = fil[1:].split('_')[0]
     
-classname = None
-constructormapping={}
-Parser(namespace).process(sys.argv[1])
+    constructormapping={}
+    Parser(namespace).process(fil)
+
+#endif //C2PY_H

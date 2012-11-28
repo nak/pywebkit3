@@ -1,0 +1,2 @@
+struct GdkAtom;
+inherit object;

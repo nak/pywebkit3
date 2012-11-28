@@ -1,0 +1,2 @@
+struct GOptionGroup;
+inherit object;
