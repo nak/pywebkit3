@@ -191,7 +191,7 @@ class Parser:
                     global remainingfiles
                     if f != current_file and f in remainingfiles:
                         #print "Processing %s: %s from %s: %s"%(f, current_file, statement, all_constructors)
-                        ns = f[1:].split('_')[0]
+                        ns = f.split('__')[0]
                         Parser(ns).process(f)
                 if all_constructors.get(dependent)==None:
                     raise Exception("Unknown class/constructor %s to return from %s; %s"%(dependent,statement,all_constructors))
@@ -206,19 +206,19 @@ class Parser:
             return ( "return %s"%statement, "")
         elif returntype.startswith("_WebKit"):
             return ( "return %s(%s obj=%s or POINTER(c_int)() )"%(dependent, paramtext, statement),
-                     "from pywebkit3.webkit3 import %s"%dependent)
+                     "from webkit3 import %s"%dependent)
         elif returntype.startswith ("_Pango"):
             return ( "return %s(%s obj=%s  or POINTER(c_int)())"%(dependent, paramtext, statement),
-                     "from pywebkit3.gtk3 import %s"%dependent)
+                     "from gtk3 import %s"%dependent)
         elif returntype.startswith ("_JS"):
             return ( "return %s(%s obj=%s  or POINTER(c_int)())"%(dependent, paramtext, statement),
-                     "from pywebkit3.javascriptcore import %s"%dependent)
+                     "from javascriptcore import %s"%dependent)
         elif returntype.startswith ("_Gtk"):
             return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:],paramtext, statement),
-                     "from pywebkit3.gtk3 import %s"%dependent)
+                     "from gtk3 import %s"%dependent)
         elif returntype.startswith ("_G"):
             return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:], paramtext, statement),
-                     "from pywebkit3.gobject import %s"%dependent)
+                     "from gobject import %s"%dependent)
         else:
             return ("return %s"%statement,"")
     
@@ -499,7 +499,7 @@ class Parser:
             self._classname = ""
         if self._classname== "void":
             self._classname= ""
-        with open(os.path.join('pywebkit3','_%s_%s.py'%(namespace,self._classname)),'w') as f:
+        with open(os.path.join('pywebkit3','%s__%s.py'%(namespace,self._classname)),'w') as f:
             prefix = "_".join(l.lower() for l in re.findall('[A-Z][^A-Z]*', self._classname.replace('WebKit','Webkit')))
             prefix += '_'
             assert(namespace != 'gtk')
@@ -569,7 +569,7 @@ from %s_types import *
             if self._classname == "void":
                 self._classname = ""
             if self._classname != "":
-                parentpackage = '_%s'%inheritances[self._classname].replace('.','_')
+                parentpackage = '%s'%inheritances[self._classname].replace('.','__')
                 parentclass = inheritances[self._classname].split('.')[-1]
                 if inheritances[self._classname] != 'object':
                     f.write('import %s\n'%parentpackage)
@@ -646,7 +646,6 @@ from %s_types import *
                     methodname2 = methodname
                 f.write(SPACING + "def %s(%s):\n"%(methodname2.replace(prefix,''), text))
                 f.write(evaltext)
-                print "XXXXXXXXXX %s"%methodname
                 if self._staticmethods[methodname][0]:
                     f.write( SPACING + "    %s.%s.restype = %s\n"%(LIB_NAME, methodname, self._staticmethods[methodname][0]))
                 if len(self._staticmethods[methodname])>1:
@@ -686,15 +685,13 @@ from %s_types import *
         
             self.emit_python(namespace)
 
-files = glob.glob("_*.if")
-remainingfiles = glob.glob("_*.if")
+files = glob.glob("*.if")
+remainingfiles = glob.glob("*.if")
 
 for fil in files:
     print "------------------"
     print "Processing %s"%fil
-    namespace = fil[1:].split('_')[0]
+    namespace = fil.split('__')[0]
     
     constructormapping={}
     Parser(namespace).process(fil)
-
-#endif //C2PY_H

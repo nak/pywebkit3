@@ -1,6 +1,7 @@
+import pywebkit3.javascriptcore
 
 import inspect
-from pywebkit3.javascriptcore import *
+from javascriptcore import *
 from ctypes import *
 import logging
 import traceback
