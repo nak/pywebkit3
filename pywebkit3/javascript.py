@@ -2,19 +2,21 @@
 import inspect
 from pywebkit3.javascriptcore import *
 from ctypes import *
-
+import logging
+import traceback
+            
 def strid(obj):
     return str( cast( obj._object, c_void_p))
 
 class JavascriptClass(object):
     """Class instance of which are accessible within a javascript"""
-
     _methods = None
+    _methods_by_name= {}
     _jsobjects = {}
     
     @classmethod
     def _populate(cls):
-        JavascriptClass._methods = [m for m in inspect.getmembers(cls, predicate=inspect.ismethod) if not m[0].startswith('_')]
+        cls._methods = [m for m in inspect.getmembers(cls, predicate=inspect.ismethod) if not m[0].startswith('_') and not m[0] == 'create']
         
     _prefix = ""
 
@@ -32,6 +34,7 @@ class JavascriptClass(object):
     def create(cls, context, obj_name, *constructor_args):
         if not cls._methods:
             cls._populate()
+        print cls._methods
         cls.staticmethods = (JSStaticFunction*(len(cls._methods)+2))()
         #tag end:
         cls.staticmethods[-1].name = cast(NULL, c_char_p)
@@ -45,62 +48,79 @@ class JavascriptClass(object):
         cls.staticmethods[-2].name = c_char_p("%s%s_new"%(cls._prefix,cls.__name__))
         cls.staticmethods[-2].callAsFunction = JSObjectCallAsFunctionCallback(call_constructor)
         cls.staticmethods[-2].attributes = kJSPropertyAttributeReadOnly
-        
-        for index in xrange(len(JavascriptClass._methods)-1):
-            name = JavascriptClass._methods[index][0]
+        def getfunc(index):
+            def call_method(ctxt, function, obj, argumentCount, arguments, exception):
+                pyobj = JavascriptClass._jsobjects[ str(cast(obj, c_void_p))]
+                method = cast(function, c_void_p)
+                key = cls.staticmethods[index].name
+                to_call = cls._methods_by_name.get(key)
+                if not to_call:
+                    loggin.error("Unrecognized method!  Internal error in javascript python binding %s"%key)
+                try:
+                    arguments = cast(arguments, POINTER(POINTER(c_int)))
+                    ctxt = cast(ctxt, POINTER(c_int))
+                    args = []
+                    for i in xrange(argumentCount):
+                        import numbers
+                        if isinstance(arguments[i],numbers.Number):
+                            args.append(arguments[i])
+                        else:
+                            valtype = JSValue(obj=arguments[i]).GetType( context)
+                            if valtype == kJSTypeNull.value:
+                                args.append(None)
+                            elif valtype == kJSTypeBoolean.value:
+                                args.append[JSValue.JSValueToBoolean( context, arguments[i])]
+                            elif valtype == kJSTypeString.value:
+                                jstext = JSValue(arguments[i]).ToStringCopy( context, NULL)
+                                length = jstext.GetMaximumUTF8CStringSize()
+                                cstring = (c_char*(length))()
+                                jstext.GetUTF8CString( cstring, length )
+
+                                args.append( cstring.value )
+                            elif valtype == kJSTypeObject.value:
+                                found = JavascriptClass._jsobjects.get(strid(obj))
+                                args.append( found._javascript_object )
+                                if not found:
+                                    logging.error("Unknown object passed to python frmo javascript. Object must be know in both worlds.")
+                                    return NULL
+                            else:
+                                logging.error( "Invalid javascript value")
+                                return NULL
+                    target = JavascriptClass._jsobjects.get(str(cast(obj, c_void_p)))
+                    value =  to_call[1]( pyobj, *args )
+                    import numbers
+                    if isinstance( value, numbers.Number):
+                        return JSValue.JSValueMakeNumber(context, value)
+                    elif isinstance( value, str):
+                        cstring = c_char_p(value)
+                        text = JSString.JSStringCreateWithUTF8CString(cstring);
+                        return JSValue.JSValueMakeString(context, text);
+                    elif isinstance( value, JavascriptClass):
+                        return value._javascript_object
+                
+                except:
+                    logging.error("EXCEPTION: calling python method from javascript")
+                    logging.error(traceback.format_exc())
+            return call_method
+        for index in xrange(len(cls._methods)):
+            name = cls._methods[index][0]
+            call_method = getfunc(index)
             cls.staticmethods[index].name = c_char_p( name)
-            def call_method(ctxt, function, argumentCount, arguments, exception):
-                args = []
-                for i in xrange(argumentCount):
-                    type = JSValue.JSValueGetType( context, arguments[i])
-                    if type == kJSTypeNull:
-                        args.append[None]
-                    elif type == kJSTypeBoolean:
-                        args.append[JSValue.JSValueToBoolean( context, arguments[i])]
-                    elif type == kJSTypeString:
-                        jstext = JSString( JSValue.JSValueToStringCopy( context, arguments[i]))
-                        length = JSString.JSStringGetMaximumUTF8CStringSize()
-                        cstring = (c_char*(lenght_1))()
-                        jstext.JSStringGetUTR8CString( cstring, length )
-                        
-                        args.append[ cstring.value ]
-                    elif type == kJSTypeObject:
-                        found = JavascriptClass._jsobjects.get(strid(obj))
-                        args.append[ found._javascript_object]
-                        if not found:
-                            import logging
-                            logging.error("Unknown object passed to python frmo javascript. Object must be know in both worlds.")
-                            return NULL
-                    else:
-                        import logging
-                        logging.error( "Invalid javascript value")
-                        return NULL
-                                    
-                value =  JavascriptClass._methods[index][1](target, *args)
-                import Number
-                if isinstance( value, Number):
-                    return JSValue.JSValueMakeNumber(context, value)
-                elif isinstance( value, str):
-                    cstring = c_char_p(value)
-                    text = JSString.JSStringCreateWithUTF8CString(cstring);
-                    return JSValue.JSValueMakeString(context, text);
-                elif isinstance( value, JavascriptClass):
-                    return value._javascript_object
-            print cls.staticmethod[index].staticFunctions[0]
-            raise Exception()
             cls.staticmethods[index].callAsFunction  = JSObjectCallAsFunctionCallback( call_method)
             cls.staticmethods[index].attributes = kJSPropertyAttributeReadOnly
+            cls._methods_by_name[cls.staticmethods[index].name] = cls._methods[index]
         newobj = None
         def _init_cb( ctxt, obj):
             newobj = cls( *constructor_args)
             newobj._javascript_object = obj
             JavascriptClass._jsobjects[str(cast(obj,c_void_p))] =  newobj
-            
+          
         def _finalize_cb(obj):
             index = -1
-            pyobj= JavascriptClass._jsobjects.get(strid(obj))
+            
+            pyobj= JavascriptClass._jsobjects.get(str(cast(obj,c_void_p)))
             if pyobj:
-                del JavascriptClass._jsobjects[strid(obj)]
+                del JavascriptClass._jsobjects[str(cast(obj,c_void_p))]
             
                 
         jscd = JSClassDefinition()
@@ -136,5 +156,3 @@ class JavascriptClass(object):
 
 
 
-
-JavascriptClass._populate()

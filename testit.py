@@ -7,7 +7,7 @@ from javascriptcore import *
 
     
 web = webkit3.WebKitWebView()
-web.load_uri("http://www.googe.com")
+web.open("file:///home/jrusnak/workspace/pywebkit/test.html")
 
 window = gtk3.GtkWindow(gtk3.GTK_WINDOW_TOPLEVEL)
 window.connect("delete-event", gtk3.main_quit)
@@ -25,7 +25,15 @@ class Test( JavascriptClass ):
         JavascriptClass.__init__(self)
         print "%s %s %s"%(arg1, arg2, arg3)
 
+    def __del__(self):
+        print "DEL"
 
+    def callit(self, val):
+        print "CALLED %s"%val
+
+    def called2(self):
+        print "2nd CALL"
+        
 Test.create( context, "testinstance", 1, "HI", 2.34)
 
 
