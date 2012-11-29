@@ -1,4 +1,4 @@
-from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER
+from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER, c_longlong
 from webkit3_types import libwebkit3
 
 libjavascriptcore = libwebkit3
@@ -12,14 +12,14 @@ size_t = c_uint
 JSObjectInitializeCallback = CFUNCTYPE( None, POINTER(c_int), POINTER(c_int))
 JSObjectFinalizeCallback = CFUNCTYPE( None, POINTER(c_int))
 JSObjectHasPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectGetPropertyCallback = CFUNCTYPE( POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+JSObjectGetPropertyCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
 JSObjectSetPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
 JSObjectDeletePropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
 JSObjectGetPropertyNamesCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectCallAsFunctionCallback = CFUNCTYPE( c_void_p, POINTER(c_int), POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
-JSObjectCallAsConstructorCallback = CFUNCTYPE( POINTER(c_int), POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectCallAsFunctionCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectCallAsConstructorCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
 JSObjectHasInstanceCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectConvertToTypeCallback =  CFUNCTYPE( POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectConvertToTypeCallback =  CFUNCTYPE( c_longlong, POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
 
 class JSStaticValue(Structure):
     _fields_  = [('name', c_char_p),

@@ -69,8 +69,10 @@ class JavascriptClass(object):
                             valtype = JSValue(obj=arguments[i]).GetType( context)
                             if valtype == kJSTypeNull.value:
                                 args.append(None)
+                            elif valtype == kJSTypeNumber.value:
+                                args.append(JSValue(arguments[i]).ToNumber( context, NULL))
                             elif valtype == kJSTypeBoolean.value:
-                                args.append[JSValue.JSValueToBoolean( context, arguments[i])]
+                                args.append(JSValue(arguments[i]).ToBoolean( context, NULL))
                             elif valtype == kJSTypeString.value:
                                 jstext = JSValue(arguments[i]).ToStringCopy( context, NULL)
                                 length = jstext.GetMaximumUTF8CStringSize()
@@ -85,23 +87,28 @@ class JavascriptClass(object):
                                     logging.error("Unknown object passed to python frmo javascript. Object must be know in both worlds.")
                                     return NULL
                             else:
-                                logging.error( "Invalid javascript value")
+                                logging.error( "Invalid javascript value %d"%valtype)
                                 return NULL
                     target = JavascriptClass._jsobjects.get(str(cast(obj, c_void_p)))
                     value =  to_call[1]( pyobj, *args )
                     import numbers
                     if isinstance( value, numbers.Number):
-                        return JSValue.JSValueMakeNumber(context, value)
+                        retval= JSValue.MakeNumber(context, value)._object
                     elif isinstance( value, str):
                         cstring = c_char_p(value)
-                        text = JSString.JSStringCreateWithUTF8CString(cstring);
-                        return JSValue.JSValueMakeString(context, text);
+                        text = JSString.CreateWithUTF8CString(cstring);
+                        retval = JSValue.JSValueMakeString(context, text)._object;
                     elif isinstance( value, JavascriptClass):
-                        return value._javascript_object
-                
+                        retval = value._javascript_object
+                    else:
+                        retval = NULL
+                    retvalp = cast(byref(retval), POINTER(c_longlong))
+                    return retvalp.contents.value
                 except:
                     logging.error("EXCEPTION: calling python method from javascript")
                     logging.error(traceback.format_exc())
+                    return 0#NULL
+                
             return call_method
         for index in xrange(len(cls._methods)):
             name = cls._methods[index][0]
