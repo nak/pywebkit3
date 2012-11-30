@@ -1,66 +1,37 @@
 #!/usr/bin/python
 from ctypes import *
-from pywebkit3 import gtk3,webkit3,javascriptcore
-from pywebkit3.javascriptcore import *
+from pywebkit3 import gtk3,webkit3,javascript
+
 import os.path
-    
+
+#create the webkit webview
 web = webkit3.WebKitWebView()
 web.open("file://%s/test.html"%os.path.abspath(os.path.dirname(__file__)))
 
+#create the containing window
 window = gtk3.GtkWindow(gtk3.GTK_WINDOW_TOPLEVEL)
+#close this app on close of the window:
 window.connect("delete-event", gtk3.main_quit)
+
+#add our web view to the main window
 window.add(web)
 window.set_default_size( 250, 100)
-window.show_all()
-web.show_all()
+window.set_title("PyWebkit with CSS 3D ala Python")
+
+#create a class available to javascript, by inheriting from JavascriptClass
+import cube
+
+#get the context for the javascript environment:
 frame = web.get_main_frame()
 context =frame.get_global_context()
 
-from pywebkit3.javascript import JavascriptClass
-class YPR_Updater( JavascriptClass ):
+#now create our class base on that context:
+#Namespace.add_global_class(context, YPR_Updater, 45 , -45, 45)
+import cube
+javascript.export_module(context, cube)
 
-    def __init__(self, init_angles):
-        JavascriptClass.__init__(self)
-        self.ypr = init_angles
-        self.sign = 1
-        print "YPRUpdater initialize"
-    
-    def __del__(self):
-        print "DEL"
+#create( context, "py_ypr_updater", 45, -45, 45)
 
-    def update(self, offset_yaw, offset_pitch, offset_roll):
-        self.ypr[0] += offset_yaw
-        self.ypr[1] += offset_pitch
-        self.ypr[2] += offset_roll
-        if(self.ypr[2]> 90 ):
-            self.sign=-self.sign;
-            
-            self.ypr[2] -= 180;
-            self.ypr[0] -= 180;
-            self.ypr[1] = 180-self.ypr[1];
-             
-
-        if(self.ypr[0]>=360):
-            self.ypr[0] -=360;
-        else:
-            self.ypr[0] += 360;
-	
-        if(self.ypr[1]>=180) :
-            self.ypr[1] -= 360;
-        else:
-            self.ypr[1] += 360;
-	
-
-    def yaw(self):
-        return self.ypr[0]
-
-    def pitch(self):
-        return self.ypr[1]
-
-    def roll(self):
-        return self.ypr[2]
-    
-YPR_Updater.create( context, "py_ypr_updater", [45, -45, 45])
-
-
+#an show it!
+window.show_all()
 gtk3.main()

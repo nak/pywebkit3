@@ -235,7 +235,10 @@ class Parser:
         if tokens[0] == '...' and self._methods.has_key(methodname):
             self._methods[methodname].append(("*args",''))
             return
-        elif (tokens[0] == 'void' and methodname.endswith('new') and position==0 and self._constructor==None) or (methodname.endswith('new') and returntype[1:] == self._classname) or (methodname.endswith('Create') and returntype[1:]==self._classname):
+        elif (tokens[0] == 'void' and (methodname.endswith('new') ) \
+              and position==0 and self._constructor==None) or \
+               (methodname.endswith('new') and returntype[1:] == self._classname) or \
+               (methodname.endswith('Create') and returntype[1:]==self._classname):
             all_constructors[self._classname]=[methodname]
             if len(tokens)>1:
                 paramname, typename = self.parse_as_typedef_or_function_decl(tokens)

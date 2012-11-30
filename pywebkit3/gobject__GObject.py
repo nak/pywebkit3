@@ -50,6 +50,7 @@ from gobject_types import *
     
     
 """Derived Pointer Types"""
+_GValue = POINTER(c_int)
 __GtkRcStyle = POINTER(c_int)
 __GdkGeometry = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)

@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup( name = "PyWebKit3",
     version = "0.5.0",
     packages = ["pywebkit3"],# find_packages(),
-    scripts = [],
+    scripts = ["fmVisualization"],
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine

@@ -340,8 +340,10 @@ WebKitEditingBehavior = c_int
 
 class GValue( object):
     """Class GValue Constructors"""
-    def __init__(self, obj = None):
+    def __init__(self,  obj = None):
+       
         self._object = obj
+        
     """Methods"""
     def g_strdup_value_contents(  self, ):
 
@@ -376,9 +378,9 @@ class GValue( object):
     def init(  self, g_type, ):
 
         libgobject.g_value_init.restype = _GValue
-        libgobject.g_value_init.argtypes = [_GValue,GType]
+        libgobject.g_value_init.argtypes = [_GValue,c_int]
         from gobject import GValue
-        return GValue(None, obj=libgobject.g_value_init( self._object,g_type ) or POINTER(c_int)())
+        return GValue( obj=libgobject.g_value_init( self._object,g_type ) or POINTER(c_int)())
 
     def peek_pointer(  self, ):
 
@@ -433,11 +435,17 @@ class GValue( object):
         
         return     libgobject.g_value_type_transformable(src_type, dest_type, )
 
-    def __init__(self, type):
-        cdll.LoadLibrary('libc.so.6')
-        libc = CDLL('libc.so.6')
-        libc.restype = c_void_p
-        self._object = libc.malloc(64)
-        libc.memset.argtypes = [c_void_p, c_int, c_int]
-        libc.memset( self._object, 0, 64)
-        self.init( libgobject.g_type_fundamental( type )  )
+    def __init__(self, type= None, obj= None):
+        assert( type != None or object != None and not( type==None and obj==None))
+
+        if type:
+            cdll.LoadLibrary('libc.so.6')
+            libc = CDLL('libc.so.6')
+            libc.malloc.restype = c_longlong
+            v = c_longlong(libc.malloc(64))
+            self._object = cast(byref(v), POINTER(POINTER(c_int))).contents
+            libc.memset.argtypes = [c_void_p, c_int, c_int]
+            libc.memset( self._object, 0, 64)
+            self.init( libgobject.g_type_fundamental( type )  )
+        else:
+            self._object = obj

@@ -116,8 +116,10 @@ function cube_init() {
 
     $('textarea').css('font-weight','bold');
 }
+var py_ypr_updater;
 
 function enable_unit_test(){
+  py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
 	setInterval( test_loop, 1000 / 60 );
 }
 
@@ -126,10 +128,11 @@ function enable_unit_test(){
 var YPR = [45,45,-45];
 var simtime = 0.0;
 var sign=1;
+//Created from python and as python object too!!:
 
 function test_loop() {
   //Python obejct accessible in javascript!!!
-     py_ypr_updater.update( 0.3, sign*0.5, 0.7);
+    py_ypr_updater.update( 0.3, sign*0.5, 0.7);
     YPR[0] = py_ypr_updater.yaw()
     YPR[1] = py_ypr_updater.pitch()
     YPR[2] = py_ypr_updater.roll()
