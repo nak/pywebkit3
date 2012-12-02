@@ -32,6 +32,12 @@ javascript.export_module(context, cube)
 
 #create( context, "py_ypr_updater", 45, -45, 45)
 
+
+import pywebkit3.gtk3
+from pywebkit3.gtk3 import GtkWindow
+s = GtkWindow(pywebkit3.gtk3.GTK_WINDOW_TOPLEVEL)
+javascript._wrap( context, s, "cube.tests")
+            
 #an show it!
 window.show_all()
 gtk3.main()

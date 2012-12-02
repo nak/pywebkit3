@@ -5,8 +5,8 @@ class YPR_Updater( JavascriptClass ):
     (orientation) of a cube, with the javascript calling the
     update metho and get methods"""
     
-    def __init__(self, *init_angles):
-        JavascriptClass.__init__(self)
+    def __init__(self, context, name, *init_angles):
+        JavascriptClass.__init__(self, context, name )
         print "ARGS: %s"%[a for a in init_angles]
         self.ypr =  [a for a in init_angles]
         self.sign = 1
