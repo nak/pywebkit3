@@ -27,14 +27,14 @@ class JavascriptClass(object):
         cls.staticmethods[-1].attributes = 0
         def getfunc(index):
             def call_method(ctxt, function, obj, argumentCount, arguments, exception):
-                context = JSObject(obj=ctxt)
-                (_,pyobj) = JavascriptClass._jsobjects[ str(cast(obj, c_void_p))]
-                method = cast(function, c_void_p)
-                key = cls.staticmethods[index].name
-                to_call = cls._methods_by_name.get(key)
-                if not to_call:
-                    logging.error("Unrecognized method!  Internal error in javascript python binding %s"%key)
                 try:
+                    context = JSObject(obj=ctxt)
+                    (_,pyobj) = JavascriptClass._jsobjects[ str(cast(obj, c_void_p))]
+                    method = cast(function, c_void_p)
+                    key = cls.staticmethods[index].name
+                    to_call = cls._methods_by_name.get(key)
+                    if not to_call:
+                        logging.error("Unrecognized method!  Internal error in javascript python binding %s"%key)
                     arguments = cast(arguments, POINTER(POINTER(c_int)))
                     ctxt = cast(ctxt, POINTER(c_int))
                     args = []
@@ -219,9 +219,14 @@ class Constructor(JavascriptClass):
         self._context = context
 
     def new_( self, name, *args):
-        logging.error("CLASS CB IS %s"%self._pyclass)
-        return self._pyclass( self._context, name, *args)
-
+        try:
+            logging.error("CLASS CB IS %s"%self._pyclass)
+            return self._pyclass( self._context, name, *args)
+        except:
+            logging.error("Exception instantiating %s"%pyclass)
+            logging.error(traceback.format_exc())
+            return None
+        
 class Namespace( JavascriptClass ):
 
     _namespaces = {}

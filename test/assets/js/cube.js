@@ -38,21 +38,32 @@ function updateYPR( yaw, pitch, roll ){
 	roll = (Math.round(roll*100.0))/100.0;
 	pitch=-pitch;
      
-	$('.cube').each( function(index){
-		// alert(index);
-		if (rotations[index]==null){
-            
-			rotations[index] = $(this).css('-webkit-transform')  ;
-            if (!rotations[index]){
-              rotations[index] = $(this).css('-moz-transform');
-            }
-            if (!rotations[index]){
-              rotations[index] = $(this).css('-ms-transform');
-            }
-            n[index] = eval($(this).attr('n'));
-		}
-          
-          
+	$('.cubie').each( function(index){
+	    // alert(index);
+	    if (rotations[index]==null){
+	      
+	      rotations[index] = $(this).css('-webkit-transform')  ;
+	      if (!rotations[index]){
+		rotations[index] = $(this).css('-moz-transform');
+	      }
+	      if (!rotations[index]){
+		rotations[index] = $(this).css('-ms-transform');
+	      }
+	      n[index] = eval($(this).attr('n'));
+	    }
+	    var newndoty = -Math.cos(TO_RADIANS*pitch)*Math.cos(TO_RADIANS*yaw)*n[index][1] //VERIFIED PR
+	      - ( Math.sin(TO_RADIANS*roll)*Math.sin(TO_RADIANS*yaw)  + Math.cos(TO_RADIANS*roll)*Math.sin(TO_RADIANS*pitch)*Math.cos(TO_RADIANS*yaw))*n[index][2]//VERIFIED PR
+	      - ( Math.cos(TO_RADIANS*roll)*Math.sin(TO_RADIANS*yaw) - Math.sin(TO_RADIANS*roll)*Math.sin(TO_RADIANS*pitch)*Math.cos(TO_RADIANS*yaw))*n[index][0]
+	      ;
+      
+		if (newndoty<=0){
+		  $(this).css( 'display','none');
+		} else {
+		  $(this).css('display','block');
+		} 
+		
+		
+		
 		csstext = 'rotateY('+yaw+'deg) rotateX(' + (pitch) +'deg) rotateZ(' + roll +'deg) '+ rotations[index];
          
 		$(this).css( '-webkit-transform',csstext);
@@ -120,11 +131,9 @@ function cube_init() {
 var py_ypr_updater;
 
 function enable_unit_test(){
-    //alert(cube.tests);
-    cube.tests.show_all();
-	alert("..."+cube.YPR_Updater.new_);
-	py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
-	setInterval( test_loop, 1000 / 60 );
+  cube.tests.show_all();
+  py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
+  setInterval( test_loop, 1000 / 60 );
 }
 
 

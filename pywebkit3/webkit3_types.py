@@ -1,8 +1,8 @@
 from ctypes import *
 
 try:
-    cdll.LoadLibrary("libwebkitgtk-3.0.so")
-    libwebkit3 = CDLL("libwebkitgtk-3.0.so.0")
+    cdll.LoadLibrary("libwebkitgtk-3.0.so.0.17.4")
+    libwebkit3 = CDLL("libwebkitgtk-3.0.so.0.17.4")
     HAVE_CSS3D= True
 except:
     import traceback
