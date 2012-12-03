@@ -329,8 +329,6 @@ class JSObject( object):
         else: ctx = POINTER(c_int)()
         if propertyName: propertyName = propertyName._object
         else: propertyName = POINTER(c_int)()
-        if exception: exception = exception._object
-        else: exception = POINTER(c_int)()
 
         libjavascriptcore.JSObjectGetProperty.restype = _JSValue
         libjavascriptcore.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
@@ -473,18 +471,14 @@ class JSObject( object):
         from javascriptcore import JSPropertyNameArray
         return JSPropertyNameArray( obj=libjavascriptcore.JSObjectCopyPropertyNames( ctx,self._object )  or POINTER(c_int)())
 
-    def GetPropertyAtIndex(  self, ctx, propertyIndex, exception, ):
+    def GetPropertyAtIndex(  self, ctx, propertyIndex, exc, ):
         if ctx: ctx = ctx._object
-        else: ctx = POINTER(c_int)()
-        if propertyIndex: propertyIndex = propertyIndex._object
-        else: propertyIndex = POINTER(c_int)()
-        if exception: exception = exception._object
-        else: exception = POINTER(c_int)()
-
-        libjavascriptcore.JSObjectGetPropertyAtIndex.restype = _JSValue
+        else: raise Exception("NULL CONTEXT")
+        
+        libjavascriptcore.JSObjectGetPropertyAtIndex.restype = POINTER(c_int)
         libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
         from javascriptcore import JSValue
-        return JSValue( obj=libjavascriptcore.JSObjectGetPropertyAtIndex( ctx,self._object,propertyIndex,exception )  or POINTER(c_int)())
+        return JSValue( obj=libjavascriptcore.JSObjectGetPropertyAtIndex( ctx,self._object,propertyIndex,exc)  or POINTER(c_int)())
 
     def GetPrivate(  self, ):
 

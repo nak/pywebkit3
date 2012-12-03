@@ -28,8 +28,6 @@ var particles = [];
 var particleImage = new Image();//THREE.ImageUtils.loadTexture( "img/ParticleSmoke.png" );
 particleImage.src = 'assets/img/ParticleSmoke.png'; 
 
-
-
         
 function updateYPR( yaw, pitch, roll ){
  
@@ -86,8 +84,19 @@ $(document).ready(function(){
 		         
 });
 
+Tmp = function(){
+  this.a = 1;
+  this.b = 2;
+
+  this.func = function(){
+    alert("TMP");
+    return "ALERTED";
+  }
+};
+var tmp = new Tmp();
 
 function cube_init() {
+    python.export_to_python(tmp, "tmp");
 
 	container = document.createElement('div');
 	$('#canvas')[0].appendChild(container);
@@ -131,7 +140,6 @@ function cube_init() {
 var py_ypr_updater;
 
 function enable_unit_test(){
-  cube.tests.show_all();
   py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
   setInterval( test_loop, 1000 / 60 );
 }

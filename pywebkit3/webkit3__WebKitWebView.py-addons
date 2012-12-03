@@ -1,0 +1,12 @@
+    def get_main_frame(  self, ):
+        #override workaround since it appears calling get_main_frame twice on
+        #same webview casesu SIGSEGV(!)????
+        if hasattr(self,'_main_frame'):
+            return self._main_frame
+        libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
+        libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
+        from webkit3 import WebKitWebFrame
+        self._main_frame =  WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
+        return self._main_frame
+
+  

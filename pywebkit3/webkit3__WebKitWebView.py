@@ -607,8 +607,9 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def execute_script(  self, script, ):
 
         libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
-        
-        libwebkit3.webkit_web_view_execute_script( self._object,script )
+        import logging
+        logging.error("EXECUTING %s  %s"%(self._object, script))
+        libwebkit3.webkit_web_view_execute_script( self._object,c_char_p(script ))
 
     def cut_clipboard(  self, ):
 
@@ -685,11 +686,15 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         return libwebkit3.webkit_web_view_get_editable( self._object )
 
     def get_main_frame(  self, ):
-
+        #workaround since it appears calling get_main_frame twice on
+        #same webview casesu SIGSEGV(!)????
+        if hasattr(self,'_main_frame'):
+            return self._main_frame
         libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
         libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
         from webkit3 import WebKitWebFrame
-        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
+        self._main_frame =  WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
+        return self._main_frame
 
     def get_progress(  self, ):
 

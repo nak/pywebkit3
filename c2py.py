@@ -10,12 +10,13 @@ from ctypes import *
 import logging
 import glob
 
-KEY_WORDS=['print','raise']
+KEY_WORDS=['print','raise','exception']
 
 DEFAULT_TYPES=['gboolean',
                'char',
                'bool',
                'int',
+               'unsigned',
                'long',
                'short'
                'float',

@@ -24,6 +24,8 @@ import cube
 #get the context for the javascript environment:
 frame = web.get_main_frame()
 context =frame.get_global_context()
+from cube import YPR_Updater
+YPR_Updater.web = web
 
 #now create our class base on that context:
 #Namespace.add_global_class(context, YPR_Updater, 45 , -45, 45)
@@ -32,12 +34,8 @@ javascript.export_module(context, cube)
 
 #create( context, "py_ypr_updater", 45, -45, 45)
 
-
-import pywebkit3.gtk3
-from pywebkit3.gtk3 import GtkWindow
-s = GtkWindow(pywebkit3.gtk3.GTK_WINDOW_TOPLEVEL)
-javascript._wrap( context, s, "cube.tests")
             
 #an show it!
 window.show_all()
+
 gtk3.main()

@@ -7,6 +7,7 @@ cdll.LoadLibrary("libgtk-3.so")
 libgtk3 = CDLL("libgtk-3.so")
 
 """default gtk types"""
+unsigned = c_uint
 double = c_double
 guint32 = c_uint
 guint64 = c_ulong
