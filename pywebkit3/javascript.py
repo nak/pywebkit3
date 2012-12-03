@@ -311,6 +311,28 @@ def _wrap(context, pyobj, obj_name):
     return PythonToJSWrapper(context, obj_name, pyobj)
 
 
+def _wrapJs( context, jsobj, var_name):
+    id = str(cast( jsobj._object, c_void_p))
+    if jsobj in JavascriptClass._jsliveobjects.iterkeys():
+        return JavascriptClass._jsliveobjecs[ id ]
+
+class PythonWarpper( JSObject ):
+    
+    def __init__(self, obj, webview):
+        JSObject.__init__(self, obj )
+        self._webview = webview
+        
+    def __getattr__(self,attr):
+        orig_attr = self.wrapped_obj.__getattribute__(attr)
+        if callable(orig_attr):
+            def hooked(*args, **kwargs):
+                return self.webview.execut_script("%s.%s()"%(self._varname, attr))
+                return orig_attr(*args, **kwargs)
+            return hooked
+        else:
+            return orig_attr
+        
+
 def export_module( context, module):
     import importlib
     importlib.import_module( module.__name__)
