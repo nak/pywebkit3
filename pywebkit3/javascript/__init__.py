@@ -149,6 +149,7 @@ class JavascriptClass(object):
             cls._methods_by_name[cls.staticmethods[index].name] = cls._methods[index]        
 
     def __init__(self, js_context, var_name, **kargs):
+        logging.error("###### INITING %s"%var_name)
         id = str(cast( js_context._object, c_void_p))
         if not id in JavascriptClass._python_to_js.iterkeys():
             if not JavascriptClass._python_to_js:
@@ -244,7 +245,16 @@ class JavascriptClass(object):
                                             NULL)
         assert(self._javascript_obj)
                
-        
+    def __del__(self):
+        if hasattr(self, '_varname'):
+            id = str(cast( js_context._object, c_void_p))
+            if not id in JavascriptClass._python_to_js.iterkeys():
+                if not JavascriptClass._python_to_js:
+                    ScriptEnv( self._context )
+                else:
+                    id = JavascriptClass._python_to_js.keys()[0]
+            env = JavascriptClass._python_to_js[id]
+            env.execute(self, "delete %s;"%self._varname)
             
     @classmethod
     def export_class(cls, js_context, ns):
@@ -384,7 +394,7 @@ class PythonWrapper( JSObject ):
 
         env = JavascriptClass._python_to_js[id]
         (index, tmpvarname) = env._tmpvarname()
-        cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err);}"%\
+        cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err,'%(tmp)s');}"%\
               {'tmp':tmpvarname,
                'cmd':cmd}
         (returnval, exc)  = env.execute( self, cmd, tmpvarname)
@@ -401,7 +411,7 @@ class PythonWrapper( JSObject ):
 
 
     def each(self, func, *args):
-        js = "%s.each( function(index,obj){try{python.PY_EACH(  $(obj), index);}catch(err){PY_THROW(err);}})"%self._varname
+        js = "%s.each( function(index,obj){try{python.PY_EACH(  $(obj), index);}catch(err){PY_THROW(err,'_jqobj'+index);}})"%self._varname
         id = str(cast( self._context._object, c_void_p))
         if not id in JavascriptClass._python_to_js.iterkeys():
             if not JavascriptClass._python_to_js:
@@ -425,7 +435,7 @@ class PythonWrapper( JSObject ):
                 id = JavascriptClass._python_to_js.keys()[0]
         env = JavascriptClass._python_to_js[id]
         (index, tmpvarname) = env._tmpvarname()
-        cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err);}"%\
+        cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err,'%(tmp)s');}"%\
             {'tmp':tmpvarname,
              'cmd':cmd}
         (retval, exc ) = env.execute(self, cmd, tmpvarname)
@@ -440,11 +450,7 @@ class PythonWrapper( JSObject ):
     def __getattr__(self,attr):
         if not attr in self._attributes.iterkeys():
             if  hasattr(self, attr):
-                logging.error("RETURNING KNOWN ATTR")
-                #env.execute( self, self._cmd)
                 return getattr(self, attr)
-#            elif attr.startswith('__'):
-#                return None
             else:
                 raise Exception("No such method or attribute in %s: %s in %s %s"%(self._varname, attr,[k for k in self._attributes.iterkeys()],dir(self)))
         val = self._attributes[attr]
@@ -477,7 +483,6 @@ class JSException( Exception):
 
 class ScriptEnv( JavascriptClass ):
 
-    _sem = threading.Semaphore()
     _current_executor = None
 
 
@@ -495,19 +500,20 @@ class ScriptEnv( JavascriptClass ):
         JavascriptClass.__init__(self, context, "python")
         self._context = context
         self._contextid = str(cast(context._object, c_void_p))
-        self._exception = None
-        self._returnval = None
+        self._exception = {}
+        self._returnval = {}
         self._each_apply  = None
+        self._sem = threading.Semaphore(1)
         
     def export_to_python( self, jsobj , var_name, can_call = False ):
         wrapped = _wrapJs( self._context, jsobj, var_name, can_call )
         JavascriptClass._globalobjects[self._contextid + var_name] = wrapped
         
     def PY_RETURN( self, jsobj , name):
-        self._returnval = jsobj
+        
+        self._returnval[name] = jsobj
         if isinstance( jsobj, JavascriptClass):
-            self._returnval._varname = name
-        #if jsobj and isinstance( jsobj, JavascriptClass):
+            self._returnval[name]._varname = name
         text = JSString.CreateWithUTF8CString(name)
         if not isinstance(jsobj, str):
             self._javascript_obj.SetProperty( self._context,
@@ -515,12 +521,13 @@ class ScriptEnv( JavascriptClass ):
                                               jsobj,
                                               kJSPropertyAttributeNone,
                                               NULL)
-        self._exception = None
 
-    def PY_THROW( self , jserr):
+        self._exception[name] = None
+
+    def PY_THROW( self , jserr, name):
         logging.error("javascript error encountered ")
-        self._exception =  JSException( jserr.line  )
-
+        self._exception[name] =  JSException( jserr.line  )
+        self._returnval[name] = None
     
 
     def PY_EACH( self,  obj, index):
@@ -544,10 +551,21 @@ class ScriptEnv( JavascriptClass ):
         
     def execute( self, source, cmd, tmpvarname = None):
         try:
+            if tmpvarname:
+                self._returnval[tmpvarname] = None
+                self._exception[tmpvarname] = None
             source._webview.execute_script(cmd)
-            exc    = self._exception
-            retval = self._returnval
-            if tmpvarname and retval and isinstance(retval, JavascriptClass):
+            if tmpvarname:
+                exc    = self._exception[tmpvarname]
+                retval = self._returnval[tmpvarname]
+                self._exception[tmpvarname] = None
+                self._returnval[tmpvarname] = None
+                del self._returnval[tmpvarname]
+                del self._exception[tmpvarname]
+            else:
+                retval = None
+                exc = None
+            if retval and isinstance(retval, JavascriptClass):
                 
                 text = JSString.CreateWithUTF8CString("%s"%tmpvarname)
                 self._javascript_obj.SetProperty( self._context,
@@ -562,6 +580,8 @@ class ScriptEnv( JavascriptClass ):
             logging.error(traceback.format_exc())
             exc = Exception
             retval = None
+        finally:
+            pass
         return (retval, exc )
 
     @staticmethod
