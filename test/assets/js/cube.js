@@ -89,7 +89,7 @@ Tmp = function(){
   this.b = 2;
 
   this.func = function(){
-    alert("TMP");
+    alert("A function was called from python on a javascript object to produce this alert!");
     return "ALERTED";
   }
 };

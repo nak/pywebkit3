@@ -319,10 +319,11 @@ GtkRcTokenType = c_int
 GtkDestDefaults = c_int
 GtkTargetFlags = c_int
 
-class JSObject( object):
+class JSObject( object ):
     """Class JSObject Constructors"""
     def __init__(self, obj = None):
         self._object = obj
+
     """Methods"""
     def GetProperty(  self, ctx, propertyName, exception, ):
         if ctx: ctx = ctx._object
@@ -659,3 +660,4 @@ class JSObject( object):
         from javascriptcore import JSClass
         return JSClass( obj=    libjavascriptcore.JSClassCreate(definition, )
   or POINTER(c_int)())
+

@@ -26,15 +26,17 @@ class YPR_Updater( JavascriptClass ):
             try:
                 tmp = ScriptEnv.get_jsobject(YPR_Updater.web,
                                              "tmp", can_call=False)
-                tmp.func()
+                import logging
+                d=tmp.func()
+                logging.error("GOT %s"%d)
             except:
                 import logging
                 import traceback
                 logging.error("EXCEPTION IN GETTIN JS OBJ")
                 logging.error( traceback.print_exc() )
-            finally:
-                import logging
-                logging.error("...CALLED")
+            #finally:
+            #    import logging
+            #    logging.error("...CALLED")
         YPR_Updater.index += 1
         self.ypr[0] += offset_yaw
         self.ypr[1] += offset_pitch

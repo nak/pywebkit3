@@ -607,8 +607,6 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def execute_script(  self, script, ):
 
         libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
-        import logging
-        logging.error("EXECUTING %s  %s"%(self._object, script))
         libwebkit3.webkit_web_view_execute_script( self._object,c_char_p(script ))
 
     def cut_clipboard(  self, ):

@@ -489,23 +489,26 @@ class GObject( object):
         
         return libgobject.g_object_dup_qdata( self._object,quark,dup_func,user_data )
 
-    def unref(  self, object, ):
+    def unref(  self,  ):
 
-        libgobject.g_object_unref.argtypes = [_GObject,gpointer]
+        libgobject.g_object_unref.argtypes = [_GObject]
         
-        libgobject.g_object_unref( self._object,object )
+        libgobject.g_object_unref( self._object )
 
-    def get(  self, object, first_property_name,*args  ):
-
+    def get(  self, first_property_name  ):
+        object  = self._object
 
         def callit( object, first_property_name, *args ):
                 libgobject.g_object_get.restype = None
-                libgobject.g_object_get.argtypes = [ POINTER(c_int), gpointer, c_char_p]
-                for arg in args:
-                     libgobject.g_object_get.argtypes.append(args[1])
-                return libgobject.g_object_get( object, first_property_name, *args)
+                libgobject.g_object_get.argtypes = [ POINTER(c_int), c_char_p, POINTER(c_int)]
+                #for arg in args:
+                #     libgobject.g_object_get.argtypes.append(arg)
+                val = POINTER(c_int)(c_int(0))
+                import logging
+                libgobject.g_object_get( object, c_char_p(first_property_name), val,0)#, *args)
+                return val.contents.value
     
-        return callit( self._object, object, first_property_name,*args )
+        return callit( self._object, first_property_name )
 
     def g_weak_ref_set(  self, weak_ref, object, ):
         if weak_ref: weak_ref = weak_ref._object
@@ -629,12 +632,12 @@ class GObject( object):
         from gobject import GParamSpec
         return GParamSpec( obj=    libgobject.g_object_class_list_properties(oclass, n_properties, )
  or POINTER(c_int)())
-    @staticmethod
-    def ref( object,):
+    
+    def ref( self ):
         libgobject.g_object_ref.restype = gpointer
-        libgobject.g_object_ref.argtypes = [gpointer]
+        libgobject.g_object_ref.argtypes = [_GObject]
         
-        return     libgobject.g_object_ref(object, )
+        return     libgobject.g_object_ref(self._object, )
 
     @staticmethod
     def interface_find_property( g_iface, property_name,):
@@ -672,8 +675,8 @@ class GObject( object):
     def connect(self,  name, func, *args):
         cfunc = None
         def C_Callable():
-            func(*args)
-            GObject._cfuncs.remove(cfunc)
+            if not func(*args):
+                GObject._cfuncs.remove(cfunc)
         cfunc = CFUNCTYPE(None)(C_Callable)
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)

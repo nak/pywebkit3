@@ -37,5 +37,42 @@ javascript.export_module(context, cube)
             
 #an show it!
 window.show_all()
+from pywebkit3.javascript import jquery
+from pywebkit3 import gobject
+from pywebkit3.webkit3_enums import *
 
+
+def change( obj, index):
+    if index%3 == 0:
+        color = "#CC%d%d%d%d"%(index,index, index, index)
+    elif index%3 == 1:
+        color = "#%d%dAA%d%d"%(index,index, index, index)
+    else:
+        color = "#%d%d%d%d88"%(index,index, index, index)
+
+    obj.css('background-color',color)
+    return True
+
+def set_bg(color, webview):
+    global count
+    #jquery.ready()
+    import logging
+    status = webview.get('load-status')
+    if status == WEBKIT_LOAD_FINISHED.value:
+        try:
+            logging.error("COLOR: %s"% color)
+            jquery._('.cubie').each(change)
+            return False
+        except:
+            import traceback
+            logging.error("ERROR Setting color   %s"%traceback.format_exc())
+        return False
+    elif status == WEBKIT_LOAD_FAILED.value:
+        logging.error("Faield to load page")
+        return False
+    return True
+
+
+gobject.idle_add( jquery.initialize,web)
+web.connect( "notify::load-status", set_bg, "red", web)
 gtk3.main()

@@ -4,9 +4,10 @@ from .gobject import GMainContext
 def idle_add( func , *args):
     cfunc = c_void_p()
     def C_Callable( param ):
-        func( *args )
-        cfuncs.remove(cfunc)
-        return 0
+        retval = func( *args )
+        if not retval:
+            cfuncs.remove(cfunc)
+        return retval
     cfunc = GSourceFunc(C_Callable)
     cfuncs.append(cfunc)
     GMainContext.g_idle_add(cfunc, cfunc )
