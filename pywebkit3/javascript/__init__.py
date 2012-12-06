@@ -16,7 +16,7 @@ def to_string(var):
     if isinstance(var, JavascriptClass):
         return var._varname
     elif isinstance(var, str):
-        return "'%s'"%var
+        return '"%s"'%var
     else:
         return str(var)
 
@@ -462,7 +462,9 @@ class PythonWrapper( JSObject ):
                'cmd':cmd}
         (returnval, exc)  = env.execute( self, cmd, tmpvarname)
         if exc:
-            raise exc
+            logging.error("ERROR Executing command %s"%cmd)
+            logging.error(traceback.format_exc())
+            return None
         if returnval:
             self._retval = (returnval , "python.%s"%tmpvarname)
             self._retval[0]._webview = self._webview
@@ -485,7 +487,18 @@ class PythonWrapper( JSObject ):
         env = JavascriptClass._python_to_js[id]
         env._webview = self._webview
         env._each_apply = (func, args)
-        env.execute( self, js , None)
+        env._each_objs = []
+        try:
+            env.execute( self, js , None)
+            js = ""
+            index = 0
+            for obj in env._each_objs:
+                func(obj, index, *args)
+                index +=1
+        except:
+            logging.error( "Problem executing %s"%js)
+            env._each_apply = None
+        env._each_objs = []
         env._each_apply = None
         
         
@@ -578,10 +591,22 @@ class ScriptEnv( JavascriptClass ):
         self._returnval = {}
         self._each_apply  = None
         self._sem = threading.Semaphore(1)
+        self._ready_listeners = []
+        self._each_objs = []
         
     def export_to_python( self, jsobj , var_name, can_call = False ):
         wrapped = _wrapJs( self._context, jsobj, var_name, can_call )
         JavascriptClass._globalobjects[self._contextid + var_name] = wrapped
+
+
+    def ready( self , function , *args):
+        if not self._ready_listeners:
+            self.execute( self, "window.onload = function(){python.PY_READY;}")
+        self._ready_listeners.append( ( function, args ) )
+
+    def PY_READY( self ):
+        for (ready_listener, args) in self._ready_listeners:
+            ready_listener( *args )
         
     def PY_RETURN( self, jsobj , name):
         
@@ -613,6 +638,8 @@ class ScriptEnv( JavascriptClass ):
                                           NULL)
         obj =  PythonWrapper(self._context, self._javascript_obj.GetProperty( self._context, text, NULL).ToObject(self._context, NULL), 'python._jqobj%d'%index)
         obj._webview = self._webview
+        self._each_objs.append( obj )
+        return False
         if self._each_apply:
             try:
                 self._each_apply[0](obj, int(index), *self._each_apply[1])
@@ -622,8 +649,11 @@ class ScriptEnv( JavascriptClass ):
                 logging.error(traceback.format_exc())
             
         return False
+
+
         
     def execute( self, source, cmd, tmpvarname = None):
+        #logging.error("EXECUTING %s"%cmd)
         try:
             if tmpvarname:
                 self._returnval[tmpvarname] = None
@@ -651,6 +681,7 @@ class ScriptEnv( JavascriptClass ):
             if retval and isinstance(retval, JavascriptClass):
                 retval._webview = source._webview
         except:
+            logging.error("TRACEBACK........")
             logging.error(traceback.format_exc())
             exc = Exception
             retval = None
@@ -664,7 +695,7 @@ class ScriptEnv( JavascriptClass ):
         id = str(cast(context._object, c_void_p))
         if not id in JavascriptClass._python_to_js.iterkeys():
             if not JavascriptClass._python_to_js:
-                ScriptEnv( self._context )
+                ScriptEnv( context )
             else:
                 id = JavascriptClass._python_to_js.keys()[0]
         
@@ -684,3 +715,6 @@ class ScriptEnv( JavascriptClass ):
         return retval
 
 
+def intern_exec( source, cmd):
+    source._webview.execute_script(cmd)
+    return False

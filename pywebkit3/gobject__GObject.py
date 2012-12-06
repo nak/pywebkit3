@@ -47,8 +47,7 @@
 from ctypes import *
 from gtk3_types import *
 from gobject_types import *
-    
-    
+
 """Derived Pointer Types"""
 _GValue = POINTER(c_int)
 __GtkRcStyle = POINTER(c_int)
@@ -675,8 +674,22 @@ class GObject( object):
     def connect(self,  name, func, *args):
         cfunc = None
         def C_Callable():
-            if not func(*args):
-                GObject._cfuncs.remove(cfunc)
+            try:
+                retval = func(*args)
+                if not retval:
+                    #GObject._cfuncs.remove(cfunc)
+                    return False
+                return retval
+            except:
+                import traceback
+                import logging
+                logging.error("Error executing callback:")
+                logging.error(traceback.format_exc())
+                try:
+                    GObject._cfuncs.remove(cfunc)
+                except:
+                    pass
+                return False
         cfunc = CFUNCTYPE(None)(C_Callable)
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)

@@ -370,4 +370,21 @@ def idle_add( func , *args):
     cfunc = GSourceFunc(C_Callable)
     cfuncs.append(cfunc)
     GMainContext.g_idle_add(cfunc, cfunc )
+
+def set_interval( time_interval, func, *args ):
+    import time
+    import datetime
+    run_next = True
+    t = datetime.datetime.today()
+    index = 1
+    interval_usecs = int(time_interval*1000000)
+    while run_next:
+        future = t + datetime.timedelta( microseconds = interval_usecs)
+        run_next = idle_add(func, *args)
+        tosleep = (future-t).seconds
+        if tosleep > 0.01:
+            time.sleep(tosleep)
+        index += 1
+                                 
+
     

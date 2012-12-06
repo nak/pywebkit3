@@ -1,4 +1,4 @@
-from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint
+from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint, c_longlong, POINTER
 
 cdll.LoadLibrary("libgobject-2.0.so")
 libgobject = CDLL("libgobject-2.0.so")
@@ -29,6 +29,7 @@ G_TYPE_VARIANT                  = c_int (21)
 
 
 GSourceFunc = CFUNCTYPE(c_int, c_void_p)
+GThreadFunc = CFUNCTYPE(c_longlong, POINTER(c_int))
 GDestroyNotifyCB = CFUNCTYPE(None, c_void_p)
 GDuplicateFunc = CFUNCTYPE( c_void_p, c_void_p, c_void_p)
 GPollFunc = CFUNCTYPE(c_int, c_void_p, c_uint, c_int)
