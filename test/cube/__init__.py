@@ -9,8 +9,9 @@ class YPR_Updater( JavascriptClass ):
 
     web = None
     
-    def __init__(self, context, name, *init_angles):
-        JavascriptClass.__init__(self, context, name )
+    def __init__(self, env, name, *init_angles):
+        assert(isinstance(env, ScriptEnv))
+        JavascriptClass.__init__(self, env, name )
         print "ARGS: %s"%[a for a in init_angles]
         self.ypr =  [a for a in init_angles]
         self.sign = 1
@@ -24,7 +25,7 @@ class YPR_Updater( JavascriptClass ):
         from pywebkit3.javascript import ScriptEnv
         if YPR_Updater.index == 100:
             try:
-                tmp = ScriptEnv.get_jsobject(YPR_Updater.web,
+                tmp = ScriptEnv.get_jsobject(YPR_Updater._context,
                                              "tmp", can_call=False)
                 import logging
                 d=tmp.func()

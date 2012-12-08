@@ -1,5 +1,5 @@
-import gobject
-from gobject import GObject
+from .. import  gobject
+from ..gobject import GObject
 
 import inspect
 import threading
@@ -161,15 +161,16 @@ class JavascriptClass(object):
             cls._methods_by_name[cls.staticmethods[index].name] = cls._methods[index]        
 
 
-    def __init__(self, js_context, var_name, **kargs):
-        id = str(cast( js_context._object, c_void_p))
+    def __init__(self, env, var_name, **kargs):
+        assert isinstance(env, ScriptEnv)
+        ##id = str(cast( js_context._object, c_void_p))
         #it seems sometimes the context id different than the webview
         #original context we used????:
-        if not id in JavascriptClass._python_to_js.iterkeys():
-            if not JavascriptClass._python_to_js:
-                ScriptEnv( self._context )
-            else:
-                id = JavascriptClass._python_to_js.keys()[0]
+        ##if not id in JavascriptClass._python_to_js.iterkeys():
+        ##    if not JavascriptClass._python_to_js:
+        ##        ScriptEnv( self._context )
+        ##    else:
+        ##        id = JavascriptClass._python_to_js.keys()[0]
 
         #see if the module was explcitly called out:
         if not "_module" in kargs.iterkeys():
@@ -207,19 +208,19 @@ class JavascriptClass(object):
         if modulename:
             #if we determined a module name, get/create the namespace
             #associated with it
-            ns = Namespace.get_namespace(js_context, modulename )
+            ns = Namespace.get_namespace(env, modulename )
             assert(ns)
-            assert( str(cast(js_context._object,c_void_p))+modulename in Namespace._namespaces.iterkeys() )
+            assert( str(cast(env._context._object,c_void_p))+modulename in Namespace._namespaces.iterkeys() )
         else:
             if var_name and modulename == "":
                 #have global namespace:
-                ns = Namespace.get_global(js_context)                
+                ns = Namespace.get_global(env)                
                 assert(ns)
             elif not var_name:
                 #have no namespace.  This should only happen
                 #if the object self is itself the global namespace
                 ns = None
-                self._javascript_obj = js_context.GetGlobalObject()
+                self._javascript_obj = env._context.GetGlobalObject()
                 
         def _init_cb(context, obj):
             pass
@@ -259,41 +260,36 @@ class JavascriptClass(object):
         jscd.argtype=[POINTER(c_int), POINTER(c_int)]
         classDef = JSObject.JSClassCreate( byref(jscd) )
         #now make the object and squirrel it away:
-        self._javascript_obj = JSObject.Make( js_context, classDef, None )        
+        self._javascript_obj = JSObject.Make( env._context, classDef, None )        
         JavascriptClass._jsobjects[strid(self._javascript_obj)] =  (self._javascript_obj,self)
 
         
         if not _module:
             if not self.__class__.__name__ in JavascriptClass._constructors:
                 #export this class  to be visible in javascript namespace
-                self.__class__.export_class(js_context, ns)
+                self.__class__.export_class(env, ns)
         if ns:
             #if not global namespace, add javascript namespace object
             #explicitly to ns
             text = JSString.CreateWithUTF8CString(var_name.split('.')[-1])
-            ns._javascript_obj.SetProperty( js_context,
+            ns._javascript_obj.SetProperty( env._context,
                                             text,
                                             self._javascript_obj,
                                             kJSPropertyAttributeNone,
                                             NULL)
         assert(self._javascript_obj)
+        self._env = env
                
     def __del__(self):
         if hasattr(self, '_varname'):
-            id = str(cast( js_context._object, c_void_p))
-            if not id in JavascriptClass._python_to_js.iterkeys():
-                if not JavascriptClass._python_to_js:
-                    ScriptEnv( self._context )
-                else:
-                    id = JavascriptClass._python_to_js.keys()[0]
-            env = JavascriptClass._python_to_js[id]
-            env.execute(self, "delete %s;"%self._varname)
+            self._env.execute(self, "delete %s;"%self._varname)
             
     @classmethod
-    def export_class(cls, js_context, ns):
+    def export_class(cls, env, ns):
         """Export a class to be visible within javascript"""
+        assert( isinstance(env, ScriptEnv ))
         if not issubclass(cls, Constructor) and not cls.__name__ in JavascriptClass._constructors.iterkeys():
-            js_constructor = JavascriptClass.get_constructor( cls, js_context, ns)
+            js_constructor = JavascriptClass.get_constructor( cls, env, ns)
             text = JSString.CreateWithUTF8CString("%s"%( cls.__name__.split('.')[-1]))
             JavascriptClass._constructors[cls.__name__] = js_constructor
 
@@ -305,7 +301,26 @@ class JavascriptClass(object):
         retval = pyclass._constructor(pyclass, context, namespace)
         return retval
 
- 
+  
+#    def __getattr__(self,attr):
+##        orig_attr = getattr(self, attr)
+#       def _hooked(self, *args)
+#            """A hook method to pass as a callback"""
+#            with self._env.execution() as js_execution:
+#                orig_attr( *args )
+
+#        if iscallable( orig_attr ):
+#            return _hooked
+#        else:
+#            return orig_attr
+
+def javascript(func, env):
+    with env.execution() as js_execution:
+        orig_func = func
+        def hooked(*args):
+            with env.execution() as js_execution:
+                orig_func(*args)
+        importlib.import_module(func.__module__).setattr(func.__name,hooked)
 
 class Constructor(JavascriptClass):
 
@@ -334,22 +349,22 @@ class Namespace( JavascriptClass ):
 
     _namespaces = {}
     
-    def __init__(self, context, module ):
-        assert(context)
+    def __init__(self, env, module ):
+        assert(isinstance(env, ScriptEnv))
         module_name = module.__name__ if module else ""
-        self._context = context
+        self._context = env._context
         self._module = module
         
         if module: 
             module_name = module.__name__
-            JavascriptClass.__init__(self, context, module_name , _module = module)
+            JavascriptClass.__init__(self, env, module_name , _module = module)
         else:
             #if global namespace, do not call base class __init__ (infinite recurion),
             #but set necessary properties explicitly
             module_name = ""
-            self._javascript_obj = context.GetGlobalObject()
+            self._javascript_obj = env._context.GetGlobalObject()
             
-        Namespace._namespaces[ str(cast(context._object, c_void_p)) + module_name ] = self
+        Namespace._namespaces[ str(cast(env._context._object, c_void_p)) + module_name ] = self
         if module:
             self._export_classes()
 
@@ -367,38 +382,41 @@ class Namespace( JavascriptClass ):
         
             
     @staticmethod
-    def get_namespace( context, modulename):
+    def get_namespace( env, modulename):
         """
         Get or create the namespace for the given module name
         """
-        id = str(cast(context._object, c_void_p))+modulename
+        assert( isinstance(env, ScriptEnv ))
+        id = str(cast(env._context._object, c_void_p))+modulename
         if not id in Namespace._namespaces.iterkeys():
             if modulename:
                 m = importlib.import_module(modulename)
-                Namespace._namespaces[id] = Namespace( context, m)
+                Namespace._namespaces[id] = Namespace( env, m)
             else:
-                Namespace._namespaces[id] = Namespace( context, None)
+                Namespace._namespaces[id] = Namespace( env, None)
         return Namespace._namespaces[id]
     
     @staticmethod
-    def get_global( context):
+    def get_global( env):
         """
         Get or create the global namespace
         """
-        ns =  Namespace.get_namespace( context, "")
+        assert( isinstance(env, ScriptEnv) )
+        ns =  Namespace.get_namespace( env, "")
         return ns
         
     @staticmethod
-    def add_global_class( context, pyclass , *args):
+    def add_global_class( env, pyclass , *args):
         """
         Add a python class to be accessible at global level
         in javascript
         """
-        pyclass.export_class( context, Namespace.get_global(context))
+        assert( isinstance(env, ScriptEnv ) )
+        pyclass.export_class( env, Namespace.get_global(env))
         
     def _add_child_class(self,  cls):
         """Add a child class to this namespace, avaiable in js"""
-        cls.export_class( self._context, self)
+        cls.export_class( self._env, self)
 
 
 
@@ -448,19 +466,11 @@ class PythonWrapper( JSObject ):
                 
     def __call__(self, *args):
         cmd=  "%s(%s)"%(self._varname, ",".join([to_string(v) for v in args]))
-        id = str(cast( self._context._object, c_void_p))
-        if not id in JavascriptClass._python_to_js.iterkeys():
-            if not JavascriptClass._python_to_js:
-                ScriptEnv( self._context )
-            else:
-                id = JavascriptClass._python_to_js.keys()[0]
-
-        env = JavascriptClass._python_to_js[id]
-        (index, tmpvarname) = env._tmpvarname()
+        (index, tmpvarname) = self._env._tmpvarname()
         cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err,'%(tmp)s');}"%\
               {'tmp':tmpvarname,
                'cmd':cmd}
-        (returnval, exc)  = env.execute( self, cmd, tmpvarname)
+        (returnval, exc)  =self._env.execute( self, cmd, tmpvarname)
         if exc:
             logging.error("ERROR Executing command %s"%cmd)
             logging.error(traceback.format_exc())
@@ -478,50 +488,35 @@ class PythonWrapper( JSObject ):
     def each(self, func, *args):
         """TODO: This should only be available for jquery $() objects"""
         js = "%s.each( function(index,obj){try{python.PY_EACH(  $(obj), index);}catch(err){PY_THROW(err,'_jqobj'+index);}})"%self._varname
-        id = str(cast( self._context._object, c_void_p))
-        if not id in JavascriptClass._python_to_js.iterkeys():
-            if not JavascriptClass._python_to_js:
-                ScriptEnv( self._context )
-            else:
-                id = JavascriptClass._python_to_js.keys()[0]
-        env = JavascriptClass._python_to_js[id]
-        env._webview = self._webview
-        env._each_apply = (func, args)
-        env._each_objs = []
+        self._env._each_apply = (func, args)
+        self._env._each_objs = []
         try:
-            env.execute( self, js , None)
+            self._env.execute( self, js , None)
             js = ""
             index = 0
-            for obj in env._each_objs:
+            for obj in self._env._each_objs:
                 func(obj, index, *args)
                 index +=1
         except:
             logging.error( "Problem executing %s"%js)
-            env._each_apply = None
-        env._each_objs = []
-        env._each_apply = None
+            self._env._each_apply = None
+        self._env._each_objs = []
+        self._env._each_apply = None
         
         
     def _hooked(self, *args):
         """A hook method to pass as a callback"""
         cmd=  "%s.%s(%s)"%(self._varname, self._attr, ",".join([to_string(v) for v in args]))
         #get the execution envrionment:
-        id = str(cast( self._context._object, c_void_p))
-        if not id in JavascriptClass._python_to_js.iterkeys():
-            if not JavascriptClass._python_to_js:
-                ScriptEnv( self._context )
-            else:
-                id = JavascriptClass._python_to_js.keys()[0]
-        env = JavascriptClass._python_to_js[id]
-
+        
         #generate a tmp var name to use as return value:
-        (index, tmpvarname) = env._tmpvarname()
+        (index, tmpvarname) = self._env._tmpvarname()
         cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err,'%(tmp)s');}"%\
             {'tmp':tmpvarname,
              'cmd':cmd}
 
         #execute the command, and get return value or exception:
-        (retval, exc ) = env.execute(self, cmd, tmpvarname)
+        (retval, exc ) = self._env.execute(self, cmd, tmpvarname)
         if exc:
             #OOh! problem executing command
             raise exc
@@ -551,15 +546,16 @@ class PythonWrapper( JSObject ):
             return val
         
         
-def export_module( context, module):
+def export_module( env, module):
     """Export a python module and all JavascriptClass derived
     subclasses to javascript execution environment
     """
+    assert( isinstance(env, ScriptEnv))
     import importlib
     importlib.import_module( module.__name__)
     if module.__name__ in Namespace._namespaces:
         return
-    return Namespace( context, module )
+    return Namespace( env, module )
 
 
 class JSException( Exception):
@@ -575,34 +571,54 @@ class ScriptEnv( JavascriptClass ):
 
 
     _tmpindex = 0
+    _sem = {}
     
     def _tmpvarname(self):
         ScriptEnv._tmpindex += 1
         return ( ScriptEnv._tmpindex-1, "_tmp%d"%(ScriptEnv._tmpindex-1))
     
-    def __init__( self, context):
-        id = str(cast( context._object, c_void_p))
+    def __init__( self, webview):
+        
+        self._webview = webview
+        self._context = webview.get_main_frame().get_global_context()
+        id = str(cast( self._context._object, c_void_p))
         assert( not JavascriptClass._python_to_js)
         JavascriptClass._python_to_js[id] = self
-        JavascriptClass.__init__(self, context, "python")
-        self._context = context
-        self._contextid = str(cast(context._object, c_void_p))
+        JavascriptClass.__init__(self, self, "python")
+        
         self._exception = {}
         self._returnval = {}
+        
         self._each_apply  = None
-        self._sem = threading.Semaphore(1)
-        self._ready_listeners = []
+        #self._sem = ScriptEnv._sem[id]
         self._each_objs = []
         
+        
+    class Execution_Env(object):
+        
+        def __init__(self, env):
+            self._env = env
+            if not ScriptEnv._sem.has_key(id):
+                ScriptEnv._sem[id] = threading.Semaphore(0)
+                self._sem = ScriptEnv._sem[id]
+            self._sem.acquire()#python.init() call from html/js will free
+            self._sem.release()
+            
+        def __enter__(self):
+            self._env._sem.acquire()
+            
+        def __exit__(self):
+            js = self._env._produce_js()
+            self._env.execute( js )
+            self._sem.release()
+             
+    def execution(self):
+        return ScriptEnv.Execution_Env(self)
+             
     def export_to_python( self, jsobj , var_name, can_call = False ):
         wrapped = _wrapJs( self._context, jsobj, var_name, can_call )
-        JavascriptClass._globalobjects[self._contextid + var_name] = wrapped
+        JavascriptClass._globalobjects[strid(self._context) + var_name] = wrapped
 
-
-    def ready( self , function , *args):
-        if not self._ready_listeners:
-            self.execute( self, "window.onload = function(){python.PY_READY;}")
-        self._ready_listeners.append( ( function, args ) )
 
     def PY_READY( self ):
         for (ready_listener, args) in self._ready_listeners:
@@ -623,6 +639,8 @@ class ScriptEnv( JavascriptClass ):
 
         self._exception[name] = None
 
+  
+        
     def PY_THROW( self , jserr, name):
         logging.error("javascript error encountered ")
         self._exception[name] =  JSException( jserr.line  )
@@ -652,13 +670,14 @@ class ScriptEnv( JavascriptClass ):
 
 
         
-    def execute( self, source, cmd, tmpvarname = None):
+    def execute( self, cmd, tmpvarname = None):
+       
         #logging.error("EXECUTING %s"%cmd)
         try:
             if tmpvarname:
                 self._returnval[tmpvarname] = None
                 self._exception[tmpvarname] = None
-            source._webview.execute_script(cmd)
+            self._webview.execute_script(cmd)
             if tmpvarname:
                 exc    = self._exception[tmpvarname]
                 retval = self._returnval[tmpvarname]
@@ -679,7 +698,7 @@ class ScriptEnv( JavascriptClass ):
                                                   NULL)
 
             if retval and isinstance(retval, JavascriptClass):
-                retval._webview = source._webview
+                retval._webview = self._webview
         except:
             logging.error("TRACEBACK........")
             logging.error(traceback.format_exc())
@@ -689,32 +708,21 @@ class ScriptEnv( JavascriptClass ):
             pass
         return (retval, exc )
 
-    @staticmethod
-    def get_jsobject(webview, name , can_call = False):
-        context = webview.get_main_frame().get_global_context()
-        id = str(cast(context._object, c_void_p))
-        if not id in JavascriptClass._python_to_js.iterkeys():
-            if not JavascriptClass._python_to_js:
-                ScriptEnv( context )
-            else:
-                id = JavascriptClass._python_to_js.keys()[0]
-        
+    
+    def get_jsobject( self, name , can_call = False):
+        id = str(cast(self._context._object, c_void_p))
         retval =  JavascriptClass._globalobjects.get( id+name)
         
         if retval:
-            retval._webview = webview
+            retval._webview = self._webview
             
         else:
-            webview.execute_script("python.export_to_python(%s,'%s', %s);"%(name, name, int(can_call)))
+            self._webview.execute_script("python.export_to_python(%s,'%s', %s);"%(name, name, int(can_call)))
             retval =  JavascriptClass._globalobjects.get( id+name)
             if retval:
-                retval._webview = webview
+                retval._webview = self._webview
+                retval._env = self
             else:                
                 raise Exception("Unknown javascript object by name %s"%name)
         JavascriptClass._globalobjects[id+name] = retval
         return retval
-
-
-def intern_exec( source, cmd):
-    source._webview.execute_script(cmd)
-    return False

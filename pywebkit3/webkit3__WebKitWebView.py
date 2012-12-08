@@ -825,3 +825,19 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         from javascriptcore import JSContext
         return JSContext( obj=libwebkit3.webkit_web_view_get_javascript_global_context( self._object )  or POINTER(c_int)())
 
+    ##add-ons/overrides
+    def __init__( self,  obj = None):
+        if obj: self._object = obj
+        else:
+            libwebkit3.webkit_web_view_new.restype = POINTER(c_int)
+            
+            libwebkit3.webkit_web_view_new.argtypes = []
+            self._object = libwebkit3.webkit_web_view_new()
+        from javascript import ScriptEnv
+        self._env = ScriptEnv(self)
+        
+    def get_context(self):
+        return self.get_main_frame().get_global_context()
+    
+    def get_env(self):
+        return self._env

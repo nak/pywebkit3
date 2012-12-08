@@ -6,7 +6,7 @@ import os.path
 
 #create the webkit webview
 web = webkit3.WebKitWebView()
-web.open("file://%s/test.html"%os.path.abspath(os.path.dirname(__file__)))
+web.load_uri("file://%s/test.html"%os.path.abspath(os.path.dirname(__file__)))
 
 #create the containing window
 window = gtk3.GtkWindow(gtk3.GTK_WINDOW_TOPLEVEL)
@@ -28,14 +28,11 @@ from cube import YPR_Updater
 YPR_Updater.web = web
 
 #now create our class base on that context:
-#Namespace.add_global_class(context, YPR_Updater, 45 , -45, 45)
 import cube
-javascript.export_module(context, cube)
-
-#create( context, "py_ypr_updater", 45, -45, 45)
+javascript.export_module(web.get_env(), cube)
 
             
-#an show it!
+#and show it!
 window.show_all()
 from pywebkit3.javascript import jquery
 from pywebkit3 import gobject
@@ -54,6 +51,8 @@ def change( obj, index):
     return True
 
 def set_bg(color, webview):
+    
+    jquery.initialize(web.get_env())
     global count
     #jquery.ready()
     import logging
@@ -61,6 +60,7 @@ def set_bg(color, webview):
     if status == WEBKIT_LOAD_FINISHED.value:
         try:
             logging.error("COLOR: %s"% color)
+            
             jquery._('.cubie').each(change)
             return False
         except:
@@ -73,6 +73,7 @@ def set_bg(color, webview):
     return True
 
 
-gobject.idle_add( jquery.initialize,web)
-web.connect( "notify::load-status", set_bg, "red", web)
+#gobject.idle_add( jquery.initialize,web)
+from pywebkit3.javascript import ScriptEnv
+web.connect( "resource-load-finished", set_bg, "red", web)
 gtk3.main()
