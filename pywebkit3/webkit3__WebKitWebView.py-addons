@@ -1,5 +1,18 @@
+    ##add-ons/overrides
+    
+    
+    def __init__( self,  obj = None):
+        if obj: self._object = obj
+        else:
+            libwebkit3.webkit_web_view_new.restype = POINTER(c_int)
+            
+            libwebkit3.webkit_web_view_new.argtypes = []
+            self._object = libwebkit3.webkit_web_view_new()
+        from javascript import ScriptEnv
+        self._env = ScriptEnv(self)
+        
     def get_main_frame(  self, ):
-        #override workaround since it appears calling get_main_frame twice on
+        #workaround since it appears calling get_main_frame twice on
         #same webview casesu SIGSEGV(!)????
         if hasattr(self,'_main_frame'):
             return self._main_frame
@@ -9,4 +22,25 @@
         self._main_frame =  WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
         return self._main_frame
 
-  
+        
+    def get_context(self):
+        return self.get_main_frame().get_global_context()
+    
+    def get_env(self):
+        return self._env
+    
+    
+    def on_resource_load_finished(self, func, *args ):
+        from gobject import GObject
+        def WebView_C_Callable( _webview, _webframe, _webresource, data):
+            from .webkit3__WebKitWebFrame import WebKitWebFrame
+            from .webkit3__WebKitWebResource import WebKitWebResource
+            import logging
+            func( self, self.get_main_frame(), WebKitWebResource(None, obj=_webresource), *args)#WebKitWebFrame(None,obj=_webframe), WebKitWebResource(None,obj=_webresource), *args)
+            return None
+        CFUNC = CFUNCTYPE(None, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+        GObject.connect( self, 'resource-load-finished', func, *args, cfunc = (CFUNC(WebView_C_Callable),CFUNC))
+        
+    def on_view_ready(self, func, *args):
+        from gobject import GObject
+        GObject.connect( self, 'web-view-ready', func, *args)

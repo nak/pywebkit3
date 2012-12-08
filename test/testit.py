@@ -4,6 +4,14 @@ from pywebkit3 import gtk3,webkit3,javascript
 
 import os.path
 
+
+def set_bg(color = "RED"):
+    import logging
+    logging.error("COLOR: %s"% color)
+    jquery._('.cubie').each(change)
+      
+    return False
+
 #create the webkit webview
 web = webkit3.WebKitWebView()
 web.load_uri("file://%s/test.html"%os.path.abspath(os.path.dirname(__file__)))
@@ -13,6 +21,7 @@ window = gtk3.GtkWindow(gtk3.GTK_WINDOW_TOPLEVEL)
 #close this app on close of the window:
 window.connect("delete-event", gtk3.main_quit)
 
+web.on_view_ready( set_bg)
 #add our web view to the main window
 window.add(web)
 window.set_default_size( 250, 100)
@@ -50,30 +59,6 @@ def change( obj, index):
     obj.css('background-color',color)
     return True
 
-def set_bg(color, webview):
-    
-    jquery.initialize(web.get_env())
-    global count
-    #jquery.ready()
-    import logging
-    status = webview.get('load-status')
-    if status == WEBKIT_LOAD_FINISHED.value:
-        try:
-            logging.error("COLOR: %s"% color)
-            
-            jquery._('.cubie').each(change)
-            return False
-        except:
-            import traceback
-            logging.error("ERROR Setting color   %s"%traceback.format_exc())
-        return False
-    elif status == WEBKIT_LOAD_FAILED.value:
-        logging.error("Faield to load page")
-        return False
-    return True
-
 
 #gobject.idle_add( jquery.initialize,web)
-from pywebkit3.javascript import ScriptEnv
-web.connect( "resource-load-finished", set_bg, "red", web)
 gtk3.main()

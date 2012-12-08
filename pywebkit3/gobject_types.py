@@ -42,6 +42,8 @@ GCompareFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 GCompareDataFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 GFunc = CFUNCTYPE( None, c_void_p, c_void_p)
 
+
+
 def gvalue_from_int( val):
     from _gtk3_GValue import GValue
     gval = GValue()

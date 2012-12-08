@@ -15,6 +15,7 @@ class YPR_Updater( JavascriptClass ):
         print "ARGS: %s"%[a for a in init_angles]
         self.ypr =  [a for a in init_angles]
         self.sign = 1
+        
         print "YPRUpdater initialize"
 
     def __del__(self):
@@ -22,11 +23,9 @@ class YPR_Updater( JavascriptClass ):
 
     index = 0
     def update(self, offset_yaw, offset_pitch, offset_roll):
-        from pywebkit3.javascript import ScriptEnv
         if YPR_Updater.index == 100:
             try:
-                tmp = ScriptEnv.get_jsobject(YPR_Updater._context,
-                                             "tmp", can_call=False)
+                tmp = self._env.get_jsobject("tmp", can_call=False)
                 import logging
                 d=tmp.func()
                 logging.error("GOT %s"%d)

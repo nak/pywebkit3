@@ -671,7 +671,7 @@ class GObject( object):
 
     _cfuncs=[]
 
-    def connect(self,  name, func, *args):
+    def connect(self,  name, func, *args, **kargs):
         cfunc = None
         def C_Callable():
             try:
@@ -690,11 +690,15 @@ class GObject( object):
                 except:
                     pass
                 return False
-        cfunc = CFUNCTYPE(None)(C_Callable)
+        if 'cfunc' in kargs:
+            (cfunc, cfunctype) = kargs['cfunc']
+        else:
+            cfunc = CFUNCTYPE(None)(C_Callable) 
+            cfunctype= CFUNCTYPE(None)
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)
-        libgobject.g_signal_connect_data.restype = c_ulong
-        libgobject.g_signal_connect_data.argtypes = [c_void_p, c_char_p, CFUNCTYPE(None), c_void_p, c_void_p, c_int]
+        libgobject.g_signal_connect_data.restype = c_ulonglong
+        libgobject.g_signal_connect_data.argtypes = [c_void_p, c_char_p, cfunctype, c_void_p, c_void_p, c_int]
         return libgobject.g_signal_connect_data(self._object, name, cfunc, 0,0,0)
 
 
@@ -710,3 +714,4 @@ class GObject( object):
            libgobject.g_object_unref( self._object )
 
         self._object = None
+

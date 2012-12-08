@@ -841,3 +841,20 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     
     def get_env(self):
         return self._env
+    
+    
+    def on_resource_load_finished(self, func, *args ):
+        from gobject import GObject
+        def WebView_C_Callable( _webview, _webframe, _webresource, data):
+            from .webkit3__WebKitWebFrame import WebKitWebFrame
+            from .webkit3__WebKitWebResource import WebKitWebResource
+            func( self, self.get_main_frame(), WebKitWebResource(None, obj=_webresource), *args)#WebKitWebFrame(None,obj=_webframe), WebKitWebResource(None,obj=_webresource), *args)
+            return None
+        CFUNC = CFUNCTYPE(None, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
+        GObject.connect( self, 'resource-load-finished', func, *args, cfunc = (CFUNC(WebView_C_Callable),CFUNC))
+        
+    def on_view_ready(self, func, *args):
+        from gobject import GObject
+        GObject.connect( self, 'load-finished', func, *args)
+
+        

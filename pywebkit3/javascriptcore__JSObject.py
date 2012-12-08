@@ -622,6 +622,8 @@ class JSObject( object ):
   or POINTER(c_int)())
     @staticmethod
     def Make( ctx, jsClass, data,):
+        from .javascriptcore import JSContext
+        assert(isinstance(ctx, JSContext))
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
         if jsClass: jsClass = jsClass._object
@@ -658,6 +660,5 @@ class JSObject( object ):
         libjavascriptcore.JSClassCreate.restype = _JSClass
         libjavascriptcore.JSClassCreate.argtypes = [POINTER(JSClassDefinition)]
         from javascriptcore import JSClass
-        return JSClass( obj=    libjavascriptcore.JSClassCreate(definition, )
-  or POINTER(c_int)())
+        return JSClass( obj= libjavascriptcore.JSClassCreate(definition, )  or POINTER(c_int)())
 

@@ -20,32 +20,32 @@ def to_string(var):
     else:
         return str(var)
 
-def to_pyvalue( context, jsvalue, name ):
-    valtype = jsvalue.GetType( context)
+def to_pyvalue( env, jsvalue, name ):
+    valtype = jsvalue.GetType(env._context)
     if valtype == kJSTypeNull.value  or valtype == kJSTypeUndefined.value:
         return None
     elif valtype == kJSTypeNumber.value:
-        return jsvalue.ToNumber( context, NULL)
+        return jsvalue.ToNumber( env._context, NULL)
     elif valtype == kJSTypeBoolean.value:
-        return jsvalue.ToBoolean( context)
+        return jsvalue.ToBoolean( env._context)
     elif valtype == kJSTypeString.value:
-        jstext = jsvalue.ToStringCopy( context, NULL)
+        jstext = jsvalue.ToStringCopy( env._context, NULL)
         length = jstext.GetMaximumUTF8CStringSize()
         cstring = (c_char*(length))()
         jstext.GetUTF8CString( cstring, length )
     
         return cstring.value 
     elif valtype == kJSTypeObject.value:
-        jsobj = jsvalue.ToObject(context, NULL)
-        if jsobj.IsFunction(context):
+        jsobj = jsvalue.ToObject(env._context, NULL)
+        if jsobj.IsFunction(env._context):
             return None
             #assert( isinstance( context, JSContext ))
-            #return _wrapJs( context, jsobj, name, can_call = True)
+            #return _wrapJs( env, jsobj, name, can_call = True)
         found = JavascriptClass._jsobjects.get(strid(jsobj))
         if found:
             (_,found) = found
         else:
-            found = JavascriptClass._globalobjects.get(strid(context)+name)
+            found = JavascriptClass._globalobjects.get(strid(env._context)+name)
         return  found
 
     logging.error("Unknown object passed to python from javascript. Object must be known in both worlds.  %d"%valtype)
@@ -62,7 +62,7 @@ class JavascriptClass(object):
     _constructors = {}
 
     @classmethod
-    def _populate(cls ):
+    def _populate(cls , env, _module):
         """
         Called once per derived class to populate the
         methods made available to javascript
@@ -119,7 +119,7 @@ class JavascriptClass(object):
                                     args.append( found._javascript_obj )
                                 else:
                                     can_call = jsobject.IsFunction(context)
-                                    pyarg = _wrapJs( context, jsobject, "arg%s"%i, can_call = can_call)
+                                    pyarg = _wrapJs( env, jsobject, "arg%s"%i, can_call = can_call)
                                     assert(pyarg)
                                     args.append( pyarg )
                             else:
@@ -161,76 +161,15 @@ class JavascriptClass(object):
             cls._methods_by_name[cls.staticmethods[index].name] = cls._methods[index]        
 
 
-    def __init__(self, env, var_name, **kargs):
-        assert isinstance(env, ScriptEnv)
-        ##id = str(cast( js_context._object, c_void_p))
-        #it seems sometimes the context id different than the webview
-        #original context we used????:
-        ##if not id in JavascriptClass._python_to_js.iterkeys():
-        ##    if not JavascriptClass._python_to_js:
-        ##        ScriptEnv( self._context )
-        ##    else:
-        ##        id = JavascriptClass._python_to_js.keys()[0]
-
-        #see if the module was explcitly called out:
-        if not "_module" in kargs.iterkeys():
-            _module = None
-        else:
-            _module = kargs['_module']
-        self._varname = var_name
-        """This should take no parameters, to prevent repercussions throughout hierarchy"""
-        cls = self.__class__
-        if not isinstance(cls, Namespace) and not cls._methods:
-            #(do not populate methods for namespace classes)
-            cls._populate( )
-        elif not cls._methods:
-            #or maybe not?
-            #TODO: determine if this code makes sense
-            #this seems to populate even Namepsace classes??
-            cls._populate( )
-            
-        if not _module:
-            try:
-                #if module not explicit, determine it here:
-                if var_name.find('.')>=0:
-                    modulename = ".".join(var_name.split(".")[:-1])
-                else:
-                    #Oooh!  global namespace
-                    modulename = ""
-            except:
-                modulename = None
-        else:
-            if isinstance( self, Constructor):                    
-                modulename = _module.__name__
-            else:
-                modulename =  '.'.join(_module.__name__.split('.')[:-1])
-            
-        if modulename:
-            #if we determined a module name, get/create the namespace
-            #associated with it
-            ns = Namespace.get_namespace(env, modulename )
-            assert(ns)
-            assert( str(cast(env._context._object,c_void_p))+modulename in Namespace._namespaces.iterkeys() )
-        else:
-            if var_name and modulename == "":
-                #have global namespace:
-                ns = Namespace.get_global(env)                
-                assert(ns)
-            elif not var_name:
-                #have no namespace.  This should only happen
-                #if the object self is itself the global namespace
-                ns = None
-                self._javascript_obj = env._context.GetGlobalObject()
-                
         def _init_cb(context, obj):
             pass
           
         def _finalize_cb(obj):
             #cleanup if javascript side decides to delete the object:
-            (_,pyobj) = JavascriptClass._jsobjects.get(str(cast(obj,c_void_p)))
+            pyobj = JavascriptClass._jsobjects.get(str(cast(obj,c_void_p)))
             if pyobj:
                 del JavascriptClass._jsobjects[str(cast(obj,c_void_p))]
-                pyobj._javascript_obj = None
+                pyobj[1]._javascript_obj = None
                 
 
         #create the class definition
@@ -258,9 +197,75 @@ class JavascriptClass(object):
         jscd.hasInstance = cast(NULL,JSObjectHasInstanceCallback)
         jscd.convertToType = cast(NULL, JSObjectConvertToTypeCallback)
         jscd.argtype=[POINTER(c_int), POINTER(c_int)]
-        classDef = JSObject.JSClassCreate( byref(jscd) )
+        cls._classDef = JSObject.JSClassCreate( byref(jscd) )
+        cls._jscd = jscd #don't let it go out of scope!!!
+
+
+    def __init__(self, env, var_name, **kargs):
+        assert isinstance(env, ScriptEnv)
+        ##id = str(cast( js_context._object, c_void_p))
+        #it seems sometimes the context id different than the webview
+        #original context we used????:
+        ##if not id in JavascriptClass._python_to_js.iterkeys():
+        ##    if not JavascriptClass._python_to_js:
+        ##        ScriptEnv( self._context )
+        ##    else:
+        ##        id = JavascriptClass._python_to_js.keys()[0]
+
+        #see if the module was explcitly called out:
+        if not "_module" in kargs.iterkeys():
+            _module = None
+        else:
+            _module = kargs['_module']
+        self._varname = var_name
+        if not _module:
+            try:
+                #if module not explicit, determine it here:
+                if var_name.find('.')>=0:
+                    modulename = ".".join(var_name.split(".")[:-1])
+                else:
+                    #Oooh!  global namespace
+                    modulename = ""
+            except:
+                modulename = None
+        else:
+            if isinstance( self, Constructor):                    
+                modulename = _module.__name__
+            else:
+                modulename =  '.'.join(_module.__name__.split('.')[:-1])
+
+        
+        """This should take no parameters, to prevent repercussions throughout hierarchy"""
+        cls = self.__class__
+        if not isinstance(cls, Namespace) and not cls._methods:
+            #(do not populate methods for namespace classes)
+            cls._populate( env , _module)
+        elif var_name:
+            #or maybe not?
+            #TODO: determine if this code makes sense
+            #this seems to populate even Namepsace classes??
+            cls._populate( env ,_module)
+            
+            
+        if modulename:
+            #if we determined a module name, get/create the namespace
+            #associated with it
+            ns = Namespace.get_namespace(env, modulename )
+            assert(ns)
+            assert( str(cast(env._context._object,c_void_p))+modulename in Namespace._namespaces.iterkeys() )
+        else:
+            if var_name and modulename == "":
+                #have global namespace:
+                ns = Namespace.get_global(env)                
+                assert(ns)
+            elif not var_name:
+                #have no namespace.  This should only happen
+                #if the object self is itself the global namespace
+                ns = None
+                self._javascript_obj = env._context.GetGlobalObject()
+                
         #now make the object and squirrel it away:
-        self._javascript_obj = JSObject.Make( env._context, classDef, None )        
+        self._javascript_obj = JSObject.Make( env._context, cls._classDef, None )   
         JavascriptClass._jsobjects[strid(self._javascript_obj)] =  (self._javascript_obj,self)
 
         
@@ -282,7 +287,7 @@ class JavascriptClass(object):
                
     def __del__(self):
         if hasattr(self, '_varname'):
-            self._env.execute(self, "delete %s;"%self._varname)
+            self._env.execute("delete %s;"%self._varname)
             
     @classmethod
     def export_class(cls, env, ns):
@@ -302,25 +307,26 @@ class JavascriptClass(object):
         return retval
 
   
-#    def __getattr__(self,attr):
-##        orig_attr = getattr(self, attr)
-#       def _hooked(self, *args)
-#            """A hook method to pass as a callback"""
-#            with self._env.execution() as js_execution:
-#                orig_attr( *args )
+    def __getattr__(self,attr):
+        orig_attr = getattr(self, attr)
+        def _hooked_( *args):
+            """A hook method to pass as a callback"""
+            with self._env.execution() as js_execution:
+                orig_attr( *args )
 
-#        if iscallable( orig_attr ):
-#            return _hooked
-#        else:
-#            return orig_attr
+        if callable( orig_attr ):
+            
+            return _hooked_
+        else:
+            return orig_attr
 
 def javascript(func, env):
     with env.execution() as js_execution:
         orig_func = func
-        def hooked(*args):
+        def hooked__(*args):
             with env.execution() as js_execution:
                 orig_func(*args)
-        importlib.import_module(func.__module__).setattr(func.__name,hooked)
+        importlib.import_module(func.__module__).setattr(func.__name,hooked__)
 
 class Constructor(JavascriptClass):
 
@@ -421,15 +427,15 @@ class Namespace( JavascriptClass ):
 
 
 
-def _wrapJs(context,  jsobj, var_name, can_call = False):
+def _wrapJs(env,  jsobj, var_name, can_call = False):
     """
     Wrap a provided js object as a python object, with a given
     js name.  Can set a flag if js object is callable to make
     it callable in python too.  This is to be used only internally
     """
-    assert( isinstance( context, JSContext ))
+    assert(isinstance(env, ScriptEnv))
     id = str(cast( jsobj._object, c_void_p))
-    wrapped = PythonWrapper( context, jsobj, var_name, can_call)
+    wrapped = PythonWrapper( env, jsobj, var_name, can_call)
     return wrapped
     
 
@@ -441,18 +447,19 @@ class PythonWrapper( JSObject ):
     """
     
     
-    def __init__(self, context, obj, var_name, can_call = False):
-        assert( isinstance( context, JSContext ))
+    def __init__(self, env, obj, var_name, can_call = False):
+        assert(isinstance(env, ScriptEnv))
         self._cmd = ""
         self._retval = None
         JSObject.__init__(self, obj=obj._object )
         self._varname = var_name
         self._wrapped_obj = obj
-        names = obj.CopyPropertyNames( context )
+        names = obj.CopyPropertyNames( env._context )
         count = JSObject.JSPropertyNameArrayGetCount( names )
         self._can_call = can_call
         self._attributes = {}
-        self._context = context
+        self._context = env._context
+        self._env = env
         for index in xrange(count):
             var_name_ref = JSObject.JSPropertyNameArrayGetNameAtIndex( names, index)
             length = var_name_ref.GetMaximumUTF8CStringSize()
@@ -460,8 +467,8 @@ class PythonWrapper( JSObject ):
             var_name_ref.GetUTF8CString( var_name, length )
             if var_name.value != "each":
                 exc = POINTER(c_int)(c_int(0))
-                prop = obj.GetProperty( context, var_name_ref, exc)
-                self._attributes[var_name.value] =  to_pyvalue(context, prop, var_name.value)
+                prop = obj.GetProperty( env._context, var_name_ref, exc)
+                self._attributes[var_name.value] =  to_pyvalue(env, prop, var_name.value)
 
                 
     def __call__(self, *args):
@@ -470,7 +477,7 @@ class PythonWrapper( JSObject ):
         cmd = "try{python.PY_RETURN( %(cmd)s,'%(tmp)s');}catch(err){python.PY_THROW(err,'%(tmp)s');}"%\
               {'tmp':tmpvarname,
                'cmd':cmd}
-        (returnval, exc)  =self._env.execute( self, cmd, tmpvarname)
+        (returnval, exc)  =self._env.execute( cmd, tmpvarname)
         if exc:
             logging.error("ERROR Executing command %s"%cmd)
             logging.error(traceback.format_exc())
@@ -491,7 +498,7 @@ class PythonWrapper( JSObject ):
         self._env._each_apply = (func, args)
         self._env._each_objs = []
         try:
-            self._env.execute( self, js , None)
+            self._env.execute( js , None)
             js = ""
             index = 0
             for obj in self._env._each_objs:
@@ -516,7 +523,7 @@ class PythonWrapper( JSObject ):
              'cmd':cmd}
 
         #execute the command, and get return value or exception:
-        (retval, exc ) = self._env.execute(self, cmd, tmpvarname)
+        (retval, exc ) = self._env.execute( cmd, tmpvarname)
         if exc:
             #OOh! problem executing command
             raise exc
@@ -592,7 +599,8 @@ class ScriptEnv( JavascriptClass ):
         self._each_apply  = None
         #self._sem = ScriptEnv._sem[id]
         self._each_objs = []
-        
+        import jquery
+        jquery.initialize(self)
         
     class Execution_Env(object):
         
@@ -616,7 +624,7 @@ class ScriptEnv( JavascriptClass ):
         return ScriptEnv.Execution_Env(self)
              
     def export_to_python( self, jsobj , var_name, can_call = False ):
-        wrapped = _wrapJs( self._context, jsobj, var_name, can_call )
+        wrapped = _wrapJs( self._env, jsobj, var_name, can_call )
         JavascriptClass._globalobjects[strid(self._context) + var_name] = wrapped
 
 
@@ -654,7 +662,7 @@ class ScriptEnv( JavascriptClass ):
                                           obj,
                                           kJSPropertyAttributeNone,
                                           NULL)
-        obj =  PythonWrapper(self._context, self._javascript_obj.GetProperty( self._context, text, NULL).ToObject(self._context, NULL), 'python._jqobj%d'%index)
+        obj =  PythonWrapper(self._env, self._javascript_obj.GetProperty( self._context, text, NULL).ToObject(self._context, NULL), 'python._jqobj%d'%index)
         obj._webview = self._webview
         self._each_objs.append( obj )
         return False
@@ -672,7 +680,6 @@ class ScriptEnv( JavascriptClass ):
         
     def execute( self, cmd, tmpvarname = None):
        
-        #logging.error("EXECUTING %s"%cmd)
         try:
             if tmpvarname:
                 self._returnval[tmpvarname] = None

@@ -95,9 +95,9 @@ Tmp = function(){
 };
 var tmp = new Tmp();
 
+
 function cube_init() {
     python.export_to_python(tmp, "tmp");
-
 	container = document.createElement('div');
 	$('#canvas')[0].appendChild(container);
 	$(container).width(SCREEN_WIDTH);
