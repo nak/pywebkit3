@@ -605,10 +605,11 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         return WebKitWebSettings(None, obj=libwebkit3.webkit_web_view_get_settings( self._object ) or POINTER(c_int)() )
 
     def execute_script(  self, script, ):
-
+        
+        libwebkit3.webkit_web_view_execute_script.restype = None
         libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
-        libwebkit3.webkit_web_view_execute_script( self._object,c_char_p(script ))
-
+        return libwebkit3.webkit_web_view_execute_script( self._object,c_char_p(script ))
+      
     def cut_clipboard(  self, ):
 
         libwebkit3.webkit_web_view_cut_clipboard.argtypes = [_WebKitWebView]
@@ -842,6 +843,8 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def get_env(self):
         return self._env
     
+    def get_execution_env(self):
+        return self._env.execution()
     
     def on_resource_load_finished(self, func, *args ):
         from gobject import GObject

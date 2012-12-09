@@ -359,10 +359,10 @@ class GMainLoop( gobject__GObject.GObject):
 cfuncs = []
 
 from .gobject import GMainContext
-def idle_add( func , *args):
+def idle_add( func , *args, **kargs):
     cfunc = c_void_p()
     def C_Callable( param ):
-        retval = func( *args )
+        retval = func( *args ,**kargs)
         if not retval:
             cfuncs.remove(cfunc)
             retval = 0

@@ -1,14 +1,14 @@
 #!/usr/bin/python
 from ctypes import *
 from pywebkit3 import gtk3,webkit3,javascript
-
+import logging
 import os.path
 
 
-def set_bg(color = "RED"):
+def set_bg(color ):
     import logging
     logging.error("COLOR: %s"% color)
-    jquery._('.cubie').each(change)
+    jquery._('.cubie').each(change, color)
       
     return False
 
@@ -21,7 +21,7 @@ window = gtk3.GtkWindow(gtk3.GTK_WINDOW_TOPLEVEL)
 #close this app on close of the window:
 window.connect("delete-event", gtk3.main_quit)
 
-web.on_view_ready( set_bg)
+web.on_view_ready( set_bg, "red")
 #add our web view to the main window
 window.add(web)
 window.set_default_size( 250, 100)
@@ -48,7 +48,7 @@ from pywebkit3 import gobject
 from pywebkit3.webkit3_enums import *
 
 
-def change( obj, index):
+def change( obj, index, color):
     if index%3 == 0:
         color = "#CC%d%d%d%d"%(index,index, index, index)
     elif index%3 == 1:
@@ -56,7 +56,9 @@ def change( obj, index):
     else:
         color = "#%d%d%d%d88"%(index,index, index, index)
 
+    logging.error("########### COLOR %s"%color)
     obj.css('background-color',color)
+    
     return True
 
 
