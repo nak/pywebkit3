@@ -12,14 +12,6 @@ import importlib
 def strid(obj):
     return str(cast(obj._object, c_void_p))
 
-def to_string(var):
-    if isinstance(var, JavascriptClass):
-        return var._varname
-    elif isinstance(var, str):
-        return '"%s"' % var
-    else:
-        return str(var)
-
    
 def to_jsfunction(env, func):
     import numbers
@@ -51,7 +43,6 @@ def to_jsfunction(env, func):
                         can_call = jsobject.IsFunction(context)
                         pyarg = _wrapJs(env, jsobject, None, can_call=can_call)
                         pyarg._javascript_obj = jsobject
-                        #env._jsobjects[strid(jsobject)] = pyarg
                         args.append(pyarg)
                     else:
                         logging.error("Invalid javascript value type encountered!: %d" % valtype)
@@ -169,9 +160,7 @@ def to_pyvalue(env, thisobj, jsvalue, name):
         myname = jsobj.GetPrivate()
         found = None
         if myname:
-            found = env._jsobjects.get(myname)
-        if not found:
-            found = JavascriptClass._globalobjects.get(strid(env._context) + name)
+            found = JavascriptClass._globalobjects.get(strid(env._context) + myname)
         if not found:
             return _wrapJs(env, jsobj = jsobj, var_name = myname or "_tmp", can_call = False)
         #logging.error("RETURNING ITEM %s"%found)
@@ -206,7 +195,6 @@ class JavascriptClass(object):
             def call_method(ctxt, function, obj, argumentCount, arguments, exception):
                 try:
                     context = JSContext(obj=ctxt)
-                    id = strid(context)
                     name = JSObject(obj=obj).GetPrivate()
                     pyobj = env._jsobjects[ name ]
                     #get the method to be called
@@ -247,7 +235,6 @@ class JavascriptClass(object):
                                 can_call = jsobject.IsFunction(context)
                                 pyarg = _wrapJs(env, jsobject, "arg%s" % i, can_call=can_call)
                                 pyarg._javascript_obj = jsobject
-                                #env._jsobjects[strid(jsobject)] = pyarg
                                 args.append(pyarg)
                             else:
                                 logging.error("Invalid javascript value type encountered!: %d" % valtype)
@@ -294,7 +281,7 @@ class JavascriptClass(object):
             #cleanup if javascript side decides to delete the object:
             name = JSObject(obj=obj).GetPrivate()
             if name:
-                pyobj = env._jsobjects.get(str(cast(obj, c_void_p)))
+                pyobj = env._jsobjects.get(name)
                 if pyobj:
                     del env._jsobjects[name]
                     pyobj._javascript_obj = None
@@ -474,7 +461,7 @@ class Constructor(JavascriptClass):
         try:
             return self._pyclass(self._context, name, *args)
         except:
-            logging.error("Exception instantiating %s" % pyclass)
+            logging.error("Exception instantiating %s" % self._pyclass)
             logging.error(traceback.format_exc())
             return None
         
@@ -642,6 +629,7 @@ class PythonWrapper(JSObject):
         else:
             return object.__getattribute__(self, attr)
         
+   
         
 def export_module(env, module):
     """Export a python module and all JavascriptClass derived
