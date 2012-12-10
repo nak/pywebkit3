@@ -1,10 +1,6 @@
 from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER, c_longlong
 from webkit3_types import libwebkit3
 
-cdll.LoadLibrary("./libt.so")
-libt=CDLL("./libt.so")
-
-
 libjavascriptcore = libwebkit3
 
 JSPropertyAttributes = c_uint;
