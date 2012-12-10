@@ -23,6 +23,7 @@ class YPR_Updater( JavascriptClass ):
 
     index = 0
     def update(self, offset_yaw, offset_pitch, offset_roll):
+        import logging
         if YPR_Updater.index == 100:
             try:
                 tmp = self._env.get_jsobject("tmp", can_call=False)
@@ -58,7 +59,6 @@ class YPR_Updater( JavascriptClass ):
             self.ypr[1] -= 360;
         else:
             self.ypr[1] += 360;
-    
 
     def yaw(self):
         return self.ypr[0]

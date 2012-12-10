@@ -8,7 +8,7 @@ import os.path
 def set_bg(color ):
     import logging
     logging.error("COLOR: %s"% color)
-    jquery._('.cubie').each(change, color)
+    jquery._('.cubie').each(change)
       
     return False
 
@@ -48,7 +48,9 @@ from pywebkit3 import gobject
 from pywebkit3.webkit3_enums import *
 
 
-def change( obj, index, color):
+def change( index, obj):
+    _ = jquery._
+    logging.error("CHANGE!!!!!!!!")
     if index%3 == 0:
         color = "#CC%d%d%d%d"%(index,index, index, index)
     elif index%3 == 1:
@@ -56,8 +58,8 @@ def change( obj, index, color):
     else:
         color = "#%d%d%d%d88"%(index,index, index, index)
 
-    logging.error("########### COLOR %s"%color)
-    obj.css('background-color',color)
+    logging.error("########### COLOR %s %s %s"%(color, index, obj))
+    _(obj).css('background-color',color)
     
     return True
 

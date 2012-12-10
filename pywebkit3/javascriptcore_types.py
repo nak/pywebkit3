@@ -1,6 +1,10 @@
 from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER, c_longlong
 from webkit3_types import libwebkit3
 
+cdll.LoadLibrary("./libt.so")
+libt=CDLL("./libt.so")
+
+
 libjavascriptcore = libwebkit3
 
 JSPropertyAttributes = c_uint;
@@ -16,7 +20,7 @@ JSObjectGetPropertyCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_i
 JSObjectSetPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
 JSObjectDeletePropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
 JSObjectGetPropertyNamesCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectCallAsFunctionCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectCallAsFunctionCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), POINTER(c_int), c_int , POINTER(POINTER(c_int)), POINTER(c_int))
 JSObjectCallAsConstructorCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
 JSObjectHasInstanceCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
 JSObjectConvertToTypeCallback =  CFUNCTYPE( c_longlong, POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))

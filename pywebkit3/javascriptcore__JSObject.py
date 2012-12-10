@@ -379,13 +379,14 @@ class JSObject( object ):
     def CallAsConstructor(  self, ctx, argumentCount, arguments, exception, ):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        if arguments: arguments = arguments._object
-        else: arguments = POINTER(c_int)()
+        jsargs = _JSValue*argumentCount
+        for index in len(argumentCount):
+            jsargs[index] = arguments[index]._object
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
         libjavascriptcore.JSObjectCallAsConstructor.restype = _JSObject
-        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue,_JSValue]
+        libjavascriptcore.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue*argumentCount,_JSValue]
         from javascriptcore import JSObject
         return JSObject(None,None,None,None, obj=libjavascriptcore.JSObjectCallAsConstructor( ctx,self._object,argumentCount,arguments,exception )  or POINTER(c_int)())
 
@@ -453,13 +454,21 @@ class JSObject( object ):
         else: ctx = POINTER(c_int)()
         if thisObject: thisObject = thisObject._object
         else: thisObject = POINTER(c_int)()
-        if arguments: arguments = arguments._object
-        else: arguments = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
+        args = (_JSValue*argumentCount.value)()
+        for index in xrange(argumentCount.value):
+            args[index] = arguments[index]._object
+        arguments = args
+        libt.JSObjectCallAsFunction2.restype = _JSValue
+        libt.JSObjectCallAsFunction2.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue*argumentCount.value,_JSValue]
+        from javascriptcore import JSValue
+        return JSValue( obj=libt.JSObjectCallAsFunction2( ctx,self._object,thisObject,argumentCount,arguments,exception )  or POINTER(c_int)())
+
+
 
         libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
-        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,_JSValue,_JSValue]
+        libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue*argumentCount.value,_JSValue]
         from javascriptcore import JSValue
         return JSValue( obj=libjavascriptcore.JSObjectCallAsFunction( ctx,self._object,thisObject,argumentCount,arguments,exception )  or POINTER(c_int)())
 
@@ -662,3 +671,4 @@ class JSObject( object ):
         from javascriptcore import JSClass
         return JSClass( obj= libjavascriptcore.JSClassCreate(definition, )  or POINTER(c_int)())
 
+        

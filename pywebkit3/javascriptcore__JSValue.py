@@ -462,6 +462,8 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueUnprotect( ctx,self._object )
 
     def GetType(  self, ctx, ):
+        #import logging,traceback
+        #logging.error(traceback.format_stack())
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
