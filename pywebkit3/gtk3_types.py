@@ -64,7 +64,10 @@ GtkClipboardClearFunc = CFUNCTYPE( None, c_void_p, c_void_p)
 libgtk3.gtk_init(0,0)
 
 def main():
+    #libgtk3.gdk_threads_init()
+    #libgtk3.gdk_threads_enter()
     libgtk3.gtk_main()
+    #libgtk3.gdk_threads_leave()
     
 def main_quit():
     libgtk3.gtk_main_quit()

@@ -1,4 +1,4 @@
-# Copyright, John Rusnak, 2012
+    # Copyright, John Rusnak, 2012
     # This code binding is available under the license agreement of the LGPL with
     # an additional constraint described below,
     # and with the understanding that the webkit API is copyright protected
@@ -349,3 +349,10 @@ class JSString( javascriptcore__JSObject.JSObject):
         from javascriptcore import JSString
         return JSString( obj=    libjavascriptcore.JSStringCreateWithUTF8CString(string, )
   or POINTER(c_int)())
+
+
+    def Release( self ):
+        libjavascriptcore.JSStringRelease.restype = None
+        libjavascriptcore.JSStringRelease.argtypes = [_JSString]
+        libjavascriptcore.JSStringRelease( self._object )
+        

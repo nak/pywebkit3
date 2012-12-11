@@ -1,5 +1,6 @@
 from .. import  gobject
 from ..gobject import GObject
+from ..gtk3 import libgtk3
 
 import inspect
 import threading
@@ -24,7 +25,7 @@ def to_jsfunction(env, func):
                     argument = JSValue(obj = arguments[i])
                     
                     valtype = argument.GetType(context)
-                    if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined:
+                    if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
                         args.append(None)
                     elif valtype == kJSTypeNumber.value:
                         args.append(argument.ToNumber(context, NULL))
@@ -35,7 +36,7 @@ def to_jsfunction(env, func):
                         length = jstext.GetMaximumUTF8CStringSize()
                         cstring = (c_char * (length))()
                         jstext.GetUTF8CString(cstring, length)
-
+                        jstext.Release()
                         args.append(cstring.value)
                     elif valtype == kJSTypeObject.value:
                         jsobject = argument.ToObject(context, NULL)
@@ -57,6 +58,7 @@ def to_jsfunction(env, func):
                     cstring = c_char_p(retval)
                     text = JSString.CreateWithUTF8CString(cstring);
                     retval = JSValue.MakeString(context, text);
+                    #text.Release()
                 elif retval in [True, False]:
                     retval = JSValue.MakeBoolean(context, retval)
                 assert( isinstance(retval, JSValue))
@@ -66,8 +68,12 @@ def to_jsfunction(env, func):
             except:
                 logging.error(traceback.format_exc())
                 logging.error("Error in calling argument function ")
-                return c_longlong(0)  
+                return c_longlong(0)
+    #logging.error("ENTER")
+    #libgtk3.gdk_threads_enter()
     cfunc = JSObjectCallAsFunctionCallback(C_Callable)
+    #libgtk3.gdk_threads_leave()
+    #logging.error("LEAVE")
     jsobj = JSObject.MakeFunctionWithCallback(env._context, NULL, cfunc)
     jsobj._callable = cfunc
     return jsobj
@@ -86,6 +92,7 @@ def to_pythonjs( env, val):
         length = jstext.GetMaximumUTF8CStringSize()
         cstring = (c_char * (length))()
         jstext.GetUTF8CString(cstring, length)
+        jstext.Release()
         return cstring.value
     elif valtype == kJSTypeObject.value:
         jsobject = val.ToObject(context, NULL)
@@ -114,7 +121,9 @@ class JSFunction(JSObject):
             if isinstance(arg, numbers.Number):
                 arg = JSValue.MakeNumber( self._env._context, arg)
             elif isinstance(arg, str):
-                arg = JSValue.MakeString(self._env._context, JSString.CreateWithUTF8CString(c_char_p(arg)))
+                string = JSString.CreateWithUTF8CString(c_char_p(arg))
+                arg = JSValue.MakeString(self._env._context, string)
+                #string.Release()
             elif isinstance( arg, JSObject):
                 pass
             elif callable(arg):
@@ -145,7 +154,7 @@ def to_pyvalue(env, thisobj, jsvalue, name):
         length = jstext.GetMaximumUTF8CStringSize()
         cstring = (c_char * (length))()
         jstext.GetUTF8CString(cstring, length)
-    
+        jstext.Release()
         return cstring.value 
     elif valtype == kJSTypeObject.value:
         #logging.error("TO PY OBJECT")
@@ -193,6 +202,8 @@ class JavascriptClass(object):
         #Function to get a function to cast into javascript callback:
         def getfunc(index):
             def call_method(ctxt, function, obj, argumentCount, arguments, exception):
+                #ogging.error("MENTER")
+                #libgtk3.gdk_threads_enter()
                 try:
                     context = JSContext(obj=ctxt)
                     name = JSObject(obj=obj).GetPrivate()
@@ -224,8 +235,9 @@ class JavascriptClass(object):
                                 jstext = JSValue(arguments[i]).ToStringCopy(context, NULL)
                                 length = jstext.GetMaximumUTF8CStringSize()
                                 cstring = (c_char * (length))()
+                                
                                 jstext.GetUTF8CString(cstring, length)
-
+                                jstext.Release()
                                 args.append(cstring.value)
                             elif valtype == kJSTypeObject.value:
                                 jsobject = JSValue(arguments[i]).ToObject(context, NULL)
@@ -250,6 +262,7 @@ class JavascriptClass(object):
                         cstring = c_char_p(value)
                         text = JSString.CreateWithUTF8CString(cstring);
                         retval = JSValue.MakeString(context, text)._object;
+                        #text.Release()
                     elif isinstance(value, JavascriptClass):
                         retval = value._javascript_obj._object
                     else:
@@ -260,6 +273,10 @@ class JavascriptClass(object):
                     logging.error("EXCEPTION calling python method from javascript:")
                     logging.error(traceback.format_exc())
                     return 0#NULL
+                finally:
+                    #logging.error("MLEAVE")
+                    #libgtk3.gdk_threads_leave()
+                    pass
                 
             return call_method
 
@@ -416,6 +433,8 @@ class JavascriptClass(object):
                                             self._javascript_obj,
                                             kJSPropertyAttributeNone,
                                             NULL)
+            
+            text.Release()
         #assert(self._javascript_obj)
         self._env = env
                
@@ -431,7 +450,7 @@ class JavascriptClass(object):
             js_constructor = JavascriptClass.get_constructor(cls, env, ns)
             text = JSString.CreateWithUTF8CString("%s" % (cls.__name__.split('.')[-1]))
             JavascriptClass._constructors[cls.__name__] = js_constructor
-
+            text.Release()
 
     @staticmethod
     def get_constructor(pyclass, context, namespace):        

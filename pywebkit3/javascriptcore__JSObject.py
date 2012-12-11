@@ -460,17 +460,12 @@ class JSObject( object ):
         for index in xrange(argumentCount.value):
             args[index] = arguments[index]._object
         arguments = args
-        libt.JSObjectCallAsFunction2.restype = _JSValue
-        libt.JSObjectCallAsFunction2.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue*argumentCount.value,_JSValue]
-        from javascriptcore import JSValue
-        return JSValue( obj=libt.JSObjectCallAsFunction2( ctx,self._object,thisObject,argumentCount,arguments,exception )  or POINTER(c_int)())
-
-
 
         libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
         libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue*argumentCount.value,_JSValue]
         from javascriptcore import JSValue
-        return JSValue( obj=libjavascriptcore.JSObjectCallAsFunction( ctx,self._object,thisObject,argumentCount,arguments,exception )  or POINTER(c_int)())
+        retval = libjavascriptcore.JSObjectCallAsFunction( ctx,self._object,thisObject,argumentCount,arguments,exception )
+        return JSValue( obj= retval)
 
     def CopyPropertyNames(  self, ctx, ):
         if ctx: ctx = ctx._object
