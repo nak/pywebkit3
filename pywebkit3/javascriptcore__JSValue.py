@@ -293,11 +293,16 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
-import javascriptcore__JSObject
-class JSValue( javascriptcore__JSObject.JSObject):
+class JSValue( object ):
     """Class JSValue Constructors"""
-    def __init__(self, obj = None):
-        self._object = obj
+    def __init__(self, obj , context ):
+        self._object = obj        
+        self._context = context
+        assert( isinstance(context, POINTER(c_int)) or context == None)
+
+        #libjavascriptcore.JSValueProtect.argtypes = [_JSContext,_JSValue]
+        #libjavascriptcore.JSValueProtect( context,self._object )    
+        
     """Methods"""
     def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
         if ctx: ctx = ctx._object
@@ -321,7 +326,7 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueToObject.restype = _JSObject
         libjavascriptcore.JSValueToObject.argtypes = [_JSContext,_JSValue,_JSValue]
         from javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx,self._object,exception )  or POINTER(c_int)())
+        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx,self._object,exception ), context = ctx)
 
     def IsUndefined(  self, ctx, ):
         if ctx: ctx = ctx._object
@@ -456,10 +461,10 @@ class JSValue( javascriptcore__JSObject.JSObject):
     def Unprotect(  self, ctx, ):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-
-        libjavascriptcore.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
+        if cast(ctx, c_void_p).value != None:
+            libjavascriptcore.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
         
-        libjavascriptcore.JSValueUnprotect( ctx,self._object )
+            libjavascriptcore.JSValueUnprotect( ctx,self._object )
 
     def GetType(  self, ctx, ):
         #import logging,traceback
@@ -490,8 +495,8 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueMakeNumber.restype = _JSValue
         libjavascriptcore.JSValueMakeNumber.argtypes = [_JSContext,double]
         from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeNumber(ctx, number, )
-  or POINTER(c_int)())
+        return JSValue( obj=    libjavascriptcore.JSValueMakeNumber(ctx, number, ), context=ctx)
+
     @staticmethod
     def MakeUndefined( ctx,):
         if ctx: ctx = ctx._object
@@ -499,8 +504,8 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueMakeUndefined.restype = _JSValue
         libjavascriptcore.JSValueMakeUndefined.argtypes = [_JSContext]
         from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeUndefined(ctx, )
-  or POINTER(c_int)())
+        return JSValue( obj=    libjavascriptcore.JSValueMakeUndefined(ctx, ), context=ctx)
+
     @staticmethod
     def MakeNull( ctx,):
         if ctx: ctx = ctx._object
@@ -508,8 +513,8 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueMakeNull.restype = _JSValue
         libjavascriptcore.JSValueMakeNull.argtypes = [_JSContext]
         from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeNull(ctx, )
-  or POINTER(c_int)())
+        return JSValue( obj=    libjavascriptcore.JSValueMakeNull(ctx, ), context=ctx)
+
     @staticmethod
     def MakeFromJSONString( ctx, string,):
         if ctx: ctx = ctx._object
@@ -519,8 +524,8 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
         libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext,_JSString]
         from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeFromJSONString(ctx, string, )
-  or POINTER(c_int)())
+        return JSValue( obj=    libjavascriptcore.JSValueMakeFromJSONString(ctx, string), context=ctx )
+  
     @staticmethod
     def MakeBoolean( ctx, boolean,):
         if ctx: ctx = ctx._object
@@ -528,8 +533,8 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueMakeBoolean.restype = _JSValue
         libjavascriptcore.JSValueMakeBoolean.argtypes = [_JSContext,bool]
         from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx, boolean, )
-  or POINTER(c_int)())
+        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx, boolean), context=ctx )
+
     @staticmethod
     def MakeString( ctx, string,):
         if ctx: ctx = ctx._object
@@ -539,5 +544,23 @@ class JSValue( javascriptcore__JSObject.JSObject):
         libjavascriptcore.JSValueMakeString.restype = _JSValue
         libjavascriptcore.JSValueMakeString.argtypes = [_JSContext,_JSString]
         from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx, string, )
-  or POINTER(c_int)())
+        return JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx, string), context=ctx)
+  
+
+
+    def __del__(self):
+        if self._object and self._context:
+            from javascriptcore import JSContext
+            if isinstance(self._context, JSContext):
+                self._context = self._context._object
+            if cast(self._context, c_void_p).value != None:
+                libjavascriptcore.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
+                libjavascriptcore.JSValueUnprotect( self._context,self._object )           
+            else:   
+                import logging
+                logging.error("NO CLEANUP")
+                
+        else:
+            import logging
+            logging.error("NO CLEANUP")
+                

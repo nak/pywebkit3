@@ -302,15 +302,20 @@ GtkIconSize = c_int
 
 import javascriptcore__JSObject
 class JSContext( javascriptcore__JSObject.JSObject):
+    
+    
     """Class JSContext Constructors"""
     def __init__(self, obj = None):
         self._object = obj
+        self._global = None
+        self._context = None
+        
     """Methods"""
     def JSGlobalContextRelease(  self, ctx, ):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libjavascriptcore.JSGlobalContextRelease.argtypes = [_JSContext,_JSGlobalContext]
+        libjavascriptcore.textRelease.argtypes = [_JSContext,_JSGlobalContext]
         
         libjavascriptcore.JSGlobalContextRelease( self._object,ctx )
 
@@ -330,12 +335,13 @@ class JSContext( javascriptcore__JSObject.JSObject):
         return JSContextGroup( obj=libjavascriptcore.JSContextGetGroup( self._object )  or POINTER(c_int)())
 
     def GetGlobalObject(  self, ):
-
-        libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
-        libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
-        from javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object )  or POINTER(c_int)())
-
+        if not self._global:
+            libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
+            libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
+            from javascriptcore import JSObject
+            self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object ), context = self._object)
+        return self._global
+    
     @staticmethod
     def JSGlobalContextCreate( globalObjectClass,):
         if globalObjectClass: globalObjectClass = globalObjectClass._object

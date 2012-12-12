@@ -9,6 +9,7 @@ from ctypes import *
 import logging
 import traceback
 import importlib
+import numbers
 
 def strid(obj):
     return str(cast(obj._object, c_void_p))
@@ -18,14 +19,24 @@ def to_jsfunction(env, func):
     import numbers
     def C_Callable( context, function, thisObject,  argumentCount, arguments, exception):
             context = JSObject(obj = context)
-            thisObject = JSObject(obj = context)
+            if cast(thisObject, c_void_p).value == None:
+                thisObject= None
+            else:
+                thisObject = JSObject(obj = thisObject, context = context._object)
             try:
                 args = []
                 for i in xrange(argumentCount):
-                    argument = JSValue(obj = arguments[i])
-                    
+                    argument = JSValue(obj = arguments[i], context = context._obejct)
+                    b
                     valtype = argument.GetType(context)
-                    if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
+                    if valtype == kJSTypeObject.value:
+                        jsobject = argument.ToObject(context, NULL)
+                        
+                        can_call = jsobject.IsFunction(context)
+                        pyarg = _wrapJs(env, jsobject, None, can_call=can_call)
+                        #pyarg._javascript_obj = jsobject
+                        args.append(pyarg)
+                    elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
                         args.append(None)
                     elif valtype == kJSTypeNumber.value:
                         args.append(argument.ToNumber(context, NULL))
@@ -38,18 +49,14 @@ def to_jsfunction(env, func):
                         jstext.GetUTF8CString(cstring, length)
                         jstext.Release()
                         args.append(cstring.value)
-                    elif valtype == kJSTypeObject.value:
-                        jsobject = argument.ToObject(context, NULL)
-                        
-                        can_call = jsobject.IsFunction(context)
-                        pyarg = _wrapJs(env, jsobject, None, can_call=can_call)
-                        pyarg._javascript_obj = jsobject
-                        args.append(pyarg)
                     else:
                         logging.error("Invalid javascript value type encountered!: %d" % valtype)
                         return c_longlong(0)
                 assert(len(args) == argumentCount)
+                
                 retval = func(*args)
+                del args
+                
                 if retval == None:
                     retval = JSValue.MakeNull(env._context)
                 elif isinstance(retval, numbers.Number):
@@ -58,13 +65,13 @@ def to_jsfunction(env, func):
                     cstring = c_char_p(retval)
                     text = JSString.CreateWithUTF8CString(cstring);
                     retval = JSValue.MakeString(context, text);
-                    #text.Release()
+                    text.Release()
                 elif retval in [True, False]:
                     retval = JSValue.MakeBoolean(context, retval)
                 assert( isinstance(retval, JSValue))
-                
+                retval.Protect(env._context)#will go out of scope and underlying object needs to be retained
                 retval =  cast(byref(retval._object),POINTER(c_longlong)).contents
-                return retval.value
+                return retval
             except:
                 logging.error(traceback.format_exc())
                 logging.error("Error in calling argument function ")
@@ -78,105 +85,78 @@ def to_jsfunction(env, func):
     jsobj._callable = cfunc
     return jsobj
 
+
+
 def to_pythonjs( env, val): 
     context = env._context
     valtype= val.GetType(context)
     if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined:
         return None
     elif valtype == kJSTypeNumber.value:
-        return val.ToNumber(context, NULL)
+        retval = val.ToNumber(context, NULL)
     elif valtype == kJSTypeBoolean.value:
-        return val.ToBoolean(context)
+        retval = val.ToBoolean(context)
     elif valtype == kJSTypeString.value:
         jstext = val.ToStringCopy(context, NULL)
         length = jstext.GetMaximumUTF8CStringSize()
         cstring = (c_char * (length))()
         jstext.GetUTF8CString(cstring, length)
         jstext.Release()
-        return cstring.value
+        retval = cstring.value
+        del cstring
     elif valtype == kJSTypeObject.value:
         jsobject = val.ToObject(context, NULL)
-        
         can_call = jsobject.IsFunction(context)
         pyarg = _wrapJs(env, jsobject, None, can_call=can_call)
-        pyarg._javascript_obj = jsobject
-        return pyarg
+        retval = pyarg
     else:
         logging.error("Invalid javascript value type encountered!: %d" % valtype)
-        return None
-                              
+        retval = None
+    return retval
+              
 class JSFunction(JSObject):
 
-    def __init__(self, env, obj, thisobj):
-        JSObject.__init__(self, obj=obj._object)
+    def __init__(self, env, obj, thisobj, name):
+        JSObject.__init__(self, obj=obj._object, context = env._context._object)
         self._thisjsobj = thisobj
         self._jsfuncobj = obj
+        if thisobj and cast(thisobj._object, c_void_p ).value == None:
+            self._thisjsobj = None
         self._env  = env
-        
+        self._callable = None
+        self._name = name
+        self._count = 0
+    
     def __call__(self, *args):
-        import numbers
         jsArgs = []
-        
+        self._count += 1
+   
         for arg in args:
             if isinstance(arg, numbers.Number):
                 arg = JSValue.MakeNumber( self._env._context, arg)
             elif isinstance(arg, str):
                 string = JSString.CreateWithUTF8CString(c_char_p(arg))
                 arg = JSValue.MakeString(self._env._context, string)
-                #string.Release()
+                #string.Release()#according to doc, arg now retains the string
             elif isinstance( arg, JSObject):
                 pass
             elif callable(arg):
                 arg = to_jsfunction(self._env, arg)
                 #logging.error("ARG FUNC: %s"%JSValue(obj=arg._object).GetType(self._env._context))
             jsArgs.append( arg )
+        if len(jsArgs)==0:
+            jsArgs = NULL
+        
         retval =  self._jsfuncobj.CallAsFunction( self._env._context, self._thisjsobj,
                                         c_int(len(args)),
                                         jsArgs,
                                         NULL)
-        assert(isinstance(retval, JSValue))
+      
+        
         if cast( retval._object, c_void_p).value == None:
             return None
-        return to_pythonjs(self._env, retval)
         
-def to_pyvalue(env, thisobj, jsvalue, name):
-    #logging.error("CONVERTING %s"%jsvalue)
-    valtype = jsvalue.GetType(env._context)
-    #logging.error("CONVERTING TYPE %s"%valtype)
-    if valtype == kJSTypeNull.value  or valtype == kJSTypeUndefined.value:
-        return None
-    elif valtype == kJSTypeNumber.value:
-        return jsvalue.ToNumber(env._context, NULL)
-    elif valtype == kJSTypeBoolean.value:
-        return jsvalue.ToBoolean(env._context)
-    elif valtype == kJSTypeString.value:
-        jstext = jsvalue.ToStringCopy(env._context, NULL)
-        length = jstext.GetMaximumUTF8CStringSize()
-        cstring = (c_char * (length))()
-        jstext.GetUTF8CString(cstring, length)
-        jstext.Release()
-        return cstring.value 
-    elif valtype == kJSTypeObject.value:
-        #logging.error("TO PY OBJECT")
-        jsobj = jsvalue.ToObject(env._context, NULL)
-        if jsobj.IsFunction(env._context):
-            return JSFunction(env, obj=jsobj, thisobj= None)
-            #logging.error("RETURNING NONE")
-            return None
-            #assert( isinstance( context, JSContext ))
-            #return _wrapJs( env, jsobj, name, can_call = True)
-        
-        myname = jsobj.GetPrivate()
-        found = None
-        if myname:
-            found = JavascriptClass._globalobjects.get(strid(env._context) + myname)
-        if not found:
-            return _wrapJs(env, jsobj = jsobj, var_name = myname or "_tmp", can_call = False)
-        #logging.error("RETURNING ITEM %s"%found)
-        return  found
-
-    logging.error("Unknown object passed to python from javascript. Object must be known in both worlds.  %d" % valtype)
-    return None
+        return  to_pythonjs(self._env, retval)
 
 
 class JavascriptClass(object):
@@ -184,7 +164,6 @@ class JavascriptClass(object):
     _methods = None
     _methods_by_name = {}
     _globalobjects = {}
-    _python_to_js = {}
     _constructors = {}
 
     @classmethod
@@ -206,8 +185,10 @@ class JavascriptClass(object):
                 #libgtk3.gdk_threads_enter()
                 try:
                     context = JSContext(obj=ctxt)
-                    name = JSObject(obj=obj).GetPrivate()
+                    val = JSObject(obj = obj, context= ctxt)
+                    name = val.GetPrivate()
                     pyobj = env._jsobjects[ name ]
+                    del env._jsobjects[name]
                     #get the method to be called
                     methodname = cls.staticmethods[index].name
                     to_call = cls._methods_by_name.get(methodname)
@@ -224,15 +205,15 @@ class JavascriptClass(object):
                         if isinstance(arguments[i], numbers.Number):
                             args.append(arguments[i])
                         else:
-                            valtype = JSValue(obj=arguments[i]).GetType(context)
+                            valtype = JSValue(obj=arguments[i], context = ctxt).GetType(context)#None context here to prevent unprotect on __del__
                             if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined:
                                 args.append(None)
                             elif valtype == kJSTypeNumber.value:
-                                args.append(JSValue(arguments[i]).ToNumber(context, NULL))
+                                args.append(JSValue(arguments[i], context = ctxt ).ToNumber(context, NULL))
                             elif valtype == kJSTypeBoolean.value:
-                                args.append(JSValue(arguments[i]).ToBoolean(context))
+                                args.append(JSValue(arguments[i], context = ctxt).ToBoolean(context))
                             elif valtype == kJSTypeString.value:
-                                jstext = JSValue(arguments[i]).ToStringCopy(context, NULL)
+                                jstext = JSValue(arguments[i], context = ctxt).ToStringCopy(context, NULL)
                                 length = jstext.GetMaximumUTF8CStringSize()
                                 cstring = (c_char * (length))()
                                 
@@ -240,13 +221,13 @@ class JavascriptClass(object):
                                 jstext.Release()
                                 args.append(cstring.value)
                             elif valtype == kJSTypeObject.value:
-                                jsobject = JSValue(arguments[i]).ToObject(context, NULL)
-                                jsname = jsobject.GetPrivate() or ""
+                                jsobject = JSValue(arguments[i], context = ctxt).ToObject(context, NULL)
+                                #jsname = jsobject.GetPrivate() or ""
                                 
                                 #logging.error("IS FUNCTION? '%s'"%jsobject._object)
                                 can_call = jsobject.IsFunction(context)
                                 pyarg = _wrapJs(env, jsobject, "arg%s" % i, can_call=can_call)
-                                pyarg._javascript_obj = jsobject
+                                #pyarg._javascript_obj = jsobject
                                 args.append(pyarg)
                             else:
                                 logging.error("Invalid javascript value type encountered!: %d" % valtype)
@@ -262,13 +243,13 @@ class JavascriptClass(object):
                         cstring = c_char_p(value)
                         text = JSString.CreateWithUTF8CString(cstring);
                         retval = JSValue.MakeString(context, text)._object;
-                        #text.Release()
-                    elif isinstance(value, JavascriptClass):
-                        retval = value._javascript_obj._object
+                        text.Release()
+                    elif isinstance(value, JSObject):
+                        retval = retval._object
                     else:
                         retval = NULL
-                    retvalp = cast(byref(retval), POINTER(c_longlong))
-                    return retvalp.contents.value
+                    retval = cast(byref(retval), POINTER(c_longlong)).contents
+                    return retval
                 except:
                     logging.error("EXCEPTION calling python method from javascript:")
                     logging.error(traceback.format_exc())
@@ -296,12 +277,7 @@ class JavascriptClass(object):
           
         def _finalize_cb(obj):
             #cleanup if javascript side decides to delete the object:
-            name = JSObject(obj=obj).GetPrivate()
-            if name:
-                pyobj = env._jsobjects.get(name)
-                if pyobj:
-                    del env._jsobjects[name]
-                    pyobj._javascript_obj = None
+            pass
                 
 
         #create the class definition
@@ -570,9 +546,8 @@ def _wrapJs(env, jsobj, var_name, can_call=False):
     it callable in python too.  This is to be used only internally
     """
     assert(isinstance(env, ScriptEnv))
-    id = str(cast(jsobj._object, c_void_p))
     if jsobj.IsFunction(env._context):
-        wrapped = JSFunction(env, obj=jsobj, thisobj = None)
+        wrapped = JSFunction(env, obj=jsobj, thisobj = None, name = var_name)
     else:
         wrapped = PythonWrapper(env, jsobj, var_name, can_call)
     return wrapped
@@ -590,7 +565,7 @@ class PythonWrapper(JSObject):
         assert(isinstance(env, ScriptEnv))
         assert(obj)
         self._cmd = ""
-        JSObject.__init__(self, obj=obj._object)
+        JSObject.__init__(self, obj=obj._object, context=env._context._object)
         self._varname = var_name
         self._wrapped_obj = obj
         if obj:
@@ -600,8 +575,8 @@ class PythonWrapper(JSObject):
             names=[]
             count = 0
         self._can_call = can_call
-        self._attributes = {}
-        self._jsmethods = {}
+        #self._attributes = {}
+        #self._jsmethods = {}
         self._context = env._context
         self._env = env
         iteritems = {}
@@ -615,10 +590,15 @@ class PythonWrapper(JSObject):
                 exc = POINTER(c_int)(c_int(0))
                 prop = obj.GetProperty(env._context, var_name_ref, exc)
                 if prop.IsObject( env._context ):
-                    if prop.ToObject(env._context, NULL).IsFunction(env._context):
-                        self._jsmethods[var_name.value] = JSFunction(env, obj = prop.ToObject(env._context, NULL), thisobj = self._wrapped_obj)
+                    propobj = prop.ToObject(env._context, NULL)
+                    if propobj.IsFunction(env._context):
+                       
+                        setattr(self, var_name.value, 
+                                 JSFunction(env, obj = propobj, thisobj = self._wrapped_obj, name=var_name.value))
+                        if cast(prop._object, c_void_p).value != cast(propobj._object, c_void_p).value:
+                            prop.Unprotect(  env._context )
                     else:
-                        self._attributes[var_name.value] = prop
+                        setattr(self, var_name.value, prop)
                         if var_name.value.isdigit():
                             iteritems[var_name.value] = prop
                             itercount += 1
@@ -633,22 +613,7 @@ class PythonWrapper(JSObject):
         raise Exception()
         
         
-        
-    def __getattr__(self, attr):
-        if attr in self._jsmethods.keys():
-            return self._jsmethods[attr]
-        elif attr in self._attributes.keys():
-            val = self._attributes[attr]
-            if isinstance(val, JSValue):
-                val = to_pyvalue(self._env, self, val, attr)
-                self._attributes[attr] = val #we chose to delay processing
-            if val and hasattr(self, '_webview'):
-                val._webview = self._webview
-            return val
-        else:
-            return object.__getattribute__(self, attr)
-        
-   
+     
         
 def export_module(env, module):
     """Export a python module and all JavascriptClass derived
@@ -662,66 +627,24 @@ def export_module(env, module):
     return Namespace(env, module)
 
 
-class JSException(Exception):
-
-    def __init__(self, err):
-        Exception.__init__(self, err)
-        self._err = err
 
 
 class ScriptEnv(JavascriptClass):
     """Javascript execution environment"""
-
-    class Proxy(PythonWrapper):
-
-        def __init__(self, env, name):
-            PythonWrapper.__init__(self, env, obj=None, var_name=name, can_call=True)
-            
-        def __getattr__(self, attr):
-            return ScriptEnv.Proxy(self._env, self._varname + "." + attr)
-            
-    TMPPREFIX = '_tmptmp_pyjs'
-    
-    _tmpindex = 0
-    #_sem = {}
-    
-    def _tmpvarname(self):
-        ScriptEnv._tmpindex += 1
-        return (ScriptEnv._tmpindex - 1, "%s%d" % (ScriptEnv.TMPPREFIX, ScriptEnv._tmpindex - 1))
+    _jsobjects = {}
+         
     
     def __init__(self, webview):
         
-        self._exception = {}
-        self._returnval = {}
-        self._jsobjects = {}
-        self._each_apply = None
         self._webview = webview
         self._context = webview.get_main_frame().get_global_context()
-        id = str(cast(self._context._object, c_void_p))
-        assert(not JavascriptClass._python_to_js)
-        JavascriptClass._python_to_js[id] = self
         JavascriptClass.__init__(self, self, "python")
         
         #self._sem = ScriptEnv._sem[id]
         import jquery
         jquery.initialize(self)
-        assert(hasattr(self, '_returnval'))
         
-    class Execution_Env(object):
-        
-        _execution = None
-        _count = 0
-        
-        def __init__(self, env):
-            self._env = env
-            self._execution = 0
-            #if not ScriptEnv._sem.has_key(id):
-            #    ScriptEnv._sem[id] = threading.Semaphore(0)
-            #    self._sem = ScriptEnv._sem[id]
-            #self._sem.acquire()#python.init() call from html/js will free
-            #self._sem.release()
-            self._js = []
-             
+   
              
     def export_to_python(self, jsobj , var_name, can_call=False):
         wrapped = _wrapJs(self._env, jsobj, var_name, can_call)
@@ -731,19 +654,20 @@ class ScriptEnv(JavascriptClass):
    
     
     def get_jsobject(self, name , can_call=False):
-        id = str(cast(self._context._object, c_void_p))
-        retval = JavascriptClass._globalobjects.get(id + name)
+        ident = str(cast(self._context._object, c_void_p))
+        retval = JavascriptClass._globalobjects.get(ident + name)
         
         if retval:
             retval._webview = self._webview
             
         else:
             self._webview.execute_script("python.export_to_python(%s,'%s', %s);" % (name, name, int(can_call)))
-            retval = JavascriptClass._globalobjects.get(id + name)
+            retval = JavascriptClass._globalobjects.get(ident + name)
             if retval:
                 retval._webview = self._webview
                 retval._env = self
             else:                
                 raise Exception("Unknown javascript object by name %s" % name)
-        JavascriptClass._globalobjects[id + name] = retval
+        JavascriptClass._globalobjects[ident + name] = retval
+        logging.error("GLOBAL JS OBJ")
         return retval

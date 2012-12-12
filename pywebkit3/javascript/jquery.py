@@ -19,7 +19,7 @@ def initialize( env):
     assert(isinstance( env, ScriptEnv))
     def view_ready():
         global ___
-        logging.error("LOAD COMPLETE")
+        #logging.error("LOAD COMPLETE")
         ___= env.get_jsobject(  "$", can_call = True)
     env._webview.on_view_ready( view_ready)
     _initialized = True

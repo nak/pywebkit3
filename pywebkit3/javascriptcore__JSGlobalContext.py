@@ -262,5 +262,5 @@ import javascriptcore__JSContext
 class JSGlobalContext( javascriptcore__JSContext.JSContext):
     """Class JSGlobalContext Constructors"""
     def __init__(self, obj = None):
-        self._object = obj
+        javascriptcore__JSContext.JSContext.__init__(self, obj = obj)
     """Methods"""
