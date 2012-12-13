@@ -37,7 +37,6 @@ function updateYPR( yaw, pitch, roll ){
 	pitch=-pitch;
      
 	$('.cubie').each( function(index){
-	    // alert(index);
 	    if (rotations[index]==null){
 	      
 	      rotations[index] = $(this).css('-webkit-transform')  ;
@@ -141,7 +140,6 @@ var py_ypr_updater;
 
 function enable_unit_test(){
   py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
-  alert(py_ypr_updater);
    setInterval( test_loop, 100 / 60 );
 
 }

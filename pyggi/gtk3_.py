@@ -330,7 +330,7 @@ def gtkkeysnooperinstall( snooper, func_data,):
 def gtkgetoptiongroup( open_default_display,):
     libgtk3.gtk_get_option_group.restype = _GOptionGroup
     libgtk3.gtk_get_option_group.argtypes = [gboolean]
-    from pywebkit3.gobject import GOptionGroup
+    from pyggi.gobject import GOptionGroup
     return GOptionGroup( obj=    libgtk3.gtk_get_option_group(open_default_display, )
  or POINTER(c_int)())
 def gtkdragdestfindtarget( widget, context, target_list,):
@@ -362,7 +362,7 @@ def gtkdragdestgettrackmotion( widget,):
 def gtkgeteventwidget( event,):
     libgtk3.gtk_get_event_widget.restype = _GtkWidget
     libgtk3.gtk_get_event_widget.argtypes = [POINTER(GdkEvent)]
-    from pywebkit3.gtk3 import GtkWidget
+    from pyggi.gtk3 import GtkWidget
     return GtkWidget(None, obj=    libgtk3.gtk_get_event_widget(event, )
  or POINTER(c_int)())
 def gtkgetcurrenteventstate( state,):
@@ -376,7 +376,7 @@ def gtkdraggetsourcewidget( context,):
     else: context = POINTER(c_int)()
     libgtk3.gtk_drag_get_source_widget.restype = _GtkWidget
     libgtk3.gtk_drag_get_source_widget.argtypes = [_GdkDragContext]
-    from pywebkit3.gtk3 import GtkWidget
+    from pyggi.gtk3 import GtkWidget
     return GtkWidget( obj=    libgtk3.gtk_drag_get_source_widget(context, )
  or POINTER(c_int)())
 def gtkdragsourcegettargetlist( widget,):
@@ -384,7 +384,7 @@ def gtkdragsourcegettargetlist( widget,):
     else: widget = POINTER(c_int)()
     libgtk3.gtk_drag_source_get_target_list.restype = _GtkTargetList
     libgtk3.gtk_drag_source_get_target_list.argtypes = [_GtkWidget]
-    from pywebkit3.gtk3 import GtkTargetList
+    from pyggi.gtk3 import GtkTargetList
     return GtkTargetList( obj=    libgtk3.gtk_drag_source_get_target_list(widget, )
  or POINTER(c_int)())
 def gtkdragdestgettargetlist( widget,):
@@ -392,7 +392,7 @@ def gtkdragdestgettargetlist( widget,):
     else: widget = POINTER(c_int)()
     libgtk3.gtk_drag_dest_get_target_list.restype = _GtkTargetList
     libgtk3.gtk_drag_dest_get_target_list.argtypes = [_GtkWidget]
-    from pywebkit3.gtk3 import GtkTargetList
+    from pyggi.gtk3 import GtkTargetList
     return GtkTargetList( obj=    libgtk3.gtk_drag_dest_get_target_list(widget, )
  or POINTER(c_int)())
 def gtkdragcheckthreshold( widget, start_x, start_y, current_x, current_y,):
@@ -412,6 +412,6 @@ def gtkdragbegin( widget, targets, actions, button, event,):
     else: actions = POINTER(c_int)()
     libgtk3.gtk_drag_begin.restype = _GdkDragContext
     libgtk3.gtk_drag_begin.argtypes = [_GtkWidget,_GtkTargetList,GdkDragAction,gint,POINTER(GdkEvent)]
-    from pywebkit3.gobject import GdkDragContext
+    from pyggi.gobject import GdkDragContext
     return GdkDragContext( obj=    libgtk3.gtk_drag_begin(widget, targets, actions, button, event, )
  or POINTER(c_int)())

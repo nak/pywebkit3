@@ -1,6 +1,6 @@
 #!/usr/bin/python
 from ctypes import *
-from pywebkit3 import gtk3,webkit3,javascript
+from pyggi import gtk3,webkit3,javascript
 import logging
 import os.path
 
@@ -43,9 +43,9 @@ javascript.export_module(web.get_env(), cube)
             
 #and show it!
 window.show_all()
-from pywebkit3.javascript import jquery
-from pywebkit3 import gobject
-from pywebkit3.webkit3_enums import *
+from pyggi.javascript import jquery
+from pyggi import gobject
+from pyggi.webkit3_enums import *
 
 
 def change( index, obj):

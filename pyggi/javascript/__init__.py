@@ -111,8 +111,8 @@ def to_pythonjs( env, val):
         logging.error("Invalid javascript value type encountered!: %d" % valtype)
         retval = None
     return retval
-              
-globalfuncs = []
+        
+        
 class JSFunction(JSObject):
 
     def __init__(self, env, obj, thisobj, name):
@@ -144,16 +144,14 @@ class JSFunction(JSObject):
                 cstring = c_char_p(arg)
                 jsstring = JSString.CreateWithUTF8CString(cstring)
                 jsarg = JSValue.MakeString(self._env._context, jsstring)
-                #jsstring.Release()#according to doc, arg now retains the string, but memory leak ensues if we don't do this??
+                ##according to doc, arg now retains the string, but memory leak ensues if we don't do this??
                 del cstring
             elif isinstance( arg, JSObject):
-                pass
+                jsarg = arg
             elif callable(arg):
                 jsarg = to_jsfunction(self._env, arg)
                 assert(jsarg.IsFunction(self._env._context))
-                logging.error("CALLBACK %s"%cast(jsarg._object, c_void_p).value)
-                #globalfuncs.append(jsarg)
-                #jsarg.CallAsFunction(self._env._context,None, c_int(0), None, None)
+                
             self._jsArgs.append( jsarg )
         if len(self._jsArgs)==0:
             jsArgs = NULL
@@ -161,7 +159,7 @@ class JSFunction(JSObject):
                                         c_int(len(args)),
                                         self._jsArgs,
                                         NULL)
-        #globalfuncs = []
+        
         if cast( retval._object, c_void_p).value == None:
             return None
         

@@ -1,4 +1,4 @@
-from pywebkit3.javascript import *
+from pyggi.javascript import *
 
 
 

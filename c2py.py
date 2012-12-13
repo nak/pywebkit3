@@ -503,7 +503,7 @@ class Parser:
             self._classname = ""
         if self._classname== "void":
             self._classname= ""
-        with open(os.path.join('pywebkit3','%s__%s.py'%(namespace,self._classname)),'w') as f:
+        with open(os.path.join('pyggi','%s__%s.py'%(namespace,self._classname)),'w') as f:
             prefix = "_".join(l.lower() for l in re.findall('[A-Z][^A-Z]*', self._classname.replace('WebKit','Webkit')))
             prefix += '_'
             assert(namespace != 'gtk')
