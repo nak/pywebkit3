@@ -369,14 +369,14 @@ class JSObject( JSValue ):
         
     """Methods"""
     def GetProperty(  self, ctx, propertyName, exception, ):
-        if ctx: ctx = ctx._object
-        else: ctx = POINTER(c_int)()
-        if propertyName: propertyName = propertyName._object
-        else: propertyName = POINTER(c_int)()
+        #if ctx: ctx = ctx._object
+        #else: ctx = POINTER(c_int)()
+        #if propertyName: propertyName = propertyName._object
+        #else: propertyName = POINTER(c_int)()
 
         from javascriptcore import JSValue
-        return JSValue( obj=libjavascriptcore.JSObjectGetProperty( ctx,self._object,propertyName,exception ),
-                        context = ctx)
+        return JSValue( obj=libjavascriptcore.JSObjectGetProperty( ctx._object,self._object,propertyName._object,exception ),
+                        context = ctx._object)
 
     def JSPropertyNameAccumulatorAddName(  self, accumulator, propertyName, ):
         if accumulator: accumulator = accumulator._object

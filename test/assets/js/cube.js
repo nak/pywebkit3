@@ -141,8 +141,11 @@ var py_ypr_updater;
 
 function enable_unit_test(){
   py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
-  setInterval( test_loop, 1000 / 60 );
+  alert(py_ypr_updater);
+   setInterval( test_loop, 100 / 60 );
+
 }
+ 
 
 
 //
@@ -153,6 +156,7 @@ var sign=1;
 
 function test_loop() {
   //Python obejct accessible in javascript!!!
+  //alert(py_ypr_updater);
     py_ypr_updater.update( 0.3, sign*0.5, 0.7);
     YPR[0] = py_ypr_updater.yaw()
     YPR[1] = py_ypr_updater.pitch()

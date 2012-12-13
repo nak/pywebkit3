@@ -334,7 +334,10 @@ libjavascriptcore.JSValueMakeBoolean.argtypes = [_JSContext,c_char]
 libjavascriptcore.JSValueMakeString.restype = _JSValue
 libjavascriptcore.JSValueMakeString.argtypes = [_JSContext,_JSString]
 libjavascriptcore.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
-
+libjavascriptcore.JSValueIsInstanceOfConstructor.restype = c_char
+libjavascriptcore.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,_JSValue]
+libjavascriptcore.JSValueIsNumber.restype = c_char
+libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
 
 class JSValue( object ):
     """Class JSValue Constructors"""
@@ -342,10 +345,11 @@ class JSValue( object ):
         self._object = obj        
         self._context = context
         assert( isinstance(context, POINTER(c_int)) or context == None)
-
-        #libjavascriptcore.JSValueProtect.argtypes = [_JSContext,_JSValue]
-        #libjavascriptcore.JSValueProtect( context,self._object )    
-        
+        if context and cast(context, c_void_p).value != None and \
+            obj:
+            import logging
+            libjavascriptcore.JSValueProtect( self._context,self._object )   
+            
     """Methods"""
     def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
         if ctx: ctx = ctx._object
@@ -355,19 +359,14 @@ class JSValue( object ):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libjavascriptcore.JSValueIsInstanceOfConstructor.restype = bool
-        libjavascriptcore.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,_JSValue]
-        
         return libjavascriptcore.JSValueIsInstanceOfConstructor( ctx,self._object,ructor,exception )
 
     def ToObject(  self, ctx, exception, ):
-        if ctx: ctx = ctx._object
-        else: ctx = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
         from javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx,self._object,exception ), context = ctx)
+        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx._object,self._object,exception ), context = ctx._object)
 
     def IsUndefined(  self, ctx, ):
         if ctx: ctx = ctx._object
@@ -436,6 +435,14 @@ class JSValue( object ):
         from javascriptcore import JSString
         return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object,exception )  or POINTER(c_int)())
 
+    def ToPyString(self , ctx, exception):
+        jstext = self.ToStringCopy(ctx, exception)
+        length = jstext.GetMaximumUTF8CStringSize()
+        cstring = (c_char * (length))()
+        jstext.GetUTF8CString(cstring, length)
+        jstext.Release()
+        return cstring.value
+    
     def ToBoolean(  self, ctx, ):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
@@ -447,8 +454,6 @@ class JSValue( object ):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libjavascriptcore.JSValueIsNumber.restype = bool
-        libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
         
         return libjavascriptcore.JSValueIsNumber( ctx,self._object )
 
@@ -554,11 +559,7 @@ class JSValue( object ):
                 self._context = self._context._object
             if cast(self._context, c_void_p).value != None:
                 libjavascriptcore.JSValueUnprotect( self._context,self._object )           
-            else:   
-                import logging
-                logging.error("NO CLEANUP")
+            
                 
-        else:
-            import logging
-            logging.error("NO CLEANUP")
+        
                 
