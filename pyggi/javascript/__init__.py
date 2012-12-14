@@ -59,24 +59,23 @@ def to_jsfunction(env, func):
             del args
             
             if retval == None:
-                retval = JSValue.MakeNull(env._context)
+                retval = JSValue.MakeNull(context)
             elif isinstance(retval, numbers.Number):
-                retval = JSValue.MakeNumber( env._context, retval)
+                retval = JSValue.MakeNumber( context, retval)
             elif isinstance(retval, str):
                 cstring = c_char_p(retval)
-                text = JSString.CreateWithUTF8CString(cstring);
                 retval = JSValue.MakeString(context, text);
-                text.Release()
+                #text.Release()
             elif retval in [True, False]:
                 retval = JSValue.MakeBoolean(context, retval)
             assert( isinstance(retval, JSValue))
-            #retval.Protect(env._context)#will go out of scope and underlying object needs to be retained
+            #retval.Protect(context)#will go out of scope and underlying object needs to be retained
             retval =  cast(byref(retval._object),POINTER(c_longlong)).contents
             return retval.value
         except:
             logging.error(traceback.format_exc())
             logging.error("Error in calling argument function ")
-            return c_longlong(0)
+            return 0
     cfunc = JSObjectCallAsFunctionCallback(C_Callable)
     jsobj = JSObject.MakeFunctionWithCallback(env._context, NULL, cfunc)
     assert ( not cast(jsobj._object,c_void_p).value == None)
@@ -112,7 +111,7 @@ def to_pythonjs( env, val):
         retval = None
     return retval
         
-        
+
 class JSFunction(JSObject):
 
     def __init__(self, env, obj, thisobj, name):
@@ -125,18 +124,22 @@ class JSFunction(JSObject):
         self._callable = None
         self._name = name
         self._count = 0
-    
+        self._jsArgs = []
+        
     def __call__(self, *args):
-        #global globalfuns
         #We must keep the javascript arguments active while this object is active 
         #and before another call is made to this JSFunction.  We cannot guarentee
         #when the jsFunction will be invoked (CallAsFunction seems to squirrel it 
         #away until it is called).  It is assumed that a second call will be made
         #to the jsfunction by the core engine only when a first call has been fully
         #processed (args will then go away).  
+        try:    
+            logging.error("CALLING %s...%s"%(self._jsArgs, self._jsArgs[0]._wrapped_obj))
+        except:
+            pass
         self._jsArgs = []
         self._count += 1
-        
+            
         for arg in args:
             if isinstance(arg, numbers.Number):
                 jsarg = JSValue.MakeNumber( self._env._context, arg)
@@ -145,27 +148,29 @@ class JSFunction(JSObject):
                 jsstring = JSString.CreateWithUTF8CString(cstring)
                 jsarg = JSValue.MakeString(self._env._context, jsstring)
                 ##according to doc, arg now retains the string, but memory leak ensues if we don't do this??
+                jsstring.Release()
                 del cstring
             elif isinstance( arg, JSObject):
                 jsarg = arg
             elif callable(arg):
                 jsarg = to_jsfunction(self._env, arg)
                 assert(jsarg.IsFunction(self._env._context))
-                
+                self._callable = arg#must maintain this to prevent from going out of scope!!
+            
             self._jsArgs.append( jsarg )
         if len(self._jsArgs)==0:
-            jsArgs = NULL
+            self._jsArgs = NULL
+        
         retval =  self._jsfuncobj.CallAsFunction( self._env._context, self._thisjsobj,
                                         c_int(len(args)),
                                         self._jsArgs,
                                         NULL)
-        
         if cast( retval._object, c_void_p).value == None:
             return None
-        
         return  to_pythonjs(self._env, retval)
 
 
+        
 class JavascriptClass(object):
     """Class instance of which are accessible within a javascript"""
     _methods = None
@@ -208,8 +213,9 @@ class JavascriptClass(object):
                         if isinstance(arguments[i], numbers.Number):
                             args.append(arguments[i])
                         else:
+                            
                             valtype = JSValue(obj=arguments[i], context = ctxt).GetType(context)#None context here to prevent unprotect on __del__
-                            if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined:
+                            if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
                                 args.append(None)
                             elif valtype == kJSTypeNumber.value:
                                 args.append(JSValue(arguments[i], context = ctxt ).ToNumber(context, NULL))
@@ -227,7 +233,9 @@ class JavascriptClass(object):
                             elif valtype == kJSTypeObject.value:
                                 jsobject = JSValue(arguments[i], context = ctxt).ToObject(context, NULL)
                                 can_call = jsobject.IsFunction(context)
+                                
                                 pyarg = _wrapJs(env, jsobject, "arg%s" % i, can_call=can_call)
+                              
                                 #pyarg._javascript_obj = jsobject
                                 args.append(pyarg)
                             else:
@@ -551,8 +559,6 @@ class PythonWrapper(JSObject):
         self._cmd = ""
         JSObject.__init__(self, obj=obj._object, context=env._context._object)
         self._varname = var_name
-        self._wrapped_obj = obj
-        
         self._can_call = can_call
         self._context = env._context
         self._env = env
@@ -563,12 +569,13 @@ class PythonWrapper(JSObject):
             if prop.IsUndefined(env._context):
                 break
             else:
+                prop._context = None
                 self._iteritems.append(prop)
             itercount += 1
           
             
     def __getattr__(self, attr):
-        prop = self._wrapped_obj.GetProperty(self._context, JSString.CreateWithUTF8CString( attr) , NULL)
+        prop = self.GetProperty(self._context, JSString.CreateWithUTF8CString( attr) , NULL)
         jstype = prop.GetType(self._env._context)
         if jstype == kJSTypeUndefined.value:
             return object.__getattribute__(self, attr)
@@ -580,8 +587,8 @@ class PythonWrapper(JSObject):
                     jsfunc = JSFunction(self._env, obj = propobj, thisobj = self, name = attr)
                     setattr(self, attr, 
                             jsfunc)
-                    if cast (propobj._object,c_void_p).value != cast (prop._object,c_void_p).value:
-                        prop.Unprotect(self._env._context)
+                    #if cast (propobj._object,c_void_p).value != cast (prop._object,c_void_p).value:
+                    #    prop.Unprotect(self._env._context)
                     return jsfunc
                 else:
                     setattr(self, attr, prop)

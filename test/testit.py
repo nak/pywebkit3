@@ -50,7 +50,6 @@ from pyggi.webkit3_enums import *
 
 def change( index, obj):
     _ = jquery._
-    logging.error("CHANGE!!!!!!!!")
     if index%3 == 0:
         color = "#CC%d%d%d%d"%(index,index, index, index)
     elif index%3 == 1:

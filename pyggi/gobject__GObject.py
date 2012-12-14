@@ -679,6 +679,8 @@ class GObject( object):
                 if not retval:
                     #GObject._cfuncs.remove(cfunc)
                     return False
+                if retval==None:
+                    return False
                 return retval
             except:
                 import traceback

@@ -402,7 +402,6 @@ class JSValue( object ):
     def Protect(  self, ctx, ):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        
         libjavascriptcore.JSValueProtect( ctx,self._object )
 
     def IsObject(  self, ctx, ):
@@ -558,8 +557,7 @@ class JSValue( object ):
             if isinstance(self._context, JSContext):
                 self._context = self._context._object
             if cast(self._context, c_void_p).value != None:
-                libjavascriptcore.JSValueUnprotect( self._context,self._object )           
-            
+                libjavascriptcore.JSValueUnprotect( self._context,self._object )      
                 
         
                 

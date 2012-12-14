@@ -27,7 +27,6 @@ def initialize( env):
         ___= env.get_jsobject(  "$", can_call = True)
         assert(___)
         _ = ___
-        logging.error("LOAD COMPLETE %s"%_)
         
         return False
     env._webview.on_view_ready( view_ready)

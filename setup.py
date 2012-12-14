@@ -1,7 +1,7 @@
 #!/usr/bin/python
 from setuptools import setup, find_packages
 
-setup( name = "PyWebKit3",
+setup( name = "PyGGI",
     version = "0.7.1",
     packages = ["pyggi"],# find_packages(),
     scripts = ["fmVisualization"],
