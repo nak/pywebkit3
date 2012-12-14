@@ -133,10 +133,6 @@ class JSFunction(JSObject):
         #away until it is called).  It is assumed that a second call will be made
         #to the jsfunction by the core engine only when a first call has been fully
         #processed (args will then go away).  
-        try:    
-            logging.error("CALLING %s...%s"%(self._jsArgs, self._jsArgs[0]._wrapped_obj))
-        except:
-            pass
         self._jsArgs = []
         self._count += 1
             

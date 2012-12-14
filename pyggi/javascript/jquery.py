@@ -9,10 +9,12 @@ _load_status_listeners = []
 
 import Queue
 def _(*args):
-    retval =  ___(*args)
-  
-   
+    try:
+        retval =  ___(*args)
+    except:
+        retval = None
     return retval
+
 ___=None
 _initialized = False
 
