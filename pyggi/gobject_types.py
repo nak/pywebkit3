@@ -1,7 +1,7 @@
 from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint, c_longlong, POINTER
 
-cdll.LoadLibrary("libgobject-2.0.so")
-libgobject = CDLL("libgobject-2.0.so")
+cdll.LoadLibrary("libgobject-2.0.so.0")
+libgobject = CDLL("libgobject-2.0.so.0")
 
 GType = c_int
 G_TYPE_INVALID                  = c_int (0)

@@ -3,8 +3,8 @@ c_void_p = c_ulonglong
 from gdk_types import *
 from gobject_types import *
 
-cdll.LoadLibrary("libgtk-3.so")
-libgtk3 = CDLL("libgtk-3.so")
+cdll.LoadLibrary("libgtk-3.so.0")
+libgtk3 = CDLL("libgtk-3.so.0")
 
 """default gtk types"""
 unsigned = c_uint
