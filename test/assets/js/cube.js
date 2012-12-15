@@ -83,20 +83,22 @@ $(document).ready(function(){
 		         
 });
 
-Tmp = function(){
-  this.a = 1;
-  this.b = 2;
+/* A javascript class and object instance to be accessed via
+   Python to pop up an alert message */
+Alerter = function(){
 
   this.func = function(){
     alert("A function was called from python on a javascript object to produce this alert!");
     return "ALERTED";
   }
+
 };
-var tmp = new Tmp();
+
+var alerter = new Alerter();
 
 
 function cube_init() {
-    python.export_to_python(tmp, "tmp");
+    python.export_to_python(alerter, "alerter");
 	container = document.createElement('div');
 	$('#canvas')[0].appendChild(container);
 	$(container).width(SCREEN_WIDTH);
@@ -136,12 +138,16 @@ function cube_init() {
 
     $('textarea').css('font-weight','bold');
 }
+
+
+/* create a python object responsible for updating Yaw, Pitch, Roll
+   but created and accessed via javascript */
 var py_ypr_updater;
 
 function enable_unit_test(){
   py_ypr_updater = cube.YPR_Updater.new_( "ypr_updater",45, 45, -45);
-   setInterval( test_loop, 100 / 60 );
-
+  setInterval( test_loop, 100 / 60 );
+   
 }
  
 

@@ -2,8 +2,8 @@
 from setuptools import setup, find_packages
 
 setup( name = "PyGGI",
-    version = "0.7.4",
-    packages = ["pyggi"],# find_packages(),
+    version = "0.7.6",
+    packages = ["pyggi","pyggi/javascript"],# find_packages(),
     scripts = ["fmVisualization"],
 
     # Project uses reStructuredText, so ensure that the docutils get

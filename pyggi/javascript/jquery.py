@@ -5,9 +5,7 @@ from ..webkit3_enums import *
 import logging 
 from ctypes import POINTER, c_int
 
-_load_status_listeners = []
 
-import Queue
 def _(*args):
     try:
         retval =  ___(*args)
@@ -15,8 +13,12 @@ def _(*args):
         retval = None
     return retval
 
+
+jQuery = None
+
 ___=None
 _initialized = False
+
 
 def initialize( env):
     global _initialized
@@ -29,7 +31,8 @@ def initialize( env):
         ___= env.get_jsobject(  "$", can_call = True)
         assert(___)
         _ = ___
-        
+        global jQurey
+        jQuery = env.get_jsobject( "jQuery", can_call = False)
         return False
     env._webview.on_view_ready( view_ready)
     _initialized = True
