@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup( name = "PyGGI",
-    version = "0.7.6",
+    version = "0.7.7",
     packages = ["pyggi","pyggi/javascript"],# find_packages(),
     scripts = ["fmVisualization"],
 
