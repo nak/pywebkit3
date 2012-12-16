@@ -5,7 +5,7 @@ import platform
 if platform.platform().startswith("Windows"):
     try:
         cdll.LoadLibrary("libgobject-2.0-0.dll")
-        libwebkit3 = CDLL("libgobject-2.0-0.dll")
+        libgobject = CDLL("libgobject-2.0-0.dll")
         HAVE_CSS3D= True
     except:
         import logging

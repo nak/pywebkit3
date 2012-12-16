@@ -2,13 +2,13 @@
 from setuptools import setup, find_packages
 
 setup( name = "PyGGI",
-    version = "0.7.8",
+    version = "0.7.11",
     packages = ["pyggi","pyggi/javascript"],# find_packages(),
-    scripts = ["fmVisualization"],
+    scripts = [],
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
-    install_requires = ['docutils>=0.3'],
+    install_requires = ['docutils>=0.3','logging>=0.4'],
 
     include_package_data = True,
     exclude_package_data = {'':[]},

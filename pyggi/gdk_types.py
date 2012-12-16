@@ -4,7 +4,7 @@ import platform
 if platform.platform().startswith("Windows"):
     try:
         cdll.LoadLibrary("libgdk-win32-2.0-0.dll")
-        libwebkit3 = CDLL("libgdk-win32-2.0-0.dll")
+        libgdk = CDLL("libgdk-win32-2.0-0.dll")
         HAVE_CSS3D= True
     except:
         import logging

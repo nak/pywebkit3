@@ -834,9 +834,14 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             
             libwebkit3.webkit_web_view_new.argtypes = []
             self._object = libwebkit3.webkit_web_view_new()
-        from javascript import ScriptEnv
-        self._env = ScriptEnv(self)
-        
+        try:
+            from javascript import ScriptEnv
+            self._env = ScriptEnv(self)
+        except:
+            import logging
+            logging.error("Unable to load javascript engine.  Ophidian interface to DOM will not function")
+            self._env = None
+            
     def get_context(self):
         return self.get_main_frame().get_global_context()
     
