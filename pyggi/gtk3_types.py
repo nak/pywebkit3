@@ -3,8 +3,27 @@ c_void_p = c_ulonglong
 from gdk_types import *
 from gobject_types import *
 
-cdll.LoadLibrary("libgtk-3.so.0")
-libgtk3 = CDLL("libgtk-3.so.0")
+import platform
+
+if platform.platform().startswith("Windows"):
+    try:
+        cdll.LoadLibrary("libgtk-win32-2.0-0.dll")
+        libwebkit3 = CDLL("libgtk-win32-2.0-0.dll")
+        HAVE_CSS3D= True
+    except:
+        import logging
+        logging.error("Unable to load libgtk. Aborting")
+        import sys
+        sys.exit(1)
+else:
+    try:
+        cdll.LoadLibrary("libgtk-3.so.0")
+        libgtk3 = CDLL("libgtk-3.so.0")
+    except:
+        import logging
+        logging.error("Unable to load libgtk. Aborting")
+        import sys
+        sys.exit(1)
 
 """default gtk types"""
 unsigned = c_uint
