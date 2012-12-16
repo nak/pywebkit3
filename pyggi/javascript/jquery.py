@@ -28,11 +28,17 @@ def initialize( env):
     def view_ready():
         global ___
         global _
-        ___= env.get_jsobject(  "$", can_call = True)
-        assert(___)
-        _ = ___
-        global jQurey
-        jQuery = env.get_jsobject( "jQuery", can_call = False)
+        try:
+            ___= env.get_jsobject(  "$", can_call = True)
+        except:
+            ___=None
+        if ___:
+            _ = ___
+            global jQurey
+            jQuery = env.get_jsobject( "jQuery", can_call = False)
+        else:
+            import logging
+            logging.error("jQuery not detected.")
         return False
     env._webview.on_view_ready( view_ready)
     _initialized = True

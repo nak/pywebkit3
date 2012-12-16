@@ -10,9 +10,17 @@ from ctypes import *
 import logging
 import traceback
 import importlib
+import logging
+
+__alert = None
+def alert( msg ):
+    if __alert:
+        __alert(msg)
+    else:
+        logging.error("Javascript environment unavailable to alert message %s"%msg)
 
 def strid(obj):
-    return str(cast(obj._object, c_void_p))
+    return str(cast(obj._object, c_void_p).value)
 
 def jsEqual(obj1, obj2):
     return cast(obj1._object, c_void_p).value == cast(obj2._object, c_void_p).value 
@@ -192,8 +200,7 @@ class JavascriptClass(object):
                 try:
                     context = JSContext(obj=ctxt)
                     val = JSObject(obj = obj, context= ctxt)
-                    name = val.GetPrivate()
-                    pyobj = env._jsobjects[ name ]
+                    pyobj = env._jsobjects[ strid(val) ]
                     #get the method to be called
                     methodname = cls.staticmethods[index].name
                     to_call = cls._methods_by_name.get(methodname)
@@ -274,7 +281,7 @@ class JavascriptClass(object):
             call_method = getfunc(index)
             cls.staticmethods[index].name = c_char_p(name)
             cls.staticmethods[index].callAsFunction = JSObjectCallAsFunctionCallback(call_method)
-            cls.staticmethods[index].attributes = kJSPropertyAttributeReadOnly
+            cls.staticmethods[index].attributes = kJSPropertyAttributeReadOnly           
             cls._methods_by_name[cls.staticmethods[index].name] = cls._methods[index]        
             
         def _init_cb(context, obj):
@@ -313,7 +320,7 @@ class JavascriptClass(object):
         cls._classDef = JSObject.JSClassCreate(byref(jscd))
         cls._jscd = jscd #don't let it go out of scope!!!
         if not _module:
-            if not cls.__name__ in JavascriptClass._constructors:
+            if not cls.__name__ in JavascriptClass._constructors and not cls.__name__=="ScriptEnv":
                 #export this class  to be visible in javascript namespace
                 cls.export_class(env, ns)
 
@@ -384,9 +391,16 @@ class JavascriptClass(object):
                 self._javascript_obj = env._context.GetGlobalObject()
         else:
             self._javascript_obj = JSObject.Make(env._context, cls._classDef, None)  
-       
-        env._jsobjects[name] = self
-        self._javascript_obj.SetPrivate(c_char_p(name))
+
+        env._jsobjects[ strid(self._javascript_obj)] = self
+        self._javascript_obj.SetPrivate( name )
+        text = JSString.CreateWithUTF8CString( "___pyname" )
+        self._javascript_obj.SetProperty( env._context,
+                                             JSString.CreateWithUTF8CString( name ),
+                                             JSValue.MakeString( env._context, text ),
+                                             kJSPropertyAttributeNone,
+                                             NULL)
+                                                                 
         self._javascript_obj.Protect( env._context)
         if ns and self._javascript_obj:
             #if not global namespace, add javascript namespace object
@@ -493,6 +507,7 @@ class Namespace(JavascriptClass):
         Get or create the namespace for the given module name
         """
         assert(isinstance(env, ScriptEnv))
+        logging.error("GETTING NS FOR %s #################################3"%modulename)
         id = str(cast(env._context._object, c_void_p)) + modulename
         if not id in Namespace._namespaces.iterkeys():
             if modulename:
@@ -628,11 +643,12 @@ def export_module(env, module):
 
 
 
-
 class ScriptEnv(JavascriptClass):
     """Javascript execution environment"""
     _jsobjects = {}
          
+
+        
     
     def __init__(self, webview):
         
@@ -643,24 +659,22 @@ class ScriptEnv(JavascriptClass):
         #self._sem = ScriptEnv._sem[id]
         import jquery
         jquery.initialize(self)
-        
-   
              
     def export_to_python(self, jsobj , var_name, can_call=False):
+        logging.error("???????????????????????????//  %s"%var_name)
         wrapped = _wrapJs(self._env, jsobj, var_name, can_call)
         JavascriptClass._globalobjects[strid(self._context) + var_name] = wrapped
-
-
    
     
     def get_jsobject(self, name , can_call=False):
-        ident = str(cast(self._context._object, c_void_p))
+        ident = strid(self._context)
         retval = JavascriptClass._globalobjects.get(ident + name)
         
         if retval:
             retval._webview = self._webview
             
         else:
+            logging.error("???????????????????????????<><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  %s"%name)
             self._webview.execute_script("python.export_to_python(%s,'%s', %s);" % (name, name, int(can_call)))
             retval = JavascriptClass._globalobjects.get(ident + name)
             if retval:
@@ -670,3 +684,5 @@ class ScriptEnv(JavascriptClass):
                 raise Exception("Unknown javascript object by name %s" % name)
         JavascriptClass._globalobjects[ident + name] = retval
         return retval
+
+
