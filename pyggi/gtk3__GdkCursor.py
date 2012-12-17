@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -367,6 +368,7 @@ class GdkCursor( gobject__GObject.GObject):
 
     def unref(  self, ):
 
+        libgtk3.gdk_cursor_unref.restype = None
         libgtk3.gdk_cursor_unref.argtypes = [_GdkCursor]
         
         libgtk3.gdk_cursor_unref( self._object )

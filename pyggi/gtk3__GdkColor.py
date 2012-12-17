@@ -236,6 +236,7 @@ class GdkColor( object):
 
     def free(  self, ):
 
+        libgtk3.gdk_color_free.restype = None
         libgtk3.gdk_color_free.argtypes = [_GdkColor]
         
         libgtk3.gdk_color_free( self._object )

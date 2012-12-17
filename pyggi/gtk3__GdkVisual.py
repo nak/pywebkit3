@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -356,12 +357,14 @@ class GdkVisual( gobject__GObject.GObject):
 
     def get_green_pixel_details(  self, mask, shift, precision, ):
 
+        libgtk3.gdk_visual_get_green_pixel_details.restype = None
         libgtk3.gdk_visual_get_green_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_visual_get_green_pixel_details( self._object,mask,shift,precision )
 
     def gdk_query_depths(  self, depths, count, ):
 
+        libgtk3.gdk_query_depths.restype = None
         libgtk3.gdk_query_depths.argtypes = [_GdkVisual,POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_query_depths( self._object,depths,count )
@@ -382,12 +385,14 @@ class GdkVisual( gobject__GObject.GObject):
 
     def gdk_query_visual_types(  self, visual_types, count, ):
 
+        libgtk3.gdk_query_visual_types.restype = None
         libgtk3.gdk_query_visual_types.argtypes = [_GdkVisual,POINTER(GdkVisualType),POINTER(gint)]
         
         libgtk3.gdk_query_visual_types( self._object,visual_types,count )
 
     def get_red_pixel_details(  self, mask, shift, precision, ):
 
+        libgtk3.gdk_visual_get_red_pixel_details.restype = None
         libgtk3.gdk_visual_get_red_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_visual_get_red_pixel_details( self._object,mask,shift,precision )
@@ -401,6 +406,7 @@ class GdkVisual( gobject__GObject.GObject):
 
     def get_blue_pixel_details(  self, mask, shift, precision, ):
 
+        libgtk3.gdk_visual_get_blue_pixel_details.restype = None
         libgtk3.gdk_visual_get_blue_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_visual_get_blue_pixel_details( self._object,mask,shift,precision )

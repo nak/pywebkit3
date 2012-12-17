@@ -328,6 +328,7 @@ class GdkScreen( gobject__GObject.GObject):
         if dest: dest = dest._object
         else: dest = POINTER(c_int)()
 
+        libgtk3.gdk_screen_get_monitor_workarea.restype = None
         libgtk3.gdk_screen_get_monitor_workarea.argtypes = [_GdkScreen,gint,_GdkRectangle]
         
         libgtk3.gdk_screen_get_monitor_workarea( self._object,monitor_num,dest )
@@ -366,6 +367,7 @@ class GdkScreen( gobject__GObject.GObject):
         if options: options = options._object
         else: options = POINTER(c_int)()
 
+        libgtk3.gdk_screen_set_font_options.restype = None
         libgtk3.gdk_screen_set_font_options.argtypes = [_GdkScreen,_cairo_font_options_t]
         
         libgtk3.gdk_screen_set_font_options( self._object,options )
@@ -418,12 +420,14 @@ class GdkScreen( gobject__GObject.GObject):
         if dest: dest = dest._object
         else: dest = POINTER(c_int)()
 
+        libgtk3.gdk_screen_get_monitor_geometry.restype = None
         libgtk3.gdk_screen_get_monitor_geometry.argtypes = [_GdkScreen,gint,_GdkRectangle]
         
         libgtk3.gdk_screen_get_monitor_geometry( self._object,monitor_num,dest )
 
     def set_resolution(  self, dpi, ):
 
+        libgtk3.gdk_screen_set_resolution.restype = None
         libgtk3.gdk_screen_set_resolution.argtypes = [_GdkScreen,gdouble]
         
         libgtk3.gdk_screen_set_resolution( self._object,dpi )

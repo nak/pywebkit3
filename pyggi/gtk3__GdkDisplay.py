@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -349,6 +350,7 @@ class GdkDisplay( gobject__GObject.GObject):
     """Methods"""
     def flush(  self, ):
 
+        libgtk3.gdk_display_flush.restype = None
         libgtk3.gdk_display_flush.argtypes = [_GdkDisplay]
         
         libgtk3.gdk_display_flush( self._object )
@@ -380,12 +382,14 @@ class GdkDisplay( gobject__GObject.GObject):
         if targets: targets = targets._object
         else: targets = POINTER(c_int)()
 
+        libgtk3.gdk_display_store_clipboard.restype = None
         libgtk3.gdk_display_store_clipboard.argtypes = [_GdkDisplay,_GdkWindow,guint32,_GdkAtom,gint]
         
         libgtk3.gdk_display_store_clipboard( self._object,clipboard_window,time_,targets,n_targets )
 
     def set_double_click_distance(  self, distance, ):
 
+        libgtk3.gdk_display_set_double_click_distance.restype = None
         libgtk3.gdk_display_set_double_click_distance.argtypes = [_GdkDisplay,guint]
         
         libgtk3.gdk_display_set_double_click_distance( self._object,distance )
@@ -406,18 +410,21 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def close(  self, ):
 
+        libgtk3.gdk_display_close.restype = None
         libgtk3.gdk_display_close.argtypes = [_GdkDisplay]
         
         libgtk3.gdk_display_close( self._object )
 
     def get_maximal_cursor_size(  self, width, height, ):
 
+        libgtk3.gdk_display_get_maximal_cursor_size.restype = None
         libgtk3.gdk_display_get_maximal_cursor_size.argtypes = [_GdkDisplay,POINTER(guint),POINTER(guint)]
         
         libgtk3.gdk_display_get_maximal_cursor_size( self._object,width,height )
 
     def set_double_click_time(  self, msec, ):
 
+        libgtk3.gdk_display_set_double_click_time.restype = None
         libgtk3.gdk_display_set_double_click_time.argtypes = [_GdkDisplay,guint]
         
         libgtk3.gdk_display_set_double_click_time( self._object,msec )
@@ -431,6 +438,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def put_event(  self, event, ):
 
+        libgtk3.gdk_display_put_event.restype = None
         libgtk3.gdk_display_put_event.argtypes = [_GdkDisplay,POINTER(GdkEvent)]
         
         libgtk3.gdk_display_put_event( self._object,event )
@@ -444,6 +452,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def notify_startup_complete(  self, startup_id, ):
 
+        libgtk3.gdk_display_notify_startup_complete.restype = None
         libgtk3.gdk_display_notify_startup_complete.argtypes = [_GdkDisplay,c_char_p]
         
         libgtk3.gdk_display_notify_startup_complete( self._object,startup_id )
@@ -471,6 +480,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def beep(  self, ):
 
+        libgtk3.gdk_display_beep.restype = None
         libgtk3.gdk_display_beep.argtypes = [_GdkDisplay]
         
         libgtk3.gdk_display_beep( self._object )
@@ -547,6 +557,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def keyboard_ungrab(  self, time_, ):
 
+        libgtk3.gdk_display_keyboard_ungrab.restype = None
         libgtk3.gdk_display_keyboard_ungrab.argtypes = [_GdkDisplay,guint32]
         
         libgtk3.gdk_display_keyboard_ungrab( self._object,time_ )
@@ -562,12 +573,14 @@ class GdkDisplay( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
+        libgtk3.gdk_display_warp_pointer.restype = None
         libgtk3.gdk_display_warp_pointer.argtypes = [_GdkDisplay,_GdkScreen,gint,gint]
         
         libgtk3.gdk_display_warp_pointer( self._object,screen,x,y )
 
     def pointer_ungrab(  self, time_, ):
 
+        libgtk3.gdk_display_pointer_ungrab.restype = None
         libgtk3.gdk_display_pointer_ungrab.argtypes = [_GdkDisplay,guint32]
         
         libgtk3.gdk_display_pointer_ungrab( self._object,time_ )
@@ -576,6 +589,7 @@ class GdkDisplay( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
+        libgtk3.gdk_display_get_pointer.restype = None
         libgtk3.gdk_display_get_pointer.argtypes = [_GdkDisplay,_GdkScreen,POINTER(gint),POINTER(gint),POINTER(GdkModifierType)]
         
         libgtk3.gdk_display_get_pointer( self._object,screen,x,y,mask )
@@ -607,6 +621,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def sync(  self, ):
 
+        libgtk3.gdk_display_sync.restype = None
         libgtk3.gdk_display_sync.argtypes = [_GdkDisplay]
         
         libgtk3.gdk_display_sync( self._object )

@@ -328,12 +328,14 @@ class GdkDevice( gobject__GObject.GObject):
 
     def set_key(  self, index_, keyval, modifiers, ):
 
+        libgtk3.gdk_device_set_key.restype = None
         libgtk3.gdk_device_set_key.argtypes = [_GdkDevice,guint,guint,GdkModifierType]
         
         libgtk3.gdk_device_set_key( self._object,index_,keyval,modifiers )
 
     def ungrab(  self, time_, ):
 
+        libgtk3.gdk_device_ungrab.restype = None
         libgtk3.gdk_device_ungrab.argtypes = [_GdkDevice,guint32]
         
         libgtk3.gdk_device_ungrab( self._object,time_ )
@@ -347,6 +349,7 @@ class GdkDevice( gobject__GObject.GObject):
 
     def set_axis_use(  self, index_, use, ):
 
+        libgtk3.gdk_device_set_axis_use.restype = None
         libgtk3.gdk_device_set_axis_use.argtypes = [_GdkDevice,guint,GdkAxisUse]
         
         libgtk3.gdk_device_set_axis_use( self._object,index_,use )
@@ -362,6 +365,7 @@ class GdkDevice( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
+        libgtk3.gdk_device_warp.restype = None
         libgtk3.gdk_device_warp.argtypes = [_GdkDevice,_GdkScreen,gint,gint]
         
         libgtk3.gdk_device_warp( self._object,screen,x,y )
@@ -377,6 +381,7 @@ class GdkDevice( gobject__GObject.GObject):
         if events: events = events._object
         else: events = POINTER(c_int)()
 
+        libgtk3.gdk_device_free_history.restype = None
         libgtk3.gdk_device_free_history.argtypes = [_GdkDevice,_GdkTimeCoord,gint]
         
         libgtk3.gdk_device_free_history( self._object,events,n_events )
@@ -406,6 +411,7 @@ class GdkDevice( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
+        libgtk3.gdk_device_get_position.restype = None
         libgtk3.gdk_device_get_position.argtypes = [_GdkDevice,_GdkScreen,POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_device_get_position( self._object,screen,x,y )
@@ -446,6 +452,7 @@ class GdkDevice( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
+        libgtk3.gdk_device_get_state.restype = None
         libgtk3.gdk_device_get_state.argtypes = [_GdkDevice,_GdkWindow,POINTER(gdouble),POINTER(GdkModifierType)]
         
         libgtk3.gdk_device_get_state( self._object,window,axes,mask )
