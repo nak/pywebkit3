@@ -47,9 +47,9 @@
 from ctypes import *
 from gtk3_types import *
 from gobject_types import *
-
+    
+    
 """Derived Pointer Types"""
-_GValue = POINTER(c_int)
 __GtkRcStyle = POINTER(c_int)
 __GdkGeometry = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)
@@ -301,20 +301,23 @@ class GObject( object):
             self._object = libgobject.g_object_new(object_type, first_property_name, *args )
 
     """Methods"""
-    def add_toggle_ref(  self, notify, data, ):
+    def disconnect(  self, signal_spec, ):
 
-        libgobject.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
+        libgobject.g_object_disconnect.restype = None
+        libgobject.g_object_disconnect.argtypes = [_GObject,c_char_p]
         
-        libgobject.g_object_add_toggle_ref( self._object,notify,data )
+        libgobject.g_object_disconnect( self._object,signal_spec )
 
     def set_qdata_full(  self, quark, data, destroy, ):
 
+        libgobject.g_object_set_qdata_full.restype = None
         libgobject.g_object_set_qdata_full.argtypes = [_GObject,GQuark,gpointer,GDestroyNotify]
         
         libgobject.g_object_set_qdata_full( self._object,quark,data,destroy )
 
     def weak_unref(  self, notify, data, ):
 
+        libgobject.g_object_weak_unref.restype = None
         libgobject.g_object_weak_unref.argtypes = [_GObject,GWeakNotify,gpointer]
         
         libgobject.g_object_weak_unref( self._object,notify,data )
@@ -328,37 +331,54 @@ class GObject( object):
 
     def run_dispose(  self, ):
 
+        libgobject.g_object_run_dispose.restype = None
         libgobject.g_object_run_dispose.argtypes = [_GObject]
         
         libgobject.g_object_run_dispose( self._object )
 
     def set_qdata(  self, quark, data, ):
 
+        libgobject.g_object_set_qdata.restype = None
         libgobject.g_object_set_qdata.argtypes = [_GObject,GQuark,gpointer]
         
         libgobject.g_object_set_qdata( self._object,quark,data )
 
     def g_clear_object(  self, ):
 
+        libgobject.g_clear_object.restype = None
         libgobject.g_clear_object.argtypes = [_GObject]
         
         libgobject.g_clear_object( self._object )
 
     def set_data(  self, key, data, ):
 
+        libgobject.g_object_set_data.restype = None
         libgobject.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
         
         libgobject.g_object_set_data( self._object,key,data )
 
-    def steal_qdata(  self, quark, ):
+    def ref_sink(  self, ):
 
-        libgobject.g_object_steal_qdata.restype = gpointer
-        libgobject.g_object_steal_qdata.argtypes = [_GObject,GQuark]
+        libgobject.g_object_ref_sink.restype = gpointer
+        libgobject.g_object_ref_sink.argtypes = [_GObject]
         
-        return libgobject.g_object_steal_qdata( self._object,quark )
+        return libgobject.g_object_ref_sink( self._object )
+
+    def connect(  self, signal_spec,*args  ):
+
+
+        def callit( signal_spec, *args ):
+                libgobject.g_object_connect.restype = gpointer
+                libgobject.g_object_connect.argtypes = [ POINTER(c_int), c_char_p]
+                for arg in args:
+                     libgobject.g_object_connect.argtypes.append(args[1])
+                return libgobject.g_object_connect( signal_spec, *args)
+    
+        return callit( self._object, signal_spec,*args )
 
     def notify(  self, property_name, ):
 
+        libgobject.g_object_notify.restype = None
         libgobject.g_object_notify.argtypes = [_GObject,c_char_p]
         
         libgobject.g_object_notify( self._object,property_name )
@@ -369,6 +389,7 @@ class GObject( object):
         if pspecs: pspecs = pspecs._object
         else: pspecs = POINTER(c_int)()
 
+        libgobject.g_object_class_install_properties.restype = None
         libgobject.g_object_class_install_properties.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
         
         libgobject.g_object_class_install_properties( self._object,oclass,n_pspecs,pspecs )
@@ -384,6 +405,7 @@ class GObject( object):
         if pspec: pspec = pspec._object
         else: pspec = POINTER(c_int)()
 
+        libgobject.g_object_interface_install_property.restype = None
         libgobject.g_object_interface_install_property.argtypes = [_GObject,gpointer,_GParamSpec]
         
         libgobject.g_object_interface_install_property( self._object,g_iface,pspec )
@@ -399,48 +421,61 @@ class GObject( object):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
+        libgobject.g_object_set_property.restype = None
         libgobject.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
         
         libgobject.g_object_set_property( self._object,property_name,value )
 
-    def set(  self, object, first_property_name,*args  ):
+    def set(  self, first_property_name,*args  ):
 
 
-        def callit( object, first_property_name, *args ):
+        def callit( first_property_name, *args ):
                 libgobject.g_object_set.restype = None
-                libgobject.g_object_set.argtypes = [ POINTER(c_int), gpointer, c_char_p]
+                libgobject.g_object_set.argtypes = [ POINTER(c_int), c_char_p]
                 for arg in args:
                      libgobject.g_object_set.argtypes.append(args[1])
-                return libgobject.g_object_set( object, first_property_name, *args)
+                return libgobject.g_object_set( first_property_name, *args)
     
-        return callit( self._object, object, first_property_name,*args )
+        return callit( self._object, first_property_name,*args )
 
-    def disconnect(  self, object, signal_spec,*args  ):
+    def ref(  self, ):
 
+        libgobject.g_object_ref.restype = gpointer
+        libgobject.g_object_ref.argtypes = [_GObject]
+        
+        return libgobject.g_object_ref( self._object )
 
-        def callit( object, signal_spec, *args ):
-                libgobject.g_object_disconnect.restype = None
-                libgobject.g_object_disconnect.argtypes = [ POINTER(c_int), gpointer, c_char_p]
-                for arg in args:
-                     libgobject.g_object_disconnect.argtypes.append(args[1])
-                return libgobject.g_object_disconnect( object, signal_spec, *args)
-    
-        return callit( self._object, object, signal_spec,*args )
+    def steal_qdata(  self, quark, ):
+
+        libgobject.g_object_steal_qdata.restype = gpointer
+        libgobject.g_object_steal_qdata.argtypes = [_GObject,GQuark]
+        
+        return libgobject.g_object_steal_qdata( self._object,quark )
+
+    def add_toggle_ref(  self, notify, data, ):
+
+        libgobject.g_object_add_toggle_ref.restype = None
+        libgobject.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
+        
+        libgobject.g_object_add_toggle_ref( self._object,notify,data )
 
     def weak_ref(  self, notify, data, ):
 
+        libgobject.g_object_weak_ref.restype = None
         libgobject.g_object_weak_ref.argtypes = [_GObject,GWeakNotify,gpointer]
         
         libgobject.g_object_weak_ref( self._object,notify,data )
 
     def add_weak_pointer(  self, weak_pointer_location, ):
 
+        libgobject.g_object_add_weak_pointer.restype = None
         libgobject.g_object_add_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
         
         libgobject.g_object_add_weak_pointer( self._object,weak_pointer_location )
 
     def remove_weak_pointer(  self, weak_pointer_location, ):
 
+        libgobject.g_object_remove_weak_pointer.restype = None
         libgobject.g_object_remove_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
         
         libgobject.g_object_remove_weak_pointer( self._object,weak_pointer_location )
@@ -451,12 +486,14 @@ class GObject( object):
         if pspec: pspec = pspec._object
         else: pspec = POINTER(c_int)()
 
+        libgobject.g_object_class_install_property.restype = None
         libgobject.g_object_class_install_property.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
         
         libgobject.g_object_class_install_property( self._object,oclass,property_id,pspec )
 
     def freeze_notify(  self, ):
 
+        libgobject.g_object_freeze_notify.restype = None
         libgobject.g_object_freeze_notify.argtypes = [_GObject]
         
         libgobject.g_object_freeze_notify( self._object )
@@ -465,21 +502,31 @@ class GObject( object):
         if pspec: pspec = pspec._object
         else: pspec = POINTER(c_int)()
 
+        libgobject.g_object_notify_by_pspec.restype = None
         libgobject.g_object_notify_by_pspec.argtypes = [_GObject,_GParamSpec]
         
         libgobject.g_object_notify_by_pspec( self._object,pspec )
 
     def remove_toggle_ref(  self, notify, data, ):
 
+        libgobject.g_object_remove_toggle_ref.restype = None
         libgobject.g_object_remove_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
         
         libgobject.g_object_remove_toggle_ref( self._object,notify,data )
 
     def thaw_notify(  self, ):
 
+        libgobject.g_object_thaw_notify.restype = None
         libgobject.g_object_thaw_notify.argtypes = [_GObject]
         
         libgobject.g_object_thaw_notify( self._object )
+
+    def is_floating(  self, ):
+
+        libgobject.g_object_is_floating.restype = gboolean
+        libgobject.g_object_is_floating.argtypes = [_GObject]
+        
+        return libgobject.g_object_is_floating( self._object )
 
     def dup_qdata(  self, quark, dup_func, user_data, ):
 
@@ -488,31 +535,30 @@ class GObject( object):
         
         return libgobject.g_object_dup_qdata( self._object,quark,dup_func,user_data )
 
-    def unref(  self,  ):
+    def unref(  self, ):
 
+        libgobject.g_object_unref.restype = None
         libgobject.g_object_unref.argtypes = [_GObject]
         
         libgobject.g_object_unref( self._object )
 
-    def get(  self, first_property_name  ):
-        object  = self._object
+    def get(  self, first_property_name,*args  ):
 
-        def callit( object, first_property_name, *args ):
+
+        def callit( first_property_name, *args ):
                 libgobject.g_object_get.restype = None
-                libgobject.g_object_get.argtypes = [ POINTER(c_int), c_char_p, POINTER(c_int)]
-                #for arg in args:
-                #     libgobject.g_object_get.argtypes.append(arg)
-                val = POINTER(c_int)(c_int(0))
-                import logging
-                libgobject.g_object_get( object, c_char_p(first_property_name), val,0)#, *args)
-                return val.contents.value
+                libgobject.g_object_get.argtypes = [ POINTER(c_int), c_char_p]
+                for arg in args:
+                     libgobject.g_object_get.argtypes.append(args[1])
+                return libgobject.g_object_get( first_property_name, *args)
     
-        return callit( self._object, first_property_name )
+        return callit( self._object, first_property_name,*args )
 
     def g_weak_ref_set(  self, weak_ref, object, ):
         if weak_ref: weak_ref = weak_ref._object
         else: weak_ref = POINTER(c_int)()
 
+        libgobject.g_weak_ref_set.restype = None
         libgobject.g_weak_ref_set.argtypes = [_GObject,_GWeakRef,gpointer]
         
         libgobject.g_weak_ref_set( self._object,weak_ref,object )
@@ -542,6 +588,7 @@ class GObject( object):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
+        libgobject.g_object_get_property.restype = None
         libgobject.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
         
         libgobject.g_object_get_property( self._object,property_name,value )
@@ -550,6 +597,7 @@ class GObject( object):
         if closure: closure = closure._object
         else: closure = POINTER(c_int)()
 
+        libgobject.g_object_watch_closure.restype = None
         libgobject.g_object_watch_closure.argtypes = [_GObject,_GClosure]
         
         libgobject.g_object_watch_closure( self._object,closure )
@@ -558,12 +606,14 @@ class GObject( object):
         if weak_ref: weak_ref = weak_ref._object
         else: weak_ref = POINTER(c_int)()
 
+        libgobject.g_weak_ref_clear.restype = None
         libgobject.g_weak_ref_clear.argtypes = [_GObject,_GWeakRef]
         
         libgobject.g_weak_ref_clear( self._object,weak_ref )
 
     def set_data_full(  self, key, data, destroy, ):
 
+        libgobject.g_object_set_data_full.restype = None
         libgobject.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
         
         libgobject.g_object_set_data_full( self._object,key,data,destroy )
@@ -572,12 +622,14 @@ class GObject( object):
         if weak_ref: weak_ref = weak_ref._object
         else: weak_ref = POINTER(c_int)()
 
+        libgobject.g_weak_ref_init.restype = None
         libgobject.g_weak_ref_init.argtypes = [_GObject,_GWeakRef,gpointer]
         
         libgobject.g_weak_ref_init( self._object,weak_ref,object )
 
     def force_floating(  self, ):
 
+        libgobject.g_object_force_floating.restype = None
         libgobject.g_object_force_floating.argtypes = [_GObject]
         
         libgobject.g_object_force_floating( self._object )
@@ -586,16 +638,10 @@ class GObject( object):
         if oclass: oclass = oclass._object
         else: oclass = POINTER(c_int)()
 
+        libgobject.g_object_class_override_property.restype = None
         libgobject.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
         
         libgobject.g_object_class_override_property( self._object,oclass,property_id,name )
-
-    @staticmethod
-    def is_floating( object,):
-        libgobject.g_object_is_floating.restype = gboolean
-        libgobject.g_object_is_floating.argtypes = [gpointer]
-        
-        return     libgobject.g_object_is_floating(object, )
 
     @staticmethod
     def class_find_property( oclass, property_name,):
@@ -631,13 +677,6 @@ class GObject( object):
         from gobject import GParamSpec
         return GParamSpec( obj=    libgobject.g_object_class_list_properties(oclass, n_properties, )
  or POINTER(c_int)())
-    
-    def ref( self ):
-        libgobject.g_object_ref.restype = gpointer
-        libgobject.g_object_ref.argtypes = [_GObject]
-        
-        return     libgobject.g_object_ref(self._object, )
-
     @staticmethod
     def interface_find_property( g_iface, property_name,):
         libgobject.g_object_interface_find_property.restype = _GParamSpec
@@ -654,20 +693,6 @@ class GObject( object):
         
         return     libgobject.g_weak_ref_get(weak_ref, )
 
-    @staticmethod
-    def ref_sink( object,):
-        libgobject.g_object_ref_sink.restype = gpointer
-        libgobject.g_object_ref_sink.argtypes = [gpointer]
-        
-        return     libgobject.g_object_ref_sink(object, )
-
-    @staticmethod
-    def connect( object, signal_spec,*args ):
-        libgobject.g_object_connect.restype = gpointer
-        libgobject.g_object_connect.argtypes = [gpointer,c_char_p,]
-        
-        return     libgobject.g_object_connect(object, signal_spec, *args)
-
 
     _cfuncs=[]
 
@@ -677,10 +702,9 @@ class GObject( object):
             try:
                 retval = func(*args)
                 if not retval:
-                    #GObject._cfuncs.remove(cfunc)
+                    GObject._cfuncs.remove(cfunc)
                     return False
-                if retval==None:
-                    return False
+           
                 return retval
             except:
                 import traceback
@@ -700,15 +724,9 @@ class GObject( object):
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)
         libgobject.g_signal_connect_data.restype = c_ulonglong
-        libgobject.g_signal_connect_data.argtypes = [c_void_p, c_char_p, cfunctype, c_void_p, c_void_p, c_int]
+        libgobject.g_signal_connect_data.argtypes = [c_void_p, c_char_p, CFUNCTYPE(None), c_void_p, c_void_p, c_int]
         return libgobject.g_signal_connect_data(self._object, name, cfunc, 0,0,0)
 
-
-    def disconnect(self, handlerid):
-        libgobject.g_signal_handler_disconnect.restype = None
-        libgobject.g_signal_handler_disconnect.argtypes = [c_void_p, c_ulong]
-        libgobject.g_signal_handler_disconnect(self._object, handlerid)
-    	
 
     def __del__(self):
         if self._object:
@@ -716,4 +734,3 @@ class GObject( object):
            libgobject.g_object_unref( self._object )
 
         self._object = None
-

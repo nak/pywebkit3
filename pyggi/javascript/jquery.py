@@ -38,7 +38,6 @@ def initialize( env):
             jQuery = env.get_jsobject( "jQuery", can_call = False)
             logging.error("############## GOT JQUREY")
         else:
-            import logging
             logging.error("jQuery not detected.")
         return False
     env._webview.on_view_ready( view_ready)

@@ -439,13 +439,14 @@ class Constructor(JavascriptClass):
         self._pyclass = pyclass
         self._context = context
 
-    def new_(self, name, *args):
+    def new_(self, *args):
         """
         The constructor is an object (class) available in javascript, with a "._new"
         method for creating instance (an underlying python instance, acutally) from
         within javascript
         """
         try:
+            logging.error("ARGS ARE %s"%[a for a in args])
             return self._pyclass(self._env, *args)
         except:
             logging.error("Exception instantiating %s" % self._pyclass)
