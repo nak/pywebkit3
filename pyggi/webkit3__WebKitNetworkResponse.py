@@ -238,8 +238,6 @@ libwebkit3.webkit_network_response_get_message.restype = _SoupMessage
 libwebkit3.webkit_network_response_get_message.argtypes = [_WebKitNetworkResponse]
 libwebkit3.webkit_network_response_get_uri.restype = c_char_p
 libwebkit3.webkit_network_response_get_uri.argtypes = [_WebKitNetworkResponse]
-libwebkit3.webkit_network_response_get_suggested_filename.restype = c_char_p
-libwebkit3.webkit_network_response_get_suggested_filename.argtypes = [_WebKitNetworkResponse]
 import gobject__GObject
 class WebKitNetworkResponse( gobject__GObject.GObject):
     """Class WebKitNetworkResponse Constructors"""

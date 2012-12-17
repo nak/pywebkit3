@@ -2,13 +2,13 @@
 from setuptools import setup, find_packages
 
 setup( name = "PyGGI",
-    version = "0.8.0",
+    version = "0.8.1",
     packages = ["pyggi","pyggi/javascript"],# find_packages(),
     scripts = [],
 
     # Project uses reStructuredText, so ensure that the docutils get
     # installed or upgraded on the target machine
-    install_requires = ['docutils>=0.3','logging>=0.4'],
+    install_requires = ['docutils>=0.3'],
 
     include_package_data = True,
     exclude_package_data = {'':[]},
