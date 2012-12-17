@@ -156,6 +156,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -324,12 +325,14 @@ class GApplication( gobject__GObject.GObject):
     """Methods"""
     def activate(  self, ):
 
+        libgobject.g_application_activate.restype = None
         libgobject.g_application_activate.argtypes = [_GApplication]
         
         libgobject.g_application_activate( self._object )
 
     def hold(  self, ):
 
+        libgobject.g_application_hold.restype = None
         libgobject.g_application_hold.argtypes = [_GApplication]
         
         libgobject.g_application_hold( self._object )
@@ -343,6 +346,7 @@ class GApplication( gobject__GObject.GObject):
 
     def set_default(  self, ):
 
+        libgobject.g_application_set_default.restype = None
         libgobject.g_application_set_default.argtypes = [_GApplication]
         
         libgobject.g_application_set_default( self._object )
@@ -367,12 +371,14 @@ class GApplication( gobject__GObject.GObject):
 
     def set_application_id(  self, application_id, ):
 
+        libgobject.g_application_set_application_id.restype = None
         libgobject.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
         
         libgobject.g_application_set_application_id( self._object,application_id )
 
     def release(  self, ):
 
+        libgobject.g_application_release.restype = None
         libgobject.g_application_release.argtypes = [_GApplication]
         
         libgobject.g_application_release( self._object )
@@ -381,6 +387,7 @@ class GApplication( gobject__GObject.GObject):
         if action_group: action_group = action_group._object
         else: action_group = POINTER(c_int)()
 
+        libgobject.g_application_set_action_group.restype = None
         libgobject.g_application_set_action_group.argtypes = [_GApplication,_GActionGroup]
         
         libgobject.g_application_set_action_group( self._object,action_group )
@@ -394,6 +401,7 @@ class GApplication( gobject__GObject.GObject):
 
     def set_inactivity_timeout(  self, inactivity_timeout, ):
 
+        libgobject.g_application_set_inactivity_timeout.restype = None
         libgobject.g_application_set_inactivity_timeout.argtypes = [_GApplication,guint]
         
         libgobject.g_application_set_inactivity_timeout( self._object,inactivity_timeout )
@@ -407,6 +415,7 @@ class GApplication( gobject__GObject.GObject):
 
     def quit(  self, ):
 
+        libgobject.g_application_quit.restype = None
         libgobject.g_application_quit.argtypes = [_GApplication]
         
         libgobject.g_application_quit( self._object )
@@ -429,12 +438,14 @@ class GApplication( gobject__GObject.GObject):
         if files: files = files._object
         else: files = POINTER(c_int)()
 
+        libgobject.g_application_open.restype = None
         libgobject.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
         
         libgobject.g_application_open( self._object,files,n_files,hint )
 
     def set_flags(  self, flags, ):
 
+        libgobject.g_application_set_flags.restype = None
         libgobject.g_application_set_flags.argtypes = [_GApplication,GApplicationFlags]
         
         libgobject.g_application_set_flags( self._object,flags )

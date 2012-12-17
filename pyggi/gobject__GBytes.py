@@ -271,6 +271,7 @@ class GBytes( object):
     """Methods"""
     def unref(  self, ):
 
+        libgobject.g_bytes_unref.restype = None
         libgobject.g_bytes_unref.argtypes = [_GBytes]
         
         libgobject.g_bytes_unref( self._object )

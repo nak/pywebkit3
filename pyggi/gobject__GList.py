@@ -368,6 +368,7 @@ class GList( object):
 
     def free(  self, ):
 
+        libgobject.g_list_free.restype = None
         libgobject.g_list_free.argtypes = [_GList]
         
         libgobject.g_list_free( self._object )
@@ -408,6 +409,7 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
+        libgobject.g_list_foreach.restype = None
         libgobject.g_list_foreach.argtypes = [_GList,GFunc,gpointer]
         
         libgobject.g_list_foreach( self._object,func,user_data )
@@ -423,6 +425,7 @@ class GList( object):
 
     def free_1(  self, ):
 
+        libgobject.g_list_free_1.restype = None
         libgobject.g_list_free_1.argtypes = [_GList]
         
         libgobject.g_list_free_1( self._object )
@@ -461,6 +464,7 @@ class GList( object):
 
     def free_full(  self, free_func, ):
 
+        libgobject.g_list_free_full.restype = None
         libgobject.g_list_free_full.argtypes = [_GList,GDestroyNotify]
         
         libgobject.g_list_free_full( self._object,free_func )

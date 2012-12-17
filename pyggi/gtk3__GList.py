@@ -230,6 +230,7 @@ class GList( object):
 
     def free(  self, ):
 
+        libgtk3.g_list_free.restype = None
         libgtk3.g_list_free.argtypes = [_GList]
         
         libgtk3.g_list_free( self._object )
@@ -270,6 +271,7 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
+        libgtk3.g_list_foreach.restype = None
         libgtk3.g_list_foreach.argtypes = [_GList,GFunc,gpointer]
         
         libgtk3.g_list_foreach( self._object,func,user_data )
@@ -285,6 +287,7 @@ class GList( object):
 
     def free_1(  self, ):
 
+        libgtk3.g_list_free_1.restype = None
         libgtk3.g_list_free_1.argtypes = [_GList]
         
         libgtk3.g_list_free_1( self._object )
@@ -323,6 +326,7 @@ class GList( object):
 
     def free_full(  self, free_func, ):
 
+        libgtk3.g_list_free_full.restype = None
         libgtk3.g_list_free_full.argtypes = [_GList,GDestroyNotify]
         
         libgtk3.g_list_free_full( self._object,free_func )

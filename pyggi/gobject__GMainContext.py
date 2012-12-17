@@ -313,6 +313,7 @@ class GMainContext( gobject__GObject.GObject):
         if fd: fd = fd._object
         else: fd = POINTER(c_int)()
 
+        libgobject.g_main_context_remove_poll.restype = None
         libgobject.g_main_context_remove_poll.argtypes = [_GMainContext,_GPollFD]
         
         libgobject.g_main_context_remove_poll( self._object,fd )
@@ -321,6 +322,7 @@ class GMainContext( gobject__GObject.GObject):
         if fd: fd = fd._object
         else: fd = POINTER(c_int)()
 
+        libgobject.g_main_context_add_poll.restype = None
         libgobject.g_main_context_add_poll.argtypes = [_GMainContext,_GPollFD,gint]
         
         libgobject.g_main_context_add_poll( self._object,fd,priority )
@@ -336,18 +338,21 @@ class GMainContext( gobject__GObject.GObject):
 
     def dispatch(  self, ):
 
+        libgobject.g_main_context_dispatch.restype = None
         libgobject.g_main_context_dispatch.argtypes = [_GMainContext]
         
         libgobject.g_main_context_dispatch( self._object )
 
     def push_thread_default(  self, ):
 
+        libgobject.g_main_context_push_thread_default.restype = None
         libgobject.g_main_context_push_thread_default.argtypes = [_GMainContext]
         
         libgobject.g_main_context_push_thread_default( self._object )
 
     def invoke(  self, function, data, ):
 
+        libgobject.g_main_context_invoke.restype = None
         libgobject.g_main_context_invoke.argtypes = [_GMainContext,GSourceFunc,gpointer]
         
         libgobject.g_main_context_invoke( self._object,function,data )
@@ -384,18 +389,21 @@ class GMainContext( gobject__GObject.GObject):
 
     def pop_thread_default(  self, ):
 
+        libgobject.g_main_context_pop_thread_default.restype = None
         libgobject.g_main_context_pop_thread_default.argtypes = [_GMainContext]
         
         libgobject.g_main_context_pop_thread_default( self._object )
 
     def set_poll_func(  self, func, ):
 
+        libgobject.g_main_context_set_poll_func.restype = None
         libgobject.g_main_context_set_poll_func.argtypes = [_GMainContext,GPollFunc]
         
         libgobject.g_main_context_set_poll_func( self._object,func )
 
     def wakeup(  self, ):
 
+        libgobject.g_main_context_wakeup.restype = None
         libgobject.g_main_context_wakeup.argtypes = [_GMainContext]
         
         libgobject.g_main_context_wakeup( self._object )
@@ -427,12 +435,14 @@ class GMainContext( gobject__GObject.GObject):
 
     def release(  self, ):
 
+        libgobject.g_main_context_release.restype = None
         libgobject.g_main_context_release.argtypes = [_GMainContext]
         
         libgobject.g_main_context_release( self._object )
 
     def unref(  self, ):
 
+        libgobject.g_main_context_unref.restype = None
         libgobject.g_main_context_unref.argtypes = [_GMainContext]
         
         libgobject.g_main_context_unref( self._object )
@@ -453,6 +463,7 @@ class GMainContext( gobject__GObject.GObject):
 
     def invoke_full(  self, priority, function, data, notify, ):
 
+        libgobject.g_main_context_invoke_full.restype = None
         libgobject.g_main_context_invoke_full.argtypes = [_GMainContext,gint,GSourceFunc,gpointer,GDestroyNotify]
         
         libgobject.g_main_context_invoke_full( self._object,priority,function,data,notify )
