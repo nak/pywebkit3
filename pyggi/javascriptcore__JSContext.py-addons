@@ -1,12 +1,13 @@
-     def __init__(self, obj = None):
-         self._object = obj
-         self._global = None
-         self._context = None
 
-     def GetGlobalObject(  self, ):
-        if not self._global:
-            libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
-            libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
-            from javascriptcore import JSObject
-            self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object ), context = self._object)
-        return self._global
+    def __init__(self, obj = None):
+        self._object = obj
+        self._global = None
+        self._context = None
+
+    def GetGlobalObject(  self, ):
+       if not self._global:
+           libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
+           libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
+           from javascriptcore import JSObject
+           self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object ), context = self._object)
+       return self._global
