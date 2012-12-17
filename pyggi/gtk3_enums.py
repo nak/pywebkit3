@@ -9,6 +9,7 @@ GTK_ICON_SIZE_DND = c_int(5)
 GTK_ICON_SIZE_DIALOG = c_int(6)
 
 #GtkStateType
+GtkStateType = c_int
 GTK_STATE_NORMAL = c_int(0)
 GTK_STATE_ACTIVE = c_int(1)
 GTK_STATE_PRELIGHT = c_int(2)
@@ -27,7 +28,43 @@ GTK_EXPANDER_EXPANDED = c_int(3)
 GTK_WINDOW_TOPLEVEL = c_int(0)
 GTK_WINDOW_POPUP = c_int(1)
 
+#GtkWindowPosition
+GtkWindowPosition = c_int
+
+#GtkPositionType
+GtkPositionType = c_int
+
+#GtkShadowType
+GtkShadowType = c_int
+
+#GtkCornerType
+GtkCornerType = c_int
+
+#GtkPolicyType
+GtkPolicyType = c_int
+
+#GtkPrintOperationResult
+GtkPrintOperationResult = c_int
+#GtkPrintOperationAction
+GtkPrintOperationAction = c_int
+
+#GtkMovementStep
+GtkMovementStep = c_int
+
+#GtkJunctionSides
+GtkJunctionSides = c_int
+
+#GtkRequestedSize
+GtkRequestedSize = c_int
+
+#GtkArrowType
+GtkArrowType = c_int
+
+#GtkExpanderStyle
+GtkExpanderStyle = c_int
+
 #GtkDirectionType
+GtkDirectionType = c_int
 GTK_DIR_TAB_FORWARD = c_int(0)
 GTK_DIR_TAB_BACKWARD = c_int(1)
 GTK_DIR_UP = c_int(2)
@@ -56,6 +93,7 @@ GTK_JUNCTION_LEFT   = c_int(GTK_JUNCTION_CORNER_TOPLEFT.value | GTK_JUNCTION_COR
 GTK_JUNCTION_RIGHT  = c_int(GTK_JUNCTION_CORNER_TOPRIGHT.value | GTK_JUNCTION_CORNER_BOTTOMRIGHT.value)
 
 #GtkStateFlags
+GtkStateFlags = c_int
 GTK_STATE_FLAG_NORMAL       = c_int(0)
 GTK_STATE_FLAG_ACTIVE       = c_int(1 << 0)
 GTK_STATE_FLAG_PRELIGHT     = c_int(1 << 1)
@@ -65,11 +103,15 @@ GTK_STATE_FLAG_INCONSISTENT = c_int(1 << 4)
 GTK_STATE_FLAG_FOCUSED      = c_int(1 << 5)
 
 #GtkRegionFlags
+GtkRegionFlags = c_int
 GTK_REGION_EVEN    = c_int(1 << 0)
 GTK_REGION_ODD     = c_int(1 << 1)
 GTK_REGION_FIRST   = c_int(1 << 2)
 GTK_REGION_LAST    = c_int(1 << 3)
 GTK_REGION_SORTED  = c_int(1 << 5)
+
+#GtkAccelFags
+GtkAccelFlags = c_int
 
 #GdkGravity
 GDK_GRAVITY_NORTH_WEST = c_int(1)
@@ -143,6 +185,7 @@ GDK_WINDOW_TYPE_HINT_COMBO = c_int(12)
 GDK_WINDOW_TYPE_HINT_DND = c_int(13)
 
 #GdkEventMask
+GdkEventMask = c_int
 GDK_EXPOSURE_MASK             = c_int(1 << 1)
 GDK_POINTER_MOTION_MASK       = c_int(1 << 2)
 GDK_POINTER_MOTION_HINT_MASK  = c_int(1 << 3)
@@ -178,7 +221,29 @@ GDK_WINDOW_STATE_ABOVE      = c_int(1 << 5)
 GDK_WINDOW_STATE_BELOW      = c_int(1 << 6)
 GDK_WINDOW_STATE_FOCUSED    = c_int(1 << 7)
 
+#GdkWindowEdge
+GdkWindowEdge = c_int
+GDK_WINDOW_EDGE_NORTH_WEST = c_int(0)
+GDK_WINDOW_EDGE_NORTH = c_int(1)
+GDK_WINDOW_EDGE_NORTH_EAST = c_int(2)
+GDK_WINDOW_EDGE_WEST = c_int(3)
+GDK_WINDOW_EDGE_EAST = c_int(4)
+GDK_WINDOW_EDGE_SOUTH_WEST = c_int(5)
+GDK_WINDOW_EDGE_SOUTH = c_int(6)
+GDK_WINDOW_EDGE_SOUTH_EAST = c_int(7)
+
+#GdkWindowState
+GdkWindowState = c_int
+GDK_WINDOW_STATE_WITHDRAWN  = c_int(1 << 0)
+GDK_WINDOW_STATE_ICONIFIED  = c_int(1 << 1)
+GDK_WINDOW_STATE_MAXIMIZED  = c_int(1 << 2)
+GDK_WINDOW_STATE_STICKY     = c_int(1 << 3)
+GDK_WINDOW_STATE_FULLSCREEN = c_int(1 << 4)
+GDK_WINDOW_STATE_ABOVE      = c_int(1 << 5)
+GDK_WINDOW_STATE_BELOW      = c_int(1 << 6)
+
 #GdkGrabStatus
+GdkGrabStatus = c_int
 GDK_GRAB_SUCCESS         = c_int(0)
 GDK_GRAB_ALREADY_GRABBED = c_int(1)
 GDK_GRAB_INVALID_TIME    = c_int(2)
@@ -213,3 +278,9 @@ PANGO_DIRECTION_TTB_RTL = c_int(3)
 PANGO_DIRECTION_WEAK_LTR = c_int(4)
 PANGO_DIRECTION_WEAK_RTL = c_int(5)
 PANGO_DIRECTION_NEUTRAL = c_int(6)
+
+
+
+#AtkRole
+AtkRole = c_int
+

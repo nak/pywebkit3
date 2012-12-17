@@ -46,176 +46,212 @@
     # */
 from ctypes import *
 from gtk3_types import *
-from gtk3_types import *
-    
+from gtk3_enums import *
+from pango_types import *
+from pango_enums import *
+
     
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_int)
-__GdkGeometry = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+_PangoFont = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
-__GtkRequisition = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
-__GtkRegionFlags = POINTER(c_int)
-__WebKitDOMNode = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_PangoEngineShape = POINTER(c_int)
+_GtkRegionFlags = POINTER(c_int)
+_WebKitDOMNode = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
-__cairo_font_options_t = POINTER(c_int)
-__JSValue = POINTER(c_int)
+_cairo_font_options_t = POINTER(c_int)
+_JSValue = POINTER(c_int)
 _JSContext = POINTER(c_int)
 _GtkIconFactory = POINTER(c_int)
-__GdkAtom = POINTER(c_int)
-__GdkTimeCoord = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+_GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
-__GtkWidgetPath = POINTER(c_int)
-__GClosure = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+_PangoItem = POINTER(c_int)
+_GClosure = POINTER(c_int)
+_GtkAboutDialog = POINTER(c_int)
+_GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
-__GtkStyleProvider = POINTER(c_int)
+_GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
 _JSObject = POINTER(c_int)
 _GBytes = POINTER(c_int)
 _GScanner = POINTER(c_int)
 _PangoFont = POINTER(c_int)
 _GtkStyleContext = POINTER(c_int)
-__GtkTextBuffer = POINTER(c_int)
+_GMainContext = POINTER(c_int)
+_GtkTextBuffer = POINTER(c_int)
 _GtkTargetList = POINTER(c_int)
-__WebKitWebSettings = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
 _GdkAppLaunchContext = POINTER(c_int)
-__GObject = POINTER(c_int)
-__PangoLayout = POINTER(c_int)
+_GObject = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
-__GParamSpec = POINTER(c_int)
-__PangoAttrIterator = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+_PangoAttrIterator = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
-__PangoContext = POINTER(c_int)
-__JSPropertyNameArray = POINTER(c_int)
+_GString = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
-__PangoFont = POINTER(c_int)
-__GtkPathPriorityType = POINTER(c_int)
-__JSClass = POINTER(c_int)
-__WebKitWebHistoryItem = POINTER(c_int)
+_GBoxed = POINTER(c_int)
+_GtkPathPriorityType = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
 _JSValue = POINTER(c_int)
-__GtkSettings = POINTER(c_int)
-__PangoFontMap = POINTER(c_int)
-__JSString = POINTER(c_int)
-__PangoAttrList = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GSource = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_JSString = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
+_GSource = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
-__PangoAnalysis = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+_GMutex = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
-__GdkCursor = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
 _WebKitWebInspector = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
-__GScanner = POINTER(c_int)
-__GtkWidgetClass = POINTER(c_int)
-__GdkEventKey = POINTER(c_int)
-__GdkDisplay = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_GtkWidgetClass = POINTER(c_int)
+_GtkContainerClass = POINTER(c_int)
+_GdkEventKey = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GtkAssistant = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
+_GCond = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
 _WebKitWebFrame = POINTER(c_int)
 _JSString = POINTER(c_int)
+_GActionGroup = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
-__WebKitNetworkRequest = POINTER(c_int)
-__GdkWindow = POINTER(c_int)
-__PangoFontFamily = POINTER(c_int)
-__JSContextGroup = POINTER(c_int)
-__cairo_region_t = POINTER(c_int)
+_WebKitNetworkRequest = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+_cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
-__PangoFontDescription = POINTER(c_int)
-__GtkBorder = POINTER(c_int)
-__GError = POINTER(c_int)
-__PangoCoverage = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+_GError = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _JSClass = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
-__cairo_t = POINTER(c_int)
-__GWeakRef = POINTER(c_int)
-__GdkVisual = POINTER(c_int)
-__GdkEventButton = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+_cairo_t = POINTER(c_int)
+_GWeakRef = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_GdkEventButton = POINTER(c_int)
+_GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
-__PangoRectangle = POINTER(c_int)
-__GtkAccelGroup = POINTER(c_int)
+_PangoRectangle = POINTER(c_int)
+_GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
-__GtkIconSource = POINTER(c_int)
-__JSContext = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
+_JSContext = POINTER(c_int)
 _PangoFontsetSimple = POINTER(c_int)
-__GtkAllocation = POINTER(c_int)
-__GtkWidget = POINTER(c_int)
+_GtkAllocation = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
-__GtkIconSet = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
-__PangoTabArray = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
 _WebKitHitTestResult = POINTER(c_int)
-__GValue = POINTER(c_int)
+_GValue = POINTER(c_int)
 _GdkDeviceManager = POINTER(c_int)
 _GdkCursor = POINTER(c_int)
 _WebKitDOMDocument = POINTER(c_int)
-__PangoMatrix = POINTER(c_int)
-__GtkPrintOperation = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkPrintOperation = POINTER(c_int)
+_GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
-__GList = POINTER(c_int)
-__WebKitWebView = POINTER(c_int)
+_GList = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
-__GdkRGBA = POINTER(c_int)
-__JSPropertyNameAccumulator = POINTER(c_int)
-__PangoGlyphString = POINTER(c_int)
-__JSGlobalContext = POINTER(c_int)
+_GdkRGBA = POINTER(c_int)
+_GTimeVal = POINTER(c_int)
+_GtkInvisible = POINTER(c_int)
+_GSourceFuncs = POINTER(c_int)
+_JSPropertyNameAccumulator = POINTER(c_int)
+_PangoGlyphString = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
-__GObjectClass = POINTER(c_int)
-__GSList = POINTER(c_int)
+_GObjectClass = POINTER(c_int)
+_GSList = POINTER(c_int)
 _PangoAnalysis = POINTER(c_int)
-__GdkWindowAttr = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
 _SoupMessage = POINTER(c_int)
 _WebKitWebDataSource = POINTER(c_int)
-__GdkColor = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+_GdkColor = POINTER(c_int)
 _JSContextGroup = POINTER(c_int)
-__GdkRectangle = POINTER(c_int)
-__PangoLanguage = POINTER(c_int)
+_GdkRectangle = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
-__gunichar = POINTER(c_int)
-__GdkWMDecoration = POINTER(c_int)
-__PangoLogAttr = POINTER(c_int)
+_gunichar = POINTER(c_int)
+_GdkWMDecoration = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-__JSObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+_JSObject = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
-__GParameter = POINTER(c_int)
-__GtkStyle = POINTER(c_int)
-__GIcon = POINTER(c_int)
-__GtkWindow = POINTER(c_int)
+_GParameter = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+_GIcon = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
 _PangoLayoutRun = POINTER(c_int)
-__cairo_pattern_t = POINTER(c_int)
-__GdkPixbuf = POINTER(c_int)
+_cairo_pattern_t = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
-__GtkTargetEntry = POINTER(c_int)
-__GtkApplication = POINTER(c_int)
+_GSourceCallbackFuncs = POINTER(c_int)
+_PangoFontFace = POINTER(c_int)
+_GtkTargetEntry = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
 _GByteArray = POINTER(c_int)
-__GdkScreen = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
-__GdkDevice = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
 _PangoTabArray = POINTER(c_int)
 """Enumerations"""
-PangoStyle = c_int
-PangoWeight = c_int
-PangoVariant = c_int
-PangoStretch = c_int
-PangoFontMask = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
@@ -243,6 +279,11 @@ GdkGrabOwnership = c_int
 GdkCursorType = c_int
 GdkVisualType = c_int
 GdkByteOrder = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
 PangoWrapMode = c_int
@@ -258,87 +299,99 @@ GdkInputMode = c_int
 GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
+GApplicationFlags = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkLicense = c_int
+GtkIconSize = c_int
+GtkAssistantPageType = c_int
 
-libgtk3.pango_find_paragraph_boundary.restype = None
-libgtk3.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
-libgtk3.pango_context_set_language.restype = None
-libgtk3.pango_context_set_language.argtypes = [_PangoContext,_PangoLanguage]
-libgtk3.pango_itemize.restype = _GList
-libgtk3.pango_itemize.argtypes = [_PangoContext,c_char_p,int,int,_PangoAttrList,_PangoAttrIterator]
-libgtk3.pango_shape_full.restype = None
-libgtk3.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
-libgtk3.pango_context_set_base_dir.restype = None
-libgtk3.pango_context_set_base_dir.argtypes = [_PangoContext,PangoDirection]
-libgtk3.pango_get_log_attrs.restype = None
-libgtk3.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,int,int,_PangoLanguage,_PangoLogAttr,int]
-libgtk3.pango_context_set_matrix.restype = None
-libgtk3.pango_context_set_matrix.argtypes = [_PangoContext,_PangoMatrix]
-libgtk3.pango_context_get_matrix.restype = _PangoMatrix
-libgtk3.pango_context_get_matrix.argtypes = [_PangoContext]
-libgtk3.pango_context_set_font_description.restype = None
-libgtk3.pango_context_set_font_description.argtypes = [_PangoContext,_PangoFontDescription]
-libgtk3.pango_context_get_base_gravity.restype = PangoGravity
-libgtk3.pango_context_get_base_gravity.argtypes = [_PangoContext]
-libgtk3.pango_context_load_fontset.restype = _PangoFontset
-libgtk3.pango_context_load_fontset.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
-libgtk3.pango_default_break.restype = None
-libgtk3.pango_default_break.argtypes = [_PangoContext,c_char_p,int,_PangoAnalysis,_PangoLogAttr,int]
-libgtk3.pango_context_set_base_gravity.restype = None
-libgtk3.pango_context_set_base_gravity.argtypes = [_PangoContext,PangoGravity]
-libgtk3.pango_itemize_with_base_dir.restype = _GList
-libgtk3.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,int,int,_PangoAttrList,_PangoAttrIterator]
-libgtk3.pango_context_list_families.restype = None
-libgtk3.pango_context_list_families.argtypes = [_PangoContext,POINTER(_PangoFontFamily),POINTER(int)]
-libgtk3.pango_context_set_font_map.restype = None
-libgtk3.pango_context_set_font_map.argtypes = [_PangoContext,_PangoFontMap]
-libgtk3.pango_context_get_language.restype = _PangoLanguage
-libgtk3.pango_context_get_language.argtypes = [_PangoContext]
-libgtk3.pango_context_get_font_map.restype = _PangoFontMap
-libgtk3.pango_context_get_font_map.argtypes = [_PangoContext]
-libgtk3.pango_shape.restype = None
-libgtk3.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
-libgtk3.pango_context_get_base_dir.restype = PangoDirection
-libgtk3.pango_context_get_base_dir.argtypes = [_PangoContext]
-libgtk3.pango_context_set_gravity_hint.restype = None
-libgtk3.pango_context_set_gravity_hint.argtypes = [_PangoContext,PangoGravityHint]
-libgtk3.pango_context_get_gravity.restype = PangoGravity
-libgtk3.pango_context_get_gravity.argtypes = [_PangoContext]
-libgtk3.pango_context_get_font_description.restype = _PangoFontDescription
-libgtk3.pango_context_get_font_description.argtypes = [_PangoContext]
-libgtk3.pango_context_get_metrics.restype = _PangoFontMetrics
-libgtk3.pango_context_get_metrics.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
-libgtk3.pango_context_get_gravity_hint.restype = PangoGravityHint
-libgtk3.pango_context_get_gravity_hint.argtypes = [_PangoContext]
-libgtk3.pango_break.restype = None
-libgtk3.pango_break.argtypes = [_PangoContext,c_char_p,int,_PangoAnalysis,_PangoLogAttr,int]
-libgtk3.pango_context_load_font.restype = _PangoFont
-libgtk3.pango_context_load_font.argtypes = [_PangoContext,_PangoFontDescription]
+libpango.pango_find_paragraph_boundary.restype = None
+libpango.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
+libpango.pango_context_set_language.restype = None
+libpango.pango_context_set_language.argtypes = [_PangoContext,_PangoLanguage]
+libpango.pango_itemize.restype = _GList
+libpango.pango_itemize.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
+libpango.pango_shape_full.restype = None
+libpango.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+libpango.pango_context_set_base_dir.restype = None
+libpango.pango_context_set_base_dir.argtypes = [_PangoContext,PangoDirection]
+libpango.pango_get_log_attrs.restype = None
+libpango.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoLanguage,_PangoLogAttr,gint]
+libpango.pango_context_set_matrix.restype = None
+libpango.pango_context_set_matrix.argtypes = [_PangoContext,_PangoMatrix]
+libpango.pango_context_get_matrix.restype = _PangoMatrix
+libpango.pango_context_get_matrix.argtypes = [_PangoContext]
+libpango.pango_context_set_font_description.restype = None
+libpango.pango_context_set_font_description.argtypes = [_PangoContext,_PangoFontDescription]
+libpango.pango_context_get_base_gravity.restype = PangoGravity
+libpango.pango_context_get_base_gravity.argtypes = [_PangoContext]
+libpango.pango_context_load_fontset.restype = _PangoFontset
+libpango.pango_context_load_fontset.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
+libpango.pango_default_break.restype = None
+libpango.pango_default_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
+libpango.pango_context_set_base_gravity.restype = None
+libpango.pango_context_set_base_gravity.argtypes = [_PangoContext,PangoGravity]
+libpango.pango_itemize_with_base_dir.restype = _GList
+libpango.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
+libpango.pango_context_list_families.restype = None
+libpango.pango_context_list_families.argtypes = [_PangoContext,POINTER(_PangoFontFamily),POINTER(gint)]
+libpango.pango_context_set_font_map.restype = None
+libpango.pango_context_set_font_map.argtypes = [_PangoContext,_PangoFontMap]
+libpango.pango_context_get_language.restype = _PangoLanguage
+libpango.pango_context_get_language.argtypes = [_PangoContext]
+libpango.pango_context_get_font_map.restype = _PangoFontMap
+libpango.pango_context_get_font_map.argtypes = [_PangoContext]
+libpango.pango_shape.restype = None
+libpango.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+libpango.pango_context_get_base_dir.restype = PangoDirection
+libpango.pango_context_get_base_dir.argtypes = [_PangoContext]
+libpango.pango_context_set_gravity_hint.restype = None
+libpango.pango_context_set_gravity_hint.argtypes = [_PangoContext,PangoGravityHint]
+libpango.pango_context_get_gravity.restype = PangoGravity
+libpango.pango_context_get_gravity.argtypes = [_PangoContext]
+libpango.pango_context_get_font_description.restype = _PangoFontDescription
+libpango.pango_context_get_font_description.argtypes = [_PangoContext]
+libpango.pango_context_get_metrics.restype = _PangoFontMetrics
+libpango.pango_context_get_metrics.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
+libpango.pango_context_get_gravity_hint.restype = PangoGravityHint
+libpango.pango_context_get_gravity_hint.argtypes = [_PangoContext]
+libpango.pango_break.restype = None
+libpango.pango_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
+libpango.pango_context_load_font.restype = _PangoFont
+libpango.pango_context_load_font.argtypes = [_PangoContext,_PangoFontDescription]
+libpango.pango_reorder_items.restype = _GList
+libpango.pango_reorder_items.argtypes = [_GList]
 import gobject__GObject
 class PangoContext( gobject__GObject.GObject):
     """Class PangoContext Constructors"""
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.pango_context_new.restype = POINTER(c_int)
+            libpango.pango_context_new.restype = POINTER(c_int)
             
-            libgtk3.pango_context_new.argtypes = []
-            self._object = libgtk3.pango_context_new()
+            libpango.pango_context_new.argtypes = []
+            self._object = libpango.pango_context_new()
 
     """Methods"""
     def pango_find_paragraph_boundary(  self, text, length, paragraph_delimiter_index, next_paragraph_start, ):
 
         
-        libgtk3.pango_find_paragraph_boundary( self._object,text,length,paragraph_delimiter_index,next_paragraph_start )
+        libpango.pango_find_paragraph_boundary( self._object,text,length,paragraph_delimiter_index,next_paragraph_start )
 
     def set_language(  self, language, ):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
         
-        libgtk3.pango_context_set_language( self._object,language )
+        libpango.pango_context_set_language( self._object,language )
 
     def pango_itemize(  self, text, start_index, length, attrs, cached_iter, ):
         if attrs: attrs = attrs._object
@@ -347,7 +400,7 @@ class PangoContext( gobject__GObject.GObject):
         else: cached_iter = POINTER(c_int)()
 
         from gobject import GList
-        return GList( obj=libgtk3.pango_itemize( self._object,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
+        return GList( obj=libpango.pango_itemize( self._object,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
 
     def pango_shape_full(  self, item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs, ):
         if analysis: analysis = analysis._object
@@ -356,12 +409,12 @@ class PangoContext( gobject__GObject.GObject):
         else: glyphs = POINTER(c_int)()
 
         
-        libgtk3.pango_shape_full( self._object,item_text,item_length,paragraph_text,paragraph_length,analysis,glyphs )
+        libpango.pango_shape_full( self._object,item_text,item_length,paragraph_text,paragraph_length,analysis,glyphs )
 
     def set_base_dir(  self, direction, ):
 
         
-        libgtk3.pango_context_set_base_dir( self._object,direction )
+        libpango.pango_context_set_base_dir( self._object,direction )
 
     def pango_get_log_attrs(  self, text, length, level, language, log_attrs, attrs_len, ):
         if language: language = language._object
@@ -370,31 +423,31 @@ class PangoContext( gobject__GObject.GObject):
         else: log_attrs = POINTER(c_int)()
 
         
-        libgtk3.pango_get_log_attrs( self._object,text,length,level,language,log_attrs,attrs_len )
+        libpango.pango_get_log_attrs( self._object,text,length,level,language,log_attrs,attrs_len )
 
     def set_matrix(  self, matrix, ):
         if matrix: matrix = matrix._object
         else: matrix = POINTER(c_int)()
 
         
-        libgtk3.pango_context_set_matrix( self._object,matrix )
+        libpango.pango_context_set_matrix( self._object,matrix )
 
     def get_matrix(  self, ):
 
         from gtk3 import PangoMatrix
-        return PangoMatrix( obj=libgtk3.pango_context_get_matrix( self._object )  or POINTER(c_int)())
+        return PangoMatrix( obj=libpango.pango_context_get_matrix( self._object )  or POINTER(c_int)())
 
     def set_font_description(  self, desc, ):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
         
-        libgtk3.pango_context_set_font_description( self._object,desc )
+        libpango.pango_context_set_font_description( self._object,desc )
 
     def get_base_gravity(  self, ):
 
         
-        return libgtk3.pango_context_get_base_gravity( self._object )
+        return libpango.pango_context_get_base_gravity( self._object )
 
     def load_fontset(  self, desc, language, ):
         if desc: desc = desc._object
@@ -403,7 +456,7 @@ class PangoContext( gobject__GObject.GObject):
         else: language = POINTER(c_int)()
 
         from gtk3 import PangoFontset
-        return PangoFontset( obj=libgtk3.pango_context_load_fontset( self._object,desc,language )  or POINTER(c_int)())
+        return PangoFontset( obj=libpango.pango_context_load_fontset( self._object,desc,language )  or POINTER(c_int)())
 
     def pango_default_break(  self, text, length, analysis, attrs, attrs_len, ):
         if analysis: analysis = analysis._object
@@ -412,12 +465,12 @@ class PangoContext( gobject__GObject.GObject):
         else: attrs = POINTER(c_int)()
 
         
-        libgtk3.pango_default_break( self._object,text,length,analysis,attrs,attrs_len )
+        libpango.pango_default_break( self._object,text,length,analysis,attrs,attrs_len )
 
     def set_base_gravity(  self, gravity, ):
 
         
-        libgtk3.pango_context_set_base_gravity( self._object,gravity )
+        libpango.pango_context_set_base_gravity( self._object,gravity )
 
     def pango_itemize_with_base_dir(  self, base_dir, text, start_index, length, attrs, cached_iter, ):
         if attrs: attrs = attrs._object
@@ -426,31 +479,31 @@ class PangoContext( gobject__GObject.GObject):
         else: cached_iter = POINTER(c_int)()
 
         from gobject import GList
-        return GList( obj=libgtk3.pango_itemize_with_base_dir( self._object,base_dir,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
+        return GList( obj=libpango.pango_itemize_with_base_dir( self._object,base_dir,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
 
     def list_families(  self, families, n_families, ):
         if families: families = families._object
         else: families = POINTER(c_int)()
 
         
-        libgtk3.pango_context_list_families( self._object,families,n_families )
+        libpango.pango_context_list_families( self._object,families,n_families )
 
     def set_font_map(  self, font_map, ):
         if font_map: font_map = font_map._object
         else: font_map = POINTER(c_int)()
 
         
-        libgtk3.pango_context_set_font_map( self._object,font_map )
+        libpango.pango_context_set_font_map( self._object,font_map )
 
     def get_language(  self, ):
 
         from gtk3 import PangoLanguage
-        return PangoLanguage( obj=libgtk3.pango_context_get_language( self._object )  or POINTER(c_int)())
+        return PangoLanguage( obj=libpango.pango_context_get_language( self._object )  or POINTER(c_int)())
 
     def get_font_map(  self, ):
 
         from gtk3 import PangoFontMap
-        return PangoFontMap( obj=libgtk3.pango_context_get_font_map( self._object )  or POINTER(c_int)())
+        return PangoFontMap( obj=libpango.pango_context_get_font_map( self._object )  or POINTER(c_int)())
 
     def pango_shape(  self, text, length, analysis, glyphs, ):
         if analysis: analysis = analysis._object
@@ -459,27 +512,27 @@ class PangoContext( gobject__GObject.GObject):
         else: glyphs = POINTER(c_int)()
 
         
-        libgtk3.pango_shape( self._object,text,length,analysis,glyphs )
+        libpango.pango_shape( self._object,text,length,analysis,glyphs )
 
     def get_base_dir(  self, ):
 
         
-        return libgtk3.pango_context_get_base_dir( self._object )
+        return libpango.pango_context_get_base_dir( self._object )
 
     def set_gravity_hint(  self, hint, ):
 
         
-        libgtk3.pango_context_set_gravity_hint( self._object,hint )
+        libpango.pango_context_set_gravity_hint( self._object,hint )
 
     def get_gravity(  self, ):
 
         
-        return libgtk3.pango_context_get_gravity( self._object )
+        return libpango.pango_context_get_gravity( self._object )
 
     def get_font_description(  self, ):
 
         from gtk3 import PangoFontDescription
-        return PangoFontDescription(None, obj=libgtk3.pango_context_get_font_description( self._object )  or POINTER(c_int)())
+        return PangoFontDescription(None, obj=libpango.pango_context_get_font_description( self._object )  or POINTER(c_int)())
 
     def get_metrics(  self, desc, language, ):
         if desc: desc = desc._object
@@ -488,12 +541,12 @@ class PangoContext( gobject__GObject.GObject):
         else: language = POINTER(c_int)()
 
         from gtk3 import PangoFontMetrics
-        return PangoFontMetrics( obj=libgtk3.pango_context_get_metrics( self._object,desc,language )  or POINTER(c_int)())
+        return PangoFontMetrics( obj=libpango.pango_context_get_metrics( self._object,desc,language )  or POINTER(c_int)())
 
     def get_gravity_hint(  self, ):
 
         
-        return libgtk3.pango_context_get_gravity_hint( self._object )
+        return libpango.pango_context_get_gravity_hint( self._object )
 
     def pango_break(  self, text, length, analysis, attrs, attrs_len, ):
         if analysis: analysis = analysis._object
@@ -502,19 +555,19 @@ class PangoContext( gobject__GObject.GObject):
         else: attrs = POINTER(c_int)()
 
         
-        libgtk3.pango_break( self._object,text,length,analysis,attrs,attrs_len )
+        libpango.pango_break( self._object,text,length,analysis,attrs,attrs_len )
 
     def load_font(  self, desc, ):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
         from gtk3 import PangoFont
-        return PangoFont( obj=libgtk3.pango_context_load_font( self._object,desc )  or POINTER(c_int)())
+        return PangoFont( obj=libpango.pango_context_load_font( self._object,desc )  or POINTER(c_int)())
 
     @staticmethod
     def pango_reorder_items( logical_items,):
         if logical_items: logical_items = logical_items._object
         else: logical_items = POINTER(c_int)()
         from gobject import GList
-        return GList( obj=    libgtk3.pango_reorder_items(logical_items, )
+        return GList( obj=    libpango.pango_reorder_items(logical_items, )
  or POINTER(c_int)())

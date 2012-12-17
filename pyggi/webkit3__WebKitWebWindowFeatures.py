@@ -46,20 +46,15 @@
     # */
 from ctypes import *
 from gtk3_types import *
+from gtk3_enums import *
 from webkit3_types import *
-    
+from webkit3_enums import *
+
     
 """Derived Pointer Types"""
-__PangoFontDescription = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 """Enumerations"""
-PangoStyle = c_int
-PangoWeight = c_int
-PangoVariant = c_int
-PangoStretch = c_int
-PangoFontMask = c_int
 
 libwebkit3.webkit_web_window_features_equal.restype = gboolean
 libwebkit3.webkit_web_window_features_equal.argtypes = [_WebKitWebWindowFeatures,_WebKitWebWindowFeatures]

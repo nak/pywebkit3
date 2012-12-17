@@ -26,11 +26,14 @@ else:
         sys.exit(1)
 
 """default gtk types"""
+
 unsigned = c_uint
 double = c_double
 guint32 = c_uint
 guint64 = c_ulong
+gunichar = c_int
 gint64 = c_long
+gssize = c_uint
 guint16 = c_ushort
 gfloat = c_float
 guint = c_uint
@@ -46,6 +49,7 @@ gint8 = c_char
 gsize = c_uint
 gint32 = c_int
 GDestroyNotify = GDestroyNotifyCB
+GPid = c_int
 gint16 = c_short
 gconstpointer = c_void_p
 gint = c_int
@@ -91,3 +95,5 @@ def main():
 def main_quit():
     libgtk3.gtk_main_quit()
     
+
+GdkEvent = POINTER(c_int)

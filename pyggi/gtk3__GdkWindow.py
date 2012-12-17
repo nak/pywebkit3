@@ -46,58 +46,60 @@
     # */
 from ctypes import *
 from gtk3_types import *
+from gtk3_enums import *
 from gtk3_types import *
-    
+from gtk3_enums import *
+
     
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_int)
-__GdkGeometry = POINTER(c_int)
-_WebKitWebPolicyDecision = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+_PangoFont = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _GtkBin = POINTER(c_int)
-__GtkRequisition = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
 _PangoEngineShape = POINTER(c_int)
-__GtkRegionFlags = POINTER(c_int)
-__WebKitDOMNode = POINTER(c_int)
+_GtkRegionFlags = POINTER(c_int)
+_WebKitDOMNode = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
-__cairo_font_options_t = POINTER(c_int)
-__JSValue = POINTER(c_int)
+_cairo_font_options_t = POINTER(c_int)
+_JSValue = POINTER(c_int)
 _JSContext = POINTER(c_int)
 _GtkIconFactory = POINTER(c_int)
-__GdkAtom = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
 _GMainLoop = POINTER(c_int)
-__GdkTimeCoord = POINTER(c_int)
+_GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
-__GtkWidgetPath = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
 _GtkContainer = POINTER(c_int)
 _PangoItem = POINTER(c_int)
-__GClosure = POINTER(c_int)
+_GClosure = POINTER(c_int)
 _GtkAboutDialog = POINTER(c_int)
-__GMainContext = POINTER(c_int)
+_GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
-__GtkStyleProvider = POINTER(c_int)
+_GtkStyleProvider = POINTER(c_int)
 _GtkScrolledWindow = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
 _JSObject = POINTER(c_int)
 _GBytes = POINTER(c_int)
 _GScanner = POINTER(c_int)
 _PangoFont = POINTER(c_int)
 _GtkStyleContext = POINTER(c_int)
 _GMainContext = POINTER(c_int)
-_GBoxed = POINTER(c_int)
-__GtkTextBuffer = POINTER(c_int)
+_GtkTextBuffer = POINTER(c_int)
 _GtkTargetList = POINTER(c_int)
-__WebKitWebSettings = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
 _GdkAppLaunchContext = POINTER(c_int)
-__GObject = POINTER(c_int)
-__PangoLayout = POINTER(c_int)
+_GObject = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
-__GParamSpec = POINTER(c_int)
-__PangoAttrIterator = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+_PangoAttrIterator = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
@@ -107,159 +109,155 @@ _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _GString = POINTER(c_int)
-__PangoContext = POINTER(c_int)
-__JSPropertyNameArray = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
-__PangoFont = POINTER(c_int)
-__GtkPathPriorityType = POINTER(c_int)
-__JSClass = POINTER(c_int)
-__WebKitWebHistoryItem = POINTER(c_int)
+_GBoxed = POINTER(c_int)
+_GtkPathPriorityType = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
 _JSValue = POINTER(c_int)
-__GtkSettings = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
 _GSource = POINTER(c_int)
-__PangoFontMap = POINTER(c_int)
-__JSString = POINTER(c_int)
-__PangoAttrList = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_JSString = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
-__GSource = POINTER(c_int)
+_GSource = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
-__PangoAnalysis = POINTER(c_int)
-__GMutex = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+_GMutex = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
 _GdkGeometry = POINTER(c_int)
-__GdkCursor = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _WebKitWebInspector = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
-__GScanner = POINTER(c_int)
-__GtkWidgetClass = POINTER(c_int)
-__GtkContainerClass = POINTER(c_int)
-__GdkEventKey = POINTER(c_int)
-__GtkAdjustment = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_GtkWidgetClass = POINTER(c_int)
+_GtkContainerClass = POINTER(c_int)
+_GdkEventKey = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
 _GdkDragContext = POINTER(c_int)
 _GtkAssistant = POINTER(c_int)
-__GdkDisplay = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
-__GCond = POINTER(c_int)
+_GCond = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
-__cairo_surface_t = POINTER(c_int)
+_cairo_surface_t = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
 _WebKitWebFrame = POINTER(c_int)
 _JSString = POINTER(c_int)
-__GActionGroup = POINTER(c_int)
+_GActionGroup = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
-__WebKitNetworkRequest = POINTER(c_int)
-__GdkWindow = POINTER(c_int)
-__PangoFontFamily = POINTER(c_int)
-__JSContextGroup = POINTER(c_int)
-__GPollFD = POINTER(c_int)
-__cairo_region_t = POINTER(c_int)
+_WebKitNetworkRequest = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+_cairo_region_t = POINTER(c_int)
 _WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
-__PangoFontDescription = POINTER(c_int)
-__GtkBorder = POINTER(c_int)
-__GError = POINTER(c_int)
-__PangoCoverage = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+_GError = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _JSClass = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
-__cairo_t = POINTER(c_int)
-__GWeakRef = POINTER(c_int)
-__GdkVisual = POINTER(c_int)
-__GdkEventButton = POINTER(c_int)
-__GCancellable = POINTER(c_int)
+_cairo_t = POINTER(c_int)
+_GWeakRef = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_GdkEventButton = POINTER(c_int)
+_GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
-__PangoRectangle = POINTER(c_int)
-__GtkAccelGroup = POINTER(c_int)
+_PangoRectangle = POINTER(c_int)
+_GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GPollFD = POINTER(c_int)
-__GtkIconSource = POINTER(c_int)
-__GFile = POINTER(c_int)
-__JSContext = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
+_JSContext = POINTER(c_int)
 _PangoFontsetSimple = POINTER(c_int)
-__GtkAllocation = POINTER(c_int)
-__GtkWidget = POINTER(c_int)
+_GtkAllocation = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
-__GtkIconSet = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
-__PangoTabArray = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
 _WebKitHitTestResult = POINTER(c_int)
-__GValue = POINTER(c_int)
+_GValue = POINTER(c_int)
 _GdkDeviceManager = POINTER(c_int)
 _GdkCursor = POINTER(c_int)
 _WebKitDOMDocument = POINTER(c_int)
-__PangoMatrix = POINTER(c_int)
-__GtkPrintOperation = POINTER(c_int)
-__GString = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkPrintOperation = POINTER(c_int)
+_GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
-__GtkTargetList = POINTER(c_int)
-__GList = POINTER(c_int)
-__WebKitWebView = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+_GList = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
-__GdkRGBA = POINTER(c_int)
-__GTimeVal = POINTER(c_int)
+_GdkRGBA = POINTER(c_int)
+_GTimeVal = POINTER(c_int)
 _GtkInvisible = POINTER(c_int)
-__GSourceFuncs = POINTER(c_int)
-__JSPropertyNameAccumulator = POINTER(c_int)
-__PangoGlyphString = POINTER(c_int)
-__JSGlobalContext = POINTER(c_int)
+_GSourceFuncs = POINTER(c_int)
+_JSPropertyNameAccumulator = POINTER(c_int)
+_PangoGlyphString = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
-__GObjectClass = POINTER(c_int)
-__GSList = POINTER(c_int)
+_GObjectClass = POINTER(c_int)
+_GSList = POINTER(c_int)
 _PangoAnalysis = POINTER(c_int)
-__GdkWindowAttr = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
 _SoupMessage = POINTER(c_int)
 _WebKitWebDataSource = POINTER(c_int)
 _GdkAtom = POINTER(c_int)
-__GdkColor = POINTER(c_int)
+_GdkColor = POINTER(c_int)
 _JSContextGroup = POINTER(c_int)
-__GdkRectangle = POINTER(c_int)
-__PangoLanguage = POINTER(c_int)
+_GdkRectangle = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
-__gunichar = POINTER(c_int)
-__GdkWMDecoration = POINTER(c_int)
-__PangoLogAttr = POINTER(c_int)
+_gunichar = POINTER(c_int)
+_GdkWMDecoration = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-__JSObject = POINTER(c_int)
-__GdkDragContext = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
-__GParameter = POINTER(c_int)
-__GtkStyle = POINTER(c_int)
-__GIcon = POINTER(c_int)
-__GtkWindow = POINTER(c_int)
+_GParameter = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+_GIcon = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
 _PangoLayoutRun = POINTER(c_int)
-__cairo_pattern_t = POINTER(c_int)
-__GdkPixbuf = POINTER(c_int)
+_cairo_pattern_t = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
-__GSourceCallbackFuncs = POINTER(c_int)
-__PangoFontFace = POINTER(c_int)
-__GtkTargetEntry = POINTER(c_int)
-__GtkApplication = POINTER(c_int)
+_GSourceCallbackFuncs = POINTER(c_int)
+_PangoFontFace = POINTER(c_int)
+_GtkTargetEntry = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
 _GByteArray = POINTER(c_int)
-__GdkScreen = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
-__GdkDevice = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
 _PangoTabArray = POINTER(c_int)
 """Enumerations"""
-PangoStyle = c_int
-PangoWeight = c_int
-PangoVariant = c_int
-PangoStretch = c_int
-PangoFontMask = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
@@ -287,6 +285,11 @@ GdkGrabOwnership = c_int
 GdkCursorType = c_int
 GdkVisualType = c_int
 GdkByteOrder = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
 PangoWrapMode = c_int
@@ -302,6 +305,7 @@ GdkInputMode = c_int
 GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
+GApplicationFlags = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
@@ -314,7 +318,6 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
-GApplicationFlags = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
 GtkDestDefaults = c_int
@@ -342,8 +345,8 @@ libgtk3.gdk_window_get_screen.restype = _GdkScreen
 libgtk3.gdk_window_get_screen.argtypes = [_GdkWindow]
 libgtk3.gdk_window_has_native.restype = gboolean
 libgtk3.gdk_window_has_native.argtypes = [_GdkWindow]
-libgtk3.gdk_window_move_region.restype = None
-libgtk3.gdk_window_move_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
+libgtk3.gdk_window_constrain_size.restype = None
+libgtk3.gdk_window_constrain_size.argtypes = [_GdkWindow,_GdkGeometry,guint,gint,gint,POINTER(gint),POINTER(gint)]
 libgtk3.gdk_window_set_urgency_hint.restype = None
 libgtk3.gdk_window_set_urgency_hint.argtypes = [_GdkWindow,gboolean]
 libgtk3.gdk_window_is_input_only.restype = gboolean
@@ -382,8 +385,8 @@ libgtk3.gdk_window_set_accept_focus.restype = None
 libgtk3.gdk_window_set_accept_focus.argtypes = [_GdkWindow,gboolean]
 libgtk3.gdk_window_get_support_multidevice.restype = gboolean
 libgtk3.gdk_window_get_support_multidevice.argtypes = [_GdkWindow]
-libgtk3.gdk_window_raise.restype = None
-libgtk3.gdk_window_raise.argtypes = [_GdkWindow]
+libgtk3.gdk_window_move_region.restype = None
+libgtk3.gdk_window_move_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
 libgtk3.gdk_window_get_device_events.restype = GdkEventMask
 libgtk3.gdk_window_get_device_events.argtypes = [_GdkWindow,_GdkDevice]
 libgtk3.gdk_window_set_focus_on_map.restype = None
@@ -400,8 +403,6 @@ libgtk3.gdk_window_set_transient_for.restype = None
 libgtk3.gdk_window_set_transient_for.argtypes = [_GdkWindow,_GdkWindow]
 libgtk3.gdk_window_destroy.restype = None
 libgtk3.gdk_window_destroy.argtypes = [_GdkWindow]
-libgtk3.gdk_window_rain_size.restype = None
-libgtk3.gdk_window_rain_size.argtypes = [_GdkWindow,_GdkGeometry,guint,gint,gint,POINTER(gint),POINTER(gint)]
 libgtk3.gdk_window_get_focus_on_map.restype = gboolean
 libgtk3.gdk_window_get_focus_on_map.argtypes = [_GdkWindow]
 libgtk3.gdk_window_resize.restype = None
@@ -530,6 +531,8 @@ libgtk3.gdk_window_process_updates.restype = None
 libgtk3.gdk_window_process_updates.argtypes = [_GdkWindow,gboolean]
 libgtk3.gdk_window_focus.restype = None
 libgtk3.gdk_window_focus.argtypes = [_GdkWindow,guint32]
+libgtk3.gdk_window_raise.restype = None
+libgtk3.gdk_window_raise.argtypes = [_GdkWindow]
 libgtk3.gdk_window_get_display.restype = _GdkDisplay
 libgtk3.gdk_window_get_display.argtypes = [_GdkWindow]
 libgtk3.gdk_window_get_frame_extents.restype = None
@@ -596,6 +599,12 @@ libgtk3.gdk_window_set_child_shapes.restype = None
 libgtk3.gdk_window_set_child_shapes.argtypes = [_GdkWindow]
 libgtk3.gdk_window_set_type_hint.restype = None
 libgtk3.gdk_window_set_type_hint.argtypes = [_GdkWindow,GdkWindowTypeHint]
+libgtk3.gdk_window_at_pointer.restype = _GdkWindow
+libgtk3.gdk_window_at_pointer.argtypes = [POINTER(gint),POINTER(gint)]
+libgtk3.gdk_window_process_all_updates.restype = None
+libgtk3.gdk_window_process_all_updates.argtypes = []
+libgtk3.gdk_get_default_root_window.restype = _GdkWindow
+libgtk3.gdk_get_default_root_window.argtypes = []
 import gobject__GObject
 class GdkWindow( gobject__GObject.GObject):
     """Class GdkWindow Constructors"""
@@ -630,12 +639,12 @@ class GdkWindow( gobject__GObject.GObject):
         
         return libgtk3.gdk_window_has_native( self._object )
 
-    def move_region(  self, region, dx, dy, ):
-        if region: region = region._object
-        else: region = POINTER(c_int)()
+    def constrain_size(  self, geometry, flags, width, height, new_width, new_height, ):
+        if geometry: geometry = geometry._object
+        else: geometry = POINTER(c_int)()
 
         
-        libgtk3.gdk_window_move_region( self._object,region,dx,dy )
+        libgtk3.gdk_window_constrain_size( self._object,geometry,flags,width,height,new_width,new_height )
 
     def set_urgency_hint(  self, urgent, ):
 
@@ -738,10 +747,12 @@ class GdkWindow( gobject__GObject.GObject):
         
         return libgtk3.gdk_window_get_support_multidevice( self._object )
 
-    def py_raise(  self, ):
+    def move_region(  self, region, dx, dy, ):
+        if region: region = region._object
+        else: region = POINTER(c_int)()
 
         
-        libgtk3.gdk_window_raise( self._object )
+        libgtk3.gdk_window_move_region( self._object,region,dx,dy )
 
     def get_device_events(  self, device, ):
         if device: device = device._object
@@ -786,13 +797,6 @@ class GdkWindow( gobject__GObject.GObject):
 
         
         libgtk3.gdk_window_destroy( self._object )
-
-    def rain_size(  self, geometry, flags, width, height, new_width, new_height, ):
-        if geometry: geometry = geometry._object
-        else: geometry = POINTER(c_int)()
-
-        
-        libgtk3.gdk_window_rain_size( self._object,geometry,flags,width,height,new_width,new_height )
 
     def get_focus_on_map(  self, ):
 
@@ -1149,6 +1153,11 @@ class GdkWindow( gobject__GObject.GObject):
 
         
         libgtk3.gdk_window_focus( self._object,timestamp )
+
+    def py_raise(  self, ):
+
+        
+        libgtk3.gdk_window_raise( self._object )
 
     def get_display(  self, ):
 

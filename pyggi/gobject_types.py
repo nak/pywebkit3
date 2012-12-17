@@ -55,13 +55,13 @@ GPollFunc = CFUNCTYPE(c_int, c_void_p, c_uint, c_int)
 GObjectGetPropertyFunc = CFUNCTYPE( None,  c_void_p, c_uint, c_void_p, c_void_p)
 GObjectSetPropertyFunc = CFUNCTYPE( None,  c_void_p, c_uint, c_void_p, c_void_p)
 GWeakNotify = CFUNCTYPE(None, c_void_p, c_void_p)
-GTogleNotify = CFUNCTYPE( None, c_void_p, c_void_p, c_int)
+GToggleNotify = CFUNCTYPE( None, c_void_p, c_void_p, c_int)
 GValueTransform = CFUNCTYPE( None, c_void_p, c_void_p)
 GCompareFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 GCompareDataFunc = CFUNCTYPE( c_int, c_void_p, c_void_p)
 GFunc = CFUNCTYPE( None, c_void_p, c_void_p)
-
-
+GCopyFunc = CFUNCTYPE( c_void_p, c_void_p, c_void_p)
+GChildWatchFunc = CFUNCTYPE( c_void_p, c_int, c_int, c_void_p)
 
 def gvalue_from_int( val):
     from _gtk3_GValue import GValue

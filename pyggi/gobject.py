@@ -1,7 +1,5 @@
 
 from gobject_types import *
-from gobject__GApplication import *
-from gobject_types import *
 from gobject__GBoxed import *
 from gobject_types import *
 from gobject__GByteArray import *

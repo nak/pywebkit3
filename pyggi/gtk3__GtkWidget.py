@@ -46,56 +46,52 @@
     # */
 from ctypes import *
 from gtk3_types import *
+from gtk3_enums import *
 from gtk3_types import *
-    
+from gtk3_enums import *
+
     
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
 _PangoContext = POINTER(c_int)
-__GParamSpec = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
-__GdkRGBA = POINTER(c_int)
-__GtkRequisition = POINTER(c_int)
+_GdkRGBA = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
-__GdkWindow = POINTER(c_int)
-__cairo_region_t = POINTER(c_int)
-__GdkColor = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
-__PangoFontDescription = POINTER(c_int)
-__GdkRectangle = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-__cairo_t = POINTER(c_int)
-__GdkVisual = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
+_cairo_region_t = POINTER(c_int)
+_GdkColor = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
-__GtkAccelGroup = POINTER(c_int)
+_GdkRectangle = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_cairo_t = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+_GtkAccelGroup = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
-__GtkStyle = POINTER(c_int)
-__GtkWindow = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
 _GtkStyleContext = POINTER(c_int)
-__GtkAllocation = POINTER(c_int)
-__GtkWidget = POINTER(c_int)
+_GtkAllocation = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
-__GtkWidgetClass = POINTER(c_int)
+_GtkWidgetClass = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
-__GValue = POINTER(c_int)
+_GValue = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
-__GdkDevice = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
 """Enumerations"""
-PangoStyle = c_int
-PangoWeight = c_int
-PangoVariant = c_int
-PangoStretch = c_int
-PangoFontMask = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
@@ -507,6 +503,22 @@ libgtk3.gtk_widget_get_requisition.restype = None
 libgtk3.gtk_widget_get_requisition.argtypes = [_GtkWidget,_GtkRequisition]
 libgtk3.gtk_widget_has_rc_style.restype = gboolean
 libgtk3.gtk_widget_has_rc_style.argtypes = [_GtkWidget]
+libgtk3.gtk_distribute_natural_allocation.restype = gint
+libgtk3.gtk_distribute_natural_allocation.argtypes = [gint,guint,POINTER(GtkRequestedSize)]
+libgtk3.gtk_cairo_should_draw_window.restype = gboolean
+libgtk3.gtk_cairo_should_draw_window.argtypes = [_cairo_t,_GdkWindow]
+libgtk3.gtk_widget_class_list_style_properties.restype = _GParamSpec
+libgtk3.gtk_widget_class_list_style_properties.argtypes = [_GtkWidgetClass,POINTER(guint)]
+libgtk3.gtk_widget_get_default_direction.restype = GtkTextDirection
+libgtk3.gtk_widget_get_default_direction.argtypes = []
+libgtk3.gtk_widget_pop_composite_child.restype = None
+libgtk3.gtk_widget_pop_composite_child.argtypes = []
+libgtk3.gtk_widget_push_composite_child.restype = None
+libgtk3.gtk_widget_push_composite_child.argtypes = []
+libgtk3.gtk_widget_class_find_style_property.restype = _GParamSpec
+libgtk3.gtk_widget_class_find_style_property.argtypes = [_GtkWidgetClass,c_char_p]
+libgtk3.gtk_widget_get_default_style.restype = _GtkStyle
+libgtk3.gtk_widget_get_default_style.argtypes = []
 import gobject__GObject
 class GtkWidget( gobject__GObject.GObject):
     """Class GtkWidget Constructors"""

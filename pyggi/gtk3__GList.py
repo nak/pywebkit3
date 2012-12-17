@@ -46,68 +46,64 @@
     # */
 from ctypes import *
 from gtk3_types import *
+from gtk3_enums import *
 from gtk3_types import *
-    
+from gtk3_enums import *
+
     
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
 _PangoContext = POINTER(c_int)
-__GParamSpec = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
-__GdkGeometry = POINTER(c_int)
-__GList = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+_GList = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
-__GdkRGBA = POINTER(c_int)
-__GtkRequisition = POINTER(c_int)
+_GdkRGBA = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
-__GdkWindow = POINTER(c_int)
-__cairo_font_options_t = POINTER(c_int)
-__GdkWindowAttr = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-__cairo_region_t = POINTER(c_int)
-__GdkColor = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
-__PangoFontDescription = POINTER(c_int)
-__GdkRectangle = POINTER(c_int)
-__GdkWMDecoration = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-__cairo_t = POINTER(c_int)
-__GdkVisual = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
+_cairo_font_options_t = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_cairo_region_t = POINTER(c_int)
+_GdkColor = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
-__GtkIconSource = POINTER(c_int)
-__GdkCursor = POINTER(c_int)
-__GtkAccelGroup = POINTER(c_int)
+_GdkRectangle = POINTER(c_int)
+_GdkWMDecoration = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_cairo_t = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_GtkAccelGroup = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
-__GtkStyle = POINTER(c_int)
-__GtkWindow = POINTER(c_int)
-__cairo_pattern_t = POINTER(c_int)
-__GdkPixbuf = POINTER(c_int)
+_GtkStyle = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+_cairo_pattern_t = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
 _GtkStyleContext = POINTER(c_int)
-__GtkAllocation = POINTER(c_int)
-__GtkWidget = POINTER(c_int)
+_GtkAllocation = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
-__GtkWidgetClass = POINTER(c_int)
+_GtkWidgetClass = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
-__GValue = POINTER(c_int)
+_GValue = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
 _GdkCursor = POINTER(c_int)
-__PangoLayout = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
-__GdkDevice = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
 """Enumerations"""
-PangoStyle = c_int
-PangoWeight = c_int
-PangoVariant = c_int
-PangoStretch = c_int
-PangoFontMask = c_int
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
@@ -131,11 +127,11 @@ GdkWMFunction = c_int
 libgtk3.g_list_copy.restype = _GList
 libgtk3.g_list_copy.argtypes = [_GList]
 libgtk3.g_list_remove_all.restype = _GList
-libgtk3.g_list_remove_all.argtypes = [_GList,gpointer]
+libgtk3.g_list_remove_all.argtypes = [_GList,gconstpointer]
 libgtk3.g_list_sort_with_data.restype = _GList
 libgtk3.g_list_sort_with_data.argtypes = [_GList,GCompareDataFunc,gpointer]
 libgtk3.g_list_index.restype = gint
-libgtk3.g_list_index.argtypes = [_GList,gpointer]
+libgtk3.g_list_index.argtypes = [_GList,gconstpointer]
 libgtk3.g_list_nth_prev.restype = _GList
 libgtk3.g_list_nth_prev.argtypes = [_GList,guint]
 libgtk3.g_list_length.restype = guint
@@ -147,9 +143,9 @@ libgtk3.g_list_prepend.argtypes = [_GList,gpointer]
 libgtk3.g_list_reverse.restype = _GList
 libgtk3.g_list_reverse.argtypes = [_GList]
 libgtk3.g_list_find.restype = _GList
-libgtk3.g_list_find.argtypes = [_GList,gpointer]
+libgtk3.g_list_find.argtypes = [_GList,gconstpointer]
 libgtk3.g_list_remove.restype = _GList
-libgtk3.g_list_remove.argtypes = [_GList,gpointer]
+libgtk3.g_list_remove.argtypes = [_GList,gconstpointer]
 libgtk3.g_list_delete_link.restype = _GList
 libgtk3.g_list_delete_link.argtypes = [_GList,_GList]
 libgtk3.g_list_append.restype = _GList
@@ -173,7 +169,7 @@ libgtk3.g_list_free_1.argtypes = [_GList]
 libgtk3.g_list_position.restype = gint
 libgtk3.g_list_position.argtypes = [_GList,_GList]
 libgtk3.g_list_find_custom.restype = _GList
-libgtk3.g_list_find_custom.argtypes = [_GList,gpointer,GCompareFunc]
+libgtk3.g_list_find_custom.argtypes = [_GList,gconstpointer,GCompareFunc]
 libgtk3.g_list_last.restype = _GList
 libgtk3.g_list_last.argtypes = [_GList]
 libgtk3.g_list_first.restype = _GList
@@ -186,6 +182,8 @@ libgtk3.g_list_insert_before.restype = _GList
 libgtk3.g_list_insert_before.argtypes = [_GList,_GList,gpointer]
 libgtk3.g_list_sort.restype = _GList
 libgtk3.g_list_sort.argtypes = [_GList,GCompareFunc]
+libgtk3.g_list_alloc.restype = _GList
+libgtk3.g_list_alloc.argtypes = []
 class GList( object):
     """Class GList Constructors"""
     def __init__(self, obj = None):

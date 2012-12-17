@@ -41,7 +41,7 @@ void                g_application_open                  (GApplication *applicati
                                                          const gchar *hint);
 
 int                 g_application_run                   (GApplication *application,
-                                                         int argc,
+                                                         gint argc,
                                                          char **argv);
 void                g_application_set_default           (GApplication *application);
 GApplication *      g_application_get_default           (void);

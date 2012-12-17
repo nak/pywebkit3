@@ -24,6 +24,7 @@ DEFAULT_TYPES=['gboolean',
                'gint',
                'gint32',
                'gint64',
+               'gssize',
                'guint32',
                'guint64',
                'guint' ,
@@ -347,7 +348,7 @@ class Parser:
         if api.find('va_list') >=0:
             logging.error("Unable to parse variable arguments for %s"%api)
             return
-        tokens = api.replace('const','').replace('volatile','').replace('*',' * ').replace('*  *','*').replace(';','').replace('(','|').replace(')','|').replace('  ',' ').split('|')
+        tokens = api.replace('const ',' ').replace('volatile','').replace('*',' * ').replace('*  *','*').replace(';','').replace('(','|').replace(')','|').replace('  ',' ').split('|')
         declaration = tokens[0].split()
         if declaration[0] == 'enum':
             enum_types.append(declaration[1])
@@ -482,8 +483,6 @@ class Parser:
                         if args: args += ','
                         pretext = """
         def callit( %(args)s *args ):
-                %(lib_name)s.%(methodname)s.restype = %(return_type)s
-                %(lib_name)s.%(methodname)s.argtypes = [ %(known_types)s]
                 for arg in args:
                      %(lib_name)s.%(methodname)s.argtypes.append(args[1])
                 return %(lib_name)s.%(methodname)s( %(args)s *args)
@@ -555,13 +554,17 @@ class Parser:
     # */\n""")
             f.write("""from ctypes import *
 from gtk3_types import *
-from %s_types import *
-    
-    """%namespace)
+from gtk3_enums import *
+from %(ns)s_types import *
+from %(ns)s_enums import *
+
+    """%{'ns':namespace})
                 
             f.write("\n")
             f.write('"""Derived Pointer Types"""\n')
             for t,val in ptr_types.iteritems():
+                if t.startswith('_'):
+                    t = t[1:]
                 f.write(("_%s = %s\n"%(t, val)))
                 
             f.write("")
@@ -573,6 +576,23 @@ from %s_types import *
             if self._classname == "void":
                 self._classname = ""
             if self._classname != "":
+
+                for methodname in self._methods.iterkeys():
+                    params = get_param_list(methodname)
+                    if self._methods[methodname][0]:
+                        f.write( "%s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
+                    else:
+                        f.write( "%s.%s.restype = None\n"%(LIB_NAME,methodname))
+                    f.write("%s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
+                    
+                for methodname in self._staticmethods.iterkeys():
+                    if self._staticmethods[methodname][0]:
+                        f.write( "%s.%s.restype = %s\n"%(LIB_NAME,methodname, self._staticmethods[methodname][0]))
+                    else:
+                        f.write( "%s.%s.restype = None\n"%(LIB_NAME,methodname))
+                    f.write("%s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
+                    
+                f.write("")
                 parentpackage = '%s'%inheritances[self._classname].replace('.','__')
                 parentclass = inheritances[self._classname].split('.')[-1]
                 if inheritances[self._classname] != 'object':
@@ -624,11 +644,11 @@ from %s_types import *
                     f.write(evaltext + "\n")
                     params = get_param_list(methodname)
                     if pretext == "":
-                        if self._methods[methodname][0]:
-                            f.write( "        %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
-                        else:
-                            f.write( "        %s.%s.restype = None\n"%(LIB_NAME,methodname))
-                        f.write("        %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
+#                        if self._methods[methodname][0]:
+#                            f.write( "        %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
+#                        else:
+#                            f.write( "        %s.%s.restype = None\n"%(LIB_NAME,methodname))
+#                        f.write("        %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
                         statement = "%s.%s( %s )"%( LIB_NAME,methodname, ",".join([p[0] for p in params]))
                         (statement, importstatement) = self.wrap( self._methods[methodname][0], statement)
                         text,_,_ = gen_params(methodname, LIB_NAME,callable=True)
@@ -652,10 +672,10 @@ from %s_types import *
                     methodname2 = methodname
                 f.write(SPACING + "def %s(%s):\n"%(methodname2.replace(prefix,''), text))
                 f.write(evaltext)
-                if self._staticmethods[methodname][0]:
-                    f.write( SPACING + "    %s.%s.restype = %s\n"%(LIB_NAME, methodname, self._staticmethods[methodname][0]))
-                if len(self._staticmethods[methodname])>1:
-                    f.write(SPACING + "    %s.%s.argtypes = [%s]\n"%(LIB_NAME, methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
+#                if self._staticmethods[methodname][0]:
+#                    f.write( SPACING + "    %s.%s.restype = %s\n"%(LIB_NAME, methodname, self._staticmethods[methodname][0]))
+#                if len(self._staticmethods[methodname])>1:
+#                    f.write(SPACING + "    %s.%s.argtypes = [%s]\n"%(LIB_NAME, methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
                 if self._staticmethods[methodname][0]:
                     ret = "return "
                 else:
@@ -686,7 +706,7 @@ from %s_types import *
                 elif not text.startswith('#'):
                     line += text
                     if line.find(';')>=0:
-                        self.to_python(line.replace('const',''))
+                        self.to_python(line.replace('const ',' '))
                         line="" 
         
             self.emit_python(namespace)

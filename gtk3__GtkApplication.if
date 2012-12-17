@@ -1,6 +1,6 @@
 
 struct              GtkApplication;
-inherit   gobject.GApplication;
+inherit   gio.GApplication;
 
 GtkApplication *    gtk_application_new                 (const gchar *application_id,
                                                          GApplicationFlags flags);
