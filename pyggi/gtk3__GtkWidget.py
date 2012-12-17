@@ -1725,6 +1725,8 @@ class GtkWidget( gobject__GObject.GObject):
         from gtk3 import GtkStyle
         return GtkStyle( obj=    libgtk3.gtk_widget_get_default_style()
  or POINTER(c_int)())
+
+
     def __del__(self):
         libgtk3.gtk_widget_destroy.argtypes=[c_void_p]
         libgtk3.gtk_widget_destroy(self._object)

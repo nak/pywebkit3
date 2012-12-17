@@ -227,6 +227,7 @@ _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
 _JSObject = POINTER(c_int)
+_GtkCssProvider = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -386,10 +387,11 @@ class JSContext( javascriptcore__JSObject.JSObject):
         return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextRetain(ctx, )
   or POINTER(c_int)())
 
+
+
     def __init__(self, obj = None):
-        self._object = obj
         self._global = None
-        self._context = None
+        javascriptcore__JSObject.JSObject.__init__(self, obj, None )
 
     def GetGlobalObject(  self, ):
        if not self._global:

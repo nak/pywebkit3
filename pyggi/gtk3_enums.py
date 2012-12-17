@@ -113,6 +113,12 @@ GTK_REGION_SORTED  = c_int(1 << 5)
 #GtkAccelFags
 GtkAccelFlags = c_int
 
+#GdkDeviceType
+GdkDeviceType = c_int
+
+#GdkInputSource
+GdkInputSource = c_int
+
 #GdkGravity
 GDK_GRAVITY_NORTH_WEST = c_int(1)
 GDK_GRAVITY_NORTH = c_int(2)

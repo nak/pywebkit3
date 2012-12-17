@@ -256,5 +256,7 @@ class JSGlobalContext( javascriptcore__JSContext.JSContext):
         self._object = obj
     """Methods"""
 
+
+
     def __init__(self, obj = None):
         javascriptcore__JSContext.JSContext.__init__(self, obj = obj)

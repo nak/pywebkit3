@@ -22,3 +22,6 @@ else:
         import sys
         sys.exit(1)
         
+
+GFileProgressCallback = CFUNCTYPE( c_void_p, c_uint, c_uint, c_void_p)
+GFileReadMoreCallback = CFUNCTYPE( c_void_p,c_char_p, c_uint, c_void_p)

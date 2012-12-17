@@ -340,6 +340,8 @@ class JSString( object):
         return JSString( obj=    libjavascriptcore.JSStringCreateWithUTF8CString(string, )
   or POINTER(c_int)())
 
+
+
     def Release( self ):
         libjavascriptcore.JSStringRelease.restype = None
         libjavascriptcore.JSStringRelease.argtypes = [_JSString]

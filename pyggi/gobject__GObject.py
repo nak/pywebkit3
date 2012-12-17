@@ -690,6 +690,7 @@ class GObject( object):
         return     libgobject.g_weak_ref_get(weak_ref, )
 
 
+
     _cfuncs=[]
 
     def connect(self,  name, func, *args, **kargs):
