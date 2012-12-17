@@ -293,9 +293,7 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 PangoWrapMode = c_int
-PangoEllipsizeMode = c_int    def __init__(self, obj = None):
-        self._object = obj
-
+PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 GdkPixbufError = c_int
 GdkColorspace = c_int
@@ -379,3 +377,16 @@ class JSContext( javascriptcore__JSObject.JSObject):
         from javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextRetain(ctx, )
   or POINTER(c_int)())
+
+    def __init__(self, obj = None):
+        self._object = obj
+        self._global = None
+        self._context = None
+
+    def GetGlobalObject(  self, ):
+       if not self._global:
+           libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
+           libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
+           from javascriptcore import JSObject
+           self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object ), context = self._object)
+       return self._global

@@ -278,8 +278,7 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-import javascriptcore__JSObject
-class JSString( javascriptcore__JSObject.JSObject):
+class JSString( object):
     """Class JSString Constructors"""
     def __init__(self, obj = None):
         self._object = obj
@@ -349,3 +348,14 @@ class JSString( javascriptcore__JSObject.JSObject):
         from javascriptcore import JSString
         return JSString( obj=    libjavascriptcore.JSStringCreateWithUTF8CString(string, )
   or POINTER(c_int)())
+
+    def Release( self ):
+        libjavascriptcore.JSStringRelease.restype = None
+        libjavascriptcore.JSStringRelease.argtypes = [_JSString]
+        libjavascriptcore.JSStringRelease( self._object )
+        self._object = None
+        
+    def __del__(self):
+        if self._object and cast(self._object, c_void_p).value != None:
+            self.Release()
+        self._object = None
