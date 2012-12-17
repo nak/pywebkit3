@@ -701,7 +701,7 @@ class GObject( object):
         def C_Callable():
             try:
                 newkargs = kargs
-                if newkargs.haskey('cfunc'):
+                if newkargs.has_key('cfunc'):
                     del newkargs['cfunc']
                 retval = func(*args, **newkargs)
                 if not retval:
