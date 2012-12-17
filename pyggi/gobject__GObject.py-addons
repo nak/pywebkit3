@@ -1,11 +1,14 @@
 
     _cfuncs=[]
 
-    def connect(self,  name, func, *args):
+    def connect(self,  name, func, *args, **kargs):
         cfunc = None
         def C_Callable():
             try:
-                retval = func(*args)
+                newkargs = kargs
+                if newkargs.haskey('cfunc'):
+                    del newkargs['cfunc']
+                retval = func(*args, **newkargs)
                 if not retval:
                     GObject._cfuncs.remove(cfunc)
                     return False
@@ -20,19 +23,17 @@
                 except:
                     pass
                 return False
-        cfunc = CFUNCTYPE(None)(C_Callable)
+        if 'cfunc' in kargs.iterkeys():
+            (cfunc, cfunctype) = kargs['cfunc']
+        else:
+            cfunc = CFUNCTYPE(None)(C_Callable) 
+            cfunctype= CFUNCTYPE(None)
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)
-        libgobject.g_signal_connect_data.restype = c_ulong
+        libgobject.g_signal_connect_data.restype = c_ulonglong
         libgobject.g_signal_connect_data.argtypes = [c_void_p, c_char_p, CFUNCTYPE(None), c_void_p, c_void_p, c_int]
         return libgobject.g_signal_connect_data(self._object, name, cfunc, 0,0,0)
 
-
-    def disconnect(self, handlerid):
-        libgobject.g_signal_handler_disconnect.restype = None
-        libgobject.g_signal_handler_disconnect.argtypes = [c_void_p, c_ulong]
-        libgobject.g_signal_handler_disconnect(self._object, handlerid)
-    	
 
     def __del__(self):
         if self._object:

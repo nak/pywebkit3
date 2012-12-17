@@ -28,13 +28,13 @@ gpointer            g_object_newv                       (GType object_type,
                                                          guint n_parameters,
                                                          GParameter *parameters);
 struct              GParameter;
-gpointer            g_object_ref                        (gpointer object);
-void                g_object_unref                      (gpointer object);
-gpointer            g_object_ref_sink                   (gpointer object);
-void                g_clear_object                      (volatile GObject **object_ptr);
+gpointer            g_object_ref                        (GObject * object);
+void                g_object_unref                      (GObject * object);
+gpointer            g_object_ref_sink                   (GObject * object);
+void                g_clear_object                      (GObject ** object_ptr);
 typedef             GInitiallyUnowned;
 typedef             GInitiallyUnownedClass;
-gboolean            g_object_is_floating                (gpointer object);
+gboolean            g_object_is_floating                (GObject * object);
 void                g_object_force_floating             (GObject *object);
                                                          GObject *where_the_object_was);
 void                g_object_weak_ref                   (GObject *object,
@@ -53,16 +53,15 @@ void                g_object_add_toggle_ref             (GObject *object,
 void                g_object_remove_toggle_ref          (GObject *object,
                                                          GToggleNotify notify,
                                                          gpointer data);
-gpointer            g_object_connect                    (gpointer object,
+gpointer            g_object_connect                    (GObject * object,
                                                          const gchar *signal_spec,
                                                          ...);
-void                g_object_disconnect                 (gpointer object,
-                                                         const gchar *signal_spec,
-                                                         ...);
-void                g_object_set                        (gpointer object,
+void               g_object_disconnect                 (GObject * object,
+                                                         const gchar *signal_spec);
+void                g_object_set                        (GObject * object,
                                                          const gchar *first_property_name,
                                                          ...);
-void                g_object_get                        (gpointer object,
+void                g_object_get                        (GObject * object,
                                                          const gchar *first_property_name,
                                                          ...);
 void                g_object_notify                     (GObject *object,

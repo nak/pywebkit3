@@ -700,11 +700,13 @@ class GObject( object):
         cfunc = None
         def C_Callable():
             try:
-                retval = func(*args)
+                newkargs = kargs
+                if newkargs.haskey('cfunc'):
+                    del newkargs['cfunc']
+                retval = func(*args, **newkargs)
                 if not retval:
                     GObject._cfuncs.remove(cfunc)
                     return False
-           
                 return retval
             except:
                 import traceback
@@ -716,7 +718,7 @@ class GObject( object):
                 except:
                     pass
                 return False
-        if 'cfunc' in kargs:
+        if 'cfunc' in kargs.iterkeys():
             (cfunc, cfunctype) = kargs['cfunc']
         else:
             cfunc = CFUNCTYPE(None)(C_Callable) 

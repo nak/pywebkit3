@@ -626,6 +626,8 @@ from %s_types import *
                     if pretext == "":
                         if self._methods[methodname][0]:
                             f.write( "        %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
+                        else:
+                            f.write( "        %s.%s.restype = None\n"%(LIB_NAME,methodname))
                         f.write("        %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
                         statement = "%s.%s( %s )"%( LIB_NAME,methodname, ",".join([p[0] for p in params]))
                         (statement, importstatement) = self.wrap( self._methods[methodname][0], statement)
