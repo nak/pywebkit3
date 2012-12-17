@@ -299,6 +299,18 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libwebkit3.webkit_web_inspector_close.restype = None
+libwebkit3.webkit_web_inspector_close.argtypes = [_WebKitWebInspector]
+libwebkit3.webkit_web_inspector_get_inspected_uri.restype = c_char_p
+libwebkit3.webkit_web_inspector_get_inspected_uri.argtypes = [_WebKitWebInspector]
+libwebkit3.webkit_web_inspector_get_web_view.restype = _WebKitWebView
+libwebkit3.webkit_web_inspector_get_web_view.argtypes = [_WebKitWebInspector]
+libwebkit3.webkit_web_inspector_inspect_node.restype = None
+libwebkit3.webkit_web_inspector_inspect_node.argtypes = [_WebKitWebInspector,_WebKitDOMNode]
+libwebkit3.webkit_web_inspector_show.restype = None
+libwebkit3.webkit_web_inspector_show.argtypes = [_WebKitWebInspector]
+libwebkit3.webkit_web_inspector_inspect_coordinates.restype = None
+libwebkit3.webkit_web_inspector_inspect_coordinates.argtypes = [_WebKitWebInspector,gdouble,gdouble]
 import gobject__GObject
 class WebKitWebInspector( gobject__GObject.GObject):
     """Class WebKitWebInspector Constructors"""
@@ -307,22 +319,16 @@ class WebKitWebInspector( gobject__GObject.GObject):
     """Methods"""
     def close(  self, ):
 
-        libwebkit3.webkit_web_inspector_close.restype = None
-        libwebkit3.webkit_web_inspector_close.argtypes = [_WebKitWebInspector]
         
         libwebkit3.webkit_web_inspector_close( self._object )
 
     def get_inspected_uri(  self, ):
 
-        libwebkit3.webkit_web_inspector_get_inspected_uri.restype = c_char_p
-        libwebkit3.webkit_web_inspector_get_inspected_uri.argtypes = [_WebKitWebInspector]
         
         return libwebkit3.webkit_web_inspector_get_inspected_uri( self._object )
 
     def get_web_view(  self, ):
 
-        libwebkit3.webkit_web_inspector_get_web_view.restype = _WebKitWebView
-        libwebkit3.webkit_web_inspector_get_web_view.argtypes = [_WebKitWebInspector]
         from webkit3 import WebKitWebView
         return WebKitWebView(None, obj=libwebkit3.webkit_web_inspector_get_web_view( self._object ) or POINTER(c_int)() )
 
@@ -330,22 +336,16 @@ class WebKitWebInspector( gobject__GObject.GObject):
         if node: node = node._object
         else: node = POINTER(c_int)()
 
-        libwebkit3.webkit_web_inspector_inspect_node.restype = None
-        libwebkit3.webkit_web_inspector_inspect_node.argtypes = [_WebKitWebInspector,_WebKitDOMNode]
         
         libwebkit3.webkit_web_inspector_inspect_node( self._object,node )
 
     def show(  self, ):
 
-        libwebkit3.webkit_web_inspector_show.restype = None
-        libwebkit3.webkit_web_inspector_show.argtypes = [_WebKitWebInspector]
         
         libwebkit3.webkit_web_inspector_show( self._object )
 
     def inspect_coordinates(  self, x, y, ):
 
-        libwebkit3.webkit_web_inspector_inspect_coordinates.restype = None
-        libwebkit3.webkit_web_inspector_inspect_coordinates.argtypes = [_WebKitWebInspector,gdouble,gdouble]
         
         libwebkit3.webkit_web_inspector_inspect_coordinates( self._object,x,y )
 

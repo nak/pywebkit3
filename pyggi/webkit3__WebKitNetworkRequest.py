@@ -343,6 +343,12 @@ GdkCursorType = c_int
 GdkVisualType = c_int
 GdkByteOrder = c_int
 
+libwebkit3.webkit_network_request_set_uri.restype = None
+libwebkit3.webkit_network_request_set_uri.argtypes = [_WebKitNetworkRequest,c_char_p]
+libwebkit3.webkit_network_request_get_message.restype = _SoupMessage
+libwebkit3.webkit_network_request_get_message.argtypes = [_WebKitNetworkRequest]
+libwebkit3.webkit_network_request_get_uri.restype = c_char_p
+libwebkit3.webkit_network_request_get_uri.argtypes = [_WebKitNetworkRequest]
 import gobject__GObject
 class WebKitNetworkRequest( gobject__GObject.GObject):
     """Class WebKitNetworkRequest Constructors"""
@@ -357,22 +363,16 @@ class WebKitNetworkRequest( gobject__GObject.GObject):
     """Methods"""
     def set_uri(  self, uri, ):
 
-        libwebkit3.webkit_network_request_set_uri.restype = None
-        libwebkit3.webkit_network_request_set_uri.argtypes = [_WebKitNetworkRequest,c_char_p]
         
         libwebkit3.webkit_network_request_set_uri( self._object,uri )
 
     def get_message(  self, ):
 
-        libwebkit3.webkit_network_request_get_message.restype = _SoupMessage
-        libwebkit3.webkit_network_request_get_message.argtypes = [_WebKitNetworkRequest]
         
         return libwebkit3.webkit_network_request_get_message( self._object )
 
     def get_uri(  self, ):
 
-        libwebkit3.webkit_network_request_get_uri.restype = c_char_p
-        libwebkit3.webkit_network_request_get_uri.argtypes = [_WebKitNetworkRequest]
         
         return libwebkit3.webkit_network_request_get_uri( self._object )
 

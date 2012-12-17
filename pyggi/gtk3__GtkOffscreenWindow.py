@@ -202,6 +202,8 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gtk_offscreen_window_get_pixbuf.restype = _GdkPixbuf
+libgtk3.gtk_offscreen_window_get_pixbuf.argtypes = [_GtkOffscreenWindow]
 import gtk3__GtkWindow
 class GtkOffscreenWindow( gtk3__GtkWindow.GtkWindow):
     """Class GtkOffscreenWindow Constructors"""
@@ -216,8 +218,6 @@ class GtkOffscreenWindow( gtk3__GtkWindow.GtkWindow):
     """Methods"""
     def get_pixbuf(  self, ):
 
-        libgtk3.gtk_offscreen_window_get_pixbuf.restype = _GdkPixbuf
-        libgtk3.gtk_offscreen_window_get_pixbuf.argtypes = [_GtkOffscreenWindow]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_offscreen_window_get_pixbuf( self._object ) or POINTER(c_int)())
 

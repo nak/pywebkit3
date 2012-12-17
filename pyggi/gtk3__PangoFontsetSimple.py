@@ -262,6 +262,10 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
+libgtk3.pango_fontset_simple_size.restype = int
+libgtk3.pango_fontset_simple_size.argtypes = [_PangoFontsetSimple]
+libgtk3.pango_fontset_simple_append.restype = None
+libgtk3.pango_fontset_simple_append.argtypes = [_PangoFontsetSimple,_PangoFont]
 import gtk3__PangoFontset
 class PangoFontsetSimple( gtk3__PangoFontset.PangoFontset):
     """Class PangoFontsetSimple Constructors"""
@@ -279,8 +283,6 @@ class PangoFontsetSimple( gtk3__PangoFontset.PangoFontset):
     """Methods"""
     def size(  self, ):
 
-        libgtk3.pango_fontset_simple_size.restype = int
-        libgtk3.pango_fontset_simple_size.argtypes = [_PangoFontsetSimple]
         
         return libgtk3.pango_fontset_simple_size( self._object )
 
@@ -288,8 +290,6 @@ class PangoFontsetSimple( gtk3__PangoFontset.PangoFontset):
         if font: font = font._object
         else: font = POINTER(c_int)()
 
-        libgtk3.pango_fontset_simple_append.restype = None
-        libgtk3.pango_fontset_simple_append.argtypes = [_PangoFontsetSimple,_PangoFont]
         
         libgtk3.pango_fontset_simple_append( self._object,font )
 

@@ -258,6 +258,20 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
+libgobject.g_bytes_unref.restype = None
+libgobject.g_bytes_unref.argtypes = [_GBytes]
+libgobject.g_bytes_get_data.restype = gpointer
+libgobject.g_bytes_get_data.argtypes = [_GBytes,POINTER(gsize)]
+libgobject.g_bytes_ref.restype = _GBytes
+libgobject.g_bytes_ref.argtypes = [_GBytes]
+libgobject.g_bytes_new_from_bytes.restype = _GBytes
+libgobject.g_bytes_new_from_bytes.argtypes = [_GBytes,gsize,gsize]
+libgobject.g_bytes_get_size.restype = gsize
+libgobject.g_bytes_get_size.argtypes = [_GBytes]
+libgobject.g_bytes_unref_to_array.restype = _GByteArray
+libgobject.g_bytes_unref_to_array.argtypes = [_GBytes]
+libgobject.g_bytes_unref_to_data.restype = gpointer
+libgobject.g_bytes_unref_to_data.argtypes = [_GBytes,POINTER(gsize)]
 class GBytes( object):
     """Class GBytes Constructors"""
     def __init__( self, size,  obj = None):
@@ -271,92 +285,66 @@ class GBytes( object):
     """Methods"""
     def unref(  self, ):
 
-        libgobject.g_bytes_unref.restype = None
-        libgobject.g_bytes_unref.argtypes = [_GBytes]
         
         libgobject.g_bytes_unref( self._object )
 
     def get_data(  self, size, ):
 
-        libgobject.g_bytes_get_data.restype = gpointer
-        libgobject.g_bytes_get_data.argtypes = [_GBytes,POINTER(gsize)]
         
         return libgobject.g_bytes_get_data( self._object,size )
 
     def ref(  self, ):
 
-        libgobject.g_bytes_ref.restype = _GBytes
-        libgobject.g_bytes_ref.argtypes = [_GBytes]
         from gobject import GBytes
         return GBytes( obj=libgobject.g_bytes_ref( self._object ) or POINTER(c_int)())
 
     def new_from_bytes(  self, offset, length, ):
 
-        libgobject.g_bytes_new_from_bytes.restype = _GBytes
-        libgobject.g_bytes_new_from_bytes.argtypes = [_GBytes,gsize,gsize]
         from gobject import GBytes
         return GBytes(None,None, obj=libgobject.g_bytes_new_from_bytes( self._object,offset,length ) or POINTER(c_int)())
 
     def get_size(  self, ):
 
-        libgobject.g_bytes_get_size.restype = gsize
-        libgobject.g_bytes_get_size.argtypes = [_GBytes]
         
         return libgobject.g_bytes_get_size( self._object )
 
     def unref_to_array(  self, ):
 
-        libgobject.g_bytes_unref_to_array.restype = _GByteArray
-        libgobject.g_bytes_unref_to_array.argtypes = [_GBytes]
         from gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_bytes_unref_to_array( self._object ) or POINTER(c_int)())
 
     def unref_to_data(  self, size, ):
 
-        libgobject.g_bytes_unref_to_data.restype = gpointer
-        libgobject.g_bytes_unref_to_data.argtypes = [_GBytes,POINTER(gsize)]
         
         return libgobject.g_bytes_unref_to_data( self._object,size )
 
     @staticmethod
     def new_static( data, size,):
-        libgobject.g_bytes_new_static.restype = _GBytes
-        libgobject.g_bytes_new_static.argtypes = [gpointer,gsize]
         from gobject import GBytes
         return GBytes(None, obj=    libgobject.g_bytes_new_static(data, size, )
  or POINTER(c_int)())
     @staticmethod
     def hash( bytes,):
-        libgobject.g_bytes_hash.restype = guint
-        libgobject.g_bytes_hash.argtypes = [gpointer]
         
         return     libgobject.g_bytes_hash(bytes, )
 
     @staticmethod
     def new_take( data, size,):
-        libgobject.g_bytes_new_take.restype = _GBytes
-        libgobject.g_bytes_new_take.argtypes = [gpointer,gsize]
         from gobject import GBytes
         return GBytes(None, obj=    libgobject.g_bytes_new_take(data, size, )
  or POINTER(c_int)())
     @staticmethod
     def new_with_free_func( data, size, free_func, user_data,):
-        libgobject.g_bytes_new_with_free_func.restype = _GBytes
-        libgobject.g_bytes_new_with_free_func.argtypes = [gpointer,gsize,GDestroyNotify,gpointer]
         from gobject import GBytes
         return GBytes(None, obj=    libgobject.g_bytes_new_with_free_func(data, size, free_func, user_data, )
  or POINTER(c_int)())
     @staticmethod
     def compare( bytes1, bytes2,):
-        libgobject.g_bytes_compare.restype = gint
-        libgobject.g_bytes_compare.argtypes = [gpointer,gpointer]
         
         return     libgobject.g_bytes_compare(bytes1, bytes2, )
 
     @staticmethod
     def equal( bytes1, bytes2,):
-        libgobject.g_bytes_equal.restype = gboolean
-        libgobject.g_bytes_equal.argtypes = [gpointer,gpointer]
         
         return     libgobject.g_bytes_equal(bytes1, bytes2, )
 

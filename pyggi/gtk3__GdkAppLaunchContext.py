@@ -277,6 +277,18 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gdk_app_launch_context_set_icon.restype = None
+libgtk3.gdk_app_launch_context_set_icon.argtypes = [_GdkAppLaunchContext,_GIcon]
+libgtk3.gdk_app_launch_context_set_timestamp.restype = None
+libgtk3.gdk_app_launch_context_set_timestamp.argtypes = [_GdkAppLaunchContext,guint32]
+libgtk3.gdk_app_launch_context_set_icon_name.restype = None
+libgtk3.gdk_app_launch_context_set_icon_name.argtypes = [_GdkAppLaunchContext,c_char_p]
+libgtk3.gdk_app_launch_context_set_display.restype = None
+libgtk3.gdk_app_launch_context_set_display.argtypes = [_GdkAppLaunchContext,_GdkDisplay]
+libgtk3.gdk_app_launch_context_set_screen.restype = None
+libgtk3.gdk_app_launch_context_set_screen.argtypes = [_GdkAppLaunchContext,_GdkScreen]
+libgtk3.gdk_app_launch_context_set_desktop.restype = None
+libgtk3.gdk_app_launch_context_set_desktop.argtypes = [_GdkAppLaunchContext,gint]
 import gobject__GObject
 class GdkAppLaunchContext( gobject__GObject.GObject):
     """Class GdkAppLaunchContext Constructors"""
@@ -293,22 +305,16 @@ class GdkAppLaunchContext( gobject__GObject.GObject):
         if icon: icon = icon._object
         else: icon = POINTER(c_int)()
 
-        libgtk3.gdk_app_launch_context_set_icon.restype = None
-        libgtk3.gdk_app_launch_context_set_icon.argtypes = [_GdkAppLaunchContext,_GIcon]
         
         libgtk3.gdk_app_launch_context_set_icon( self._object,icon )
 
     def set_timestamp(  self, timestamp, ):
 
-        libgtk3.gdk_app_launch_context_set_timestamp.restype = None
-        libgtk3.gdk_app_launch_context_set_timestamp.argtypes = [_GdkAppLaunchContext,guint32]
         
         libgtk3.gdk_app_launch_context_set_timestamp( self._object,timestamp )
 
     def set_icon_name(  self, icon_name, ):
 
-        libgtk3.gdk_app_launch_context_set_icon_name.restype = None
-        libgtk3.gdk_app_launch_context_set_icon_name.argtypes = [_GdkAppLaunchContext,c_char_p]
         
         libgtk3.gdk_app_launch_context_set_icon_name( self._object,icon_name )
 
@@ -316,8 +322,6 @@ class GdkAppLaunchContext( gobject__GObject.GObject):
         if display: display = display._object
         else: display = POINTER(c_int)()
 
-        libgtk3.gdk_app_launch_context_set_display.restype = None
-        libgtk3.gdk_app_launch_context_set_display.argtypes = [_GdkAppLaunchContext,_GdkDisplay]
         
         libgtk3.gdk_app_launch_context_set_display( self._object,display )
 
@@ -325,15 +329,11 @@ class GdkAppLaunchContext( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
-        libgtk3.gdk_app_launch_context_set_screen.restype = None
-        libgtk3.gdk_app_launch_context_set_screen.argtypes = [_GdkAppLaunchContext,_GdkScreen]
         
         libgtk3.gdk_app_launch_context_set_screen( self._object,screen )
 
     def set_desktop(  self, desktop, ):
 
-        libgtk3.gdk_app_launch_context_set_desktop.restype = None
-        libgtk3.gdk_app_launch_context_set_desktop.argtypes = [_GdkAppLaunchContext,gint]
         
         libgtk3.gdk_app_launch_context_set_desktop( self._object,desktop )
 

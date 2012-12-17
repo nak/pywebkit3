@@ -251,6 +251,58 @@ GdkAxisUse = c_int
 GdkDeviceType = c_int
 GdkGrabOwnership = c_int
 
+libgtk3.gdk_device_set_mode.restype = gboolean
+libgtk3.gdk_device_set_mode.argtypes = [_GdkDevice,GdkInputMode]
+libgtk3.gdk_device_get_has_cursor.restype = gboolean
+libgtk3.gdk_device_get_has_cursor.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_n_axes.restype = gint
+libgtk3.gdk_device_get_n_axes.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_source.restype = GdkInputSource
+libgtk3.gdk_device_get_source.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_history.restype = gboolean
+libgtk3.gdk_device_get_history.argtypes = [_GdkDevice,_GdkWindow,guint32,guint32,POINTER(_GdkTimeCoord),POINTER(gint)]
+libgtk3.gdk_device_get_mode.restype = GdkInputMode
+libgtk3.gdk_device_get_mode.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_window_at_position.restype = _GdkWindow
+libgtk3.gdk_device_get_window_at_position.argtypes = [_GdkDevice,POINTER(gint),POINTER(gint)]
+libgtk3.gdk_device_get_device_type.restype = GdkDeviceType
+libgtk3.gdk_device_get_device_type.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_axis_value.restype = gboolean
+libgtk3.gdk_device_get_axis_value.argtypes = [_GdkDevice,POINTER(gdouble),POINTER(c_int),POINTER(gdouble)]
+libgtk3.gdk_device_set_key.restype = None
+libgtk3.gdk_device_set_key.argtypes = [_GdkDevice,guint,guint,GdkModifierType]
+libgtk3.gdk_device_ungrab.restype = None
+libgtk3.gdk_device_ungrab.argtypes = [_GdkDevice,guint32]
+libgtk3.gdk_device_list_axes.restype = _GList
+libgtk3.gdk_device_list_axes.argtypes = [_GdkDevice]
+libgtk3.gdk_device_set_axis_use.restype = None
+libgtk3.gdk_device_set_axis_use.argtypes = [_GdkDevice,guint,GdkAxisUse]
+libgtk3.gdk_device_get_n_keys.restype = gint
+libgtk3.gdk_device_get_n_keys.argtypes = [_GdkDevice]
+libgtk3.gdk_device_warp.restype = None
+libgtk3.gdk_device_warp.argtypes = [_GdkDevice,_GdkScreen,gint,gint]
+libgtk3.gdk_device_get_display.restype = _GdkDisplay
+libgtk3.gdk_device_get_display.argtypes = [_GdkDevice]
+libgtk3.gdk_device_free_history.restype = None
+libgtk3.gdk_device_free_history.argtypes = [_GdkDevice,_GdkTimeCoord,gint]
+libgtk3.gdk_device_get_associated_device.restype = _GdkDevice
+libgtk3.gdk_device_get_associated_device.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_name.restype = c_char_p
+libgtk3.gdk_device_get_name.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_key.restype = gboolean
+libgtk3.gdk_device_get_key.argtypes = [_GdkDevice,guint,POINTER(guint),POINTER(GdkModifierType)]
+libgtk3.gdk_device_get_position.restype = None
+libgtk3.gdk_device_get_position.argtypes = [_GdkDevice,_GdkScreen,POINTER(gint),POINTER(gint)]
+libgtk3.gdk_device_get_axis_use.restype = GdkAxisUse
+libgtk3.gdk_device_get_axis_use.argtypes = [_GdkDevice,guint]
+libgtk3.gdk_device_get_axis.restype = gboolean
+libgtk3.gdk_device_get_axis.argtypes = [_GdkDevice,POINTER(gdouble),GdkAxisUse,POINTER(gdouble)]
+libgtk3.gdk_device_grab.restype = GdkGrabStatus
+libgtk3.gdk_device_grab.argtypes = [_GdkDevice,_GdkWindow,GdkGrabOwnership,gboolean,GdkEventMask,_GdkCursor,guint32]
+libgtk3.gdk_device_list_slave_devices.restype = _GList
+libgtk3.gdk_device_list_slave_devices.argtypes = [_GdkDevice]
+libgtk3.gdk_device_get_state.restype = None
+libgtk3.gdk_device_get_state.argtypes = [_GdkDevice,_GdkWindow,POINTER(gdouble),POINTER(GdkModifierType)]
 import gobject__GObject
 class GdkDevice( gobject__GObject.GObject):
     """Class GdkDevice Constructors"""
@@ -259,29 +311,21 @@ class GdkDevice( gobject__GObject.GObject):
     """Methods"""
     def set_mode(  self, mode, ):
 
-        libgtk3.gdk_device_set_mode.restype = gboolean
-        libgtk3.gdk_device_set_mode.argtypes = [_GdkDevice,GdkInputMode]
         
         return libgtk3.gdk_device_set_mode( self._object,mode )
 
     def get_has_cursor(  self, ):
 
-        libgtk3.gdk_device_get_has_cursor.restype = gboolean
-        libgtk3.gdk_device_get_has_cursor.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_has_cursor( self._object )
 
     def get_n_axes(  self, ):
 
-        libgtk3.gdk_device_get_n_axes.restype = gint
-        libgtk3.gdk_device_get_n_axes.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_n_axes( self._object )
 
     def get_source(  self, ):
 
-        libgtk3.gdk_device_get_source.restype = GdkInputSource
-        libgtk3.gdk_device_get_source.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_source( self._object )
 
@@ -291,29 +335,21 @@ class GdkDevice( gobject__GObject.GObject):
         if events: events = events._object
         else: events = POINTER(c_int)()
 
-        libgtk3.gdk_device_get_history.restype = gboolean
-        libgtk3.gdk_device_get_history.argtypes = [_GdkDevice,_GdkWindow,guint32,guint32,POINTER(_GdkTimeCoord),POINTER(gint)]
         
         return libgtk3.gdk_device_get_history( self._object,window,start,stop,events,n_events )
 
     def get_mode(  self, ):
 
-        libgtk3.gdk_device_get_mode.restype = GdkInputMode
-        libgtk3.gdk_device_get_mode.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_mode( self._object )
 
     def get_window_at_position(  self, win_x, win_y, ):
 
-        libgtk3.gdk_device_get_window_at_position.restype = _GdkWindow
-        libgtk3.gdk_device_get_window_at_position.argtypes = [_GdkDevice,POINTER(gint),POINTER(gint)]
         from gobject import GdkWindow
         return GdkWindow(None,None, obj=libgtk3.gdk_device_get_window_at_position( self._object,win_x,win_y ) or POINTER(c_int)())
 
     def get_device_type(  self, ):
 
-        libgtk3.gdk_device_get_device_type.restype = GdkDeviceType
-        libgtk3.gdk_device_get_device_type.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_device_type( self._object )
 
@@ -321,43 +357,31 @@ class GdkDevice( gobject__GObject.GObject):
         if axis_label: axis_label = axis_label._object
         else: axis_label = POINTER(c_int)()
 
-        libgtk3.gdk_device_get_axis_value.restype = gboolean
-        libgtk3.gdk_device_get_axis_value.argtypes = [_GdkDevice,POINTER(gdouble),POINTER(c_int),POINTER(gdouble)]
         
         return libgtk3.gdk_device_get_axis_value( self._object,axes,axis_label,value )
 
     def set_key(  self, index_, keyval, modifiers, ):
 
-        libgtk3.gdk_device_set_key.restype = None
-        libgtk3.gdk_device_set_key.argtypes = [_GdkDevice,guint,guint,GdkModifierType]
         
         libgtk3.gdk_device_set_key( self._object,index_,keyval,modifiers )
 
     def ungrab(  self, time_, ):
 
-        libgtk3.gdk_device_ungrab.restype = None
-        libgtk3.gdk_device_ungrab.argtypes = [_GdkDevice,guint32]
         
         libgtk3.gdk_device_ungrab( self._object,time_ )
 
     def list_axes(  self, ):
 
-        libgtk3.gdk_device_list_axes.restype = _GList
-        libgtk3.gdk_device_list_axes.argtypes = [_GdkDevice]
         from gobject import GList
         return GList( obj=libgtk3.gdk_device_list_axes( self._object ) or POINTER(c_int)())
 
     def set_axis_use(  self, index_, use, ):
 
-        libgtk3.gdk_device_set_axis_use.restype = None
-        libgtk3.gdk_device_set_axis_use.argtypes = [_GdkDevice,guint,GdkAxisUse]
         
         libgtk3.gdk_device_set_axis_use( self._object,index_,use )
 
     def get_n_keys(  self, ):
 
-        libgtk3.gdk_device_get_n_keys.restype = gint
-        libgtk3.gdk_device_get_n_keys.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_n_keys( self._object )
 
@@ -365,15 +389,11 @@ class GdkDevice( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
-        libgtk3.gdk_device_warp.restype = None
-        libgtk3.gdk_device_warp.argtypes = [_GdkDevice,_GdkScreen,gint,gint]
         
         libgtk3.gdk_device_warp( self._object,screen,x,y )
 
     def get_display(  self, ):
 
-        libgtk3.gdk_device_get_display.restype = _GdkDisplay
-        libgtk3.gdk_device_get_display.argtypes = [_GdkDevice]
         from gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_device_get_display( self._object ) or POINTER(c_int)())
 
@@ -381,29 +401,21 @@ class GdkDevice( gobject__GObject.GObject):
         if events: events = events._object
         else: events = POINTER(c_int)()
 
-        libgtk3.gdk_device_free_history.restype = None
-        libgtk3.gdk_device_free_history.argtypes = [_GdkDevice,_GdkTimeCoord,gint]
         
         libgtk3.gdk_device_free_history( self._object,events,n_events )
 
     def get_associated_device(  self, ):
 
-        libgtk3.gdk_device_get_associated_device.restype = _GdkDevice
-        libgtk3.gdk_device_get_associated_device.argtypes = [_GdkDevice]
         from gobject import GdkDevice
         return GdkDevice( obj=libgtk3.gdk_device_get_associated_device( self._object ) or POINTER(c_int)())
 
     def get_name(  self, ):
 
-        libgtk3.gdk_device_get_name.restype = c_char_p
-        libgtk3.gdk_device_get_name.argtypes = [_GdkDevice]
         
         return libgtk3.gdk_device_get_name( self._object )
 
     def get_key(  self, index_, keyval, modifiers, ):
 
-        libgtk3.gdk_device_get_key.restype = gboolean
-        libgtk3.gdk_device_get_key.argtypes = [_GdkDevice,guint,POINTER(guint),POINTER(GdkModifierType)]
         
         return libgtk3.gdk_device_get_key( self._object,index_,keyval,modifiers )
 
@@ -411,22 +423,16 @@ class GdkDevice( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
-        libgtk3.gdk_device_get_position.restype = None
-        libgtk3.gdk_device_get_position.argtypes = [_GdkDevice,_GdkScreen,POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_device_get_position( self._object,screen,x,y )
 
     def get_axis_use(  self, index_, ):
 
-        libgtk3.gdk_device_get_axis_use.restype = GdkAxisUse
-        libgtk3.gdk_device_get_axis_use.argtypes = [_GdkDevice,guint]
         
         return libgtk3.gdk_device_get_axis_use( self._object,index_ )
 
     def get_axis(  self, axes, use, value, ):
 
-        libgtk3.gdk_device_get_axis.restype = gboolean
-        libgtk3.gdk_device_get_axis.argtypes = [_GdkDevice,POINTER(gdouble),GdkAxisUse,POINTER(gdouble)]
         
         return libgtk3.gdk_device_get_axis( self._object,axes,use,value )
 
@@ -436,15 +442,11 @@ class GdkDevice( gobject__GObject.GObject):
         if cursor: cursor = cursor._object
         else: cursor = POINTER(c_int)()
 
-        libgtk3.gdk_device_grab.restype = GdkGrabStatus
-        libgtk3.gdk_device_grab.argtypes = [_GdkDevice,_GdkWindow,GdkGrabOwnership,gboolean,GdkEventMask,_GdkCursor,guint32]
         
         return libgtk3.gdk_device_grab( self._object,window,grab_ownership,owner_events,event_mask,cursor,time_ )
 
     def list_slave_devices(  self, ):
 
-        libgtk3.gdk_device_list_slave_devices.restype = _GList
-        libgtk3.gdk_device_list_slave_devices.argtypes = [_GdkDevice]
         from gobject import GList
         return GList( obj=libgtk3.gdk_device_list_slave_devices( self._object ) or POINTER(c_int)())
 
@@ -452,8 +454,6 @@ class GdkDevice( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gdk_device_get_state.restype = None
-        libgtk3.gdk_device_get_state.argtypes = [_GdkDevice,_GdkWindow,POINTER(gdouble),POINTER(GdkModifierType)]
         
         libgtk3.gdk_device_get_state( self._object,window,axes,mask )
 

@@ -305,6 +305,10 @@ GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
 
+libgtk3.gtk_settings_install_property_parser.restype = None
+libgtk3.gtk_settings_install_property_parser.argtypes = [_GtkSettings,_GParamSpec,GtkRcPropertyParser]
+libgtk3.gtk_settings_install_property.restype = None
+libgtk3.gtk_settings_install_property.argtypes = [_GtkSettings,_GParamSpec]
 import gobject__GObject
 class GtkSettings( gobject__GObject.GObject):
     """Class GtkSettings Constructors"""
@@ -317,8 +321,6 @@ class GtkSettings( gobject__GObject.GObject):
         if parser: parser = parser._object
         else: parser = POINTER(c_int)()
 
-        libgtk3.gtk_settings_install_property_parser.restype = None
-        libgtk3.gtk_settings_install_property_parser.argtypes = [_GtkSettings,_GParamSpec,GtkRcPropertyParser]
         
         libgtk3.gtk_settings_install_property_parser( self._object,pspec,parser )
 
@@ -326,8 +328,6 @@ class GtkSettings( gobject__GObject.GObject):
         if pspec: pspec = pspec._object
         else: pspec = POINTER(c_int)()
 
-        libgtk3.gtk_settings_install_property.restype = None
-        libgtk3.gtk_settings_install_property.argtypes = [_GtkSettings,_GParamSpec]
         
         libgtk3.gtk_settings_install_property( self._object,pspec )
 
@@ -335,14 +335,11 @@ class GtkSettings( gobject__GObject.GObject):
     def get_for_screen( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        libgtk3.gtk_settings_get_for_screen.restype = _GtkSettings
-        libgtk3.gtk_settings_get_for_screen.argtypes = [_GdkScreen]
         from gtk3 import GtkSettings
         return GtkSettings( obj=    libgtk3.gtk_settings_get_for_screen(screen, )
  or POINTER(c_int)())
     @staticmethod
     def get_default():
-        libgtk3.gtk_settings_get_default.restype = _GtkSettings
         from gtk3 import GtkSettings
         return GtkSettings( obj=    libgtk3.gtk_settings_get_default()
  or POINTER(c_int)())

@@ -274,6 +274,52 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgobject.g_source_remove_poll.restype = None
+libgobject.g_source_remove_poll.argtypes = [_GSource,_GPollFD]
+libgobject.g_source_set_callback_indirect.restype = None
+libgobject.g_source_set_callback_indirect.argtypes = [_GSource,gpointer,_GSourceCallbackFuncs]
+libgobject.g_source_destroy.restype = None
+libgobject.g_source_destroy.argtypes = [_GSource]
+libgobject.g_source_get_id.restype = guint
+libgobject.g_source_get_id.argtypes = [_GSource]
+libgobject.g_source_get_context.restype = _GMainContext
+libgobject.g_source_get_context.argtypes = [_GSource]
+libgobject.g_source_set_can_recurse.restype = None
+libgobject.g_source_set_can_recurse.argtypes = [_GSource,gboolean]
+libgobject.g_source_get_name.restype = c_char_p
+libgobject.g_source_get_name.argtypes = [_GSource]
+libgobject.g_source_get_priority.restype = gint
+libgobject.g_source_get_priority.argtypes = [_GSource]
+libgobject.g_source_ref.restype = _GSource
+libgobject.g_source_ref.argtypes = [_GSource]
+libgobject.g_source_remove_child_source.restype = None
+libgobject.g_source_remove_child_source.argtypes = [_GSource,_GSource]
+libgobject.g_source_add_child_source.restype = None
+libgobject.g_source_add_child_source.argtypes = [_GSource,_GSource]
+libgobject.g_source_set_name.restype = None
+libgobject.g_source_set_name.argtypes = [_GSource,c_char_p]
+libgobject.g_source_get_can_recurse.restype = gboolean
+libgobject.g_source_get_can_recurse.argtypes = [_GSource]
+libgobject.g_source_get_current_time.restype = None
+libgobject.g_source_get_current_time.argtypes = [_GSource,_GTimeVal]
+libgobject.g_source_is_destroyed.restype = gboolean
+libgobject.g_source_is_destroyed.argtypes = [_GSource]
+libgobject.g_source_unref.restype = None
+libgobject.g_source_unref.argtypes = [_GSource]
+libgobject.g_source_add_poll.restype = None
+libgobject.g_source_add_poll.argtypes = [_GSource,_GPollFD]
+libgobject.g_source_set_priority.restype = None
+libgobject.g_source_set_priority.argtypes = [_GSource,gint]
+libgobject.g_source_set_funcs.restype = None
+libgobject.g_source_set_funcs.argtypes = [_GSource,_GSourceFuncs]
+libgobject.g_source_get_time.restype = gint64
+libgobject.g_source_get_time.argtypes = [_GSource]
+libgobject.g_source_set_name_by_id.restype = None
+libgobject.g_source_set_name_by_id.argtypes = [_GSource,guint,c_char_p]
+libgobject.g_source_set_callback.restype = None
+libgobject.g_source_set_callback.argtypes = [_GSource,GSourceFunc,gpointer,GDestroyNotify]
+libgobject.g_source_attach.restype = guint
+libgobject.g_source_attach.argtypes = [_GSource,_GMainContext]
 import gobject__GObject
 class GSource( gobject__GObject.GObject):
     """Class GSource Constructors"""
@@ -290,8 +336,6 @@ class GSource( gobject__GObject.GObject):
         if fd: fd = fd._object
         else: fd = POINTER(c_int)()
 
-        libgobject.g_source_remove_poll.restype = None
-        libgobject.g_source_remove_poll.argtypes = [_GSource,_GPollFD]
         
         libgobject.g_source_remove_poll( self._object,fd )
 
@@ -299,57 +343,41 @@ class GSource( gobject__GObject.GObject):
         if callback_funcs: callback_funcs = callback_funcs._object
         else: callback_funcs = POINTER(c_int)()
 
-        libgobject.g_source_set_callback_indirect.restype = None
-        libgobject.g_source_set_callback_indirect.argtypes = [_GSource,gpointer,_GSourceCallbackFuncs]
         
         libgobject.g_source_set_callback_indirect( self._object,callback_data,callback_funcs )
 
     def destroy(  self, ):
 
-        libgobject.g_source_destroy.restype = None
-        libgobject.g_source_destroy.argtypes = [_GSource]
         
         libgobject.g_source_destroy( self._object )
 
     def get_id(  self, ):
 
-        libgobject.g_source_get_id.restype = guint
-        libgobject.g_source_get_id.argtypes = [_GSource]
         
         return libgobject.g_source_get_id( self._object )
 
     def get_context(  self, ):
 
-        libgobject.g_source_get_context.restype = _GMainContext
-        libgobject.g_source_get_context.argtypes = [_GSource]
         from gobject import GMainContext
         return GMainContext(None,None, obj=libgobject.g_source_get_context( self._object ) or POINTER(c_int)())
 
     def set_can_recurse(  self, can_recurse, ):
 
-        libgobject.g_source_set_can_recurse.restype = None
-        libgobject.g_source_set_can_recurse.argtypes = [_GSource,gboolean]
         
         libgobject.g_source_set_can_recurse( self._object,can_recurse )
 
     def get_name(  self, ):
 
-        libgobject.g_source_get_name.restype = c_char_p
-        libgobject.g_source_get_name.argtypes = [_GSource]
         
         return libgobject.g_source_get_name( self._object )
 
     def get_priority(  self, ):
 
-        libgobject.g_source_get_priority.restype = gint
-        libgobject.g_source_get_priority.argtypes = [_GSource]
         
         return libgobject.g_source_get_priority( self._object )
 
     def ref(  self, ):
 
-        libgobject.g_source_ref.restype = _GSource
-        libgobject.g_source_ref.argtypes = [_GSource]
         from gobject import GSource
         return GSource( obj=libgobject.g_source_ref( self._object ) or POINTER(c_int)())
 
@@ -357,8 +385,6 @@ class GSource( gobject__GObject.GObject):
         if child_source: child_source = child_source._object
         else: child_source = POINTER(c_int)()
 
-        libgobject.g_source_remove_child_source.restype = None
-        libgobject.g_source_remove_child_source.argtypes = [_GSource,_GSource]
         
         libgobject.g_source_remove_child_source( self._object,child_source )
 
@@ -366,22 +392,16 @@ class GSource( gobject__GObject.GObject):
         if child_source: child_source = child_source._object
         else: child_source = POINTER(c_int)()
 
-        libgobject.g_source_add_child_source.restype = None
-        libgobject.g_source_add_child_source.argtypes = [_GSource,_GSource]
         
         libgobject.g_source_add_child_source( self._object,child_source )
 
     def set_name(  self, name, ):
 
-        libgobject.g_source_set_name.restype = None
-        libgobject.g_source_set_name.argtypes = [_GSource,c_char_p]
         
         libgobject.g_source_set_name( self._object,name )
 
     def get_can_recurse(  self, ):
 
-        libgobject.g_source_get_can_recurse.restype = gboolean
-        libgobject.g_source_get_can_recurse.argtypes = [_GSource]
         
         return libgobject.g_source_get_can_recurse( self._object )
 
@@ -389,22 +409,16 @@ class GSource( gobject__GObject.GObject):
         if timeval: timeval = timeval._object
         else: timeval = POINTER(c_int)()
 
-        libgobject.g_source_get_current_time.restype = None
-        libgobject.g_source_get_current_time.argtypes = [_GSource,_GTimeVal]
         
         libgobject.g_source_get_current_time( self._object,timeval )
 
     def is_destroyed(  self, ):
 
-        libgobject.g_source_is_destroyed.restype = gboolean
-        libgobject.g_source_is_destroyed.argtypes = [_GSource]
         
         return libgobject.g_source_is_destroyed( self._object )
 
     def unref(  self, ):
 
-        libgobject.g_source_unref.restype = None
-        libgobject.g_source_unref.argtypes = [_GSource]
         
         libgobject.g_source_unref( self._object )
 
@@ -412,15 +426,11 @@ class GSource( gobject__GObject.GObject):
         if fd: fd = fd._object
         else: fd = POINTER(c_int)()
 
-        libgobject.g_source_add_poll.restype = None
-        libgobject.g_source_add_poll.argtypes = [_GSource,_GPollFD]
         
         libgobject.g_source_add_poll( self._object,fd )
 
     def set_priority(  self, priority, ):
 
-        libgobject.g_source_set_priority.restype = None
-        libgobject.g_source_set_priority.argtypes = [_GSource,gint]
         
         libgobject.g_source_set_priority( self._object,priority )
 
@@ -428,29 +438,21 @@ class GSource( gobject__GObject.GObject):
         if funcs: funcs = funcs._object
         else: funcs = POINTER(c_int)()
 
-        libgobject.g_source_set_funcs.restype = None
-        libgobject.g_source_set_funcs.argtypes = [_GSource,_GSourceFuncs]
         
         libgobject.g_source_set_funcs( self._object,funcs )
 
     def get_time(  self, ):
 
-        libgobject.g_source_get_time.restype = gint64
-        libgobject.g_source_get_time.argtypes = [_GSource]
         
         return libgobject.g_source_get_time( self._object )
 
     def set_name_by_id(  self, tag, name, ):
 
-        libgobject.g_source_set_name_by_id.restype = None
-        libgobject.g_source_set_name_by_id.argtypes = [_GSource,guint,c_char_p]
         
         libgobject.g_source_set_name_by_id( self._object,tag,name )
 
     def set_callback(  self, func, data, notify, ):
 
-        libgobject.g_source_set_callback.restype = None
-        libgobject.g_source_set_callback.argtypes = [_GSource,GSourceFunc,gpointer,GDestroyNotify]
         
         libgobject.g_source_set_callback( self._object,func,data,notify )
 
@@ -458,22 +460,16 @@ class GSource( gobject__GObject.GObject):
         if context: context = context._object
         else: context = POINTER(c_int)()
 
-        libgobject.g_source_attach.restype = guint
-        libgobject.g_source_attach.argtypes = [_GSource,_GMainContext]
         
         return libgobject.g_source_attach( self._object,context )
 
     @staticmethod
     def remove_by_user_data( user_data,):
-        libgobject.g_source_remove_by_user_data.restype = gboolean
-        libgobject.g_source_remove_by_user_data.argtypes = [gpointer]
         
         return     libgobject.g_source_remove_by_user_data(user_data, )
 
     @staticmethod
     def remove( tag,):
-        libgobject.g_source_remove.restype = gboolean
-        libgobject.g_source_remove.argtypes = [guint]
         
         return     libgobject.g_source_remove(tag, )
 
@@ -481,8 +477,6 @@ class GSource( gobject__GObject.GObject):
     def remove_by_funcs_user_data( funcs, user_data,):
         if funcs: funcs = funcs._object
         else: funcs = POINTER(c_int)()
-        libgobject.g_source_remove_by_funcs_user_data.restype = gboolean
-        libgobject.g_source_remove_by_funcs_user_data.argtypes = [_GSourceFuncs,gpointer]
         
         return     libgobject.g_source_remove_by_funcs_user_data(funcs, user_data, )
 

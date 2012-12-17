@@ -61,6 +61,8 @@ PangoVariant = c_int
 PangoStretch = c_int
 PangoFontMask = c_int
 
+libwebkit3.webkit_web_window_features_equal.restype = gboolean
+libwebkit3.webkit_web_window_features_equal.argtypes = [_WebKitWebWindowFeatures,_WebKitWebWindowFeatures]
 import gobject__GObject
 class WebKitWebWindowFeatures( gobject__GObject.GObject):
     """Class WebKitWebWindowFeatures Constructors"""
@@ -77,8 +79,6 @@ class WebKitWebWindowFeatures( gobject__GObject.GObject):
         if features2: features2 = features2._object
         else: features2 = POINTER(c_int)()
 
-        libwebkit3.webkit_web_window_features_equal.restype = gboolean
-        libwebkit3.webkit_web_window_features_equal.argtypes = [_WebKitWebWindowFeatures,_WebKitWebWindowFeatures]
         
         return libwebkit3.webkit_web_window_features_equal( self._object,features2 )
 

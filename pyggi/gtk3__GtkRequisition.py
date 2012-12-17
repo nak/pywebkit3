@@ -282,6 +282,10 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gtk_requisition_copy.restype = _GtkRequisition
+libgtk3.gtk_requisition_copy.argtypes = [_GtkRequisition]
+libgtk3.gtk_requisition_free.restype = None
+libgtk3.gtk_requisition_free.argtypes = [_GtkRequisition]
 import gobject__GObject
 class GtkRequisition( gobject__GObject.GObject):
     """Class GtkRequisition Constructors"""
@@ -296,15 +300,11 @@ class GtkRequisition( gobject__GObject.GObject):
     """Methods"""
     def copy(  self, ):
 
-        libgtk3.gtk_requisition_copy.restype = _GtkRequisition
-        libgtk3.gtk_requisition_copy.argtypes = [_GtkRequisition]
         from gtk3 import GtkRequisition
         return GtkRequisition( obj=libgtk3.gtk_requisition_copy( self._object ) or POINTER(c_int)())
 
     def free(  self, ):
 
-        libgtk3.gtk_requisition_free.restype = None
-        libgtk3.gtk_requisition_free.argtypes = [_GtkRequisition]
         
         libgtk3.gtk_requisition_free( self._object )
 

@@ -281,6 +281,12 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.pango_item_split.restype = _PangoItem
+libgtk3.pango_item_split.argtypes = [_PangoItem,int,int]
+libgtk3.pango_item_free.restype = None
+libgtk3.pango_item_free.argtypes = [_PangoItem]
+libgtk3.pango_item_copy.restype = _PangoItem
+libgtk3.pango_item_copy.argtypes = [_PangoItem]
 import gobject__GBoxed
 class PangoItem( gobject__GBoxed.GBoxed):
     """Class PangoItem Constructors"""
@@ -295,22 +301,16 @@ class PangoItem( gobject__GBoxed.GBoxed):
     """Methods"""
     def split(  self, split_index, split_offset, ):
 
-        libgtk3.pango_item_split.restype = _PangoItem
-        libgtk3.pango_item_split.argtypes = [_PangoItem,int,int]
         from gtk3 import PangoItem
         return PangoItem(None,None, obj=libgtk3.pango_item_split( self._object,split_index,split_offset )  or POINTER(c_int)())
 
     def free(  self, ):
 
-        libgtk3.pango_item_free.restype = None
-        libgtk3.pango_item_free.argtypes = [_PangoItem]
         
         libgtk3.pango_item_free( self._object )
 
     def copy(  self, ):
 
-        libgtk3.pango_item_copy.restype = _PangoItem
-        libgtk3.pango_item_copy.argtypes = [_PangoItem]
         from gtk3 import PangoItem
         return PangoItem( obj=libgtk3.pango_item_copy( self._object )  or POINTER(c_int)())
 

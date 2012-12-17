@@ -254,6 +254,98 @@ GdkGrabOwnership = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 
+libgtk3.gtk_style_context_remove_provider.restype = None
+libgtk3.gtk_style_context_remove_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider]
+libgtk3.gtk_style_context_get_junction_sides.restype = GtkJunctionSides
+libgtk3.gtk_style_context_get_junction_sides.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_has_class.restype = gboolean
+libgtk3.gtk_style_context_has_class.argtypes = [_GtkStyleContext,c_char_p]
+libgtk3.gtk_style_context_add_class.restype = None
+libgtk3.gtk_style_context_add_class.argtypes = [_GtkStyleContext,c_char_p]
+libgtk3.gtk_style_context_add_region.restype = None
+libgtk3.gtk_style_context_add_region.argtypes = [_GtkStyleContext,c_char_p,GtkRegionFlags]
+libgtk3.gtk_style_context_push_animatable_region.restype = None
+libgtk3.gtk_style_context_push_animatable_region.argtypes = [_GtkStyleContext,gpointer]
+libgtk3.gtk_style_context_set_junction_sides.restype = None
+libgtk3.gtk_style_context_set_junction_sides.argtypes = [_GtkStyleContext,GtkJunctionSides]
+libgtk3.gtk_style_context_scroll_animations.restype = None
+libgtk3.gtk_style_context_scroll_animations.argtypes = [_GtkStyleContext,_GdkWindow,gint,gint]
+libgtk3.gtk_style_context_get_state.restype = GtkStateFlags
+libgtk3.gtk_style_context_get_state.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_set_screen.restype = None
+libgtk3.gtk_style_context_set_screen.argtypes = [_GtkStyleContext,_GdkScreen]
+libgtk3.gtk_style_context_get_style_property.restype = None
+libgtk3.gtk_style_context_get_style_property.argtypes = [_GtkStyleContext,c_char_p,_GValue]
+libgtk3.gtk_style_context_list_regions.restype = _GList
+libgtk3.gtk_style_context_list_regions.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_set_background.restype = None
+libgtk3.gtk_style_context_set_background.argtypes = [_GtkStyleContext,_GdkWindow]
+libgtk3.gtk_style_context_get_screen.restype = _GdkScreen
+libgtk3.gtk_style_context_get_screen.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_save.restype = None
+libgtk3.gtk_style_context_save.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_get_border_color.restype = None
+libgtk3.gtk_style_context_get_border_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
+libgtk3.gtk_style_context_get_margin.restype = None
+libgtk3.gtk_style_context_get_margin.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
+libgtk3.gtk_style_context_lookup_icon_set.restype = _GtkIconSet
+libgtk3.gtk_style_context_lookup_icon_set.argtypes = [_GtkStyleContext,c_char_p]
+libgtk3.gtk_style_context_get_direction.restype = GtkTextDirection
+libgtk3.gtk_style_context_get_direction.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_get_property.restype = None
+libgtk3.gtk_style_context_get_property.argtypes = [_GtkStyleContext,c_char_p,GtkStateFlags,_GValue]
+libgtk3.gtk_style_context_restore.restype = None
+libgtk3.gtk_style_context_restore.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_get_font.restype = _PangoFontDescription
+libgtk3.gtk_style_context_get_font.argtypes = [_GtkStyleContext,GtkStateFlags]
+libgtk3.gtk_style_context_get.restype = None
+libgtk3.gtk_style_context_get.argtypes = [_GtkStyleContext,GtkStateFlags,]
+libgtk3.gtk_style_context_list_classes.restype = _GList
+libgtk3.gtk_style_context_list_classes.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_add_provider.restype = None
+libgtk3.gtk_style_context_add_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider,guint]
+libgtk3.gtk_style_context_state_is_running.restype = gboolean
+libgtk3.gtk_style_context_state_is_running.argtypes = [_GtkStyleContext,GtkStateType,POINTER(gdouble)]
+libgtk3.gtk_style_context_set_path.restype = None
+libgtk3.gtk_style_context_set_path.argtypes = [_GtkStyleContext,_GtkWidgetPath]
+libgtk3.gtk_style_context_lookup_color.restype = gboolean
+libgtk3.gtk_style_context_lookup_color.argtypes = [_GtkStyleContext,c_char_p,_GdkRGBA]
+libgtk3.gtk_style_context_get_border.restype = None
+libgtk3.gtk_style_context_get_border.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
+libgtk3.gtk_style_context_remove_class.restype = None
+libgtk3.gtk_style_context_remove_class.argtypes = [_GtkStyleContext,c_char_p]
+libgtk3.gtk_style_context_remove_region.restype = None
+libgtk3.gtk_style_context_remove_region.argtypes = [_GtkStyleContext,c_char_p]
+libgtk3.gtk_style_context_set_state.restype = None
+libgtk3.gtk_style_context_set_state.argtypes = [_GtkStyleContext,GtkStateFlags]
+libgtk3.gtk_style_context_cancel_animations.restype = None
+libgtk3.gtk_style_context_cancel_animations.argtypes = [_GtkStyleContext,gpointer]
+libgtk3.gtk_style_context_pop_animatable_region.restype = None
+libgtk3.gtk_style_context_pop_animatable_region.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_invalidate.restype = None
+libgtk3.gtk_style_context_invalidate.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_get_color.restype = None
+libgtk3.gtk_style_context_get_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
+libgtk3.gtk_style_context_set_direction.restype = None
+libgtk3.gtk_style_context_set_direction.argtypes = [_GtkStyleContext,GtkTextDirection]
+libgtk3.gtk_style_context_reset_widgets.restype = None
+libgtk3.gtk_style_context_reset_widgets.argtypes = [_GtkStyleContext,_GdkScreen]
+libgtk3.gtk_style_context_get_background_color.restype = None
+libgtk3.gtk_style_context_get_background_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
+libgtk3.gtk_style_context_get_style.restype = None
+libgtk3.gtk_style_context_get_style.argtypes = [_GtkStyleContext,]
+libgtk3.gtk_style_context_has_region.restype = gboolean
+libgtk3.gtk_style_context_has_region.argtypes = [_GtkStyleContext,c_char_p,_GtkRegionFlags]
+libgtk3.gtk_style_context_get_path.restype = _GtkWidgetPath
+libgtk3.gtk_style_context_get_path.argtypes = [_GtkStyleContext]
+libgtk3.gtk_style_context_notify_state_change.restype = None
+libgtk3.gtk_style_context_notify_state_change.argtypes = [_GtkStyleContext,_GdkWindow,gpointer,GtkStateType,gboolean]
+libgtk3.gtk_style_context_add_provider_for_screen.restype = None
+libgtk3.gtk_style_context_add_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider,guint]
+libgtk3.gtk_style_context_remove_provider_for_screen.restype = None
+libgtk3.gtk_style_context_remove_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider]
+libgtk3.gtk_style_context_get_padding.restype = None
+libgtk3.gtk_style_context_get_padding.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
 import gobject__GObject
 class GtkStyleContext( gobject__GObject.GObject):
     """Class GtkStyleContext Constructors"""
@@ -270,29 +362,21 @@ class GtkStyleContext( gobject__GObject.GObject):
         if provider: provider = provider._object
         else: provider = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_remove_provider.restype = None
-        libgtk3.gtk_style_context_remove_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider]
         
         libgtk3.gtk_style_context_remove_provider( self._object,provider )
 
     def get_junction_sides(  self, ):
 
-        libgtk3.gtk_style_context_get_junction_sides.restype = GtkJunctionSides
-        libgtk3.gtk_style_context_get_junction_sides.argtypes = [_GtkStyleContext]
         
         return libgtk3.gtk_style_context_get_junction_sides( self._object )
 
     def has_class(  self, class_name, ):
 
-        libgtk3.gtk_style_context_has_class.restype = gboolean
-        libgtk3.gtk_style_context_has_class.argtypes = [_GtkStyleContext,c_char_p]
         
         return libgtk3.gtk_style_context_has_class( self._object,class_name )
 
     def add_class(  self, class_name, ):
 
-        libgtk3.gtk_style_context_add_class.restype = None
-        libgtk3.gtk_style_context_add_class.argtypes = [_GtkStyleContext,c_char_p]
         
         libgtk3.gtk_style_context_add_class( self._object,class_name )
 
@@ -300,22 +384,16 @@ class GtkStyleContext( gobject__GObject.GObject):
         if flags: flags = flags._object
         else: flags = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_add_region.restype = None
-        libgtk3.gtk_style_context_add_region.argtypes = [_GtkStyleContext,c_char_p,GtkRegionFlags]
         
         libgtk3.gtk_style_context_add_region( self._object,region_name,flags )
 
     def push_animatable_region(  self, region_id, ):
 
-        libgtk3.gtk_style_context_push_animatable_region.restype = None
-        libgtk3.gtk_style_context_push_animatable_region.argtypes = [_GtkStyleContext,gpointer]
         
         libgtk3.gtk_style_context_push_animatable_region( self._object,region_id )
 
     def set_junction_sides(  self, sides, ):
 
-        libgtk3.gtk_style_context_set_junction_sides.restype = None
-        libgtk3.gtk_style_context_set_junction_sides.argtypes = [_GtkStyleContext,GtkJunctionSides]
         
         libgtk3.gtk_style_context_set_junction_sides( self._object,sides )
 
@@ -323,15 +401,11 @@ class GtkStyleContext( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_scroll_animations.restype = None
-        libgtk3.gtk_style_context_scroll_animations.argtypes = [_GtkStyleContext,_GdkWindow,gint,gint]
         
         libgtk3.gtk_style_context_scroll_animations( self._object,window,dx,dy )
 
     def get_state(  self, ):
 
-        libgtk3.gtk_style_context_get_state.restype = GtkStateFlags
-        libgtk3.gtk_style_context_get_state.argtypes = [_GtkStyleContext]
         
         return libgtk3.gtk_style_context_get_state( self._object )
 
@@ -339,8 +413,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_set_screen.restype = None
-        libgtk3.gtk_style_context_set_screen.argtypes = [_GtkStyleContext,_GdkScreen]
         
         libgtk3.gtk_style_context_set_screen( self._object,screen )
 
@@ -348,15 +420,11 @@ class GtkStyleContext( gobject__GObject.GObject):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_style_property.restype = None
-        libgtk3.gtk_style_context_get_style_property.argtypes = [_GtkStyleContext,c_char_p,_GValue]
         
         libgtk3.gtk_style_context_get_style_property( self._object,property_name,value )
 
     def list_regions(  self, ):
 
-        libgtk3.gtk_style_context_list_regions.restype = _GList
-        libgtk3.gtk_style_context_list_regions.argtypes = [_GtkStyleContext]
         from gobject import GList
         return GList( obj=libgtk3.gtk_style_context_list_regions( self._object ) or POINTER(c_int)())
 
@@ -364,22 +432,16 @@ class GtkStyleContext( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_set_background.restype = None
-        libgtk3.gtk_style_context_set_background.argtypes = [_GtkStyleContext,_GdkWindow]
         
         libgtk3.gtk_style_context_set_background( self._object,window )
 
     def get_screen(  self, ):
 
-        libgtk3.gtk_style_context_get_screen.restype = _GdkScreen
-        libgtk3.gtk_style_context_get_screen.argtypes = [_GtkStyleContext]
         from gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gtk_style_context_get_screen( self._object ) or POINTER(c_int)())
 
     def save(  self, ):
 
-        libgtk3.gtk_style_context_save.restype = None
-        libgtk3.gtk_style_context_save.argtypes = [_GtkStyleContext]
         
         libgtk3.gtk_style_context_save( self._object )
 
@@ -387,8 +449,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if color: color = color._object
         else: color = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_border_color.restype = None
-        libgtk3.gtk_style_context_get_border_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
         
         libgtk3.gtk_style_context_get_border_color( self._object,state,color )
 
@@ -396,22 +456,16 @@ class GtkStyleContext( gobject__GObject.GObject):
         if margin: margin = margin._object
         else: margin = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_margin.restype = None
-        libgtk3.gtk_style_context_get_margin.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
         
         libgtk3.gtk_style_context_get_margin( self._object,state,margin )
 
     def lookup_icon_set(  self, stock_id, ):
 
-        libgtk3.gtk_style_context_lookup_icon_set.restype = _GtkIconSet
-        libgtk3.gtk_style_context_lookup_icon_set.argtypes = [_GtkStyleContext,c_char_p]
         from gtk3 import GtkIconSet
         return GtkIconSet(None, obj=libgtk3.gtk_style_context_lookup_icon_set( self._object,stock_id ) or POINTER(c_int)())
 
     def get_direction(  self, ):
 
-        libgtk3.gtk_style_context_get_direction.restype = GtkTextDirection
-        libgtk3.gtk_style_context_get_direction.argtypes = [_GtkStyleContext]
         
         return libgtk3.gtk_style_context_get_direction( self._object )
 
@@ -419,22 +473,16 @@ class GtkStyleContext( gobject__GObject.GObject):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_property.restype = None
-        libgtk3.gtk_style_context_get_property.argtypes = [_GtkStyleContext,c_char_p,GtkStateFlags,_GValue]
         
         libgtk3.gtk_style_context_get_property( self._object,property,state,value )
 
     def restore(  self, ):
 
-        libgtk3.gtk_style_context_restore.restype = None
-        libgtk3.gtk_style_context_restore.argtypes = [_GtkStyleContext]
         
         libgtk3.gtk_style_context_restore( self._object )
 
     def get_font(  self, state, ):
 
-        libgtk3.gtk_style_context_get_font.restype = _PangoFontDescription
-        libgtk3.gtk_style_context_get_font.argtypes = [_GtkStyleContext,GtkStateFlags]
         from gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libgtk3.gtk_style_context_get_font( self._object,state )  or POINTER(c_int)())
 
@@ -442,8 +490,6 @@ class GtkStyleContext( gobject__GObject.GObject):
 
 
         def callit( state, *args ):
-                libgtk3.gtk_style_context_get.restype = None
-                libgtk3.gtk_style_context_get.argtypes = [ POINTER(c_int), GtkStateFlags]
                 for arg in args:
                      libgtk3.gtk_style_context_get.argtypes.append(args[1])
                 return libgtk3.gtk_style_context_get( state, *args)
@@ -452,8 +498,6 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def list_classes(  self, ):
 
-        libgtk3.gtk_style_context_list_classes.restype = _GList
-        libgtk3.gtk_style_context_list_classes.argtypes = [_GtkStyleContext]
         from gobject import GList
         return GList( obj=libgtk3.gtk_style_context_list_classes( self._object ) or POINTER(c_int)())
 
@@ -461,15 +505,11 @@ class GtkStyleContext( gobject__GObject.GObject):
         if provider: provider = provider._object
         else: provider = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_add_provider.restype = None
-        libgtk3.gtk_style_context_add_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider,guint]
         
         libgtk3.gtk_style_context_add_provider( self._object,provider,priority )
 
     def state_is_running(  self, state, progress, ):
 
-        libgtk3.gtk_style_context_state_is_running.restype = gboolean
-        libgtk3.gtk_style_context_state_is_running.argtypes = [_GtkStyleContext,GtkStateType,POINTER(gdouble)]
         
         return libgtk3.gtk_style_context_state_is_running( self._object,state,progress )
 
@@ -477,8 +517,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if path: path = path._object
         else: path = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_set_path.restype = None
-        libgtk3.gtk_style_context_set_path.argtypes = [_GtkStyleContext,_GtkWidgetPath]
         
         libgtk3.gtk_style_context_set_path( self._object,path )
 
@@ -486,8 +524,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if color: color = color._object
         else: color = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_lookup_color.restype = gboolean
-        libgtk3.gtk_style_context_lookup_color.argtypes = [_GtkStyleContext,c_char_p,_GdkRGBA]
         
         return libgtk3.gtk_style_context_lookup_color( self._object,color_name,color )
 
@@ -495,50 +531,36 @@ class GtkStyleContext( gobject__GObject.GObject):
         if border: border = border._object
         else: border = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_border.restype = None
-        libgtk3.gtk_style_context_get_border.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
         
         libgtk3.gtk_style_context_get_border( self._object,state,border )
 
     def remove_class(  self, class_name, ):
 
-        libgtk3.gtk_style_context_remove_class.restype = None
-        libgtk3.gtk_style_context_remove_class.argtypes = [_GtkStyleContext,c_char_p]
         
         libgtk3.gtk_style_context_remove_class( self._object,class_name )
 
     def remove_region(  self, region_name, ):
 
-        libgtk3.gtk_style_context_remove_region.restype = None
-        libgtk3.gtk_style_context_remove_region.argtypes = [_GtkStyleContext,c_char_p]
         
         libgtk3.gtk_style_context_remove_region( self._object,region_name )
 
     def set_state(  self, flags, ):
 
-        libgtk3.gtk_style_context_set_state.restype = None
-        libgtk3.gtk_style_context_set_state.argtypes = [_GtkStyleContext,GtkStateFlags]
         
         libgtk3.gtk_style_context_set_state( self._object,flags )
 
     def cancel_animations(  self, region_id, ):
 
-        libgtk3.gtk_style_context_cancel_animations.restype = None
-        libgtk3.gtk_style_context_cancel_animations.argtypes = [_GtkStyleContext,gpointer]
         
         libgtk3.gtk_style_context_cancel_animations( self._object,region_id )
 
     def pop_animatable_region(  self, ):
 
-        libgtk3.gtk_style_context_pop_animatable_region.restype = None
-        libgtk3.gtk_style_context_pop_animatable_region.argtypes = [_GtkStyleContext]
         
         libgtk3.gtk_style_context_pop_animatable_region( self._object )
 
     def invalidate(  self, ):
 
-        libgtk3.gtk_style_context_invalidate.restype = None
-        libgtk3.gtk_style_context_invalidate.argtypes = [_GtkStyleContext]
         
         libgtk3.gtk_style_context_invalidate( self._object )
 
@@ -546,15 +568,11 @@ class GtkStyleContext( gobject__GObject.GObject):
         if color: color = color._object
         else: color = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_color.restype = None
-        libgtk3.gtk_style_context_get_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
         
         libgtk3.gtk_style_context_get_color( self._object,state,color )
 
     def set_direction(  self, direction, ):
 
-        libgtk3.gtk_style_context_set_direction.restype = None
-        libgtk3.gtk_style_context_set_direction.argtypes = [_GtkStyleContext,GtkTextDirection]
         
         libgtk3.gtk_style_context_set_direction( self._object,direction )
 
@@ -562,8 +580,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_reset_widgets.restype = None
-        libgtk3.gtk_style_context_reset_widgets.argtypes = [_GtkStyleContext,_GdkScreen]
         
         libgtk3.gtk_style_context_reset_widgets( self._object,screen )
 
@@ -571,8 +587,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if color: color = color._object
         else: color = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_background_color.restype = None
-        libgtk3.gtk_style_context_get_background_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
         
         libgtk3.gtk_style_context_get_background_color( self._object,state,color )
 
@@ -580,8 +594,6 @@ class GtkStyleContext( gobject__GObject.GObject):
 
 
         def callit(  *args ):
-                libgtk3.gtk_style_context_get_style.restype = None
-                libgtk3.gtk_style_context_get_style.argtypes = [ POINTER(c_int)]
                 for arg in args:
                      libgtk3.gtk_style_context_get_style.argtypes.append(args[1])
                 return libgtk3.gtk_style_context_get_style(  *args)
@@ -592,15 +604,11 @@ class GtkStyleContext( gobject__GObject.GObject):
         if flags_return: flags_return = flags_return._object
         else: flags_return = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_has_region.restype = gboolean
-        libgtk3.gtk_style_context_has_region.argtypes = [_GtkStyleContext,c_char_p,_GtkRegionFlags]
         
         return libgtk3.gtk_style_context_has_region( self._object,region_name,flags_return )
 
     def get_path(  self, ):
 
-        libgtk3.gtk_style_context_get_path.restype = _GtkWidgetPath
-        libgtk3.gtk_style_context_get_path.argtypes = [_GtkStyleContext]
         from gtk3 import GtkWidgetPath
         return GtkWidgetPath(None, obj=libgtk3.gtk_style_context_get_path( self._object ) or POINTER(c_int)())
 
@@ -608,8 +616,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_notify_state_change.restype = None
-        libgtk3.gtk_style_context_notify_state_change.argtypes = [_GtkStyleContext,_GdkWindow,gpointer,GtkStateType,gboolean]
         
         libgtk3.gtk_style_context_notify_state_change( self._object,window,region_id,state,state_value )
 
@@ -619,8 +625,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if provider: provider = provider._object
         else: provider = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_add_provider_for_screen.restype = None
-        libgtk3.gtk_style_context_add_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider,guint]
         
         libgtk3.gtk_style_context_add_provider_for_screen( self._object,screen,provider,priority )
 
@@ -630,8 +634,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if provider: provider = provider._object
         else: provider = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_remove_provider_for_screen.restype = None
-        libgtk3.gtk_style_context_remove_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider]
         
         libgtk3.gtk_style_context_remove_provider_for_screen( self._object,screen,provider )
 
@@ -639,8 +641,6 @@ class GtkStyleContext( gobject__GObject.GObject):
         if padding: padding = padding._object
         else: padding = POINTER(c_int)()
 
-        libgtk3.gtk_style_context_get_padding.restype = None
-        libgtk3.gtk_style_context_get_padding.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
         
         libgtk3.gtk_style_context_get_padding( self._object,state,padding )
 

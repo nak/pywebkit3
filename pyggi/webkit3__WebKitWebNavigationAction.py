@@ -256,6 +256,20 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
+libwebkit3.webkit_web_navigation_action_get_original_uri.restype = c_char_p
+libwebkit3.webkit_web_navigation_action_get_original_uri.argtypes = [_WebKitWebNavigationAction]
+libwebkit3.webkit_web_navigation_action_get_button.restype = gint
+libwebkit3.webkit_web_navigation_action_get_button.argtypes = [_WebKitWebNavigationAction]
+libwebkit3.webkit_web_navigation_action_get_target_frame.restype = c_char_p
+libwebkit3.webkit_web_navigation_action_get_target_frame.argtypes = [_WebKitWebNavigationAction]
+libwebkit3.webkit_web_navigation_action_set_original_uri.restype = None
+libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,c_char_p]
+libwebkit3.webkit_web_navigation_action_get_modifier_state.restype = gint
+libwebkit3.webkit_web_navigation_action_get_modifier_state.argtypes = [_WebKitWebNavigationAction]
+libwebkit3.webkit_web_navigation_action_get_reason.restype = WebKitWebNavigationReason
+libwebkit3.webkit_web_navigation_action_get_reason.argtypes = [_WebKitWebNavigationAction]
+libwebkit3.webkit_web_navigation_action_set_reason.restype = None
+libwebkit3.webkit_web_navigation_action_set_reason.argtypes = [_WebKitWebNavigationAction,WebKitWebNavigationReason]
 import gobject__GObject
 class WebKitWebNavigationAction( gobject__GObject.GObject):
     """Class WebKitWebNavigationAction Constructors"""
@@ -264,50 +278,36 @@ class WebKitWebNavigationAction( gobject__GObject.GObject):
     """Methods"""
     def get_original_uri(  self, ):
 
-        libwebkit3.webkit_web_navigation_action_get_original_uri.restype = c_char_p
-        libwebkit3.webkit_web_navigation_action_get_original_uri.argtypes = [_WebKitWebNavigationAction]
         
         return libwebkit3.webkit_web_navigation_action_get_original_uri( self._object )
 
     def get_button(  self, ):
 
-        libwebkit3.webkit_web_navigation_action_get_button.restype = gint
-        libwebkit3.webkit_web_navigation_action_get_button.argtypes = [_WebKitWebNavigationAction]
         
         return libwebkit3.webkit_web_navigation_action_get_button( self._object )
 
     def get_target_frame(  self, ):
 
-        libwebkit3.webkit_web_navigation_action_get_target_frame.restype = c_char_p
-        libwebkit3.webkit_web_navigation_action_get_target_frame.argtypes = [_WebKitWebNavigationAction]
         
         return libwebkit3.webkit_web_navigation_action_get_target_frame( self._object )
 
     def set_original_uri(  self, originalUri, ):
 
-        libwebkit3.webkit_web_navigation_action_set_original_uri.restype = None
-        libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,c_char_p]
         
         libwebkit3.webkit_web_navigation_action_set_original_uri( self._object,originalUri )
 
     def get_modifier_state(  self, ):
 
-        libwebkit3.webkit_web_navigation_action_get_modifier_state.restype = gint
-        libwebkit3.webkit_web_navigation_action_get_modifier_state.argtypes = [_WebKitWebNavigationAction]
         
         return libwebkit3.webkit_web_navigation_action_get_modifier_state( self._object )
 
     def get_reason(  self, ):
 
-        libwebkit3.webkit_web_navigation_action_get_reason.restype = WebKitWebNavigationReason
-        libwebkit3.webkit_web_navigation_action_get_reason.argtypes = [_WebKitWebNavigationAction]
         
         return libwebkit3.webkit_web_navigation_action_get_reason( self._object )
 
     def set_reason(  self, reason, ):
 
-        libwebkit3.webkit_web_navigation_action_set_reason.restype = None
-        libwebkit3.webkit_web_navigation_action_set_reason.argtypes = [_WebKitWebNavigationAction,WebKitWebNavigationReason]
         
         libwebkit3.webkit_web_navigation_action_set_reason( self._object,reason )
 

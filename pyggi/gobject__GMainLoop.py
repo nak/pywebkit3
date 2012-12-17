@@ -306,6 +306,18 @@ GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
 
+libgobject.g_main_loop_is_running.restype = gboolean
+libgobject.g_main_loop_is_running.argtypes = [_GMainLoop]
+libgobject.g_main_loop_get_context.restype = _GMainContext
+libgobject.g_main_loop_get_context.argtypes = [_GMainLoop]
+libgobject.g_main_loop_quit.restype = None
+libgobject.g_main_loop_quit.argtypes = [_GMainLoop]
+libgobject.g_main_loop_ref.restype = _GMainLoop
+libgobject.g_main_loop_ref.argtypes = [_GMainLoop]
+libgobject.g_main_loop_unref.restype = None
+libgobject.g_main_loop_unref.argtypes = [_GMainLoop]
+libgobject.g_main_loop_run.restype = None
+libgobject.g_main_loop_run.argtypes = [_GMainLoop]
 import gobject__GObject
 class GMainLoop( gobject__GObject.GObject):
     """Class GMainLoop Constructors"""
@@ -320,43 +332,31 @@ class GMainLoop( gobject__GObject.GObject):
     """Methods"""
     def is_running(  self, ):
 
-        libgobject.g_main_loop_is_running.restype = gboolean
-        libgobject.g_main_loop_is_running.argtypes = [_GMainLoop]
         
         return libgobject.g_main_loop_is_running( self._object )
 
     def get_context(  self, ):
 
-        libgobject.g_main_loop_get_context.restype = _GMainContext
-        libgobject.g_main_loop_get_context.argtypes = [_GMainLoop]
         from gobject import GMainContext
         return GMainContext(None,None, obj=libgobject.g_main_loop_get_context( self._object ) or POINTER(c_int)())
 
     def quit(  self, ):
 
-        libgobject.g_main_loop_quit.restype = None
-        libgobject.g_main_loop_quit.argtypes = [_GMainLoop]
         
         libgobject.g_main_loop_quit( self._object )
 
     def ref(  self, ):
 
-        libgobject.g_main_loop_ref.restype = _GMainLoop
-        libgobject.g_main_loop_ref.argtypes = [_GMainLoop]
         from gobject import GMainLoop
         return GMainLoop( obj=libgobject.g_main_loop_ref( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):
 
-        libgobject.g_main_loop_unref.restype = None
-        libgobject.g_main_loop_unref.argtypes = [_GMainLoop]
         
         libgobject.g_main_loop_unref( self._object )
 
     def run(  self, ):
 
-        libgobject.g_main_loop_run.restype = None
-        libgobject.g_main_loop_run.argtypes = [_GMainLoop]
         
         libgobject.g_main_loop_run( self._object )
 

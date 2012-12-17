@@ -305,6 +305,58 @@ GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
 
+libgtk3.gtk_clipboard_set_with_owner.restype = gboolean
+libgtk3.gtk_clipboard_set_with_owner.argtypes = [_GtkClipboard,_GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,_GObject]
+libgtk3.gtk_clipboard_store.restype = None
+libgtk3.gtk_clipboard_store.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_get_owner.restype = _GObject
+libgtk3.gtk_clipboard_get_owner.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_wait_is_target_available.restype = gboolean
+libgtk3.gtk_clipboard_wait_is_target_available.argtypes = [_GtkClipboard,POINTER(c_int)]
+libgtk3.gtk_clipboard_request_contents.restype = None
+libgtk3.gtk_clipboard_request_contents.argtypes = [_GtkClipboard,POINTER(c_int),GtkClipboardReceivedFunc,gpointer]
+libgtk3.gtk_clipboard_clear.restype = None
+libgtk3.gtk_clipboard_clear.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_set_text.restype = None
+libgtk3.gtk_clipboard_set_text.argtypes = [_GtkClipboard,c_char_p,gint]
+libgtk3.gtk_clipboard_request_text.restype = None
+libgtk3.gtk_clipboard_request_text.argtypes = [_GtkClipboard,GtkClipboardTextReceivedFunc,gpointer]
+libgtk3.gtk_clipboard_wait_for_targets.restype = gboolean
+libgtk3.gtk_clipboard_wait_for_targets.argtypes = [_GtkClipboard,_GdkAtom,POINTER(gint)]
+libgtk3.gtk_clipboard_wait_for_contents.restype = _GtkSelectionData
+libgtk3.gtk_clipboard_wait_for_contents.argtypes = [_GtkClipboard,POINTER(c_int)]
+libgtk3.gtk_clipboard_set_can_store.restype = None
+libgtk3.gtk_clipboard_set_can_store.argtypes = [_GtkClipboard,_GtkTargetEntry,gint]
+libgtk3.gtk_clipboard_request_targets.restype = None
+libgtk3.gtk_clipboard_request_targets.argtypes = [_GtkClipboard,GtkClipboardTargetsReceivedFunc,gpointer]
+libgtk3.gtk_clipboard_wait_is_rich_text_available.restype = gboolean
+libgtk3.gtk_clipboard_wait_is_rich_text_available.argtypes = [_GtkClipboard,_GtkTextBuffer]
+libgtk3.gtk_clipboard_wait_for_image.restype = _GdkPixbuf
+libgtk3.gtk_clipboard_wait_for_image.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_wait_for_rich_text.restype = POINTER(guint8)
+libgtk3.gtk_clipboard_wait_for_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,_GdkAtom,POINTER(gsize)]
+libgtk3.gtk_clipboard_wait_for_text.restype = c_char_p
+libgtk3.gtk_clipboard_wait_for_text.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_get_display.restype = _GdkDisplay
+libgtk3.gtk_clipboard_get_display.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_wait_for_uris.restype = c_char_p
+libgtk3.gtk_clipboard_wait_for_uris.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_set_with_data.restype = gboolean
+libgtk3.gtk_clipboard_set_with_data.argtypes = [_GtkClipboard,_GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,gpointer]
+libgtk3.gtk_clipboard_wait_is_text_available.restype = gboolean
+libgtk3.gtk_clipboard_wait_is_text_available.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_request_uris.restype = None
+libgtk3.gtk_clipboard_request_uris.argtypes = [_GtkClipboard,GtkClipboardURIReceivedFunc,gpointer]
+libgtk3.gtk_clipboard_wait_is_uris_available.restype = gboolean
+libgtk3.gtk_clipboard_wait_is_uris_available.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_wait_is_image_available.restype = gboolean
+libgtk3.gtk_clipboard_wait_is_image_available.argtypes = [_GtkClipboard]
+libgtk3.gtk_clipboard_request_rich_text.restype = None
+libgtk3.gtk_clipboard_request_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,GtkClipboardRichTextReceivedFunc,gpointer]
+libgtk3.gtk_clipboard_set_image.restype = None
+libgtk3.gtk_clipboard_set_image.argtypes = [_GtkClipboard,_GdkPixbuf]
+libgtk3.gtk_clipboard_request_image.restype = None
+libgtk3.gtk_clipboard_request_image.argtypes = [_GtkClipboard,GtkClipboardImageReceivedFunc,gpointer]
 import gobject__GObject
 class GtkClipboard( gobject__GObject.GObject):
     """Class GtkClipboard Constructors"""
@@ -317,22 +369,16 @@ class GtkClipboard( gobject__GObject.GObject):
         if owner: owner = owner._object
         else: owner = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_set_with_owner.restype = gboolean
-        libgtk3.gtk_clipboard_set_with_owner.argtypes = [_GtkClipboard,_GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,_GObject]
         
         return libgtk3.gtk_clipboard_set_with_owner( self._object,targets,n_targets,get_func,clear_func,owner )
 
     def store(  self, ):
 
-        libgtk3.gtk_clipboard_store.restype = None
-        libgtk3.gtk_clipboard_store.argtypes = [_GtkClipboard]
         
         libgtk3.gtk_clipboard_store( self._object )
 
     def get_owner(  self, ):
 
-        libgtk3.gtk_clipboard_get_owner.restype = _GObject
-        libgtk3.gtk_clipboard_get_owner.argtypes = [_GtkClipboard]
         from gobject import GObject
         return GObject(None,None,None,None, obj=libgtk3.gtk_clipboard_get_owner( self._object ) or POINTER(c_int)())
 
@@ -340,8 +386,6 @@ class GtkClipboard( gobject__GObject.GObject):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_wait_is_target_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_target_available.argtypes = [_GtkClipboard,POINTER(c_int)]
         
         return libgtk3.gtk_clipboard_wait_is_target_available( self._object,target )
 
@@ -349,29 +393,21 @@ class GtkClipboard( gobject__GObject.GObject):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_request_contents.restype = None
-        libgtk3.gtk_clipboard_request_contents.argtypes = [_GtkClipboard,POINTER(c_int),GtkClipboardReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_contents( self._object,target,callback,user_data )
 
     def clear(  self, ):
 
-        libgtk3.gtk_clipboard_clear.restype = None
-        libgtk3.gtk_clipboard_clear.argtypes = [_GtkClipboard]
         
         libgtk3.gtk_clipboard_clear( self._object )
 
     def set_text(  self, text, len, ):
 
-        libgtk3.gtk_clipboard_set_text.restype = None
-        libgtk3.gtk_clipboard_set_text.argtypes = [_GtkClipboard,c_char_p,gint]
         
         libgtk3.gtk_clipboard_set_text( self._object,text,len )
 
     def request_text(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_text.restype = None
-        libgtk3.gtk_clipboard_request_text.argtypes = [_GtkClipboard,GtkClipboardTextReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_text( self._object,callback,user_data )
 
@@ -379,8 +415,6 @@ class GtkClipboard( gobject__GObject.GObject):
         if targets: targets = targets._object
         else: targets = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_wait_for_targets.restype = gboolean
-        libgtk3.gtk_clipboard_wait_for_targets.argtypes = [_GtkClipboard,_GdkAtom,POINTER(gint)]
         
         return libgtk3.gtk_clipboard_wait_for_targets( self._object,targets,n_targets )
 
@@ -388,8 +422,6 @@ class GtkClipboard( gobject__GObject.GObject):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_wait_for_contents.restype = _GtkSelectionData
-        libgtk3.gtk_clipboard_wait_for_contents.argtypes = [_GtkClipboard,POINTER(c_int)]
         from gtk3 import GtkSelectionData
         return GtkSelectionData( obj=libgtk3.gtk_clipboard_wait_for_contents( self._object,target ) or POINTER(c_int)())
 
@@ -397,15 +429,11 @@ class GtkClipboard( gobject__GObject.GObject):
         if targets: targets = targets._object
         else: targets = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_set_can_store.restype = None
-        libgtk3.gtk_clipboard_set_can_store.argtypes = [_GtkClipboard,_GtkTargetEntry,gint]
         
         libgtk3.gtk_clipboard_set_can_store( self._object,targets,n_targets )
 
     def request_targets(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_targets.restype = None
-        libgtk3.gtk_clipboard_request_targets.argtypes = [_GtkClipboard,GtkClipboardTargetsReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_targets( self._object,callback,user_data )
 
@@ -413,15 +441,11 @@ class GtkClipboard( gobject__GObject.GObject):
         if buffer: buffer = buffer._object
         else: buffer = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_wait_is_rich_text_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_rich_text_available.argtypes = [_GtkClipboard,_GtkTextBuffer]
         
         return libgtk3.gtk_clipboard_wait_is_rich_text_available( self._object,buffer )
 
     def wait_for_image(  self, ):
 
-        libgtk3.gtk_clipboard_wait_for_image.restype = _GdkPixbuf
-        libgtk3.gtk_clipboard_wait_for_image.argtypes = [_GtkClipboard]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_clipboard_wait_for_image( self._object ) or POINTER(c_int)())
 
@@ -431,29 +455,21 @@ class GtkClipboard( gobject__GObject.GObject):
         if format: format = format._object
         else: format = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_wait_for_rich_text.restype = POINTER(guint8)
-        libgtk3.gtk_clipboard_wait_for_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,_GdkAtom,POINTER(gsize)]
         
         return libgtk3.gtk_clipboard_wait_for_rich_text( self._object,buffer,format,length )
 
     def wait_for_text(  self, ):
 
-        libgtk3.gtk_clipboard_wait_for_text.restype = c_char_p
-        libgtk3.gtk_clipboard_wait_for_text.argtypes = [_GtkClipboard]
         
         return libgtk3.gtk_clipboard_wait_for_text( self._object )
 
     def get_display(  self, ):
 
-        libgtk3.gtk_clipboard_get_display.restype = _GdkDisplay
-        libgtk3.gtk_clipboard_get_display.argtypes = [_GtkClipboard]
         from gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gtk_clipboard_get_display( self._object ) or POINTER(c_int)())
 
     def wait_for_uris(  self, ):
 
-        libgtk3.gtk_clipboard_wait_for_uris.restype = c_char_p
-        libgtk3.gtk_clipboard_wait_for_uris.argtypes = [_GtkClipboard]
         
         return libgtk3.gtk_clipboard_wait_for_uris( self._object )
 
@@ -461,36 +477,26 @@ class GtkClipboard( gobject__GObject.GObject):
         if targets: targets = targets._object
         else: targets = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_set_with_data.restype = gboolean
-        libgtk3.gtk_clipboard_set_with_data.argtypes = [_GtkClipboard,_GtkTargetEntry,guint,GtkClipboardGetFunc,GtkClipboardClearFunc,gpointer]
         
         return libgtk3.gtk_clipboard_set_with_data( self._object,targets,n_targets,get_func,clear_func,user_data )
 
     def wait_is_text_available(  self, ):
 
-        libgtk3.gtk_clipboard_wait_is_text_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_text_available.argtypes = [_GtkClipboard]
         
         return libgtk3.gtk_clipboard_wait_is_text_available( self._object )
 
     def request_uris(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_uris.restype = None
-        libgtk3.gtk_clipboard_request_uris.argtypes = [_GtkClipboard,GtkClipboardURIReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_uris( self._object,callback,user_data )
 
     def wait_is_uris_available(  self, ):
 
-        libgtk3.gtk_clipboard_wait_is_uris_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_uris_available.argtypes = [_GtkClipboard]
         
         return libgtk3.gtk_clipboard_wait_is_uris_available( self._object )
 
     def wait_is_image_available(  self, ):
 
-        libgtk3.gtk_clipboard_wait_is_image_available.restype = gboolean
-        libgtk3.gtk_clipboard_wait_is_image_available.argtypes = [_GtkClipboard]
         
         return libgtk3.gtk_clipboard_wait_is_image_available( self._object )
 
@@ -498,8 +504,6 @@ class GtkClipboard( gobject__GObject.GObject):
         if buffer: buffer = buffer._object
         else: buffer = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_request_rich_text.restype = None
-        libgtk3.gtk_clipboard_request_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,GtkClipboardRichTextReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_rich_text( self._object,buffer,callback,user_data )
 
@@ -507,15 +511,11 @@ class GtkClipboard( gobject__GObject.GObject):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
-        libgtk3.gtk_clipboard_set_image.restype = None
-        libgtk3.gtk_clipboard_set_image.argtypes = [_GtkClipboard,_GdkPixbuf]
         
         libgtk3.gtk_clipboard_set_image( self._object,pixbuf )
 
     def request_image(  self, callback, user_data, ):
 
-        libgtk3.gtk_clipboard_request_image.restype = None
-        libgtk3.gtk_clipboard_request_image.argtypes = [_GtkClipboard,GtkClipboardImageReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_image( self._object,callback,user_data )
 
@@ -523,8 +523,6 @@ class GtkClipboard( gobject__GObject.GObject):
     def get( selection,):
         if selection: selection = selection._object
         else: selection = POINTER(c_int)()
-        libgtk3.gtk_clipboard_get.restype = _GtkClipboard
-        libgtk3.gtk_clipboard_get.argtypes = [POINTER(c_int)]
         from gtk3 import GtkClipboard
         return GtkClipboard( obj=    libgtk3.gtk_clipboard_get(selection, )
  or POINTER(c_int)())
@@ -534,8 +532,6 @@ class GtkClipboard( gobject__GObject.GObject):
         else: display = POINTER(c_int)()
         if selection: selection = selection._object
         else: selection = POINTER(c_int)()
-        libgtk3.gtk_clipboard_get_for_display.restype = _GtkClipboard
-        libgtk3.gtk_clipboard_get_for_display.argtypes = [_GdkDisplay,POINTER(c_int)]
         from gtk3 import GtkClipboard
         return GtkClipboard( obj=    libgtk3.gtk_clipboard_get_for_display(display, selection, )
  or POINTER(c_int)())

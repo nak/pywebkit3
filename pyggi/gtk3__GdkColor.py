@@ -199,6 +199,16 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gdk_color_copy.restype = _GdkColor
+libgtk3.gdk_color_copy.argtypes = [_GdkColor]
+libgtk3.gdk_color_to_string.restype = c_char_p
+libgtk3.gdk_color_to_string.argtypes = [_GdkColor]
+libgtk3.gdk_color_equal.restype = gboolean
+libgtk3.gdk_color_equal.argtypes = [_GdkColor,_GdkColor]
+libgtk3.gdk_color_hash.restype = guint
+libgtk3.gdk_color_hash.argtypes = [_GdkColor]
+libgtk3.gdk_color_free.restype = None
+libgtk3.gdk_color_free.argtypes = [_GdkColor]
 class GdkColor( object):
     """Class GdkColor Constructors"""
     def __init__(self, obj = None):
@@ -206,15 +216,11 @@ class GdkColor( object):
     """Methods"""
     def copy(  self, ):
 
-        libgtk3.gdk_color_copy.restype = _GdkColor
-        libgtk3.gdk_color_copy.argtypes = [_GdkColor]
         from gobject import GdkColor
         return GdkColor( obj=libgtk3.gdk_color_copy( self._object ) or POINTER(c_int)())
 
     def to_string(  self, ):
 
-        libgtk3.gdk_color_to_string.restype = c_char_p
-        libgtk3.gdk_color_to_string.argtypes = [_GdkColor]
         
         return libgtk3.gdk_color_to_string( self._object )
 
@@ -222,22 +228,16 @@ class GdkColor( object):
         if colorb: colorb = colorb._object
         else: colorb = POINTER(c_int)()
 
-        libgtk3.gdk_color_equal.restype = gboolean
-        libgtk3.gdk_color_equal.argtypes = [_GdkColor,_GdkColor]
         
         return libgtk3.gdk_color_equal( self._object,colorb )
 
     def hash(  self, ):
 
-        libgtk3.gdk_color_hash.restype = guint
-        libgtk3.gdk_color_hash.argtypes = [_GdkColor]
         
         return libgtk3.gdk_color_hash( self._object )
 
     def free(  self, ):
 
-        libgtk3.gdk_color_free.restype = None
-        libgtk3.gdk_color_free.argtypes = [_GdkColor]
         
         libgtk3.gdk_color_free( self._object )
 
@@ -245,8 +245,6 @@ class GdkColor( object):
     def parse( spec, color,):
         if color: color = color._object
         else: color = POINTER(c_int)()
-        libgtk3.gdk_color_parse.restype = gboolean
-        libgtk3.gdk_color_parse.argtypes = [c_char_p,_GdkColor]
         
         return     libgtk3.gdk_color_parse(spec, color, )
 

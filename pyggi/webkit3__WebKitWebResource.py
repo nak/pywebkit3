@@ -298,6 +298,14 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libwebkit3.webkit_web_resource_get_frame_name.restype = c_char_p
+libwebkit3.webkit_web_resource_get_frame_name.argtypes = [_WebKitWebResource]
+libwebkit3.webkit_web_resource_get_mime_type.restype = c_char_p
+libwebkit3.webkit_web_resource_get_mime_type.argtypes = [_WebKitWebResource]
+libwebkit3.webkit_web_resource_get_encoding.restype = c_char_p
+libwebkit3.webkit_web_resource_get_encoding.argtypes = [_WebKitWebResource]
+libwebkit3.webkit_web_resource_get_uri.restype = c_char_p
+libwebkit3.webkit_web_resource_get_uri.argtypes = [_WebKitWebResource]
 import gobject__GObject
 class WebKitWebResource( gobject__GObject.GObject):
     """Class WebKitWebResource Constructors"""
@@ -312,29 +320,21 @@ class WebKitWebResource( gobject__GObject.GObject):
     """Methods"""
     def get_frame_name(  self, ):
 
-        libwebkit3.webkit_web_resource_get_frame_name.restype = c_char_p
-        libwebkit3.webkit_web_resource_get_frame_name.argtypes = [_WebKitWebResource]
         
         return libwebkit3.webkit_web_resource_get_frame_name( self._object )
 
     def get_mime_type(  self, ):
 
-        libwebkit3.webkit_web_resource_get_mime_type.restype = c_char_p
-        libwebkit3.webkit_web_resource_get_mime_type.argtypes = [_WebKitWebResource]
         
         return libwebkit3.webkit_web_resource_get_mime_type( self._object )
 
     def get_encoding(  self, ):
 
-        libwebkit3.webkit_web_resource_get_encoding.restype = c_char_p
-        libwebkit3.webkit_web_resource_get_encoding.argtypes = [_WebKitWebResource]
         
         return libwebkit3.webkit_web_resource_get_encoding( self._object )
 
     def get_uri(  self, ):
 
-        libwebkit3.webkit_web_resource_get_uri.restype = c_char_p
-        libwebkit3.webkit_web_resource_get_uri.argtypes = [_WebKitWebResource]
         
         return libwebkit3.webkit_web_resource_get_uri( self._object )
 

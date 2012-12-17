@@ -314,6 +314,18 @@ GApplicationFlags = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
 
+libgtk3.gtk_rc_set_default_files.restype = None
+libgtk3.gtk_rc_set_default_files.argtypes = [_GtkRcStyle,c_char_p]
+libgtk3.gtk_rc_parse.restype = None
+libgtk3.gtk_rc_parse.argtypes = [_GtkRcStyle,c_char_p]
+libgtk3.gtk_rc_style_copy.restype = _GtkRcStyle
+libgtk3.gtk_rc_style_copy.argtypes = [_GtkRcStyle]
+libgtk3.gtk_rc_reset_styles.restype = None
+libgtk3.gtk_rc_reset_styles.argtypes = [_GtkRcStyle,_GtkSettings]
+libgtk3.gtk_rc_parse_string.restype = None
+libgtk3.gtk_rc_parse_string.argtypes = [_GtkRcStyle,c_char_p]
+libgtk3.gtk_rc_add_default_file.restype = None
+libgtk3.gtk_rc_add_default_file.argtypes = [_GtkRcStyle,c_char_p]
 import gobject__GObject
 class GtkRcStyle( gobject__GObject.GObject):
     """Class GtkRcStyle Constructors"""
@@ -328,22 +340,16 @@ class GtkRcStyle( gobject__GObject.GObject):
     """Methods"""
     def gtk_rc_set_default_files(  self, filenames, ):
 
-        libgtk3.gtk_rc_set_default_files.restype = None
-        libgtk3.gtk_rc_set_default_files.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_set_default_files( self._object,filenames )
 
     def gtk_rc_parse(  self, filename, ):
 
-        libgtk3.gtk_rc_parse.restype = None
-        libgtk3.gtk_rc_parse.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_parse( self._object,filename )
 
     def copy(  self, ):
 
-        libgtk3.gtk_rc_style_copy.restype = _GtkRcStyle
-        libgtk3.gtk_rc_style_copy.argtypes = [_GtkRcStyle]
         from gtk3 import GtkRcStyle
         return GtkRcStyle( obj=libgtk3.gtk_rc_style_copy( self._object ) or POINTER(c_int)())
 
@@ -351,22 +357,16 @@ class GtkRcStyle( gobject__GObject.GObject):
         if settings: settings = settings._object
         else: settings = POINTER(c_int)()
 
-        libgtk3.gtk_rc_reset_styles.restype = None
-        libgtk3.gtk_rc_reset_styles.argtypes = [_GtkRcStyle,_GtkSettings]
         
         libgtk3.gtk_rc_reset_styles( self._object,settings )
 
     def gtk_rc_parse_string(  self, rc_string, ):
 
-        libgtk3.gtk_rc_parse_string.restype = None
-        libgtk3.gtk_rc_parse_string.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_parse_string( self._object,rc_string )
 
     def gtk_rc_add_default_file(  self, filename, ):
 
-        libgtk3.gtk_rc_add_default_file.restype = None
-        libgtk3.gtk_rc_add_default_file.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_add_default_file( self._object,filename )
 
@@ -374,20 +374,16 @@ class GtkRcStyle( gobject__GObject.GObject):
     def gtk_rc_parse_state( scanner, state,):
         if scanner: scanner = scanner._object
         else: scanner = POINTER(c_int)()
-        libgtk3.gtk_rc_parse_state.restype = guint
-        libgtk3.gtk_rc_parse_state.argtypes = [_GScanner,POINTER(GtkStateType)]
         
         return     libgtk3.gtk_rc_parse_state(scanner, state, )
 
     @staticmethod
     def gtk_rc_get_default_files():
-        libgtk3.gtk_rc_get_default_files.restype = c_char_p
         
         return     libgtk3.gtk_rc_get_default_files()
 
     @staticmethod
     def gtk_rc_get_im_module_file():
-        libgtk3.gtk_rc_get_im_module_file.restype = c_char_p
         
         return     libgtk3.gtk_rc_get_im_module_file()
 
@@ -397,14 +393,11 @@ class GtkRcStyle( gobject__GObject.GObject):
         else: scanner = POINTER(c_int)()
         if color: color = color._object
         else: color = POINTER(c_int)()
-        libgtk3.gtk_rc_parse_color.restype = guint
-        libgtk3.gtk_rc_parse_color.argtypes = [_GScanner,_GdkColor]
         
         return     libgtk3.gtk_rc_parse_color(scanner, color, )
 
     @staticmethod
     def gtk_rc_get_im_module_path():
-        libgtk3.gtk_rc_get_im_module_path.restype = c_char_p
         
         return     libgtk3.gtk_rc_get_im_module_path()
 
@@ -416,15 +409,11 @@ class GtkRcStyle( gobject__GObject.GObject):
         else: style = POINTER(c_int)()
         if color: color = color._object
         else: color = POINTER(c_int)()
-        libgtk3.gtk_rc_parse_color_full.restype = guint
-        libgtk3.gtk_rc_parse_color_full.argtypes = [_GScanner,_GtkRcStyle,_GdkColor]
         
         return     libgtk3.gtk_rc_parse_color_full(scanner, style, color, )
 
     @staticmethod
     def gtk_rc_find_module_in_path( module_file,):
-        libgtk3.gtk_rc_find_module_in_path.restype = c_char_p
-        libgtk3.gtk_rc_find_module_in_path.argtypes = [c_char_p]
         
         return     libgtk3.gtk_rc_find_module_in_path(module_file, )
 
@@ -434,8 +423,6 @@ class GtkRcStyle( gobject__GObject.GObject):
         else: scanner = POINTER(c_int)()
         if priority: priority = priority._object
         else: priority = POINTER(c_int)()
-        libgtk3.gtk_rc_parse_priority.restype = guint
-        libgtk3.gtk_rc_parse_priority.argtypes = [_GScanner,_GtkPathPriorityType]
         
         return     libgtk3.gtk_rc_parse_priority(scanner, priority, )
 
@@ -443,14 +430,11 @@ class GtkRcStyle( gobject__GObject.GObject):
     def gtk_rc_reparse_all_for_settings( settings, force_load,):
         if settings: settings = settings._object
         else: settings = POINTER(c_int)()
-        libgtk3.gtk_rc_reparse_all_for_settings.restype = gboolean
-        libgtk3.gtk_rc_reparse_all_for_settings.argtypes = [_GtkSettings,gboolean]
         
         return     libgtk3.gtk_rc_reparse_all_for_settings(settings, force_load, )
 
     @staticmethod
     def gtk_rc_get_theme_dir():
-        libgtk3.gtk_rc_get_theme_dir.restype = c_char_p
         
         return     libgtk3.gtk_rc_get_theme_dir()
 
@@ -458,14 +442,11 @@ class GtkRcStyle( gobject__GObject.GObject):
     def gtk_rc_get_style_by_paths( settings, widget_path, class_path, type,):
         if settings: settings = settings._object
         else: settings = POINTER(c_int)()
-        libgtk3.gtk_rc_get_style_by_paths.restype = _GtkStyle
-        libgtk3.gtk_rc_get_style_by_paths.argtypes = [_GtkSettings,c_char_p,c_char_p,GType]
         from gtk3 import GtkStyle
         return GtkStyle(None, obj=    libgtk3.gtk_rc_get_style_by_paths(settings, widget_path, class_path, type, )
  or POINTER(c_int)())
     @staticmethod
     def gtk_rc_reparse_all():
-        libgtk3.gtk_rc_reparse_all.restype = gboolean
         
         return     libgtk3.gtk_rc_reparse_all()
 
@@ -475,14 +456,11 @@ class GtkRcStyle( gobject__GObject.GObject):
         else: settings = POINTER(c_int)()
         if scanner: scanner = scanner._object
         else: scanner = POINTER(c_int)()
-        libgtk3.gtk_rc_find_pixmap_in_path.restype = c_char_p
-        libgtk3.gtk_rc_find_pixmap_in_path.argtypes = [_GtkSettings,_GScanner,c_char_p]
         
         return     libgtk3.gtk_rc_find_pixmap_in_path(settings, scanner, pixmap_file, )
 
     @staticmethod
     def gtk_rc_get_module_dir():
-        libgtk3.gtk_rc_get_module_dir.restype = c_char_p
         
         return     libgtk3.gtk_rc_get_module_dir()
 
@@ -490,8 +468,6 @@ class GtkRcStyle( gobject__GObject.GObject):
     def gtk_rc_get_style( widget,):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
-        libgtk3.gtk_rc_get_style.restype = _GtkStyle
-        libgtk3.gtk_rc_get_style.argtypes = [_GtkWidget]
         from gtk3 import GtkStyle
         return GtkStyle( obj=    libgtk3.gtk_rc_get_style(widget, )
  or POINTER(c_int)())

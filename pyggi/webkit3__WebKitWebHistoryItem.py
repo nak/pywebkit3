@@ -276,6 +276,20 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libwebkit3.webkit_web_history_item_get_last_visited_time.restype = gdouble
+libwebkit3.webkit_web_history_item_get_last_visited_time.argtypes = [_WebKitWebHistoryItem]
+libwebkit3.webkit_web_history_item_get_original_uri.restype = c_char_p
+libwebkit3.webkit_web_history_item_get_original_uri.argtypes = [_WebKitWebHistoryItem]
+libwebkit3.webkit_web_history_item_get_title.restype = c_char_p
+libwebkit3.webkit_web_history_item_get_title.argtypes = [_WebKitWebHistoryItem]
+libwebkit3.webkit_web_history_item_set_alternate_title.restype = None
+libwebkit3.webkit_web_history_item_set_alternate_title.argtypes = [_WebKitWebHistoryItem,c_char_p]
+libwebkit3.webkit_web_history_item_get_alternate_title.restype = c_char_p
+libwebkit3.webkit_web_history_item_get_alternate_title.argtypes = [_WebKitWebHistoryItem]
+libwebkit3.webkit_web_history_item_copy.restype = _WebKitWebHistoryItem
+libwebkit3.webkit_web_history_item_copy.argtypes = [_WebKitWebHistoryItem]
+libwebkit3.webkit_web_history_item_get_uri.restype = c_char_p
+libwebkit3.webkit_web_history_item_get_uri.argtypes = [_WebKitWebHistoryItem]
 import gobject__GObject
 class WebKitWebHistoryItem( gobject__GObject.GObject):
     """Class WebKitWebHistoryItem Constructors"""
@@ -290,57 +304,41 @@ class WebKitWebHistoryItem( gobject__GObject.GObject):
     """Methods"""
     def get_last_visited_time(  self, ):
 
-        libwebkit3.webkit_web_history_item_get_last_visited_time.restype = gdouble
-        libwebkit3.webkit_web_history_item_get_last_visited_time.argtypes = [_WebKitWebHistoryItem]
         
         return libwebkit3.webkit_web_history_item_get_last_visited_time( self._object )
 
     def get_original_uri(  self, ):
 
-        libwebkit3.webkit_web_history_item_get_original_uri.restype = c_char_p
-        libwebkit3.webkit_web_history_item_get_original_uri.argtypes = [_WebKitWebHistoryItem]
         
         return libwebkit3.webkit_web_history_item_get_original_uri( self._object )
 
     def get_title(  self, ):
 
-        libwebkit3.webkit_web_history_item_get_title.restype = c_char_p
-        libwebkit3.webkit_web_history_item_get_title.argtypes = [_WebKitWebHistoryItem]
         
         return libwebkit3.webkit_web_history_item_get_title( self._object )
 
     def set_alternate_title(  self, title, ):
 
-        libwebkit3.webkit_web_history_item_set_alternate_title.restype = None
-        libwebkit3.webkit_web_history_item_set_alternate_title.argtypes = [_WebKitWebHistoryItem,c_char_p]
         
         libwebkit3.webkit_web_history_item_set_alternate_title( self._object,title )
 
     def get_alternate_title(  self, ):
 
-        libwebkit3.webkit_web_history_item_get_alternate_title.restype = c_char_p
-        libwebkit3.webkit_web_history_item_get_alternate_title.argtypes = [_WebKitWebHistoryItem]
         
         return libwebkit3.webkit_web_history_item_get_alternate_title( self._object )
 
     def copy(  self, ):
 
-        libwebkit3.webkit_web_history_item_copy.restype = _WebKitWebHistoryItem
-        libwebkit3.webkit_web_history_item_copy.argtypes = [_WebKitWebHistoryItem]
         from webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=libwebkit3.webkit_web_history_item_copy( self._object ) or POINTER(c_int)() )
 
     def get_uri(  self, ):
 
-        libwebkit3.webkit_web_history_item_get_uri.restype = c_char_p
-        libwebkit3.webkit_web_history_item_get_uri.argtypes = [_WebKitWebHistoryItem]
         
         return libwebkit3.webkit_web_history_item_get_uri( self._object )
 
     @staticmethod
     def new_with_data( uri, title,):
-        libwebkit3.webkit_web_history_item_new_with_data.restype = _WebKitWebHistoryItem
-        libwebkit3.webkit_web_history_item_new_with_data.argtypes = [c_char_p,c_char_p]
         from webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=    libwebkit3.webkit_web_history_item_new_with_data(uri, title, )
  or POINTER(c_int)() )

@@ -254,6 +254,32 @@ GdkGrabOwnership = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 
+libgtk3.gtk_dialog_add_action_widget.restype = None
+libgtk3.gtk_dialog_add_action_widget.argtypes = [_GtkDialog,_GtkWidget,gint]
+libgtk3.gtk_dialog_set_alternative_button_order.restype = None
+libgtk3.gtk_dialog_set_alternative_button_order.argtypes = [_GtkDialog,gint,]
+libgtk3.gtk_dialog_set_response_sensitive.restype = None
+libgtk3.gtk_dialog_set_response_sensitive.argtypes = [_GtkDialog,gint,gboolean]
+libgtk3.gtk_dialog_add_button.restype = _GtkWidget
+libgtk3.gtk_dialog_add_button.argtypes = [_GtkDialog,c_char_p,gint]
+libgtk3.gtk_dialog_set_default_response.restype = None
+libgtk3.gtk_dialog_set_default_response.argtypes = [_GtkDialog,gint]
+libgtk3.gtk_dialog_run.restype = gint
+libgtk3.gtk_dialog_run.argtypes = [_GtkDialog]
+libgtk3.gtk_dialog_get_content_area.restype = _GtkWidget
+libgtk3.gtk_dialog_get_content_area.argtypes = [_GtkDialog]
+libgtk3.gtk_dialog_response.restype = None
+libgtk3.gtk_dialog_response.argtypes = [_GtkDialog,gint]
+libgtk3.gtk_dialog_get_response_for_widget.restype = gint
+libgtk3.gtk_dialog_get_response_for_widget.argtypes = [_GtkDialog,_GtkWidget]
+libgtk3.gtk_dialog_set_alternative_button_order_from_array.restype = None
+libgtk3.gtk_dialog_set_alternative_button_order_from_array.argtypes = [_GtkDialog,gint,POINTER(gint)]
+libgtk3.gtk_dialog_get_action_area.restype = _GtkWidget
+libgtk3.gtk_dialog_get_action_area.argtypes = [_GtkDialog]
+libgtk3.gtk_dialog_get_widget_for_response.restype = _GtkWidget
+libgtk3.gtk_dialog_get_widget_for_response.argtypes = [_GtkDialog,gint]
+libgtk3.gtk_dialog_add_buttons.restype = None
+libgtk3.gtk_dialog_add_buttons.argtypes = [_GtkDialog,c_char_p,]
 import gtk3__GtkBin
 class GtkDialog( gtk3__GtkBin.GtkBin):
     """Class GtkDialog Constructors"""
@@ -270,8 +296,6 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
-        libgtk3.gtk_dialog_add_action_widget.restype = None
-        libgtk3.gtk_dialog_add_action_widget.argtypes = [_GtkDialog,_GtkWidget,gint]
         
         libgtk3.gtk_dialog_add_action_widget( self._object,child,response_id )
 
@@ -279,8 +303,6 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
 
         def callit( first_response_id, *args ):
-                libgtk3.gtk_dialog_set_alternative_button_order.restype = None
-                libgtk3.gtk_dialog_set_alternative_button_order.argtypes = [ POINTER(c_int), gint]
                 for arg in args:
                      libgtk3.gtk_dialog_set_alternative_button_order.argtypes.append(args[1])
                 return libgtk3.gtk_dialog_set_alternative_button_order( first_response_id, *args)
@@ -289,43 +311,31 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def set_response_sensitive(  self, response_id, setting, ):
 
-        libgtk3.gtk_dialog_set_response_sensitive.restype = None
-        libgtk3.gtk_dialog_set_response_sensitive.argtypes = [_GtkDialog,gint,gboolean]
         
         libgtk3.gtk_dialog_set_response_sensitive( self._object,response_id,setting )
 
     def add_button(  self, button_text, response_id, ):
 
-        libgtk3.gtk_dialog_add_button.restype = _GtkWidget
-        libgtk3.gtk_dialog_add_button.argtypes = [_GtkDialog,c_char_p,gint]
         from gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_dialog_add_button( self._object,button_text,response_id ) or POINTER(c_int)())
 
     def set_default_response(  self, response_id, ):
 
-        libgtk3.gtk_dialog_set_default_response.restype = None
-        libgtk3.gtk_dialog_set_default_response.argtypes = [_GtkDialog,gint]
         
         libgtk3.gtk_dialog_set_default_response( self._object,response_id )
 
     def run(  self, ):
 
-        libgtk3.gtk_dialog_run.restype = gint
-        libgtk3.gtk_dialog_run.argtypes = [_GtkDialog]
         
         return libgtk3.gtk_dialog_run( self._object )
 
     def get_content_area(  self, ):
 
-        libgtk3.gtk_dialog_get_content_area.restype = _GtkWidget
-        libgtk3.gtk_dialog_get_content_area.argtypes = [_GtkDialog]
         from gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_dialog_get_content_area( self._object ) or POINTER(c_int)())
 
     def response(  self, response_id, ):
 
-        libgtk3.gtk_dialog_response.restype = None
-        libgtk3.gtk_dialog_response.argtypes = [_GtkDialog,gint]
         
         libgtk3.gtk_dialog_response( self._object,response_id )
 
@@ -333,29 +343,21 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_dialog_get_response_for_widget.restype = gint
-        libgtk3.gtk_dialog_get_response_for_widget.argtypes = [_GtkDialog,_GtkWidget]
         
         return libgtk3.gtk_dialog_get_response_for_widget( self._object,widget )
 
     def set_alternative_button_order_from_array(  self, n_params, new_order, ):
 
-        libgtk3.gtk_dialog_set_alternative_button_order_from_array.restype = None
-        libgtk3.gtk_dialog_set_alternative_button_order_from_array.argtypes = [_GtkDialog,gint,POINTER(gint)]
         
         libgtk3.gtk_dialog_set_alternative_button_order_from_array( self._object,n_params,new_order )
 
     def get_action_area(  self, ):
 
-        libgtk3.gtk_dialog_get_action_area.restype = _GtkWidget
-        libgtk3.gtk_dialog_get_action_area.argtypes = [_GtkDialog]
         from gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_dialog_get_action_area( self._object ) or POINTER(c_int)())
 
     def get_widget_for_response(  self, response_id, ):
 
-        libgtk3.gtk_dialog_get_widget_for_response.restype = _GtkWidget
-        libgtk3.gtk_dialog_get_widget_for_response.argtypes = [_GtkDialog,gint]
         from gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_dialog_get_widget_for_response( self._object,response_id ) or POINTER(c_int)())
 
@@ -363,8 +365,6 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
 
         def callit( first_button_text, *args ):
-                libgtk3.gtk_dialog_add_buttons.restype = None
-                libgtk3.gtk_dialog_add_buttons.argtypes = [ POINTER(c_int), c_char_p]
                 for arg in args:
                      libgtk3.gtk_dialog_add_buttons.argtypes.append(args[1])
                 return libgtk3.gtk_dialog_add_buttons( first_button_text, *args)
@@ -375,8 +375,6 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
     def gtk_alternative_dialog_button_order( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        libgtk3.gtk_alternative_dialog_button_order.restype = gboolean
-        libgtk3.gtk_alternative_dialog_button_order.argtypes = [_GdkScreen]
         
         return     libgtk3.gtk_alternative_dialog_button_order(screen, )
 
@@ -384,8 +382,6 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
     def new_with_buttons( title, parent, flags, first_button_text,*args ):
         if parent: parent = parent._object
         else: parent = POINTER(c_int)()
-        libgtk3.gtk_dialog_new_with_buttons.restype = _GtkWidget
-        libgtk3.gtk_dialog_new_with_buttons.argtypes = [c_char_p,_GtkWindow,GtkDialogFlags,c_char_p,]
         from gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_dialog_new_with_buttons(title, parent, flags, first_button_text, *args)
  or POINTER(c_int)())

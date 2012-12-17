@@ -277,6 +277,42 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gtk_icon_source_get_pixbuf.restype = _GdkPixbuf
+libgtk3.gtk_icon_source_get_pixbuf.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_get_size_wildcarded.restype = gboolean
+libgtk3.gtk_icon_source_get_size_wildcarded.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_direction.restype = None
+libgtk3.gtk_icon_source_set_direction.argtypes = [_GtkIconSource,GtkTextDirection]
+libgtk3.gtk_icon_source_free.restype = None
+libgtk3.gtk_icon_source_free.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_get_direction.restype = GtkTextDirection
+libgtk3.gtk_icon_source_get_direction.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_state_wildcarded.restype = None
+libgtk3.gtk_icon_source_set_state_wildcarded.argtypes = [_GtkIconSource,gboolean]
+libgtk3.gtk_icon_source_get_state_wildcarded.restype = gboolean
+libgtk3.gtk_icon_source_get_state_wildcarded.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_direction_wildcarded.restype = None
+libgtk3.gtk_icon_source_set_direction_wildcarded.argtypes = [_GtkIconSource,gboolean]
+libgtk3.gtk_icon_source_copy.restype = _GtkIconSource
+libgtk3.gtk_icon_source_copy.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_state.restype = None
+libgtk3.gtk_icon_source_set_state.argtypes = [_GtkIconSource,GtkStateType]
+libgtk3.gtk_icon_source_get_size.restype = GtkIconSize
+libgtk3.gtk_icon_source_get_size.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_pixbuf.restype = None
+libgtk3.gtk_icon_source_set_pixbuf.argtypes = [_GtkIconSource,_GdkPixbuf]
+libgtk3.gtk_icon_source_get_icon_name.restype = c_char_p
+libgtk3.gtk_icon_source_get_icon_name.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_icon_name.restype = None
+libgtk3.gtk_icon_source_set_icon_name.argtypes = [_GtkIconSource,c_char_p]
+libgtk3.gtk_icon_source_get_direction_wildcarded.restype = gboolean
+libgtk3.gtk_icon_source_get_direction_wildcarded.argtypes = [_GtkIconSource]
+libgtk3.gtk_icon_source_set_size_wildcarded.restype = None
+libgtk3.gtk_icon_source_set_size_wildcarded.argtypes = [_GtkIconSource,gboolean]
+libgtk3.gtk_icon_source_set_size.restype = None
+libgtk3.gtk_icon_source_set_size.argtypes = [_GtkIconSource,GtkIconSize]
+libgtk3.gtk_icon_source_get_state.restype = GtkStateType
+libgtk3.gtk_icon_source_get_state.argtypes = [_GtkIconSource]
 import gobject__GObject
 class GtkIconSource( gobject__GObject.GObject):
     """Class GtkIconSource Constructors"""
@@ -291,78 +327,56 @@ class GtkIconSource( gobject__GObject.GObject):
     """Methods"""
     def get_pixbuf(  self, ):
 
-        libgtk3.gtk_icon_source_get_pixbuf.restype = _GdkPixbuf
-        libgtk3.gtk_icon_source_get_pixbuf.argtypes = [_GtkIconSource]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_source_get_pixbuf( self._object ) or POINTER(c_int)())
 
     def get_size_wildcarded(  self, ):
 
-        libgtk3.gtk_icon_source_get_size_wildcarded.restype = gboolean
-        libgtk3.gtk_icon_source_get_size_wildcarded.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_size_wildcarded( self._object )
 
     def set_direction(  self, direction, ):
 
-        libgtk3.gtk_icon_source_set_direction.restype = None
-        libgtk3.gtk_icon_source_set_direction.argtypes = [_GtkIconSource,GtkTextDirection]
         
         libgtk3.gtk_icon_source_set_direction( self._object,direction )
 
     def free(  self, ):
 
-        libgtk3.gtk_icon_source_free.restype = None
-        libgtk3.gtk_icon_source_free.argtypes = [_GtkIconSource]
         
         libgtk3.gtk_icon_source_free( self._object )
 
     def get_direction(  self, ):
 
-        libgtk3.gtk_icon_source_get_direction.restype = GtkTextDirection
-        libgtk3.gtk_icon_source_get_direction.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_direction( self._object )
 
     def set_state_wildcarded(  self, setting, ):
 
-        libgtk3.gtk_icon_source_set_state_wildcarded.restype = None
-        libgtk3.gtk_icon_source_set_state_wildcarded.argtypes = [_GtkIconSource,gboolean]
         
         libgtk3.gtk_icon_source_set_state_wildcarded( self._object,setting )
 
     def get_state_wildcarded(  self, ):
 
-        libgtk3.gtk_icon_source_get_state_wildcarded.restype = gboolean
-        libgtk3.gtk_icon_source_get_state_wildcarded.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_state_wildcarded( self._object )
 
     def set_direction_wildcarded(  self, setting, ):
 
-        libgtk3.gtk_icon_source_set_direction_wildcarded.restype = None
-        libgtk3.gtk_icon_source_set_direction_wildcarded.argtypes = [_GtkIconSource,gboolean]
         
         libgtk3.gtk_icon_source_set_direction_wildcarded( self._object,setting )
 
     def copy(  self, ):
 
-        libgtk3.gtk_icon_source_copy.restype = _GtkIconSource
-        libgtk3.gtk_icon_source_copy.argtypes = [_GtkIconSource]
         from gtk3 import GtkIconSource
         return GtkIconSource( obj=libgtk3.gtk_icon_source_copy( self._object ) or POINTER(c_int)())
 
     def set_state(  self, state, ):
 
-        libgtk3.gtk_icon_source_set_state.restype = None
-        libgtk3.gtk_icon_source_set_state.argtypes = [_GtkIconSource,GtkStateType]
         
         libgtk3.gtk_icon_source_set_state( self._object,state )
 
     def get_size(  self, ):
 
-        libgtk3.gtk_icon_source_get_size.restype = GtkIconSize
-        libgtk3.gtk_icon_source_get_size.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_size( self._object )
 
@@ -370,50 +384,36 @@ class GtkIconSource( gobject__GObject.GObject):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
-        libgtk3.gtk_icon_source_set_pixbuf.restype = None
-        libgtk3.gtk_icon_source_set_pixbuf.argtypes = [_GtkIconSource,_GdkPixbuf]
         
         libgtk3.gtk_icon_source_set_pixbuf( self._object,pixbuf )
 
     def get_icon_name(  self, ):
 
-        libgtk3.gtk_icon_source_get_icon_name.restype = c_char_p
-        libgtk3.gtk_icon_source_get_icon_name.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_icon_name( self._object )
 
     def set_icon_name(  self, icon_name, ):
 
-        libgtk3.gtk_icon_source_set_icon_name.restype = None
-        libgtk3.gtk_icon_source_set_icon_name.argtypes = [_GtkIconSource,c_char_p]
         
         libgtk3.gtk_icon_source_set_icon_name( self._object,icon_name )
 
     def get_direction_wildcarded(  self, ):
 
-        libgtk3.gtk_icon_source_get_direction_wildcarded.restype = gboolean
-        libgtk3.gtk_icon_source_get_direction_wildcarded.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_direction_wildcarded( self._object )
 
     def set_size_wildcarded(  self, setting, ):
 
-        libgtk3.gtk_icon_source_set_size_wildcarded.restype = None
-        libgtk3.gtk_icon_source_set_size_wildcarded.argtypes = [_GtkIconSource,gboolean]
         
         libgtk3.gtk_icon_source_set_size_wildcarded( self._object,setting )
 
     def set_size(  self, size, ):
 
-        libgtk3.gtk_icon_source_set_size.restype = None
-        libgtk3.gtk_icon_source_set_size.argtypes = [_GtkIconSource,GtkIconSize]
         
         libgtk3.gtk_icon_source_set_size( self._object,size )
 
     def get_state(  self, ):
 
-        libgtk3.gtk_icon_source_get_state.restype = GtkStateType
-        libgtk3.gtk_icon_source_get_state.argtypes = [_GtkIconSource]
         
         return libgtk3.gtk_icon_source_get_state( self._object )
 

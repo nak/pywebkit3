@@ -266,6 +266,64 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgobject.g_list_copy.restype = _GList
+libgobject.g_list_copy.argtypes = [_GList]
+libgobject.g_list_remove_all.restype = _GList
+libgobject.g_list_remove_all.argtypes = [_GList,gpointer]
+libgobject.g_list_sort_with_data.restype = _GList
+libgobject.g_list_sort_with_data.argtypes = [_GList,GCompareDataFunc,gpointer]
+libgobject.g_list_index.restype = gint
+libgobject.g_list_index.argtypes = [_GList,gpointer]
+libgobject.g_list_nth_prev.restype = _GList
+libgobject.g_list_nth_prev.argtypes = [_GList,guint]
+libgobject.g_list_length.restype = guint
+libgobject.g_list_length.argtypes = [_GList]
+libgobject.g_list_insert.restype = _GList
+libgobject.g_list_insert.argtypes = [_GList,gpointer,gint]
+libgobject.g_list_prepend.restype = _GList
+libgobject.g_list_prepend.argtypes = [_GList,gpointer]
+libgobject.g_list_reverse.restype = _GList
+libgobject.g_list_reverse.argtypes = [_GList]
+libgobject.g_list_find.restype = _GList
+libgobject.g_list_find.argtypes = [_GList,gpointer]
+libgobject.g_list_remove.restype = _GList
+libgobject.g_list_remove.argtypes = [_GList,gpointer]
+libgobject.g_list_delete_link.restype = _GList
+libgobject.g_list_delete_link.argtypes = [_GList,_GList]
+libgobject.g_list_append.restype = _GList
+libgobject.g_list_append.argtypes = [_GList,gpointer]
+libgobject.g_list_free.restype = None
+libgobject.g_list_free.argtypes = [_GList]
+libgobject.g_list_remove_link.restype = _GList
+libgobject.g_list_remove_link.argtypes = [_GList,_GList]
+libgobject.g_list_nth_data.restype = gpointer
+libgobject.g_list_nth_data.argtypes = [_GList,guint]
+libgobject.g_list_nth.restype = _GList
+libgobject.g_list_nth.argtypes = [_GList,guint]
+libgobject.g_list_insert_sorted.restype = _GList
+libgobject.g_list_insert_sorted.argtypes = [_GList,gpointer,GCompareFunc]
+libgobject.g_list_foreach.restype = None
+libgobject.g_list_foreach.argtypes = [_GList,GFunc,gpointer]
+libgobject.g_list_concat.restype = _GList
+libgobject.g_list_concat.argtypes = [_GList,_GList]
+libgobject.g_list_free_1.restype = None
+libgobject.g_list_free_1.argtypes = [_GList]
+libgobject.g_list_position.restype = gint
+libgobject.g_list_position.argtypes = [_GList,_GList]
+libgobject.g_list_find_custom.restype = _GList
+libgobject.g_list_find_custom.argtypes = [_GList,gpointer,GCompareFunc]
+libgobject.g_list_last.restype = _GList
+libgobject.g_list_last.argtypes = [_GList]
+libgobject.g_list_first.restype = _GList
+libgobject.g_list_first.argtypes = [_GList]
+libgobject.g_list_free_full.restype = None
+libgobject.g_list_free_full.argtypes = [_GList,GDestroyNotify]
+libgobject.g_list_insert_sorted_with_data.restype = _GList
+libgobject.g_list_insert_sorted_with_data.argtypes = [_GList,gpointer,GCompareDataFunc,gpointer]
+libgobject.g_list_insert_before.restype = _GList
+libgobject.g_list_insert_before.argtypes = [_GList,_GList,gpointer]
+libgobject.g_list_sort.restype = _GList
+libgobject.g_list_sort.argtypes = [_GList,GCompareFunc]
 class GList( object):
     """Class GList Constructors"""
     def __init__(self, obj = None):
@@ -273,15 +331,11 @@ class GList( object):
     """Methods"""
     def copy(  self, ):
 
-        libgobject.g_list_copy.restype = _GList
-        libgobject.g_list_copy.argtypes = [_GList]
         from gobject import GList
         return GList( obj=libgobject.g_list_copy( self._object ) or POINTER(c_int)())
 
     def remove_all(  self, data, ):
 
-        libgobject.g_list_remove_all.restype = _GList
-        libgobject.g_list_remove_all.argtypes = [_GList,gpointer]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_remove_all( self._object,data ) or POINTER(c_int)())
 
@@ -289,64 +343,46 @@ class GList( object):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        libgobject.g_list_sort_with_data.restype = _GList
-        libgobject.g_list_sort_with_data.argtypes = [_GList,GCompareDataFunc,gpointer]
         from gobject import GList
         return GList(None,None, obj=libgobject.g_list_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_int)())
 
     def index(  self, data, ):
 
-        libgobject.g_list_index.restype = gint
-        libgobject.g_list_index.argtypes = [_GList,gpointer]
         
         return libgobject.g_list_index( self._object,data )
 
     def nth_prev(  self, n, ):
 
-        libgobject.g_list_nth_prev.restype = _GList
-        libgobject.g_list_nth_prev.argtypes = [_GList,guint]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_nth_prev( self._object,n ) or POINTER(c_int)())
 
     def length(  self, ):
 
-        libgobject.g_list_length.restype = guint
-        libgobject.g_list_length.argtypes = [_GList]
         
         return libgobject.g_list_length( self._object )
 
     def insert(  self, data, position, ):
 
-        libgobject.g_list_insert.restype = _GList
-        libgobject.g_list_insert.argtypes = [_GList,gpointer,gint]
         from gobject import GList
         return GList(None,None, obj=libgobject.g_list_insert( self._object,data,position ) or POINTER(c_int)())
 
     def prepend(  self, data, ):
 
-        libgobject.g_list_prepend.restype = _GList
-        libgobject.g_list_prepend.argtypes = [_GList,gpointer]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_prepend( self._object,data ) or POINTER(c_int)())
 
     def reverse(  self, ):
 
-        libgobject.g_list_reverse.restype = _GList
-        libgobject.g_list_reverse.argtypes = [_GList]
         from gobject import GList
         return GList( obj=libgobject.g_list_reverse( self._object ) or POINTER(c_int)())
 
     def find(  self, data, ):
 
-        libgobject.g_list_find.restype = _GList
-        libgobject.g_list_find.argtypes = [_GList,gpointer]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_find( self._object,data ) or POINTER(c_int)())
 
     def remove(  self, data, ):
 
-        libgobject.g_list_remove.restype = _GList
-        libgobject.g_list_remove.argtypes = [_GList,gpointer]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_remove( self._object,data ) or POINTER(c_int)())
 
@@ -354,22 +390,16 @@ class GList( object):
         if link_: link_ = link_._object
         else: link_ = POINTER(c_int)()
 
-        libgobject.g_list_delete_link.restype = _GList
-        libgobject.g_list_delete_link.argtypes = [_GList,_GList]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_delete_link( self._object,link_ ) or POINTER(c_int)())
 
     def append(  self, data, ):
 
-        libgobject.g_list_append.restype = _GList
-        libgobject.g_list_append.argtypes = [_GList,gpointer]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_append( self._object,data ) or POINTER(c_int)())
 
     def free(  self, ):
 
-        libgobject.g_list_free.restype = None
-        libgobject.g_list_free.argtypes = [_GList]
         
         libgobject.g_list_free( self._object )
 
@@ -377,22 +407,16 @@ class GList( object):
         if llink: llink = llink._object
         else: llink = POINTER(c_int)()
 
-        libgobject.g_list_remove_link.restype = _GList
-        libgobject.g_list_remove_link.argtypes = [_GList,_GList]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_remove_link( self._object,llink ) or POINTER(c_int)())
 
     def nth_data(  self, n, ):
 
-        libgobject.g_list_nth_data.restype = gpointer
-        libgobject.g_list_nth_data.argtypes = [_GList,guint]
         
         return libgobject.g_list_nth_data( self._object,n )
 
     def nth(  self, n, ):
 
-        libgobject.g_list_nth.restype = _GList
-        libgobject.g_list_nth.argtypes = [_GList,guint]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_nth( self._object,n ) or POINTER(c_int)())
 
@@ -400,8 +424,6 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        libgobject.g_list_insert_sorted.restype = _GList
-        libgobject.g_list_insert_sorted.argtypes = [_GList,gpointer,GCompareFunc]
         from gobject import GList
         return GList(None,None, obj=libgobject.g_list_insert_sorted( self._object,data,func ) or POINTER(c_int)())
 
@@ -409,8 +431,6 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        libgobject.g_list_foreach.restype = None
-        libgobject.g_list_foreach.argtypes = [_GList,GFunc,gpointer]
         
         libgobject.g_list_foreach( self._object,func,user_data )
 
@@ -418,15 +438,11 @@ class GList( object):
         if list2: list2 = list2._object
         else: list2 = POINTER(c_int)()
 
-        libgobject.g_list_concat.restype = _GList
-        libgobject.g_list_concat.argtypes = [_GList,_GList]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_concat( self._object,list2 ) or POINTER(c_int)())
 
     def free_1(  self, ):
 
-        libgobject.g_list_free_1.restype = None
-        libgobject.g_list_free_1.argtypes = [_GList]
         
         libgobject.g_list_free_1( self._object )
 
@@ -434,8 +450,6 @@ class GList( object):
         if llink: llink = llink._object
         else: llink = POINTER(c_int)()
 
-        libgobject.g_list_position.restype = gint
-        libgobject.g_list_position.argtypes = [_GList,_GList]
         
         return libgobject.g_list_position( self._object,llink )
 
@@ -443,29 +457,21 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        libgobject.g_list_find_custom.restype = _GList
-        libgobject.g_list_find_custom.argtypes = [_GList,gpointer,GCompareFunc]
         from gobject import GList
         return GList(None,None, obj=libgobject.g_list_find_custom( self._object,data,func ) or POINTER(c_int)())
 
     def last(  self, ):
 
-        libgobject.g_list_last.restype = _GList
-        libgobject.g_list_last.argtypes = [_GList]
         from gobject import GList
         return GList( obj=libgobject.g_list_last( self._object ) or POINTER(c_int)())
 
     def first(  self, ):
 
-        libgobject.g_list_first.restype = _GList
-        libgobject.g_list_first.argtypes = [_GList]
         from gobject import GList
         return GList( obj=libgobject.g_list_first( self._object ) or POINTER(c_int)())
 
     def free_full(  self, free_func, ):
 
-        libgobject.g_list_free_full.restype = None
-        libgobject.g_list_free_full.argtypes = [_GList,GDestroyNotify]
         
         libgobject.g_list_free_full( self._object,free_func )
 
@@ -473,8 +479,6 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        libgobject.g_list_insert_sorted_with_data.restype = _GList
-        libgobject.g_list_insert_sorted_with_data.argtypes = [_GList,gpointer,GCompareDataFunc,gpointer]
         from gobject import GList
         return GList(None,None,None, obj=libgobject.g_list_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_int)())
 
@@ -482,8 +486,6 @@ class GList( object):
         if sibling: sibling = sibling._object
         else: sibling = POINTER(c_int)()
 
-        libgobject.g_list_insert_before.restype = _GList
-        libgobject.g_list_insert_before.argtypes = [_GList,_GList,gpointer]
         from gobject import GList
         return GList(None,None, obj=libgobject.g_list_insert_before( self._object,sibling,data ) or POINTER(c_int)())
 
@@ -491,14 +493,11 @@ class GList( object):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        libgobject.g_list_sort.restype = _GList
-        libgobject.g_list_sort.argtypes = [_GList,GCompareFunc]
         from gobject import GList
         return GList(None, obj=libgobject.g_list_sort( self._object,compare_func ) or POINTER(c_int)())
 
     @staticmethod
     def alloc():
-        libgobject.g_list_alloc.restype = _GList
         from gobject import GList
         return GList( obj=    libgobject.g_list_alloc()
  or POINTER(c_int)())

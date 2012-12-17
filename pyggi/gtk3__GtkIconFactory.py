@@ -201,6 +201,14 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gtk_icon_factory_remove_default.restype = None
+libgtk3.gtk_icon_factory_remove_default.argtypes = [_GtkIconFactory]
+libgtk3.gtk_icon_factory_add.restype = None
+libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,c_char_p,_GtkIconSet]
+libgtk3.gtk_icon_factory_add_default.restype = None
+libgtk3.gtk_icon_factory_add_default.argtypes = [_GtkIconFactory]
+libgtk3.gtk_icon_factory_lookup.restype = _GtkIconSet
+libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,c_char_p]
 import gobject__GObject
 class GtkIconFactory( gobject__GObject.GObject):
     """Class GtkIconFactory Constructors"""
@@ -215,8 +223,6 @@ class GtkIconFactory( gobject__GObject.GObject):
     """Methods"""
     def remove_default(  self, ):
 
-        libgtk3.gtk_icon_factory_remove_default.restype = None
-        libgtk3.gtk_icon_factory_remove_default.argtypes = [_GtkIconFactory]
         
         libgtk3.gtk_icon_factory_remove_default( self._object )
 
@@ -224,29 +230,21 @@ class GtkIconFactory( gobject__GObject.GObject):
         if icon_set: icon_set = icon_set._object
         else: icon_set = POINTER(c_int)()
 
-        libgtk3.gtk_icon_factory_add.restype = None
-        libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,c_char_p,_GtkIconSet]
         
         libgtk3.gtk_icon_factory_add( self._object,stock_id,icon_set )
 
     def add_default(  self, ):
 
-        libgtk3.gtk_icon_factory_add_default.restype = None
-        libgtk3.gtk_icon_factory_add_default.argtypes = [_GtkIconFactory]
         
         libgtk3.gtk_icon_factory_add_default( self._object )
 
     def lookup(  self, stock_id, ):
 
-        libgtk3.gtk_icon_factory_lookup.restype = _GtkIconSet
-        libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,c_char_p]
         from gtk3 import GtkIconSet
         return GtkIconSet(None, obj=libgtk3.gtk_icon_factory_lookup( self._object,stock_id ) or POINTER(c_int)())
 
     @staticmethod
     def lookup_default( stock_id,):
-        libgtk3.gtk_icon_factory_lookup_default.restype = _GtkIconSet
-        libgtk3.gtk_icon_factory_lookup_default.argtypes = [c_char_p]
         from gtk3 import GtkIconSet
         return GtkIconSet( obj=    libgtk3.gtk_icon_factory_lookup_default(stock_id, )
  or POINTER(c_int)())

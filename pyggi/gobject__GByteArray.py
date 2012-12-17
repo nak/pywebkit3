@@ -298,6 +298,28 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libgobject.g_byte_array_ref.restype = _GByteArray
+libgobject.g_byte_array_ref.argtypes = [_GByteArray]
+libgobject.g_byte_array_set_size.restype = _GByteArray
+libgobject.g_byte_array_set_size.argtypes = [_GByteArray,guint]
+libgobject.g_byte_array_remove_index_fast.restype = _GByteArray
+libgobject.g_byte_array_remove_index_fast.argtypes = [_GByteArray,guint]
+libgobject.g_byte_array_sort_with_data.restype = None
+libgobject.g_byte_array_sort_with_data.argtypes = [_GByteArray,GCompareDataFunc,gpointer]
+libgobject.g_byte_array_sort.restype = None
+libgobject.g_byte_array_sort.argtypes = [_GByteArray,GCompareFunc]
+libgobject.g_byte_array_unref.restype = None
+libgobject.g_byte_array_unref.argtypes = [_GByteArray]
+libgobject.g_byte_array_append.restype = _GByteArray
+libgobject.g_byte_array_append.argtypes = [_GByteArray,POINTER(guint8),guint]
+libgobject.g_byte_array_free.restype = POINTER(guint8)
+libgobject.g_byte_array_free.argtypes = [_GByteArray,gboolean]
+libgobject.g_byte_array_remove_index.restype = _GByteArray
+libgobject.g_byte_array_remove_index.argtypes = [_GByteArray,guint]
+libgobject.g_byte_array_remove_range.restype = _GByteArray
+libgobject.g_byte_array_remove_range.argtypes = [_GByteArray,guint,guint]
+libgobject.g_byte_array_prepend.restype = _GByteArray
+libgobject.g_byte_array_prepend.argtypes = [_GByteArray,POINTER(guint8),guint]
 class GByteArray( object):
     """Class GByteArray Constructors"""
     def __init__( self, reserved_size,  obj = None):
@@ -311,22 +333,16 @@ class GByteArray( object):
     """Methods"""
     def ref(  self, ):
 
-        libgobject.g_byte_array_ref.restype = _GByteArray
-        libgobject.g_byte_array_ref.argtypes = [_GByteArray]
         from gobject import GByteArray
         return GByteArray( obj=libgobject.g_byte_array_ref( self._object ) or POINTER(c_int)())
 
     def set_size(  self, length, ):
 
-        libgobject.g_byte_array_set_size.restype = _GByteArray
-        libgobject.g_byte_array_set_size.argtypes = [_GByteArray,guint]
         from gobject import GByteArray
         return GByteArray(None, obj=libgobject.g_byte_array_set_size( self._object,length ) or POINTER(c_int)())
 
     def remove_index_fast(  self, index_, ):
 
-        libgobject.g_byte_array_remove_index_fast.restype = _GByteArray
-        libgobject.g_byte_array_remove_index_fast.argtypes = [_GByteArray,guint]
         from gobject import GByteArray
         return GByteArray(None, obj=libgobject.g_byte_array_remove_index_fast( self._object,index_ ) or POINTER(c_int)())
 
@@ -334,8 +350,6 @@ class GByteArray( object):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        libgobject.g_byte_array_sort_with_data.restype = None
-        libgobject.g_byte_array_sort_with_data.argtypes = [_GByteArray,GCompareDataFunc,gpointer]
         
         libgobject.g_byte_array_sort_with_data( self._object,compare_func,user_data )
 
@@ -343,57 +357,41 @@ class GByteArray( object):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        libgobject.g_byte_array_sort.restype = None
-        libgobject.g_byte_array_sort.argtypes = [_GByteArray,GCompareFunc]
         
         libgobject.g_byte_array_sort( self._object,compare_func )
 
     def unref(  self, ):
 
-        libgobject.g_byte_array_unref.restype = None
-        libgobject.g_byte_array_unref.argtypes = [_GByteArray]
         
         libgobject.g_byte_array_unref( self._object )
 
     def append(  self, data, len, ):
 
-        libgobject.g_byte_array_append.restype = _GByteArray
-        libgobject.g_byte_array_append.argtypes = [_GByteArray,POINTER(guint8),guint]
         from gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_byte_array_append( self._object,data,len ) or POINTER(c_int)())
 
     def free(  self, free_segment, ):
 
-        libgobject.g_byte_array_free.restype = POINTER(guint8)
-        libgobject.g_byte_array_free.argtypes = [_GByteArray,gboolean]
         
         return libgobject.g_byte_array_free( self._object,free_segment )
 
     def remove_index(  self, index_, ):
 
-        libgobject.g_byte_array_remove_index.restype = _GByteArray
-        libgobject.g_byte_array_remove_index.argtypes = [_GByteArray,guint]
         from gobject import GByteArray
         return GByteArray(None, obj=libgobject.g_byte_array_remove_index( self._object,index_ ) or POINTER(c_int)())
 
     def remove_range(  self, index_, length, ):
 
-        libgobject.g_byte_array_remove_range.restype = _GByteArray
-        libgobject.g_byte_array_remove_range.argtypes = [_GByteArray,guint,guint]
         from gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_byte_array_remove_range( self._object,index_,length ) or POINTER(c_int)())
 
     def prepend(  self, data, len, ):
 
-        libgobject.g_byte_array_prepend.restype = _GByteArray
-        libgobject.g_byte_array_prepend.argtypes = [_GByteArray,POINTER(guint8),guint]
         from gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_byte_array_prepend( self._object,data,len ) or POINTER(c_int)())
 
     @staticmethod
     def new_take( data, len,):
-        libgobject.g_byte_array_new_take.restype = _GByteArray
-        libgobject.g_byte_array_new_take.argtypes = [POINTER(guint8),gsize]
         from gobject import GByteArray
         return GByteArray(None, obj=    libgobject.g_byte_array_new_take(data, len, )
  or POINTER(c_int)())

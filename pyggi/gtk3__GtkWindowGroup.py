@@ -287,6 +287,16 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gtk_window_group_get_current_grab.restype = _GtkWidget
+libgtk3.gtk_window_group_get_current_grab.argtypes = [_GtkWindowGroup]
+libgtk3.gtk_window_group_add_window.restype = None
+libgtk3.gtk_window_group_add_window.argtypes = [_GtkWindowGroup,_GtkWindow]
+libgtk3.gtk_window_group_list_windows.restype = _GList
+libgtk3.gtk_window_group_list_windows.argtypes = [_GtkWindowGroup]
+libgtk3.gtk_window_group_get_current_device_grab.restype = _GtkWidget
+libgtk3.gtk_window_group_get_current_device_grab.argtypes = [_GtkWindowGroup,_GdkDevice]
+libgtk3.gtk_window_group_remove_window.restype = None
+libgtk3.gtk_window_group_remove_window.argtypes = [_GtkWindowGroup,_GtkWindow]
 import gobject__GObject
 class GtkWindowGroup( gobject__GObject.GObject):
     """Class GtkWindowGroup Constructors"""
@@ -301,8 +311,6 @@ class GtkWindowGroup( gobject__GObject.GObject):
     """Methods"""
     def get_current_grab(  self, ):
 
-        libgtk3.gtk_window_group_get_current_grab.restype = _GtkWidget
-        libgtk3.gtk_window_group_get_current_grab.argtypes = [_GtkWindowGroup]
         from gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_window_group_get_current_grab( self._object ) or POINTER(c_int)())
 
@@ -310,15 +318,11 @@ class GtkWindowGroup( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_window_group_add_window.restype = None
-        libgtk3.gtk_window_group_add_window.argtypes = [_GtkWindowGroup,_GtkWindow]
         
         libgtk3.gtk_window_group_add_window( self._object,window )
 
     def list_windows(  self, ):
 
-        libgtk3.gtk_window_group_list_windows.restype = _GList
-        libgtk3.gtk_window_group_list_windows.argtypes = [_GtkWindowGroup]
         from gobject import GList
         return GList( obj=libgtk3.gtk_window_group_list_windows( self._object ) or POINTER(c_int)())
 
@@ -326,8 +330,6 @@ class GtkWindowGroup( gobject__GObject.GObject):
         if device: device = device._object
         else: device = POINTER(c_int)()
 
-        libgtk3.gtk_window_group_get_current_device_grab.restype = _GtkWidget
-        libgtk3.gtk_window_group_get_current_device_grab.argtypes = [_GtkWindowGroup,_GdkDevice]
         from gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_window_group_get_current_device_grab( self._object,device ) or POINTER(c_int)())
 
@@ -335,8 +337,6 @@ class GtkWindowGroup( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_window_group_remove_window.restype = None
-        libgtk3.gtk_window_group_remove_window.argtypes = [_GtkWindowGroup,_GtkWindow]
         
         libgtk3.gtk_window_group_remove_window( self._object,window )
 

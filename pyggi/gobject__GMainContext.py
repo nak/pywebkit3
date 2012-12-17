@@ -278,6 +278,54 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgobject.g_main_context_find_source_by_funcs_user_data.restype = _GSource
+libgobject.g_main_context_find_source_by_funcs_user_data.argtypes = [_GMainContext,_GSourceFuncs,gpointer]
+libgobject.g_main_context_pending.restype = gboolean
+libgobject.g_main_context_pending.argtypes = [_GMainContext]
+libgobject.g_main_context_remove_poll.restype = None
+libgobject.g_main_context_remove_poll.argtypes = [_GMainContext,_GPollFD]
+libgobject.g_main_context_add_poll.restype = None
+libgobject.g_main_context_add_poll.argtypes = [_GMainContext,_GPollFD,gint]
+libgobject.g_main_context_query.restype = gint
+libgobject.g_main_context_query.argtypes = [_GMainContext,gint,POINTER(gint),_GPollFD,gint]
+libgobject.g_main_context_dispatch.restype = None
+libgobject.g_main_context_dispatch.argtypes = [_GMainContext]
+libgobject.g_main_context_push_thread_default.restype = None
+libgobject.g_main_context_push_thread_default.argtypes = [_GMainContext]
+libgobject.g_main_context_invoke.restype = None
+libgobject.g_main_context_invoke.argtypes = [_GMainContext,GSourceFunc,gpointer]
+libgobject.g_main_context_find_source_by_id.restype = _GSource
+libgobject.g_main_context_find_source_by_id.argtypes = [_GMainContext,guint]
+libgobject.g_main_context_check.restype = gint
+libgobject.g_main_context_check.argtypes = [_GMainContext,gint,_GPollFD,gint]
+libgobject.g_main_context_prepare.restype = gboolean
+libgobject.g_main_context_prepare.argtypes = [_GMainContext,POINTER(gint)]
+libgobject.g_main_context_get_poll_func.restype = GPollFunc
+libgobject.g_main_context_get_poll_func.argtypes = [_GMainContext]
+libgobject.g_main_context_pop_thread_default.restype = None
+libgobject.g_main_context_pop_thread_default.argtypes = [_GMainContext]
+libgobject.g_main_context_set_poll_func.restype = None
+libgobject.g_main_context_set_poll_func.argtypes = [_GMainContext,GPollFunc]
+libgobject.g_main_context_wakeup.restype = None
+libgobject.g_main_context_wakeup.argtypes = [_GMainContext]
+libgobject.g_main_context_ref.restype = _GMainContext
+libgobject.g_main_context_ref.argtypes = [_GMainContext]
+libgobject.g_main_context_wait.restype = gboolean
+libgobject.g_main_context_wait.argtypes = [_GMainContext,_GCond,_GMutex]
+libgobject.g_main_context_acquire.restype = gboolean
+libgobject.g_main_context_acquire.argtypes = [_GMainContext]
+libgobject.g_main_context_release.restype = None
+libgobject.g_main_context_release.argtypes = [_GMainContext]
+libgobject.g_main_context_unref.restype = None
+libgobject.g_main_context_unref.argtypes = [_GMainContext]
+libgobject.g_main_context_is_owner.restype = gboolean
+libgobject.g_main_context_is_owner.argtypes = [_GMainContext]
+libgobject.g_main_context_iteration.restype = gboolean
+libgobject.g_main_context_iteration.argtypes = [_GMainContext,gboolean]
+libgobject.g_main_context_invoke_full.restype = None
+libgobject.g_main_context_invoke_full.argtypes = [_GMainContext,gint,GSourceFunc,gpointer,GDestroyNotify]
+libgobject.g_main_context_find_source_by_user_data.restype = _GSource
+libgobject.g_main_context_find_source_by_user_data.argtypes = [_GMainContext,gpointer]
 import gobject__GObject
 class GMainContext( gobject__GObject.GObject):
     """Class GMainContext Constructors"""
@@ -297,15 +345,11 @@ class GMainContext( gobject__GObject.GObject):
         if funcs: funcs = funcs._object
         else: funcs = POINTER(c_int)()
 
-        libgobject.g_main_context_find_source_by_funcs_user_data.restype = _GSource
-        libgobject.g_main_context_find_source_by_funcs_user_data.argtypes = [_GMainContext,_GSourceFuncs,gpointer]
         from gobject import GSource
         return GSource(None,None, obj=libgobject.g_main_context_find_source_by_funcs_user_data( self._object,funcs,user_data ) or POINTER(c_int)())
 
     def pending(  self, ):
 
-        libgobject.g_main_context_pending.restype = gboolean
-        libgobject.g_main_context_pending.argtypes = [_GMainContext]
         
         return libgobject.g_main_context_pending( self._object )
 
@@ -313,8 +357,6 @@ class GMainContext( gobject__GObject.GObject):
         if fd: fd = fd._object
         else: fd = POINTER(c_int)()
 
-        libgobject.g_main_context_remove_poll.restype = None
-        libgobject.g_main_context_remove_poll.argtypes = [_GMainContext,_GPollFD]
         
         libgobject.g_main_context_remove_poll( self._object,fd )
 
@@ -322,8 +364,6 @@ class GMainContext( gobject__GObject.GObject):
         if fd: fd = fd._object
         else: fd = POINTER(c_int)()
 
-        libgobject.g_main_context_add_poll.restype = None
-        libgobject.g_main_context_add_poll.argtypes = [_GMainContext,_GPollFD,gint]
         
         libgobject.g_main_context_add_poll( self._object,fd,priority )
 
@@ -331,36 +371,26 @@ class GMainContext( gobject__GObject.GObject):
         if fds: fds = fds._object
         else: fds = POINTER(c_int)()
 
-        libgobject.g_main_context_query.restype = gint
-        libgobject.g_main_context_query.argtypes = [_GMainContext,gint,POINTER(gint),_GPollFD,gint]
         
         return libgobject.g_main_context_query( self._object,max_priority,timeout_,fds,n_fds )
 
     def dispatch(  self, ):
 
-        libgobject.g_main_context_dispatch.restype = None
-        libgobject.g_main_context_dispatch.argtypes = [_GMainContext]
         
         libgobject.g_main_context_dispatch( self._object )
 
     def push_thread_default(  self, ):
 
-        libgobject.g_main_context_push_thread_default.restype = None
-        libgobject.g_main_context_push_thread_default.argtypes = [_GMainContext]
         
         libgobject.g_main_context_push_thread_default( self._object )
 
     def invoke(  self, function, data, ):
 
-        libgobject.g_main_context_invoke.restype = None
-        libgobject.g_main_context_invoke.argtypes = [_GMainContext,GSourceFunc,gpointer]
         
         libgobject.g_main_context_invoke( self._object,function,data )
 
     def find_source_by_id(  self, source_id, ):
 
-        libgobject.g_main_context_find_source_by_id.restype = _GSource
-        libgobject.g_main_context_find_source_by_id.argtypes = [_GMainContext,guint]
         from gobject import GSource
         return GSource(None, obj=libgobject.g_main_context_find_source_by_id( self._object,source_id ) or POINTER(c_int)())
 
@@ -368,50 +398,36 @@ class GMainContext( gobject__GObject.GObject):
         if fds: fds = fds._object
         else: fds = POINTER(c_int)()
 
-        libgobject.g_main_context_check.restype = gint
-        libgobject.g_main_context_check.argtypes = [_GMainContext,gint,_GPollFD,gint]
         
         return libgobject.g_main_context_check( self._object,max_priority,fds,n_fds )
 
     def prepare(  self, priority, ):
 
-        libgobject.g_main_context_prepare.restype = gboolean
-        libgobject.g_main_context_prepare.argtypes = [_GMainContext,POINTER(gint)]
         
         return libgobject.g_main_context_prepare( self._object,priority )
 
     def get_poll_func(  self, ):
 
-        libgobject.g_main_context_get_poll_func.restype = GPollFunc
-        libgobject.g_main_context_get_poll_func.argtypes = [_GMainContext]
         
         return libgobject.g_main_context_get_poll_func( self._object )
 
     def pop_thread_default(  self, ):
 
-        libgobject.g_main_context_pop_thread_default.restype = None
-        libgobject.g_main_context_pop_thread_default.argtypes = [_GMainContext]
         
         libgobject.g_main_context_pop_thread_default( self._object )
 
     def set_poll_func(  self, func, ):
 
-        libgobject.g_main_context_set_poll_func.restype = None
-        libgobject.g_main_context_set_poll_func.argtypes = [_GMainContext,GPollFunc]
         
         libgobject.g_main_context_set_poll_func( self._object,func )
 
     def wakeup(  self, ):
 
-        libgobject.g_main_context_wakeup.restype = None
-        libgobject.g_main_context_wakeup.argtypes = [_GMainContext]
         
         libgobject.g_main_context_wakeup( self._object )
 
     def ref(  self, ):
 
-        libgobject.g_main_context_ref.restype = _GMainContext
-        libgobject.g_main_context_ref.argtypes = [_GMainContext]
         from gobject import GMainContext
         return GMainContext( obj=libgobject.g_main_context_ref( self._object ) or POINTER(c_int)())
 
@@ -421,116 +437,86 @@ class GMainContext( gobject__GObject.GObject):
         if mutex: mutex = mutex._object
         else: mutex = POINTER(c_int)()
 
-        libgobject.g_main_context_wait.restype = gboolean
-        libgobject.g_main_context_wait.argtypes = [_GMainContext,_GCond,_GMutex]
         
         return libgobject.g_main_context_wait( self._object,cond,mutex )
 
     def acquire(  self, ):
 
-        libgobject.g_main_context_acquire.restype = gboolean
-        libgobject.g_main_context_acquire.argtypes = [_GMainContext]
         
         return libgobject.g_main_context_acquire( self._object )
 
     def release(  self, ):
 
-        libgobject.g_main_context_release.restype = None
-        libgobject.g_main_context_release.argtypes = [_GMainContext]
         
         libgobject.g_main_context_release( self._object )
 
     def unref(  self, ):
 
-        libgobject.g_main_context_unref.restype = None
-        libgobject.g_main_context_unref.argtypes = [_GMainContext]
         
         libgobject.g_main_context_unref( self._object )
 
     def is_owner(  self, ):
 
-        libgobject.g_main_context_is_owner.restype = gboolean
-        libgobject.g_main_context_is_owner.argtypes = [_GMainContext]
         
         return libgobject.g_main_context_is_owner( self._object )
 
     def iteration(  self, may_block, ):
 
-        libgobject.g_main_context_iteration.restype = gboolean
-        libgobject.g_main_context_iteration.argtypes = [_GMainContext,gboolean]
         
         return libgobject.g_main_context_iteration( self._object,may_block )
 
     def invoke_full(  self, priority, function, data, notify, ):
 
-        libgobject.g_main_context_invoke_full.restype = None
-        libgobject.g_main_context_invoke_full.argtypes = [_GMainContext,gint,GSourceFunc,gpointer,GDestroyNotify]
         
         libgobject.g_main_context_invoke_full( self._object,priority,function,data,notify )
 
     def find_source_by_user_data(  self, user_data, ):
 
-        libgobject.g_main_context_find_source_by_user_data.restype = _GSource
-        libgobject.g_main_context_find_source_by_user_data.argtypes = [_GMainContext,gpointer]
         from gobject import GSource
         return GSource(None, obj=libgobject.g_main_context_find_source_by_user_data( self._object,user_data ) or POINTER(c_int)())
 
     @staticmethod
     def g_main_depth():
-        libgobject.g_main_depth.restype = gint
         
         return     libgobject.g_main_depth()
 
     @staticmethod
     def g_idle_add( function, data,):
-        libgobject.g_idle_add.restype = guint
-        libgobject.g_idle_add.argtypes = [GSourceFunc,gpointer]
         
         return     libgobject.g_idle_add(function, data, )
 
     @staticmethod
     def g_timeout_add_seconds( interval, function, data,):
-        libgobject.g_timeout_add_seconds.restype = guint
-        libgobject.g_timeout_add_seconds.argtypes = [guint,GSourceFunc,gpointer]
         
         return     libgobject.g_timeout_add_seconds(interval, function, data, )
 
     @staticmethod
     def g_main_current_source():
-        libgobject.g_main_current_source.restype = _GSource
         from gobject import GSource
         return GSource(None, obj=    libgobject.g_main_current_source()
  or POINTER(c_int)())
     @staticmethod
     def g_idle_source_new():
-        libgobject.g_idle_source_new.restype = _GSource
         from gobject import GSource
         return GSource(None, obj=    libgobject.g_idle_source_new()
  or POINTER(c_int)())
     @staticmethod
     def g_timeout_add_full( priority, interval, function, data, notify,):
-        libgobject.g_timeout_add_full.restype = guint
-        libgobject.g_timeout_add_full.argtypes = [gint,guint,GSourceFunc,gpointer,GDestroyNotify]
         
         return     libgobject.g_timeout_add_full(priority, interval, function, data, notify, )
 
     @staticmethod
     def default():
-        libgobject.g_main_context_default.restype = _GMainContext
         from gobject import GMainContext
         return GMainContext(None, obj=    libgobject.g_main_context_default()
  or POINTER(c_int)())
     @staticmethod
     def g_timeout_add( interval, function, data,):
-        libgobject.g_timeout_add.restype = guint
-        libgobject.g_timeout_add.argtypes = [guint,GSourceFunc,gpointer]
         
         return     libgobject.g_timeout_add(interval, function, data, )
 
     @staticmethod
     def g_idle_remove_by_data( data,):
-        libgobject.g_idle_remove_by_data.restype = gboolean
-        libgobject.g_idle_remove_by_data.argtypes = [gpointer]
         
         return     libgobject.g_idle_remove_by_data(data, )
 
@@ -540,29 +526,21 @@ class GMainContext( gobject__GObject.GObject):
         else: pid = POINTER(c_int)()
         if function: function = function._object
         else: function = POINTER(c_int)()
-        libgobject.g_child_watch_add_full.restype = guint
-        libgobject.g_child_watch_add_full.argtypes = [gint,GPid,GChildWatchFunc,gpointer,GDestroyNotify]
         
         return     libgobject.g_child_watch_add_full(priority, pid, function, data, notify, )
 
     @staticmethod
     def g_timeout_source_new_seconds( interval,):
-        libgobject.g_timeout_source_new_seconds.restype = _GSource
-        libgobject.g_timeout_source_new_seconds.argtypes = [guint]
         from gobject import GSource
         return GSource(None, obj=    libgobject.g_timeout_source_new_seconds(interval, )
  or POINTER(c_int)())
     @staticmethod
     def g_timeout_add_seconds_full( priority, interval, function, data, notify,):
-        libgobject.g_timeout_add_seconds_full.restype = guint
-        libgobject.g_timeout_add_seconds_full.argtypes = [gint,guint,GSourceFunc,gpointer,GDestroyNotify]
         
         return     libgobject.g_timeout_add_seconds_full(priority, interval, function, data, notify, )
 
     @staticmethod
     def g_idle_add_full( priority, function, data, notify,):
-        libgobject.g_idle_add_full.restype = guint
-        libgobject.g_idle_add_full.argtypes = [gint,GSourceFunc,gpointer,GDestroyNotify]
         
         return     libgobject.g_idle_add_full(priority, function, data, notify, )
 
@@ -572,20 +550,16 @@ class GMainContext( gobject__GObject.GObject):
         else: pid = POINTER(c_int)()
         if function: function = function._object
         else: function = POINTER(c_int)()
-        libgobject.g_child_watch_add.restype = guint
-        libgobject.g_child_watch_add.argtypes = [GPid,GChildWatchFunc,gpointer]
         
         return     libgobject.g_child_watch_add(pid, function, data, )
 
     @staticmethod
     def get_thread_default():
-        libgobject.g_main_context_get_thread_default.restype = _GMainContext
         from gobject import GMainContext
         return GMainContext(None, obj=    libgobject.g_main_context_get_thread_default()
  or POINTER(c_int)())
     @staticmethod
     def ref_thread_default():
-        libgobject.g_main_context_ref_thread_default.restype = _GMainContext
         from gobject import GMainContext
         return GMainContext(None, obj=    libgobject.g_main_context_ref_thread_default()
  or POINTER(c_int)())

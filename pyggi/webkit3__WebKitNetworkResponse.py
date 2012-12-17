@@ -303,6 +303,14 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libwebkit3.webkit_network_response_set_uri.restype = None
+libwebkit3.webkit_network_response_set_uri.argtypes = [_WebKitNetworkResponse,c_char_p]
+libwebkit3.webkit_network_response_get_message.restype = _SoupMessage
+libwebkit3.webkit_network_response_get_message.argtypes = [_WebKitNetworkResponse]
+libwebkit3.webkit_network_response_get_uri.restype = c_char_p
+libwebkit3.webkit_network_response_get_uri.argtypes = [_WebKitNetworkResponse]
+libwebkit3.webkit_network_response_get_suggested_filename.restype = c_char_p
+libwebkit3.webkit_network_response_get_suggested_filename.argtypes = [_WebKitNetworkResponse]
 import gobject__GObject
 class WebKitNetworkResponse( gobject__GObject.GObject):
     """Class WebKitNetworkResponse Constructors"""
@@ -311,29 +319,21 @@ class WebKitNetworkResponse( gobject__GObject.GObject):
     """Methods"""
     def set_uri(  self, uri, ):
 
-        libwebkit3.webkit_network_response_set_uri.restype = None
-        libwebkit3.webkit_network_response_set_uri.argtypes = [_WebKitNetworkResponse,c_char_p]
         
         libwebkit3.webkit_network_response_set_uri( self._object,uri )
 
     def get_message(  self, ):
 
-        libwebkit3.webkit_network_response_get_message.restype = _SoupMessage
-        libwebkit3.webkit_network_response_get_message.argtypes = [_WebKitNetworkResponse]
         
         return libwebkit3.webkit_network_response_get_message( self._object )
 
     def get_uri(  self, ):
 
-        libwebkit3.webkit_network_response_get_uri.restype = c_char_p
-        libwebkit3.webkit_network_response_get_uri.argtypes = [_WebKitNetworkResponse]
         
         return libwebkit3.webkit_network_response_get_uri( self._object )
 
     def get_suggested_filename(  self, ):
 
-        libwebkit3.webkit_network_response_get_suggested_filename.restype = c_char_p
-        libwebkit3.webkit_network_response_get_suggested_filename.argtypes = [_WebKitNetworkResponse]
         
         return libwebkit3.webkit_network_response_get_suggested_filename( self._object )
 

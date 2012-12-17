@@ -290,6 +290,28 @@ GdkPixbufError = c_int
 GdkColorspace = c_int
 GdkPixbufAlphaMode = c_int
 
+libgtk3.gdk_pixbuf_get_bits_per_sample.restype = int
+libgtk3.gdk_pixbuf_get_bits_per_sample.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_pixels.restype = POINTER(guchar)
+libgtk3.gdk_pixbuf_get_pixels.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_pixels_with_length.restype = POINTER(guchar)
+libgtk3.gdk_pixbuf_get_pixels_with_length.argtypes = [_GdkPixbuf,POINTER(guint)]
+libgtk3.gdk_pixbuf_get_rowstride.restype = int
+libgtk3.gdk_pixbuf_get_rowstride.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_height.restype = int
+libgtk3.gdk_pixbuf_get_height.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_byte_length.restype = gsize
+libgtk3.gdk_pixbuf_get_byte_length.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_n_channels.restype = int
+libgtk3.gdk_pixbuf_get_n_channels.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_has_alpha.restype = gboolean
+libgtk3.gdk_pixbuf_get_has_alpha.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_width.restype = int
+libgtk3.gdk_pixbuf_get_width.argtypes = [_GdkPixbuf]
+libgtk3.gdk_pixbuf_get_option.restype = c_char_p
+libgtk3.gdk_pixbuf_get_option.argtypes = [_GdkPixbuf,c_char_p]
+libgtk3.gdk_pixbuf_get_colorspace.restype = GdkColorspace
+libgtk3.gdk_pixbuf_get_colorspace.argtypes = [_GdkPixbuf]
 import gobject__GObject
 class GdkPixbuf( gobject__GObject.GObject):
     """Class GdkPixbuf Constructors"""
@@ -298,78 +320,56 @@ class GdkPixbuf( gobject__GObject.GObject):
     """Methods"""
     def get_bits_per_sample(  self, ):
 
-        libgtk3.gdk_pixbuf_get_bits_per_sample.restype = int
-        libgtk3.gdk_pixbuf_get_bits_per_sample.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_bits_per_sample( self._object )
 
     def get_pixels(  self, ):
 
-        libgtk3.gdk_pixbuf_get_pixels.restype = POINTER(guchar)
-        libgtk3.gdk_pixbuf_get_pixels.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_pixels( self._object )
 
     def get_pixels_with_length(  self, length, ):
 
-        libgtk3.gdk_pixbuf_get_pixels_with_length.restype = POINTER(guchar)
-        libgtk3.gdk_pixbuf_get_pixels_with_length.argtypes = [_GdkPixbuf,POINTER(guint)]
         
         return libgtk3.gdk_pixbuf_get_pixels_with_length( self._object,length )
 
     def get_rowstride(  self, ):
 
-        libgtk3.gdk_pixbuf_get_rowstride.restype = int
-        libgtk3.gdk_pixbuf_get_rowstride.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_rowstride( self._object )
 
     def get_height(  self, ):
 
-        libgtk3.gdk_pixbuf_get_height.restype = int
-        libgtk3.gdk_pixbuf_get_height.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_height( self._object )
 
     def get_byte_length(  self, ):
 
-        libgtk3.gdk_pixbuf_get_byte_length.restype = gsize
-        libgtk3.gdk_pixbuf_get_byte_length.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_byte_length( self._object )
 
     def get_n_channels(  self, ):
 
-        libgtk3.gdk_pixbuf_get_n_channels.restype = int
-        libgtk3.gdk_pixbuf_get_n_channels.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_n_channels( self._object )
 
     def get_has_alpha(  self, ):
 
-        libgtk3.gdk_pixbuf_get_has_alpha.restype = gboolean
-        libgtk3.gdk_pixbuf_get_has_alpha.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_has_alpha( self._object )
 
     def get_width(  self, ):
 
-        libgtk3.gdk_pixbuf_get_width.restype = int
-        libgtk3.gdk_pixbuf_get_width.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_width( self._object )
 
     def get_option(  self, key, ):
 
-        libgtk3.gdk_pixbuf_get_option.restype = c_char_p
-        libgtk3.gdk_pixbuf_get_option.argtypes = [_GdkPixbuf,c_char_p]
         
         return libgtk3.gdk_pixbuf_get_option( self._object,key )
 
     def get_colorspace(  self, ):
 
-        libgtk3.gdk_pixbuf_get_colorspace.restype = GdkColorspace
-        libgtk3.gdk_pixbuf_get_colorspace.argtypes = [_GdkPixbuf]
         
         return libgtk3.gdk_pixbuf_get_colorspace( self._object )
 

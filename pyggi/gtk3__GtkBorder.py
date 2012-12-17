@@ -263,6 +263,10 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
+libgtk3.gtk_border_copy.restype = _GtkBorder
+libgtk3.gtk_border_copy.argtypes = [_GtkBorder]
+libgtk3.gtk_border_free.restype = None
+libgtk3.gtk_border_free.argtypes = [_GtkBorder]
 import gobject__GBoxed
 class GtkBorder( gobject__GBoxed.GBoxed):
     """Class GtkBorder Constructors"""
@@ -277,15 +281,11 @@ class GtkBorder( gobject__GBoxed.GBoxed):
     """Methods"""
     def copy(  self, ):
 
-        libgtk3.gtk_border_copy.restype = _GtkBorder
-        libgtk3.gtk_border_copy.argtypes = [_GtkBorder]
         from gtk3 import GtkBorder
         return GtkBorder( obj=libgtk3.gtk_border_copy( self._object ) or POINTER(c_int)())
 
     def free(  self, ):
 
-        libgtk3.gtk_border_free.restype = None
-        libgtk3.gtk_border_free.argtypes = [_GtkBorder]
         
         libgtk3.gtk_border_free( self._object )
 

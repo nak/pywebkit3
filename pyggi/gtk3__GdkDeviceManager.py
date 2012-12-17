@@ -266,6 +266,12 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gdk_device_manager_get_display.restype = _GdkDisplay
+libgtk3.gdk_device_manager_get_display.argtypes = [_GdkDeviceManager]
+libgtk3.gdk_device_manager_list_devices.restype = _GList
+libgtk3.gdk_device_manager_list_devices.argtypes = [_GdkDeviceManager,GdkDeviceType]
+libgtk3.gdk_device_manager_get_client_pointer.restype = _GdkDevice
+libgtk3.gdk_device_manager_get_client_pointer.argtypes = [_GdkDeviceManager]
 import gobject__GObject
 class GdkDeviceManager( gobject__GObject.GObject):
     """Class GdkDeviceManager Constructors"""
@@ -274,22 +280,16 @@ class GdkDeviceManager( gobject__GObject.GObject):
     """Methods"""
     def get_display(  self, ):
 
-        libgtk3.gdk_device_manager_get_display.restype = _GdkDisplay
-        libgtk3.gdk_device_manager_get_display.argtypes = [_GdkDeviceManager]
         from gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_device_manager_get_display( self._object ) or POINTER(c_int)())
 
     def list_devices(  self, type, ):
 
-        libgtk3.gdk_device_manager_list_devices.restype = _GList
-        libgtk3.gdk_device_manager_list_devices.argtypes = [_GdkDeviceManager,GdkDeviceType]
         from gobject import GList
         return GList( obj=libgtk3.gdk_device_manager_list_devices( self._object,type ) or POINTER(c_int)())
 
     def get_client_pointer(  self, ):
 
-        libgtk3.gdk_device_manager_get_client_pointer.restype = _GdkDevice
-        libgtk3.gdk_device_manager_get_client_pointer.argtypes = [_GdkDeviceManager]
         from gobject import GdkDevice
         return GdkDevice( obj=libgtk3.gdk_device_manager_get_client_pointer( self._object ) or POINTER(c_int)())
 

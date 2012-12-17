@@ -305,6 +305,18 @@ GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
 
+libgtk3.pango_font_get_font_map.restype = _PangoFontMap
+libgtk3.pango_font_get_font_map.argtypes = [_PangoFont]
+libgtk3.pango_font_get_glyph_extents.restype = None
+libgtk3.pango_font_get_glyph_extents.argtypes = [_PangoFont,PangoGlyph,_PangoRectangle,_PangoRectangle]
+libgtk3.pango_font_get_coverage.restype = _PangoCoverage
+libgtk3.pango_font_get_coverage.argtypes = [_PangoFont,_PangoLanguage]
+libgtk3.pango_font_describe.restype = _PangoFontDescription
+libgtk3.pango_font_describe.argtypes = [_PangoFont]
+libgtk3.pango_font_get_metrics.restype = _PangoFontMetrics
+libgtk3.pango_font_get_metrics.argtypes = [_PangoFont,_PangoLanguage]
+libgtk3.pango_font_describe_with_absolute_size.restype = _PangoFontDescription
+libgtk3.pango_font_describe_with_absolute_size.argtypes = [_PangoFont]
 import gobject__GObject
 class PangoFont( gobject__GObject.GObject):
     """Class PangoFont Constructors"""
@@ -313,8 +325,6 @@ class PangoFont( gobject__GObject.GObject):
     """Methods"""
     def get_font_map(  self, ):
 
-        libgtk3.pango_font_get_font_map.restype = _PangoFontMap
-        libgtk3.pango_font_get_font_map.argtypes = [_PangoFont]
         from gtk3 import PangoFontMap
         return PangoFontMap( obj=libgtk3.pango_font_get_font_map( self._object )  or POINTER(c_int)())
 
@@ -326,8 +336,6 @@ class PangoFont( gobject__GObject.GObject):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
-        libgtk3.pango_font_get_glyph_extents.restype = None
-        libgtk3.pango_font_get_glyph_extents.argtypes = [_PangoFont,PangoGlyph,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_font_get_glyph_extents( self._object,glyph,ink_rect,logical_rect )
 
@@ -335,15 +343,11 @@ class PangoFont( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        libgtk3.pango_font_get_coverage.restype = _PangoCoverage
-        libgtk3.pango_font_get_coverage.argtypes = [_PangoFont,_PangoLanguage]
         from gtk3 import PangoCoverage
         return PangoCoverage(None, obj=libgtk3.pango_font_get_coverage( self._object,language )  or POINTER(c_int)())
 
     def describe(  self, ):
 
-        libgtk3.pango_font_describe.restype = _PangoFontDescription
-        libgtk3.pango_font_describe.argtypes = [_PangoFont]
         from gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libgtk3.pango_font_describe( self._object )  or POINTER(c_int)())
 
@@ -351,15 +355,11 @@ class PangoFont( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        libgtk3.pango_font_get_metrics.restype = _PangoFontMetrics
-        libgtk3.pango_font_get_metrics.argtypes = [_PangoFont,_PangoLanguage]
         from gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_font_get_metrics( self._object,language )  or POINTER(c_int)())
 
     def describe_with_absolute_size(  self, ):
 
-        libgtk3.pango_font_describe_with_absolute_size.restype = _PangoFontDescription
-        libgtk3.pango_font_describe_with_absolute_size.argtypes = [_PangoFont]
         from gtk3 import PangoFontDescription
         return PangoFontDescription( obj=libgtk3.pango_font_describe_with_absolute_size( self._object )  or POINTER(c_int)())
 

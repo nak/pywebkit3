@@ -287,6 +287,12 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.pango_font_family_get_name.restype = c_char_p
+libgtk3.pango_font_family_get_name.argtypes = [_PangoFontFamily]
+libgtk3.pango_font_family_list_faces.restype = None
+libgtk3.pango_font_family_list_faces.argtypes = [_PangoFontFamily,POINTER(_PangoFontFace),POINTER(int)]
+libgtk3.pango_font_family_is_monospace.restype = gboolean
+libgtk3.pango_font_family_is_monospace.argtypes = [_PangoFontFamily]
 import gobject__GObject
 class PangoFontFamily( gobject__GObject.GObject):
     """Class PangoFontFamily Constructors"""
@@ -295,8 +301,6 @@ class PangoFontFamily( gobject__GObject.GObject):
     """Methods"""
     def get_name(  self, ):
 
-        libgtk3.pango_font_family_get_name.restype = c_char_p
-        libgtk3.pango_font_family_get_name.argtypes = [_PangoFontFamily]
         
         return libgtk3.pango_font_family_get_name( self._object )
 
@@ -304,15 +308,11 @@ class PangoFontFamily( gobject__GObject.GObject):
         if faces: faces = faces._object
         else: faces = POINTER(c_int)()
 
-        libgtk3.pango_font_family_list_faces.restype = None
-        libgtk3.pango_font_family_list_faces.argtypes = [_PangoFontFamily,POINTER(_PangoFontFace),POINTER(int)]
         
         libgtk3.pango_font_family_list_faces( self._object,faces,n_faces )
 
     def is_monospace(  self, ):
 
-        libgtk3.pango_font_family_is_monospace.restype = gboolean
-        libgtk3.pango_font_family_is_monospace.argtypes = [_PangoFontFamily]
         
         return libgtk3.pango_font_family_is_monospace( self._object )
 

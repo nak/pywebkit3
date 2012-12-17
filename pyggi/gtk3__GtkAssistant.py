@@ -305,6 +305,56 @@ GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
 
+libgtk3.gtk_assistant_set_current_page.restype = None
+libgtk3.gtk_assistant_set_current_page.argtypes = [_GtkAssistant,gint]
+libgtk3.gtk_assistant_append_page.restype = gint
+libgtk3.gtk_assistant_append_page.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_set_page_complete.restype = None
+libgtk3.gtk_assistant_set_page_complete.argtypes = [_GtkAssistant,_GtkWidget,gboolean]
+libgtk3.gtk_assistant_next_page.restype = None
+libgtk3.gtk_assistant_next_page.argtypes = [_GtkAssistant]
+libgtk3.gtk_assistant_get_page_type.restype = GtkAssistantPageType
+libgtk3.gtk_assistant_get_page_type.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_insert_page.restype = gint
+libgtk3.gtk_assistant_insert_page.argtypes = [_GtkAssistant,_GtkWidget,gint]
+libgtk3.gtk_assistant_set_page_header_image.restype = None
+libgtk3.gtk_assistant_set_page_header_image.argtypes = [_GtkAssistant,_GtkWidget,_GdkPixbuf]
+libgtk3.gtk_assistant_commit.restype = None
+libgtk3.gtk_assistant_commit.argtypes = [_GtkAssistant]
+libgtk3.gtk_assistant_set_page_side_image.restype = None
+libgtk3.gtk_assistant_set_page_side_image.argtypes = [_GtkAssistant,_GtkWidget,_GdkPixbuf]
+libgtk3.gtk_assistant_get_page_header_image.restype = _GdkPixbuf
+libgtk3.gtk_assistant_get_page_header_image.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_add_action_widget.restype = None
+libgtk3.gtk_assistant_add_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_get_current_page.restype = gint
+libgtk3.gtk_assistant_get_current_page.argtypes = [_GtkAssistant]
+libgtk3.gtk_assistant_set_forward_page_func.restype = None
+libgtk3.gtk_assistant_set_forward_page_func.argtypes = [_GtkAssistant,GtkAssistantPageFunc,gpointer,GDestroyNotify]
+libgtk3.gtk_assistant_remove_page.restype = None
+libgtk3.gtk_assistant_remove_page.argtypes = [_GtkAssistant,gint]
+libgtk3.gtk_assistant_previous_page.restype = None
+libgtk3.gtk_assistant_previous_page.argtypes = [_GtkAssistant]
+libgtk3.gtk_assistant_set_page_title.restype = None
+libgtk3.gtk_assistant_set_page_title.argtypes = [_GtkAssistant,_GtkWidget,c_char_p]
+libgtk3.gtk_assistant_get_n_pages.restype = gint
+libgtk3.gtk_assistant_get_n_pages.argtypes = [_GtkAssistant]
+libgtk3.gtk_assistant_update_buttons_state.restype = None
+libgtk3.gtk_assistant_update_buttons_state.argtypes = [_GtkAssistant]
+libgtk3.gtk_assistant_get_page_title.restype = c_char_p
+libgtk3.gtk_assistant_get_page_title.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_get_page_side_image.restype = _GdkPixbuf
+libgtk3.gtk_assistant_get_page_side_image.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_prepend_page.restype = gint
+libgtk3.gtk_assistant_prepend_page.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_get_page_complete.restype = gboolean
+libgtk3.gtk_assistant_get_page_complete.argtypes = [_GtkAssistant,_GtkWidget]
+libgtk3.gtk_assistant_get_nth_page.restype = _GtkWidget
+libgtk3.gtk_assistant_get_nth_page.argtypes = [_GtkAssistant,gint]
+libgtk3.gtk_assistant_set_page_type.restype = None
+libgtk3.gtk_assistant_set_page_type.argtypes = [_GtkAssistant,_GtkWidget,GtkAssistantPageType]
+libgtk3.gtk_assistant_remove_action_widget.restype = None
+libgtk3.gtk_assistant_remove_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
 import gtk3__GtkWindow
 class GtkAssistant( gtk3__GtkWindow.GtkWindow):
     """Class GtkAssistant Constructors"""
@@ -319,8 +369,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
     """Methods"""
     def set_current_page(  self, page_num, ):
 
-        libgtk3.gtk_assistant_set_current_page.restype = None
-        libgtk3.gtk_assistant_set_current_page.argtypes = [_GtkAssistant,gint]
         
         libgtk3.gtk_assistant_set_current_page( self._object,page_num )
 
@@ -328,8 +376,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_append_page.restype = gint
-        libgtk3.gtk_assistant_append_page.argtypes = [_GtkAssistant,_GtkWidget]
         
         return libgtk3.gtk_assistant_append_page( self._object,page )
 
@@ -337,15 +383,11 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_set_page_complete.restype = None
-        libgtk3.gtk_assistant_set_page_complete.argtypes = [_GtkAssistant,_GtkWidget,gboolean]
         
         libgtk3.gtk_assistant_set_page_complete( self._object,page,complete )
 
     def next_page(  self, ):
 
-        libgtk3.gtk_assistant_next_page.restype = None
-        libgtk3.gtk_assistant_next_page.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_next_page( self._object )
 
@@ -353,8 +395,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_get_page_type.restype = GtkAssistantPageType
-        libgtk3.gtk_assistant_get_page_type.argtypes = [_GtkAssistant,_GtkWidget]
         
         return libgtk3.gtk_assistant_get_page_type( self._object,page )
 
@@ -362,8 +402,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_insert_page.restype = gint
-        libgtk3.gtk_assistant_insert_page.argtypes = [_GtkAssistant,_GtkWidget,gint]
         
         return libgtk3.gtk_assistant_insert_page( self._object,page,position )
 
@@ -373,15 +411,11 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_set_page_header_image.restype = None
-        libgtk3.gtk_assistant_set_page_header_image.argtypes = [_GtkAssistant,_GtkWidget,_GdkPixbuf]
         
         libgtk3.gtk_assistant_set_page_header_image( self._object,page,pixbuf )
 
     def commit(  self, ):
 
-        libgtk3.gtk_assistant_commit.restype = None
-        libgtk3.gtk_assistant_commit.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_commit( self._object )
 
@@ -391,8 +425,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_set_page_side_image.restype = None
-        libgtk3.gtk_assistant_set_page_side_image.argtypes = [_GtkAssistant,_GtkWidget,_GdkPixbuf]
         
         libgtk3.gtk_assistant_set_page_side_image( self._object,page,pixbuf )
 
@@ -400,8 +432,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_get_page_header_image.restype = _GdkPixbuf
-        libgtk3.gtk_assistant_get_page_header_image.argtypes = [_GtkAssistant,_GtkWidget]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_assistant_get_page_header_image( self._object,page ) or POINTER(c_int)())
 
@@ -409,15 +439,11 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_add_action_widget.restype = None
-        libgtk3.gtk_assistant_add_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
         
         libgtk3.gtk_assistant_add_action_widget( self._object,child )
 
     def get_current_page(  self, ):
 
-        libgtk3.gtk_assistant_get_current_page.restype = gint
-        libgtk3.gtk_assistant_get_current_page.argtypes = [_GtkAssistant]
         
         return libgtk3.gtk_assistant_get_current_page( self._object )
 
@@ -425,22 +451,16 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page_func: page_func = page_func._object
         else: page_func = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_set_forward_page_func.restype = None
-        libgtk3.gtk_assistant_set_forward_page_func.argtypes = [_GtkAssistant,GtkAssistantPageFunc,gpointer,GDestroyNotify]
         
         libgtk3.gtk_assistant_set_forward_page_func( self._object,page_func,data,destroy )
 
     def remove_page(  self, page_num, ):
 
-        libgtk3.gtk_assistant_remove_page.restype = None
-        libgtk3.gtk_assistant_remove_page.argtypes = [_GtkAssistant,gint]
         
         libgtk3.gtk_assistant_remove_page( self._object,page_num )
 
     def previous_page(  self, ):
 
-        libgtk3.gtk_assistant_previous_page.restype = None
-        libgtk3.gtk_assistant_previous_page.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_previous_page( self._object )
 
@@ -448,22 +468,16 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_set_page_title.restype = None
-        libgtk3.gtk_assistant_set_page_title.argtypes = [_GtkAssistant,_GtkWidget,c_char_p]
         
         libgtk3.gtk_assistant_set_page_title( self._object,page,title )
 
     def get_n_pages(  self, ):
 
-        libgtk3.gtk_assistant_get_n_pages.restype = gint
-        libgtk3.gtk_assistant_get_n_pages.argtypes = [_GtkAssistant]
         
         return libgtk3.gtk_assistant_get_n_pages( self._object )
 
     def update_buttons_state(  self, ):
 
-        libgtk3.gtk_assistant_update_buttons_state.restype = None
-        libgtk3.gtk_assistant_update_buttons_state.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_update_buttons_state( self._object )
 
@@ -471,8 +485,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_get_page_title.restype = c_char_p
-        libgtk3.gtk_assistant_get_page_title.argtypes = [_GtkAssistant,_GtkWidget]
         
         return libgtk3.gtk_assistant_get_page_title( self._object,page )
 
@@ -480,8 +492,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_get_page_side_image.restype = _GdkPixbuf
-        libgtk3.gtk_assistant_get_page_side_image.argtypes = [_GtkAssistant,_GtkWidget]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_assistant_get_page_side_image( self._object,page ) or POINTER(c_int)())
 
@@ -489,8 +499,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_prepend_page.restype = gint
-        libgtk3.gtk_assistant_prepend_page.argtypes = [_GtkAssistant,_GtkWidget]
         
         return libgtk3.gtk_assistant_prepend_page( self._object,page )
 
@@ -498,15 +506,11 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_get_page_complete.restype = gboolean
-        libgtk3.gtk_assistant_get_page_complete.argtypes = [_GtkAssistant,_GtkWidget]
         
         return libgtk3.gtk_assistant_get_page_complete( self._object,page )
 
     def get_nth_page(  self, page_num, ):
 
-        libgtk3.gtk_assistant_get_nth_page.restype = _GtkWidget
-        libgtk3.gtk_assistant_get_nth_page.argtypes = [_GtkAssistant,gint]
         from gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_assistant_get_nth_page( self._object,page_num ) or POINTER(c_int)())
 
@@ -514,8 +518,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_set_page_type.restype = None
-        libgtk3.gtk_assistant_set_page_type.argtypes = [_GtkAssistant,_GtkWidget,GtkAssistantPageType]
         
         libgtk3.gtk_assistant_set_page_type( self._object,page,type )
 
@@ -523,8 +525,6 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
-        libgtk3.gtk_assistant_remove_action_widget.restype = None
-        libgtk3.gtk_assistant_remove_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
         
         libgtk3.gtk_assistant_remove_action_widget( self._object,child )
 

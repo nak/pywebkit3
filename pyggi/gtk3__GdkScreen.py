@@ -283,6 +283,58 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gdk_screen_get_monitor_at_point.restype = gint
+libgtk3.gdk_screen_get_monitor_at_point.argtypes = [_GdkScreen,gint,gint]
+libgtk3.gdk_screen_get_toplevel_windows.restype = _GList
+libgtk3.gdk_screen_get_toplevel_windows.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_is_composited.restype = gboolean
+libgtk3.gdk_screen_is_composited.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_number.restype = gint
+libgtk3.gdk_screen_get_number.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_monitor_height_mm.restype = gint
+libgtk3.gdk_screen_get_monitor_height_mm.argtypes = [_GdkScreen,gint]
+libgtk3.gdk_screen_get_monitor_workarea.restype = None
+libgtk3.gdk_screen_get_monitor_workarea.argtypes = [_GdkScreen,gint,_GdkRectangle]
+libgtk3.gdk_screen_get_resolution.restype = gdouble
+libgtk3.gdk_screen_get_resolution.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_n_monitors.restype = gint
+libgtk3.gdk_screen_get_n_monitors.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_setting.restype = gboolean
+libgtk3.gdk_screen_get_setting.argtypes = [_GdkScreen,c_char_p,_GValue]
+libgtk3.gdk_screen_get_primary_monitor.restype = gint
+libgtk3.gdk_screen_get_primary_monitor.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_set_font_options.restype = None
+libgtk3.gdk_screen_set_font_options.argtypes = [_GdkScreen,_cairo_font_options_t]
+libgtk3.gdk_screen_get_display.restype = _GdkDisplay
+libgtk3.gdk_screen_get_display.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_make_display_name.restype = c_char_p
+libgtk3.gdk_screen_make_display_name.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_monitor_at_window.restype = gint
+libgtk3.gdk_screen_get_monitor_at_window.argtypes = [_GdkScreen,_GdkWindow]
+libgtk3.gdk_screen_get_width.restype = gint
+libgtk3.gdk_screen_get_width.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_list_visuals.restype = _GList
+libgtk3.gdk_screen_list_visuals.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_monitor_plug_name.restype = c_char_p
+libgtk3.gdk_screen_get_monitor_plug_name.argtypes = [_GdkScreen,gint]
+libgtk3.gdk_screen_get_monitor_geometry.restype = None
+libgtk3.gdk_screen_get_monitor_geometry.argtypes = [_GdkScreen,gint,_GdkRectangle]
+libgtk3.gdk_screen_set_resolution.restype = None
+libgtk3.gdk_screen_set_resolution.argtypes = [_GdkScreen,gdouble]
+libgtk3.gdk_screen_get_root_window.restype = _GdkWindow
+libgtk3.gdk_screen_get_root_window.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_height.restype = gint
+libgtk3.gdk_screen_get_height.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_monitor_width_mm.restype = gint
+libgtk3.gdk_screen_get_monitor_width_mm.argtypes = [_GdkScreen,gint]
+libgtk3.gdk_screen_get_height_mm.restype = gint
+libgtk3.gdk_screen_get_height_mm.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_active_window.restype = _GdkWindow
+libgtk3.gdk_screen_get_active_window.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_width_mm.restype = gint
+libgtk3.gdk_screen_get_width_mm.argtypes = [_GdkScreen]
+libgtk3.gdk_screen_get_window_stack.restype = _GList
+libgtk3.gdk_screen_get_window_stack.argtypes = [_GdkScreen]
 import gobject__GObject
 class GdkScreen( gobject__GObject.GObject):
     """Class GdkScreen Constructors"""
@@ -291,36 +343,26 @@ class GdkScreen( gobject__GObject.GObject):
     """Methods"""
     def get_monitor_at_point(  self, x, y, ):
 
-        libgtk3.gdk_screen_get_monitor_at_point.restype = gint
-        libgtk3.gdk_screen_get_monitor_at_point.argtypes = [_GdkScreen,gint,gint]
         
         return libgtk3.gdk_screen_get_monitor_at_point( self._object,x,y )
 
     def get_toplevel_windows(  self, ):
 
-        libgtk3.gdk_screen_get_toplevel_windows.restype = _GList
-        libgtk3.gdk_screen_get_toplevel_windows.argtypes = [_GdkScreen]
         from gobject import GList
         return GList( obj=libgtk3.gdk_screen_get_toplevel_windows( self._object ) or POINTER(c_int)())
 
     def is_composited(  self, ):
 
-        libgtk3.gdk_screen_is_composited.restype = gboolean
-        libgtk3.gdk_screen_is_composited.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_is_composited( self._object )
 
     def get_number(  self, ):
 
-        libgtk3.gdk_screen_get_number.restype = gint
-        libgtk3.gdk_screen_get_number.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_number( self._object )
 
     def get_monitor_height_mm(  self, monitor_num, ):
 
-        libgtk3.gdk_screen_get_monitor_height_mm.restype = gint
-        libgtk3.gdk_screen_get_monitor_height_mm.argtypes = [_GdkScreen,gint]
         
         return libgtk3.gdk_screen_get_monitor_height_mm( self._object,monitor_num )
 
@@ -328,22 +370,16 @@ class GdkScreen( gobject__GObject.GObject):
         if dest: dest = dest._object
         else: dest = POINTER(c_int)()
 
-        libgtk3.gdk_screen_get_monitor_workarea.restype = None
-        libgtk3.gdk_screen_get_monitor_workarea.argtypes = [_GdkScreen,gint,_GdkRectangle]
         
         libgtk3.gdk_screen_get_monitor_workarea( self._object,monitor_num,dest )
 
     def get_resolution(  self, ):
 
-        libgtk3.gdk_screen_get_resolution.restype = gdouble
-        libgtk3.gdk_screen_get_resolution.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_resolution( self._object )
 
     def get_n_monitors(  self, ):
 
-        libgtk3.gdk_screen_get_n_monitors.restype = gint
-        libgtk3.gdk_screen_get_n_monitors.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_n_monitors( self._object )
 
@@ -351,15 +387,11 @@ class GdkScreen( gobject__GObject.GObject):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
-        libgtk3.gdk_screen_get_setting.restype = gboolean
-        libgtk3.gdk_screen_get_setting.argtypes = [_GdkScreen,c_char_p,_GValue]
         
         return libgtk3.gdk_screen_get_setting( self._object,name,value )
 
     def get_primary_monitor(  self, ):
 
-        libgtk3.gdk_screen_get_primary_monitor.restype = gint
-        libgtk3.gdk_screen_get_primary_monitor.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_primary_monitor( self._object )
 
@@ -367,22 +399,16 @@ class GdkScreen( gobject__GObject.GObject):
         if options: options = options._object
         else: options = POINTER(c_int)()
 
-        libgtk3.gdk_screen_set_font_options.restype = None
-        libgtk3.gdk_screen_set_font_options.argtypes = [_GdkScreen,_cairo_font_options_t]
         
         libgtk3.gdk_screen_set_font_options( self._object,options )
 
     def get_display(  self, ):
 
-        libgtk3.gdk_screen_get_display.restype = _GdkDisplay
-        libgtk3.gdk_screen_get_display.argtypes = [_GdkScreen]
         from gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_screen_get_display( self._object ) or POINTER(c_int)())
 
     def make_display_name(  self, ):
 
-        libgtk3.gdk_screen_make_display_name.restype = c_char_p
-        libgtk3.gdk_screen_make_display_name.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_make_display_name( self._object )
 
@@ -390,29 +416,21 @@ class GdkScreen( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gdk_screen_get_monitor_at_window.restype = gint
-        libgtk3.gdk_screen_get_monitor_at_window.argtypes = [_GdkScreen,_GdkWindow]
         
         return libgtk3.gdk_screen_get_monitor_at_window( self._object,window )
 
     def get_width(  self, ):
 
-        libgtk3.gdk_screen_get_width.restype = gint
-        libgtk3.gdk_screen_get_width.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_width( self._object )
 
     def list_visuals(  self, ):
 
-        libgtk3.gdk_screen_list_visuals.restype = _GList
-        libgtk3.gdk_screen_list_visuals.argtypes = [_GdkScreen]
         from gobject import GList
         return GList( obj=libgtk3.gdk_screen_list_visuals( self._object ) or POINTER(c_int)())
 
     def get_monitor_plug_name(  self, monitor_num, ):
 
-        libgtk3.gdk_screen_get_monitor_plug_name.restype = c_char_p
-        libgtk3.gdk_screen_get_monitor_plug_name.argtypes = [_GdkScreen,gint]
         
         return libgtk3.gdk_screen_get_monitor_plug_name( self._object,monitor_num )
 
@@ -420,64 +438,46 @@ class GdkScreen( gobject__GObject.GObject):
         if dest: dest = dest._object
         else: dest = POINTER(c_int)()
 
-        libgtk3.gdk_screen_get_monitor_geometry.restype = None
-        libgtk3.gdk_screen_get_monitor_geometry.argtypes = [_GdkScreen,gint,_GdkRectangle]
         
         libgtk3.gdk_screen_get_monitor_geometry( self._object,monitor_num,dest )
 
     def set_resolution(  self, dpi, ):
 
-        libgtk3.gdk_screen_set_resolution.restype = None
-        libgtk3.gdk_screen_set_resolution.argtypes = [_GdkScreen,gdouble]
         
         libgtk3.gdk_screen_set_resolution( self._object,dpi )
 
     def get_root_window(  self, ):
 
-        libgtk3.gdk_screen_get_root_window.restype = _GdkWindow
-        libgtk3.gdk_screen_get_root_window.argtypes = [_GdkScreen]
         from gobject import GdkWindow
         return GdkWindow(None,None, obj=libgtk3.gdk_screen_get_root_window( self._object ) or POINTER(c_int)())
 
     def get_height(  self, ):
 
-        libgtk3.gdk_screen_get_height.restype = gint
-        libgtk3.gdk_screen_get_height.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_height( self._object )
 
     def get_monitor_width_mm(  self, monitor_num, ):
 
-        libgtk3.gdk_screen_get_monitor_width_mm.restype = gint
-        libgtk3.gdk_screen_get_monitor_width_mm.argtypes = [_GdkScreen,gint]
         
         return libgtk3.gdk_screen_get_monitor_width_mm( self._object,monitor_num )
 
     def get_height_mm(  self, ):
 
-        libgtk3.gdk_screen_get_height_mm.restype = gint
-        libgtk3.gdk_screen_get_height_mm.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_height_mm( self._object )
 
     def get_active_window(  self, ):
 
-        libgtk3.gdk_screen_get_active_window.restype = _GdkWindow
-        libgtk3.gdk_screen_get_active_window.argtypes = [_GdkScreen]
         from gobject import GdkWindow
         return GdkWindow(None, obj=libgtk3.gdk_screen_get_active_window( self._object ) or POINTER(c_int)())
 
     def get_width_mm(  self, ):
 
-        libgtk3.gdk_screen_get_width_mm.restype = gint
-        libgtk3.gdk_screen_get_width_mm.argtypes = [_GdkScreen]
         
         return libgtk3.gdk_screen_get_width_mm( self._object )
 
     def get_window_stack(  self, ):
 
-        libgtk3.gdk_screen_get_window_stack.restype = _GList
-        libgtk3.gdk_screen_get_window_stack.argtypes = [_GdkScreen]
         from gobject import GList
         return GList( obj=libgtk3.gdk_screen_get_window_stack( self._object ) or POINTER(c_int)())
 
@@ -485,14 +485,11 @@ class GdkScreen( gobject__GObject.GObject):
     def gdk_visual_get_screen( visual,):
         if visual: visual = visual._object
         else: visual = POINTER(c_int)()
-        libgtk3.gdk_visual_get_screen.restype = _GdkScreen
-        libgtk3.gdk_visual_get_screen.argtypes = [_GdkVisual]
         from gobject import GdkScreen
         return GdkScreen( obj=    libgtk3.gdk_visual_get_screen(visual, )
  or POINTER(c_int)())
     @staticmethod
     def get_default():
-        libgtk3.gdk_screen_get_default.restype = _GdkScreen
         from gobject import GdkScreen
         return GdkScreen( obj=    libgtk3.gdk_screen_get_default()
  or POINTER(c_int)())

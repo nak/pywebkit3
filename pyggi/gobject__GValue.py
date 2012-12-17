@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -338,17 +339,35 @@ GtkMessageType = c_int
 GtkButtonsType = c_int
 WebKitEditingBehavior = c_int
 
+libgobject.g_strdup_value_contents.restype = c_char_p
+libgobject.g_strdup_value_contents.argtypes = [_GValue]
+libgobject.g_value_copy.restype = None
+libgobject.g_value_copy.argtypes = [_GValue,_GValue]
+libgobject.g_value_transform.restype = gboolean
+libgobject.g_value_transform.argtypes = [_GValue,_GValue]
+libgobject.g_value_unset.restype = None
+libgobject.g_value_unset.argtypes = [_GValue]
+libgobject.g_value_init.restype = _GValue
+libgobject.g_value_init.argtypes = [_GValue,GType]
+libgobject.g_value_peek_pointer.restype = gpointer
+libgobject.g_value_peek_pointer.argtypes = [_GValue]
+libgobject.g_value_register_transform_func.restype = None
+libgobject.g_value_register_transform_func.argtypes = [_GValue,GType,GType,GValueTransform]
+libgobject.g_value_reset.restype = _GValue
+libgobject.g_value_reset.argtypes = [_GValue]
+libgobject.g_value_set_instance.restype = None
+libgobject.g_value_set_instance.argtypes = [_GValue,gpointer]
+libgobject.g_value_set_int.restype = None
+libgobject.g_value_set_int.argtypes = [_GValue,gint]
+libgobject.g_value_fits_pointer.restype = gboolean
+libgobject.g_value_fits_pointer.argtypes = [_GValue]
 class GValue( object):
     """Class GValue Constructors"""
-    def __init__(self,  obj = None):
-       
+    def __init__(self, obj = None):
         self._object = obj
-        
     """Methods"""
     def g_strdup_value_contents(  self, ):
 
-        libgobject.g_strdup_value_contents.restype = c_char_p
-        libgobject.g_strdup_value_contents.argtypes = [_GValue]
         
         return libgobject.g_strdup_value_contents( self._object )
 
@@ -356,7 +375,6 @@ class GValue( object):
         if dest_value: dest_value = dest_value._object
         else: dest_value = POINTER(c_int)()
 
-        libgobject.g_value_copy.argtypes = [_GValue,_GValue]
         
         libgobject.g_value_copy( self._object,dest_value )
 
@@ -364,88 +382,64 @@ class GValue( object):
         if dest_value: dest_value = dest_value._object
         else: dest_value = POINTER(c_int)()
 
-        libgobject.g_value_transform.restype = gboolean
-        libgobject.g_value_transform.argtypes = [_GValue,_GValue]
         
         return libgobject.g_value_transform( self._object,dest_value )
 
     def unset(  self, ):
 
-        libgobject.g_value_unset.argtypes = [_GValue]
         
         libgobject.g_value_unset( self._object )
 
     def init(  self, g_type, ):
 
-        libgobject.g_value_init.restype = _GValue
-        libgobject.g_value_init.argtypes = [_GValue,c_int]
         from gobject import GValue
-        return GValue( obj=libgobject.g_value_init( self._object,g_type ) or POINTER(c_int)())
+        return GValue(None, obj=libgobject.g_value_init( self._object,g_type ) or POINTER(c_int)())
 
     def peek_pointer(  self, ):
 
-        libgobject.g_value_peek_pointer.restype = gpointer
-        libgobject.g_value_peek_pointer.argtypes = [_GValue]
         
         return libgobject.g_value_peek_pointer( self._object )
 
     def register_transform_func(  self, src_type, dest_type, transform_func, ):
 
-        libgobject.g_value_register_transform_func.argtypes = [_GValue,GType,GType,GValueTransform]
         
         libgobject.g_value_register_transform_func( self._object,src_type,dest_type,transform_func )
 
     def reset(  self, ):
 
-        libgobject.g_value_reset.restype = _GValue
-        libgobject.g_value_reset.argtypes = [_GValue]
         from gobject import GValue
         return GValue( obj=libgobject.g_value_reset( self._object ) or POINTER(c_int)())
 
     def set_instance(  self, instance, ):
 
-        libgobject.g_value_set_instance.argtypes = [_GValue,gpointer]
         
         libgobject.g_value_set_instance( self._object,instance )
 
     def set_int(  self, val, ):
 
-        libgobject.g_value_set_int.argtypes = [_GValue,gint]
         
         libgobject.g_value_set_int( self._object,val )
 
     def fits_pointer(  self, ):
 
-        libgobject.g_value_fits_pointer.restype = gboolean
-        libgobject.g_value_fits_pointer.argtypes = [_GValue]
         
         return libgobject.g_value_fits_pointer( self._object )
 
     @staticmethod
     def type_compatible( src_type, dest_type,):
-        libgobject.g_value_type_compatible.restype = gboolean
-        libgobject.g_value_type_compatible.argtypes = [GType,GType]
         
         return     libgobject.g_value_type_compatible(src_type, dest_type, )
 
     @staticmethod
     def type_transformable( src_type, dest_type,):
-        libgobject.g_value_type_transformable.restype = gboolean
-        libgobject.g_value_type_transformable.argtypes = [GType,GType]
         
         return     libgobject.g_value_type_transformable(src_type, dest_type, )
 
-    def __init__(self, type= None, obj= None):
-        assert( type != None or object != None and not( type==None and obj==None))
-
-        if type:
-            cdll.LoadLibrary('libc.so.6')
-            libc = CDLL('libc.so.6')
-            libc.malloc.restype = c_longlong
-            v = c_longlong(libc.malloc(64))
-            self._object = cast(byref(v), POINTER(POINTER(c_int))).contents
-            libc.memset.argtypes = [c_void_p, c_int, c_int]
-            libc.memset( self._object, 0, 64)
-            self.init( libgobject.g_type_fundamental( type )  )
-        else:
-            self._object = obj
+    def __init__(self, type):
+        cdll.LoadLibrary('libc.so.6')
+        libc = CDLL('libc.so.6')
+        libc.restype = c_void_p
+        self._object = libc.malloc(64)
+        libc.memset.argtypes = [c_void_p, c_int, c_int]
+        libc.memset( self._object, 0, 64)
+        self.init( libgobject.g_type_fundamental( type )  )

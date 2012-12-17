@@ -311,6 +311,40 @@ GtkIconSize = c_int
 GtkAssistantPageType = c_int
 GApplicationFlags = c_int
 
+libgobject.g_application_activate.restype = None
+libgobject.g_application_activate.argtypes = [_GApplication]
+libgobject.g_application_hold.restype = None
+libgobject.g_application_hold.argtypes = [_GApplication]
+libgobject.g_application_get_application_id.restype = c_char_p
+libgobject.g_application_get_application_id.argtypes = [_GApplication]
+libgobject.g_application_set_default.restype = None
+libgobject.g_application_set_default.argtypes = [_GApplication]
+libgobject.g_application_get_flags.restype = GApplicationFlags
+libgobject.g_application_get_flags.argtypes = [_GApplication]
+libgobject.g_application_register.restype = gboolean
+libgobject.g_application_register.argtypes = [_GApplication,_GCancellable,_GError]
+libgobject.g_application_set_application_id.restype = None
+libgobject.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
+libgobject.g_application_release.restype = None
+libgobject.g_application_release.argtypes = [_GApplication]
+libgobject.g_application_set_action_group.restype = None
+libgobject.g_application_set_action_group.argtypes = [_GApplication,_GActionGroup]
+libgobject.g_application_get_is_remote.restype = gboolean
+libgobject.g_application_get_is_remote.argtypes = [_GApplication]
+libgobject.g_application_set_inactivity_timeout.restype = None
+libgobject.g_application_set_inactivity_timeout.argtypes = [_GApplication,guint]
+libgobject.g_application_get_is_registered.restype = gboolean
+libgobject.g_application_get_is_registered.argtypes = [_GApplication]
+libgobject.g_application_quit.restype = None
+libgobject.g_application_quit.argtypes = [_GApplication]
+libgobject.g_application_get_inactivity_timeout.restype = guint
+libgobject.g_application_get_inactivity_timeout.argtypes = [_GApplication]
+libgobject.g_application_run.restype = int
+libgobject.g_application_run.argtypes = [_GApplication,int,c_char_p]
+libgobject.g_application_open.restype = None
+libgobject.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
+libgobject.g_application_set_flags.restype = None
+libgobject.g_application_set_flags.argtypes = [_GApplication,GApplicationFlags]
 import gobject__GObject
 class GApplication( gobject__GObject.GObject):
     """Class GApplication Constructors"""
@@ -325,36 +359,26 @@ class GApplication( gobject__GObject.GObject):
     """Methods"""
     def activate(  self, ):
 
-        libgobject.g_application_activate.restype = None
-        libgobject.g_application_activate.argtypes = [_GApplication]
         
         libgobject.g_application_activate( self._object )
 
     def hold(  self, ):
 
-        libgobject.g_application_hold.restype = None
-        libgobject.g_application_hold.argtypes = [_GApplication]
         
         libgobject.g_application_hold( self._object )
 
     def get_application_id(  self, ):
 
-        libgobject.g_application_get_application_id.restype = c_char_p
-        libgobject.g_application_get_application_id.argtypes = [_GApplication]
         
         return libgobject.g_application_get_application_id( self._object )
 
     def set_default(  self, ):
 
-        libgobject.g_application_set_default.restype = None
-        libgobject.g_application_set_default.argtypes = [_GApplication]
         
         libgobject.g_application_set_default( self._object )
 
     def get_flags(  self, ):
 
-        libgobject.g_application_get_flags.restype = GApplicationFlags
-        libgobject.g_application_get_flags.argtypes = [_GApplication]
         
         return libgobject.g_application_get_flags( self._object )
 
@@ -364,22 +388,16 @@ class GApplication( gobject__GObject.GObject):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        libgobject.g_application_register.restype = gboolean
-        libgobject.g_application_register.argtypes = [_GApplication,_GCancellable,_GError]
         
         return libgobject.g_application_register( self._object,cancellable,error )
 
     def set_application_id(  self, application_id, ):
 
-        libgobject.g_application_set_application_id.restype = None
-        libgobject.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
         
         libgobject.g_application_set_application_id( self._object,application_id )
 
     def release(  self, ):
 
-        libgobject.g_application_release.restype = None
-        libgobject.g_application_release.argtypes = [_GApplication]
         
         libgobject.g_application_release( self._object )
 
@@ -387,50 +405,36 @@ class GApplication( gobject__GObject.GObject):
         if action_group: action_group = action_group._object
         else: action_group = POINTER(c_int)()
 
-        libgobject.g_application_set_action_group.restype = None
-        libgobject.g_application_set_action_group.argtypes = [_GApplication,_GActionGroup]
         
         libgobject.g_application_set_action_group( self._object,action_group )
 
     def get_is_remote(  self, ):
 
-        libgobject.g_application_get_is_remote.restype = gboolean
-        libgobject.g_application_get_is_remote.argtypes = [_GApplication]
         
         return libgobject.g_application_get_is_remote( self._object )
 
     def set_inactivity_timeout(  self, inactivity_timeout, ):
 
-        libgobject.g_application_set_inactivity_timeout.restype = None
-        libgobject.g_application_set_inactivity_timeout.argtypes = [_GApplication,guint]
         
         libgobject.g_application_set_inactivity_timeout( self._object,inactivity_timeout )
 
     def get_is_registered(  self, ):
 
-        libgobject.g_application_get_is_registered.restype = gboolean
-        libgobject.g_application_get_is_registered.argtypes = [_GApplication]
         
         return libgobject.g_application_get_is_registered( self._object )
 
     def quit(  self, ):
 
-        libgobject.g_application_quit.restype = None
-        libgobject.g_application_quit.argtypes = [_GApplication]
         
         libgobject.g_application_quit( self._object )
 
     def get_inactivity_timeout(  self, ):
 
-        libgobject.g_application_get_inactivity_timeout.restype = guint
-        libgobject.g_application_get_inactivity_timeout.argtypes = [_GApplication]
         
         return libgobject.g_application_get_inactivity_timeout( self._object )
 
     def run(  self, argc, argv, ):
 
-        libgobject.g_application_run.restype = int
-        libgobject.g_application_run.argtypes = [_GApplication,int,c_char_p]
         
         return libgobject.g_application_run( self._object,argc,argv )
 
@@ -438,28 +442,21 @@ class GApplication( gobject__GObject.GObject):
         if files: files = files._object
         else: files = POINTER(c_int)()
 
-        libgobject.g_application_open.restype = None
-        libgobject.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
         
         libgobject.g_application_open( self._object,files,n_files,hint )
 
     def set_flags(  self, flags, ):
 
-        libgobject.g_application_set_flags.restype = None
-        libgobject.g_application_set_flags.argtypes = [_GApplication,GApplicationFlags]
         
         libgobject.g_application_set_flags( self._object,flags )
 
     @staticmethod
     def get_default():
-        libgobject.g_application_get_default.restype = _GApplication
         from gobject import GApplication
         return GApplication(None, obj=    libgobject.g_application_get_default()
  or POINTER(c_int)())
     @staticmethod
     def id_is_valid( application_id,):
-        libgobject.g_application_id_is_valid.restype = gboolean
-        libgobject.g_application_id_is_valid.argtypes = [c_char_p]
         
         return     libgobject.g_application_id_is_valid(application_id, )
 

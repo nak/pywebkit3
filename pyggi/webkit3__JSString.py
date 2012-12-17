@@ -245,16 +245,27 @@ WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
 WebKitEditingBehavior = c_int
 
-import javascriptcore__JSObject
-class JSString( javascriptcore__JSObject.JSObject):
+libwebkit3.JSStringGetCharactersPtr.restype = POINTER(JSChar)
+libwebkit3.JSStringGetCharactersPtr.argtypes = [_JSString]
+libwebkit3.JSStringIsEqual.restype = bool
+libwebkit3.JSStringIsEqual.argtypes = [_JSString,_JSString]
+libwebkit3.JSStringRetain.restype = _JSString
+libwebkit3.JSStringRetain.argtypes = [_JSString]
+libwebkit3.JSStringIsEqualToUTF8CString.restype = bool
+libwebkit3.JSStringIsEqualToUTF8CString.argtypes = [_JSString,c_char_p]
+libwebkit3.JSStringGetUTF8CString.restype = size_t
+libwebkit3.JSStringGetUTF8CString.argtypes = [_JSString,c_char_p,size_t]
+libwebkit3.JSStringGetMaximumUTF8CStringSize.restype = size_t
+libwebkit3.JSStringGetMaximumUTF8CStringSize.argtypes = [_JSString]
+libwebkit3.JSStringGetLength.restype = size_t
+libwebkit3.JSStringGetLength.argtypes = [_JSString]
+class JSString( object):
     """Class JSString Constructors"""
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
     def GetCharactersPtr(  self, ):
 
-        libwebkit3.JSStringGetCharactersPtr.restype = POINTER(JSChar)
-        libwebkit3.JSStringGetCharactersPtr.argtypes = [_JSString]
         
         return libwebkit3.JSStringGetCharactersPtr( self._object )
 
@@ -262,57 +273,41 @@ class JSString( javascriptcore__JSObject.JSObject):
         if b: b = b._object
         else: b = POINTER(c_int)()
 
-        libwebkit3.JSStringIsEqual.restype = bool
-        libwebkit3.JSStringIsEqual.argtypes = [_JSString,_JSString]
         
         return libwebkit3.JSStringIsEqual( self._object,b )
 
     def Retain(  self, ):
 
-        libwebkit3.JSStringRetain.restype = _JSString
-        libwebkit3.JSStringRetain.argtypes = [_JSString]
         from javascriptcore import JSString
         return JSString( obj=libwebkit3.JSStringRetain( self._object )  or POINTER(c_int)())
 
     def IsEqualToUTF8CString(  self, b, ):
 
-        libwebkit3.JSStringIsEqualToUTF8CString.restype = bool
-        libwebkit3.JSStringIsEqualToUTF8CString.argtypes = [_JSString,c_char_p]
         
         return libwebkit3.JSStringIsEqualToUTF8CString( self._object,b )
 
     def GetUTF8CString(  self, buffer, bufferSize, ):
 
-        libwebkit3.JSStringGetUTF8CString.restype = size_t
-        libwebkit3.JSStringGetUTF8CString.argtypes = [_JSString,c_char_p,size_t]
         
         return libwebkit3.JSStringGetUTF8CString( self._object,buffer,bufferSize )
 
     def GetMaximumUTF8CStringSize(  self, ):
 
-        libwebkit3.JSStringGetMaximumUTF8CStringSize.restype = size_t
-        libwebkit3.JSStringGetMaximumUTF8CStringSize.argtypes = [_JSString]
         
         return libwebkit3.JSStringGetMaximumUTF8CStringSize( self._object )
 
     def GetLength(  self, ):
 
-        libwebkit3.JSStringGetLength.restype = size_t
-        libwebkit3.JSStringGetLength.argtypes = [_JSString]
         
         return libwebkit3.JSStringGetLength( self._object )
 
     @staticmethod
     def CreateWithCharacters( chars, numChars,):
-        libwebkit3.JSStringCreateWithCharacters.restype = _JSString
-        libwebkit3.JSStringCreateWithCharacters.argtypes = [POINTER(JSChar),size_t]
         from javascriptcore import JSString
         return JSString( obj=    libwebkit3.JSStringCreateWithCharacters(chars, numChars, )
   or POINTER(c_int)())
     @staticmethod
     def CreateWithUTF8CString( string,):
-        libwebkit3.JSStringCreateWithUTF8CString.restype = _JSString
-        libwebkit3.JSStringCreateWithUTF8CString.argtypes = [c_char_p]
         from javascriptcore import JSString
         return JSString( obj=    libwebkit3.JSStringCreateWithUTF8CString(string, )
   or POINTER(c_int)())

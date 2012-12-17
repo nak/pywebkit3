@@ -323,14 +323,10 @@ GtkTargetFlags = c_int
 def gtkkeysnooperinstall( snooper, func_data,):
     if snooper: snooper = snooper._object
     else: snooper = POINTER(c_int)()
-    libgtk3.gtk_key_snooper_install.restype = guint
-    libgtk3.gtk_key_snooper_install.argtypes = [GtkKeySnoopFunc,gpointer]
     
     return     libgtk3.gtk_key_snooper_install(snooper, func_data, )
 
 def gtkgetoptiongroup( open_default_display,):
-    libgtk3.gtk_get_option_group.restype = _GOptionGroup
-    libgtk3.gtk_get_option_group.argtypes = [gboolean]
     from gobject import GOptionGroup
     return GOptionGroup( obj=    libgtk3.gtk_get_option_group(open_default_display, )
  or POINTER(c_int)())
@@ -341,66 +337,48 @@ def gtkdragdestfindtarget( widget, context, target_list,):
     else: context = POINTER(c_int)()
     if target_list: target_list = target_list._object
     else: target_list = POINTER(c_int)()
-    libgtk3.gtk_drag_dest_find_target.restype = GdkAtom
-    libgtk3.gtk_drag_dest_find_target.argtypes = [_GtkWidget,_GdkDragContext,_GtkTargetList]
     
     return     libgtk3.gtk_drag_dest_find_target(widget, context, target_list, )
 
 def gtkmainiterationdo( blocking,):
-    libgtk3.gtk_main_iteration_do.restype = gboolean
-    libgtk3.gtk_main_iteration_do.argtypes = [gboolean]
     
     return     libgtk3.gtk_main_iteration_do(blocking, )
 
 def gtkdragdestgettrackmotion( widget,):
     if widget: widget = widget._object
     else: widget = POINTER(c_int)()
-    libgtk3.gtk_drag_dest_get_track_motion.restype = gboolean
-    libgtk3.gtk_drag_dest_get_track_motion.argtypes = [_GtkWidget]
     
     return     libgtk3.gtk_drag_dest_get_track_motion(widget, )
 
 def gtkgeteventwidget( event,):
-    libgtk3.gtk_get_event_widget.restype = _GtkWidget
-    libgtk3.gtk_get_event_widget.argtypes = [POINTER(GdkEvent)]
     from gtk3 import GtkWidget
     return GtkWidget(None, obj=    libgtk3.gtk_get_event_widget(event, )
  or POINTER(c_int)())
 def gtkgetcurrenteventstate( state,):
-    libgtk3.gtk_get_current_event_state.restype = gboolean
-    libgtk3.gtk_get_current_event_state.argtypes = [POINTER(GdkModifierType)]
     
     return     libgtk3.gtk_get_current_event_state(state, )
 
 def gtkdraggetsourcewidget( context,):
     if context: context = context._object
     else: context = POINTER(c_int)()
-    libgtk3.gtk_drag_get_source_widget.restype = _GtkWidget
-    libgtk3.gtk_drag_get_source_widget.argtypes = [_GdkDragContext]
     from gtk3 import GtkWidget
     return GtkWidget( obj=    libgtk3.gtk_drag_get_source_widget(context, )
  or POINTER(c_int)())
 def gtkdragsourcegettargetlist( widget,):
     if widget: widget = widget._object
     else: widget = POINTER(c_int)()
-    libgtk3.gtk_drag_source_get_target_list.restype = _GtkTargetList
-    libgtk3.gtk_drag_source_get_target_list.argtypes = [_GtkWidget]
     from gtk3 import GtkTargetList
     return GtkTargetList( obj=    libgtk3.gtk_drag_source_get_target_list(widget, )
  or POINTER(c_int)())
 def gtkdragdestgettargetlist( widget,):
     if widget: widget = widget._object
     else: widget = POINTER(c_int)()
-    libgtk3.gtk_drag_dest_get_target_list.restype = _GtkTargetList
-    libgtk3.gtk_drag_dest_get_target_list.argtypes = [_GtkWidget]
     from gtk3 import GtkTargetList
     return GtkTargetList( obj=    libgtk3.gtk_drag_dest_get_target_list(widget, )
  or POINTER(c_int)())
 def gtkdragcheckthreshold( widget, start_x, start_y, current_x, current_y,):
     if widget: widget = widget._object
     else: widget = POINTER(c_int)()
-    libgtk3.gtk_drag_check_threshold.restype = gboolean
-    libgtk3.gtk_drag_check_threshold.argtypes = [_GtkWidget,gint,gint,gint,gint]
     
     return     libgtk3.gtk_drag_check_threshold(widget, start_x, start_y, current_x, current_y, )
 
@@ -411,8 +389,6 @@ def gtkdragbegin( widget, targets, actions, button, event,):
     else: targets = POINTER(c_int)()
     if actions: actions = actions._object
     else: actions = POINTER(c_int)()
-    libgtk3.gtk_drag_begin.restype = _GdkDragContext
-    libgtk3.gtk_drag_begin.argtypes = [_GtkWidget,_GtkTargetList,GdkDragAction,gint,POINTER(GdkEvent)]
     from gobject import GdkDragContext
     return GdkDragContext( obj=    libgtk3.gtk_drag_begin(widget, targets, actions, button, event, )
  or POINTER(c_int)())

@@ -340,6 +340,16 @@ GtkButtonsType = c_int
 WebKitEditingBehavior = c_int
 GdkCursorType = c_int
 
+libgtk3.gdk_cursor_get_cursor_type.restype = GdkCursorType
+libgtk3.gdk_cursor_get_cursor_type.argtypes = [_GdkCursor]
+libgtk3.gdk_cursor_ref.restype = _GdkCursor
+libgtk3.gdk_cursor_ref.argtypes = [_GdkCursor]
+libgtk3.gdk_cursor_unref.restype = None
+libgtk3.gdk_cursor_unref.argtypes = [_GdkCursor]
+libgtk3.gdk_cursor_get_display.restype = _GdkDisplay
+libgtk3.gdk_cursor_get_display.argtypes = [_GdkCursor]
+libgtk3.gdk_cursor_get_image.restype = _GdkPixbuf
+libgtk3.gdk_cursor_get_image.argtypes = [_GdkCursor]
 import gobject__GObject
 class GdkCursor( gobject__GObject.GObject):
     """Class GdkCursor Constructors"""
@@ -354,36 +364,26 @@ class GdkCursor( gobject__GObject.GObject):
     """Methods"""
     def get_cursor_type(  self, ):
 
-        libgtk3.gdk_cursor_get_cursor_type.restype = GdkCursorType
-        libgtk3.gdk_cursor_get_cursor_type.argtypes = [_GdkCursor]
         
         return libgtk3.gdk_cursor_get_cursor_type( self._object )
 
     def ref(  self, ):
 
-        libgtk3.gdk_cursor_ref.restype = _GdkCursor
-        libgtk3.gdk_cursor_ref.argtypes = [_GdkCursor]
         from gobject import GdkCursor
         return GdkCursor( obj=libgtk3.gdk_cursor_ref( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):
 
-        libgtk3.gdk_cursor_unref.restype = None
-        libgtk3.gdk_cursor_unref.argtypes = [_GdkCursor]
         
         libgtk3.gdk_cursor_unref( self._object )
 
     def get_display(  self, ):
 
-        libgtk3.gdk_cursor_get_display.restype = _GdkDisplay
-        libgtk3.gdk_cursor_get_display.argtypes = [_GdkCursor]
         from gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_cursor_get_display( self._object ) or POINTER(c_int)())
 
     def get_image(  self, ):
 
-        libgtk3.gdk_cursor_get_image.restype = _GdkPixbuf
-        libgtk3.gdk_cursor_get_image.argtypes = [_GdkCursor]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gdk_cursor_get_image( self._object ) or POINTER(c_int)())
 
@@ -393,8 +393,6 @@ class GdkCursor( gobject__GObject.GObject):
         else: display = POINTER(c_int)()
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
-        libgtk3.gdk_cursor_new_from_pixbuf.restype = _GdkCursor
-        libgtk3.gdk_cursor_new_from_pixbuf.argtypes = [_GdkDisplay,_GdkPixbuf,gint,gint]
         from gobject import GdkCursor
         return GdkCursor(None, obj=    libgtk3.gdk_cursor_new_from_pixbuf(display, pixbuf, x, y, )
  or POINTER(c_int)())
@@ -402,8 +400,6 @@ class GdkCursor( gobject__GObject.GObject):
     def new_from_name( display, name,):
         if display: display = display._object
         else: display = POINTER(c_int)()
-        libgtk3.gdk_cursor_new_from_name.restype = _GdkCursor
-        libgtk3.gdk_cursor_new_from_name.argtypes = [_GdkDisplay,c_char_p]
         from gobject import GdkCursor
         return GdkCursor(None, obj=    libgtk3.gdk_cursor_new_from_name(display, name, )
  or POINTER(c_int)())
@@ -411,8 +407,6 @@ class GdkCursor( gobject__GObject.GObject):
     def new_for_display( display, cursor_type,):
         if display: display = display._object
         else: display = POINTER(c_int)()
-        libgtk3.gdk_cursor_new_for_display.restype = _GdkCursor
-        libgtk3.gdk_cursor_new_for_display.argtypes = [_GdkDisplay,GdkCursorType]
         from gobject import GdkCursor
         return GdkCursor(None, obj=    libgtk3.gdk_cursor_new_for_display(display, cursor_type, )
  or POINTER(c_int)())

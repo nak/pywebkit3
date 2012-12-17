@@ -342,6 +342,16 @@ GdkCursorType = c_int
 GdkVisualType = c_int
 GdkByteOrder = c_int
 
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data.restype = _GString
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data.argtypes = [_WebKitWebResource]
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name.restype = c_char_p
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name.argtypes = [_WebKitWebResource]
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type.restype = c_char_p
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type.argtypes = [_WebKitWebResource]
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding.restype = c_char_p
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding.argtypes = [_WebKitWebResource]
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri.restype = c_char_p
+libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri.argtypes = [_WebKitWebResource]
 import gobject__GObject
 class WebKitWebResource( gobject__GObject.GObject):
     """Class WebKitWebResource Constructors"""
@@ -356,36 +366,26 @@ class WebKitWebResource( gobject__GObject.GObject):
     """Methods"""
     def get_data(  self, ):
 
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data.restype = _GString
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data.argtypes = [_WebKitWebResource]
         from gobject import GString
         return GString(None,None, obj=libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data( self._object ) or POINTER(c_int)())
 
     def get_frame_name(  self, ):
 
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name.restype = c_char_p
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name.argtypes = [_WebKitWebResource]
         
         return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name( self._object )
 
     def get_mime_type(  self, ):
 
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type.restype = c_char_p
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type.argtypes = [_WebKitWebResource]
         
         return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type( self._object )
 
     def get_encoding(  self, ):
 
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding.restype = c_char_p
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding.argtypes = [_WebKitWebResource]
         
         return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding( self._object )
 
     def get_uri(  self, ):
 
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri.restype = c_char_p
-        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri.argtypes = [_WebKitWebResource]
         
         return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri( self._object )
 

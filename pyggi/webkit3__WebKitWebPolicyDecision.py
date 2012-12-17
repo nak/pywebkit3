@@ -303,6 +303,12 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libwebkit3.webkit_web_policy_decision_download.restype = None
+libwebkit3.webkit_web_policy_decision_download.argtypes = [_WebKitWebPolicyDecision]
+libwebkit3.webkit_web_policy_decision_use.restype = None
+libwebkit3.webkit_web_policy_decision_use.argtypes = [_WebKitWebPolicyDecision]
+libwebkit3.webkit_web_policy_decision_ignore.restype = None
+libwebkit3.webkit_web_policy_decision_ignore.argtypes = [_WebKitWebPolicyDecision]
 import gobject__GObject
 class WebKitWebPolicyDecision( gobject__GObject.GObject):
     """Class WebKitWebPolicyDecision Constructors"""
@@ -311,22 +317,16 @@ class WebKitWebPolicyDecision( gobject__GObject.GObject):
     """Methods"""
     def download(  self, ):
 
-        libwebkit3.webkit_web_policy_decision_download.restype = None
-        libwebkit3.webkit_web_policy_decision_download.argtypes = [_WebKitWebPolicyDecision]
         
         libwebkit3.webkit_web_policy_decision_download( self._object )
 
     def use(  self, ):
 
-        libwebkit3.webkit_web_policy_decision_use.restype = None
-        libwebkit3.webkit_web_policy_decision_use.argtypes = [_WebKitWebPolicyDecision]
         
         libwebkit3.webkit_web_policy_decision_use( self._object )
 
     def ignore(  self, ):
 
-        libwebkit3.webkit_web_policy_decision_ignore.restype = None
-        libwebkit3.webkit_web_policy_decision_ignore.argtypes = [_WebKitWebPolicyDecision]
         
         libwebkit3.webkit_web_policy_decision_ignore( self._object )
 

@@ -312,6 +312,8 @@ GtkIconSize = c_int
 GtkAssistantPageType = c_int
 GApplicationFlags = c_int
 
+libgtk3.gtk_bin_get_child.restype = _GtkWidget
+libgtk3.gtk_bin_get_child.argtypes = [_GtkBin]
 import gtk3__GtkContainer
 class GtkBin( gtk3__GtkContainer.GtkContainer):
     """Class GtkBin Constructors"""
@@ -320,8 +322,6 @@ class GtkBin( gtk3__GtkContainer.GtkContainer):
     """Methods"""
     def get_child(  self, ):
 
-        libgtk3.gtk_bin_get_child.restype = _GtkWidget
-        libgtk3.gtk_bin_get_child.argtypes = [_GtkBin]
         from gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_bin_get_child( self._object ) or POINTER(c_int)())
 

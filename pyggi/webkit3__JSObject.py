@@ -245,6 +245,42 @@ WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
 WebKitEditingBehavior = c_int
 
+libwebkit3.JSObjectGetProperty.restype = _JSValue
+libwebkit3.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
+libwebkit3.JSPropertyNameAccumulatorAddName.restype = None
+libwebkit3.JSPropertyNameAccumulatorAddName.argtypes = [_JSObject,_JSPropertyNameAccumulator,_JSString]
+libwebkit3.JSObjectSetPrototype.restype = None
+libwebkit3.JSObjectSetPrototype.argtypes = [_JSContext,_JSObject,_JSValue]
+libwebkit3.JSObjectHasProperty.restype = bool
+libwebkit3.JSObjectHasProperty.argtypes = [_JSContext,_JSObject,_JSString]
+libwebkit3.JSObjectGetPrototype.restype = _JSValue
+libwebkit3.JSObjectGetPrototype.argtypes = [_JSContext,_JSObject]
+libwebkit3.JSObjectCallAsConstructor.restype = _JSObject
+libwebkit3.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue,_JSValue]
+libwebkit3.JSPropertyNameArrayRelease.restype = None
+libwebkit3.JSPropertyNameArrayRelease.argtypes = [_JSObject,_JSPropertyNameArray]
+libwebkit3.JSObjectDeleteProperty.restype = bool
+libwebkit3.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
+libwebkit3.JSObjectIsConstructor.restype = bool
+libwebkit3.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
+libwebkit3.JSObjectSetPropertyAtIndex.restype = None
+libwebkit3.JSObjectSetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue,_JSValue]
+libwebkit3.JSObjectSetPrivate.restype = bool
+libwebkit3.JSObjectSetPrivate.argtypes = [_JSObject,c_char_p]
+libwebkit3.JSClassRelease.restype = None
+libwebkit3.JSClassRelease.argtypes = [_JSObject,_JSClass]
+libwebkit3.JSObjectCallAsFunction.restype = _JSValue
+libwebkit3.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,_JSValue,_JSValue]
+libwebkit3.JSObjectCopyPropertyNames.restype = _JSPropertyNameArray
+libwebkit3.JSObjectCopyPropertyNames.argtypes = [_JSContext,_JSObject]
+libwebkit3.JSObjectGetPropertyAtIndex.restype = _JSValue
+libwebkit3.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
+libwebkit3.JSObjectGetPrivate.restype = c_char_p
+libwebkit3.JSObjectGetPrivate.argtypes = [_JSObject]
+libwebkit3.JSObjectSetProperty.restype = None
+libwebkit3.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
+libwebkit3.JSObjectIsFunction.restype = bool
+libwebkit3.JSObjectIsFunction.argtypes = [_JSContext,_JSObject]
 class JSObject( object):
     """Class JSObject Constructors"""
     def __init__(self, obj = None):
@@ -258,8 +294,6 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectGetProperty.restype = _JSValue
-        libwebkit3.JSObjectGetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
         from javascriptcore import JSValue
         return JSValue( obj=libwebkit3.JSObjectGetProperty( ctx,self._object,propertyName,exception )  or POINTER(c_int)())
 
@@ -269,8 +303,6 @@ class JSObject( object):
         if propertyName: propertyName = propertyName._object
         else: propertyName = POINTER(c_int)()
 
-        libwebkit3.JSPropertyNameAccumulatorAddName.restype = None
-        libwebkit3.JSPropertyNameAccumulatorAddName.argtypes = [_JSObject,_JSPropertyNameAccumulator,_JSString]
         
         libwebkit3.JSPropertyNameAccumulatorAddName( self._object,accumulator,propertyName )
 
@@ -280,8 +312,6 @@ class JSObject( object):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
-        libwebkit3.JSObjectSetPrototype.restype = None
-        libwebkit3.JSObjectSetPrototype.argtypes = [_JSContext,_JSObject,_JSValue]
         
         libwebkit3.JSObjectSetPrototype( ctx,self._object,value )
 
@@ -291,8 +321,6 @@ class JSObject( object):
         if propertyName: propertyName = propertyName._object
         else: propertyName = POINTER(c_int)()
 
-        libwebkit3.JSObjectHasProperty.restype = bool
-        libwebkit3.JSObjectHasProperty.argtypes = [_JSContext,_JSObject,_JSString]
         
         return libwebkit3.JSObjectHasProperty( ctx,self._object,propertyName )
 
@@ -300,8 +328,6 @@ class JSObject( object):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSObjectGetPrototype.restype = _JSValue
-        libwebkit3.JSObjectGetPrototype.argtypes = [_JSContext,_JSObject]
         from javascriptcore import JSValue
         return JSValue( obj=libwebkit3.JSObjectGetPrototype( ctx,self._object )  or POINTER(c_int)())
 
@@ -313,8 +339,6 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectCallAsConstructor.restype = _JSObject
-        libwebkit3.JSObjectCallAsConstructor.argtypes = [_JSContext,_JSObject,size_t,_JSValue,_JSValue]
         from javascriptcore import JSObject
         return JSObject(None,None,None,None, obj=libwebkit3.JSObjectCallAsConstructor( ctx,self._object,argumentCount,arguments,exception )  or POINTER(c_int)())
 
@@ -322,8 +346,6 @@ class JSObject( object):
         if array: array = array._object
         else: array = POINTER(c_int)()
 
-        libwebkit3.JSPropertyNameArrayRelease.restype = None
-        libwebkit3.JSPropertyNameArrayRelease.argtypes = [_JSObject,_JSPropertyNameArray]
         
         libwebkit3.JSPropertyNameArrayRelease( self._object,array )
 
@@ -335,8 +357,6 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectDeleteProperty.restype = bool
-        libwebkit3.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
         
         return libwebkit3.JSObjectDeleteProperty( ctx,self._object,propertyName,exception )
 
@@ -344,8 +364,6 @@ class JSObject( object):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSObjectIsConstructor.restype = bool
-        libwebkit3.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
         
         return libwebkit3.JSObjectIsConstructor( ctx,self._object )
 
@@ -357,15 +375,11 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectSetPropertyAtIndex.restype = None
-        libwebkit3.JSObjectSetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue,_JSValue]
         
         libwebkit3.JSObjectSetPropertyAtIndex( ctx,self._object,propertyIndex,value,exception )
 
     def SetPrivate(  self, data, ):
 
-        libwebkit3.JSObjectSetPrivate.restype = bool
-        libwebkit3.JSObjectSetPrivate.argtypes = [_JSObject,c_char_p]
         
         return libwebkit3.JSObjectSetPrivate( self._object,data )
 
@@ -373,8 +387,6 @@ class JSObject( object):
         if jsClass: jsClass = jsClass._object
         else: jsClass = POINTER(c_int)()
 
-        libwebkit3.JSClassRelease.restype = None
-        libwebkit3.JSClassRelease.argtypes = [_JSObject,_JSClass]
         
         libwebkit3.JSClassRelease( self._object,jsClass )
 
@@ -388,8 +400,6 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectCallAsFunction.restype = _JSValue
-        libwebkit3.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,size_t,_JSValue,_JSValue]
         from javascriptcore import JSValue
         return JSValue( obj=libwebkit3.JSObjectCallAsFunction( ctx,self._object,thisObject,argumentCount,arguments,exception )  or POINTER(c_int)())
 
@@ -397,8 +407,6 @@ class JSObject( object):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSObjectCopyPropertyNames.restype = _JSPropertyNameArray
-        libwebkit3.JSObjectCopyPropertyNames.argtypes = [_JSContext,_JSObject]
         from javascriptcore import JSPropertyNameArray
         return JSPropertyNameArray( obj=libwebkit3.JSObjectCopyPropertyNames( ctx,self._object )  or POINTER(c_int)())
 
@@ -408,15 +416,11 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectGetPropertyAtIndex.restype = _JSValue
-        libwebkit3.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
         from javascriptcore import JSValue
         return JSValue( obj=libwebkit3.JSObjectGetPropertyAtIndex( ctx,self._object,propertyIndex,exception )  or POINTER(c_int)())
 
     def GetPrivate(  self, ):
 
-        libwebkit3.JSObjectGetPrivate.restype = c_char_p
-        libwebkit3.JSObjectGetPrivate.argtypes = [_JSObject]
         
         return libwebkit3.JSObjectGetPrivate( self._object )
 
@@ -430,8 +434,6 @@ class JSObject( object):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSObjectSetProperty.restype = None
-        libwebkit3.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
         
         libwebkit3.JSObjectSetProperty( ctx,self._object,propertyName,value,attributes,exception )
 
@@ -439,8 +441,6 @@ class JSObject( object):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSObjectIsFunction.restype = bool
-        libwebkit3.JSObjectIsFunction.argtypes = [_JSContext,_JSObject]
         
         return libwebkit3.JSObjectIsFunction( ctx,self._object )
 
@@ -448,8 +448,6 @@ class JSObject( object):
     def JSClassRetain( jsClass,):
         if jsClass: jsClass = jsClass._object
         else: jsClass = POINTER(c_int)()
-        libwebkit3.JSClassRetain.restype = _JSClass
-        libwebkit3.JSClassRetain.argtypes = [_JSClass]
         from javascriptcore import JSClass
         return JSClass( obj=    libwebkit3.JSClassRetain(jsClass, )
   or POINTER(c_int)())
@@ -461,8 +459,6 @@ class JSObject( object):
         else: arguments = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
-        libwebkit3.JSObjectMakeError.restype = _JSObject
-        libwebkit3.JSObjectMakeError.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeError(ctx, argumentCount, arguments, exception, )
   or POINTER(c_int)())
@@ -472,8 +468,6 @@ class JSObject( object):
         else: ctx = POINTER(c_int)()
         if name: name = name._object
         else: name = POINTER(c_int)()
-        libwebkit3.JSObjectMakeFunctionWithCallback.restype = _JSObject
-        libwebkit3.JSObjectMakeFunctionWithCallback.argtypes = [_JSContext,_JSString,JSObjectCallAsFunctionCallback]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeFunctionWithCallback(ctx, name, callAsFunction, )
   or POINTER(c_int)())
@@ -485,8 +479,6 @@ class JSObject( object):
         else: arguments = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
-        libwebkit3.JSObjectMakeArray.restype = _JSObject
-        libwebkit3.JSObjectMakeArray.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeArray(ctx, argumentCount, arguments, exception, )
   or POINTER(c_int)())
@@ -496,8 +488,6 @@ class JSObject( object):
         else: ctx = POINTER(c_int)()
         if jsClass: jsClass = jsClass._object
         else: jsClass = POINTER(c_int)()
-        libwebkit3.JSObjectMakeConstructor.restype = _JSObject
-        libwebkit3.JSObjectMakeConstructor.argtypes = [_JSContext,_JSClass,JSObjectCallAsConstructorCallback]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeConstructor(ctx, jsClass, callAsConstructor, )
   or POINTER(c_int)())
@@ -509,8 +499,6 @@ class JSObject( object):
         else: arguments = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
-        libwebkit3.JSObjectMakeDate.restype = _JSObject
-        libwebkit3.JSObjectMakeDate.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeDate(ctx, argumentCount, arguments, exception, )
   or POINTER(c_int)())
@@ -518,8 +506,6 @@ class JSObject( object):
     def JSPropertyNameArrayRetain( array,):
         if array: array = array._object
         else: array = POINTER(c_int)()
-        libwebkit3.JSPropertyNameArrayRetain.restype = _JSPropertyNameArray
-        libwebkit3.JSPropertyNameArrayRetain.argtypes = [_JSPropertyNameArray]
         from javascriptcore import JSPropertyNameArray
         return JSPropertyNameArray( obj=    libwebkit3.JSPropertyNameArrayRetain(array, )
   or POINTER(c_int)())
@@ -527,8 +513,6 @@ class JSObject( object):
     def JSPropertyNameArrayGetNameAtIndex( array, index,):
         if array: array = array._object
         else: array = POINTER(c_int)()
-        libwebkit3.JSPropertyNameArrayGetNameAtIndex.restype = _JSString
-        libwebkit3.JSPropertyNameArrayGetNameAtIndex.argtypes = [_JSPropertyNameArray,size_t]
         from javascriptcore import JSString
         return JSString( obj=    libwebkit3.JSPropertyNameArrayGetNameAtIndex(array, index, )
   or POINTER(c_int)())
@@ -546,8 +530,6 @@ class JSObject( object):
         else: sourceURL = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
-        libwebkit3.JSObjectMakeFunction.restype = _JSObject
-        libwebkit3.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,_JSString,_JSString,_JSString,int,_JSValue]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
   or POINTER(c_int)())
@@ -557,8 +539,6 @@ class JSObject( object):
         else: ctx = POINTER(c_int)()
         if jsClass: jsClass = jsClass._object
         else: jsClass = POINTER(c_int)()
-        libwebkit3.JSObjectMake.restype = _JSObject
-        libwebkit3.JSObjectMake.argtypes = [_JSContext,_JSClass,c_char_p]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMake(ctx, jsClass, data, )
   or POINTER(c_int)())
@@ -566,8 +546,6 @@ class JSObject( object):
     def JSPropertyNameArrayGetCount( array,):
         if array: array = array._object
         else: array = POINTER(c_int)()
-        libwebkit3.JSPropertyNameArrayGetCount.restype = size_t
-        libwebkit3.JSPropertyNameArrayGetCount.argtypes = [_JSPropertyNameArray]
         
         return     libwebkit3.JSPropertyNameArrayGetCount(array, )
 
@@ -579,15 +557,11 @@ class JSObject( object):
         else: arguments = POINTER(c_int)()
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
-        libwebkit3.JSObjectMakeRegExp.restype = _JSObject
-        libwebkit3.JSObjectMakeRegExp.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from javascriptcore import JSObject
         return JSObject( obj=    libwebkit3.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )
   or POINTER(c_int)())
     @staticmethod
     def JSClassCreate( definition,):
-        libwebkit3.JSClassCreate.restype = _JSClass
-        libwebkit3.JSClassCreate.argtypes = [POINTER(JSClassDefinition)]
         from javascriptcore import JSClass
         return JSClass( obj=    libwebkit3.JSClassCreate(definition, )
   or POINTER(c_int)())

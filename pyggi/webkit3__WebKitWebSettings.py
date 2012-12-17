@@ -338,6 +338,10 @@ GtkMessageType = c_int
 GtkButtonsType = c_int
 WebKitEditingBehavior = c_int
 
+libwebkit3.webkit_web_settings_copy.restype = _WebKitWebSettings
+libwebkit3.webkit_web_settings_copy.argtypes = [_WebKitWebSettings]
+libwebkit3.webkit_web_settings_get_user_agent.restype = c_char_p
+libwebkit3.webkit_web_settings_get_user_agent.argtypes = [_WebKitWebSettings]
 import gobject__GObject
 class WebKitWebSettings( gobject__GObject.GObject):
     """Class WebKitWebSettings Constructors"""
@@ -352,15 +356,11 @@ class WebKitWebSettings( gobject__GObject.GObject):
     """Methods"""
     def copy(  self, ):
 
-        libwebkit3.webkit_web_settings_copy.restype = _WebKitWebSettings
-        libwebkit3.webkit_web_settings_copy.argtypes = [_WebKitWebSettings]
         from webkit3 import WebKitWebSettings
         return WebKitWebSettings( obj=libwebkit3.webkit_web_settings_copy( self._object ) or POINTER(c_int)() )
 
     def get_user_agent(  self, ):
 
-        libwebkit3.webkit_web_settings_get_user_agent.restype = c_char_p
-        libwebkit3.webkit_web_settings_get_user_agent.argtypes = [_WebKitWebSettings]
         
         return libwebkit3.webkit_web_settings_get_user_agent( self._object )
 

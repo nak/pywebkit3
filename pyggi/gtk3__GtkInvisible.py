@@ -283,6 +283,10 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.gtk_invisible_set_screen.restype = None
+libgtk3.gtk_invisible_set_screen.argtypes = [_GtkInvisible,_GdkScreen]
+libgtk3.gtk_invisible_get_screen.restype = _GdkScreen
+libgtk3.gtk_invisible_get_screen.argtypes = [_GtkInvisible]
 import gtk3__GtkWidget
 class GtkInvisible( gtk3__GtkWidget.GtkWidget):
     """Class GtkInvisible Constructors"""
@@ -299,15 +303,11 @@ class GtkInvisible( gtk3__GtkWidget.GtkWidget):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
-        libgtk3.gtk_invisible_set_screen.restype = None
-        libgtk3.gtk_invisible_set_screen.argtypes = [_GtkInvisible,_GdkScreen]
         
         libgtk3.gtk_invisible_set_screen( self._object,screen )
 
     def get_screen(  self, ):
 
-        libgtk3.gtk_invisible_get_screen.restype = _GdkScreen
-        libgtk3.gtk_invisible_get_screen.argtypes = [_GtkInvisible]
         from gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gtk_invisible_get_screen( self._object ) or POINTER(c_int)())
 
@@ -315,8 +315,6 @@ class GtkInvisible( gtk3__GtkWidget.GtkWidget):
     def new_for_screen( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        libgtk3.gtk_invisible_new_for_screen.restype = _GtkWidget
-        libgtk3.gtk_invisible_new_for_screen.argtypes = [_GdkScreen]
         from gtk3 import GtkWidget
         return GtkWidget(None, obj=    libgtk3.gtk_invisible_new_for_screen(screen, )
  or POINTER(c_int)())

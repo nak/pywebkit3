@@ -245,6 +245,42 @@ WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
 WebKitEditingBehavior = c_int
 
+libwebkit3.JSValueIsInstanceOfConstructor.restype = bool
+libwebkit3.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,_JSValue]
+libwebkit3.JSValueToObject.restype = _JSObject
+libwebkit3.JSValueToObject.argtypes = [_JSContext,_JSValue,_JSValue]
+libwebkit3.JSValueIsUndefined.restype = bool
+libwebkit3.JSValueIsUndefined.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueIsObjectOfClass.restype = bool
+libwebkit3.JSValueIsObjectOfClass.argtypes = [_JSContext,_JSValue,_JSClass]
+libwebkit3.JSValueIsStrictEqual.restype = bool
+libwebkit3.JSValueIsStrictEqual.argtypes = [_JSContext,_JSValue,_JSValue]
+libwebkit3.JSValueIsNull.restype = bool
+libwebkit3.JSValueIsNull.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueProtect.restype = None
+libwebkit3.JSValueProtect.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueIsObject.restype = bool
+libwebkit3.JSValueIsObject.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueIsBoolean.restype = bool
+libwebkit3.JSValueIsBoolean.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueIsString.restype = bool
+libwebkit3.JSValueIsString.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueToStringCopy.restype = _JSString
+libwebkit3.JSValueToStringCopy.argtypes = [_JSContext,_JSValue,_JSValue]
+libwebkit3.JSValueToBoolean.restype = bool
+libwebkit3.JSValueToBoolean.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueIsNumber.restype = bool
+libwebkit3.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueIsEqual.restype = bool
+libwebkit3.JSValueIsEqual.argtypes = [_JSContext,_JSValue,_JSValue,_JSValue]
+libwebkit3.JSValueCreateJSONString.restype = _JSString
+libwebkit3.JSValueCreateJSONString.argtypes = [_JSContext,_JSValue,unsigned,_JSValue]
+libwebkit3.JSValueUnprotect.restype = None
+libwebkit3.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueGetType.restype = JSType
+libwebkit3.JSValueGetType.argtypes = [_JSContext,_JSValue]
+libwebkit3.JSValueToNumber.restype = double
+libwebkit3.JSValueToNumber.argtypes = [_JSContext,_JSValue,_JSValue]
 import javascriptcore__JSObject
 class JSValue( javascriptcore__JSObject.JSObject):
     """Class JSValue Constructors"""
@@ -259,8 +295,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSValueIsInstanceOfConstructor.restype = bool
-        libwebkit3.JSValueIsInstanceOfConstructor.argtypes = [_JSContext,_JSValue,_JSObject,_JSValue]
         
         return libwebkit3.JSValueIsInstanceOfConstructor( ctx,self._object,ructor,exception )
 
@@ -270,8 +304,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSValueToObject.restype = _JSObject
-        libwebkit3.JSValueToObject.argtypes = [_JSContext,_JSValue,_JSValue]
         from javascriptcore import JSObject
         return JSObject( obj=libwebkit3.JSValueToObject( ctx,self._object,exception )  or POINTER(c_int)())
 
@@ -279,8 +311,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueIsUndefined.restype = bool
-        libwebkit3.JSValueIsUndefined.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueIsUndefined( ctx,self._object )
 
@@ -290,8 +320,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if jsClass: jsClass = jsClass._object
         else: jsClass = POINTER(c_int)()
 
-        libwebkit3.JSValueIsObjectOfClass.restype = bool
-        libwebkit3.JSValueIsObjectOfClass.argtypes = [_JSContext,_JSValue,_JSClass]
         
         return libwebkit3.JSValueIsObjectOfClass( ctx,self._object,jsClass )
 
@@ -301,8 +329,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if b: b = b._object
         else: b = POINTER(c_int)()
 
-        libwebkit3.JSValueIsStrictEqual.restype = bool
-        libwebkit3.JSValueIsStrictEqual.argtypes = [_JSContext,_JSValue,_JSValue]
         
         return libwebkit3.JSValueIsStrictEqual( ctx,self._object,b )
 
@@ -310,8 +336,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueIsNull.restype = bool
-        libwebkit3.JSValueIsNull.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueIsNull( ctx,self._object )
 
@@ -319,8 +343,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueProtect.restype = None
-        libwebkit3.JSValueProtect.argtypes = [_JSContext,_JSValue]
         
         libwebkit3.JSValueProtect( ctx,self._object )
 
@@ -328,8 +350,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueIsObject.restype = bool
-        libwebkit3.JSValueIsObject.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueIsObject( ctx,self._object )
 
@@ -337,8 +357,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueIsBoolean.restype = bool
-        libwebkit3.JSValueIsBoolean.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueIsBoolean( ctx,self._object )
 
@@ -346,8 +364,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueIsString.restype = bool
-        libwebkit3.JSValueIsString.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueIsString( ctx,self._object )
 
@@ -357,8 +373,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSValueToStringCopy.restype = _JSString
-        libwebkit3.JSValueToStringCopy.argtypes = [_JSContext,_JSValue,_JSValue]
         from javascriptcore import JSString
         return JSString( obj=libwebkit3.JSValueToStringCopy( ctx,self._object,exception )  or POINTER(c_int)())
 
@@ -366,8 +380,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueToBoolean.restype = bool
-        libwebkit3.JSValueToBoolean.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueToBoolean( ctx,self._object )
 
@@ -375,8 +387,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueIsNumber.restype = bool
-        libwebkit3.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueIsNumber( ctx,self._object )
 
@@ -388,8 +398,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSValueIsEqual.restype = bool
-        libwebkit3.JSValueIsEqual.argtypes = [_JSContext,_JSValue,_JSValue,_JSValue]
         
         return libwebkit3.JSValueIsEqual( ctx,self._object,b,exception )
 
@@ -399,8 +407,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSValueCreateJSONString.restype = _JSString
-        libwebkit3.JSValueCreateJSONString.argtypes = [_JSContext,_JSValue,unsigned,_JSValue]
         from javascriptcore import JSString
         return JSString( obj=libwebkit3.JSValueCreateJSONString( ctx,self._object,indent,exception )  or POINTER(c_int)())
 
@@ -408,8 +414,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueUnprotect.restype = None
-        libwebkit3.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
         
         libwebkit3.JSValueUnprotect( ctx,self._object )
 
@@ -417,8 +421,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSValueGetType.restype = JSType
-        libwebkit3.JSValueGetType.argtypes = [_JSContext,_JSValue]
         
         return libwebkit3.JSValueGetType( ctx,self._object )
 
@@ -428,8 +430,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         if exception: exception = exception._object
         else: exception = POINTER(c_int)()
 
-        libwebkit3.JSValueToNumber.restype = double
-        libwebkit3.JSValueToNumber.argtypes = [_JSContext,_JSValue,_JSValue]
         
         return libwebkit3.JSValueToNumber( ctx,self._object,exception )
 
@@ -437,8 +437,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
     def MakeNumber( ctx, number,):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        libwebkit3.JSValueMakeNumber.restype = _JSValue
-        libwebkit3.JSValueMakeNumber.argtypes = [_JSContext,double]
         from javascriptcore import JSValue
         return JSValue( obj=    libwebkit3.JSValueMakeNumber(ctx, number, )
   or POINTER(c_int)())
@@ -446,8 +444,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
     def MakeUndefined( ctx,):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        libwebkit3.JSValueMakeUndefined.restype = _JSValue
-        libwebkit3.JSValueMakeUndefined.argtypes = [_JSContext]
         from javascriptcore import JSValue
         return JSValue( obj=    libwebkit3.JSValueMakeUndefined(ctx, )
   or POINTER(c_int)())
@@ -455,8 +451,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
     def MakeNull( ctx,):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        libwebkit3.JSValueMakeNull.restype = _JSValue
-        libwebkit3.JSValueMakeNull.argtypes = [_JSContext]
         from javascriptcore import JSValue
         return JSValue( obj=    libwebkit3.JSValueMakeNull(ctx, )
   or POINTER(c_int)())
@@ -466,8 +460,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         else: ctx = POINTER(c_int)()
         if string: string = string._object
         else: string = POINTER(c_int)()
-        libwebkit3.JSValueMakeFromJSONString.restype = _JSValue
-        libwebkit3.JSValueMakeFromJSONString.argtypes = [_JSContext,_JSString]
         from javascriptcore import JSValue
         return JSValue( obj=    libwebkit3.JSValueMakeFromJSONString(ctx, string, )
   or POINTER(c_int)())
@@ -475,8 +467,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
     def MakeBoolean( ctx, boolean,):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        libwebkit3.JSValueMakeBoolean.restype = _JSValue
-        libwebkit3.JSValueMakeBoolean.argtypes = [_JSContext,bool]
         from javascriptcore import JSValue
         return JSValue( obj=    libwebkit3.JSValueMakeBoolean(ctx, boolean, )
   or POINTER(c_int)())
@@ -486,8 +476,6 @@ class JSValue( javascriptcore__JSObject.JSObject):
         else: ctx = POINTER(c_int)()
         if string: string = string._object
         else: string = POINTER(c_int)()
-        libwebkit3.JSValueMakeString.restype = _JSValue
-        libwebkit3.JSValueMakeString.argtypes = [_JSContext,_JSString]
         from javascriptcore import JSValue
         return JSValue( obj=    libwebkit3.JSValueMakeString(ctx, string, )
   or POINTER(c_int)())

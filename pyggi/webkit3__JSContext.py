@@ -235,6 +235,14 @@ WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
 WebKitEditingBehavior = c_int
 
+libwebkit3.JSGlobalContextRelease.restype = None
+libwebkit3.JSGlobalContextRelease.argtypes = [_JSContext,_JSGlobalContext]
+libwebkit3.JSContextGroupRelease.restype = None
+libwebkit3.JSContextGroupRelease.argtypes = [_JSContext,_JSContextGroup]
+libwebkit3.JSContextGetGroup.restype = _JSContextGroup
+libwebkit3.JSContextGetGroup.argtypes = [_JSContext]
+libwebkit3.JSContextGetGlobalObject.restype = _JSObject
+libwebkit3.JSContextGetGlobalObject.argtypes = [_JSContext]
 import javascriptcore__JSObject
 class JSContext( javascriptcore__JSObject.JSObject):
     """Class JSContext Constructors"""
@@ -245,8 +253,6 @@ class JSContext( javascriptcore__JSObject.JSObject):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
 
-        libwebkit3.JSGlobalContextRelease.restype = None
-        libwebkit3.JSGlobalContextRelease.argtypes = [_JSContext,_JSGlobalContext]
         
         libwebkit3.JSGlobalContextRelease( self._object,ctx )
 
@@ -254,22 +260,16 @@ class JSContext( javascriptcore__JSObject.JSObject):
         if group: group = group._object
         else: group = POINTER(c_int)()
 
-        libwebkit3.JSContextGroupRelease.restype = None
-        libwebkit3.JSContextGroupRelease.argtypes = [_JSContext,_JSContextGroup]
         
         libwebkit3.JSContextGroupRelease( self._object,group )
 
     def GetGroup(  self, ):
 
-        libwebkit3.JSContextGetGroup.restype = _JSContextGroup
-        libwebkit3.JSContextGetGroup.argtypes = [_JSContext]
         from javascriptcore import JSContextGroup
         return JSContextGroup( obj=libwebkit3.JSContextGetGroup( self._object )  or POINTER(c_int)())
 
     def GetGlobalObject(  self, ):
 
-        libwebkit3.JSContextGetGlobalObject.restype = _JSObject
-        libwebkit3.JSContextGetGlobalObject.argtypes = [_JSContext]
         from javascriptcore import JSObject
         return JSObject( obj=libwebkit3.JSContextGetGlobalObject( self._object )  or POINTER(c_int)())
 
@@ -277,8 +277,6 @@ class JSContext( javascriptcore__JSObject.JSObject):
     def JSGlobalContextCreate( globalObjectClass,):
         if globalObjectClass: globalObjectClass = globalObjectClass._object
         else: globalObjectClass = POINTER(c_int)()
-        libwebkit3.JSGlobalContextCreate.restype = _JSGlobalContext
-        libwebkit3.JSGlobalContextCreate.argtypes = [_JSClass]
         from javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libwebkit3.JSGlobalContextCreate(globalObjectClass, )
   or POINTER(c_int)())
@@ -288,8 +286,6 @@ class JSContext( javascriptcore__JSObject.JSObject):
         else: group = POINTER(c_int)()
         if globalObjectClass: globalObjectClass = globalObjectClass._object
         else: globalObjectClass = POINTER(c_int)()
-        libwebkit3.JSGlobalContextCreateInGroup.restype = _JSGlobalContext
-        libwebkit3.JSGlobalContextCreateInGroup.argtypes = [_JSContextGroup,_JSClass]
         from javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libwebkit3.JSGlobalContextCreateInGroup(group, globalObjectClass, )
   or POINTER(c_int)())
@@ -297,8 +293,6 @@ class JSContext( javascriptcore__JSObject.JSObject):
     def GroupRetain( group,):
         if group: group = group._object
         else: group = POINTER(c_int)()
-        libwebkit3.JSContextGroupRetain.restype = _JSContextGroup
-        libwebkit3.JSContextGroupRetain.argtypes = [_JSContextGroup]
         from javascriptcore import JSContextGroup
         return JSContextGroup( obj=    libwebkit3.JSContextGroupRetain(group, )
   or POINTER(c_int)())
@@ -306,8 +300,6 @@ class JSContext( javascriptcore__JSObject.JSObject):
     def JSGlobalContextRetain( ctx,):
         if ctx: ctx = ctx._object
         else: ctx = POINTER(c_int)()
-        libwebkit3.JSGlobalContextRetain.restype = _JSGlobalContext
-        libwebkit3.JSGlobalContextRetain.argtypes = [_JSGlobalContext]
         from javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libwebkit3.JSGlobalContextRetain(ctx, )
   or POINTER(c_int)())

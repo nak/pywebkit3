@@ -283,6 +283,16 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.pango_font_map_create_context.restype = _PangoContext
+libgtk3.pango_font_map_create_context.argtypes = [_PangoFontMap]
+libgtk3.pango_font_map_load_font.restype = _PangoFont
+libgtk3.pango_font_map_load_font.argtypes = [_PangoFontMap,_PangoContext,_PangoFontDescription]
+libgtk3.pango_font_map_list_families.restype = None
+libgtk3.pango_font_map_list_families.argtypes = [_PangoFontMap,POINTER(_PangoFontFamily),POINTER(int)]
+libgtk3.pango_font_map_get_shape_engine_type.restype = c_char_p
+libgtk3.pango_font_map_get_shape_engine_type.argtypes = [_PangoFontMap]
+libgtk3.pango_font_map_load_fontset.restype = _PangoFontset
+libgtk3.pango_font_map_load_fontset.argtypes = [_PangoFontMap,_PangoContext,_PangoFontDescription,_PangoLanguage]
 import gobject__GObject
 class PangoFontMap( gobject__GObject.GObject):
     """Class PangoFontMap Constructors"""
@@ -291,8 +301,6 @@ class PangoFontMap( gobject__GObject.GObject):
     """Methods"""
     def create_context(  self, ):
 
-        libgtk3.pango_font_map_create_context.restype = _PangoContext
-        libgtk3.pango_font_map_create_context.argtypes = [_PangoFontMap]
         from gtk3 import PangoContext
         return PangoContext(None, obj=libgtk3.pango_font_map_create_context( self._object )  or POINTER(c_int)())
 
@@ -302,8 +310,6 @@ class PangoFontMap( gobject__GObject.GObject):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
-        libgtk3.pango_font_map_load_font.restype = _PangoFont
-        libgtk3.pango_font_map_load_font.argtypes = [_PangoFontMap,_PangoContext,_PangoFontDescription]
         from gtk3 import PangoFont
         return PangoFont( obj=libgtk3.pango_font_map_load_font( self._object,context,desc )  or POINTER(c_int)())
 
@@ -311,15 +317,11 @@ class PangoFontMap( gobject__GObject.GObject):
         if families: families = families._object
         else: families = POINTER(c_int)()
 
-        libgtk3.pango_font_map_list_families.restype = None
-        libgtk3.pango_font_map_list_families.argtypes = [_PangoFontMap,POINTER(_PangoFontFamily),POINTER(int)]
         
         libgtk3.pango_font_map_list_families( self._object,families,n_families )
 
     def get_shape_engine_type(  self, ):
 
-        libgtk3.pango_font_map_get_shape_engine_type.restype = c_char_p
-        libgtk3.pango_font_map_get_shape_engine_type.argtypes = [_PangoFontMap]
         
         return libgtk3.pango_font_map_get_shape_engine_type( self._object )
 
@@ -331,8 +333,6 @@ class PangoFontMap( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        libgtk3.pango_font_map_load_fontset.restype = _PangoFontset
-        libgtk3.pango_font_map_load_fontset.argtypes = [_PangoFontMap,_PangoContext,_PangoFontDescription,_PangoLanguage]
         from gtk3 import PangoFontset
         return PangoFontset( obj=libgtk3.pango_font_map_load_fontset( self._object,context,desc,language )  or POINTER(c_int)())
 

@@ -293,6 +293,18 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libgtk3.gtk_icon_set_unref.restype = None
+libgtk3.gtk_icon_set_unref.argtypes = [_GtkIconSet]
+libgtk3.gtk_icon_set_add_source.restype = None
+libgtk3.gtk_icon_set_add_source.argtypes = [_GtkIconSet,_GtkIconSource]
+libgtk3.gtk_icon_set_copy.restype = _GtkIconSet
+libgtk3.gtk_icon_set_copy.argtypes = [_GtkIconSet]
+libgtk3.gtk_icon_set_ref.restype = _GtkIconSet
+libgtk3.gtk_icon_set_ref.argtypes = [_GtkIconSet]
+libgtk3.gtk_icon_set_render_icon.restype = _GdkPixbuf
+libgtk3.gtk_icon_set_render_icon.argtypes = [_GtkIconSet,_GtkStyle,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,c_char_p]
+libgtk3.gtk_icon_set_get_sizes.restype = None
+libgtk3.gtk_icon_set_get_sizes.argtypes = [_GtkIconSet,POINTER(GtkIconSize),POINTER(gint)]
 import gobject__GObject
 class GtkIconSet( gobject__GObject.GObject):
     """Class GtkIconSet Constructors"""
@@ -307,8 +319,6 @@ class GtkIconSet( gobject__GObject.GObject):
     """Methods"""
     def unref(  self, ):
 
-        libgtk3.gtk_icon_set_unref.restype = None
-        libgtk3.gtk_icon_set_unref.argtypes = [_GtkIconSet]
         
         libgtk3.gtk_icon_set_unref( self._object )
 
@@ -316,22 +326,16 @@ class GtkIconSet( gobject__GObject.GObject):
         if source: source = source._object
         else: source = POINTER(c_int)()
 
-        libgtk3.gtk_icon_set_add_source.restype = None
-        libgtk3.gtk_icon_set_add_source.argtypes = [_GtkIconSet,_GtkIconSource]
         
         libgtk3.gtk_icon_set_add_source( self._object,source )
 
     def copy(  self, ):
 
-        libgtk3.gtk_icon_set_copy.restype = _GtkIconSet
-        libgtk3.gtk_icon_set_copy.argtypes = [_GtkIconSet]
         from gtk3 import GtkIconSet
         return GtkIconSet( obj=libgtk3.gtk_icon_set_copy( self._object ) or POINTER(c_int)())
 
     def ref(  self, ):
 
-        libgtk3.gtk_icon_set_ref.restype = _GtkIconSet
-        libgtk3.gtk_icon_set_ref.argtypes = [_GtkIconSet]
         from gtk3 import GtkIconSet
         return GtkIconSet( obj=libgtk3.gtk_icon_set_ref( self._object ) or POINTER(c_int)())
 
@@ -341,15 +345,11 @@ class GtkIconSet( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_icon_set_render_icon.restype = _GdkPixbuf
-        libgtk3.gtk_icon_set_render_icon.argtypes = [_GtkIconSet,_GtkStyle,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,c_char_p]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_set_render_icon( self._object,style,direction,state,size,widget,detail ) or POINTER(c_int)())
 
     def get_sizes(  self, sizes, n_sizes, ):
 
-        libgtk3.gtk_icon_set_get_sizes.restype = None
-        libgtk3.gtk_icon_set_get_sizes.argtypes = [_GtkIconSet,POINTER(GtkIconSize),POINTER(gint)]
         
         libgtk3.gtk_icon_set_get_sizes( self._object,sizes,n_sizes )
 
@@ -357,8 +357,6 @@ class GtkIconSet( gobject__GObject.GObject):
     def new_from_pixbuf( pixbuf,):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
-        libgtk3.gtk_icon_set_new_from_pixbuf.restype = _GtkIconSet
-        libgtk3.gtk_icon_set_new_from_pixbuf.argtypes = [_GdkPixbuf]
         from gtk3 import GtkIconSet
         return GtkIconSet( obj=    libgtk3.gtk_icon_set_new_from_pixbuf(pixbuf, )
  or POINTER(c_int)())

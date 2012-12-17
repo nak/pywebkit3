@@ -260,6 +260,20 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
+libgtk3.pango_layout_line_index_to_x.restype = None
+libgtk3.pango_layout_line_index_to_x.argtypes = [_PangoLayoutLine,int,gboolean,POINTER(int)]
+libgtk3.pango_layout_line_get_extents.restype = None
+libgtk3.pango_layout_line_get_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
+libgtk3.pango_layout_line_x_to_index.restype = gboolean
+libgtk3.pango_layout_line_x_to_index.argtypes = [_PangoLayoutLine,int,POINTER(int),POINTER(int)]
+libgtk3.pango_layout_line_unref.restype = None
+libgtk3.pango_layout_line_unref.argtypes = [_PangoLayoutLine]
+libgtk3.pango_layout_line_get_x_ranges.restype = None
+libgtk3.pango_layout_line_get_x_ranges.argtypes = [_PangoLayoutLine,int,int,POINTER(int),POINTER(int)]
+libgtk3.pango_layout_line_ref.restype = _PangoLayoutLine
+libgtk3.pango_layout_line_ref.argtypes = [_PangoLayoutLine]
+libgtk3.pango_layout_line_get_pixel_extents.restype = None
+libgtk3.pango_layout_line_get_pixel_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
 import gobject__GBoxed
 class PangoLayoutLine( gobject__GBoxed.GBoxed):
     """Class PangoLayoutLine Constructors"""
@@ -268,8 +282,6 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
     """Methods"""
     def index_to_x(  self, index_, trailing, x_pos, ):
 
-        libgtk3.pango_layout_line_index_to_x.restype = None
-        libgtk3.pango_layout_line_index_to_x.argtypes = [_PangoLayoutLine,int,gboolean,POINTER(int)]
         
         libgtk3.pango_layout_line_index_to_x( self._object,index_,trailing,x_pos )
 
@@ -279,36 +291,26 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
-        libgtk3.pango_layout_line_get_extents.restype = None
-        libgtk3.pango_layout_line_get_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_line_get_extents( self._object,ink_rect,logical_rect )
 
     def x_to_index(  self, x_pos, index_, trailing, ):
 
-        libgtk3.pango_layout_line_x_to_index.restype = gboolean
-        libgtk3.pango_layout_line_x_to_index.argtypes = [_PangoLayoutLine,int,POINTER(int),POINTER(int)]
         
         return libgtk3.pango_layout_line_x_to_index( self._object,x_pos,index_,trailing )
 
     def unref(  self, ):
 
-        libgtk3.pango_layout_line_unref.restype = None
-        libgtk3.pango_layout_line_unref.argtypes = [_PangoLayoutLine]
         
         libgtk3.pango_layout_line_unref( self._object )
 
     def get_x_ranges(  self, start_index, end_index, ranges, n_ranges, ):
 
-        libgtk3.pango_layout_line_get_x_ranges.restype = None
-        libgtk3.pango_layout_line_get_x_ranges.argtypes = [_PangoLayoutLine,int,int,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_line_get_x_ranges( self._object,start_index,end_index,ranges,n_ranges )
 
     def ref(  self, ):
 
-        libgtk3.pango_layout_line_ref.restype = _PangoLayoutLine
-        libgtk3.pango_layout_line_ref.argtypes = [_PangoLayoutLine]
         from gtk3 import PangoLayoutLine
         return PangoLayoutLine( obj=libgtk3.pango_layout_line_ref( self._object )  or POINTER(c_int)())
 
@@ -318,8 +320,6 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
-        libgtk3.pango_layout_line_get_pixel_extents.restype = None
-        libgtk3.pango_layout_line_get_pixel_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_line_get_pixel_extents( self._object,ink_rect,logical_rect )
 

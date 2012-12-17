@@ -262,6 +262,60 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
+libgtk3.pango_find_paragraph_boundary.restype = None
+libgtk3.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
+libgtk3.pango_context_set_language.restype = None
+libgtk3.pango_context_set_language.argtypes = [_PangoContext,_PangoLanguage]
+libgtk3.pango_itemize.restype = _GList
+libgtk3.pango_itemize.argtypes = [_PangoContext,c_char_p,int,int,_PangoAttrList,_PangoAttrIterator]
+libgtk3.pango_shape_full.restype = None
+libgtk3.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+libgtk3.pango_context_set_base_dir.restype = None
+libgtk3.pango_context_set_base_dir.argtypes = [_PangoContext,PangoDirection]
+libgtk3.pango_get_log_attrs.restype = None
+libgtk3.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,int,int,_PangoLanguage,_PangoLogAttr,int]
+libgtk3.pango_context_set_matrix.restype = None
+libgtk3.pango_context_set_matrix.argtypes = [_PangoContext,_PangoMatrix]
+libgtk3.pango_context_get_matrix.restype = _PangoMatrix
+libgtk3.pango_context_get_matrix.argtypes = [_PangoContext]
+libgtk3.pango_context_set_font_description.restype = None
+libgtk3.pango_context_set_font_description.argtypes = [_PangoContext,_PangoFontDescription]
+libgtk3.pango_context_get_base_gravity.restype = PangoGravity
+libgtk3.pango_context_get_base_gravity.argtypes = [_PangoContext]
+libgtk3.pango_context_load_fontset.restype = _PangoFontset
+libgtk3.pango_context_load_fontset.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
+libgtk3.pango_default_break.restype = None
+libgtk3.pango_default_break.argtypes = [_PangoContext,c_char_p,int,_PangoAnalysis,_PangoLogAttr,int]
+libgtk3.pango_context_set_base_gravity.restype = None
+libgtk3.pango_context_set_base_gravity.argtypes = [_PangoContext,PangoGravity]
+libgtk3.pango_itemize_with_base_dir.restype = _GList
+libgtk3.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,int,int,_PangoAttrList,_PangoAttrIterator]
+libgtk3.pango_context_list_families.restype = None
+libgtk3.pango_context_list_families.argtypes = [_PangoContext,POINTER(_PangoFontFamily),POINTER(int)]
+libgtk3.pango_context_set_font_map.restype = None
+libgtk3.pango_context_set_font_map.argtypes = [_PangoContext,_PangoFontMap]
+libgtk3.pango_context_get_language.restype = _PangoLanguage
+libgtk3.pango_context_get_language.argtypes = [_PangoContext]
+libgtk3.pango_context_get_font_map.restype = _PangoFontMap
+libgtk3.pango_context_get_font_map.argtypes = [_PangoContext]
+libgtk3.pango_shape.restype = None
+libgtk3.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+libgtk3.pango_context_get_base_dir.restype = PangoDirection
+libgtk3.pango_context_get_base_dir.argtypes = [_PangoContext]
+libgtk3.pango_context_set_gravity_hint.restype = None
+libgtk3.pango_context_set_gravity_hint.argtypes = [_PangoContext,PangoGravityHint]
+libgtk3.pango_context_get_gravity.restype = PangoGravity
+libgtk3.pango_context_get_gravity.argtypes = [_PangoContext]
+libgtk3.pango_context_get_font_description.restype = _PangoFontDescription
+libgtk3.pango_context_get_font_description.argtypes = [_PangoContext]
+libgtk3.pango_context_get_metrics.restype = _PangoFontMetrics
+libgtk3.pango_context_get_metrics.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
+libgtk3.pango_context_get_gravity_hint.restype = PangoGravityHint
+libgtk3.pango_context_get_gravity_hint.argtypes = [_PangoContext]
+libgtk3.pango_break.restype = None
+libgtk3.pango_break.argtypes = [_PangoContext,c_char_p,int,_PangoAnalysis,_PangoLogAttr,int]
+libgtk3.pango_context_load_font.restype = _PangoFont
+libgtk3.pango_context_load_font.argtypes = [_PangoContext,_PangoFontDescription]
 import gobject__GObject
 class PangoContext( gobject__GObject.GObject):
     """Class PangoContext Constructors"""
@@ -276,8 +330,6 @@ class PangoContext( gobject__GObject.GObject):
     """Methods"""
     def pango_find_paragraph_boundary(  self, text, length, paragraph_delimiter_index, next_paragraph_start, ):
 
-        libgtk3.pango_find_paragraph_boundary.restype = None
-        libgtk3.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
         
         libgtk3.pango_find_paragraph_boundary( self._object,text,length,paragraph_delimiter_index,next_paragraph_start )
 
@@ -285,8 +337,6 @@ class PangoContext( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        libgtk3.pango_context_set_language.restype = None
-        libgtk3.pango_context_set_language.argtypes = [_PangoContext,_PangoLanguage]
         
         libgtk3.pango_context_set_language( self._object,language )
 
@@ -296,8 +346,6 @@ class PangoContext( gobject__GObject.GObject):
         if cached_iter: cached_iter = cached_iter._object
         else: cached_iter = POINTER(c_int)()
 
-        libgtk3.pango_itemize.restype = _GList
-        libgtk3.pango_itemize.argtypes = [_PangoContext,c_char_p,int,int,_PangoAttrList,_PangoAttrIterator]
         from gobject import GList
         return GList( obj=libgtk3.pango_itemize( self._object,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
 
@@ -307,15 +355,11 @@ class PangoContext( gobject__GObject.GObject):
         if glyphs: glyphs = glyphs._object
         else: glyphs = POINTER(c_int)()
 
-        libgtk3.pango_shape_full.restype = None
-        libgtk3.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
         
         libgtk3.pango_shape_full( self._object,item_text,item_length,paragraph_text,paragraph_length,analysis,glyphs )
 
     def set_base_dir(  self, direction, ):
 
-        libgtk3.pango_context_set_base_dir.restype = None
-        libgtk3.pango_context_set_base_dir.argtypes = [_PangoContext,PangoDirection]
         
         libgtk3.pango_context_set_base_dir( self._object,direction )
 
@@ -325,8 +369,6 @@ class PangoContext( gobject__GObject.GObject):
         if log_attrs: log_attrs = log_attrs._object
         else: log_attrs = POINTER(c_int)()
 
-        libgtk3.pango_get_log_attrs.restype = None
-        libgtk3.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,int,int,_PangoLanguage,_PangoLogAttr,int]
         
         libgtk3.pango_get_log_attrs( self._object,text,length,level,language,log_attrs,attrs_len )
 
@@ -334,15 +376,11 @@ class PangoContext( gobject__GObject.GObject):
         if matrix: matrix = matrix._object
         else: matrix = POINTER(c_int)()
 
-        libgtk3.pango_context_set_matrix.restype = None
-        libgtk3.pango_context_set_matrix.argtypes = [_PangoContext,_PangoMatrix]
         
         libgtk3.pango_context_set_matrix( self._object,matrix )
 
     def get_matrix(  self, ):
 
-        libgtk3.pango_context_get_matrix.restype = _PangoMatrix
-        libgtk3.pango_context_get_matrix.argtypes = [_PangoContext]
         from gtk3 import PangoMatrix
         return PangoMatrix( obj=libgtk3.pango_context_get_matrix( self._object )  or POINTER(c_int)())
 
@@ -350,15 +388,11 @@ class PangoContext( gobject__GObject.GObject):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
-        libgtk3.pango_context_set_font_description.restype = None
-        libgtk3.pango_context_set_font_description.argtypes = [_PangoContext,_PangoFontDescription]
         
         libgtk3.pango_context_set_font_description( self._object,desc )
 
     def get_base_gravity(  self, ):
 
-        libgtk3.pango_context_get_base_gravity.restype = PangoGravity
-        libgtk3.pango_context_get_base_gravity.argtypes = [_PangoContext]
         
         return libgtk3.pango_context_get_base_gravity( self._object )
 
@@ -368,8 +402,6 @@ class PangoContext( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        libgtk3.pango_context_load_fontset.restype = _PangoFontset
-        libgtk3.pango_context_load_fontset.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
         from gtk3 import PangoFontset
         return PangoFontset( obj=libgtk3.pango_context_load_fontset( self._object,desc,language )  or POINTER(c_int)())
 
@@ -379,15 +411,11 @@ class PangoContext( gobject__GObject.GObject):
         if attrs: attrs = attrs._object
         else: attrs = POINTER(c_int)()
 
-        libgtk3.pango_default_break.restype = None
-        libgtk3.pango_default_break.argtypes = [_PangoContext,c_char_p,int,_PangoAnalysis,_PangoLogAttr,int]
         
         libgtk3.pango_default_break( self._object,text,length,analysis,attrs,attrs_len )
 
     def set_base_gravity(  self, gravity, ):
 
-        libgtk3.pango_context_set_base_gravity.restype = None
-        libgtk3.pango_context_set_base_gravity.argtypes = [_PangoContext,PangoGravity]
         
         libgtk3.pango_context_set_base_gravity( self._object,gravity )
 
@@ -397,8 +425,6 @@ class PangoContext( gobject__GObject.GObject):
         if cached_iter: cached_iter = cached_iter._object
         else: cached_iter = POINTER(c_int)()
 
-        libgtk3.pango_itemize_with_base_dir.restype = _GList
-        libgtk3.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,int,int,_PangoAttrList,_PangoAttrIterator]
         from gobject import GList
         return GList( obj=libgtk3.pango_itemize_with_base_dir( self._object,base_dir,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
 
@@ -406,8 +432,6 @@ class PangoContext( gobject__GObject.GObject):
         if families: families = families._object
         else: families = POINTER(c_int)()
 
-        libgtk3.pango_context_list_families.restype = None
-        libgtk3.pango_context_list_families.argtypes = [_PangoContext,POINTER(_PangoFontFamily),POINTER(int)]
         
         libgtk3.pango_context_list_families( self._object,families,n_families )
 
@@ -415,22 +439,16 @@ class PangoContext( gobject__GObject.GObject):
         if font_map: font_map = font_map._object
         else: font_map = POINTER(c_int)()
 
-        libgtk3.pango_context_set_font_map.restype = None
-        libgtk3.pango_context_set_font_map.argtypes = [_PangoContext,_PangoFontMap]
         
         libgtk3.pango_context_set_font_map( self._object,font_map )
 
     def get_language(  self, ):
 
-        libgtk3.pango_context_get_language.restype = _PangoLanguage
-        libgtk3.pango_context_get_language.argtypes = [_PangoContext]
         from gtk3 import PangoLanguage
         return PangoLanguage( obj=libgtk3.pango_context_get_language( self._object )  or POINTER(c_int)())
 
     def get_font_map(  self, ):
 
-        libgtk3.pango_context_get_font_map.restype = _PangoFontMap
-        libgtk3.pango_context_get_font_map.argtypes = [_PangoContext]
         from gtk3 import PangoFontMap
         return PangoFontMap( obj=libgtk3.pango_context_get_font_map( self._object )  or POINTER(c_int)())
 
@@ -440,36 +458,26 @@ class PangoContext( gobject__GObject.GObject):
         if glyphs: glyphs = glyphs._object
         else: glyphs = POINTER(c_int)()
 
-        libgtk3.pango_shape.restype = None
-        libgtk3.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
         
         libgtk3.pango_shape( self._object,text,length,analysis,glyphs )
 
     def get_base_dir(  self, ):
 
-        libgtk3.pango_context_get_base_dir.restype = PangoDirection
-        libgtk3.pango_context_get_base_dir.argtypes = [_PangoContext]
         
         return libgtk3.pango_context_get_base_dir( self._object )
 
     def set_gravity_hint(  self, hint, ):
 
-        libgtk3.pango_context_set_gravity_hint.restype = None
-        libgtk3.pango_context_set_gravity_hint.argtypes = [_PangoContext,PangoGravityHint]
         
         libgtk3.pango_context_set_gravity_hint( self._object,hint )
 
     def get_gravity(  self, ):
 
-        libgtk3.pango_context_get_gravity.restype = PangoGravity
-        libgtk3.pango_context_get_gravity.argtypes = [_PangoContext]
         
         return libgtk3.pango_context_get_gravity( self._object )
 
     def get_font_description(  self, ):
 
-        libgtk3.pango_context_get_font_description.restype = _PangoFontDescription
-        libgtk3.pango_context_get_font_description.argtypes = [_PangoContext]
         from gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libgtk3.pango_context_get_font_description( self._object )  or POINTER(c_int)())
 
@@ -479,15 +487,11 @@ class PangoContext( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        libgtk3.pango_context_get_metrics.restype = _PangoFontMetrics
-        libgtk3.pango_context_get_metrics.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
         from gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_context_get_metrics( self._object,desc,language )  or POINTER(c_int)())
 
     def get_gravity_hint(  self, ):
 
-        libgtk3.pango_context_get_gravity_hint.restype = PangoGravityHint
-        libgtk3.pango_context_get_gravity_hint.argtypes = [_PangoContext]
         
         return libgtk3.pango_context_get_gravity_hint( self._object )
 
@@ -497,8 +501,6 @@ class PangoContext( gobject__GObject.GObject):
         if attrs: attrs = attrs._object
         else: attrs = POINTER(c_int)()
 
-        libgtk3.pango_break.restype = None
-        libgtk3.pango_break.argtypes = [_PangoContext,c_char_p,int,_PangoAnalysis,_PangoLogAttr,int]
         
         libgtk3.pango_break( self._object,text,length,analysis,attrs,attrs_len )
 
@@ -506,8 +508,6 @@ class PangoContext( gobject__GObject.GObject):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
-        libgtk3.pango_context_load_font.restype = _PangoFont
-        libgtk3.pango_context_load_font.argtypes = [_PangoContext,_PangoFontDescription]
         from gtk3 import PangoFont
         return PangoFont( obj=libgtk3.pango_context_load_font( self._object,desc )  or POINTER(c_int)())
 
@@ -515,8 +515,6 @@ class PangoContext( gobject__GObject.GObject):
     def pango_reorder_items( logical_items,):
         if logical_items: logical_items = logical_items._object
         else: logical_items = POINTER(c_int)()
-        libgtk3.pango_reorder_items.restype = _GList
-        libgtk3.pango_reorder_items.argtypes = [_GList]
         from gobject import GList
         return GList( obj=    libgtk3.pango_reorder_items(logical_items, )
  or POINTER(c_int)())

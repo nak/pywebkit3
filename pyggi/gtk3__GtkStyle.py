@@ -342,6 +342,70 @@ GdkCursorType = c_int
 GdkVisualType = c_int
 GdkByteOrder = c_int
 
+libgtk3.gtk_paint_slider.restype = None
+libgtk3.gtk_paint_slider.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkOrientation]
+libgtk3.gtk_paint_resize_grip.restype = None
+libgtk3.gtk_paint_resize_grip.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,GdkWindowEdge,gint,gint,gint,gint]
+libgtk3.gtk_paint_arrow.restype = None
+libgtk3.gtk_paint_arrow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,GtkArrowType,gboolean,gint,gint,gint,gint]
+libgtk3.gtk_style_get_style_property.restype = None
+libgtk3.gtk_style_get_style_property.argtypes = [_GtkStyle,GType,c_char_p,_GValue]
+libgtk3.gtk_paint_expander.restype = None
+libgtk3.gtk_paint_expander.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,GtkExpanderStyle]
+libgtk3.gtk_paint_flat_box.restype = None
+libgtk3.gtk_paint_flat_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_style_get.restype = None
+libgtk3.gtk_style_get.argtypes = [_GtkStyle,GType,c_char_p,]
+libgtk3.gtk_style_render_icon.restype = _GdkPixbuf
+libgtk3.gtk_style_render_icon.argtypes = [_GtkStyle,_GtkIconSource,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,c_char_p]
+libgtk3.gtk_style_has_context.restype = gboolean
+libgtk3.gtk_style_has_context.argtypes = [_GtkStyle]
+libgtk3.gtk_style_lookup_icon_set.restype = _GtkIconSet
+libgtk3.gtk_style_lookup_icon_set.argtypes = [_GtkStyle,c_char_p]
+libgtk3.gtk_paint_shadow_gap.restype = None
+libgtk3.gtk_paint_shadow_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType,gint,gint]
+libgtk3.gtk_paint_check.restype = None
+libgtk3.gtk_paint_check.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_paint_hline.restype = None
+libgtk3.gtk_paint_hline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint]
+libgtk3.gtk_paint_shadow.restype = None
+libgtk3.gtk_paint_shadow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_paint_diamond.restype = None
+libgtk3.gtk_paint_diamond.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_style_detach.restype = None
+libgtk3.gtk_style_detach.argtypes = [_GtkStyle]
+libgtk3.gtk_style_lookup_color.restype = gboolean
+libgtk3.gtk_style_lookup_color.argtypes = [_GtkStyle,c_char_p,_GdkColor]
+libgtk3.gtk_style_attach.restype = _GtkStyle
+libgtk3.gtk_style_attach.argtypes = [_GtkStyle,_GdkWindow]
+libgtk3.gtk_paint_box_gap.restype = None
+libgtk3.gtk_paint_box_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType,gint,gint]
+libgtk3.gtk_paint_tab.restype = None
+libgtk3.gtk_paint_tab.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_paint_spinner.restype = None
+libgtk3.gtk_paint_spinner.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,guint,gint,gint,gint,gint]
+libgtk3.gtk_paint_layout.restype = None
+libgtk3.gtk_paint_layout.argtypes = [_GtkStyle,_cairo_t,GtkStateType,gboolean,_GtkWidget,c_char_p,gint,gint,_PangoLayout]
+libgtk3.gtk_draw_insertion_cursor.restype = None
+libgtk3.gtk_draw_insertion_cursor.argtypes = [_GtkStyle,_GtkWidget,_cairo_t,_GdkRectangle,gboolean,GtkTextDirection,gboolean]
+libgtk3.gtk_style_apply_default_background.restype = None
+libgtk3.gtk_style_apply_default_background.argtypes = [_GtkStyle,_cairo_t,_GdkWindow,GtkStateType,gint,gint,gint,gint]
+libgtk3.gtk_paint_focus.restype = None
+libgtk3.gtk_paint_focus.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_paint_extension.restype = None
+libgtk3.gtk_paint_extension.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType]
+libgtk3.gtk_style_copy.restype = _GtkStyle
+libgtk3.gtk_style_copy.argtypes = [_GtkStyle]
+libgtk3.gtk_paint_vline.restype = None
+libgtk3.gtk_paint_vline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint]
+libgtk3.gtk_paint_handle.restype = None
+libgtk3.gtk_paint_handle.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkOrientation]
+libgtk3.gtk_paint_box.restype = None
+libgtk3.gtk_paint_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+libgtk3.gtk_style_set_background.restype = None
+libgtk3.gtk_style_set_background.argtypes = [_GtkStyle,_GdkWindow,GtkStateType]
+libgtk3.gtk_paint_option.restype = None
+libgtk3.gtk_paint_option.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
 import gobject__GObject
 class GtkStyle( gobject__GObject.GObject):
     """Class GtkStyle Constructors"""
@@ -360,8 +424,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_slider.restype = None
-        libgtk3.gtk_paint_slider.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkOrientation]
         
         libgtk3.gtk_paint_slider( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height,orientation )
 
@@ -373,8 +435,6 @@ class GtkStyle( gobject__GObject.GObject):
         if edge: edge = edge._object
         else: edge = POINTER(c_int)()
 
-        libgtk3.gtk_paint_resize_grip.restype = None
-        libgtk3.gtk_paint_resize_grip.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,GdkWindowEdge,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_resize_grip( self._object,cr,state_type,widget,detail,edge,x,y,width,height )
 
@@ -386,8 +446,6 @@ class GtkStyle( gobject__GObject.GObject):
         if arrow_type: arrow_type = arrow_type._object
         else: arrow_type = POINTER(c_int)()
 
-        libgtk3.gtk_paint_arrow.restype = None
-        libgtk3.gtk_paint_arrow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,GtkArrowType,gboolean,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_arrow( self._object,cr,state_type,shadow_type,widget,detail,arrow_type,fill,x,y,width,height )
 
@@ -395,8 +453,6 @@ class GtkStyle( gobject__GObject.GObject):
         if value: value = value._object
         else: value = POINTER(c_int)()
 
-        libgtk3.gtk_style_get_style_property.restype = None
-        libgtk3.gtk_style_get_style_property.argtypes = [_GtkStyle,GType,c_char_p,_GValue]
         
         libgtk3.gtk_style_get_style_property( self._object,widget_type,property_name,value )
 
@@ -406,8 +462,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_expander.restype = None
-        libgtk3.gtk_paint_expander.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,GtkExpanderStyle]
         
         libgtk3.gtk_paint_expander( self._object,cr,state_type,widget,detail,x,y,expander_style )
 
@@ -417,8 +471,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_flat_box.restype = None
-        libgtk3.gtk_paint_flat_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_flat_box( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 
@@ -426,8 +478,6 @@ class GtkStyle( gobject__GObject.GObject):
 
 
         def callit( widget_type, first_property_name, *args ):
-                libgtk3.gtk_style_get.restype = None
-                libgtk3.gtk_style_get.argtypes = [ POINTER(c_int), GType, c_char_p]
                 for arg in args:
                      libgtk3.gtk_style_get.argtypes.append(args[1])
                 return libgtk3.gtk_style_get( widget_type, first_property_name, *args)
@@ -440,22 +490,16 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_style_render_icon.restype = _GdkPixbuf
-        libgtk3.gtk_style_render_icon.argtypes = [_GtkStyle,_GtkIconSource,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,c_char_p]
         from gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_style_render_icon( self._object,source,direction,state,size,widget,detail ) or POINTER(c_int)())
 
     def has_context(  self, ):
 
-        libgtk3.gtk_style_has_context.restype = gboolean
-        libgtk3.gtk_style_has_context.argtypes = [_GtkStyle]
         
         return libgtk3.gtk_style_has_context( self._object )
 
     def lookup_icon_set(  self, stock_id, ):
 
-        libgtk3.gtk_style_lookup_icon_set.restype = _GtkIconSet
-        libgtk3.gtk_style_lookup_icon_set.argtypes = [_GtkStyle,c_char_p]
         from gtk3 import GtkIconSet
         return GtkIconSet(None, obj=libgtk3.gtk_style_lookup_icon_set( self._object,stock_id ) or POINTER(c_int)())
 
@@ -467,8 +511,6 @@ class GtkStyle( gobject__GObject.GObject):
         if gap_side: gap_side = gap_side._object
         else: gap_side = POINTER(c_int)()
 
-        libgtk3.gtk_paint_shadow_gap.restype = None
-        libgtk3.gtk_paint_shadow_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType,gint,gint]
         
         libgtk3.gtk_paint_shadow_gap( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height,gap_side,gap_x,gap_width )
 
@@ -478,8 +520,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_check.restype = None
-        libgtk3.gtk_paint_check.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_check( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 
@@ -489,8 +529,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_hline.restype = None
-        libgtk3.gtk_paint_hline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint]
         
         libgtk3.gtk_paint_hline( self._object,cr,state_type,widget,detail,x1,x2,y )
 
@@ -500,8 +538,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_shadow.restype = None
-        libgtk3.gtk_paint_shadow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_shadow( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 
@@ -511,15 +547,11 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_diamond.restype = None
-        libgtk3.gtk_paint_diamond.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_diamond( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 
     def detach(  self, ):
 
-        libgtk3.gtk_style_detach.restype = None
-        libgtk3.gtk_style_detach.argtypes = [_GtkStyle]
         
         libgtk3.gtk_style_detach( self._object )
 
@@ -527,8 +559,6 @@ class GtkStyle( gobject__GObject.GObject):
         if color: color = color._object
         else: color = POINTER(c_int)()
 
-        libgtk3.gtk_style_lookup_color.restype = gboolean
-        libgtk3.gtk_style_lookup_color.argtypes = [_GtkStyle,c_char_p,_GdkColor]
         
         return libgtk3.gtk_style_lookup_color( self._object,color_name,color )
 
@@ -536,8 +566,6 @@ class GtkStyle( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_style_attach.restype = _GtkStyle
-        libgtk3.gtk_style_attach.argtypes = [_GtkStyle,_GdkWindow]
         from gtk3 import GtkStyle
         return GtkStyle(None, obj=libgtk3.gtk_style_attach( self._object,window ) or POINTER(c_int)())
 
@@ -549,8 +577,6 @@ class GtkStyle( gobject__GObject.GObject):
         if gap_side: gap_side = gap_side._object
         else: gap_side = POINTER(c_int)()
 
-        libgtk3.gtk_paint_box_gap.restype = None
-        libgtk3.gtk_paint_box_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType,gint,gint]
         
         libgtk3.gtk_paint_box_gap( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height,gap_side,gap_x,gap_width )
 
@@ -560,8 +586,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_tab.restype = None
-        libgtk3.gtk_paint_tab.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_tab( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 
@@ -571,8 +595,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_spinner.restype = None
-        libgtk3.gtk_paint_spinner.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,guint,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_spinner( self._object,cr,state_type,widget,detail,step,x,y,width,height )
 
@@ -584,8 +606,6 @@ class GtkStyle( gobject__GObject.GObject):
         if layout: layout = layout._object
         else: layout = POINTER(c_int)()
 
-        libgtk3.gtk_paint_layout.restype = None
-        libgtk3.gtk_paint_layout.argtypes = [_GtkStyle,_cairo_t,GtkStateType,gboolean,_GtkWidget,c_char_p,gint,gint,_PangoLayout]
         
         libgtk3.gtk_paint_layout( self._object,cr,state_type,use_text,widget,detail,x,y,layout )
 
@@ -597,8 +617,6 @@ class GtkStyle( gobject__GObject.GObject):
         if location: location = location._object
         else: location = POINTER(c_int)()
 
-        libgtk3.gtk_draw_insertion_cursor.restype = None
-        libgtk3.gtk_draw_insertion_cursor.argtypes = [_GtkStyle,_GtkWidget,_cairo_t,_GdkRectangle,gboolean,GtkTextDirection,gboolean]
         
         libgtk3.gtk_draw_insertion_cursor( self._object,widget,cr,location,is_primary,direction,draw_arrow )
 
@@ -608,8 +626,6 @@ class GtkStyle( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_style_apply_default_background.restype = None
-        libgtk3.gtk_style_apply_default_background.argtypes = [_GtkStyle,_cairo_t,_GdkWindow,GtkStateType,gint,gint,gint,gint]
         
         libgtk3.gtk_style_apply_default_background( self._object,cr,window,state_type,x,y,width,height )
 
@@ -619,8 +635,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_focus.restype = None
-        libgtk3.gtk_paint_focus.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_focus( self._object,cr,state_type,widget,detail,x,y,width,height )
 
@@ -632,15 +646,11 @@ class GtkStyle( gobject__GObject.GObject):
         if gap_side: gap_side = gap_side._object
         else: gap_side = POINTER(c_int)()
 
-        libgtk3.gtk_paint_extension.restype = None
-        libgtk3.gtk_paint_extension.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType]
         
         libgtk3.gtk_paint_extension( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height,gap_side )
 
     def copy(  self, ):
 
-        libgtk3.gtk_style_copy.restype = _GtkStyle
-        libgtk3.gtk_style_copy.argtypes = [_GtkStyle]
         from gtk3 import GtkStyle
         return GtkStyle( obj=libgtk3.gtk_style_copy( self._object ) or POINTER(c_int)())
 
@@ -650,8 +660,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_vline.restype = None
-        libgtk3.gtk_paint_vline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint]
         
         libgtk3.gtk_paint_vline( self._object,cr,state_type,widget,detail,y1_,y2_,x )
 
@@ -661,8 +669,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_handle.restype = None
-        libgtk3.gtk_paint_handle.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkOrientation]
         
         libgtk3.gtk_paint_handle( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height,orientation )
 
@@ -672,8 +678,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_box.restype = None
-        libgtk3.gtk_paint_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_box( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 
@@ -681,8 +685,6 @@ class GtkStyle( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        libgtk3.gtk_style_set_background.restype = None
-        libgtk3.gtk_style_set_background.argtypes = [_GtkStyle,_GdkWindow,GtkStateType]
         
         libgtk3.gtk_style_set_background( self._object,window,state_type )
 
@@ -692,8 +694,6 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        libgtk3.gtk_paint_option.restype = None
-        libgtk3.gtk_paint_option.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
         
         libgtk3.gtk_paint_option( self._object,cr,state_type,shadow_type,widget,detail,x,y,width,height )
 

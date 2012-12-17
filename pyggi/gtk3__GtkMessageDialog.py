@@ -337,6 +337,18 @@ GdkWMFunction = c_int
 GtkMessageType = c_int
 GtkButtonsType = c_int
 
+libgtk3.gtk_message_dialog_get_image.restype = _GtkWidget
+libgtk3.gtk_message_dialog_get_image.argtypes = [_GtkMessageDialog]
+libgtk3.gtk_message_dialog_format_secondary_text.restype = None
+libgtk3.gtk_message_dialog_format_secondary_text.argtypes = [_GtkMessageDialog,c_char_p,]
+libgtk3.gtk_message_dialog_set_markup.restype = None
+libgtk3.gtk_message_dialog_set_markup.argtypes = [_GtkMessageDialog,c_char_p]
+libgtk3.gtk_message_dialog_format_secondary_markup.restype = None
+libgtk3.gtk_message_dialog_format_secondary_markup.argtypes = [_GtkMessageDialog,c_char_p,]
+libgtk3.gtk_message_dialog_get_message_area.restype = _GtkWidget
+libgtk3.gtk_message_dialog_get_message_area.argtypes = [_GtkMessageDialog]
+libgtk3.gtk_message_dialog_set_image.restype = None
+libgtk3.gtk_message_dialog_set_image.argtypes = [_GtkMessageDialog,_GtkWidget]
 import gtk3__GtkDialog
 class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
     """Class GtkMessageDialog Constructors"""
@@ -354,8 +366,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
     """Methods"""
     def get_image(  self, ):
 
-        libgtk3.gtk_message_dialog_get_image.restype = _GtkWidget
-        libgtk3.gtk_message_dialog_get_image.argtypes = [_GtkMessageDialog]
         from gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_message_dialog_get_image( self._object ) or POINTER(c_int)())
 
@@ -363,8 +373,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
 
 
         def callit( message_format, *args ):
-                libgtk3.gtk_message_dialog_format_secondary_text.restype = None
-                libgtk3.gtk_message_dialog_format_secondary_text.argtypes = [ POINTER(c_int), c_char_p]
                 for arg in args:
                      libgtk3.gtk_message_dialog_format_secondary_text.argtypes.append(args[1])
                 return libgtk3.gtk_message_dialog_format_secondary_text( message_format, *args)
@@ -373,8 +381,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_markup(  self, str, ):
 
-        libgtk3.gtk_message_dialog_set_markup.restype = None
-        libgtk3.gtk_message_dialog_set_markup.argtypes = [_GtkMessageDialog,c_char_p]
         
         libgtk3.gtk_message_dialog_set_markup( self._object,str )
 
@@ -382,8 +388,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
 
 
         def callit( message_format, *args ):
-                libgtk3.gtk_message_dialog_format_secondary_markup.restype = None
-                libgtk3.gtk_message_dialog_format_secondary_markup.argtypes = [ POINTER(c_int), c_char_p]
                 for arg in args:
                      libgtk3.gtk_message_dialog_format_secondary_markup.argtypes.append(args[1])
                 return libgtk3.gtk_message_dialog_format_secondary_markup( message_format, *args)
@@ -392,8 +396,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
 
     def get_message_area(  self, ):
 
-        libgtk3.gtk_message_dialog_get_message_area.restype = _GtkWidget
-        libgtk3.gtk_message_dialog_get_message_area.argtypes = [_GtkMessageDialog]
         from gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_message_dialog_get_message_area( self._object ) or POINTER(c_int)())
 
@@ -401,8 +403,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
         if image: image = image._object
         else: image = POINTER(c_int)()
 
-        libgtk3.gtk_message_dialog_set_image.restype = None
-        libgtk3.gtk_message_dialog_set_image.argtypes = [_GtkMessageDialog,_GtkWidget]
         
         libgtk3.gtk_message_dialog_set_image( self._object,image )
 
@@ -410,8 +410,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
     def new_with_markup( parent, flags, type, buttons, message_format,*args ):
         if parent: parent = parent._object
         else: parent = POINTER(c_int)()
-        libgtk3.gtk_message_dialog_new_with_markup.restype = _GtkWidget
-        libgtk3.gtk_message_dialog_new_with_markup.argtypes = [_GtkWindow,GtkDialogFlags,GtkMessageType,GtkButtonsType,c_char_p,]
         from gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_message_dialog_new_with_markup(parent, flags, type, buttons, message_format, *args)
  or POINTER(c_int)())

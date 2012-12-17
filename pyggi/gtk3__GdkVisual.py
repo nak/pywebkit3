@@ -342,6 +342,26 @@ GdkCursorType = c_int
 GdkVisualType = c_int
 GdkByteOrder = c_int
 
+libgtk3.gdk_visual_get_colormap_size.restype = gint
+libgtk3.gdk_visual_get_colormap_size.argtypes = [_GdkVisual]
+libgtk3.gdk_visual_get_green_pixel_details.restype = None
+libgtk3.gdk_visual_get_green_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
+libgtk3.gdk_query_depths.restype = None
+libgtk3.gdk_query_depths.argtypes = [_GdkVisual,POINTER(gint),POINTER(gint)]
+libgtk3.gdk_visual_get_depth.restype = gint
+libgtk3.gdk_visual_get_depth.argtypes = [_GdkVisual]
+libgtk3.gdk_visual_get_visual_type.restype = GdkVisualType
+libgtk3.gdk_visual_get_visual_type.argtypes = [_GdkVisual]
+libgtk3.gdk_query_visual_types.restype = None
+libgtk3.gdk_query_visual_types.argtypes = [_GdkVisual,POINTER(GdkVisualType),POINTER(gint)]
+libgtk3.gdk_visual_get_red_pixel_details.restype = None
+libgtk3.gdk_visual_get_red_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
+libgtk3.gdk_visual_get_bits_per_rgb.restype = gint
+libgtk3.gdk_visual_get_bits_per_rgb.argtypes = [_GdkVisual]
+libgtk3.gdk_visual_get_blue_pixel_details.restype = None
+libgtk3.gdk_visual_get_blue_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
+libgtk3.gdk_visual_get_byte_order.restype = GdkByteOrder
+libgtk3.gdk_visual_get_byte_order.argtypes = [_GdkVisual]
 import gobject__GObject
 class GdkVisual( gobject__GObject.GObject):
     """Class GdkVisual Constructors"""
@@ -350,71 +370,51 @@ class GdkVisual( gobject__GObject.GObject):
     """Methods"""
     def get_colormap_size(  self, ):
 
-        libgtk3.gdk_visual_get_colormap_size.restype = gint
-        libgtk3.gdk_visual_get_colormap_size.argtypes = [_GdkVisual]
         
         return libgtk3.gdk_visual_get_colormap_size( self._object )
 
     def get_green_pixel_details(  self, mask, shift, precision, ):
 
-        libgtk3.gdk_visual_get_green_pixel_details.restype = None
-        libgtk3.gdk_visual_get_green_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_visual_get_green_pixel_details( self._object,mask,shift,precision )
 
     def gdk_query_depths(  self, depths, count, ):
 
-        libgtk3.gdk_query_depths.restype = None
-        libgtk3.gdk_query_depths.argtypes = [_GdkVisual,POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_query_depths( self._object,depths,count )
 
     def get_depth(  self, ):
 
-        libgtk3.gdk_visual_get_depth.restype = gint
-        libgtk3.gdk_visual_get_depth.argtypes = [_GdkVisual]
         
         return libgtk3.gdk_visual_get_depth( self._object )
 
     def get_visual_type(  self, ):
 
-        libgtk3.gdk_visual_get_visual_type.restype = GdkVisualType
-        libgtk3.gdk_visual_get_visual_type.argtypes = [_GdkVisual]
         
         return libgtk3.gdk_visual_get_visual_type( self._object )
 
     def gdk_query_visual_types(  self, visual_types, count, ):
 
-        libgtk3.gdk_query_visual_types.restype = None
-        libgtk3.gdk_query_visual_types.argtypes = [_GdkVisual,POINTER(GdkVisualType),POINTER(gint)]
         
         libgtk3.gdk_query_visual_types( self._object,visual_types,count )
 
     def get_red_pixel_details(  self, mask, shift, precision, ):
 
-        libgtk3.gdk_visual_get_red_pixel_details.restype = None
-        libgtk3.gdk_visual_get_red_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_visual_get_red_pixel_details( self._object,mask,shift,precision )
 
     def get_bits_per_rgb(  self, ):
 
-        libgtk3.gdk_visual_get_bits_per_rgb.restype = gint
-        libgtk3.gdk_visual_get_bits_per_rgb.argtypes = [_GdkVisual]
         
         return libgtk3.gdk_visual_get_bits_per_rgb( self._object )
 
     def get_blue_pixel_details(  self, mask, shift, precision, ):
 
-        libgtk3.gdk_visual_get_blue_pixel_details.restype = None
-        libgtk3.gdk_visual_get_blue_pixel_details.argtypes = [_GdkVisual,POINTER(guint32),POINTER(gint),POINTER(gint)]
         
         libgtk3.gdk_visual_get_blue_pixel_details( self._object,mask,shift,precision )
 
     def get_byte_order(  self, ):
 
-        libgtk3.gdk_visual_get_byte_order.restype = GdkByteOrder
-        libgtk3.gdk_visual_get_byte_order.argtypes = [_GdkVisual]
         
         return libgtk3.gdk_visual_get_byte_order( self._object )
 
@@ -422,59 +422,46 @@ class GdkVisual( gobject__GObject.GObject):
     def gdk_screen_get_rgba_visual( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        libgtk3.gdk_screen_get_rgba_visual.restype = _GdkVisual
-        libgtk3.gdk_screen_get_rgba_visual.argtypes = [_GdkScreen]
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_screen_get_rgba_visual(screen, )
  or POINTER(c_int)())
     @staticmethod
     def get_best_with_both( depth, visual_type,):
-        libgtk3.gdk_visual_get_best_with_both.restype = _GdkVisual
-        libgtk3.gdk_visual_get_best_with_both.argtypes = [gint,GdkVisualType]
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best_with_both(depth, visual_type, )
  or POINTER(c_int)())
     @staticmethod
     def get_best_depth():
-        libgtk3.gdk_visual_get_best_depth.restype = gint
         
         return     libgtk3.gdk_visual_get_best_depth()
 
     @staticmethod
     def get_best_with_depth( depth,):
-        libgtk3.gdk_visual_get_best_with_depth.restype = _GdkVisual
-        libgtk3.gdk_visual_get_best_with_depth.argtypes = [gint]
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best_with_depth(depth, )
  or POINTER(c_int)())
     @staticmethod
     def get_system():
-        libgtk3.gdk_visual_get_system.restype = _GdkVisual
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_system()
  or POINTER(c_int)())
     @staticmethod
     def get_best_with_type( visual_type,):
-        libgtk3.gdk_visual_get_best_with_type.restype = _GdkVisual
-        libgtk3.gdk_visual_get_best_with_type.argtypes = [GdkVisualType]
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best_with_type(visual_type, )
  or POINTER(c_int)())
     @staticmethod
     def get_best_type():
-        libgtk3.gdk_visual_get_best_type.restype = GdkVisualType
         
         return     libgtk3.gdk_visual_get_best_type()
 
     @staticmethod
     def get_best():
-        libgtk3.gdk_visual_get_best.restype = _GdkVisual
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best()
  or POINTER(c_int)())
     @staticmethod
     def gdk_list_visuals():
-        libgtk3.gdk_list_visuals.restype = _GList
         from gobject import GList
         return GList( obj=    libgtk3.gdk_list_visuals()
  or POINTER(c_int)())
@@ -482,8 +469,6 @@ class GdkVisual( gobject__GObject.GObject):
     def gdk_screen_get_system_visual( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        libgtk3.gdk_screen_get_system_visual.restype = _GdkVisual
-        libgtk3.gdk_screen_get_system_visual.argtypes = [_GdkScreen]
         from gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_screen_get_system_visual(screen, )
  or POINTER(c_int)())

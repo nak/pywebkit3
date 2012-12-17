@@ -300,6 +300,8 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libgobject.g_poll.restype = gint
+libgobject.g_poll.argtypes = [_GPollFD,guint,gint]
 import gobject__GObject
 class GPollFD( gobject__GObject.GObject):
     """Class GPollFD Constructors"""
@@ -308,8 +310,6 @@ class GPollFD( gobject__GObject.GObject):
     """Methods"""
     def g_poll(  self, nfds, timeout, ):
 
-        libgobject.g_poll.restype = gint
-        libgobject.g_poll.argtypes = [_GPollFD,guint,gint]
         
         return libgobject.g_poll( self._object,nfds,timeout )
 

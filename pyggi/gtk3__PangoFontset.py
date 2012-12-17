@@ -280,6 +280,10 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
+libgtk3.pango_fontset_get_metrics.restype = _PangoFontMetrics
+libgtk3.pango_fontset_get_metrics.argtypes = [_PangoFontset]
+libgtk3.pango_fontset_get_font.restype = _PangoFont
+libgtk3.pango_fontset_get_font.argtypes = [_PangoFontset,guint]
 import gobject__GObject
 class PangoFontset( gobject__GObject.GObject):
     """Class PangoFontset Constructors"""
@@ -288,15 +292,11 @@ class PangoFontset( gobject__GObject.GObject):
     """Methods"""
     def get_metrics(  self, ):
 
-        libgtk3.pango_fontset_get_metrics.restype = _PangoFontMetrics
-        libgtk3.pango_fontset_get_metrics.argtypes = [_PangoFontset]
         from gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_fontset_get_metrics( self._object )  or POINTER(c_int)())
 
     def get_font(  self, wc, ):
 
-        libgtk3.pango_fontset_get_font.restype = _PangoFont
-        libgtk3.pango_fontset_get_font.argtypes = [_PangoFontset,guint]
         from gtk3 import PangoFont
         return PangoFont( obj=libgtk3.pango_fontset_get_font( self._object,wc )  or POINTER(c_int)())
 

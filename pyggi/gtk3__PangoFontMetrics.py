@@ -298,6 +298,26 @@ GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
 
+libgtk3.pango_font_metrics_get_approximate_digit_width.restype = int
+libgtk3.pango_font_metrics_get_approximate_digit_width.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_strikethrough_position.restype = int
+libgtk3.pango_font_metrics_get_strikethrough_position.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_strikethrough_thickness.restype = int
+libgtk3.pango_font_metrics_get_strikethrough_thickness.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_underline_position.restype = int
+libgtk3.pango_font_metrics_get_underline_position.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_ref.restype = _PangoFontMetrics
+libgtk3.pango_font_metrics_ref.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_approximate_char_width.restype = int
+libgtk3.pango_font_metrics_get_approximate_char_width.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_unref.restype = None
+libgtk3.pango_font_metrics_unref.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_ascent.restype = int
+libgtk3.pango_font_metrics_get_ascent.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_descent.restype = int
+libgtk3.pango_font_metrics_get_descent.argtypes = [_PangoFontMetrics]
+libgtk3.pango_font_metrics_get_underline_thickness.restype = int
+libgtk3.pango_font_metrics_get_underline_thickness.argtypes = [_PangoFontMetrics]
 import gobject__GBoxed
 class PangoFontMetrics( gobject__GBoxed.GBoxed):
     """Class PangoFontMetrics Constructors"""
@@ -306,71 +326,51 @@ class PangoFontMetrics( gobject__GBoxed.GBoxed):
     """Methods"""
     def get_approximate_digit_width(  self, ):
 
-        libgtk3.pango_font_metrics_get_approximate_digit_width.restype = int
-        libgtk3.pango_font_metrics_get_approximate_digit_width.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_approximate_digit_width( self._object )
 
     def get_strikethrough_position(  self, ):
 
-        libgtk3.pango_font_metrics_get_strikethrough_position.restype = int
-        libgtk3.pango_font_metrics_get_strikethrough_position.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_strikethrough_position( self._object )
 
     def get_strikethrough_thickness(  self, ):
 
-        libgtk3.pango_font_metrics_get_strikethrough_thickness.restype = int
-        libgtk3.pango_font_metrics_get_strikethrough_thickness.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_strikethrough_thickness( self._object )
 
     def get_underline_position(  self, ):
 
-        libgtk3.pango_font_metrics_get_underline_position.restype = int
-        libgtk3.pango_font_metrics_get_underline_position.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_underline_position( self._object )
 
     def ref(  self, ):
 
-        libgtk3.pango_font_metrics_ref.restype = _PangoFontMetrics
-        libgtk3.pango_font_metrics_ref.argtypes = [_PangoFontMetrics]
         from gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_font_metrics_ref( self._object )  or POINTER(c_int)())
 
     def get_approximate_char_width(  self, ):
 
-        libgtk3.pango_font_metrics_get_approximate_char_width.restype = int
-        libgtk3.pango_font_metrics_get_approximate_char_width.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_approximate_char_width( self._object )
 
     def unref(  self, ):
 
-        libgtk3.pango_font_metrics_unref.restype = None
-        libgtk3.pango_font_metrics_unref.argtypes = [_PangoFontMetrics]
         
         libgtk3.pango_font_metrics_unref( self._object )
 
     def get_ascent(  self, ):
 
-        libgtk3.pango_font_metrics_get_ascent.restype = int
-        libgtk3.pango_font_metrics_get_ascent.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_ascent( self._object )
 
     def get_descent(  self, ):
 
-        libgtk3.pango_font_metrics_get_descent.restype = int
-        libgtk3.pango_font_metrics_get_descent.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_descent( self._object )
 
     def get_underline_thickness(  self, ):
 
-        libgtk3.pango_font_metrics_get_underline_thickness.restype = int
-        libgtk3.pango_font_metrics_get_underline_thickness.argtypes = [_PangoFontMetrics]
         
         return libgtk3.pango_font_metrics_get_underline_thickness( self._object )
 
