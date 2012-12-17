@@ -1,0 +1,12 @@
+struct                   WebKitWebResource;
+inherit     gobject.GObject;
+const gchar *       webkit_web_resource_get_encoding    (WebKitWebResource *web_resource);
+const gchar *       webkit_web_resource_get_frame_name  (WebKitWebResource *web_resource);
+const gchar *       webkit_web_resource_get_mime_type   (WebKitWebResource *web_resource);
+const gchar *       webkit_web_resource_get_uri         (WebKitWebResource *web_resource);
+WebKitWebResource * webkit_web_resource_new             (const gchar *data,
+                                                         gssize size,
+                                                         const gchar *uri,
+                                                         const gchar *mime_type,
+                                                         const gchar *encoding,
+                                                         const gchar *frame_name);

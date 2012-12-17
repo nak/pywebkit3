@@ -1,5 +1,5 @@
 struct JSString;
-inherit javascriptcore.JSObject;
+inherit object;
 
 JSString * JSStringCreateWithCharacters(const JSChar * chars, size_t numChars);
 

@@ -1,0 +1,11 @@
+
+    def Release( self ):
+        libjavascriptcore.JSStringRelease.restype = None
+        libjavascriptcore.JSStringRelease.argtypes = [_JSString]
+        libjavascriptcore.JSStringRelease( self._object )
+        self._object = None
+        
+    def __del__(self):
+        if self._object and cast(self._object, c_void_p).value != None:
+            self.Release()
+        self._object = None

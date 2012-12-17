@@ -1,4 +1,4 @@
-    # Copyright, John Rusnak, 2012
+# Copyright, John Rusnak, 2012
     # This code binding is available under the license agreement of the LGPL with
     # an additional constraint described below,
     # and with the understanding that the webkit API is copyright protected
@@ -279,7 +279,7 @@ PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
 import javascriptcore__JSObject
-class JSString( object ):
+class JSString( javascriptcore__JSObject.JSObject):
     """Class JSString Constructors"""
     def __init__(self, obj = None):
         self._object = obj
@@ -349,16 +349,3 @@ class JSString( object ):
         from javascriptcore import JSString
         return JSString( obj=    libjavascriptcore.JSStringCreateWithUTF8CString(string, )
   or POINTER(c_int)())
-
-
-    def Release( self ):
-        libjavascriptcore.JSStringRelease.restype = None
-        libjavascriptcore.JSStringRelease.argtypes = [_JSString]
-        libjavascriptcore.JSStringRelease( self._object )
-        self._object = None
-        
-    def __del__(self):
-        if self._object and cast(self._object, c_void_p).value != None:
-            self.Release()
-        self._object = None
-        
