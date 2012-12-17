@@ -150,6 +150,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -306,6 +307,7 @@ class WebKitWebInspector( gobject__GObject.GObject):
     """Methods"""
     def close(  self, ):
 
+        libwebkit3.webkit_web_inspector_close.restype = None
         libwebkit3.webkit_web_inspector_close.argtypes = [_WebKitWebInspector]
         
         libwebkit3.webkit_web_inspector_close( self._object )
@@ -328,18 +330,21 @@ class WebKitWebInspector( gobject__GObject.GObject):
         if node: node = node._object
         else: node = POINTER(c_int)()
 
+        libwebkit3.webkit_web_inspector_inspect_node.restype = None
         libwebkit3.webkit_web_inspector_inspect_node.argtypes = [_WebKitWebInspector,_WebKitDOMNode]
         
         libwebkit3.webkit_web_inspector_inspect_node( self._object,node )
 
     def show(  self, ):
 
+        libwebkit3.webkit_web_inspector_show.restype = None
         libwebkit3.webkit_web_inspector_show.argtypes = [_WebKitWebInspector]
         
         libwebkit3.webkit_web_inspector_show( self._object )
 
     def inspect_coordinates(  self, x, y, ):
 
+        libwebkit3.webkit_web_inspector_inspect_coordinates.restype = None
         libwebkit3.webkit_web_inspector_inspect_coordinates.argtypes = [_WebKitWebInspector,gdouble,gdouble]
         
         libwebkit3.webkit_web_inspector_inspect_coordinates( self._object,x,y )

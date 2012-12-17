@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -356,6 +357,7 @@ class WebKitNetworkRequest( gobject__GObject.GObject):
     """Methods"""
     def set_uri(  self, uri, ):
 
+        libwebkit3.webkit_network_request_set_uri.restype = None
         libwebkit3.webkit_network_request_set_uri.argtypes = [_WebKitNetworkRequest,c_char_p]
         
         libwebkit3.webkit_network_request_set_uri( self._object,uri )

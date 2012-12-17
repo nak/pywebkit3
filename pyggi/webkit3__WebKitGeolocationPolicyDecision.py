@@ -70,12 +70,14 @@ class WebKitGeolocationPolicyDecision( gobject__GObject.GObject):
     """Methods"""
     def webkit_geolocation_policy_deny(  self, ):
 
+        libwebkit3.webkit_geolocation_policy_deny.restype = None
         libwebkit3.webkit_geolocation_policy_deny.argtypes = [_WebKitGeolocationPolicyDecision]
         
         libwebkit3.webkit_geolocation_policy_deny( self._object )
 
     def webkit_geolocation_policy_allow(  self, ):
 
+        libwebkit3.webkit_geolocation_policy_allow.restype = None
         libwebkit3.webkit_geolocation_policy_allow.argtypes = [_WebKitGeolocationPolicyDecision]
         
         libwebkit3.webkit_geolocation_policy_allow( self._object )

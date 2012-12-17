@@ -152,6 +152,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -310,18 +311,21 @@ class WebKitWebPolicyDecision( gobject__GObject.GObject):
     """Methods"""
     def download(  self, ):
 
+        libwebkit3.webkit_web_policy_decision_download.restype = None
         libwebkit3.webkit_web_policy_decision_download.argtypes = [_WebKitWebPolicyDecision]
         
         libwebkit3.webkit_web_policy_decision_download( self._object )
 
     def use(  self, ):
 
+        libwebkit3.webkit_web_policy_decision_use.restype = None
         libwebkit3.webkit_web_policy_decision_use.argtypes = [_WebKitWebPolicyDecision]
         
         libwebkit3.webkit_web_policy_decision_use( self._object )
 
     def ignore(  self, ):
 
+        libwebkit3.webkit_web_policy_decision_ignore.restype = None
         libwebkit3.webkit_web_policy_decision_ignore.argtypes = [_WebKitWebPolicyDecision]
         
         libwebkit3.webkit_web_policy_decision_ignore( self._object )

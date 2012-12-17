@@ -159,6 +159,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -336,6 +337,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     """Methods"""
     def zoom_in(  self, ):
 
+        libwebkit3.webkit_web_view_zoom_in.restype = None
         libwebkit3.webkit_web_view_zoom_in.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_zoom_in( self._object )
@@ -363,12 +365,14 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def reload_bypass_cache(  self, ):
 
+        libwebkit3.webkit_web_view_reload_bypass_cache.restype = None
         libwebkit3.webkit_web_view_reload_bypass_cache.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_reload_bypass_cache( self._object )
 
     def load_string(  self, content, mime_type, encoding, base_uri, ):
 
+        libwebkit3.webkit_web_view_load_string.restype = None
         libwebkit3.webkit_web_view_load_string.argtypes = [_WebKitWebView,c_char_p,c_char_p,c_char_p,c_char_p]
         
         libwebkit3.webkit_web_view_load_string( self._object,content,mime_type,encoding,base_uri )
@@ -396,18 +400,21 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def set_custom_encoding(  self, encoding, ):
 
+        libwebkit3.webkit_web_view_set_custom_encoding.restype = None
         libwebkit3.webkit_web_view_set_custom_encoding.argtypes = [_WebKitWebView,c_char_p]
         
         libwebkit3.webkit_web_view_set_custom_encoding( self._object,encoding )
 
     def set_view_mode(  self, mode, ):
 
+        libwebkit3.webkit_web_view_set_view_mode.restype = None
         libwebkit3.webkit_web_view_set_view_mode.argtypes = [_WebKitWebView,WebKitWebViewViewMode]
         
         libwebkit3.webkit_web_view_set_view_mode( self._object,mode )
 
     def undo(  self, ):
 
+        libwebkit3.webkit_web_view_undo.restype = None
         libwebkit3.webkit_web_view_undo.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_undo( self._object )
@@ -416,12 +423,14 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         if settings: settings = settings._object
         else: settings = POINTER(c_int)()
 
+        libwebkit3.webkit_web_view_set_settings.restype = None
         libwebkit3.webkit_web_view_set_settings.argtypes = [_WebKitWebView,_WebKitWebSettings]
         
         libwebkit3.webkit_web_view_set_settings( self._object,settings )
 
     def set_highlight_text_matches(  self, highlight, ):
 
+        libwebkit3.webkit_web_view_set_highlight_text_matches.restype = None
         libwebkit3.webkit_web_view_set_highlight_text_matches.argtypes = [_WebKitWebView,gboolean]
         
         libwebkit3.webkit_web_view_set_highlight_text_matches( self._object,highlight )
@@ -449,18 +458,21 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def reload(  self, ):
 
+        libwebkit3.webkit_web_view_reload.restype = None
         libwebkit3.webkit_web_view_reload.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_reload( self._object )
 
     def set_transparent(  self, flag, ):
 
+        libwebkit3.webkit_web_view_set_transparent.restype = None
         libwebkit3.webkit_web_view_set_transparent.argtypes = [_WebKitWebView,gboolean]
         
         libwebkit3.webkit_web_view_set_transparent( self._object,flag )
 
     def unmark_text_matches(  self, ):
 
+        libwebkit3.webkit_web_view_unmark_text_matches.restype = None
         libwebkit3.webkit_web_view_unmark_text_matches.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_unmark_text_matches( self._object )
@@ -474,12 +486,14 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def go_back_or_forward(  self, steps, ):
 
+        libwebkit3.webkit_web_view_go_back_or_forward.restype = None
         libwebkit3.webkit_web_view_go_back_or_forward.argtypes = [_WebKitWebView,gint]
         
         libwebkit3.webkit_web_view_go_back_or_forward( self._object,steps )
 
     def copy_clipboard(  self, ):
 
+        libwebkit3.webkit_web_view_copy_clipboard.restype = None
         libwebkit3.webkit_web_view_copy_clipboard.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_copy_clipboard( self._object )
@@ -507,6 +521,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def set_editable(  self, flag, ):
 
+        libwebkit3.webkit_web_view_set_editable.restype = None
         libwebkit3.webkit_web_view_set_editable.argtypes = [_WebKitWebView,gboolean]
         
         libwebkit3.webkit_web_view_set_editable( self._object,flag )
@@ -515,18 +530,21 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         if step: step = step._object
         else: step = POINTER(c_int)()
 
+        libwebkit3.webkit_web_view_move_cursor.restype = None
         libwebkit3.webkit_web_view_move_cursor.argtypes = [_WebKitWebView,GtkMovementStep,gint]
         
         libwebkit3.webkit_web_view_move_cursor( self._object,step,count )
 
     def load_html_string(  self, content, base_uri, ):
 
+        libwebkit3.webkit_web_view_load_html_string.restype = None
         libwebkit3.webkit_web_view_load_html_string.argtypes = [_WebKitWebView,c_char_p,c_char_p]
         
         libwebkit3.webkit_web_view_load_html_string( self._object,content,base_uri )
 
     def paste_clipboard(  self, ):
 
+        libwebkit3.webkit_web_view_paste_clipboard.restype = None
         libwebkit3.webkit_web_view_paste_clipboard.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_paste_clipboard( self._object )
@@ -540,24 +558,28 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def go_back(  self, ):
 
+        libwebkit3.webkit_web_view_go_back.restype = None
         libwebkit3.webkit_web_view_go_back.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_go_back( self._object )
 
     def redo(  self, ):
 
+        libwebkit3.webkit_web_view_redo.restype = None
         libwebkit3.webkit_web_view_redo.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_redo( self._object )
 
     def go_forward(  self, ):
 
+        libwebkit3.webkit_web_view_go_forward.restype = None
         libwebkit3.webkit_web_view_go_forward.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_go_forward( self._object )
 
     def set_maintains_back_forward_list(  self, flag, ):
 
+        libwebkit3.webkit_web_view_set_maintains_back_forward_list.restype = None
         libwebkit3.webkit_web_view_set_maintains_back_forward_list.argtypes = [_WebKitWebView,gboolean]
         
         libwebkit3.webkit_web_view_set_maintains_back_forward_list( self._object,flag )
@@ -605,13 +627,15 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         return WebKitWebSettings(None, obj=libwebkit3.webkit_web_view_get_settings( self._object ) or POINTER(c_int)() )
 
     def execute_script(  self, script, ):
-        
+
         libwebkit3.webkit_web_view_execute_script.restype = None
         libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
-        return libwebkit3.webkit_web_view_execute_script( self._object,c_char_p(script ))
-      
+        
+        libwebkit3.webkit_web_view_execute_script( self._object,script )
+
     def cut_clipboard(  self, ):
 
+        libwebkit3.webkit_web_view_cut_clipboard.restype = None
         libwebkit3.webkit_web_view_cut_clipboard.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_cut_clipboard( self._object )
@@ -660,6 +684,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def set_zoom_level(  self, zoom_level, ):
 
+        libwebkit3.webkit_web_view_set_zoom_level.restype = None
         libwebkit3.webkit_web_view_set_zoom_level.argtypes = [_WebKitWebView,gfloat]
         
         libwebkit3.webkit_web_view_set_zoom_level( self._object,zoom_level )
@@ -673,6 +698,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def load_uri(  self, uri, ):
 
+        libwebkit3.webkit_web_view_load_uri.restype = None
         libwebkit3.webkit_web_view_load_uri.argtypes = [_WebKitWebView,c_char_p]
         
         libwebkit3.webkit_web_view_load_uri( self._object,uri )
@@ -685,15 +711,11 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         return libwebkit3.webkit_web_view_get_editable( self._object )
 
     def get_main_frame(  self, ):
-        #workaround since it appears calling get_main_frame twice on
-        #same webview casesu SIGSEGV(!)????
-        if hasattr(self,'_main_frame'):
-            return self._main_frame
+
         libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
         libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
         from webkit3 import WebKitWebFrame
-        self._main_frame =  WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
-        return self._main_frame
+        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
 
     def get_progress(  self, ):
 
@@ -704,24 +726,28 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def open(  self, uri, ):
 
+        libwebkit3.webkit_web_view_open.restype = None
         libwebkit3.webkit_web_view_open.argtypes = [_WebKitWebView,c_char_p]
         
         libwebkit3.webkit_web_view_open( self._object,uri )
 
     def set_full_content_zoom(  self, full_content_zoom, ):
 
+        libwebkit3.webkit_web_view_set_full_content_zoom.restype = None
         libwebkit3.webkit_web_view_set_full_content_zoom.argtypes = [_WebKitWebView,gboolean]
         
         libwebkit3.webkit_web_view_set_full_content_zoom( self._object,full_content_zoom )
 
     def delete_selection(  self, ):
 
+        libwebkit3.webkit_web_view_delete_selection.restype = None
         libwebkit3.webkit_web_view_delete_selection.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_delete_selection( self._object )
 
     def select_all(  self, ):
 
+        libwebkit3.webkit_web_view_select_all.restype = None
         libwebkit3.webkit_web_view_select_all.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_select_all( self._object )
@@ -751,6 +777,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def zoom_out(  self, ):
 
+        libwebkit3.webkit_web_view_zoom_out.restype = None
         libwebkit3.webkit_web_view_zoom_out.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_zoom_out( self._object )
@@ -766,12 +793,14 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         if request: request = request._object
         else: request = POINTER(c_int)()
 
+        libwebkit3.webkit_web_view_load_request.restype = None
         libwebkit3.webkit_web_view_load_request.argtypes = [_WebKitWebView,_WebKitNetworkRequest]
         
         libwebkit3.webkit_web_view_load_request( self._object,request )
 
     def stop_loading(  self, ):
 
+        libwebkit3.webkit_web_view_stop_loading.restype = None
         libwebkit3.webkit_web_view_stop_loading.argtypes = [_WebKitWebView]
         
         libwebkit3.webkit_web_view_stop_loading( self._object )
@@ -808,6 +837,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def set_view_source_mode(  self, view_source_mode, ):
 
+        libwebkit3.webkit_web_view_set_view_source_mode.restype = None
         libwebkit3.webkit_web_view_set_view_source_mode.argtypes = [_WebKitWebView,gboolean]
         
         libwebkit3.webkit_web_view_set_view_source_mode( self._object,view_source_mode )
@@ -827,6 +857,8 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         return JSContext( obj=libwebkit3.webkit_web_view_get_javascript_global_context( self._object )  or POINTER(c_int)())
 
     ##add-ons/overrides
+    
+    
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
@@ -841,21 +873,32 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             import logging
             logging.error("Unable to load javascript engine.  Ophidian interface to DOM will not function")
             self._env = None
-            
+
+    def get_main_frame(  self, ):
+        #workaround since it appears calling get_main_frame twice on
+        #same webview casesu SIGSEGV(!)????
+        if hasattr(self,'_main_frame'):
+            return self._main_frame
+        libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
+        libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
+        from webkit3 import WebKitWebFrame
+        self._main_frame =  WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
+        return self._main_frame
+
+        
     def get_context(self):
         return self.get_main_frame().get_global_context()
     
     def get_env(self):
         return self._env
     
-    def get_execution_env(self):
-        return self._env.execution()
     
     def on_resource_load_finished(self, func, *args ):
         from gobject import GObject
         def WebView_C_Callable( _webview, _webframe, _webresource, data):
             from .webkit3__WebKitWebFrame import WebKitWebFrame
             from .webkit3__WebKitWebResource import WebKitWebResource
+            import logging
             func( self, self.get_main_frame(), WebKitWebResource(None, obj=_webresource), *args)#WebKitWebFrame(None,obj=_webframe), WebKitWebResource(None,obj=_webresource), *args)
             return None
         CFUNC = CFUNCTYPE(None, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
@@ -865,4 +908,5 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         from gobject import GObject
         GObject.connect( self, 'load-finished', func, *args)
 
-        
+
+    

@@ -311,6 +311,7 @@ class WebKitWebHistoryItem( gobject__GObject.GObject):
 
     def set_alternate_title(  self, title, ):
 
+        libwebkit3.webkit_web_history_item_set_alternate_title.restype = None
         libwebkit3.webkit_web_history_item_set_alternate_title.argtypes = [_WebKitWebHistoryItem,c_char_p]
         
         libwebkit3.webkit_web_history_item_set_alternate_title( self._object,title )

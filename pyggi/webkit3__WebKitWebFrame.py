@@ -233,12 +233,14 @@ class WebKitWebFrame( gobject__GObject.GObject):
         if request: request = request._object
         else: request = POINTER(c_int)()
 
+        libwebkit3.webkit_web_frame_load_request.restype = None
         libwebkit3.webkit_web_frame_load_request.argtypes = [_WebKitWebFrame,_WebKitNetworkRequest]
         
         libwebkit3.webkit_web_frame_load_request( self._object,request )
 
     def load_alternate_string(  self, content, base_url, unreachable_url, ):
 
+        libwebkit3.webkit_web_frame_load_alternate_string.restype = None
         libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p]
         
         libwebkit3.webkit_web_frame_load_alternate_string( self._object,content,base_url,unreachable_url )
@@ -266,6 +268,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def stop_loading(  self, ):
 
+        libwebkit3.webkit_web_frame_stop_loading.restype = None
         libwebkit3.webkit_web_frame_stop_loading.argtypes = [_WebKitWebFrame]
         
         libwebkit3.webkit_web_frame_stop_loading( self._object )
@@ -307,6 +310,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def py_print(  self, ):
 
+        libwebkit3.webkit_web_frame_print.restype = None
         libwebkit3.webkit_web_frame_print.argtypes = [_WebKitWebFrame]
         
         libwebkit3.webkit_web_frame_print( self._object )
@@ -327,6 +331,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def load_string(  self, content, mime_type, encoding, base_uri, ):
 
+        libwebkit3.webkit_web_frame_load_string.restype = None
         libwebkit3.webkit_web_frame_load_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p,c_char_p]
         
         libwebkit3.webkit_web_frame_load_string( self._object,content,mime_type,encoding,base_uri )
@@ -340,6 +345,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def reload(  self, ):
 
+        libwebkit3.webkit_web_frame_reload.restype = None
         libwebkit3.webkit_web_frame_reload.argtypes = [_WebKitWebFrame]
         
         libwebkit3.webkit_web_frame_reload( self._object )
@@ -380,6 +386,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def load_uri(  self, uri, ):
 
+        libwebkit3.webkit_web_frame_load_uri.restype = None
         libwebkit3.webkit_web_frame_load_uri.argtypes = [_WebKitWebFrame,c_char_p]
         
         libwebkit3.webkit_web_frame_load_uri( self._object,uri )

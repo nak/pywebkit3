@@ -28,6 +28,8 @@ from webkit3__WebKitWebNavigationAction import *
 from webkit3_types import *
 from webkit3__WebKitWebPolicyDecision import *
 from webkit3_types import *
+from webkit3__WebKitWebResource import *
+from webkit3_types import *
 from webkit3__WebKitWebSettings import *
 from webkit3_types import *
 from webkit3__WebKitWebView import *

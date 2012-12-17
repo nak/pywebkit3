@@ -46,7 +46,7 @@
     # */
 from ctypes import *
 from gtk3_types import *
-from webkit3_types import *
+from webkit3_WebKitWebResource.if_types import *
     
     
 """Derived Pointer Types"""
@@ -55,10 +55,12 @@ __GdkGeometry = POINTER(c_int)
 _WebKitWebPolicyDecision = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
+_GtkBin = POINTER(c_int)
 __GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
 _PangoEngineShape = POINTER(c_int)
 __GtkRegionFlags = POINTER(c_int)
+_GtkMessageDialog = POINTER(c_int)
 __WebKitDOMNode = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
 __cairo_font_options_t = POINTER(c_int)
@@ -66,6 +68,7 @@ __JSValue = POINTER(c_int)
 _JSContext = POINTER(c_int)
 _GtkIconFactory = POINTER(c_int)
 __GdkAtom = POINTER(c_int)
+_GMainLoop = POINTER(c_int)
 __GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 __GtkWidgetPath = POINTER(c_int)
@@ -102,6 +105,7 @@ _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _GtkAdjustment = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _GString = POINTER(c_int)
 __PangoContext = POINTER(c_int)
@@ -123,6 +127,7 @@ _GtkApplication = POINTER(c_int)
 __PangoAnalysis = POINTER(c_int)
 __GMutex = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
 __GdkCursor = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _WebKitWebInspector = POINTER(c_int)
@@ -134,17 +139,20 @@ __GtkContainerClass = POINTER(c_int)
 __GdkEventKey = POINTER(c_int)
 __GtkAdjustment = POINTER(c_int)
 _GdkDragContext = POINTER(c_int)
+_GtkAssistant = POINTER(c_int)
 __GdkDisplay = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
 __GCond = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+__cairo_surface_t = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
 _WebKitWebFrame = POINTER(c_int)
 _JSString = POINTER(c_int)
+__GActionGroup = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 __WebKitNetworkRequest = POINTER(c_int)
 __GdkWindow = POINTER(c_int)
@@ -167,12 +175,15 @@ __cairo_t = POINTER(c_int)
 __GWeakRef = POINTER(c_int)
 __GdkVisual = POINTER(c_int)
 __GdkEventButton = POINTER(c_int)
+__GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GValue = POINTER(c_int)
 __PangoRectangle = POINTER(c_int)
 __GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GPollFD = POINTER(c_int)
 __GtkIconSource = POINTER(c_int)
+__GFile = POINTER(c_int)
 __JSContext = POINTER(c_int)
 _PangoFontsetSimple = POINTER(c_int)
 __GtkAllocation = POINTER(c_int)
@@ -190,6 +201,7 @@ __PangoMatrix = POINTER(c_int)
 __GtkPrintOperation = POINTER(c_int)
 __GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+__GtkTargetList = POINTER(c_int)
 __GList = POINTER(c_int)
 __WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -222,6 +234,7 @@ __PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _JSPropertyNameArray = POINTER(c_int)
 __JSObject = POINTER(c_int)
+__GdkDragContext = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 __GParameter = POINTER(c_int)
@@ -302,38 +315,77 @@ GdkColorspace = c_int
 GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
+GtkAssistantPageType = c_int
+GApplicationFlags = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+GtkDestDefaults = c_int
+GtkTargetFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
+GtkMessageType = c_int
+GtkButtonsType = c_int
+WebKitEditingBehavior = c_int
+GdkCursorType = c_int
+GdkVisualType = c_int
+GdkByteOrder = c_int
 
 import gobject__GObject
-class WebKitNetworkResponse( gobject__GObject.GObject):
-    """Class WebKitNetworkResponse Constructors"""
-    def __init__(self, obj = None):
-        self._object = obj
+class WebKitWebResource( gobject__GObject.GObject):
+    """Class WebKitWebResource Constructors"""
+    def __init__( self, frame_name,  obj = None):
+        if obj: self._object = obj
+        else:
+            libwebkit3_WebKitWebResource.if.webkit_web_resource_new.restype = POINTER(c_int)
+            
+            libwebkit3_WebKitWebResource.if.webkit_web_resource_new.argtypes = [c_char_p]
+            self._object = libwebkit3_WebKitWebResource.if.webkit_web_resource_new(frame_name, )
+
     """Methods"""
-    def set_uri(  self, uri, ):
+    def get_data(  self, ):
 
-        libwebkit3.webkit_network_response_set_uri.restype = None
-        libwebkit3.webkit_network_response_set_uri.argtypes = [_WebKitNetworkResponse,c_char_p]
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data.restype = _GString
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data.argtypes = [_WebKitWebResource]
+        from gobject import GString
+        return GString(None,None, obj=libwebkit3_WebKitWebResource.if.webkit_web_resource_get_data( self._object ) or POINTER(c_int)())
+
+    def get_frame_name(  self, ):
+
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name.restype = c_char_p
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name.argtypes = [_WebKitWebResource]
         
-        libwebkit3.webkit_network_response_set_uri( self._object,uri )
+        return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_frame_name( self._object )
 
-    def get_message(  self, ):
+    def get_mime_type(  self, ):
 
-        libwebkit3.webkit_network_response_get_message.restype = _SoupMessage
-        libwebkit3.webkit_network_response_get_message.argtypes = [_WebKitNetworkResponse]
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type.restype = c_char_p
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type.argtypes = [_WebKitWebResource]
         
-        return libwebkit3.webkit_network_response_get_message( self._object )
+        return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_mime_type( self._object )
+
+    def get_encoding(  self, ):
+
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding.restype = c_char_p
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding.argtypes = [_WebKitWebResource]
+        
+        return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_encoding( self._object )
 
     def get_uri(  self, ):
 
-        libwebkit3.webkit_network_response_get_uri.restype = c_char_p
-        libwebkit3.webkit_network_response_get_uri.argtypes = [_WebKitNetworkResponse]
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri.restype = c_char_p
+        libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri.argtypes = [_WebKitWebResource]
         
-        return libwebkit3.webkit_network_response_get_uri( self._object )
-
-    def get_suggested_filename(  self, ):
-
-        libwebkit3.webkit_network_response_get_suggested_filename.restype = c_char_p
-        libwebkit3.webkit_network_response_get_suggested_filename.argtypes = [_WebKitNetworkResponse]
-        
-        return libwebkit3.webkit_network_response_get_suggested_filename( self._object )
+        return libwebkit3_WebKitWebResource.if.webkit_web_resource_get_uri( self._object )
 

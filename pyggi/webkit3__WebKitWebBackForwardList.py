@@ -262,6 +262,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
     """Methods"""
     def set_limit(  self, limit, ):
 
+        libwebkit3.webkit_web_back_forward_list_set_limit.restype = None
         libwebkit3.webkit_web_back_forward_list_set_limit.argtypes = [_WebKitWebBackForwardList,gint]
         
         libwebkit3.webkit_web_back_forward_list_set_limit( self._object,limit )
@@ -270,6 +271,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
         if history_item: history_item = history_item._object
         else: history_item = POINTER(c_int)()
 
+        libwebkit3.webkit_web_back_forward_list_add_item.restype = None
         libwebkit3.webkit_web_back_forward_list_add_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
         
         libwebkit3.webkit_web_back_forward_list_add_item( self._object,history_item )
@@ -283,6 +285,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
 
     def go_back(  self, ):
 
+        libwebkit3.webkit_web_back_forward_list_go_back.restype = None
         libwebkit3.webkit_web_back_forward_list_go_back.argtypes = [_WebKitWebBackForwardList]
         
         libwebkit3.webkit_web_back_forward_list_go_back( self._object )
@@ -312,6 +315,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
         if history_item: history_item = history_item._object
         else: history_item = POINTER(c_int)()
 
+        libwebkit3.webkit_web_back_forward_list_go_to_item.restype = None
         libwebkit3.webkit_web_back_forward_list_go_to_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
         
         libwebkit3.webkit_web_back_forward_list_go_to_item( self._object,history_item )
@@ -355,12 +359,14 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
 
     def go_forward(  self, ):
 
+        libwebkit3.webkit_web_back_forward_list_go_forward.restype = None
         libwebkit3.webkit_web_back_forward_list_go_forward.argtypes = [_WebKitWebBackForwardList]
         
         libwebkit3.webkit_web_back_forward_list_go_forward( self._object )
 
     def clear(  self, ):
 
+        libwebkit3.webkit_web_back_forward_list_clear.restype = None
         libwebkit3.webkit_web_back_forward_list_clear.argtypes = [_WebKitWebBackForwardList]
         
         libwebkit3.webkit_web_back_forward_list_clear( self._object )

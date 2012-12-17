@@ -285,6 +285,7 @@ class WebKitWebNavigationAction( gobject__GObject.GObject):
 
     def set_original_uri(  self, originalUri, ):
 
+        libwebkit3.webkit_web_navigation_action_set_original_uri.restype = None
         libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,c_char_p]
         
         libwebkit3.webkit_web_navigation_action_set_original_uri( self._object,originalUri )
@@ -305,6 +306,7 @@ class WebKitWebNavigationAction( gobject__GObject.GObject):
 
     def set_reason(  self, reason, ):
 
+        libwebkit3.webkit_web_navigation_action_set_reason.restype = None
         libwebkit3.webkit_web_navigation_action_set_reason.argtypes = [_WebKitWebNavigationAction,WebKitWebNavigationReason]
         
         libwebkit3.webkit_web_navigation_action_set_reason( self._object,reason )

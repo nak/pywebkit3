@@ -8,9 +8,14 @@
             
             libwebkit3.webkit_web_view_new.argtypes = []
             self._object = libwebkit3.webkit_web_view_new()
-        from javascript import ScriptEnv
-        self._env = ScriptEnv(self)
-        
+        try:
+            from javascript import ScriptEnv
+            self._env = ScriptEnv(self)
+        except:
+            import logging
+            logging.error("Unable to load javascript engine.  Ophidian interface to DOM will not function")
+            self._env = None
+
     def get_main_frame(  self, ):
         #workaround since it appears calling get_main_frame twice on
         #same webview casesu SIGSEGV(!)????
@@ -43,4 +48,7 @@
         
     def on_view_ready(self, func, *args):
         from gobject import GObject
-        GObject.connect( self, 'web-view-ready', func, *args)
+        GObject.connect( self, 'load-finished', func, *args)
+
+
+    
