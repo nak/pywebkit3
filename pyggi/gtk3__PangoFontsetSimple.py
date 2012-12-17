@@ -288,6 +288,7 @@ class PangoFontsetSimple( gtk3__PangoFontset.PangoFontset):
         if font: font = font._object
         else: font = POINTER(c_int)()
 
+        libgtk3.pango_fontset_simple_append.restype = None
         libgtk3.pango_fontset_simple_append.argtypes = [_PangoFontsetSimple,_PangoFont]
         
         libgtk3.pango_fontset_simple_append( self._object,font )

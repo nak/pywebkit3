@@ -96,6 +96,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_family_static(  self, family, ):
 
+        libgtk3.pango_font_description_set_family_static.restype = None
         libgtk3.pango_font_description_set_family_static.argtypes = [_PangoFontDescription,c_char_p]
         
         libgtk3.pango_font_description_set_family_static( self._object,family )
@@ -109,12 +110,14 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_variant(  self, variant, ):
 
+        libgtk3.pango_font_description_set_variant.restype = None
         libgtk3.pango_font_description_set_variant.argtypes = [_PangoFontDescription,PangoVariant]
         
         libgtk3.pango_font_description_set_variant( self._object,variant )
 
     def set_size(  self, size, ):
 
+        libgtk3.pango_font_description_set_size.restype = None
         libgtk3.pango_font_description_set_size.argtypes = [_PangoFontDescription,gint]
         
         libgtk3.pango_font_description_set_size( self._object,size )
@@ -128,12 +131,14 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def unset_fields(  self, to_unset, ):
 
+        libgtk3.pango_font_description_unset_fields.restype = None
         libgtk3.pango_font_description_unset_fields.argtypes = [_PangoFontDescription,PangoFontMask]
         
         libgtk3.pango_font_description_unset_fields( self._object,to_unset )
 
     def set_weight(  self, weight, ):
 
+        libgtk3.pango_font_description_set_weight.restype = None
         libgtk3.pango_font_description_set_weight.argtypes = [_PangoFontDescription,PangoWeight]
         
         libgtk3.pango_font_description_set_weight( self._object,weight )
@@ -154,6 +159,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_style(  self, style, ):
 
+        libgtk3.pango_font_description_set_style.restype = None
         libgtk3.pango_font_description_set_style.argtypes = [_PangoFontDescription,PangoStyle]
         
         libgtk3.pango_font_description_set_style( self._object,style )
@@ -176,6 +182,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
         if desc_to_merge: desc_to_merge = desc_to_merge._object
         else: desc_to_merge = POINTER(c_int)()
 
+        libgtk3.pango_font_description_merge_static.restype = None
         libgtk3.pango_font_description_merge_static.argtypes = [_PangoFontDescription,_PangoFontDescription,gboolean]
         
         libgtk3.pango_font_description_merge_static( self._object,desc_to_merge,replace_existing )
@@ -193,6 +200,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_stretch(  self, stretch, ):
 
+        libgtk3.pango_font_description_set_stretch.restype = None
         libgtk3.pango_font_description_set_stretch.argtypes = [_PangoFontDescription,PangoStretch]
         
         libgtk3.pango_font_description_set_stretch( self._object,stretch )
@@ -206,6 +214,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_family(  self, family, ):
 
+        libgtk3.pango_font_description_set_family.restype = None
         libgtk3.pango_font_description_set_family.argtypes = [_PangoFontDescription,c_char_p]
         
         libgtk3.pango_font_description_set_family( self._object,family )
@@ -219,6 +228,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def pango_font_descriptions_free(  self, n_descs, ):
 
+        libgtk3.pango_font_descriptions_free.restype = None
         libgtk3.pango_font_descriptions_free.argtypes = [_PangoFontDescription,int]
         
         libgtk3.pango_font_descriptions_free( self._object,n_descs )
@@ -239,6 +249,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_absolute_size(  self, size, ):
 
+        libgtk3.pango_font_description_set_absolute_size.restype = None
         libgtk3.pango_font_description_set_absolute_size.argtypes = [_PangoFontDescription,double]
         
         libgtk3.pango_font_description_set_absolute_size( self._object,size )
@@ -247,6 +258,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
         if desc_to_merge: desc_to_merge = desc_to_merge._object
         else: desc_to_merge = POINTER(c_int)()
 
+        libgtk3.pango_font_description_merge.restype = None
         libgtk3.pango_font_description_merge.argtypes = [_PangoFontDescription,_PangoFontDescription,gboolean]
         
         libgtk3.pango_font_description_merge( self._object,desc_to_merge,replace_existing )
@@ -260,6 +272,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def set_gravity(  self, gravity, ):
 
+        libgtk3.pango_font_description_set_gravity.restype = None
         libgtk3.pango_font_description_set_gravity.argtypes = [_PangoFontDescription,PangoGravity]
         
         libgtk3.pango_font_description_set_gravity( self._object,gravity )
@@ -273,6 +286,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def free(  self, ):
 
+        libgtk3.pango_font_description_free.restype = None
         libgtk3.pango_font_description_free.argtypes = [_PangoFontDescription]
         
         libgtk3.pango_font_description_free( self._object )

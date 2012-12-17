@@ -303,6 +303,7 @@ class GtkRequisition( gobject__GObject.GObject):
 
     def free(  self, ):
 
+        libgtk3.gtk_requisition_free.restype = None
         libgtk3.gtk_requisition_free.argtypes = [_GtkRequisition]
         
         libgtk3.gtk_requisition_free( self._object )

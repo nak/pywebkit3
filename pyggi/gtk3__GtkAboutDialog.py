@@ -306,6 +306,7 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
     """Methods"""
     def set_authors(  self, authors, ):
 
+        libgtk3.gtk_about_dialog_set_authors.restype = None
         libgtk3.gtk_about_dialog_set_authors.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_authors( self._object,authors )
@@ -319,6 +320,7 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_license_type(  self, license_type, ):
 
+        libgtk3.gtk_about_dialog_set_license_type.restype = None
         libgtk3.gtk_about_dialog_set_license_type.argtypes = [_GtkAboutDialog,GtkLicense]
         
         libgtk3.gtk_about_dialog_set_license_type( self._object,license_type )
@@ -332,12 +334,14 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_logo_icon_name(  self, icon_name, ):
 
+        libgtk3.gtk_about_dialog_set_logo_icon_name.restype = None
         libgtk3.gtk_about_dialog_set_logo_icon_name.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_logo_icon_name( self._object,icon_name )
 
     def set_documenters(  self, documenters, ):
 
+        libgtk3.gtk_about_dialog_set_documenters.restype = None
         libgtk3.gtk_about_dialog_set_documenters.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_documenters( self._object,documenters )
@@ -353,48 +357,56 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
         if logo: logo = logo._object
         else: logo = POINTER(c_int)()
 
+        libgtk3.gtk_about_dialog_set_logo.restype = None
         libgtk3.gtk_about_dialog_set_logo.argtypes = [_GtkAboutDialog,_GdkPixbuf]
         
         libgtk3.gtk_about_dialog_set_logo( self._object,logo )
 
     def set_website_label(  self, website_label, ):
 
+        libgtk3.gtk_about_dialog_set_website_label.restype = None
         libgtk3.gtk_about_dialog_set_website_label.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_website_label( self._object,website_label )
 
     def set_license(  self, license, ):
 
+        libgtk3.gtk_about_dialog_set_license.restype = None
         libgtk3.gtk_about_dialog_set_license.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_license( self._object,license )
 
     def set_artists(  self, artists, ):
 
+        libgtk3.gtk_about_dialog_set_artists.restype = None
         libgtk3.gtk_about_dialog_set_artists.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_artists( self._object,artists )
 
     def set_program_name(  self, name, ):
 
+        libgtk3.gtk_about_dialog_set_program_name.restype = None
         libgtk3.gtk_about_dialog_set_program_name.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_program_name( self._object,name )
 
     def set_translator_credits(  self, translator_credits, ):
 
+        libgtk3.gtk_about_dialog_set_translator_credits.restype = None
         libgtk3.gtk_about_dialog_set_translator_credits.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_translator_credits( self._object,translator_credits )
 
     def set_website(  self, website, ):
 
+        libgtk3.gtk_about_dialog_set_website.restype = None
         libgtk3.gtk_about_dialog_set_website.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_website( self._object,website )
 
     def set_copyright(  self, copyright, ):
 
+        libgtk3.gtk_about_dialog_set_copyright.restype = None
         libgtk3.gtk_about_dialog_set_copyright.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_copyright( self._object,copyright )
@@ -415,6 +427,7 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_wrap_license(  self, wrap_license, ):
 
+        libgtk3.gtk_about_dialog_set_wrap_license.restype = None
         libgtk3.gtk_about_dialog_set_wrap_license.argtypes = [_GtkAboutDialog,gboolean]
         
         libgtk3.gtk_about_dialog_set_wrap_license( self._object,wrap_license )
@@ -435,6 +448,7 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_version(  self, version, ):
 
+        libgtk3.gtk_about_dialog_set_version.restype = None
         libgtk3.gtk_about_dialog_set_version.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_version( self._object,version )
@@ -455,6 +469,7 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_comments(  self, comments, ):
 
+        libgtk3.gtk_about_dialog_set_comments.restype = None
         libgtk3.gtk_about_dialog_set_comments.argtypes = [_GtkAboutDialog,c_char_p]
         
         libgtk3.gtk_about_dialog_set_comments( self._object,comments )

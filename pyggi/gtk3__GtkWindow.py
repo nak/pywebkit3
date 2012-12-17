@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -359,6 +360,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_skip_pager_hint(  self, setting, ):
 
+        libgtk3.gtk_window_set_skip_pager_hint.restype = None
         libgtk3.gtk_window_set_skip_pager_hint.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_skip_pager_hint( self._object,setting )
@@ -369,6 +371,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if geometry: geometry = geometry._object
         else: geometry = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_geometry_hints.restype = None
         libgtk3.gtk_window_set_geometry_hints.argtypes = [_GtkWindow,_GtkWidget,_GdkGeometry,GdkWindowHints]
         
         libgtk3.gtk_window_set_geometry_hints( self._object,geometry_widget,geometry,geom_mask )
@@ -382,6 +385,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_has_resize_grip(  self, value, ):
 
+        libgtk3.gtk_window_set_has_resize_grip.restype = None
         libgtk3.gtk_window_set_has_resize_grip.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_has_resize_grip( self._object,value )
@@ -395,6 +399,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def maximize(  self, ):
 
+        libgtk3.gtk_window_maximize.restype = None
         libgtk3.gtk_window_maximize.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_maximize( self._object )
@@ -442,6 +447,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def unmaximize(  self, ):
 
+        libgtk3.gtk_window_unmaximize.restype = None
         libgtk3.gtk_window_unmaximize.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_unmaximize( self._object )
@@ -450,18 +456,21 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_screen.restype = None
         libgtk3.gtk_window_set_screen.argtypes = [_GtkWindow,_GdkScreen]
         
         libgtk3.gtk_window_set_screen( self._object,screen )
 
     def get_position(  self, root_x, root_y, ):
 
+        libgtk3.gtk_window_get_position.restype = None
         libgtk3.gtk_window_get_position.argtypes = [_GtkWindow,POINTER(gint),POINTER(gint)]
         
         libgtk3.gtk_window_get_position( self._object,root_x,root_y )
 
     def set_default_size(  self, width, height, ):
 
+        libgtk3.gtk_window_set_default_size.restype = None
         libgtk3.gtk_window_set_default_size.argtypes = [_GtkWindow,gint,gint]
         
         libgtk3.gtk_window_set_default_size( self._object,width,height )
@@ -475,12 +484,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_focus_on_map(  self, setting, ):
 
+        libgtk3.gtk_window_set_focus_on_map.restype = None
         libgtk3.gtk_window_set_focus_on_map.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_focus_on_map( self._object,setting )
 
     def move(  self, x, y, ):
 
+        libgtk3.gtk_window_move.restype = None
         libgtk3.gtk_window_move.argtypes = [_GtkWindow,gint,gint]
         
         libgtk3.gtk_window_move( self._object,x,y )
@@ -489,30 +500,35 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if position: position = position._object
         else: position = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_position.restype = None
         libgtk3.gtk_window_set_position.argtypes = [_GtkWindow,GtkWindowPosition]
         
         libgtk3.gtk_window_set_position( self._object,position )
 
     def set_destroy_with_parent(  self, setting, ):
 
+        libgtk3.gtk_window_set_destroy_with_parent.restype = None
         libgtk3.gtk_window_set_destroy_with_parent.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_destroy_with_parent( self._object,setting )
 
     def resize_to_geometry(  self, width, height, ):
 
+        libgtk3.gtk_window_resize_to_geometry.restype = None
         libgtk3.gtk_window_resize_to_geometry.argtypes = [_GtkWindow,gint,gint]
         
         libgtk3.gtk_window_resize_to_geometry( self._object,width,height )
 
     def set_focus_visible(  self, setting, ):
 
+        libgtk3.gtk_window_set_focus_visible.restype = None
         libgtk3.gtk_window_set_focus_visible.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_focus_visible( self._object,setting )
 
     def set_mnemonics_visible(  self, setting, ):
 
+        libgtk3.gtk_window_set_mnemonics_visible.restype = None
         libgtk3.gtk_window_set_mnemonics_visible.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_mnemonics_visible( self._object,setting )
@@ -526,6 +542,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def stick(  self, ):
 
+        libgtk3.gtk_window_stick.restype = None
         libgtk3.gtk_window_stick.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_stick( self._object )
@@ -539,12 +556,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_resizable(  self, resizable, ):
 
+        libgtk3.gtk_window_set_resizable.restype = None
         libgtk3.gtk_window_set_resizable.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_resizable( self._object,resizable )
 
     def get_size(  self, width, height, ):
 
+        libgtk3.gtk_window_get_size.restype = None
         libgtk3.gtk_window_get_size.argtypes = [_GtkWindow,POINTER(gint),POINTER(gint)]
         
         libgtk3.gtk_window_get_size( self._object,width,height )
@@ -553,6 +572,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if default_widget: default_widget = default_widget._object
         else: default_widget = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_default.restype = None
         libgtk3.gtk_window_set_default.argtypes = [_GtkWindow,_GtkWidget]
         
         libgtk3.gtk_window_set_default( self._object,default_widget )
@@ -566,6 +586,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def begin_move_drag(  self, button, root_x, root_y, timestamp, ):
 
+        libgtk3.gtk_window_begin_move_drag.restype = None
         libgtk3.gtk_window_begin_move_drag.argtypes = [_GtkWindow,gint,gint,gint,guint32]
         
         libgtk3.gtk_window_begin_move_drag( self._object,button,root_x,root_y,timestamp )
@@ -581,6 +602,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if icon: icon = icon._object
         else: icon = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_icon.restype = None
         libgtk3.gtk_window_set_icon.argtypes = [_GtkWindow,_GdkPixbuf]
         
         libgtk3.gtk_window_set_icon( self._object,icon )
@@ -608,18 +630,21 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def present(  self, ):
 
+        libgtk3.gtk_window_present.restype = None
         libgtk3.gtk_window_present.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_present( self._object )
 
     def unfullscreen(  self, ):
 
+        libgtk3.gtk_window_unfullscreen.restype = None
         libgtk3.gtk_window_unfullscreen.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_unfullscreen( self._object )
 
     def set_keep_below(  self, setting, ):
 
+        libgtk3.gtk_window_set_keep_below.restype = None
         libgtk3.gtk_window_set_keep_below.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_keep_below( self._object,setting )
@@ -633,12 +658,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def deiconify(  self, ):
 
+        libgtk3.gtk_window_deiconify.restype = None
         libgtk3.gtk_window_deiconify.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_deiconify( self._object )
 
     def resize(  self, width, height, ):
 
+        libgtk3.gtk_window_resize.restype = None
         libgtk3.gtk_window_resize.argtypes = [_GtkWindow,gint,gint]
         
         libgtk3.gtk_window_resize( self._object,width,height )
@@ -659,6 +686,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_auto_startup_notification(  self, setting, ):
 
+        libgtk3.gtk_window_set_auto_startup_notification.restype = None
         libgtk3.gtk_window_set_auto_startup_notification.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_auto_startup_notification( self._object,setting )
@@ -681,6 +709,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if application: application = application._object
         else: application = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_application.restype = None
         libgtk3.gtk_window_set_application.argtypes = [_GtkWindow,_GtkApplication]
         
         libgtk3.gtk_window_set_application( self._object,application )
@@ -689,12 +718,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if icon: icon = icon._object
         else: icon = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_default_icon.restype = None
         libgtk3.gtk_window_set_default_icon.argtypes = [_GtkWindow,_GdkPixbuf]
         
         libgtk3.gtk_window_set_default_icon( self._object,icon )
 
     def set_default_geometry(  self, width, height, ):
 
+        libgtk3.gtk_window_set_default_geometry.restype = None
         libgtk3.gtk_window_set_default_geometry.argtypes = [_GtkWindow,gint,gint]
         
         libgtk3.gtk_window_set_default_geometry( self._object,width,height )
@@ -708,12 +739,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_role(  self, role, ):
 
+        libgtk3.gtk_window_set_role.restype = None
         libgtk3.gtk_window_set_role.argtypes = [_GtkWindow,c_char_p]
         
         libgtk3.gtk_window_set_role( self._object,role )
 
     def set_skip_taskbar_hint(  self, setting, ):
 
+        libgtk3.gtk_window_set_skip_taskbar_hint.restype = None
         libgtk3.gtk_window_set_skip_taskbar_hint.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_skip_taskbar_hint( self._object,setting )
@@ -741,6 +774,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_title(  self, title, ):
 
+        libgtk3.gtk_window_set_title.restype = None
         libgtk3.gtk_window_set_title.argtypes = [_GtkWindow,c_char_p]
         
         libgtk3.gtk_window_set_title( self._object,title )
@@ -749,6 +783,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if parent: parent = parent._object
         else: parent = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_transient_for.restype = None
         libgtk3.gtk_window_set_transient_for.argtypes = [_GtkWindow,_GtkWindow]
         
         libgtk3.gtk_window_set_transient_for( self._object,parent )
@@ -757,18 +792,21 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if list: list = list._object
         else: list = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_icon_list.restype = None
         libgtk3.gtk_window_set_icon_list.argtypes = [_GtkWindow,_GList]
         
         libgtk3.gtk_window_set_icon_list( self._object,list )
 
     def set_icon_name(  self, name, ):
 
+        libgtk3.gtk_window_set_icon_name.restype = None
         libgtk3.gtk_window_set_icon_name.argtypes = [_GtkWindow,c_char_p]
         
         libgtk3.gtk_window_set_icon_name( self._object,name )
 
     def set_urgency_hint(  self, setting, ):
 
+        libgtk3.gtk_window_set_urgency_hint.restype = None
         libgtk3.gtk_window_set_urgency_hint.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_urgency_hint( self._object,setting )
@@ -782,12 +820,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_opacity(  self, opacity, ):
 
+        libgtk3.gtk_window_set_opacity.restype = None
         libgtk3.gtk_window_set_opacity.argtypes = [_GtkWindow,gdouble]
         
         libgtk3.gtk_window_set_opacity( self._object,opacity )
 
     def iconify(  self, ):
 
+        libgtk3.gtk_window_iconify.restype = None
         libgtk3.gtk_window_iconify.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_iconify( self._object )
@@ -810,6 +850,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
+        libgtk3.gtk_window_remove_mnemonic.restype = None
         libgtk3.gtk_window_remove_mnemonic.argtypes = [_GtkWindow,guint,_GtkWidget]
         
         libgtk3.gtk_window_remove_mnemonic( self._object,keyval,target )
@@ -851,12 +892,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_mnemonic_modifier(  self, modifier, ):
 
+        libgtk3.gtk_window_set_mnemonic_modifier.restype = None
         libgtk3.gtk_window_set_mnemonic_modifier.argtypes = [_GtkWindow,GdkModifierType]
         
         libgtk3.gtk_window_set_mnemonic_modifier( self._object,modifier )
 
     def set_startup_id(  self, startup_id, ):
 
+        libgtk3.gtk_window_set_startup_id.restype = None
         libgtk3.gtk_window_set_startup_id.argtypes = [_GtkWindow,c_char_p]
         
         libgtk3.gtk_window_set_startup_id( self._object,startup_id )
@@ -865,12 +908,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if list: list = list._object
         else: list = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_default_icon_list.restype = None
         libgtk3.gtk_window_set_default_icon_list.argtypes = [_GtkWindow,_GList]
         
         libgtk3.gtk_window_set_default_icon_list( self._object,list )
 
     def set_modal(  self, modal, ):
 
+        libgtk3.gtk_window_set_modal.restype = None
         libgtk3.gtk_window_set_modal.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_modal( self._object,modal )
@@ -884,6 +929,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_wmclass(  self, wmclass_name, wmclass_class, ):
 
+        libgtk3.gtk_window_set_wmclass.restype = None
         libgtk3.gtk_window_set_wmclass.argtypes = [_GtkWindow,c_char_p,c_char_p]
         
         libgtk3.gtk_window_set_wmclass( self._object,wmclass_name,wmclass_class )
@@ -904,6 +950,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_type_hint(  self, hint, ):
 
+        libgtk3.gtk_window_set_type_hint.restype = None
         libgtk3.gtk_window_set_type_hint.argtypes = [_GtkWindow,GdkWindowTypeHint]
         
         libgtk3.gtk_window_set_type_hint( self._object,hint )
@@ -912,12 +959,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if edge: edge = edge._object
         else: edge = POINTER(c_int)()
 
+        libgtk3.gtk_window_begin_resize_drag.restype = None
         libgtk3.gtk_window_begin_resize_drag.argtypes = [_GtkWindow,GdkWindowEdge,gint,gint,gint,guint32]
         
         libgtk3.gtk_window_begin_resize_drag( self._object,edge,button,root_x,root_y,timestamp )
 
     def unstick(  self, ):
 
+        libgtk3.gtk_window_unstick.restype = None
         libgtk3.gtk_window_unstick.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_unstick( self._object )
@@ -938,6 +987,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_gravity(  self, gravity, ):
 
+        libgtk3.gtk_window_set_gravity.restype = None
         libgtk3.gtk_window_set_gravity.argtypes = [_GtkWindow,GdkGravity]
         
         libgtk3.gtk_window_set_gravity( self._object,gravity )
@@ -946,12 +996,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if accel_group: accel_group = accel_group._object
         else: accel_group = POINTER(c_int)()
 
+        libgtk3.gtk_window_add_accel_group.restype = None
         libgtk3.gtk_window_add_accel_group.argtypes = [_GtkWindow,_GtkAccelGroup]
         
         libgtk3.gtk_window_add_accel_group( self._object,accel_group )
 
     def set_default_icon_name(  self, name, ):
 
+        libgtk3.gtk_window_set_default_icon_name.restype = None
         libgtk3.gtk_window_set_default_icon_name.argtypes = [_GtkWindow,c_char_p]
         
         libgtk3.gtk_window_set_default_icon_name( self._object,name )
@@ -965,12 +1017,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_keep_above(  self, setting, ):
 
+        libgtk3.gtk_window_set_keep_above.restype = None
         libgtk3.gtk_window_set_keep_above.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_keep_above( self._object,setting )
 
     def set_has_user_ref_count(  self, setting, ):
 
+        libgtk3.gtk_window_set_has_user_ref_count.restype = None
         libgtk3.gtk_window_set_has_user_ref_count.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_has_user_ref_count( self._object,setting )
@@ -984,12 +1038,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_decorated(  self, setting, ):
 
+        libgtk3.gtk_window_set_decorated.restype = None
         libgtk3.gtk_window_set_decorated.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_decorated( self._object,setting )
 
     def fullscreen(  self, ):
 
+        libgtk3.gtk_window_fullscreen.restype = None
         libgtk3.gtk_window_fullscreen.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_fullscreen( self._object )
@@ -1005,18 +1061,21 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_deletable(  self, setting, ):
 
+        libgtk3.gtk_window_set_deletable.restype = None
         libgtk3.gtk_window_set_deletable.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_deletable( self._object,setting )
 
     def present_with_time(  self, timestamp, ):
 
+        libgtk3.gtk_window_present_with_time.restype = None
         libgtk3.gtk_window_present_with_time.argtypes = [_GtkWindow,guint32]
         
         libgtk3.gtk_window_present_with_time( self._object,timestamp )
 
     def get_default_size(  self, width, height, ):
 
+        libgtk3.gtk_window_get_default_size.restype = None
         libgtk3.gtk_window_get_default_size.argtypes = [_GtkWindow,POINTER(gint),POINTER(gint)]
         
         libgtk3.gtk_window_get_default_size( self._object,width,height )
@@ -1025,6 +1084,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if focus: focus = focus._object
         else: focus = POINTER(c_int)()
 
+        libgtk3.gtk_window_set_focus.restype = None
         libgtk3.gtk_window_set_focus.argtypes = [_GtkWindow,_GtkWidget]
         
         libgtk3.gtk_window_set_focus( self._object,focus )
@@ -1033,6 +1093,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
+        libgtk3.gtk_window_add_mnemonic.restype = None
         libgtk3.gtk_window_add_mnemonic.argtypes = [_GtkWindow,guint,_GtkWidget]
         
         libgtk3.gtk_window_add_mnemonic( self._object,keyval,target )
@@ -1041,18 +1102,21 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
         if accel_group: accel_group = accel_group._object
         else: accel_group = POINTER(c_int)()
 
+        libgtk3.gtk_window_remove_accel_group.restype = None
         libgtk3.gtk_window_remove_accel_group.argtypes = [_GtkWindow,_GtkAccelGroup]
         
         libgtk3.gtk_window_remove_accel_group( self._object,accel_group )
 
     def set_accept_focus(  self, setting, ):
 
+        libgtk3.gtk_window_set_accept_focus.restype = None
         libgtk3.gtk_window_set_accept_focus.argtypes = [_GtkWindow,gboolean]
         
         libgtk3.gtk_window_set_accept_focus( self._object,setting )
 
     def reshow_with_initial_size(  self, ):
 
+        libgtk3.gtk_window_reshow_with_initial_size.restype = None
         libgtk3.gtk_window_reshow_with_initial_size.argtypes = [_GtkWindow]
         
         libgtk3.gtk_window_reshow_with_initial_size( self._object )

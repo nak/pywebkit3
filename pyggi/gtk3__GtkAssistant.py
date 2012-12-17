@@ -153,6 +153,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -318,6 +319,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
     """Methods"""
     def set_current_page(  self, page_num, ):
 
+        libgtk3.gtk_assistant_set_current_page.restype = None
         libgtk3.gtk_assistant_set_current_page.argtypes = [_GtkAssistant,gint]
         
         libgtk3.gtk_assistant_set_current_page( self._object,page_num )
@@ -335,12 +337,14 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_set_page_complete.restype = None
         libgtk3.gtk_assistant_set_page_complete.argtypes = [_GtkAssistant,_GtkWidget,gboolean]
         
         libgtk3.gtk_assistant_set_page_complete( self._object,page,complete )
 
     def next_page(  self, ):
 
+        libgtk3.gtk_assistant_next_page.restype = None
         libgtk3.gtk_assistant_next_page.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_next_page( self._object )
@@ -369,12 +373,14 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_set_page_header_image.restype = None
         libgtk3.gtk_assistant_set_page_header_image.argtypes = [_GtkAssistant,_GtkWidget,_GdkPixbuf]
         
         libgtk3.gtk_assistant_set_page_header_image( self._object,page,pixbuf )
 
     def commit(  self, ):
 
+        libgtk3.gtk_assistant_commit.restype = None
         libgtk3.gtk_assistant_commit.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_commit( self._object )
@@ -385,6 +391,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_set_page_side_image.restype = None
         libgtk3.gtk_assistant_set_page_side_image.argtypes = [_GtkAssistant,_GtkWidget,_GdkPixbuf]
         
         libgtk3.gtk_assistant_set_page_side_image( self._object,page,pixbuf )
@@ -402,6 +409,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_add_action_widget.restype = None
         libgtk3.gtk_assistant_add_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
         
         libgtk3.gtk_assistant_add_action_widget( self._object,child )
@@ -417,18 +425,21 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page_func: page_func = page_func._object
         else: page_func = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_set_forward_page_func.restype = None
         libgtk3.gtk_assistant_set_forward_page_func.argtypes = [_GtkAssistant,GtkAssistantPageFunc,gpointer,GDestroyNotify]
         
         libgtk3.gtk_assistant_set_forward_page_func( self._object,page_func,data,destroy )
 
     def remove_page(  self, page_num, ):
 
+        libgtk3.gtk_assistant_remove_page.restype = None
         libgtk3.gtk_assistant_remove_page.argtypes = [_GtkAssistant,gint]
         
         libgtk3.gtk_assistant_remove_page( self._object,page_num )
 
     def previous_page(  self, ):
 
+        libgtk3.gtk_assistant_previous_page.restype = None
         libgtk3.gtk_assistant_previous_page.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_previous_page( self._object )
@@ -437,6 +448,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_set_page_title.restype = None
         libgtk3.gtk_assistant_set_page_title.argtypes = [_GtkAssistant,_GtkWidget,c_char_p]
         
         libgtk3.gtk_assistant_set_page_title( self._object,page,title )
@@ -450,6 +462,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
 
     def update_buttons_state(  self, ):
 
+        libgtk3.gtk_assistant_update_buttons_state.restype = None
         libgtk3.gtk_assistant_update_buttons_state.argtypes = [_GtkAssistant]
         
         libgtk3.gtk_assistant_update_buttons_state( self._object )
@@ -501,6 +514,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_set_page_type.restype = None
         libgtk3.gtk_assistant_set_page_type.argtypes = [_GtkAssistant,_GtkWidget,GtkAssistantPageType]
         
         libgtk3.gtk_assistant_set_page_type( self._object,page,type )
@@ -509,6 +523,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
+        libgtk3.gtk_assistant_remove_action_widget.restype = None
         libgtk3.gtk_assistant_remove_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
         
         libgtk3.gtk_assistant_remove_action_widget( self._object,child )

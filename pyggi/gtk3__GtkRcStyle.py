@@ -157,6 +157,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -327,12 +328,14 @@ class GtkRcStyle( gobject__GObject.GObject):
     """Methods"""
     def gtk_rc_set_default_files(  self, filenames, ):
 
+        libgtk3.gtk_rc_set_default_files.restype = None
         libgtk3.gtk_rc_set_default_files.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_set_default_files( self._object,filenames )
 
     def gtk_rc_parse(  self, filename, ):
 
+        libgtk3.gtk_rc_parse.restype = None
         libgtk3.gtk_rc_parse.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_parse( self._object,filename )
@@ -348,18 +351,21 @@ class GtkRcStyle( gobject__GObject.GObject):
         if settings: settings = settings._object
         else: settings = POINTER(c_int)()
 
+        libgtk3.gtk_rc_reset_styles.restype = None
         libgtk3.gtk_rc_reset_styles.argtypes = [_GtkRcStyle,_GtkSettings]
         
         libgtk3.gtk_rc_reset_styles( self._object,settings )
 
     def gtk_rc_parse_string(  self, rc_string, ):
 
+        libgtk3.gtk_rc_parse_string.restype = None
         libgtk3.gtk_rc_parse_string.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_parse_string( self._object,rc_string )
 
     def gtk_rc_add_default_file(  self, filename, ):
 
+        libgtk3.gtk_rc_add_default_file.restype = None
         libgtk3.gtk_rc_add_default_file.argtypes = [_GtkRcStyle,c_char_p]
         
         libgtk3.gtk_rc_add_default_file( self._object,filename )

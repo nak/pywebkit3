@@ -150,6 +150,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -333,12 +334,14 @@ class GtkAdjustment( gobject__GObject.GObject):
 
     def configure(  self, value, lower, upper, step_increment, page_increment, page_size, ):
 
+        libgtk3.gtk_adjustment_configure.restype = None
         libgtk3.gtk_adjustment_configure.argtypes = [_GtkAdjustment,gdouble,gdouble,gdouble,gdouble,gdouble,gdouble]
         
         libgtk3.gtk_adjustment_configure( self._object,value,lower,upper,step_increment,page_increment,page_size )
 
     def set_upper(  self, upper, ):
 
+        libgtk3.gtk_adjustment_set_upper.restype = None
         libgtk3.gtk_adjustment_set_upper.argtypes = [_GtkAdjustment,gdouble]
         
         libgtk3.gtk_adjustment_set_upper( self._object,upper )
@@ -352,18 +355,21 @@ class GtkAdjustment( gobject__GObject.GObject):
 
     def value_changed(  self, ):
 
+        libgtk3.gtk_adjustment_value_changed.restype = None
         libgtk3.gtk_adjustment_value_changed.argtypes = [_GtkAdjustment]
         
         libgtk3.gtk_adjustment_value_changed( self._object )
 
     def set_page_size(  self, page_size, ):
 
+        libgtk3.gtk_adjustment_set_page_size.restype = None
         libgtk3.gtk_adjustment_set_page_size.argtypes = [_GtkAdjustment,gdouble]
         
         libgtk3.gtk_adjustment_set_page_size( self._object,page_size )
 
     def set_page_increment(  self, page_increment, ):
 
+        libgtk3.gtk_adjustment_set_page_increment.restype = None
         libgtk3.gtk_adjustment_set_page_increment.argtypes = [_GtkAdjustment,gdouble]
         
         libgtk3.gtk_adjustment_set_page_increment( self._object,page_increment )
@@ -377,6 +383,7 @@ class GtkAdjustment( gobject__GObject.GObject):
 
     def changed(  self, ):
 
+        libgtk3.gtk_adjustment_changed.restype = None
         libgtk3.gtk_adjustment_changed.argtypes = [_GtkAdjustment]
         
         libgtk3.gtk_adjustment_changed( self._object )
@@ -390,24 +397,28 @@ class GtkAdjustment( gobject__GObject.GObject):
 
     def set_value(  self, value, ):
 
+        libgtk3.gtk_adjustment_set_value.restype = None
         libgtk3.gtk_adjustment_set_value.argtypes = [_GtkAdjustment,gdouble]
         
         libgtk3.gtk_adjustment_set_value( self._object,value )
 
     def set_step_increment(  self, step_increment, ):
 
+        libgtk3.gtk_adjustment_set_step_increment.restype = None
         libgtk3.gtk_adjustment_set_step_increment.argtypes = [_GtkAdjustment,gdouble]
         
         libgtk3.gtk_adjustment_set_step_increment( self._object,step_increment )
 
     def clamp_page(  self, lower, upper, ):
 
+        libgtk3.gtk_adjustment_clamp_page.restype = None
         libgtk3.gtk_adjustment_clamp_page.argtypes = [_GtkAdjustment,gdouble,gdouble]
         
         libgtk3.gtk_adjustment_clamp_page( self._object,lower,upper )
 
     def set_lower(  self, lower, ):
 
+        libgtk3.gtk_adjustment_set_lower.restype = None
         libgtk3.gtk_adjustment_set_lower.argtypes = [_GtkAdjustment,gdouble]
         
         libgtk3.gtk_adjustment_set_lower( self._object,lower )

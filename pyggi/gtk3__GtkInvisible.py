@@ -299,6 +299,7 @@ class GtkInvisible( gtk3__GtkWidget.GtkWidget):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
 
+        libgtk3.gtk_invisible_set_screen.restype = None
         libgtk3.gtk_invisible_set_screen.argtypes = [_GtkInvisible,_GdkScreen]
         
         libgtk3.gtk_invisible_set_screen( self._object,screen )

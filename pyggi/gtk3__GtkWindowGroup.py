@@ -310,6 +310,7 @@ class GtkWindowGroup( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
+        libgtk3.gtk_window_group_add_window.restype = None
         libgtk3.gtk_window_group_add_window.argtypes = [_GtkWindowGroup,_GtkWindow]
         
         libgtk3.gtk_window_group_add_window( self._object,window )
@@ -334,6 +335,7 @@ class GtkWindowGroup( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
+        libgtk3.gtk_window_group_remove_window.restype = None
         libgtk3.gtk_window_group_remove_window.argtypes = [_GtkWindowGroup,_GtkWindow]
         
         libgtk3.gtk_window_group_remove_window( self._object,window )

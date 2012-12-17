@@ -304,6 +304,7 @@ class PangoFontFamily( gobject__GObject.GObject):
         if faces: faces = faces._object
         else: faces = POINTER(c_int)()
 
+        libgtk3.pango_font_family_list_faces.restype = None
         libgtk3.pango_font_family_list_faces.argtypes = [_PangoFontFamily,POINTER(_PangoFontFace),POINTER(int)]
         
         libgtk3.pango_font_family_list_faces( self._object,faces,n_faces )

@@ -270,6 +270,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
+        libgtk3.gtk_dialog_add_action_widget.restype = None
         libgtk3.gtk_dialog_add_action_widget.argtypes = [_GtkDialog,_GtkWidget,gint]
         
         libgtk3.gtk_dialog_add_action_widget( self._object,child,response_id )
@@ -288,6 +289,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def set_response_sensitive(  self, response_id, setting, ):
 
+        libgtk3.gtk_dialog_set_response_sensitive.restype = None
         libgtk3.gtk_dialog_set_response_sensitive.argtypes = [_GtkDialog,gint,gboolean]
         
         libgtk3.gtk_dialog_set_response_sensitive( self._object,response_id,setting )
@@ -301,6 +303,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def set_default_response(  self, response_id, ):
 
+        libgtk3.gtk_dialog_set_default_response.restype = None
         libgtk3.gtk_dialog_set_default_response.argtypes = [_GtkDialog,gint]
         
         libgtk3.gtk_dialog_set_default_response( self._object,response_id )
@@ -321,6 +324,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def response(  self, response_id, ):
 
+        libgtk3.gtk_dialog_response.restype = None
         libgtk3.gtk_dialog_response.argtypes = [_GtkDialog,gint]
         
         libgtk3.gtk_dialog_response( self._object,response_id )
@@ -336,6 +340,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def set_alternative_button_order_from_array(  self, n_params, new_order, ):
 
+        libgtk3.gtk_dialog_set_alternative_button_order_from_array.restype = None
         libgtk3.gtk_dialog_set_alternative_button_order_from_array.argtypes = [_GtkDialog,gint,POINTER(gint)]
         
         libgtk3.gtk_dialog_set_alternative_button_order_from_array( self._object,n_params,new_order )

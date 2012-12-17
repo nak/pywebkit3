@@ -302,6 +302,7 @@ class PangoItem( gobject__GBoxed.GBoxed):
 
     def free(  self, ):
 
+        libgtk3.pango_item_free.restype = None
         libgtk3.pango_item_free.argtypes = [_PangoItem]
         
         libgtk3.pango_item_free( self._object )

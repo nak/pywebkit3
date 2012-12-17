@@ -153,6 +153,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -323,6 +324,7 @@ class GtkClipboard( gobject__GObject.GObject):
 
     def store(  self, ):
 
+        libgtk3.gtk_clipboard_store.restype = None
         libgtk3.gtk_clipboard_store.argtypes = [_GtkClipboard]
         
         libgtk3.gtk_clipboard_store( self._object )
@@ -347,24 +349,28 @@ class GtkClipboard( gobject__GObject.GObject):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
+        libgtk3.gtk_clipboard_request_contents.restype = None
         libgtk3.gtk_clipboard_request_contents.argtypes = [_GtkClipboard,POINTER(c_int),GtkClipboardReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_contents( self._object,target,callback,user_data )
 
     def clear(  self, ):
 
+        libgtk3.gtk_clipboard_clear.restype = None
         libgtk3.gtk_clipboard_clear.argtypes = [_GtkClipboard]
         
         libgtk3.gtk_clipboard_clear( self._object )
 
     def set_text(  self, text, len, ):
 
+        libgtk3.gtk_clipboard_set_text.restype = None
         libgtk3.gtk_clipboard_set_text.argtypes = [_GtkClipboard,c_char_p,gint]
         
         libgtk3.gtk_clipboard_set_text( self._object,text,len )
 
     def request_text(  self, callback, user_data, ):
 
+        libgtk3.gtk_clipboard_request_text.restype = None
         libgtk3.gtk_clipboard_request_text.argtypes = [_GtkClipboard,GtkClipboardTextReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_text( self._object,callback,user_data )
@@ -391,12 +397,14 @@ class GtkClipboard( gobject__GObject.GObject):
         if targets: targets = targets._object
         else: targets = POINTER(c_int)()
 
+        libgtk3.gtk_clipboard_set_can_store.restype = None
         libgtk3.gtk_clipboard_set_can_store.argtypes = [_GtkClipboard,_GtkTargetEntry,gint]
         
         libgtk3.gtk_clipboard_set_can_store( self._object,targets,n_targets )
 
     def request_targets(  self, callback, user_data, ):
 
+        libgtk3.gtk_clipboard_request_targets.restype = None
         libgtk3.gtk_clipboard_request_targets.argtypes = [_GtkClipboard,GtkClipboardTargetsReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_targets( self._object,callback,user_data )
@@ -467,6 +475,7 @@ class GtkClipboard( gobject__GObject.GObject):
 
     def request_uris(  self, callback, user_data, ):
 
+        libgtk3.gtk_clipboard_request_uris.restype = None
         libgtk3.gtk_clipboard_request_uris.argtypes = [_GtkClipboard,GtkClipboardURIReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_uris( self._object,callback,user_data )
@@ -489,6 +498,7 @@ class GtkClipboard( gobject__GObject.GObject):
         if buffer: buffer = buffer._object
         else: buffer = POINTER(c_int)()
 
+        libgtk3.gtk_clipboard_request_rich_text.restype = None
         libgtk3.gtk_clipboard_request_rich_text.argtypes = [_GtkClipboard,_GtkTextBuffer,GtkClipboardRichTextReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_rich_text( self._object,buffer,callback,user_data )
@@ -497,12 +507,14 @@ class GtkClipboard( gobject__GObject.GObject):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
 
+        libgtk3.gtk_clipboard_set_image.restype = None
         libgtk3.gtk_clipboard_set_image.argtypes = [_GtkClipboard,_GdkPixbuf]
         
         libgtk3.gtk_clipboard_set_image( self._object,pixbuf )
 
     def request_image(  self, callback, user_data, ):
 
+        libgtk3.gtk_clipboard_request_image.restype = None
         libgtk3.gtk_clipboard_request_image.argtypes = [_GtkClipboard,GtkClipboardImageReceivedFunc,gpointer]
         
         libgtk3.gtk_clipboard_request_image( self._object,callback,user_data )

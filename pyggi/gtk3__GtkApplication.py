@@ -279,6 +279,7 @@ class GtkApplication( gobject__GApplication.GApplication):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
+        libgtk3.gtk_application_remove_window.restype = None
         libgtk3.gtk_application_remove_window.argtypes = [_GtkApplication,_GtkWindow]
         
         libgtk3.gtk_application_remove_window( self._object,window )
@@ -287,6 +288,7 @@ class GtkApplication( gobject__GApplication.GApplication):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
+        libgtk3.gtk_application_add_window.restype = None
         libgtk3.gtk_application_add_window.argtypes = [_GtkApplication,_GtkWindow]
         
         libgtk3.gtk_application_add_window( self._object,window )

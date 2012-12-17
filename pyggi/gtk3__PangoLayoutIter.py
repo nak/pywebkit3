@@ -161,6 +161,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -365,6 +366,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def get_line_yrange(  self, y0_, y1_, ):
 
+        libgtk3.pango_layout_iter_get_line_yrange.restype = None
         libgtk3.pango_layout_iter_get_line_yrange.argtypes = [_PangoLayoutIter,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_iter_get_line_yrange( self._object,y0_,y1_ )
@@ -373,6 +375,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_iter_get_char_extents.restype = None
         libgtk3.pango_layout_iter_get_char_extents.argtypes = [_PangoLayoutIter,_PangoRectangle]
         
         libgtk3.pango_layout_iter_get_char_extents( self._object,logical_rect )
@@ -383,6 +386,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_iter_get_cluster_extents.restype = None
         libgtk3.pango_layout_iter_get_cluster_extents.argtypes = [_PangoLayoutIter,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_iter_get_cluster_extents( self._object,ink_rect,logical_rect )
@@ -403,6 +407,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def free(  self, ):
 
+        libgtk3.pango_layout_iter_free.restype = None
         libgtk3.pango_layout_iter_free.argtypes = [_PangoLayoutIter]
         
         libgtk3.pango_layout_iter_free( self._object )
@@ -434,6 +439,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_iter_get_run_extents.restype = None
         libgtk3.pango_layout_iter_get_run_extents.argtypes = [_PangoLayoutIter,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_iter_get_run_extents( self._object,ink_rect,logical_rect )
@@ -486,6 +492,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_iter_get_line_extents.restype = None
         libgtk3.pango_layout_iter_get_line_extents.argtypes = [_PangoLayoutIter,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_iter_get_line_extents( self._object,ink_rect,logical_rect )
@@ -496,6 +503,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_iter_get_layout_extents.restype = None
         libgtk3.pango_layout_iter_get_layout_extents.argtypes = [_PangoLayoutIter,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_iter_get_layout_extents( self._object,ink_rect,logical_rect )

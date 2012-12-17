@@ -265,6 +265,7 @@ class PangoCoverage( gobject__GObject.GObject):
     """Methods"""
     def unref(  self, ):
 
+        libgtk3.pango_coverage_unref.restype = None
         libgtk3.pango_coverage_unref.argtypes = [_PangoCoverage]
         
         libgtk3.pango_coverage_unref( self._object )
@@ -278,6 +279,7 @@ class PangoCoverage( gobject__GObject.GObject):
 
     def set(  self, index_, level, ):
 
+        libgtk3.pango_coverage_set.restype = None
         libgtk3.pango_coverage_set.argtypes = [_PangoCoverage,int,PangoCoverageLevel]
         
         libgtk3.pango_coverage_set( self._object,index_,level )
@@ -300,12 +302,14 @@ class PangoCoverage( gobject__GObject.GObject):
         if other: other = other._object
         else: other = POINTER(c_int)()
 
+        libgtk3.pango_coverage_max.restype = None
         libgtk3.pango_coverage_max.argtypes = [_PangoCoverage,_PangoCoverage]
         
         libgtk3.pango_coverage_max( self._object,other )
 
     def to_bytes(  self, bytes, n_bytes, ):
 
+        libgtk3.pango_coverage_to_bytes.restype = None
         libgtk3.pango_coverage_to_bytes.argtypes = [_PangoCoverage,POINTER(guchar),POINTER(int)]
         
         libgtk3.pango_coverage_to_bytes( self._object,bytes,n_bytes )

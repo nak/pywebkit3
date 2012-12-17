@@ -307,6 +307,7 @@ class GtkIconSet( gobject__GObject.GObject):
     """Methods"""
     def unref(  self, ):
 
+        libgtk3.gtk_icon_set_unref.restype = None
         libgtk3.gtk_icon_set_unref.argtypes = [_GtkIconSet]
         
         libgtk3.gtk_icon_set_unref( self._object )
@@ -315,6 +316,7 @@ class GtkIconSet( gobject__GObject.GObject):
         if source: source = source._object
         else: source = POINTER(c_int)()
 
+        libgtk3.gtk_icon_set_add_source.restype = None
         libgtk3.gtk_icon_set_add_source.argtypes = [_GtkIconSet,_GtkIconSource]
         
         libgtk3.gtk_icon_set_add_source( self._object,source )
@@ -346,6 +348,7 @@ class GtkIconSet( gobject__GObject.GObject):
 
     def get_sizes(  self, sizes, n_sizes, ):
 
+        libgtk3.gtk_icon_set_get_sizes.restype = None
         libgtk3.gtk_icon_set_get_sizes.argtypes = [_GtkIconSet,POINTER(GtkIconSize),POINTER(gint)]
         
         libgtk3.gtk_icon_set_get_sizes( self._object,sizes,n_sizes )

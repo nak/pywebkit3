@@ -268,6 +268,7 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
     """Methods"""
     def index_to_x(  self, index_, trailing, x_pos, ):
 
+        libgtk3.pango_layout_line_index_to_x.restype = None
         libgtk3.pango_layout_line_index_to_x.argtypes = [_PangoLayoutLine,int,gboolean,POINTER(int)]
         
         libgtk3.pango_layout_line_index_to_x( self._object,index_,trailing,x_pos )
@@ -278,6 +279,7 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_line_get_extents.restype = None
         libgtk3.pango_layout_line_get_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_line_get_extents( self._object,ink_rect,logical_rect )
@@ -291,12 +293,14 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
 
     def unref(  self, ):
 
+        libgtk3.pango_layout_line_unref.restype = None
         libgtk3.pango_layout_line_unref.argtypes = [_PangoLayoutLine]
         
         libgtk3.pango_layout_line_unref( self._object )
 
     def get_x_ranges(  self, start_index, end_index, ranges, n_ranges, ):
 
+        libgtk3.pango_layout_line_get_x_ranges.restype = None
         libgtk3.pango_layout_line_get_x_ranges.argtypes = [_PangoLayoutLine,int,int,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_line_get_x_ranges( self._object,start_index,end_index,ranges,n_ranges )
@@ -314,6 +318,7 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_line_get_pixel_extents.restype = None
         libgtk3.pango_layout_line_get_pixel_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_line_get_pixel_extents( self._object,ink_rect,logical_rect )

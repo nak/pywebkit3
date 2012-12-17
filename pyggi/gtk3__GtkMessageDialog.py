@@ -160,6 +160,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -372,6 +373,7 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
 
     def set_markup(  self, str, ):
 
+        libgtk3.gtk_message_dialog_set_markup.restype = None
         libgtk3.gtk_message_dialog_set_markup.argtypes = [_GtkMessageDialog,c_char_p]
         
         libgtk3.gtk_message_dialog_set_markup( self._object,str )
@@ -399,6 +401,7 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
         if image: image = image._object
         else: image = POINTER(c_int)()
 
+        libgtk3.gtk_message_dialog_set_image.restype = None
         libgtk3.gtk_message_dialog_set_image.argtypes = [_GtkMessageDialog,_GtkWidget]
         
         libgtk3.gtk_message_dialog_set_image( self._object,image )

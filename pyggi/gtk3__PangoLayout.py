@@ -297,6 +297,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_height(  self, height, ):
 
+        libgtk3.pango_layout_set_height.restype = None
         libgtk3.pango_layout_set_height.argtypes = [_PangoLayout,int]
         
         libgtk3.pango_layout_set_height( self._object,height )
@@ -310,6 +311,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_markup(  self, markup, length, ):
 
+        libgtk3.pango_layout_set_markup.restype = None
         libgtk3.pango_layout_set_markup.argtypes = [_PangoLayout,c_char_p,int]
         
         libgtk3.pango_layout_set_markup( self._object,markup,length )
@@ -330,6 +332,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_wrap(  self, wrap, ):
 
+        libgtk3.pango_layout_set_wrap.restype = None
         libgtk3.pango_layout_set_wrap.argtypes = [_PangoLayout,PangoWrapMode]
         
         libgtk3.pango_layout_set_wrap( self._object,wrap )
@@ -345,12 +348,14 @@ class PangoLayout( gobject__GObject.GObject):
         if pos: pos = pos._object
         else: pos = POINTER(c_int)()
 
+        libgtk3.pango_layout_index_to_pos.restype = None
         libgtk3.pango_layout_index_to_pos.argtypes = [_PangoLayout,int,_PangoRectangle]
         
         libgtk3.pango_layout_index_to_pos( self._object,index_,pos )
 
     def move_cursor_visually(  self, strong, old_index, old_trailing, direction, new_index, new_trailing, ):
 
+        libgtk3.pango_layout_move_cursor_visually.restype = None
         libgtk3.pango_layout_move_cursor_visually.argtypes = [_PangoLayout,gboolean,int,int,int,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_move_cursor_visually( self._object,strong,old_index,old_trailing,direction,new_index,new_trailing )
@@ -385,6 +390,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_pixel_size(  self, width, height, ):
 
+        libgtk3.pango_layout_get_pixel_size.restype = None
         libgtk3.pango_layout_get_pixel_size.argtypes = [_PangoLayout,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_get_pixel_size( self._object,width,height )
@@ -398,6 +404,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_ellipsize(  self, ellipsize, ):
 
+        libgtk3.pango_layout_set_ellipsize.restype = None
         libgtk3.pango_layout_set_ellipsize.argtypes = [_PangoLayout,PangoEllipsizeMode]
         
         libgtk3.pango_layout_set_ellipsize( self._object,ellipsize )
@@ -408,6 +415,7 @@ class PangoLayout( gobject__GObject.GObject):
         if weak_pos: weak_pos = weak_pos._object
         else: weak_pos = POINTER(c_int)()
 
+        libgtk3.pango_layout_get_cursor_pos.restype = None
         libgtk3.pango_layout_get_cursor_pos.argtypes = [_PangoLayout,int,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_get_cursor_pos( self._object,index_,strong_pos,weak_pos )
@@ -428,6 +436,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_text(  self, text, length, ):
 
+        libgtk3.pango_layout_set_text.restype = None
         libgtk3.pango_layout_set_text.argtypes = [_PangoLayout,c_char_p,int]
         
         libgtk3.pango_layout_set_text( self._object,text,length )
@@ -436,18 +445,21 @@ class PangoLayout( gobject__GObject.GObject):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
+        libgtk3.pango_layout_set_font_description.restype = None
         libgtk3.pango_layout_set_font_description.argtypes = [_PangoLayout,_PangoFontDescription]
         
         libgtk3.pango_layout_set_font_description( self._object,desc )
 
     def get_size(  self, width, height, ):
 
+        libgtk3.pango_layout_get_size.restype = None
         libgtk3.pango_layout_get_size.argtypes = [_PangoLayout,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_get_size( self._object,width,height )
 
     def set_spacing(  self, spacing, ):
 
+        libgtk3.pango_layout_set_spacing.restype = None
         libgtk3.pango_layout_set_spacing.argtypes = [_PangoLayout,int]
         
         libgtk3.pango_layout_set_spacing( self._object,spacing )
@@ -463,6 +475,7 @@ class PangoLayout( gobject__GObject.GObject):
         if attrs: attrs = attrs._object
         else: attrs = POINTER(c_int)()
 
+        libgtk3.pango_layout_get_log_attrs.restype = None
         libgtk3.pango_layout_get_log_attrs.argtypes = [_PangoLayout,_PangoLogAttr,POINTER(gint)]
         
         libgtk3.pango_layout_get_log_attrs( self._object,attrs,n_attrs )
@@ -487,6 +500,7 @@ class PangoLayout( gobject__GObject.GObject):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_get_extents.restype = None
         libgtk3.pango_layout_get_extents.argtypes = [_PangoLayout,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_get_extents( self._object,ink_rect,logical_rect )
@@ -507,6 +521,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_single_paragraph_mode(  self, setting, ):
 
+        libgtk3.pango_layout_set_single_paragraph_mode.restype = None
         libgtk3.pango_layout_set_single_paragraph_mode.argtypes = [_PangoLayout,gboolean]
         
         libgtk3.pango_layout_set_single_paragraph_mode( self._object,setting )
@@ -524,12 +539,14 @@ class PangoLayout( gobject__GObject.GObject):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_layout_get_pixel_extents.restype = None
         libgtk3.pango_layout_get_pixel_extents.argtypes = [_PangoLayout,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_layout_get_pixel_extents( self._object,ink_rect,logical_rect )
 
     def set_indent(  self, indent, ):
 
+        libgtk3.pango_layout_set_indent.restype = None
         libgtk3.pango_layout_set_indent.argtypes = [_PangoLayout,int]
         
         libgtk3.pango_layout_set_indent( self._object,indent )
@@ -545,6 +562,7 @@ class PangoLayout( gobject__GObject.GObject):
         if attrs: attrs = attrs._object
         else: attrs = POINTER(c_int)()
 
+        libgtk3.pango_layout_set_attributes.restype = None
         libgtk3.pango_layout_set_attributes.argtypes = [_PangoLayout,_PangoAttrList]
         
         libgtk3.pango_layout_set_attributes( self._object,attrs )
@@ -558,6 +576,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def context_changed(  self, ):
 
+        libgtk3.pango_layout_context_changed.restype = None
         libgtk3.pango_layout_context_changed.argtypes = [_PangoLayout]
         
         libgtk3.pango_layout_context_changed( self._object )
@@ -566,12 +585,14 @@ class PangoLayout( gobject__GObject.GObject):
         if tabs: tabs = tabs._object
         else: tabs = POINTER(c_int)()
 
+        libgtk3.pango_layout_set_tabs.restype = None
         libgtk3.pango_layout_set_tabs.argtypes = [_PangoLayout,_PangoTabArray]
         
         libgtk3.pango_layout_set_tabs( self._object,tabs )
 
     def set_width(  self, width, ):
 
+        libgtk3.pango_layout_set_width.restype = None
         libgtk3.pango_layout_set_width.argtypes = [_PangoLayout,int]
         
         libgtk3.pango_layout_set_width( self._object,width )
@@ -589,6 +610,7 @@ class PangoLayout( gobject__GObject.GObject):
         if accel_char: accel_char = accel_char._object
         else: accel_char = POINTER(c_int)()
 
+        libgtk3.pango_layout_set_markup_with_accel.restype = None
         libgtk3.pango_layout_set_markup_with_accel.argtypes = [_PangoLayout,c_char_p,int,gunichar,_gunichar]
         
         libgtk3.pango_layout_set_markup_with_accel( self._object,markup,length,accel_marker,accel_char )
@@ -602,6 +624,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_auto_dir(  self, auto_dir, ):
 
+        libgtk3.pango_layout_set_auto_dir.restype = None
         libgtk3.pango_layout_set_auto_dir.argtypes = [_PangoLayout,gboolean]
         
         libgtk3.pango_layout_set_auto_dir( self._object,auto_dir )
@@ -622,6 +645,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def index_to_line_x(  self, index_, trailing, line, x_pos, ):
 
+        libgtk3.pango_layout_index_to_line_x.restype = None
         libgtk3.pango_layout_index_to_line_x.argtypes = [_PangoLayout,int,gboolean,POINTER(int),POINTER(int)]
         
         libgtk3.pango_layout_index_to_line_x( self._object,index_,trailing,line,x_pos )
@@ -635,6 +659,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_alignment(  self, alignment, ):
 
+        libgtk3.pango_layout_set_alignment.restype = None
         libgtk3.pango_layout_set_alignment.argtypes = [_PangoLayout,PangoAlignment]
         
         libgtk3.pango_layout_set_alignment( self._object,alignment )
@@ -655,6 +680,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def set_justify(  self, justify, ):
 
+        libgtk3.pango_layout_set_justify.restype = None
         libgtk3.pango_layout_set_justify.argtypes = [_PangoLayout,gboolean]
         
         libgtk3.pango_layout_set_justify( self._object,justify )

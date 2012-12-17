@@ -159,6 +159,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -329,24 +330,28 @@ class PangoMatrix( gobject__GBoxed.GBoxed):
         if rect: rect = rect._object
         else: rect = POINTER(c_int)()
 
+        libgtk3.pango_matrix_transform_pixel_rectangle.restype = None
         libgtk3.pango_matrix_transform_pixel_rectangle.argtypes = [_PangoMatrix,_PangoRectangle]
         
         libgtk3.pango_matrix_transform_pixel_rectangle( self._object,rect )
 
     def rotate(  self, degrees, ):
 
+        libgtk3.pango_matrix_rotate.restype = None
         libgtk3.pango_matrix_rotate.argtypes = [_PangoMatrix,double]
         
         libgtk3.pango_matrix_rotate( self._object,degrees )
 
     def transform_distance(  self, dx, dy, ):
 
+        libgtk3.pango_matrix_transform_distance.restype = None
         libgtk3.pango_matrix_transform_distance.argtypes = [_PangoMatrix,POINTER(double),POINTER(double)]
         
         libgtk3.pango_matrix_transform_distance( self._object,dx,dy )
 
     def translate(  self, tx, ty, ):
 
+        libgtk3.pango_matrix_translate.restype = None
         libgtk3.pango_matrix_translate.argtypes = [_PangoMatrix,gdouble,gdouble]
         
         libgtk3.pango_matrix_translate( self._object,tx,ty )
@@ -355,18 +360,21 @@ class PangoMatrix( gobject__GBoxed.GBoxed):
         if rect: rect = rect._object
         else: rect = POINTER(c_int)()
 
+        libgtk3.pango_matrix_transform_rectangle.restype = None
         libgtk3.pango_matrix_transform_rectangle.argtypes = [_PangoMatrix,_PangoRectangle]
         
         libgtk3.pango_matrix_transform_rectangle( self._object,rect )
 
     def transform_point(  self, x, y, ):
 
+        libgtk3.pango_matrix_transform_point.restype = None
         libgtk3.pango_matrix_transform_point.argtypes = [_PangoMatrix,POINTER(double),POINTER(double)]
         
         libgtk3.pango_matrix_transform_point( self._object,x,y )
 
     def scale(  self, scale_x, scale_y, ):
 
+        libgtk3.pango_matrix_scale.restype = None
         libgtk3.pango_matrix_scale.argtypes = [_PangoMatrix,double,double]
         
         libgtk3.pango_matrix_scale( self._object,scale_x,scale_y )
@@ -387,6 +395,7 @@ class PangoMatrix( gobject__GBoxed.GBoxed):
 
     def free(  self, ):
 
+        libgtk3.pango_matrix_free.restype = None
         libgtk3.pango_matrix_free.argtypes = [_PangoMatrix]
         
         libgtk3.pango_matrix_free( self._object )
@@ -395,6 +404,7 @@ class PangoMatrix( gobject__GBoxed.GBoxed):
         if new_matrix: new_matrix = new_matrix._object
         else: new_matrix = POINTER(c_int)()
 
+        libgtk3.pango_matrix_concat.restype = None
         libgtk3.pango_matrix_concat.argtypes = [_PangoMatrix,_PangoMatrix]
         
         libgtk3.pango_matrix_concat( self._object,new_matrix )

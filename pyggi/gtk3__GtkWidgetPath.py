@@ -153,6 +153,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -326,12 +327,14 @@ class GtkWidgetPath( object):
         if flags: flags = flags._object
         else: flags = POINTER(c_int)()
 
+        libgtk3.gtk_widget_path_iter_add_region.restype = None
         libgtk3.gtk_widget_path_iter_add_region.argtypes = [_GtkWidgetPath,gint,c_char_p,GtkRegionFlags]
         
         libgtk3.gtk_widget_path_iter_add_region( self._object,pos,name,flags )
 
     def iter_clear_regions(  self, pos, ):
 
+        libgtk3.gtk_widget_path_iter_clear_regions.restype = None
         libgtk3.gtk_widget_path_iter_clear_regions.argtypes = [_GtkWidgetPath,gint]
         
         libgtk3.gtk_widget_path_iter_clear_regions( self._object,pos )
@@ -354,6 +357,7 @@ class GtkWidgetPath( object):
 
     def iter_remove_region(  self, pos, name, ):
 
+        libgtk3.gtk_widget_path_iter_remove_region.restype = None
         libgtk3.gtk_widget_path_iter_remove_region.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
         libgtk3.gtk_widget_path_iter_remove_region( self._object,pos,name )
@@ -388,18 +392,21 @@ class GtkWidgetPath( object):
 
     def iter_clear_classes(  self, pos, ):
 
+        libgtk3.gtk_widget_path_iter_clear_classes.restype = None
         libgtk3.gtk_widget_path_iter_clear_classes.argtypes = [_GtkWidgetPath,gint]
         
         libgtk3.gtk_widget_path_iter_clear_classes( self._object,pos )
 
     def free(  self, ):
 
+        libgtk3.gtk_widget_path_free.restype = None
         libgtk3.gtk_widget_path_free.argtypes = [_GtkWidgetPath]
         
         libgtk3.gtk_widget_path_free( self._object )
 
     def prepend_type(  self, type, ):
 
+        libgtk3.gtk_widget_path_prepend_type.restype = None
         libgtk3.gtk_widget_path_prepend_type.argtypes = [_GtkWidgetPath,GType]
         
         libgtk3.gtk_widget_path_prepend_type( self._object,type )
@@ -420,12 +427,14 @@ class GtkWidgetPath( object):
 
     def iter_set_object_type(  self, pos, type, ):
 
+        libgtk3.gtk_widget_path_iter_set_object_type.restype = None
         libgtk3.gtk_widget_path_iter_set_object_type.argtypes = [_GtkWidgetPath,gint,GType]
         
         libgtk3.gtk_widget_path_iter_set_object_type( self._object,pos,type )
 
     def iter_remove_class(  self, pos, name, ):
 
+        libgtk3.gtk_widget_path_iter_remove_class.restype = None
         libgtk3.gtk_widget_path_iter_remove_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
         libgtk3.gtk_widget_path_iter_remove_class( self._object,pos,name )
@@ -448,6 +457,7 @@ class GtkWidgetPath( object):
 
     def iter_set_name(  self, pos, name, ):
 
+        libgtk3.gtk_widget_path_iter_set_name.restype = None
         libgtk3.gtk_widget_path_iter_set_name.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
         libgtk3.gtk_widget_path_iter_set_name( self._object,pos,name )
@@ -468,6 +478,7 @@ class GtkWidgetPath( object):
 
     def iter_add_class(  self, pos, name, ):
 
+        libgtk3.gtk_widget_path_iter_add_class.restype = None
         libgtk3.gtk_widget_path_iter_add_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
         
         libgtk3.gtk_widget_path_iter_add_class( self._object,pos,name )

@@ -151,6 +151,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -348,18 +349,21 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def set_min_content_height(  self, height, ):
 
+        libgtk3.gtk_scrolled_window_set_min_content_height.restype = None
         libgtk3.gtk_scrolled_window_set_min_content_height.argtypes = [_GtkScrolledWindow,gint]
         
         libgtk3.gtk_scrolled_window_set_min_content_height( self._object,height )
 
     def set_min_content_width(  self, width, ):
 
+        libgtk3.gtk_scrolled_window_set_min_content_width.restype = None
         libgtk3.gtk_scrolled_window_set_min_content_width.argtypes = [_GtkScrolledWindow,gint]
         
         libgtk3.gtk_scrolled_window_set_min_content_width( self._object,width )
 
     def set_shadow_type(  self, type, ):
 
+        libgtk3.gtk_scrolled_window_set_shadow_type.restype = None
         libgtk3.gtk_scrolled_window_set_shadow_type.argtypes = [_GtkScrolledWindow,GtkShadowType]
         
         libgtk3.gtk_scrolled_window_set_shadow_type( self._object,type )
@@ -368,6 +372,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
+        libgtk3.gtk_scrolled_window_add_with_viewport.restype = None
         libgtk3.gtk_scrolled_window_add_with_viewport.argtypes = [_GtkScrolledWindow,_GtkWidget]
         
         libgtk3.gtk_scrolled_window_add_with_viewport( self._object,child )
@@ -381,6 +386,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def set_placement(  self, window_placement, ):
 
+        libgtk3.gtk_scrolled_window_set_placement.restype = None
         libgtk3.gtk_scrolled_window_set_placement.argtypes = [_GtkScrolledWindow,GtkCornerType]
         
         libgtk3.gtk_scrolled_window_set_placement( self._object,window_placement )
@@ -389,12 +395,14 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
         if hadjustment: hadjustment = hadjustment._object
         else: hadjustment = POINTER(c_int)()
 
+        libgtk3.gtk_scrolled_window_set_hadjustment.restype = None
         libgtk3.gtk_scrolled_window_set_hadjustment.argtypes = [_GtkScrolledWindow,_GtkAdjustment]
         
         libgtk3.gtk_scrolled_window_set_hadjustment( self._object,hadjustment )
 
     def get_policy(  self, hscrollbar_policy, vscrollbar_policy, ):
 
+        libgtk3.gtk_scrolled_window_get_policy.restype = None
         libgtk3.gtk_scrolled_window_get_policy.argtypes = [_GtkScrolledWindow,POINTER(GtkPolicyType),POINTER(GtkPolicyType)]
         
         libgtk3.gtk_scrolled_window_get_policy( self._object,hscrollbar_policy,vscrollbar_policy )
@@ -417,12 +425,14 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
         if vadjustment: vadjustment = vadjustment._object
         else: vadjustment = POINTER(c_int)()
 
+        libgtk3.gtk_scrolled_window_set_vadjustment.restype = None
         libgtk3.gtk_scrolled_window_set_vadjustment.argtypes = [_GtkScrolledWindow,_GtkAdjustment]
         
         libgtk3.gtk_scrolled_window_set_vadjustment( self._object,vadjustment )
 
     def unset_placement(  self, ):
 
+        libgtk3.gtk_scrolled_window_unset_placement.restype = None
         libgtk3.gtk_scrolled_window_unset_placement.argtypes = [_GtkScrolledWindow]
         
         libgtk3.gtk_scrolled_window_unset_placement( self._object )
@@ -436,6 +446,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def set_policy(  self, hscrollbar_policy, vscrollbar_policy, ):
 
+        libgtk3.gtk_scrolled_window_set_policy.restype = None
         libgtk3.gtk_scrolled_window_set_policy.argtypes = [_GtkScrolledWindow,GtkPolicyType,GtkPolicyType]
         
         libgtk3.gtk_scrolled_window_set_policy( self._object,hscrollbar_policy,vscrollbar_policy )

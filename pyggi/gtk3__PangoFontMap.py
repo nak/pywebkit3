@@ -311,6 +311,7 @@ class PangoFontMap( gobject__GObject.GObject):
         if families: families = families._object
         else: families = POINTER(c_int)()
 
+        libgtk3.pango_font_map_list_families.restype = None
         libgtk3.pango_font_map_list_families.argtypes = [_PangoFontMap,POINTER(_PangoFontFamily),POINTER(int)]
         
         libgtk3.pango_font_map_list_families( self._object,families,n_families )

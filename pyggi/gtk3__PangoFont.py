@@ -153,6 +153,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -325,6 +326,7 @@ class PangoFont( gobject__GObject.GObject):
         if logical_rect: logical_rect = logical_rect._object
         else: logical_rect = POINTER(c_int)()
 
+        libgtk3.pango_font_get_glyph_extents.restype = None
         libgtk3.pango_font_get_glyph_extents.argtypes = [_PangoFont,PangoGlyph,_PangoRectangle,_PangoRectangle]
         
         libgtk3.pango_font_get_glyph_extents( self._object,glyph,ink_rect,logical_rect )

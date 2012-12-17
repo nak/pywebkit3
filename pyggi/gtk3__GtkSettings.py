@@ -153,6 +153,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -316,6 +317,7 @@ class GtkSettings( gobject__GObject.GObject):
         if parser: parser = parser._object
         else: parser = POINTER(c_int)()
 
+        libgtk3.gtk_settings_install_property_parser.restype = None
         libgtk3.gtk_settings_install_property_parser.argtypes = [_GtkSettings,_GParamSpec,GtkRcPropertyParser]
         
         libgtk3.gtk_settings_install_property_parser( self._object,pspec,parser )
@@ -324,6 +326,7 @@ class GtkSettings( gobject__GObject.GObject):
         if pspec: pspec = pspec._object
         else: pspec = POINTER(c_int)()
 
+        libgtk3.gtk_settings_install_property.restype = None
         libgtk3.gtk_settings_install_property.argtypes = [_GtkSettings,_GParamSpec]
         
         libgtk3.gtk_settings_install_property( self._object,pspec )
