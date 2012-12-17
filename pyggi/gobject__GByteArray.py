@@ -149,6 +149,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -333,6 +334,7 @@ class GByteArray( object):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
+        libgobject.g_byte_array_sort_with_data.restype = None
         libgobject.g_byte_array_sort_with_data.argtypes = [_GByteArray,GCompareDataFunc,gpointer]
         
         libgobject.g_byte_array_sort_with_data( self._object,compare_func,user_data )
@@ -341,12 +343,14 @@ class GByteArray( object):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
+        libgobject.g_byte_array_sort.restype = None
         libgobject.g_byte_array_sort.argtypes = [_GByteArray,GCompareFunc]
         
         libgobject.g_byte_array_sort( self._object,compare_func )
 
     def unref(  self, ):
 
+        libgobject.g_byte_array_unref.restype = None
         libgobject.g_byte_array_unref.argtypes = [_GByteArray]
         
         libgobject.g_byte_array_unref( self._object )

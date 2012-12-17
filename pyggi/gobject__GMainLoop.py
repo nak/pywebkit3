@@ -154,6 +154,7 @@ __PangoFontFamily = POINTER(c_int)
 __JSContextGroup = POINTER(c_int)
 __GPollFD = POINTER(c_int)
 __cairo_region_t = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 __PangoFontDescription = POINTER(c_int)
@@ -333,6 +334,7 @@ class GMainLoop( gobject__GObject.GObject):
 
     def quit(  self, ):
 
+        libgobject.g_main_loop_quit.restype = None
         libgobject.g_main_loop_quit.argtypes = [_GMainLoop]
         
         libgobject.g_main_loop_quit( self._object )
@@ -346,12 +348,14 @@ class GMainLoop( gobject__GObject.GObject):
 
     def unref(  self, ):
 
+        libgobject.g_main_loop_unref.restype = None
         libgobject.g_main_loop_unref.argtypes = [_GMainLoop]
         
         libgobject.g_main_loop_unref( self._object )
 
     def run(  self, ):
 
+        libgobject.g_main_loop_run.restype = None
         libgobject.g_main_loop_run.argtypes = [_GMainLoop]
         
         libgobject.g_main_loop_run( self._object )
@@ -362,7 +366,7 @@ from .gobject import GMainContext
 def idle_add( func , *args, **kargs):
     cfunc = c_void_p()
     def C_Callable( param ):
-        retval = func( *args ,**kargs)
+        retval = func( *args, **kargs )
         if not retval:
             cfuncs.remove(cfunc)
             retval = 0
@@ -370,6 +374,7 @@ def idle_add( func , *args, **kargs):
     cfunc = GSourceFunc(C_Callable)
     cfuncs.append(cfunc)
     GMainContext.g_idle_add(cfunc, cfunc )
+    
 
 def set_interval( time_interval, func, *args ):
     import time
@@ -385,6 +390,6 @@ def set_interval( time_interval, func, *args ):
         if tosleep > 0.01:
             time.sleep(tosleep)
         index += 1
-                                 
 
-    
+
+
