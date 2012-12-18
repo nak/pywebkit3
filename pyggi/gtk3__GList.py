@@ -124,66 +124,156 @@ GdkModifierType = c_int
 GdkWMDecoration = c_int
 GdkWMFunction = c_int
 
-libgtk3.g_list_copy.restype = _GList
-libgtk3.g_list_copy.argtypes = [_GList]
-libgtk3.g_list_remove_all.restype = _GList
-libgtk3.g_list_remove_all.argtypes = [_GList,gconstpointer]
-libgtk3.g_list_sort_with_data.restype = _GList
-libgtk3.g_list_sort_with_data.argtypes = [_GList,GCompareDataFunc,gpointer]
-libgtk3.g_list_index.restype = gint
-libgtk3.g_list_index.argtypes = [_GList,gconstpointer]
-libgtk3.g_list_nth_prev.restype = _GList
-libgtk3.g_list_nth_prev.argtypes = [_GList,guint]
-libgtk3.g_list_length.restype = guint
-libgtk3.g_list_length.argtypes = [_GList]
-libgtk3.g_list_insert.restype = _GList
-libgtk3.g_list_insert.argtypes = [_GList,gpointer,gint]
-libgtk3.g_list_prepend.restype = _GList
-libgtk3.g_list_prepend.argtypes = [_GList,gpointer]
-libgtk3.g_list_reverse.restype = _GList
-libgtk3.g_list_reverse.argtypes = [_GList]
-libgtk3.g_list_find.restype = _GList
-libgtk3.g_list_find.argtypes = [_GList,gconstpointer]
-libgtk3.g_list_remove.restype = _GList
-libgtk3.g_list_remove.argtypes = [_GList,gconstpointer]
-libgtk3.g_list_delete_link.restype = _GList
-libgtk3.g_list_delete_link.argtypes = [_GList,_GList]
-libgtk3.g_list_append.restype = _GList
-libgtk3.g_list_append.argtypes = [_GList,gpointer]
-libgtk3.g_list_free.restype = None
-libgtk3.g_list_free.argtypes = [_GList]
-libgtk3.g_list_remove_link.restype = _GList
-libgtk3.g_list_remove_link.argtypes = [_GList,_GList]
-libgtk3.g_list_nth_data.restype = gpointer
-libgtk3.g_list_nth_data.argtypes = [_GList,guint]
-libgtk3.g_list_nth.restype = _GList
-libgtk3.g_list_nth.argtypes = [_GList,guint]
-libgtk3.g_list_insert_sorted.restype = _GList
-libgtk3.g_list_insert_sorted.argtypes = [_GList,gpointer,GCompareFunc]
-libgtk3.g_list_foreach.restype = None
-libgtk3.g_list_foreach.argtypes = [_GList,GFunc,gpointer]
-libgtk3.g_list_concat.restype = _GList
-libgtk3.g_list_concat.argtypes = [_GList,_GList]
-libgtk3.g_list_free_1.restype = None
-libgtk3.g_list_free_1.argtypes = [_GList]
-libgtk3.g_list_position.restype = gint
-libgtk3.g_list_position.argtypes = [_GList,_GList]
-libgtk3.g_list_find_custom.restype = _GList
-libgtk3.g_list_find_custom.argtypes = [_GList,gconstpointer,GCompareFunc]
-libgtk3.g_list_last.restype = _GList
-libgtk3.g_list_last.argtypes = [_GList]
-libgtk3.g_list_first.restype = _GList
-libgtk3.g_list_first.argtypes = [_GList]
-libgtk3.g_list_free_full.restype = None
-libgtk3.g_list_free_full.argtypes = [_GList,GDestroyNotify]
-libgtk3.g_list_insert_sorted_with_data.restype = _GList
-libgtk3.g_list_insert_sorted_with_data.argtypes = [_GList,gpointer,GCompareDataFunc,gpointer]
-libgtk3.g_list_insert_before.restype = _GList
-libgtk3.g_list_insert_before.argtypes = [_GList,_GList,gpointer]
-libgtk3.g_list_sort.restype = _GList
-libgtk3.g_list_sort.argtypes = [_GList,GCompareFunc]
-libgtk3.g_list_alloc.restype = _GList
-libgtk3.g_list_alloc.argtypes = []
+try:
+    libgtk3.g_list_copy.restype = _GList
+    libgtk3.g_list_copy.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_remove_all.restype = _GList
+    libgtk3.g_list_remove_all.argtypes = [_GList,gconstpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_sort_with_data.restype = _GList
+    libgtk3.g_list_sort_with_data.argtypes = [_GList,GCompareDataFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_index.restype = gint
+    libgtk3.g_list_index.argtypes = [_GList,gconstpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_nth_prev.restype = _GList
+    libgtk3.g_list_nth_prev.argtypes = [_GList,guint]
+except:
+   pass
+try:
+    libgtk3.g_list_length.restype = guint
+    libgtk3.g_list_length.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_insert.restype = _GList
+    libgtk3.g_list_insert.argtypes = [_GList,gpointer,gint]
+except:
+   pass
+try:
+    libgtk3.g_list_prepend.restype = _GList
+    libgtk3.g_list_prepend.argtypes = [_GList,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_reverse.restype = _GList
+    libgtk3.g_list_reverse.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_find.restype = _GList
+    libgtk3.g_list_find.argtypes = [_GList,gconstpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_remove.restype = _GList
+    libgtk3.g_list_remove.argtypes = [_GList,gconstpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_delete_link.restype = _GList
+    libgtk3.g_list_delete_link.argtypes = [_GList,_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_append.restype = _GList
+    libgtk3.g_list_append.argtypes = [_GList,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_free.restype = None
+    libgtk3.g_list_free.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_remove_link.restype = _GList
+    libgtk3.g_list_remove_link.argtypes = [_GList,_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_nth_data.restype = gpointer
+    libgtk3.g_list_nth_data.argtypes = [_GList,guint]
+except:
+   pass
+try:
+    libgtk3.g_list_nth.restype = _GList
+    libgtk3.g_list_nth.argtypes = [_GList,guint]
+except:
+   pass
+try:
+    libgtk3.g_list_insert_sorted.restype = _GList
+    libgtk3.g_list_insert_sorted.argtypes = [_GList,gpointer,GCompareFunc]
+except:
+   pass
+try:
+    libgtk3.g_list_foreach.restype = None
+    libgtk3.g_list_foreach.argtypes = [_GList,GFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_concat.restype = _GList
+    libgtk3.g_list_concat.argtypes = [_GList,_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_free_1.restype = None
+    libgtk3.g_list_free_1.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_position.restype = gint
+    libgtk3.g_list_position.argtypes = [_GList,_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_find_custom.restype = _GList
+    libgtk3.g_list_find_custom.argtypes = [_GList,gconstpointer,GCompareFunc]
+except:
+   pass
+try:
+    libgtk3.g_list_last.restype = _GList
+    libgtk3.g_list_last.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_first.restype = _GList
+    libgtk3.g_list_first.argtypes = [_GList]
+except:
+   pass
+try:
+    libgtk3.g_list_free_full.restype = None
+    libgtk3.g_list_free_full.argtypes = [_GList,GDestroyNotify]
+except:
+   pass
+try:
+    libgtk3.g_list_insert_sorted_with_data.restype = _GList
+    libgtk3.g_list_insert_sorted_with_data.argtypes = [_GList,gpointer,GCompareDataFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_insert_before.restype = _GList
+    libgtk3.g_list_insert_before.argtypes = [_GList,_GList,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_list_sort.restype = _GList
+    libgtk3.g_list_sort.argtypes = [_GList,GCompareFunc]
+except:
+   pass
+try:
+    libgtk3.g_list_alloc.restype = _GList
+    libgtk3.g_list_alloc.argtypes = []
+except:
+   pass
 class GList( object):
     """Class GList Constructors"""
     def __init__(self, obj = None):

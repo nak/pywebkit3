@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -85,17 +86,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -129,6 +133,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -250,22 +255,46 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
-libpango.pango_coverage_unref.restype = None
-libpango.pango_coverage_unref.argtypes = [_PangoCoverage]
-libpango.pango_coverage_copy.restype = _PangoCoverage
-libpango.pango_coverage_copy.argtypes = [_PangoCoverage]
-libpango.pango_coverage_set.restype = None
-libpango.pango_coverage_set.argtypes = [_PangoCoverage,int,PangoCoverageLevel]
-libpango.pango_coverage_ref.restype = _PangoCoverage
-libpango.pango_coverage_ref.argtypes = [_PangoCoverage]
-libpango.pango_coverage_get.restype = PangoCoverageLevel
-libpango.pango_coverage_get.argtypes = [_PangoCoverage,int]
-libpango.pango_coverage_max.restype = None
-libpango.pango_coverage_max.argtypes = [_PangoCoverage,_PangoCoverage]
-libpango.pango_coverage_to_bytes.restype = None
-libpango.pango_coverage_to_bytes.argtypes = [_PangoCoverage,POINTER(guchar),POINTER(int)]
-libpango.pango_coverage_from_bytes.restype = _PangoCoverage
-libpango.pango_coverage_from_bytes.argtypes = [POINTER(guchar),int]
+try:
+    libpango.pango_coverage_unref.restype = None
+    libpango.pango_coverage_unref.argtypes = [_PangoCoverage]
+except:
+   pass
+try:
+    libpango.pango_coverage_copy.restype = _PangoCoverage
+    libpango.pango_coverage_copy.argtypes = [_PangoCoverage]
+except:
+   pass
+try:
+    libpango.pango_coverage_set.restype = None
+    libpango.pango_coverage_set.argtypes = [_PangoCoverage,int,PangoCoverageLevel]
+except:
+   pass
+try:
+    libpango.pango_coverage_ref.restype = _PangoCoverage
+    libpango.pango_coverage_ref.argtypes = [_PangoCoverage]
+except:
+   pass
+try:
+    libpango.pango_coverage_get.restype = PangoCoverageLevel
+    libpango.pango_coverage_get.argtypes = [_PangoCoverage,int]
+except:
+   pass
+try:
+    libpango.pango_coverage_max.restype = None
+    libpango.pango_coverage_max.argtypes = [_PangoCoverage,_PangoCoverage]
+except:
+   pass
+try:
+    libpango.pango_coverage_to_bytes.restype = None
+    libpango.pango_coverage_to_bytes.argtypes = [_PangoCoverage,POINTER(guchar),POINTER(int)]
+except:
+   pass
+try:
+    libpango.pango_coverage_from_bytes.restype = _PangoCoverage
+    libpango.pango_coverage_from_bytes.argtypes = [POINTER(guchar),int]
+except:
+   pass
 import gobject__GObject
 class PangoCoverage( gobject__GObject.GObject):
     """Class PangoCoverage Constructors"""

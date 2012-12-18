@@ -57,10 +57,16 @@ _WebKitGeolocationPolicyDecision = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 """Enumerations"""
 
-libwebkit3.webkit_geolocation_policy_deny.restype = None
-libwebkit3.webkit_geolocation_policy_deny.argtypes = [_WebKitGeolocationPolicyDecision]
-libwebkit3.webkit_geolocation_policy_allow.restype = None
-libwebkit3.webkit_geolocation_policy_allow.argtypes = [_WebKitGeolocationPolicyDecision]
+try:
+    libwebkit3.webkit_geolocation_policy_deny.restype = None
+    libwebkit3.webkit_geolocation_policy_deny.argtypes = [_WebKitGeolocationPolicyDecision]
+except:
+   pass
+try:
+    libwebkit3.webkit_geolocation_policy_allow.restype = None
+    libwebkit3.webkit_geolocation_policy_allow.argtypes = [_WebKitGeolocationPolicyDecision]
+except:
+   pass
 import gobject__GObject
 class WebKitGeolocationPolicyDecision( gobject__GObject.GObject):
     """Class WebKitGeolocationPolicyDecision Constructors"""

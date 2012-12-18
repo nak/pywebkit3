@@ -84,6 +84,7 @@ _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
@@ -126,6 +127,7 @@ _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -216,50 +218,121 @@ PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 WebKitLoadStatus = c_int
 
-libwebkit3.webkit_web_frame_load_request.restype = None
-libwebkit3.webkit_web_frame_load_request.argtypes = [_WebKitWebFrame,_WebKitNetworkRequest]
-libwebkit3.webkit_web_frame_load_alternate_string.restype = None
-libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p]
-libwebkit3.webkit_web_frame_find_frame.restype = _WebKitWebFrame
-libwebkit3.webkit_web_frame_find_frame.argtypes = [_WebKitWebFrame,c_char_p]
-libwebkit3.webkit_web_frame_get_uri.restype = c_char_p
-libwebkit3.webkit_web_frame_get_uri.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_data_source.restype = _WebKitWebDataSource
-libwebkit3.webkit_web_frame_get_data_source.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_stop_loading.restype = None
-libwebkit3.webkit_web_frame_stop_loading.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_web_view.restype = _WebKitWebView
-libwebkit3.webkit_web_frame_get_web_view.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.restype = GtkPolicyType
-libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_security_origin.restype = _WebKitSecurityOrigin
-libwebkit3.webkit_web_frame_get_security_origin.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_parent.restype = _WebKitWebFrame
-libwebkit3.webkit_web_frame_get_parent.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_network_response.restype = _WebKitNetworkResponse
-libwebkit3.webkit_web_frame_get_network_response.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_print.restype = None
-libwebkit3.webkit_web_frame_print.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_provisional_data_source.restype = _WebKitWebDataSource
-libwebkit3.webkit_web_frame_get_provisional_data_source.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_name.restype = c_char_p
-libwebkit3.webkit_web_frame_get_name.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_load_string.restype = None
-libwebkit3.webkit_web_frame_load_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p,c_char_p]
-libwebkit3.webkit_web_frame_reload.restype = None
-libwebkit3.webkit_web_frame_reload.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_global_context.restype = _JSGlobalContext
-libwebkit3.webkit_web_frame_get_global_context.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.restype = GtkPolicyType
-libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_print_full.restype = GtkPrintOperationResult
-libwebkit3.webkit_web_frame_print_full.argtypes = [_WebKitWebFrame,_GtkPrintOperation,GtkPrintOperationAction,_GError]
-libwebkit3.webkit_web_frame_get_load_status.restype = WebKitLoadStatus
-libwebkit3.webkit_web_frame_get_load_status.argtypes = [_WebKitWebFrame]
-libwebkit3.webkit_web_frame_load_uri.restype = None
-libwebkit3.webkit_web_frame_load_uri.argtypes = [_WebKitWebFrame,c_char_p]
-libwebkit3.webkit_web_frame_get_title.restype = c_char_p
-libwebkit3.webkit_web_frame_get_title.argtypes = [_WebKitWebFrame]
+try:
+    libwebkit3.webkit_web_frame_load_request.restype = None
+    libwebkit3.webkit_web_frame_load_request.argtypes = [_WebKitWebFrame,_WebKitNetworkRequest]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_load_alternate_string.restype = None
+    libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_find_frame.restype = _WebKitWebFrame
+    libwebkit3.webkit_web_frame_find_frame.argtypes = [_WebKitWebFrame,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_uri.restype = c_char_p
+    libwebkit3.webkit_web_frame_get_uri.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_data_source.restype = _WebKitWebDataSource
+    libwebkit3.webkit_web_frame_get_data_source.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_stop_loading.restype = None
+    libwebkit3.webkit_web_frame_stop_loading.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_web_view.restype = _WebKitWebView
+    libwebkit3.webkit_web_frame_get_web_view.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.restype = GtkPolicyType
+    libwebkit3.webkit_web_frame_get_horizontal_scrollbar_policy.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_security_origin.restype = _WebKitSecurityOrigin
+    libwebkit3.webkit_web_frame_get_security_origin.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_parent.restype = _WebKitWebFrame
+    libwebkit3.webkit_web_frame_get_parent.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_network_response.restype = _WebKitNetworkResponse
+    libwebkit3.webkit_web_frame_get_network_response.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_print.restype = None
+    libwebkit3.webkit_web_frame_print.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_provisional_data_source.restype = _WebKitWebDataSource
+    libwebkit3.webkit_web_frame_get_provisional_data_source.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_name.restype = c_char_p
+    libwebkit3.webkit_web_frame_get_name.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_load_string.restype = None
+    libwebkit3.webkit_web_frame_load_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_dom_document.restype = _WebKitDOMDocument
+    libwebkit3.webkit_web_frame_get_dom_document.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_reload.restype = None
+    libwebkit3.webkit_web_frame_reload.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_global_context.restype = _JSGlobalContext
+    libwebkit3.webkit_web_frame_get_global_context.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.restype = GtkPolicyType
+    libwebkit3.webkit_web_frame_get_vertical_scrollbar_policy.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_print_full.restype = GtkPrintOperationResult
+    libwebkit3.webkit_web_frame_print_full.argtypes = [_WebKitWebFrame,_GtkPrintOperation,GtkPrintOperationAction,_GError]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_load_status.restype = WebKitLoadStatus
+    libwebkit3.webkit_web_frame_get_load_status.argtypes = [_WebKitWebFrame]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_load_uri.restype = None
+    libwebkit3.webkit_web_frame_load_uri.argtypes = [_WebKitWebFrame,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_frame_get_title.restype = c_char_p
+    libwebkit3.webkit_web_frame_get_title.argtypes = [_WebKitWebFrame]
+except:
+   pass
 import gobject__GObject
 class WebKitWebFrame( gobject__GObject.GObject):
     """Class WebKitWebFrame Constructors"""

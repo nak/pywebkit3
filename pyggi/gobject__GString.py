@@ -68,9 +68,11 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _GBytes = POINTER(c_int)
@@ -87,18 +89,22 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _GString = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSource = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
@@ -116,6 +122,7 @@ _WebKitWebInspector = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
@@ -124,6 +131,7 @@ _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
 _GCond = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -134,13 +142,16 @@ _GtkWidget = POINTER(c_int)
 _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
+_GFile = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
@@ -150,11 +161,13 @@ _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
 _GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -170,6 +183,7 @@ _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
 _GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -180,6 +194,7 @@ _GdkRGBA = POINTER(c_int)
 _GTimeVal = POINTER(c_int)
 _GSourceFuncs = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -192,10 +207,12 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -206,12 +223,14 @@ _PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSourceCallbackFuncs = POINTER(c_int)
 _PangoFontFace = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
@@ -273,60 +292,146 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libgobject.g_string_append_c.restype = _GString
-libgobject.g_string_append_c.argtypes = [_GString,gchar]
-libgobject.g_string_prepend_c.restype = _GString
-libgobject.g_string_prepend_c.argtypes = [_GString,gchar]
-libgobject.g_string_equal.restype = gboolean
-libgobject.g_string_equal.argtypes = [_GString,_GString]
-libgobject.g_string_insert.restype = _GString
-libgobject.g_string_insert.argtypes = [_GString,gssize,c_char_p]
-libgobject.g_string_set_size.restype = _GString
-libgobject.g_string_set_size.argtypes = [_GString,gsize]
-libgobject.g_string_append_printf.restype = None
-libgobject.g_string_append_printf.argtypes = [_GString,c_char_p,]
-libgobject.g_string_append_uri_escaped.restype = _GString
-libgobject.g_string_append_uri_escaped.argtypes = [_GString,c_char_p,c_char_p,gboolean]
-libgobject.g_string_free.restype = c_char_p
-libgobject.g_string_free.argtypes = [_GString,gboolean]
-libgobject.g_string_up.restype = _GString
-libgobject.g_string_up.argtypes = [_GString]
-libgobject.g_string_prepend_len.restype = _GString
-libgobject.g_string_prepend_len.argtypes = [_GString,c_char_p,gssize]
-libgobject.g_string_overwrite_len.restype = _GString
-libgobject.g_string_overwrite_len.argtypes = [_GString,gsize,c_char_p,gssize]
-libgobject.g_string_assign.restype = _GString
-libgobject.g_string_assign.argtypes = [_GString,c_char_p]
-libgobject.g_string_erase.restype = _GString
-libgobject.g_string_erase.argtypes = [_GString,gssize,gssize]
-libgobject.g_string_down.restype = _GString
-libgobject.g_string_down.argtypes = [_GString]
-libgobject.g_string_append_len.restype = _GString
-libgobject.g_string_append_len.argtypes = [_GString,c_char_p,gssize]
-libgobject.g_string_printf.restype = None
-libgobject.g_string_printf.argtypes = [_GString,c_char_p,]
-libgobject.g_string_truncate.restype = _GString
-libgobject.g_string_truncate.argtypes = [_GString,gsize]
-libgobject.g_string_append.restype = _GString
-libgobject.g_string_append.argtypes = [_GString,c_char_p]
-libgobject.g_string_prepend.restype = _GString
-libgobject.g_string_prepend.argtypes = [_GString,c_char_p]
-libgobject.g_string_append_unichar.restype = _GString
-libgobject.g_string_append_unichar.argtypes = [_GString,gunichar]
-libgobject.g_string_prepend_unichar.restype = _GString
-libgobject.g_string_prepend_unichar.argtypes = [_GString,gunichar]
-libgobject.g_string_insert_len.restype = _GString
-libgobject.g_string_insert_len.argtypes = [_GString,gssize,c_char_p,gssize]
-libgobject.g_string_overwrite.restype = _GString
-libgobject.g_string_overwrite.argtypes = [_GString,gsize,c_char_p]
-libgobject.g_string_insert_c.restype = _GString
-libgobject.g_string_insert_c.argtypes = [_GString,gssize,gchar]
-libgobject.g_string_hash.restype = guint
-libgobject.g_string_hash.argtypes = [_GString]
-libgobject.g_string_insert_unichar.restype = _GString
-libgobject.g_string_insert_unichar.argtypes = [_GString,gssize,gunichar]
-libgobject.g_string_new_len.restype = _GString
-libgobject.g_string_new_len.argtypes = [c_char_p,gssize]
+try:
+    libgobject.g_string_append_c.restype = _GString
+    libgobject.g_string_append_c.argtypes = [_GString,gchar]
+except:
+   pass
+try:
+    libgobject.g_string_prepend_c.restype = _GString
+    libgobject.g_string_prepend_c.argtypes = [_GString,gchar]
+except:
+   pass
+try:
+    libgobject.g_string_equal.restype = gboolean
+    libgobject.g_string_equal.argtypes = [_GString,_GString]
+except:
+   pass
+try:
+    libgobject.g_string_insert.restype = _GString
+    libgobject.g_string_insert.argtypes = [_GString,gssize,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_string_set_size.restype = _GString
+    libgobject.g_string_set_size.argtypes = [_GString,gsize]
+except:
+   pass
+try:
+    libgobject.g_string_append_printf.restype = None
+    libgobject.g_string_append_printf.argtypes = [_GString,c_char_p,]
+except:
+   pass
+try:
+    libgobject.g_string_free_to_bytes.restype = _GBytes
+    libgobject.g_string_free_to_bytes.argtypes = [_GString]
+except:
+   pass
+try:
+    libgobject.g_string_append_uri_escaped.restype = _GString
+    libgobject.g_string_append_uri_escaped.argtypes = [_GString,c_char_p,c_char_p,gboolean]
+except:
+   pass
+try:
+    libgobject.g_string_free.restype = c_char_p
+    libgobject.g_string_free.argtypes = [_GString,gboolean]
+except:
+   pass
+try:
+    libgobject.g_string_up.restype = _GString
+    libgobject.g_string_up.argtypes = [_GString]
+except:
+   pass
+try:
+    libgobject.g_string_prepend_len.restype = _GString
+    libgobject.g_string_prepend_len.argtypes = [_GString,c_char_p,gssize]
+except:
+   pass
+try:
+    libgobject.g_string_overwrite_len.restype = _GString
+    libgobject.g_string_overwrite_len.argtypes = [_GString,gsize,c_char_p,gssize]
+except:
+   pass
+try:
+    libgobject.g_string_assign.restype = _GString
+    libgobject.g_string_assign.argtypes = [_GString,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_string_erase.restype = _GString
+    libgobject.g_string_erase.argtypes = [_GString,gssize,gssize]
+except:
+   pass
+try:
+    libgobject.g_string_down.restype = _GString
+    libgobject.g_string_down.argtypes = [_GString]
+except:
+   pass
+try:
+    libgobject.g_string_append_len.restype = _GString
+    libgobject.g_string_append_len.argtypes = [_GString,c_char_p,gssize]
+except:
+   pass
+try:
+    libgobject.g_string_printf.restype = None
+    libgobject.g_string_printf.argtypes = [_GString,c_char_p,]
+except:
+   pass
+try:
+    libgobject.g_string_truncate.restype = _GString
+    libgobject.g_string_truncate.argtypes = [_GString,gsize]
+except:
+   pass
+try:
+    libgobject.g_string_append.restype = _GString
+    libgobject.g_string_append.argtypes = [_GString,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_string_prepend.restype = _GString
+    libgobject.g_string_prepend.argtypes = [_GString,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_string_append_unichar.restype = _GString
+    libgobject.g_string_append_unichar.argtypes = [_GString,gunichar]
+except:
+   pass
+try:
+    libgobject.g_string_prepend_unichar.restype = _GString
+    libgobject.g_string_prepend_unichar.argtypes = [_GString,gunichar]
+except:
+   pass
+try:
+    libgobject.g_string_insert_len.restype = _GString
+    libgobject.g_string_insert_len.argtypes = [_GString,gssize,c_char_p,gssize]
+except:
+   pass
+try:
+    libgobject.g_string_overwrite.restype = _GString
+    libgobject.g_string_overwrite.argtypes = [_GString,gsize,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_string_insert_c.restype = _GString
+    libgobject.g_string_insert_c.argtypes = [_GString,gssize,gchar]
+except:
+   pass
+try:
+    libgobject.g_string_hash.restype = guint
+    libgobject.g_string_hash.argtypes = [_GString]
+except:
+   pass
+try:
+    libgobject.g_string_insert_unichar.restype = _GString
+    libgobject.g_string_insert_unichar.argtypes = [_GString,gssize,gunichar]
+except:
+   pass
+try:
+    libgobject.g_string_new_len.restype = _GString
+    libgobject.g_string_new_len.argtypes = [c_char_p,gssize]
+except:
+   pass
 class GString( object):
     """Class GString Constructors"""
     def __init__( self, dfl_size,  obj = None):

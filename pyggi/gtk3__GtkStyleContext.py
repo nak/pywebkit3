@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -84,17 +85,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -128,6 +132,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -245,98 +250,236 @@ GApplicationFlags = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 
-libgtk3.gtk_style_context_remove_provider.restype = None
-libgtk3.gtk_style_context_remove_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider]
-libgtk3.gtk_style_context_get_junction_sides.restype = GtkJunctionSides
-libgtk3.gtk_style_context_get_junction_sides.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_has_class.restype = gboolean
-libgtk3.gtk_style_context_has_class.argtypes = [_GtkStyleContext,c_char_p]
-libgtk3.gtk_style_context_add_class.restype = None
-libgtk3.gtk_style_context_add_class.argtypes = [_GtkStyleContext,c_char_p]
-libgtk3.gtk_style_context_add_region.restype = None
-libgtk3.gtk_style_context_add_region.argtypes = [_GtkStyleContext,c_char_p,GtkRegionFlags]
-libgtk3.gtk_style_context_push_animatable_region.restype = None
-libgtk3.gtk_style_context_push_animatable_region.argtypes = [_GtkStyleContext,gpointer]
-libgtk3.gtk_style_context_set_junction_sides.restype = None
-libgtk3.gtk_style_context_set_junction_sides.argtypes = [_GtkStyleContext,GtkJunctionSides]
-libgtk3.gtk_style_context_scroll_animations.restype = None
-libgtk3.gtk_style_context_scroll_animations.argtypes = [_GtkStyleContext,_GdkWindow,gint,gint]
-libgtk3.gtk_style_context_get_state.restype = GtkStateFlags
-libgtk3.gtk_style_context_get_state.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_set_screen.restype = None
-libgtk3.gtk_style_context_set_screen.argtypes = [_GtkStyleContext,_GdkScreen]
-libgtk3.gtk_style_context_get_style_property.restype = None
-libgtk3.gtk_style_context_get_style_property.argtypes = [_GtkStyleContext,c_char_p,_GValue]
-libgtk3.gtk_style_context_list_regions.restype = _GList
-libgtk3.gtk_style_context_list_regions.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_set_background.restype = None
-libgtk3.gtk_style_context_set_background.argtypes = [_GtkStyleContext,_GdkWindow]
-libgtk3.gtk_style_context_get_screen.restype = _GdkScreen
-libgtk3.gtk_style_context_get_screen.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_save.restype = None
-libgtk3.gtk_style_context_save.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_get_border_color.restype = None
-libgtk3.gtk_style_context_get_border_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
-libgtk3.gtk_style_context_get_margin.restype = None
-libgtk3.gtk_style_context_get_margin.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
-libgtk3.gtk_style_context_lookup_icon_set.restype = _GtkIconSet
-libgtk3.gtk_style_context_lookup_icon_set.argtypes = [_GtkStyleContext,c_char_p]
-libgtk3.gtk_style_context_get_direction.restype = GtkTextDirection
-libgtk3.gtk_style_context_get_direction.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_get_property.restype = None
-libgtk3.gtk_style_context_get_property.argtypes = [_GtkStyleContext,c_char_p,GtkStateFlags,_GValue]
-libgtk3.gtk_style_context_restore.restype = None
-libgtk3.gtk_style_context_restore.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_get_font.restype = _PangoFontDescription
-libgtk3.gtk_style_context_get_font.argtypes = [_GtkStyleContext,GtkStateFlags]
-libgtk3.gtk_style_context_get.restype = None
-libgtk3.gtk_style_context_get.argtypes = [_GtkStyleContext,GtkStateFlags,]
-libgtk3.gtk_style_context_list_classes.restype = _GList
-libgtk3.gtk_style_context_list_classes.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_add_provider.restype = None
-libgtk3.gtk_style_context_add_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider,guint]
-libgtk3.gtk_style_context_state_is_running.restype = gboolean
-libgtk3.gtk_style_context_state_is_running.argtypes = [_GtkStyleContext,GtkStateType,POINTER(gdouble)]
-libgtk3.gtk_style_context_set_path.restype = None
-libgtk3.gtk_style_context_set_path.argtypes = [_GtkStyleContext,_GtkWidgetPath]
-libgtk3.gtk_style_context_lookup_color.restype = gboolean
-libgtk3.gtk_style_context_lookup_color.argtypes = [_GtkStyleContext,c_char_p,_GdkRGBA]
-libgtk3.gtk_style_context_get_border.restype = None
-libgtk3.gtk_style_context_get_border.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
-libgtk3.gtk_style_context_remove_class.restype = None
-libgtk3.gtk_style_context_remove_class.argtypes = [_GtkStyleContext,c_char_p]
-libgtk3.gtk_style_context_remove_region.restype = None
-libgtk3.gtk_style_context_remove_region.argtypes = [_GtkStyleContext,c_char_p]
-libgtk3.gtk_style_context_set_state.restype = None
-libgtk3.gtk_style_context_set_state.argtypes = [_GtkStyleContext,GtkStateFlags]
-libgtk3.gtk_style_context_cancel_animations.restype = None
-libgtk3.gtk_style_context_cancel_animations.argtypes = [_GtkStyleContext,gpointer]
-libgtk3.gtk_style_context_pop_animatable_region.restype = None
-libgtk3.gtk_style_context_pop_animatable_region.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_invalidate.restype = None
-libgtk3.gtk_style_context_invalidate.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_get_color.restype = None
-libgtk3.gtk_style_context_get_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
-libgtk3.gtk_style_context_set_direction.restype = None
-libgtk3.gtk_style_context_set_direction.argtypes = [_GtkStyleContext,GtkTextDirection]
-libgtk3.gtk_style_context_reset_widgets.restype = None
-libgtk3.gtk_style_context_reset_widgets.argtypes = [_GtkStyleContext,_GdkScreen]
-libgtk3.gtk_style_context_get_background_color.restype = None
-libgtk3.gtk_style_context_get_background_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
-libgtk3.gtk_style_context_get_style.restype = None
-libgtk3.gtk_style_context_get_style.argtypes = [_GtkStyleContext,]
-libgtk3.gtk_style_context_has_region.restype = gboolean
-libgtk3.gtk_style_context_has_region.argtypes = [_GtkStyleContext,c_char_p,_GtkRegionFlags]
-libgtk3.gtk_style_context_get_path.restype = _GtkWidgetPath
-libgtk3.gtk_style_context_get_path.argtypes = [_GtkStyleContext]
-libgtk3.gtk_style_context_notify_state_change.restype = None
-libgtk3.gtk_style_context_notify_state_change.argtypes = [_GtkStyleContext,_GdkWindow,gpointer,GtkStateType,gboolean]
-libgtk3.gtk_style_context_add_provider_for_screen.restype = None
-libgtk3.gtk_style_context_add_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider,guint]
-libgtk3.gtk_style_context_remove_provider_for_screen.restype = None
-libgtk3.gtk_style_context_remove_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider]
-libgtk3.gtk_style_context_get_padding.restype = None
-libgtk3.gtk_style_context_get_padding.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
+try:
+    libgtk3.gtk_style_context_remove_provider.restype = None
+    libgtk3.gtk_style_context_remove_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_junction_sides.restype = GtkJunctionSides
+    libgtk3.gtk_style_context_get_junction_sides.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_has_class.restype = gboolean
+    libgtk3.gtk_style_context_has_class.argtypes = [_GtkStyleContext,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_add_class.restype = None
+    libgtk3.gtk_style_context_add_class.argtypes = [_GtkStyleContext,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_add_region.restype = None
+    libgtk3.gtk_style_context_add_region.argtypes = [_GtkStyleContext,c_char_p,GtkRegionFlags]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_push_animatable_region.restype = None
+    libgtk3.gtk_style_context_push_animatable_region.argtypes = [_GtkStyleContext,gpointer]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_set_junction_sides.restype = None
+    libgtk3.gtk_style_context_set_junction_sides.argtypes = [_GtkStyleContext,GtkJunctionSides]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_scroll_animations.restype = None
+    libgtk3.gtk_style_context_scroll_animations.argtypes = [_GtkStyleContext,_GdkWindow,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_state.restype = GtkStateFlags
+    libgtk3.gtk_style_context_get_state.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_set_screen.restype = None
+    libgtk3.gtk_style_context_set_screen.argtypes = [_GtkStyleContext,_GdkScreen]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_style_property.restype = None
+    libgtk3.gtk_style_context_get_style_property.argtypes = [_GtkStyleContext,c_char_p,_GValue]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_list_regions.restype = _GList
+    libgtk3.gtk_style_context_list_regions.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_set_background.restype = None
+    libgtk3.gtk_style_context_set_background.argtypes = [_GtkStyleContext,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_screen.restype = _GdkScreen
+    libgtk3.gtk_style_context_get_screen.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_save.restype = None
+    libgtk3.gtk_style_context_save.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_border_color.restype = None
+    libgtk3.gtk_style_context_get_border_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_margin.restype = None
+    libgtk3.gtk_style_context_get_margin.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_lookup_icon_set.restype = _GtkIconSet
+    libgtk3.gtk_style_context_lookup_icon_set.argtypes = [_GtkStyleContext,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_direction.restype = GtkTextDirection
+    libgtk3.gtk_style_context_get_direction.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_property.restype = None
+    libgtk3.gtk_style_context_get_property.argtypes = [_GtkStyleContext,c_char_p,GtkStateFlags,_GValue]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_restore.restype = None
+    libgtk3.gtk_style_context_restore.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_font.restype = _PangoFontDescription
+    libgtk3.gtk_style_context_get_font.argtypes = [_GtkStyleContext,GtkStateFlags]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get.restype = None
+    libgtk3.gtk_style_context_get.argtypes = [_GtkStyleContext,GtkStateFlags,]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_list_classes.restype = _GList
+    libgtk3.gtk_style_context_list_classes.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_add_provider.restype = None
+    libgtk3.gtk_style_context_add_provider.argtypes = [_GtkStyleContext,_GtkStyleProvider,guint]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_state_is_running.restype = gboolean
+    libgtk3.gtk_style_context_state_is_running.argtypes = [_GtkStyleContext,GtkStateType,POINTER(gdouble)]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_set_path.restype = None
+    libgtk3.gtk_style_context_set_path.argtypes = [_GtkStyleContext,_GtkWidgetPath]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_lookup_color.restype = gboolean
+    libgtk3.gtk_style_context_lookup_color.argtypes = [_GtkStyleContext,c_char_p,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_border.restype = None
+    libgtk3.gtk_style_context_get_border.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_remove_class.restype = None
+    libgtk3.gtk_style_context_remove_class.argtypes = [_GtkStyleContext,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_remove_region.restype = None
+    libgtk3.gtk_style_context_remove_region.argtypes = [_GtkStyleContext,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_set_state.restype = None
+    libgtk3.gtk_style_context_set_state.argtypes = [_GtkStyleContext,GtkStateFlags]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_cancel_animations.restype = None
+    libgtk3.gtk_style_context_cancel_animations.argtypes = [_GtkStyleContext,gpointer]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_pop_animatable_region.restype = None
+    libgtk3.gtk_style_context_pop_animatable_region.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_invalidate.restype = None
+    libgtk3.gtk_style_context_invalidate.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_color.restype = None
+    libgtk3.gtk_style_context_get_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_set_direction.restype = None
+    libgtk3.gtk_style_context_set_direction.argtypes = [_GtkStyleContext,GtkTextDirection]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_reset_widgets.restype = None
+    libgtk3.gtk_style_context_reset_widgets.argtypes = [_GtkStyleContext,_GdkScreen]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_background_color.restype = None
+    libgtk3.gtk_style_context_get_background_color.argtypes = [_GtkStyleContext,GtkStateFlags,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_style.restype = None
+    libgtk3.gtk_style_context_get_style.argtypes = [_GtkStyleContext,]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_has_region.restype = gboolean
+    libgtk3.gtk_style_context_has_region.argtypes = [_GtkStyleContext,c_char_p,_GtkRegionFlags]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_path.restype = _GtkWidgetPath
+    libgtk3.gtk_style_context_get_path.argtypes = [_GtkStyleContext]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_notify_state_change.restype = None
+    libgtk3.gtk_style_context_notify_state_change.argtypes = [_GtkStyleContext,_GdkWindow,gpointer,GtkStateType,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_add_provider_for_screen.restype = None
+    libgtk3.gtk_style_context_add_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider,guint]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_remove_provider_for_screen.restype = None
+    libgtk3.gtk_style_context_remove_provider_for_screen.argtypes = [_GtkStyleContext,_GdkScreen,_GtkStyleProvider]
+except:
+   pass
+try:
+    libgtk3.gtk_style_context_get_padding.restype = None
+    libgtk3.gtk_style_context_get_padding.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
+except:
+   pass
 import gobject__GObject
 class GtkStyleContext( gobject__GObject.GObject):
     """Class GtkStyleContext Constructors"""

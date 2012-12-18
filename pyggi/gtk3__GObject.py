@@ -191,104 +191,251 @@ PangoFontMask = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
 
-libgtk3.g_object_disconnect.restype = None
-libgtk3.g_object_disconnect.argtypes = [_GObject,c_char_p]
-libgtk3.g_object_set_qdata_full.restype = None
-libgtk3.g_object_set_qdata_full.argtypes = [_GObject,GQuark,gpointer,GDestroyNotify]
-libgtk3.g_object_weak_unref.restype = None
-libgtk3.g_object_weak_unref.argtypes = [_GObject,GWeakNotify,gpointer]
-libgtk3.g_object_steal_data.restype = gpointer
-libgtk3.g_object_steal_data.argtypes = [_GObject,c_char_p]
-libgtk3.g_object_run_dispose.restype = None
-libgtk3.g_object_run_dispose.argtypes = [_GObject]
-libgtk3.g_object_set_qdata.restype = None
-libgtk3.g_object_set_qdata.argtypes = [_GObject,GQuark,gpointer]
-libgtk3.g_clear_object.restype = None
-libgtk3.g_clear_object.argtypes = [_GObject]
-libgtk3.g_object_set_data.restype = None
-libgtk3.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
-libgtk3.g_object_ref_sink.restype = gpointer
-libgtk3.g_object_ref_sink.argtypes = [_GObject]
-libgtk3.g_object_connect.restype = gpointer
-libgtk3.g_object_connect.argtypes = [_GObject,c_char_p,]
-libgtk3.g_object_notify.restype = None
-libgtk3.g_object_notify.argtypes = [_GObject,c_char_p]
-libgtk3.g_object_class_install_properties.restype = None
-libgtk3.g_object_class_install_properties.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
-libgtk3.g_object_replace_data.restype = gboolean
-libgtk3.g_object_replace_data.argtypes = [_GObject,c_char_p,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
-libgtk3.g_object_interface_install_property.restype = None
-libgtk3.g_object_interface_install_property.argtypes = [_GObject,gpointer,_GParamSpec]
-libgtk3.g_object_get_qdata.restype = gpointer
-libgtk3.g_object_get_qdata.argtypes = [_GObject,GQuark]
-libgtk3.g_object_set_property.restype = None
-libgtk3.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
-libgtk3.g_object_set.restype = None
-libgtk3.g_object_set.argtypes = [_GObject,c_char_p,]
-libgtk3.g_object_ref.restype = gpointer
-libgtk3.g_object_ref.argtypes = [_GObject]
-libgtk3.g_object_steal_qdata.restype = gpointer
-libgtk3.g_object_steal_qdata.argtypes = [_GObject,GQuark]
-libgtk3.g_object_add_toggle_ref.restype = None
-libgtk3.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
-libgtk3.g_object_weak_ref.restype = None
-libgtk3.g_object_weak_ref.argtypes = [_GObject,GWeakNotify,gpointer]
-libgtk3.g_object_add_weak_pointer.restype = None
-libgtk3.g_object_add_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
-libgtk3.g_object_remove_weak_pointer.restype = None
-libgtk3.g_object_remove_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
-libgtk3.g_object_class_install_property.restype = None
-libgtk3.g_object_class_install_property.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
-libgtk3.g_object_freeze_notify.restype = None
-libgtk3.g_object_freeze_notify.argtypes = [_GObject]
-libgtk3.g_object_notify_by_pspec.restype = None
-libgtk3.g_object_notify_by_pspec.argtypes = [_GObject,_GParamSpec]
-libgtk3.g_object_remove_toggle_ref.restype = None
-libgtk3.g_object_remove_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
-libgtk3.g_object_thaw_notify.restype = None
-libgtk3.g_object_thaw_notify.argtypes = [_GObject]
-libgtk3.g_object_is_floating.restype = gboolean
-libgtk3.g_object_is_floating.argtypes = [_GObject]
-libgtk3.g_object_dup_qdata.restype = gpointer
-libgtk3.g_object_dup_qdata.argtypes = [_GObject,GQuark,GDuplicateFunc,gpointer]
-libgtk3.g_object_unref.restype = None
-libgtk3.g_object_unref.argtypes = [_GObject]
-libgtk3.g_object_get.restype = None
-libgtk3.g_object_get.argtypes = [_GObject,c_char_p,]
-libgtk3.g_weak_ref_set.restype = None
-libgtk3.g_weak_ref_set.argtypes = [_GObject,_GWeakRef,gpointer]
-libgtk3.g_object_dup_data.restype = gpointer
-libgtk3.g_object_dup_data.argtypes = [_GObject,c_char_p,GDuplicateFunc,gpointer]
-libgtk3.g_object_replace_qdata.restype = gboolean
-libgtk3.g_object_replace_qdata.argtypes = [_GObject,GQuark,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
-libgtk3.g_object_get_data.restype = gpointer
-libgtk3.g_object_get_data.argtypes = [_GObject,c_char_p]
-libgtk3.g_object_get_property.restype = None
-libgtk3.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
-libgtk3.g_object_watch_closure.restype = None
-libgtk3.g_object_watch_closure.argtypes = [_GObject,_GClosure]
-libgtk3.g_weak_ref_clear.restype = None
-libgtk3.g_weak_ref_clear.argtypes = [_GObject,_GWeakRef]
-libgtk3.g_object_set_data_full.restype = None
-libgtk3.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
-libgtk3.g_weak_ref_init.restype = None
-libgtk3.g_weak_ref_init.argtypes = [_GObject,_GWeakRef,gpointer]
-libgtk3.g_object_force_floating.restype = None
-libgtk3.g_object_force_floating.argtypes = [_GObject]
-libgtk3.g_object_class_override_property.restype = None
-libgtk3.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
-libgtk3.g_object_class_find_property.restype = _GParamSpec
-libgtk3.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
-libgtk3.g_object_interface_list_properties.restype = _GParamSpec
-libgtk3.g_object_interface_list_properties.argtypes = [gpointer,POINTER(guint)]
-libgtk3.g_object_newv.restype = gpointer
-libgtk3.g_object_newv.argtypes = [GType,guint,_GParameter]
-libgtk3.g_object_class_list_properties.restype = _GParamSpec
-libgtk3.g_object_class_list_properties.argtypes = [_GObjectClass,POINTER(guint)]
-libgtk3.g_object_interface_find_property.restype = _GParamSpec
-libgtk3.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
-libgtk3.g_weak_ref_get.restype = gpointer
-libgtk3.g_weak_ref_get.argtypes = [_GWeakRef]
+try:
+    libgtk3.g_object_disconnect.restype = None
+    libgtk3.g_object_disconnect.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_object_set_qdata_full.restype = None
+    libgtk3.g_object_set_qdata_full.argtypes = [_GObject,GQuark,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgtk3.g_object_weak_unref.restype = None
+    libgtk3.g_object_weak_unref.argtypes = [_GObject,GWeakNotify,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_steal_data.restype = gpointer
+    libgtk3.g_object_steal_data.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_object_run_dispose.restype = None
+    libgtk3.g_object_run_dispose.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_set_qdata.restype = None
+    libgtk3.g_object_set_qdata.argtypes = [_GObject,GQuark,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_clear_object.restype = None
+    libgtk3.g_clear_object.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_set_data.restype = None
+    libgtk3.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_ref_sink.restype = gpointer
+    libgtk3.g_object_ref_sink.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_connect.restype = gpointer
+    libgtk3.g_object_connect.argtypes = [_GObject,c_char_p,]
+except:
+   pass
+try:
+    libgtk3.g_object_notify.restype = None
+    libgtk3.g_object_notify.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_object_class_install_properties.restype = None
+    libgtk3.g_object_class_install_properties.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
+except:
+   pass
+try:
+    libgtk3.g_object_replace_data.restype = gboolean
+    libgtk3.g_object_replace_data.argtypes = [_GObject,c_char_p,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
+except:
+   pass
+try:
+    libgtk3.g_object_interface_install_property.restype = None
+    libgtk3.g_object_interface_install_property.argtypes = [_GObject,gpointer,_GParamSpec]
+except:
+   pass
+try:
+    libgtk3.g_object_get_qdata.restype = gpointer
+    libgtk3.g_object_get_qdata.argtypes = [_GObject,GQuark]
+except:
+   pass
+try:
+    libgtk3.g_object_set_property.restype = None
+    libgtk3.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
+except:
+   pass
+try:
+    libgtk3.g_object_set.restype = None
+    libgtk3.g_object_set.argtypes = [_GObject,c_char_p,]
+except:
+   pass
+try:
+    libgtk3.g_object_ref.restype = gpointer
+    libgtk3.g_object_ref.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_steal_qdata.restype = gpointer
+    libgtk3.g_object_steal_qdata.argtypes = [_GObject,GQuark]
+except:
+   pass
+try:
+    libgtk3.g_object_add_toggle_ref.restype = None
+    libgtk3.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_weak_ref.restype = None
+    libgtk3.g_object_weak_ref.argtypes = [_GObject,GWeakNotify,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_add_weak_pointer.restype = None
+    libgtk3.g_object_add_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
+except:
+   pass
+try:
+    libgtk3.g_object_remove_weak_pointer.restype = None
+    libgtk3.g_object_remove_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
+except:
+   pass
+try:
+    libgtk3.g_object_class_install_property.restype = None
+    libgtk3.g_object_class_install_property.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
+except:
+   pass
+try:
+    libgtk3.g_object_freeze_notify.restype = None
+    libgtk3.g_object_freeze_notify.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_notify_by_pspec.restype = None
+    libgtk3.g_object_notify_by_pspec.argtypes = [_GObject,_GParamSpec]
+except:
+   pass
+try:
+    libgtk3.g_object_remove_toggle_ref.restype = None
+    libgtk3.g_object_remove_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_thaw_notify.restype = None
+    libgtk3.g_object_thaw_notify.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_is_floating.restype = gboolean
+    libgtk3.g_object_is_floating.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_dup_qdata.restype = gpointer
+    libgtk3.g_object_dup_qdata.argtypes = [_GObject,GQuark,GDuplicateFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_unref.restype = None
+    libgtk3.g_object_unref.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_get.restype = None
+    libgtk3.g_object_get.argtypes = [_GObject,c_char_p,]
+except:
+   pass
+try:
+    libgtk3.g_weak_ref_set.restype = None
+    libgtk3.g_weak_ref_set.argtypes = [_GObject,_GWeakRef,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_dup_data.restype = gpointer
+    libgtk3.g_object_dup_data.argtypes = [_GObject,c_char_p,GDuplicateFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_replace_qdata.restype = gboolean
+    libgtk3.g_object_replace_qdata.argtypes = [_GObject,GQuark,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
+except:
+   pass
+try:
+    libgtk3.g_object_get_data.restype = gpointer
+    libgtk3.g_object_get_data.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_object_get_property.restype = None
+    libgtk3.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
+except:
+   pass
+try:
+    libgtk3.g_object_watch_closure.restype = None
+    libgtk3.g_object_watch_closure.argtypes = [_GObject,_GClosure]
+except:
+   pass
+try:
+    libgtk3.g_weak_ref_clear.restype = None
+    libgtk3.g_weak_ref_clear.argtypes = [_GObject,_GWeakRef]
+except:
+   pass
+try:
+    libgtk3.g_object_set_data_full.restype = None
+    libgtk3.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgtk3.g_weak_ref_init.restype = None
+    libgtk3.g_weak_ref_init.argtypes = [_GObject,_GWeakRef,gpointer]
+except:
+   pass
+try:
+    libgtk3.g_object_force_floating.restype = None
+    libgtk3.g_object_force_floating.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgtk3.g_object_class_override_property.restype = None
+    libgtk3.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_object_class_find_property.restype = _GParamSpec
+    libgtk3.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_object_interface_list_properties.restype = _GParamSpec
+    libgtk3.g_object_interface_list_properties.argtypes = [gpointer,POINTER(guint)]
+except:
+   pass
+try:
+    libgtk3.g_object_newv.restype = gpointer
+    libgtk3.g_object_newv.argtypes = [GType,guint,_GParameter]
+except:
+   pass
+try:
+    libgtk3.g_object_class_list_properties.restype = _GParamSpec
+    libgtk3.g_object_class_list_properties.argtypes = [_GObjectClass,POINTER(guint)]
+except:
+   pass
+try:
+    libgtk3.g_object_interface_find_property.restype = _GParamSpec
+    libgtk3.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
+except:
+   pass
+try:
+    libgtk3.g_weak_ref_get.restype = gpointer
+    libgtk3.g_weak_ref_get.argtypes = [_GWeakRef]
+except:
+   pass
 class GObject( object):
     """Class GObject Constructors"""
     def __init__( self, object_type, first_property_name,  obj=None, *args):

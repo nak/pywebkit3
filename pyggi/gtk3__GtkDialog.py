@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -84,17 +85,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -128,6 +132,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -245,36 +250,81 @@ GApplicationFlags = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 
-libgtk3.gtk_dialog_add_action_widget.restype = None
-libgtk3.gtk_dialog_add_action_widget.argtypes = [_GtkDialog,_GtkWidget,gint]
-libgtk3.gtk_dialog_set_alternative_button_order.restype = None
-libgtk3.gtk_dialog_set_alternative_button_order.argtypes = [_GtkDialog,gint,]
-libgtk3.gtk_dialog_set_response_sensitive.restype = None
-libgtk3.gtk_dialog_set_response_sensitive.argtypes = [_GtkDialog,gint,gboolean]
-libgtk3.gtk_dialog_add_button.restype = _GtkWidget
-libgtk3.gtk_dialog_add_button.argtypes = [_GtkDialog,c_char_p,gint]
-libgtk3.gtk_dialog_set_default_response.restype = None
-libgtk3.gtk_dialog_set_default_response.argtypes = [_GtkDialog,gint]
-libgtk3.gtk_dialog_run.restype = gint
-libgtk3.gtk_dialog_run.argtypes = [_GtkDialog]
-libgtk3.gtk_dialog_get_content_area.restype = _GtkWidget
-libgtk3.gtk_dialog_get_content_area.argtypes = [_GtkDialog]
-libgtk3.gtk_dialog_response.restype = None
-libgtk3.gtk_dialog_response.argtypes = [_GtkDialog,gint]
-libgtk3.gtk_dialog_get_response_for_widget.restype = gint
-libgtk3.gtk_dialog_get_response_for_widget.argtypes = [_GtkDialog,_GtkWidget]
-libgtk3.gtk_dialog_set_alternative_button_order_from_array.restype = None
-libgtk3.gtk_dialog_set_alternative_button_order_from_array.argtypes = [_GtkDialog,gint,POINTER(gint)]
-libgtk3.gtk_dialog_get_action_area.restype = _GtkWidget
-libgtk3.gtk_dialog_get_action_area.argtypes = [_GtkDialog]
-libgtk3.gtk_dialog_get_widget_for_response.restype = _GtkWidget
-libgtk3.gtk_dialog_get_widget_for_response.argtypes = [_GtkDialog,gint]
-libgtk3.gtk_dialog_add_buttons.restype = None
-libgtk3.gtk_dialog_add_buttons.argtypes = [_GtkDialog,c_char_p,]
-libgtk3.gtk_alternative_dialog_button_order.restype = gboolean
-libgtk3.gtk_alternative_dialog_button_order.argtypes = [_GdkScreen]
-libgtk3.gtk_dialog_new_with_buttons.restype = _GtkWidget
-libgtk3.gtk_dialog_new_with_buttons.argtypes = [c_char_p,_GtkWindow,GtkDialogFlags,c_char_p,]
+try:
+    libgtk3.gtk_dialog_add_action_widget.restype = None
+    libgtk3.gtk_dialog_add_action_widget.argtypes = [_GtkDialog,_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_set_alternative_button_order.restype = None
+    libgtk3.gtk_dialog_set_alternative_button_order.argtypes = [_GtkDialog,gint,]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_set_response_sensitive.restype = None
+    libgtk3.gtk_dialog_set_response_sensitive.argtypes = [_GtkDialog,gint,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_add_button.restype = _GtkWidget
+    libgtk3.gtk_dialog_add_button.argtypes = [_GtkDialog,c_char_p,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_set_default_response.restype = None
+    libgtk3.gtk_dialog_set_default_response.argtypes = [_GtkDialog,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_run.restype = gint
+    libgtk3.gtk_dialog_run.argtypes = [_GtkDialog]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_get_content_area.restype = _GtkWidget
+    libgtk3.gtk_dialog_get_content_area.argtypes = [_GtkDialog]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_response.restype = None
+    libgtk3.gtk_dialog_response.argtypes = [_GtkDialog,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_get_response_for_widget.restype = gint
+    libgtk3.gtk_dialog_get_response_for_widget.argtypes = [_GtkDialog,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_set_alternative_button_order_from_array.restype = None
+    libgtk3.gtk_dialog_set_alternative_button_order_from_array.argtypes = [_GtkDialog,gint,POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_get_action_area.restype = _GtkWidget
+    libgtk3.gtk_dialog_get_action_area.argtypes = [_GtkDialog]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_get_widget_for_response.restype = _GtkWidget
+    libgtk3.gtk_dialog_get_widget_for_response.argtypes = [_GtkDialog,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_add_buttons.restype = None
+    libgtk3.gtk_dialog_add_buttons.argtypes = [_GtkDialog,c_char_p,]
+except:
+   pass
+try:
+    libgtk3.gtk_alternative_dialog_button_order.restype = gboolean
+    libgtk3.gtk_alternative_dialog_button_order.argtypes = [_GdkScreen]
+except:
+   pass
+try:
+    libgtk3.gtk_dialog_new_with_buttons.restype = _GtkWidget
+    libgtk3.gtk_dialog_new_with_buttons.argtypes = [c_char_p,_GtkWindow,GtkDialogFlags,c_char_p,]
+except:
+   pass
 import gtk3__GtkBin
 class GtkDialog( gtk3__GtkBin.GtkBin):
     """Class GtkDialog Constructors"""

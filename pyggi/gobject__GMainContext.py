@@ -68,9 +68,11 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _GBytes = POINTER(c_int)
@@ -87,17 +89,21 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSource = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
@@ -115,6 +121,7 @@ _WebKitWebInspector = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
@@ -123,6 +130,7 @@ _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
 _GCond = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -133,13 +141,16 @@ _GtkWidget = POINTER(c_int)
 _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
+_GFile = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -148,11 +159,13 @@ _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
 _GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -167,6 +180,7 @@ _WebKitDOMDocument = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -177,6 +191,7 @@ _GdkRGBA = POINTER(c_int)
 _GTimeVal = POINTER(c_int)
 _GSourceFuncs = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -189,10 +204,12 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -203,11 +220,13 @@ _PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSourceCallbackFuncs = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
@@ -269,86 +288,206 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libgobject.g_main_context_find_source_by_funcs_user_data.restype = _GSource
-libgobject.g_main_context_find_source_by_funcs_user_data.argtypes = [_GMainContext,_GSourceFuncs,gpointer]
-libgobject.g_main_context_pending.restype = gboolean
-libgobject.g_main_context_pending.argtypes = [_GMainContext]
-libgobject.g_main_context_remove_poll.restype = None
-libgobject.g_main_context_remove_poll.argtypes = [_GMainContext,_GPollFD]
-libgobject.g_main_context_add_poll.restype = None
-libgobject.g_main_context_add_poll.argtypes = [_GMainContext,_GPollFD,gint]
-libgobject.g_main_context_query.restype = gint
-libgobject.g_main_context_query.argtypes = [_GMainContext,gint,POINTER(gint),_GPollFD,gint]
-libgobject.g_main_context_dispatch.restype = None
-libgobject.g_main_context_dispatch.argtypes = [_GMainContext]
-libgobject.g_main_context_push_thread_default.restype = None
-libgobject.g_main_context_push_thread_default.argtypes = [_GMainContext]
-libgobject.g_main_context_invoke.restype = None
-libgobject.g_main_context_invoke.argtypes = [_GMainContext,GSourceFunc,gpointer]
-libgobject.g_main_context_find_source_by_id.restype = _GSource
-libgobject.g_main_context_find_source_by_id.argtypes = [_GMainContext,guint]
-libgobject.g_main_context_check.restype = gint
-libgobject.g_main_context_check.argtypes = [_GMainContext,gint,_GPollFD,gint]
-libgobject.g_main_context_prepare.restype = gboolean
-libgobject.g_main_context_prepare.argtypes = [_GMainContext,POINTER(gint)]
-libgobject.g_main_context_get_poll_func.restype = GPollFunc
-libgobject.g_main_context_get_poll_func.argtypes = [_GMainContext]
-libgobject.g_main_context_pop_thread_default.restype = None
-libgobject.g_main_context_pop_thread_default.argtypes = [_GMainContext]
-libgobject.g_main_context_set_poll_func.restype = None
-libgobject.g_main_context_set_poll_func.argtypes = [_GMainContext,GPollFunc]
-libgobject.g_main_context_wakeup.restype = None
-libgobject.g_main_context_wakeup.argtypes = [_GMainContext]
-libgobject.g_main_context_ref.restype = _GMainContext
-libgobject.g_main_context_ref.argtypes = [_GMainContext]
-libgobject.g_main_context_wait.restype = gboolean
-libgobject.g_main_context_wait.argtypes = [_GMainContext,_GCond,_GMutex]
-libgobject.g_main_context_acquire.restype = gboolean
-libgobject.g_main_context_acquire.argtypes = [_GMainContext]
-libgobject.g_main_context_release.restype = None
-libgobject.g_main_context_release.argtypes = [_GMainContext]
-libgobject.g_main_context_unref.restype = None
-libgobject.g_main_context_unref.argtypes = [_GMainContext]
-libgobject.g_main_context_is_owner.restype = gboolean
-libgobject.g_main_context_is_owner.argtypes = [_GMainContext]
-libgobject.g_main_context_iteration.restype = gboolean
-libgobject.g_main_context_iteration.argtypes = [_GMainContext,gboolean]
-libgobject.g_main_context_invoke_full.restype = None
-libgobject.g_main_context_invoke_full.argtypes = [_GMainContext,gint,GSourceFunc,gpointer,GDestroyNotify]
-libgobject.g_main_context_find_source_by_user_data.restype = _GSource
-libgobject.g_main_context_find_source_by_user_data.argtypes = [_GMainContext,gpointer]
-libgobject.g_main_depth.restype = gint
-libgobject.g_main_depth.argtypes = []
-libgobject.g_idle_add.restype = guint
-libgobject.g_idle_add.argtypes = [GSourceFunc,gpointer]
-libgobject.g_timeout_add_seconds.restype = guint
-libgobject.g_timeout_add_seconds.argtypes = [guint,GSourceFunc,gpointer]
-libgobject.g_main_current_source.restype = _GSource
-libgobject.g_main_current_source.argtypes = []
-libgobject.g_idle_source_new.restype = _GSource
-libgobject.g_idle_source_new.argtypes = []
-libgobject.g_timeout_add_full.restype = guint
-libgobject.g_timeout_add_full.argtypes = [gint,guint,GSourceFunc,gpointer,GDestroyNotify]
-libgobject.g_main_context_default.restype = _GMainContext
-libgobject.g_main_context_default.argtypes = []
-libgobject.g_timeout_add.restype = guint
-libgobject.g_timeout_add.argtypes = [guint,GSourceFunc,gpointer]
-libgobject.g_idle_remove_by_data.restype = gboolean
-libgobject.g_idle_remove_by_data.argtypes = [gpointer]
-libgobject.g_child_watch_add_full.restype = guint
-libgobject.g_child_watch_add_full.argtypes = [gint,GPid,GChildWatchFunc,gpointer,GDestroyNotify]
-libgobject.g_timeout_source_new_seconds.restype = _GSource
-libgobject.g_timeout_source_new_seconds.argtypes = [guint]
-libgobject.g_timeout_add_seconds_full.restype = guint
-libgobject.g_timeout_add_seconds_full.argtypes = [gint,guint,GSourceFunc,gpointer,GDestroyNotify]
-libgobject.g_idle_add_full.restype = guint
-libgobject.g_idle_add_full.argtypes = [gint,GSourceFunc,gpointer,GDestroyNotify]
-libgobject.g_child_watch_add.restype = guint
-libgobject.g_child_watch_add.argtypes = [GPid,GChildWatchFunc,gpointer]
-libgobject.g_main_context_get_thread_default.restype = _GMainContext
-libgobject.g_main_context_get_thread_default.argtypes = []
-libgobject.g_main_context_ref_thread_default.restype = _GMainContext
-libgobject.g_main_context_ref_thread_default.argtypes = []
+try:
+    libgobject.g_main_context_find_source_by_funcs_user_data.restype = _GSource
+    libgobject.g_main_context_find_source_by_funcs_user_data.argtypes = [_GMainContext,_GSourceFuncs,gpointer]
+except:
+   pass
+try:
+    libgobject.g_main_context_pending.restype = gboolean
+    libgobject.g_main_context_pending.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_remove_poll.restype = None
+    libgobject.g_main_context_remove_poll.argtypes = [_GMainContext,_GPollFD]
+except:
+   pass
+try:
+    libgobject.g_main_context_add_poll.restype = None
+    libgobject.g_main_context_add_poll.argtypes = [_GMainContext,_GPollFD,gint]
+except:
+   pass
+try:
+    libgobject.g_main_context_query.restype = gint
+    libgobject.g_main_context_query.argtypes = [_GMainContext,gint,POINTER(gint),_GPollFD,gint]
+except:
+   pass
+try:
+    libgobject.g_main_context_dispatch.restype = None
+    libgobject.g_main_context_dispatch.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_push_thread_default.restype = None
+    libgobject.g_main_context_push_thread_default.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_invoke.restype = None
+    libgobject.g_main_context_invoke.argtypes = [_GMainContext,GSourceFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_main_context_find_source_by_id.restype = _GSource
+    libgobject.g_main_context_find_source_by_id.argtypes = [_GMainContext,guint]
+except:
+   pass
+try:
+    libgobject.g_main_context_check.restype = gint
+    libgobject.g_main_context_check.argtypes = [_GMainContext,gint,_GPollFD,gint]
+except:
+   pass
+try:
+    libgobject.g_main_context_prepare.restype = gboolean
+    libgobject.g_main_context_prepare.argtypes = [_GMainContext,POINTER(gint)]
+except:
+   pass
+try:
+    libgobject.g_main_context_get_poll_func.restype = GPollFunc
+    libgobject.g_main_context_get_poll_func.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_pop_thread_default.restype = None
+    libgobject.g_main_context_pop_thread_default.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_set_poll_func.restype = None
+    libgobject.g_main_context_set_poll_func.argtypes = [_GMainContext,GPollFunc]
+except:
+   pass
+try:
+    libgobject.g_main_context_wakeup.restype = None
+    libgobject.g_main_context_wakeup.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_ref.restype = _GMainContext
+    libgobject.g_main_context_ref.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_wait.restype = gboolean
+    libgobject.g_main_context_wait.argtypes = [_GMainContext,_GCond,_GMutex]
+except:
+   pass
+try:
+    libgobject.g_main_context_acquire.restype = gboolean
+    libgobject.g_main_context_acquire.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_release.restype = None
+    libgobject.g_main_context_release.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_unref.restype = None
+    libgobject.g_main_context_unref.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_is_owner.restype = gboolean
+    libgobject.g_main_context_is_owner.argtypes = [_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_main_context_iteration.restype = gboolean
+    libgobject.g_main_context_iteration.argtypes = [_GMainContext,gboolean]
+except:
+   pass
+try:
+    libgobject.g_main_context_invoke_full.restype = None
+    libgobject.g_main_context_invoke_full.argtypes = [_GMainContext,gint,GSourceFunc,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_main_context_find_source_by_user_data.restype = _GSource
+    libgobject.g_main_context_find_source_by_user_data.argtypes = [_GMainContext,gpointer]
+except:
+   pass
+try:
+    libgobject.g_main_depth.restype = gint
+    libgobject.g_main_depth.argtypes = []
+except:
+   pass
+try:
+    libgobject.g_idle_add.restype = guint
+    libgobject.g_idle_add.argtypes = [GSourceFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_timeout_add_seconds.restype = guint
+    libgobject.g_timeout_add_seconds.argtypes = [guint,GSourceFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_main_current_source.restype = _GSource
+    libgobject.g_main_current_source.argtypes = []
+except:
+   pass
+try:
+    libgobject.g_idle_source_new.restype = _GSource
+    libgobject.g_idle_source_new.argtypes = []
+except:
+   pass
+try:
+    libgobject.g_timeout_add_full.restype = guint
+    libgobject.g_timeout_add_full.argtypes = [gint,guint,GSourceFunc,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_main_context_default.restype = _GMainContext
+    libgobject.g_main_context_default.argtypes = []
+except:
+   pass
+try:
+    libgobject.g_timeout_add.restype = guint
+    libgobject.g_timeout_add.argtypes = [guint,GSourceFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_idle_remove_by_data.restype = gboolean
+    libgobject.g_idle_remove_by_data.argtypes = [gpointer]
+except:
+   pass
+try:
+    libgobject.g_child_watch_add_full.restype = guint
+    libgobject.g_child_watch_add_full.argtypes = [gint,GPid,GChildWatchFunc,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_timeout_source_new_seconds.restype = _GSource
+    libgobject.g_timeout_source_new_seconds.argtypes = [guint]
+except:
+   pass
+try:
+    libgobject.g_timeout_add_seconds_full.restype = guint
+    libgobject.g_timeout_add_seconds_full.argtypes = [gint,guint,GSourceFunc,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_idle_add_full.restype = guint
+    libgobject.g_idle_add_full.argtypes = [gint,GSourceFunc,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_child_watch_add.restype = guint
+    libgobject.g_child_watch_add.argtypes = [GPid,GChildWatchFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_main_context_get_thread_default.restype = _GMainContext
+    libgobject.g_main_context_get_thread_default.argtypes = []
+except:
+   pass
+try:
+    libgobject.g_main_context_ref_thread_default.restype = _GMainContext
+    libgobject.g_main_context_ref_thread_default.argtypes = []
+except:
+   pass
 import gobject__GObject
 class GMainContext( gobject__GObject.GObject):
     """Class GMainContext Constructors"""

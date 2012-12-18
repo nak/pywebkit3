@@ -97,428 +97,1061 @@ GtkTextDirection = c_int
 GtkSizeRequestMode = c_int
 GtkAlign = c_int
 
-libgtk3.gtk_widget_set_device_enabled.restype = None
-libgtk3.gtk_widget_set_device_enabled.argtypes = [_GtkWidget,_GdkDevice,gboolean]
-libgtk3.gtk_widget_modify_text.restype = None
-libgtk3.gtk_widget_modify_text.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
-libgtk3.gtk_widget_set_tooltip_text.restype = None
-libgtk3.gtk_widget_set_tooltip_text.argtypes = [_GtkWidget,c_char_p]
-libgtk3.gtk_widget_get_style.restype = _GtkStyle
-libgtk3.gtk_widget_get_style.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_composite_name.restype = None
-libgtk3.gtk_widget_set_composite_name.argtypes = [_GtkWidget,c_char_p]
-libgtk3.gtk_widget_get_parent_window.restype = _GdkWindow
-libgtk3.gtk_widget_get_parent_window.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_is_toplevel.restype = gboolean
-libgtk3.gtk_widget_is_toplevel.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_app_paintable.restype = None
-libgtk3.gtk_widget_set_app_paintable.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_set_receives_default.restype = None
-libgtk3.gtk_widget_set_receives_default.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_class_set_accessible_role.restype = None
-libgtk3.gtk_widget_class_set_accessible_role.argtypes = [_GtkWidget,_GtkWidgetClass,AtkRole]
-libgtk3.gtk_widget_get_state.restype = GtkStateType
-libgtk3.gtk_widget_get_state.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_override_background_color.restype = None
-libgtk3.gtk_widget_override_background_color.argtypes = [_GtkWidget,GtkStateFlags,_GdkRGBA]
-libgtk3.gtk_widget_set_tooltip_markup.restype = None
-libgtk3.gtk_widget_set_tooltip_markup.argtypes = [_GtkWidget,c_char_p]
-libgtk3.gtk_widget_has_default.restype = gboolean
-libgtk3.gtk_widget_has_default.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_has_grab.restype = gboolean
-libgtk3.gtk_widget_has_grab.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_has_tooltip.restype = gboolean
-libgtk3.gtk_widget_get_has_tooltip.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_halign.restype = None
-libgtk3.gtk_widget_set_halign.argtypes = [_GtkWidget,GtkAlign]
-libgtk3.gtk_widget_get_preferred_width_for_height.restype = None
-libgtk3.gtk_widget_get_preferred_width_for_height.argtypes = [_GtkWidget,gint,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_get_hexpand_set.restype = gboolean
-libgtk3.gtk_widget_get_hexpand_set.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_override_font.restype = None
-libgtk3.gtk_widget_override_font.argtypes = [_GtkWidget,_PangoFontDescription]
-libgtk3.gtk_widget_get_preferred_height_for_width.restype = None
-libgtk3.gtk_widget_get_preferred_height_for_width.argtypes = [_GtkWidget,gint,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_set_window.restype = None
-libgtk3.gtk_widget_set_window.argtypes = [_GtkWidget,_GdkWindow]
-libgtk3.gtk_widget_get_allocated_width.restype = int
-libgtk3.gtk_widget_get_allocated_width.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_hexpand.restype = gboolean
-libgtk3.gtk_widget_get_hexpand.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_state.restype = None
-libgtk3.gtk_widget_set_state.argtypes = [_GtkWidget,GtkStateType]
-libgtk3.gtk_widget_add_events.restype = None
-libgtk3.gtk_widget_add_events.argtypes = [_GtkWidget,gint]
-libgtk3.gtk_widget_size_allocate.restype = None
-libgtk3.gtk_widget_size_allocate.argtypes = [_GtkWidget,_GtkAllocation]
-libgtk3.gtk_widget_draw.restype = None
-libgtk3.gtk_widget_draw.argtypes = [_GtkWidget,_cairo_t]
-libgtk3.gtk_widget_class_install_style_property.restype = None
-libgtk3.gtk_widget_class_install_style_property.argtypes = [_GtkWidget,_GtkWidgetClass,_GParamSpec]
-libgtk3.gtk_widget_get_vexpand.restype = gboolean
-libgtk3.gtk_widget_get_vexpand.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_queue_resize_no_redraw.restype = None
-libgtk3.gtk_widget_queue_resize_no_redraw.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_can_focus.restype = None
-libgtk3.gtk_widget_set_can_focus.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_unparent.restype = None
-libgtk3.gtk_widget_unparent.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_request_mode.restype = GtkSizeRequestMode
-libgtk3.gtk_widget_get_request_mode.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_allocated_height.restype = int
-libgtk3.gtk_widget_get_allocated_height.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_redraw_on_allocate.restype = None
-libgtk3.gtk_widget_set_redraw_on_allocate.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_set_realized.restype = None
-libgtk3.gtk_widget_set_realized.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_get_preferred_size.restype = None
-libgtk3.gtk_widget_get_preferred_size.argtypes = [_GtkWidget,_GtkRequisition,_GtkRequisition]
-libgtk3.gtk_widget_modify_font.restype = None
-libgtk3.gtk_widget_modify_font.argtypes = [_GtkWidget,_PangoFontDescription]
-libgtk3.gtk_widget_send_expose.restype = gint
-libgtk3.gtk_widget_send_expose.argtypes = [_GtkWidget,POINTER(GdkEvent)]
-libgtk3.gtk_widget_set_allocation.restype = None
-libgtk3.gtk_widget_set_allocation.argtypes = [_GtkWidget,_GtkAllocation]
-libgtk3.gtk_widget_set_sensitive.restype = None
-libgtk3.gtk_widget_set_sensitive.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_get_app_paintable.restype = gboolean
-libgtk3.gtk_widget_get_app_paintable.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_send_focus_change.restype = gboolean
-libgtk3.gtk_widget_send_focus_change.argtypes = [_GtkWidget,POINTER(GdkEvent)]
-libgtk3.gtk_widget_get_receives_default.restype = gboolean
-libgtk3.gtk_widget_get_receives_default.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_show_now.restype = None
-libgtk3.gtk_widget_show_now.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_support_multidevice.restype = gboolean
-libgtk3.gtk_widget_get_support_multidevice.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_events.restype = gint
-libgtk3.gtk_widget_get_events.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_vexpand_set.restype = gboolean
-libgtk3.gtk_widget_get_vexpand_set.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_vexpand.restype = None
-libgtk3.gtk_widget_set_vexpand.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_modify_style.restype = None
-libgtk3.gtk_widget_modify_style.argtypes = [_GtkWidget,_GtkRcStyle]
-libgtk3.gtk_widget_shape_combine_region.restype = None
-libgtk3.gtk_widget_shape_combine_region.argtypes = [_GtkWidget,_cairo_region_t]
-libgtk3.gtk_widget_get_visible.restype = gboolean
-libgtk3.gtk_widget_get_visible.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_device_is_shadowed.restype = gboolean
-libgtk3.gtk_widget_device_is_shadowed.argtypes = [_GtkWidget,_GdkDevice]
-libgtk3.gtk_widget_get_preferred_height.restype = None
-libgtk3.gtk_widget_get_preferred_height.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_queue_draw.restype = None
-libgtk3.gtk_widget_queue_draw.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_style_attach.restype = None
-libgtk3.gtk_widget_style_attach.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_valign.restype = GtkAlign
-libgtk3.gtk_widget_get_valign.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_size_request.restype = None
-libgtk3.gtk_widget_get_size_request.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_can_activate_accel.restype = gboolean
-libgtk3.gtk_widget_can_activate_accel.argtypes = [_GtkWidget,guint]
-libgtk3.gtk_widget_size_request.restype = None
-libgtk3.gtk_widget_size_request.argtypes = [_GtkWidget,_GtkRequisition]
-libgtk3.gtk_widget_get_root_window.restype = _GdkWindow
-libgtk3.gtk_widget_get_root_window.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_no_show_all.restype = None
-libgtk3.gtk_widget_set_no_show_all.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_set_visible.restype = None
-libgtk3.gtk_widget_set_visible.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_style_get.restype = None
-libgtk3.gtk_widget_style_get.argtypes = [_GtkWidget,c_char_p,]
-libgtk3.gtk_widget_set_can_default.restype = None
-libgtk3.gtk_widget_set_can_default.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_map.restype = None
-libgtk3.gtk_widget_map.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_unset_state_flags.restype = None
-libgtk3.gtk_widget_unset_state_flags.argtypes = [_GtkWidget,GtkStateFlags]
-libgtk3.gtk_widget_remove_accelerator.restype = gboolean
-libgtk3.gtk_widget_remove_accelerator.argtypes = [_GtkWidget,_GtkAccelGroup,guint,GdkModifierType]
-libgtk3.gtk_widget_modify_cursor.restype = None
-libgtk3.gtk_widget_modify_cursor.argtypes = [_GtkWidget,_GdkColor,_GdkColor]
-libgtk3.gtk_widget_reset_style.restype = None
-libgtk3.gtk_widget_reset_style.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_can_default.restype = gboolean
-libgtk3.gtk_widget_get_can_default.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_queue_draw_region.restype = None
-libgtk3.gtk_widget_queue_draw_region.argtypes = [_GtkWidget,_cairo_region_t]
-libgtk3.gtk_widget_set_child_visible.restype = None
-libgtk3.gtk_widget_set_child_visible.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_get_realized.restype = gboolean
-libgtk3.gtk_widget_get_realized.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_parent_window.restype = None
-libgtk3.gtk_widget_set_parent_window.argtypes = [_GtkWidget,_GdkWindow]
-libgtk3.gtk_widget_get_ancestor.restype = _GtkWidget
-libgtk3.gtk_widget_get_ancestor.argtypes = [_GtkWidget,GType]
-libgtk3.gtk_widget_activate.restype = gboolean
-libgtk3.gtk_widget_activate.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_child_notify.restype = None
-libgtk3.gtk_widget_child_notify.argtypes = [_GtkWidget,c_char_p]
-libgtk3.gtk_widget_set_tooltip_window.restype = None
-libgtk3.gtk_widget_set_tooltip_window.argtypes = [_GtkWidget,_GtkWindow]
-libgtk3.gtk_widget_set_margin_left.restype = None
-libgtk3.gtk_widget_set_margin_left.argtypes = [_GtkWidget,gint]
-libgtk3.gtk_widget_translate_coordinates.restype = gboolean
-libgtk3.gtk_widget_translate_coordinates.argtypes = [_GtkWidget,_GtkWidget,gint,gint,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_create_pango_context.restype = _PangoContext
-libgtk3.gtk_widget_create_pango_context.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_is_sensitive.restype = gboolean
-libgtk3.gtk_widget_is_sensitive.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_window.restype = _GdkWindow
-libgtk3.gtk_widget_get_window.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_pointer.restype = None
-libgtk3.gtk_widget_get_pointer.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_set_size_request.restype = None
-libgtk3.gtk_widget_set_size_request.argtypes = [_GtkWidget,gint,gint]
-libgtk3.gtk_widget_is_composited.restype = gboolean
-libgtk3.gtk_widget_is_composited.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_realize.restype = None
-libgtk3.gtk_widget_realize.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_unrealize.restype = None
-libgtk3.gtk_widget_unrealize.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_is_ancestor.restype = gboolean
-libgtk3.gtk_widget_is_ancestor.argtypes = [_GtkWidget,_GtkWidget]
-libgtk3.gtk_widget_get_device_enabled.restype = gboolean
-libgtk3.gtk_widget_get_device_enabled.argtypes = [_GtkWidget,_GdkDevice]
-libgtk3.gtk_widget_show.restype = None
-libgtk3.gtk_widget_show.argtypes = [_GtkWidget]
-libgtk3.gtk_cairo_transform_to_window.restype = None
-libgtk3.gtk_cairo_transform_to_window.argtypes = [_GtkWidget,_cairo_t,_GtkWidget,_GdkWindow]
-libgtk3.gtk_widget_get_style_context.restype = _GtkStyleContext
-libgtk3.gtk_widget_get_style_context.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_modify_bg.restype = None
-libgtk3.gtk_widget_modify_bg.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
-libgtk3.gtk_widget_has_visible_focus.restype = gboolean
-libgtk3.gtk_widget_has_visible_focus.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_error_bell.restype = None
-libgtk3.gtk_widget_error_bell.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_style.restype = None
-libgtk3.gtk_widget_set_style.argtypes = [_GtkWidget,_GtkStyle]
-libgtk3.gtk_widget_unmap.restype = None
-libgtk3.gtk_widget_unmap.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_visual.restype = _GdkVisual
-libgtk3.gtk_widget_get_visual.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_double_buffered.restype = None
-libgtk3.gtk_widget_set_double_buffered.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_get_preferred_width.restype = None
-libgtk3.gtk_widget_get_preferred_width.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
-libgtk3.gtk_widget_set_support_multidevice.restype = None
-libgtk3.gtk_widget_set_support_multidevice.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_destroy.restype = None
-libgtk3.gtk_widget_destroy.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_direction.restype = None
-libgtk3.gtk_widget_set_direction.argtypes = [_GtkWidget,GtkTextDirection]
-libgtk3.gtk_widget_get_name.restype = c_char_p
-libgtk3.gtk_widget_get_name.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_intersect.restype = gboolean
-libgtk3.gtk_widget_intersect.argtypes = [_GtkWidget,_GdkRectangle,_GdkRectangle]
-libgtk3.gtk_widget_queue_draw_area.restype = None
-libgtk3.gtk_widget_queue_draw_area.argtypes = [_GtkWidget,gint,gint,gint,gint]
-libgtk3.gtk_widget_queue_compute_expand.restype = None
-libgtk3.gtk_widget_queue_compute_expand.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_margin_top.restype = gint
-libgtk3.gtk_widget_get_margin_top.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_destroyed.restype = None
-libgtk3.gtk_widget_destroyed.argtypes = [_GtkWidget,_GtkWidget]
-libgtk3.gtk_widget_get_composite_name.restype = c_char_p
-libgtk3.gtk_widget_get_composite_name.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_tooltip_window.restype = _GtkWindow
-libgtk3.gtk_widget_get_tooltip_window.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_reset_rc_styles.restype = None
-libgtk3.gtk_widget_reset_rc_styles.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_child_requisition.restype = None
-libgtk3.gtk_widget_get_child_requisition.argtypes = [_GtkWidget,_GtkRequisition]
-libgtk3.gtk_widget_override_color.restype = None
-libgtk3.gtk_widget_override_color.argtypes = [_GtkWidget,GtkStateFlags,_GdkRGBA]
-libgtk3.gtk_widget_add_device_events.restype = None
-libgtk3.gtk_widget_add_device_events.argtypes = [_GtkWidget,_GdkDevice,GdkEventMask]
-libgtk3.gtk_widget_get_double_buffered.restype = gboolean
-libgtk3.gtk_widget_get_double_buffered.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_name.restype = None
-libgtk3.gtk_widget_set_name.argtypes = [_GtkWidget,c_char_p]
-libgtk3.gtk_widget_queue_resize.restype = None
-libgtk3.gtk_widget_queue_resize.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_halign.restype = GtkAlign
-libgtk3.gtk_widget_get_halign.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_events.restype = None
-libgtk3.gtk_widget_set_events.argtypes = [_GtkWidget,gint]
-libgtk3.gtk_widget_get_parent.restype = _GtkWidget
-libgtk3.gtk_widget_get_parent.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_is_drawable.restype = gboolean
-libgtk3.gtk_widget_is_drawable.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_has_focus.restype = gboolean
-libgtk3.gtk_widget_has_focus.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_hide.restype = None
-libgtk3.gtk_widget_hide.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_can_focus.restype = gboolean
-libgtk3.gtk_widget_get_can_focus.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_mnemonic_activate.restype = gboolean
-libgtk3.gtk_widget_mnemonic_activate.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_is_focus.restype = gboolean
-libgtk3.gtk_widget_is_focus.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_has_tooltip.restype = None
-libgtk3.gtk_widget_set_has_tooltip.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_render_icon_pixbuf.restype = _GdkPixbuf
-libgtk3.gtk_widget_render_icon_pixbuf.argtypes = [_GtkWidget,c_char_p,GtkIconSize]
-libgtk3.gtk_widget_ensure_style.restype = None
-libgtk3.gtk_widget_ensure_style.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_show_all.restype = None
-libgtk3.gtk_widget_show_all.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_mapped.restype = gboolean
-libgtk3.gtk_widget_get_mapped.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_path.restype = None
-libgtk3.gtk_widget_path.argtypes = [_GtkWidget,POINTER(guint),c_char_p,c_char_p]
-libgtk3.gtk_widget_get_modifier_style.restype = _GtkRcStyle
-libgtk3.gtk_widget_get_modifier_style.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_default_direction.restype = None
-libgtk3.gtk_widget_set_default_direction.argtypes = [_GtkWidget,GtkTextDirection]
-libgtk3.gtk_widget_set_has_window.restype = None
-libgtk3.gtk_widget_set_has_window.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_set_accel_path.restype = None
-libgtk3.gtk_widget_set_accel_path.argtypes = [_GtkWidget,c_char_p,_GtkAccelGroup]
-libgtk3.gtk_widget_child_focus.restype = gboolean
-libgtk3.gtk_widget_child_focus.argtypes = [_GtkWidget,GtkDirectionType]
-libgtk3.gtk_widget_set_mapped.restype = None
-libgtk3.gtk_widget_set_mapped.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_class_set_accessible_type.restype = None
-libgtk3.gtk_widget_class_set_accessible_type.argtypes = [_GtkWidget,_GtkWidgetClass,GType]
-libgtk3.gtk_widget_grab_focus.restype = None
-libgtk3.gtk_widget_grab_focus.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_screen.restype = _GdkScreen
-libgtk3.gtk_widget_get_screen.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_compute_expand.restype = gboolean
-libgtk3.gtk_widget_compute_expand.argtypes = [_GtkWidget,GtkOrientation]
-libgtk3.gtk_widget_get_margin_bottom.restype = gint
-libgtk3.gtk_widget_get_margin_bottom.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_add_mnemonic_label.restype = None
-libgtk3.gtk_widget_add_mnemonic_label.argtypes = [_GtkWidget,_GtkWidget]
-libgtk3.gtk_widget_get_display.restype = _GdkDisplay
-libgtk3.gtk_widget_get_display.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_event.restype = gboolean
-libgtk3.gtk_widget_event.argtypes = [_GtkWidget,POINTER(GdkEvent)]
-libgtk3.gtk_widget_thaw_child_notify.restype = None
-libgtk3.gtk_widget_thaw_child_notify.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_class_install_style_property_parser.restype = None
-libgtk3.gtk_widget_class_install_style_property_parser.argtypes = [_GtkWidget,_GtkWidgetClass,_GParamSpec,GtkRcPropertyParser]
-libgtk3.gtk_widget_get_toplevel.restype = _GtkWidget
-libgtk3.gtk_widget_get_toplevel.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_clipboard.restype = _GtkClipboard
-libgtk3.gtk_widget_get_clipboard.argtypes = [_GtkWidget,POINTER(c_int)]
-libgtk3.gtk_widget_list_accel_closures.restype = _GList
-libgtk3.gtk_widget_list_accel_closures.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_has_window.restype = gboolean
-libgtk3.gtk_widget_get_has_window.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_override_cursor.restype = None
-libgtk3.gtk_widget_override_cursor.argtypes = [_GtkWidget,_GdkRGBA,_GdkRGBA]
-libgtk3.gtk_widget_set_margin_top.restype = None
-libgtk3.gtk_widget_set_margin_top.argtypes = [_GtkWidget,gint]
-libgtk3.gtk_widget_in_destruction.restype = gboolean
-libgtk3.gtk_widget_in_destruction.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_render_icon.restype = _GdkPixbuf
-libgtk3.gtk_widget_render_icon.argtypes = [_GtkWidget,c_char_p,GtkIconSize,c_char_p]
-libgtk3.gtk_widget_get_tooltip_text.restype = c_char_p
-libgtk3.gtk_widget_get_tooltip_text.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_hexpand.restype = None
-libgtk3.gtk_widget_set_hexpand.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_get_child_visible.restype = gboolean
-libgtk3.gtk_widget_get_child_visible.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_margin_right.restype = gint
-libgtk3.gtk_widget_get_margin_right.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_pango_context.restype = _PangoContext
-libgtk3.gtk_widget_get_pango_context.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_device_events.restype = GdkEventMask
-libgtk3.gtk_widget_get_device_events.argtypes = [_GtkWidget,_GdkDevice]
-libgtk3.gtk_widget_set_vexpand_set.restype = None
-libgtk3.gtk_widget_set_vexpand_set.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_set_parent.restype = None
-libgtk3.gtk_widget_set_parent.argtypes = [_GtkWidget,_GtkWidget]
-libgtk3.gtk_widget_add_accelerator.restype = None
-libgtk3.gtk_widget_add_accelerator.argtypes = [_GtkWidget,c_char_p,_GtkAccelGroup,guint,GdkModifierType,GtkAccelFlags]
-libgtk3.gtk_widget_get_state_flags.restype = GtkStateFlags
-libgtk3.gtk_widget_get_state_flags.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_sensitive.restype = gboolean
-libgtk3.gtk_widget_get_sensitive.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_hide_on_delete.restype = gboolean
-libgtk3.gtk_widget_hide_on_delete.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_reparent.restype = None
-libgtk3.gtk_widget_reparent.argtypes = [_GtkWidget,_GtkWidget]
-libgtk3.gtk_widget_get_direction.restype = GtkTextDirection
-libgtk3.gtk_widget_get_direction.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_margin_right.restype = None
-libgtk3.gtk_widget_set_margin_right.argtypes = [_GtkWidget,gint]
-libgtk3.gtk_widget_get_allocation.restype = None
-libgtk3.gtk_widget_get_allocation.argtypes = [_GtkWidget,_GtkAllocation]
-libgtk3.gtk_widget_get_no_show_all.restype = gboolean
-libgtk3.gtk_widget_get_no_show_all.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_list_mnemonic_labels.restype = _GList
-libgtk3.gtk_widget_list_mnemonic_labels.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_override_symbolic_color.restype = None
-libgtk3.gtk_widget_override_symbolic_color.argtypes = [_GtkWidget,c_char_p,_GdkRGBA]
-libgtk3.gtk_widget_class_path.restype = None
-libgtk3.gtk_widget_class_path.argtypes = [_GtkWidget,POINTER(guint),c_char_p,c_char_p]
-libgtk3.gtk_widget_freeze_child_notify.restype = None
-libgtk3.gtk_widget_freeze_child_notify.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_margin_left.restype = gint
-libgtk3.gtk_widget_get_margin_left.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_input_shape_combine_region.restype = None
-libgtk3.gtk_widget_input_shape_combine_region.argtypes = [_GtkWidget,_cairo_region_t]
-libgtk3.gtk_widget_set_valign.restype = None
-libgtk3.gtk_widget_set_valign.argtypes = [_GtkWidget,GtkAlign]
-libgtk3.gtk_widget_set_visual.restype = None
-libgtk3.gtk_widget_set_visual.argtypes = [_GtkWidget,_GdkVisual]
-libgtk3.gtk_widget_style_get_property.restype = None
-libgtk3.gtk_widget_style_get_property.argtypes = [_GtkWidget,c_char_p,_GValue]
-libgtk3.gtk_widget_remove_mnemonic_label.restype = None
-libgtk3.gtk_widget_remove_mnemonic_label.argtypes = [_GtkWidget,_GtkWidget]
-libgtk3.gtk_widget_has_screen.restype = gboolean
-libgtk3.gtk_widget_has_screen.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_grab_default.restype = None
-libgtk3.gtk_widget_grab_default.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_trigger_tooltip_query.restype = None
-libgtk3.gtk_widget_trigger_tooltip_query.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_set_device_events.restype = None
-libgtk3.gtk_widget_set_device_events.argtypes = [_GtkWidget,_GdkDevice,GdkEventMask]
-libgtk3.gtk_widget_get_path.restype = _GtkWidgetPath
-libgtk3.gtk_widget_get_path.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_keynav_failed.restype = gboolean
-libgtk3.gtk_widget_keynav_failed.argtypes = [_GtkWidget,GtkDirectionType]
-libgtk3.gtk_widget_get_settings.restype = _GtkSettings
-libgtk3.gtk_widget_get_settings.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_modify_fg.restype = None
-libgtk3.gtk_widget_modify_fg.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
-libgtk3.gtk_widget_set_state_flags.restype = None
-libgtk3.gtk_widget_set_state_flags.argtypes = [_GtkWidget,GtkStateFlags,gboolean]
-libgtk3.gtk_widget_modify_base.restype = None
-libgtk3.gtk_widget_modify_base.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
-libgtk3.gtk_widget_create_pango_layout.restype = _PangoLayout
-libgtk3.gtk_widget_create_pango_layout.argtypes = [_GtkWidget,c_char_p]
-libgtk3.gtk_widget_set_hexpand_set.restype = None
-libgtk3.gtk_widget_set_hexpand_set.argtypes = [_GtkWidget,gboolean]
-libgtk3.gtk_widget_set_margin_bottom.restype = None
-libgtk3.gtk_widget_set_margin_bottom.argtypes = [_GtkWidget,gint]
-libgtk3.gtk_widget_get_tooltip_markup.restype = c_char_p
-libgtk3.gtk_widget_get_tooltip_markup.argtypes = [_GtkWidget]
-libgtk3.gtk_widget_get_requisition.restype = None
-libgtk3.gtk_widget_get_requisition.argtypes = [_GtkWidget,_GtkRequisition]
-libgtk3.gtk_widget_has_rc_style.restype = gboolean
-libgtk3.gtk_widget_has_rc_style.argtypes = [_GtkWidget]
-libgtk3.gtk_distribute_natural_allocation.restype = gint
-libgtk3.gtk_distribute_natural_allocation.argtypes = [gint,guint,POINTER(GtkRequestedSize)]
-libgtk3.gtk_cairo_should_draw_window.restype = gboolean
-libgtk3.gtk_cairo_should_draw_window.argtypes = [_cairo_t,_GdkWindow]
-libgtk3.gtk_widget_class_list_style_properties.restype = _GParamSpec
-libgtk3.gtk_widget_class_list_style_properties.argtypes = [_GtkWidgetClass,POINTER(guint)]
-libgtk3.gtk_widget_get_default_direction.restype = GtkTextDirection
-libgtk3.gtk_widget_get_default_direction.argtypes = []
-libgtk3.gtk_widget_pop_composite_child.restype = None
-libgtk3.gtk_widget_pop_composite_child.argtypes = []
-libgtk3.gtk_widget_push_composite_child.restype = None
-libgtk3.gtk_widget_push_composite_child.argtypes = []
-libgtk3.gtk_widget_class_find_style_property.restype = _GParamSpec
-libgtk3.gtk_widget_class_find_style_property.argtypes = [_GtkWidgetClass,c_char_p]
-libgtk3.gtk_widget_get_default_style.restype = _GtkStyle
-libgtk3.gtk_widget_get_default_style.argtypes = []
+try:
+    libgtk3.gtk_widget_set_device_enabled.restype = None
+    libgtk3.gtk_widget_set_device_enabled.argtypes = [_GtkWidget,_GdkDevice,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_text.restype = None
+    libgtk3.gtk_widget_modify_text.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_tooltip_text.restype = None
+    libgtk3.gtk_widget_set_tooltip_text.argtypes = [_GtkWidget,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_style.restype = _GtkStyle
+    libgtk3.gtk_widget_get_style.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_composite_name.restype = None
+    libgtk3.gtk_widget_set_composite_name.argtypes = [_GtkWidget,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_parent_window.restype = _GdkWindow
+    libgtk3.gtk_widget_get_parent_window.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_is_toplevel.restype = gboolean
+    libgtk3.gtk_widget_is_toplevel.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_app_paintable.restype = None
+    libgtk3.gtk_widget_set_app_paintable.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_receives_default.restype = None
+    libgtk3.gtk_widget_set_receives_default.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_set_accessible_role.restype = None
+    libgtk3.gtk_widget_class_set_accessible_role.argtypes = [_GtkWidget,_GtkWidgetClass,AtkRole]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_state.restype = GtkStateType
+    libgtk3.gtk_widget_get_state.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_override_background_color.restype = None
+    libgtk3.gtk_widget_override_background_color.argtypes = [_GtkWidget,GtkStateFlags,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_tooltip_markup.restype = None
+    libgtk3.gtk_widget_set_tooltip_markup.argtypes = [_GtkWidget,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_has_default.restype = gboolean
+    libgtk3.gtk_widget_has_default.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_has_grab.restype = gboolean
+    libgtk3.gtk_widget_has_grab.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_has_tooltip.restype = gboolean
+    libgtk3.gtk_widget_get_has_tooltip.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_halign.restype = None
+    libgtk3.gtk_widget_set_halign.argtypes = [_GtkWidget,GtkAlign]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_preferred_width_for_height.restype = None
+    libgtk3.gtk_widget_get_preferred_width_for_height.argtypes = [_GtkWidget,gint,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_hexpand_set.restype = gboolean
+    libgtk3.gtk_widget_get_hexpand_set.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_override_font.restype = None
+    libgtk3.gtk_widget_override_font.argtypes = [_GtkWidget,_PangoFontDescription]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_preferred_height_for_width.restype = None
+    libgtk3.gtk_widget_get_preferred_height_for_width.argtypes = [_GtkWidget,gint,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_window.restype = None
+    libgtk3.gtk_widget_set_window.argtypes = [_GtkWidget,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_allocated_width.restype = int
+    libgtk3.gtk_widget_get_allocated_width.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_hexpand.restype = gboolean
+    libgtk3.gtk_widget_get_hexpand.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_state.restype = None
+    libgtk3.gtk_widget_set_state.argtypes = [_GtkWidget,GtkStateType]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_add_events.restype = None
+    libgtk3.gtk_widget_add_events.argtypes = [_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_size_allocate.restype = None
+    libgtk3.gtk_widget_size_allocate.argtypes = [_GtkWidget,_GtkAllocation]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_draw.restype = None
+    libgtk3.gtk_widget_draw.argtypes = [_GtkWidget,_cairo_t]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_install_style_property.restype = None
+    libgtk3.gtk_widget_class_install_style_property.argtypes = [_GtkWidget,_GtkWidgetClass,_GParamSpec]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_vexpand.restype = gboolean
+    libgtk3.gtk_widget_get_vexpand.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_queue_resize_no_redraw.restype = None
+    libgtk3.gtk_widget_queue_resize_no_redraw.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_can_focus.restype = None
+    libgtk3.gtk_widget_set_can_focus.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_unparent.restype = None
+    libgtk3.gtk_widget_unparent.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_request_mode.restype = GtkSizeRequestMode
+    libgtk3.gtk_widget_get_request_mode.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_allocated_height.restype = int
+    libgtk3.gtk_widget_get_allocated_height.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_redraw_on_allocate.restype = None
+    libgtk3.gtk_widget_set_redraw_on_allocate.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_realized.restype = None
+    libgtk3.gtk_widget_set_realized.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_preferred_size.restype = None
+    libgtk3.gtk_widget_get_preferred_size.argtypes = [_GtkWidget,_GtkRequisition,_GtkRequisition]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_font.restype = None
+    libgtk3.gtk_widget_modify_font.argtypes = [_GtkWidget,_PangoFontDescription]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_send_expose.restype = gint
+    libgtk3.gtk_widget_send_expose.argtypes = [_GtkWidget,POINTER(GdkEvent)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_allocation.restype = None
+    libgtk3.gtk_widget_set_allocation.argtypes = [_GtkWidget,_GtkAllocation]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_sensitive.restype = None
+    libgtk3.gtk_widget_set_sensitive.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_app_paintable.restype = gboolean
+    libgtk3.gtk_widget_get_app_paintable.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_send_focus_change.restype = gboolean
+    libgtk3.gtk_widget_send_focus_change.argtypes = [_GtkWidget,POINTER(GdkEvent)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_receives_default.restype = gboolean
+    libgtk3.gtk_widget_get_receives_default.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_show_now.restype = None
+    libgtk3.gtk_widget_show_now.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_support_multidevice.restype = gboolean
+    libgtk3.gtk_widget_get_support_multidevice.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_events.restype = gint
+    libgtk3.gtk_widget_get_events.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_vexpand_set.restype = gboolean
+    libgtk3.gtk_widget_get_vexpand_set.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_vexpand.restype = None
+    libgtk3.gtk_widget_set_vexpand.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_style.restype = None
+    libgtk3.gtk_widget_modify_style.argtypes = [_GtkWidget,_GtkRcStyle]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_shape_combine_region.restype = None
+    libgtk3.gtk_widget_shape_combine_region.argtypes = [_GtkWidget,_cairo_region_t]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_visible.restype = gboolean
+    libgtk3.gtk_widget_get_visible.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_device_is_shadowed.restype = gboolean
+    libgtk3.gtk_widget_device_is_shadowed.argtypes = [_GtkWidget,_GdkDevice]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_preferred_height.restype = None
+    libgtk3.gtk_widget_get_preferred_height.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_queue_draw.restype = None
+    libgtk3.gtk_widget_queue_draw.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_style_attach.restype = None
+    libgtk3.gtk_widget_style_attach.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_valign.restype = GtkAlign
+    libgtk3.gtk_widget_get_valign.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_size_request.restype = None
+    libgtk3.gtk_widget_get_size_request.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_can_activate_accel.restype = gboolean
+    libgtk3.gtk_widget_can_activate_accel.argtypes = [_GtkWidget,guint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_size_request.restype = None
+    libgtk3.gtk_widget_size_request.argtypes = [_GtkWidget,_GtkRequisition]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_root_window.restype = _GdkWindow
+    libgtk3.gtk_widget_get_root_window.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_no_show_all.restype = None
+    libgtk3.gtk_widget_set_no_show_all.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_visible.restype = None
+    libgtk3.gtk_widget_set_visible.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_style_get.restype = None
+    libgtk3.gtk_widget_style_get.argtypes = [_GtkWidget,c_char_p,]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_can_default.restype = None
+    libgtk3.gtk_widget_set_can_default.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_map.restype = None
+    libgtk3.gtk_widget_map.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_unset_state_flags.restype = None
+    libgtk3.gtk_widget_unset_state_flags.argtypes = [_GtkWidget,GtkStateFlags]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_remove_accelerator.restype = gboolean
+    libgtk3.gtk_widget_remove_accelerator.argtypes = [_GtkWidget,_GtkAccelGroup,guint,GdkModifierType]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_cursor.restype = None
+    libgtk3.gtk_widget_modify_cursor.argtypes = [_GtkWidget,_GdkColor,_GdkColor]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_reset_style.restype = None
+    libgtk3.gtk_widget_reset_style.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_can_default.restype = gboolean
+    libgtk3.gtk_widget_get_can_default.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_queue_draw_region.restype = None
+    libgtk3.gtk_widget_queue_draw_region.argtypes = [_GtkWidget,_cairo_region_t]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_child_visible.restype = None
+    libgtk3.gtk_widget_set_child_visible.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_realized.restype = gboolean
+    libgtk3.gtk_widget_get_realized.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_parent_window.restype = None
+    libgtk3.gtk_widget_set_parent_window.argtypes = [_GtkWidget,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_ancestor.restype = _GtkWidget
+    libgtk3.gtk_widget_get_ancestor.argtypes = [_GtkWidget,GType]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_activate.restype = gboolean
+    libgtk3.gtk_widget_activate.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_child_notify.restype = None
+    libgtk3.gtk_widget_child_notify.argtypes = [_GtkWidget,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_tooltip_window.restype = None
+    libgtk3.gtk_widget_set_tooltip_window.argtypes = [_GtkWidget,_GtkWindow]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_margin_left.restype = None
+    libgtk3.gtk_widget_set_margin_left.argtypes = [_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_translate_coordinates.restype = gboolean
+    libgtk3.gtk_widget_translate_coordinates.argtypes = [_GtkWidget,_GtkWidget,gint,gint,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_create_pango_context.restype = _PangoContext
+    libgtk3.gtk_widget_create_pango_context.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_is_sensitive.restype = gboolean
+    libgtk3.gtk_widget_is_sensitive.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_window.restype = _GdkWindow
+    libgtk3.gtk_widget_get_window.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_pointer.restype = None
+    libgtk3.gtk_widget_get_pointer.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_size_request.restype = None
+    libgtk3.gtk_widget_set_size_request.argtypes = [_GtkWidget,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_is_composited.restype = gboolean
+    libgtk3.gtk_widget_is_composited.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_realize.restype = None
+    libgtk3.gtk_widget_realize.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_unrealize.restype = None
+    libgtk3.gtk_widget_unrealize.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_is_ancestor.restype = gboolean
+    libgtk3.gtk_widget_is_ancestor.argtypes = [_GtkWidget,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_device_enabled.restype = gboolean
+    libgtk3.gtk_widget_get_device_enabled.argtypes = [_GtkWidget,_GdkDevice]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_show.restype = None
+    libgtk3.gtk_widget_show.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_cairo_transform_to_window.restype = None
+    libgtk3.gtk_cairo_transform_to_window.argtypes = [_GtkWidget,_cairo_t,_GtkWidget,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_style_context.restype = _GtkStyleContext
+    libgtk3.gtk_widget_get_style_context.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_bg.restype = None
+    libgtk3.gtk_widget_modify_bg.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_has_visible_focus.restype = gboolean
+    libgtk3.gtk_widget_has_visible_focus.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_error_bell.restype = None
+    libgtk3.gtk_widget_error_bell.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_style.restype = None
+    libgtk3.gtk_widget_set_style.argtypes = [_GtkWidget,_GtkStyle]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_unmap.restype = None
+    libgtk3.gtk_widget_unmap.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_visual.restype = _GdkVisual
+    libgtk3.gtk_widget_get_visual.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_double_buffered.restype = None
+    libgtk3.gtk_widget_set_double_buffered.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_preferred_width.restype = None
+    libgtk3.gtk_widget_get_preferred_width.argtypes = [_GtkWidget,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_support_multidevice.restype = None
+    libgtk3.gtk_widget_set_support_multidevice.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_destroy.restype = None
+    libgtk3.gtk_widget_destroy.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_direction.restype = None
+    libgtk3.gtk_widget_set_direction.argtypes = [_GtkWidget,GtkTextDirection]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_name.restype = c_char_p
+    libgtk3.gtk_widget_get_name.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_intersect.restype = gboolean
+    libgtk3.gtk_widget_intersect.argtypes = [_GtkWidget,_GdkRectangle,_GdkRectangle]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_queue_draw_area.restype = None
+    libgtk3.gtk_widget_queue_draw_area.argtypes = [_GtkWidget,gint,gint,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_queue_compute_expand.restype = None
+    libgtk3.gtk_widget_queue_compute_expand.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_margin_top.restype = gint
+    libgtk3.gtk_widget_get_margin_top.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_destroyed.restype = None
+    libgtk3.gtk_widget_destroyed.argtypes = [_GtkWidget,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_composite_name.restype = c_char_p
+    libgtk3.gtk_widget_get_composite_name.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_tooltip_window.restype = _GtkWindow
+    libgtk3.gtk_widget_get_tooltip_window.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_reset_rc_styles.restype = None
+    libgtk3.gtk_widget_reset_rc_styles.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_child_requisition.restype = None
+    libgtk3.gtk_widget_get_child_requisition.argtypes = [_GtkWidget,_GtkRequisition]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_override_color.restype = None
+    libgtk3.gtk_widget_override_color.argtypes = [_GtkWidget,GtkStateFlags,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_add_device_events.restype = None
+    libgtk3.gtk_widget_add_device_events.argtypes = [_GtkWidget,_GdkDevice,GdkEventMask]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_double_buffered.restype = gboolean
+    libgtk3.gtk_widget_get_double_buffered.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_name.restype = None
+    libgtk3.gtk_widget_set_name.argtypes = [_GtkWidget,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_queue_resize.restype = None
+    libgtk3.gtk_widget_queue_resize.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_halign.restype = GtkAlign
+    libgtk3.gtk_widget_get_halign.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_events.restype = None
+    libgtk3.gtk_widget_set_events.argtypes = [_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_parent.restype = _GtkWidget
+    libgtk3.gtk_widget_get_parent.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_is_drawable.restype = gboolean
+    libgtk3.gtk_widget_is_drawable.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_has_focus.restype = gboolean
+    libgtk3.gtk_widget_has_focus.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_hide.restype = None
+    libgtk3.gtk_widget_hide.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_can_focus.restype = gboolean
+    libgtk3.gtk_widget_get_can_focus.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_mnemonic_activate.restype = gboolean
+    libgtk3.gtk_widget_mnemonic_activate.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_is_focus.restype = gboolean
+    libgtk3.gtk_widget_is_focus.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_has_tooltip.restype = None
+    libgtk3.gtk_widget_set_has_tooltip.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_render_icon_pixbuf.restype = _GdkPixbuf
+    libgtk3.gtk_widget_render_icon_pixbuf.argtypes = [_GtkWidget,c_char_p,GtkIconSize]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_ensure_style.restype = None
+    libgtk3.gtk_widget_ensure_style.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_show_all.restype = None
+    libgtk3.gtk_widget_show_all.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_mapped.restype = gboolean
+    libgtk3.gtk_widget_get_mapped.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_path.restype = None
+    libgtk3.gtk_widget_path.argtypes = [_GtkWidget,POINTER(guint),c_char_p,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_modifier_style.restype = _GtkRcStyle
+    libgtk3.gtk_widget_get_modifier_style.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_default_direction.restype = None
+    libgtk3.gtk_widget_set_default_direction.argtypes = [_GtkWidget,GtkTextDirection]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_has_window.restype = None
+    libgtk3.gtk_widget_set_has_window.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_accel_path.restype = None
+    libgtk3.gtk_widget_set_accel_path.argtypes = [_GtkWidget,c_char_p,_GtkAccelGroup]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_child_focus.restype = gboolean
+    libgtk3.gtk_widget_child_focus.argtypes = [_GtkWidget,GtkDirectionType]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_mapped.restype = None
+    libgtk3.gtk_widget_set_mapped.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_set_accessible_type.restype = None
+    libgtk3.gtk_widget_class_set_accessible_type.argtypes = [_GtkWidget,_GtkWidgetClass,GType]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_grab_focus.restype = None
+    libgtk3.gtk_widget_grab_focus.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_screen.restype = _GdkScreen
+    libgtk3.gtk_widget_get_screen.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_compute_expand.restype = gboolean
+    libgtk3.gtk_widget_compute_expand.argtypes = [_GtkWidget,GtkOrientation]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_margin_bottom.restype = gint
+    libgtk3.gtk_widget_get_margin_bottom.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_add_mnemonic_label.restype = None
+    libgtk3.gtk_widget_add_mnemonic_label.argtypes = [_GtkWidget,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_display.restype = _GdkDisplay
+    libgtk3.gtk_widget_get_display.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_event.restype = gboolean
+    libgtk3.gtk_widget_event.argtypes = [_GtkWidget,POINTER(GdkEvent)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_thaw_child_notify.restype = None
+    libgtk3.gtk_widget_thaw_child_notify.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_install_style_property_parser.restype = None
+    libgtk3.gtk_widget_class_install_style_property_parser.argtypes = [_GtkWidget,_GtkWidgetClass,_GParamSpec,GtkRcPropertyParser]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_toplevel.restype = _GtkWidget
+    libgtk3.gtk_widget_get_toplevel.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_clipboard.restype = _GtkClipboard
+    libgtk3.gtk_widget_get_clipboard.argtypes = [_GtkWidget,POINTER(c_int)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_list_accel_closures.restype = _GList
+    libgtk3.gtk_widget_list_accel_closures.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_has_window.restype = gboolean
+    libgtk3.gtk_widget_get_has_window.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_override_cursor.restype = None
+    libgtk3.gtk_widget_override_cursor.argtypes = [_GtkWidget,_GdkRGBA,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_margin_top.restype = None
+    libgtk3.gtk_widget_set_margin_top.argtypes = [_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_in_destruction.restype = gboolean
+    libgtk3.gtk_widget_in_destruction.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_render_icon.restype = _GdkPixbuf
+    libgtk3.gtk_widget_render_icon.argtypes = [_GtkWidget,c_char_p,GtkIconSize,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_tooltip_text.restype = c_char_p
+    libgtk3.gtk_widget_get_tooltip_text.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_hexpand.restype = None
+    libgtk3.gtk_widget_set_hexpand.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_child_visible.restype = gboolean
+    libgtk3.gtk_widget_get_child_visible.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_margin_right.restype = gint
+    libgtk3.gtk_widget_get_margin_right.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_pango_context.restype = _PangoContext
+    libgtk3.gtk_widget_get_pango_context.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_device_events.restype = GdkEventMask
+    libgtk3.gtk_widget_get_device_events.argtypes = [_GtkWidget,_GdkDevice]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_vexpand_set.restype = None
+    libgtk3.gtk_widget_set_vexpand_set.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_parent.restype = None
+    libgtk3.gtk_widget_set_parent.argtypes = [_GtkWidget,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_add_accelerator.restype = None
+    libgtk3.gtk_widget_add_accelerator.argtypes = [_GtkWidget,c_char_p,_GtkAccelGroup,guint,GdkModifierType,GtkAccelFlags]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_state_flags.restype = GtkStateFlags
+    libgtk3.gtk_widget_get_state_flags.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_sensitive.restype = gboolean
+    libgtk3.gtk_widget_get_sensitive.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_hide_on_delete.restype = gboolean
+    libgtk3.gtk_widget_hide_on_delete.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_reparent.restype = None
+    libgtk3.gtk_widget_reparent.argtypes = [_GtkWidget,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_direction.restype = GtkTextDirection
+    libgtk3.gtk_widget_get_direction.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_margin_right.restype = None
+    libgtk3.gtk_widget_set_margin_right.argtypes = [_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_allocation.restype = None
+    libgtk3.gtk_widget_get_allocation.argtypes = [_GtkWidget,_GtkAllocation]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_no_show_all.restype = gboolean
+    libgtk3.gtk_widget_get_no_show_all.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_list_mnemonic_labels.restype = _GList
+    libgtk3.gtk_widget_list_mnemonic_labels.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_override_symbolic_color.restype = None
+    libgtk3.gtk_widget_override_symbolic_color.argtypes = [_GtkWidget,c_char_p,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_path.restype = None
+    libgtk3.gtk_widget_class_path.argtypes = [_GtkWidget,POINTER(guint),c_char_p,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_freeze_child_notify.restype = None
+    libgtk3.gtk_widget_freeze_child_notify.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_margin_left.restype = gint
+    libgtk3.gtk_widget_get_margin_left.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_input_shape_combine_region.restype = None
+    libgtk3.gtk_widget_input_shape_combine_region.argtypes = [_GtkWidget,_cairo_region_t]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_valign.restype = None
+    libgtk3.gtk_widget_set_valign.argtypes = [_GtkWidget,GtkAlign]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_visual.restype = None
+    libgtk3.gtk_widget_set_visual.argtypes = [_GtkWidget,_GdkVisual]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_style_get_property.restype = None
+    libgtk3.gtk_widget_style_get_property.argtypes = [_GtkWidget,c_char_p,_GValue]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_remove_mnemonic_label.restype = None
+    libgtk3.gtk_widget_remove_mnemonic_label.argtypes = [_GtkWidget,_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_has_screen.restype = gboolean
+    libgtk3.gtk_widget_has_screen.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_grab_default.restype = None
+    libgtk3.gtk_widget_grab_default.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_trigger_tooltip_query.restype = None
+    libgtk3.gtk_widget_trigger_tooltip_query.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_device_events.restype = None
+    libgtk3.gtk_widget_set_device_events.argtypes = [_GtkWidget,_GdkDevice,GdkEventMask]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_path.restype = _GtkWidgetPath
+    libgtk3.gtk_widget_get_path.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_keynav_failed.restype = gboolean
+    libgtk3.gtk_widget_keynav_failed.argtypes = [_GtkWidget,GtkDirectionType]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_settings.restype = _GtkSettings
+    libgtk3.gtk_widget_get_settings.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_fg.restype = None
+    libgtk3.gtk_widget_modify_fg.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_state_flags.restype = None
+    libgtk3.gtk_widget_set_state_flags.argtypes = [_GtkWidget,GtkStateFlags,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_modify_base.restype = None
+    libgtk3.gtk_widget_modify_base.argtypes = [_GtkWidget,GtkStateType,_GdkColor]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_create_pango_layout.restype = _PangoLayout
+    libgtk3.gtk_widget_create_pango_layout.argtypes = [_GtkWidget,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_hexpand_set.restype = None
+    libgtk3.gtk_widget_set_hexpand_set.argtypes = [_GtkWidget,gboolean]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_set_margin_bottom.restype = None
+    libgtk3.gtk_widget_set_margin_bottom.argtypes = [_GtkWidget,gint]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_tooltip_markup.restype = c_char_p
+    libgtk3.gtk_widget_get_tooltip_markup.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_requisition.restype = None
+    libgtk3.gtk_widget_get_requisition.argtypes = [_GtkWidget,_GtkRequisition]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_has_rc_style.restype = gboolean
+    libgtk3.gtk_widget_has_rc_style.argtypes = [_GtkWidget]
+except:
+   pass
+try:
+    libgtk3.gtk_distribute_natural_allocation.restype = gint
+    libgtk3.gtk_distribute_natural_allocation.argtypes = [gint,guint,POINTER(GtkRequestedSize)]
+except:
+   pass
+try:
+    libgtk3.gtk_cairo_should_draw_window.restype = gboolean
+    libgtk3.gtk_cairo_should_draw_window.argtypes = [_cairo_t,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_list_style_properties.restype = _GParamSpec
+    libgtk3.gtk_widget_class_list_style_properties.argtypes = [_GtkWidgetClass,POINTER(guint)]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_default_direction.restype = GtkTextDirection
+    libgtk3.gtk_widget_get_default_direction.argtypes = []
+except:
+   pass
+try:
+    libgtk3.gtk_widget_pop_composite_child.restype = None
+    libgtk3.gtk_widget_pop_composite_child.argtypes = []
+except:
+   pass
+try:
+    libgtk3.gtk_widget_push_composite_child.restype = None
+    libgtk3.gtk_widget_push_composite_child.argtypes = []
+except:
+   pass
+try:
+    libgtk3.gtk_widget_class_find_style_property.restype = _GParamSpec
+    libgtk3.gtk_widget_class_find_style_property.argtypes = [_GtkWidgetClass,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_widget_get_default_style.restype = _GtkStyle
+    libgtk3.gtk_widget_get_default_style.argtypes = []
+except:
+   pass
 import gobject__GObject
 class GtkWidget( gobject__GObject.GObject):
     """Class GtkWidget Constructors"""
@@ -1725,8 +2358,6 @@ class GtkWidget( gobject__GObject.GObject):
         from gtk3 import GtkStyle
         return GtkStyle( obj=    libgtk3.gtk_widget_get_default_style()
  or POINTER(c_int)())
-
-
     def __del__(self):
         libgtk3.gtk_widget_destroy.argtypes=[c_void_p]
         libgtk3.gtk_widget_destroy(self._object)

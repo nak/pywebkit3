@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -85,17 +86,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -129,6 +133,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -253,114 +258,276 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libpango.pango_layout_get_justify.restype = gboolean
-libpango.pango_layout_get_justify.argtypes = [_PangoLayout]
-libpango.pango_layout_get_unknown_glyphs_count.restype = int
-libpango.pango_layout_get_unknown_glyphs_count.argtypes = [_PangoLayout]
-libpango.pango_layout_set_height.restype = None
-libpango.pango_layout_set_height.argtypes = [_PangoLayout,int]
-libpango.pango_layout_copy.restype = _PangoLayout
-libpango.pango_layout_copy.argtypes = [_PangoLayout]
-libpango.pango_layout_set_markup.restype = None
-libpango.pango_layout_set_markup.argtypes = [_PangoLayout,c_char_p,int]
-libpango.pango_layout_get_attributes.restype = _PangoAttrList
-libpango.pango_layout_get_attributes.argtypes = [_PangoLayout]
-libpango.pango_layout_get_context.restype = _PangoContext
-libpango.pango_layout_get_context.argtypes = [_PangoLayout]
-libpango.pango_layout_set_wrap.restype = None
-libpango.pango_layout_set_wrap.argtypes = [_PangoLayout,PangoWrapMode]
-libpango.pango_layout_get_alignment.restype = PangoAlignment
-libpango.pango_layout_get_alignment.argtypes = [_PangoLayout]
-libpango.pango_layout_index_to_pos.restype = None
-libpango.pango_layout_index_to_pos.argtypes = [_PangoLayout,int,_PangoRectangle]
-libpango.pango_layout_move_cursor_visually.restype = None
-libpango.pango_layout_move_cursor_visually.argtypes = [_PangoLayout,gboolean,int,int,int,POINTER(int),POINTER(int)]
-libpango.pango_layout_get_indent.restype = int
-libpango.pango_layout_get_indent.argtypes = [_PangoLayout]
-libpango.pango_layout_get_single_paragraph_mode.restype = gboolean
-libpango.pango_layout_get_single_paragraph_mode.argtypes = [_PangoLayout]
-libpango.pango_layout_get_line_count.restype = int
-libpango.pango_layout_get_line_count.argtypes = [_PangoLayout]
-libpango.pango_layout_is_wrapped.restype = gboolean
-libpango.pango_layout_is_wrapped.argtypes = [_PangoLayout]
-libpango.pango_layout_get_pixel_size.restype = None
-libpango.pango_layout_get_pixel_size.argtypes = [_PangoLayout,POINTER(int),POINTER(int)]
-libpango.pango_layout_get_lines.restype = _GSList
-libpango.pango_layout_get_lines.argtypes = [_PangoLayout]
-libpango.pango_layout_set_ellipsize.restype = None
-libpango.pango_layout_set_ellipsize.argtypes = [_PangoLayout,PangoEllipsizeMode]
-libpango.pango_layout_get_cursor_pos.restype = None
-libpango.pango_layout_get_cursor_pos.argtypes = [_PangoLayout,int,_PangoRectangle,_PangoRectangle]
-libpango.pango_layout_get_wrap.restype = PangoWrapMode
-libpango.pango_layout_get_wrap.argtypes = [_PangoLayout]
-libpango.pango_layout_get_baseline.restype = int
-libpango.pango_layout_get_baseline.argtypes = [_PangoLayout]
-libpango.pango_layout_set_text.restype = None
-libpango.pango_layout_set_text.argtypes = [_PangoLayout,c_char_p,int]
-libpango.pango_layout_set_font_description.restype = None
-libpango.pango_layout_set_font_description.argtypes = [_PangoLayout,_PangoFontDescription]
-libpango.pango_layout_get_size.restype = None
-libpango.pango_layout_get_size.argtypes = [_PangoLayout,POINTER(int),POINTER(int)]
-libpango.pango_layout_set_spacing.restype = None
-libpango.pango_layout_set_spacing.argtypes = [_PangoLayout,int]
-libpango.pango_layout_get_character_count.restype = gint
-libpango.pango_layout_get_character_count.argtypes = [_PangoLayout]
-libpango.pango_layout_get_log_attrs.restype = None
-libpango.pango_layout_get_log_attrs.argtypes = [_PangoLayout,_PangoLogAttr,POINTER(gint)]
-libpango.pango_layout_get_text.restype = c_char_p
-libpango.pango_layout_get_text.argtypes = [_PangoLayout]
-libpango.pango_layout_get_tabs.restype = _PangoTabArray
-libpango.pango_layout_get_tabs.argtypes = [_PangoLayout]
-libpango.pango_layout_get_extents.restype = None
-libpango.pango_layout_get_extents.argtypes = [_PangoLayout,_PangoRectangle,_PangoRectangle]
-libpango.pango_layout_xy_to_index.restype = gboolean
-libpango.pango_layout_xy_to_index.argtypes = [_PangoLayout,int,int,POINTER(int),POINTER(int)]
-libpango.pango_layout_get_height.restype = int
-libpango.pango_layout_get_height.argtypes = [_PangoLayout]
-libpango.pango_layout_set_single_paragraph_mode.restype = None
-libpango.pango_layout_set_single_paragraph_mode.argtypes = [_PangoLayout,gboolean]
-libpango.pango_layout_get_width.restype = int
-libpango.pango_layout_get_width.argtypes = [_PangoLayout]
-libpango.pango_layout_get_pixel_extents.restype = None
-libpango.pango_layout_get_pixel_extents.argtypes = [_PangoLayout,_PangoRectangle,_PangoRectangle]
-libpango.pango_layout_set_indent.restype = None
-libpango.pango_layout_set_indent.argtypes = [_PangoLayout,int]
-libpango.pango_layout_get_line_readonly.restype = _PangoLayoutLine
-libpango.pango_layout_get_line_readonly.argtypes = [_PangoLayout,int]
-libpango.pango_layout_set_attributes.restype = None
-libpango.pango_layout_set_attributes.argtypes = [_PangoLayout,_PangoAttrList]
-libpango.pango_layout_get_lines_readonly.restype = _GSList
-libpango.pango_layout_get_lines_readonly.argtypes = [_PangoLayout]
-libpango.pango_layout_context_changed.restype = None
-libpango.pango_layout_context_changed.argtypes = [_PangoLayout]
-libpango.pango_layout_set_tabs.restype = None
-libpango.pango_layout_set_tabs.argtypes = [_PangoLayout,_PangoTabArray]
-libpango.pango_layout_set_width.restype = None
-libpango.pango_layout_set_width.argtypes = [_PangoLayout,int]
-libpango.pango_layout_get_log_attrs_readonly.restype = _PangoLogAttr
-libpango.pango_layout_get_log_attrs_readonly.argtypes = [_PangoLayout,POINTER(gint)]
-libpango.pango_layout_set_markup_with_accel.restype = None
-libpango.pango_layout_set_markup_with_accel.argtypes = [_PangoLayout,c_char_p,int,gunichar,_gunichar]
-libpango.pango_layout_get_auto_dir.restype = gboolean
-libpango.pango_layout_get_auto_dir.argtypes = [_PangoLayout]
-libpango.pango_layout_set_auto_dir.restype = None
-libpango.pango_layout_set_auto_dir.argtypes = [_PangoLayout,gboolean]
-libpango.pango_layout_get_font_description.restype = _PangoFontDescription
-libpango.pango_layout_get_font_description.argtypes = [_PangoLayout]
-libpango.pango_layout_get_line.restype = _PangoLayoutLine
-libpango.pango_layout_get_line.argtypes = [_PangoLayout,int]
-libpango.pango_layout_index_to_line_x.restype = None
-libpango.pango_layout_index_to_line_x.argtypes = [_PangoLayout,int,gboolean,POINTER(int),POINTER(int)]
-libpango.pango_layout_is_ellipsized.restype = gboolean
-libpango.pango_layout_is_ellipsized.argtypes = [_PangoLayout]
-libpango.pango_layout_set_alignment.restype = None
-libpango.pango_layout_set_alignment.argtypes = [_PangoLayout,PangoAlignment]
-libpango.pango_layout_get_spacing.restype = int
-libpango.pango_layout_get_spacing.argtypes = [_PangoLayout]
-libpango.pango_layout_get_ellipsize.restype = PangoEllipsizeMode
-libpango.pango_layout_get_ellipsize.argtypes = [_PangoLayout]
-libpango.pango_layout_set_justify.restype = None
-libpango.pango_layout_set_justify.argtypes = [_PangoLayout,gboolean]
+try:
+    libpango.pango_layout_get_justify.restype = gboolean
+    libpango.pango_layout_get_justify.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_unknown_glyphs_count.restype = int
+    libpango.pango_layout_get_unknown_glyphs_count.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_height.restype = None
+    libpango.pango_layout_set_height.argtypes = [_PangoLayout,int]
+except:
+   pass
+try:
+    libpango.pango_layout_copy.restype = _PangoLayout
+    libpango.pango_layout_copy.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_markup.restype = None
+    libpango.pango_layout_set_markup.argtypes = [_PangoLayout,c_char_p,int]
+except:
+   pass
+try:
+    libpango.pango_layout_get_attributes.restype = _PangoAttrList
+    libpango.pango_layout_get_attributes.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_context.restype = _PangoContext
+    libpango.pango_layout_get_context.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_wrap.restype = None
+    libpango.pango_layout_set_wrap.argtypes = [_PangoLayout,PangoWrapMode]
+except:
+   pass
+try:
+    libpango.pango_layout_get_alignment.restype = PangoAlignment
+    libpango.pango_layout_get_alignment.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_index_to_pos.restype = None
+    libpango.pango_layout_index_to_pos.argtypes = [_PangoLayout,int,_PangoRectangle]
+except:
+   pass
+try:
+    libpango.pango_layout_move_cursor_visually.restype = None
+    libpango.pango_layout_move_cursor_visually.argtypes = [_PangoLayout,gboolean,int,int,int,POINTER(int),POINTER(int)]
+except:
+   pass
+try:
+    libpango.pango_layout_get_indent.restype = int
+    libpango.pango_layout_get_indent.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_single_paragraph_mode.restype = gboolean
+    libpango.pango_layout_get_single_paragraph_mode.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_line_count.restype = int
+    libpango.pango_layout_get_line_count.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_is_wrapped.restype = gboolean
+    libpango.pango_layout_is_wrapped.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_pixel_size.restype = None
+    libpango.pango_layout_get_pixel_size.argtypes = [_PangoLayout,POINTER(int),POINTER(int)]
+except:
+   pass
+try:
+    libpango.pango_layout_get_lines.restype = _GSList
+    libpango.pango_layout_get_lines.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_ellipsize.restype = None
+    libpango.pango_layout_set_ellipsize.argtypes = [_PangoLayout,PangoEllipsizeMode]
+except:
+   pass
+try:
+    libpango.pango_layout_get_cursor_pos.restype = None
+    libpango.pango_layout_get_cursor_pos.argtypes = [_PangoLayout,int,_PangoRectangle,_PangoRectangle]
+except:
+   pass
+try:
+    libpango.pango_layout_get_wrap.restype = PangoWrapMode
+    libpango.pango_layout_get_wrap.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_baseline.restype = int
+    libpango.pango_layout_get_baseline.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_text.restype = None
+    libpango.pango_layout_set_text.argtypes = [_PangoLayout,c_char_p,int]
+except:
+   pass
+try:
+    libpango.pango_layout_set_font_description.restype = None
+    libpango.pango_layout_set_font_description.argtypes = [_PangoLayout,_PangoFontDescription]
+except:
+   pass
+try:
+    libpango.pango_layout_get_size.restype = None
+    libpango.pango_layout_get_size.argtypes = [_PangoLayout,POINTER(int),POINTER(int)]
+except:
+   pass
+try:
+    libpango.pango_layout_set_spacing.restype = None
+    libpango.pango_layout_set_spacing.argtypes = [_PangoLayout,int]
+except:
+   pass
+try:
+    libpango.pango_layout_get_character_count.restype = gint
+    libpango.pango_layout_get_character_count.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_log_attrs.restype = None
+    libpango.pango_layout_get_log_attrs.argtypes = [_PangoLayout,_PangoLogAttr,POINTER(gint)]
+except:
+   pass
+try:
+    libpango.pango_layout_get_text.restype = c_char_p
+    libpango.pango_layout_get_text.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_tabs.restype = _PangoTabArray
+    libpango.pango_layout_get_tabs.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_extents.restype = None
+    libpango.pango_layout_get_extents.argtypes = [_PangoLayout,_PangoRectangle,_PangoRectangle]
+except:
+   pass
+try:
+    libpango.pango_layout_xy_to_index.restype = gboolean
+    libpango.pango_layout_xy_to_index.argtypes = [_PangoLayout,int,int,POINTER(int),POINTER(int)]
+except:
+   pass
+try:
+    libpango.pango_layout_get_height.restype = int
+    libpango.pango_layout_get_height.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_single_paragraph_mode.restype = None
+    libpango.pango_layout_set_single_paragraph_mode.argtypes = [_PangoLayout,gboolean]
+except:
+   pass
+try:
+    libpango.pango_layout_get_width.restype = int
+    libpango.pango_layout_get_width.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_pixel_extents.restype = None
+    libpango.pango_layout_get_pixel_extents.argtypes = [_PangoLayout,_PangoRectangle,_PangoRectangle]
+except:
+   pass
+try:
+    libpango.pango_layout_set_indent.restype = None
+    libpango.pango_layout_set_indent.argtypes = [_PangoLayout,int]
+except:
+   pass
+try:
+    libpango.pango_layout_get_line_readonly.restype = _PangoLayoutLine
+    libpango.pango_layout_get_line_readonly.argtypes = [_PangoLayout,int]
+except:
+   pass
+try:
+    libpango.pango_layout_set_attributes.restype = None
+    libpango.pango_layout_set_attributes.argtypes = [_PangoLayout,_PangoAttrList]
+except:
+   pass
+try:
+    libpango.pango_layout_get_lines_readonly.restype = _GSList
+    libpango.pango_layout_get_lines_readonly.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_context_changed.restype = None
+    libpango.pango_layout_context_changed.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_tabs.restype = None
+    libpango.pango_layout_set_tabs.argtypes = [_PangoLayout,_PangoTabArray]
+except:
+   pass
+try:
+    libpango.pango_layout_set_width.restype = None
+    libpango.pango_layout_set_width.argtypes = [_PangoLayout,int]
+except:
+   pass
+try:
+    libpango.pango_layout_get_log_attrs_readonly.restype = _PangoLogAttr
+    libpango.pango_layout_get_log_attrs_readonly.argtypes = [_PangoLayout,POINTER(gint)]
+except:
+   pass
+try:
+    libpango.pango_layout_set_markup_with_accel.restype = None
+    libpango.pango_layout_set_markup_with_accel.argtypes = [_PangoLayout,c_char_p,int,gunichar,_gunichar]
+except:
+   pass
+try:
+    libpango.pango_layout_get_auto_dir.restype = gboolean
+    libpango.pango_layout_get_auto_dir.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_auto_dir.restype = None
+    libpango.pango_layout_set_auto_dir.argtypes = [_PangoLayout,gboolean]
+except:
+   pass
+try:
+    libpango.pango_layout_get_font_description.restype = _PangoFontDescription
+    libpango.pango_layout_get_font_description.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_line.restype = _PangoLayoutLine
+    libpango.pango_layout_get_line.argtypes = [_PangoLayout,int]
+except:
+   pass
+try:
+    libpango.pango_layout_index_to_line_x.restype = None
+    libpango.pango_layout_index_to_line_x.argtypes = [_PangoLayout,int,gboolean,POINTER(int),POINTER(int)]
+except:
+   pass
+try:
+    libpango.pango_layout_is_ellipsized.restype = gboolean
+    libpango.pango_layout_is_ellipsized.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_alignment.restype = None
+    libpango.pango_layout_set_alignment.argtypes = [_PangoLayout,PangoAlignment]
+except:
+   pass
+try:
+    libpango.pango_layout_get_spacing.restype = int
+    libpango.pango_layout_get_spacing.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_get_ellipsize.restype = PangoEllipsizeMode
+    libpango.pango_layout_get_ellipsize.argtypes = [_PangoLayout]
+except:
+   pass
+try:
+    libpango.pango_layout_set_justify.restype = None
+    libpango.pango_layout_set_justify.argtypes = [_PangoLayout,gboolean]
+except:
+   pass
 import gobject__GObject
 class PangoLayout( gobject__GObject.GObject):
     """Class PangoLayout Constructors"""

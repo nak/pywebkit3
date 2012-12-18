@@ -56,8 +56,11 @@ _WebKitWebWindowFeatures = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 """Enumerations"""
 
-libwebkit3.webkit_web_window_features_equal.restype = gboolean
-libwebkit3.webkit_web_window_features_equal.argtypes = [_WebKitWebWindowFeatures,_WebKitWebWindowFeatures]
+try:
+    libwebkit3.webkit_web_window_features_equal.restype = gboolean
+    libwebkit3.webkit_web_window_features_equal.argtypes = [_WebKitWebWindowFeatures,_WebKitWebWindowFeatures]
+except:
+   pass
 import gobject__GObject
 class WebKitWebWindowFeatures( gobject__GObject.GObject):
     """Class WebKitWebWindowFeatures Constructors"""

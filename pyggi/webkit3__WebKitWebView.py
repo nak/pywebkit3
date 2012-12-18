@@ -54,25 +54,47 @@ from webkit3_enums import *
 """Derived Pointer Types"""
 _GtkRcStyle = POINTER(c_int)
 _GdkGeometry = POINTER(c_int)
+_PangoFont = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)
+_GInterface = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
+_GtkBin = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_PangoEngineShape = POINTER(c_int)
 _GtkRegionFlags = POINTER(c_int)
+_cairo_surface_t = POINTER(c_int)
+_WebKitDOMNode = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
 _cairo_font_options_t = POINTER(c_int)
+_JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
 _GtkIconFactory = POINTER(c_int)
 _GdkAtom = POINTER(c_int)
+_GMainLoop = POINTER(c_int)
 _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+_PangoItem = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
+_GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
+_GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
+_GInputStream = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
+_GBytes = POINTER(c_int)
 _GScanner = POINTER(c_int)
 _PangoFont = POINTER(c_int)
 _GtkStyleContext = POINTER(c_int)
+_GMainContext = POINTER(c_int)
 _GtkTextBuffer = POINTER(c_int)
 _GtkTargetList = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
@@ -82,58 +104,111 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
+_GString = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
+_GBoxed = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
+_JSClass = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
+_GSource = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
+_GIOStream = POINTER(c_int)
+_GIOStream = POINTER(c_int)
+_JSString = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
+_GOutputStream = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
+_GSource = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _PangoAnalysis = POINTER(c_int)
+_GMutex = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+_GAppLauncContext = POINTER(c_int)
 _GdkCursor = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
 _WebKitWebInspector = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
+_GCancellable = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
+_GtkContainerClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GtkAssistant = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
+_GtkCssProvider = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
+_GCond = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
 _WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+_GActionGroup = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+_GFile = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
 _cairo_t = POINTER(c_int)
 _GWeakRef = POINTER(c_int)
+_GtkAboutDialog = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
+_GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
+_PangoFontsetSimple = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -147,7 +222,10 @@ _GdkCursor = POINTER(c_int)
 _WebKitDOMDocument = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
+_GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -155,32 +233,56 @@ _PangoCoverage = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
 _GdkRGBA = POINTER(c_int)
+_GTimeVal = POINTER(c_int)
+_GtkInvisible = POINTER(c_int)
+_GSourceFuncs = POINTER(c_int)
+_JSPropertyNameAccumulator = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
 _WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
 _GdkColor = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
 _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GInputStream = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
+_WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GIcon = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
+_PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
+_GSourceCallbackFuncs = POINTER(c_int)
+_GtkCssSection = POINTER(c_int)
+_PangoFontFace = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
+_GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
@@ -227,151 +329,393 @@ WebKitLoadStatus = c_int
 WebKitNavigationResponse = c_int
 WebKitWebViewTargetInfo = c_int
 WebKitWebViewViewMode = c_int
+WebKitEditingBehavior = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GApplicationFlags = c_int
+GtkDialogFlags = c_int
+GtkResponseType = c_int
+WebKitWebNavigationReason = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkLicense = c_int
+GtkIconSize = c_int
+GtkAssistantPageType = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+GtkDestDefaults = c_int
+GtkTargetFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
 
-libwebkit3.webkit_web_view_zoom_in.restype = None
-libwebkit3.webkit_web_view_zoom_in.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_copy_clipboard.restype = gboolean
-libwebkit3.webkit_web_view_can_copy_clipboard.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_uri.restype = c_char_p
-libwebkit3.webkit_web_view_get_uri.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_has_selection.restype = gboolean
-libwebkit3.webkit_web_view_has_selection.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_reload_bypass_cache.restype = None
-libwebkit3.webkit_web_view_reload_bypass_cache.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_load_string.restype = None
-libwebkit3.webkit_web_view_load_string.argtypes = [_WebKitWebView,c_char_p,c_char_p,c_char_p,c_char_p]
-libwebkit3.webkit_web_view_get_full_content_zoom.restype = gboolean
-libwebkit3.webkit_web_view_get_full_content_zoom.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_paste_clipboard.restype = gboolean
-libwebkit3.webkit_web_view_can_paste_clipboard.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_encoding.restype = c_char_p
-libwebkit3.webkit_web_view_get_encoding.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_custom_encoding.restype = None
-libwebkit3.webkit_web_view_set_custom_encoding.argtypes = [_WebKitWebView,c_char_p]
-libwebkit3.webkit_web_view_set_view_mode.restype = None
-libwebkit3.webkit_web_view_set_view_mode.argtypes = [_WebKitWebView,WebKitWebViewViewMode]
-libwebkit3.webkit_web_view_undo.restype = None
-libwebkit3.webkit_web_view_undo.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_settings.restype = None
-libwebkit3.webkit_web_view_set_settings.argtypes = [_WebKitWebView,_WebKitWebSettings]
-libwebkit3.webkit_web_view_get_paste_target_list.restype = _GtkTargetList
-libwebkit3.webkit_web_view_get_paste_target_list.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_dom_document.restype = _WebKitDOMDocument
-libwebkit3.webkit_web_view_get_dom_document.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_cut_clipboard.restype = gboolean
-libwebkit3.webkit_web_view_can_cut_clipboard.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_reload.restype = None
-libwebkit3.webkit_web_view_reload.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_transparent.restype = None
-libwebkit3.webkit_web_view_set_transparent.argtypes = [_WebKitWebView,gboolean]
-libwebkit3.webkit_web_view_unmark_text_matches.restype = None
-libwebkit3.webkit_web_view_unmark_text_matches.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_view_source_mode.restype = gboolean
-libwebkit3.webkit_web_view_get_view_source_mode.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_go_back_or_forward.restype = None
-libwebkit3.webkit_web_view_go_back_or_forward.argtypes = [_WebKitWebView,gint]
-libwebkit3.webkit_web_view_copy_clipboard.restype = None
-libwebkit3.webkit_web_view_copy_clipboard.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_zoom_level.restype = gfloat
-libwebkit3.webkit_web_view_get_zoom_level.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_load_status.restype = WebKitLoadStatus
-libwebkit3.webkit_web_view_get_load_status.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_icon_uri.restype = c_char_p
-libwebkit3.webkit_web_view_get_icon_uri.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_editable.restype = None
-libwebkit3.webkit_web_view_set_editable.argtypes = [_WebKitWebView,gboolean]
-libwebkit3.webkit_web_view_move_cursor.restype = None
-libwebkit3.webkit_web_view_move_cursor.argtypes = [_WebKitWebView,GtkMovementStep,gint]
-libwebkit3.webkit_web_view_load_html_string.restype = None
-libwebkit3.webkit_web_view_load_html_string.argtypes = [_WebKitWebView,c_char_p,c_char_p]
-libwebkit3.webkit_web_view_paste_clipboard.restype = None
-libwebkit3.webkit_web_view_paste_clipboard.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_title.restype = c_char_p
-libwebkit3.webkit_web_view_get_title.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_go_back.restype = None
-libwebkit3.webkit_web_view_go_back.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_redo.restype = None
-libwebkit3.webkit_web_view_redo.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_go_forward.restype = None
-libwebkit3.webkit_web_view_go_forward.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_maintains_back_forward_list.restype = None
-libwebkit3.webkit_web_view_set_maintains_back_forward_list.argtypes = [_WebKitWebView,gboolean]
-libwebkit3.webkit_web_view_get_focused_frame.restype = _WebKitWebFrame
-libwebkit3.webkit_web_view_get_focused_frame.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_show_mime_type.restype = gboolean
-libwebkit3.webkit_web_view_can_show_mime_type.argtypes = [_WebKitWebView,c_char_p]
-libwebkit3.webkit_web_view_get_window_features.restype = _WebKitWebWindowFeatures
-libwebkit3.webkit_web_view_get_window_features.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_back_forward_list.restype = _WebKitWebBackForwardList
-libwebkit3.webkit_web_view_get_back_forward_list.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_go_forward.restype = gboolean
-libwebkit3.webkit_web_view_can_go_forward.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_settings.restype = _WebKitWebSettings
-libwebkit3.webkit_web_view_get_settings.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_execute_script.restype = None
-libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
-libwebkit3.webkit_web_view_cut_clipboard.restype = None
-libwebkit3.webkit_web_view_cut_clipboard.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_inspector.restype = _WebKitWebInspector
-libwebkit3.webkit_web_view_get_inspector.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_transparent.restype = gboolean
-libwebkit3.webkit_web_view_get_transparent.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_custom_encoding.restype = c_char_p
-libwebkit3.webkit_web_view_get_custom_encoding.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_icon_pixbuf.restype = _GdkPixbuf
-libwebkit3.webkit_web_view_get_icon_pixbuf.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_undo.restype = gboolean
-libwebkit3.webkit_web_view_can_undo.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_view_mode.restype = WebKitWebViewViewMode
-libwebkit3.webkit_web_view_get_view_mode.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_zoom_level.restype = None
-libwebkit3.webkit_web_view_set_zoom_level.argtypes = [_WebKitWebView,gfloat]
-libwebkit3.webkit_web_view_search_text.restype = gboolean
-libwebkit3.webkit_web_view_search_text.argtypes = [_WebKitWebView,c_char_p,gboolean,gboolean,gboolean]
-libwebkit3.webkit_web_view_load_uri.restype = None
-libwebkit3.webkit_web_view_load_uri.argtypes = [_WebKitWebView,c_char_p]
-libwebkit3.webkit_web_view_get_editable.restype = gboolean
-libwebkit3.webkit_web_view_get_editable.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
-libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_progress.restype = gdouble
-libwebkit3.webkit_web_view_get_progress.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_open.restype = None
-libwebkit3.webkit_web_view_open.argtypes = [_WebKitWebView,c_char_p]
-libwebkit3.webkit_web_view_set_full_content_zoom.restype = None
-libwebkit3.webkit_web_view_set_full_content_zoom.argtypes = [_WebKitWebView,gboolean]
-libwebkit3.webkit_web_view_delete_selection.restype = None
-libwebkit3.webkit_web_view_delete_selection.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_select_all.restype = None
-libwebkit3.webkit_web_view_select_all.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_try_get_favicon_pixbuf.restype = _GdkPixbuf
-libwebkit3.webkit_web_view_try_get_favicon_pixbuf.argtypes = [_WebKitWebView,guint,guint]
-libwebkit3.webkit_web_view_get_hit_test_result.restype = _WebKitHitTestResult
-libwebkit3.webkit_web_view_get_hit_test_result.argtypes = [_WebKitWebView,_GdkEventButton]
-libwebkit3.webkit_web_view_mark_text_matches.restype = guint
-libwebkit3.webkit_web_view_mark_text_matches.argtypes = [_WebKitWebView,c_char_p,gboolean,guint]
-libwebkit3.webkit_web_view_zoom_out.restype = None
-libwebkit3.webkit_web_view_zoom_out.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_redo.restype = gboolean
-libwebkit3.webkit_web_view_can_redo.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_load_request.restype = None
-libwebkit3.webkit_web_view_load_request.argtypes = [_WebKitWebView,_WebKitNetworkRequest]
-libwebkit3.webkit_web_view_stop_loading.restype = None
-libwebkit3.webkit_web_view_stop_loading.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_copy_target_list.restype = _GtkTargetList
-libwebkit3.webkit_web_view_get_copy_target_list.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_get_viewport_attributes.restype = _WebKitViewportAttributes
-libwebkit3.webkit_web_view_get_viewport_attributes.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_set_highlight_text_matches.restype = None
-libwebkit3.webkit_web_view_set_highlight_text_matches.argtypes = [_WebKitWebView,gboolean]
-libwebkit3.webkit_web_view_go_to_back_forward_item.restype = gboolean
-libwebkit3.webkit_web_view_go_to_back_forward_item.argtypes = [_WebKitWebView,_WebKitWebHistoryItem]
-libwebkit3.webkit_web_view_set_view_source_mode.restype = None
-libwebkit3.webkit_web_view_set_view_source_mode.argtypes = [_WebKitWebView,gboolean]
-libwebkit3.webkit_web_view_can_go_back.restype = gboolean
-libwebkit3.webkit_web_view_can_go_back.argtypes = [_WebKitWebView]
-libwebkit3.webkit_web_view_can_go_back_or_forward.restype = gboolean
-libwebkit3.webkit_web_view_can_go_back_or_forward.argtypes = [_WebKitWebView,gint]
+try:
+    libwebkit3.webkit_web_view_zoom_in.restype = None
+    libwebkit3.webkit_web_view_zoom_in.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_copy_clipboard.restype = gboolean
+    libwebkit3.webkit_web_view_can_copy_clipboard.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_uri.restype = c_char_p
+    libwebkit3.webkit_web_view_get_uri.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_has_selection.restype = gboolean
+    libwebkit3.webkit_web_view_has_selection.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_reload_bypass_cache.restype = None
+    libwebkit3.webkit_web_view_reload_bypass_cache.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_load_string.restype = None
+    libwebkit3.webkit_web_view_load_string.argtypes = [_WebKitWebView,c_char_p,c_char_p,c_char_p,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_full_content_zoom.restype = gboolean
+    libwebkit3.webkit_web_view_get_full_content_zoom.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_paste_clipboard.restype = gboolean
+    libwebkit3.webkit_web_view_can_paste_clipboard.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_encoding.restype = c_char_p
+    libwebkit3.webkit_web_view_get_encoding.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_custom_encoding.restype = None
+    libwebkit3.webkit_web_view_set_custom_encoding.argtypes = [_WebKitWebView,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_view_mode.restype = None
+    libwebkit3.webkit_web_view_set_view_mode.argtypes = [_WebKitWebView,WebKitWebViewViewMode]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_undo.restype = None
+    libwebkit3.webkit_web_view_undo.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_settings.restype = None
+    libwebkit3.webkit_web_view_set_settings.argtypes = [_WebKitWebView,_WebKitWebSettings]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_paste_target_list.restype = _GtkTargetList
+    libwebkit3.webkit_web_view_get_paste_target_list.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_dom_document.restype = _WebKitDOMDocument
+    libwebkit3.webkit_web_view_get_dom_document.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_cut_clipboard.restype = gboolean
+    libwebkit3.webkit_web_view_can_cut_clipboard.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_reload.restype = None
+    libwebkit3.webkit_web_view_reload.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_transparent.restype = None
+    libwebkit3.webkit_web_view_set_transparent.argtypes = [_WebKitWebView,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_unmark_text_matches.restype = None
+    libwebkit3.webkit_web_view_unmark_text_matches.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_view_source_mode.restype = gboolean
+    libwebkit3.webkit_web_view_get_view_source_mode.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_go_back_or_forward.restype = None
+    libwebkit3.webkit_web_view_go_back_or_forward.argtypes = [_WebKitWebView,gint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_copy_clipboard.restype = None
+    libwebkit3.webkit_web_view_copy_clipboard.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_zoom_level.restype = gfloat
+    libwebkit3.webkit_web_view_get_zoom_level.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_load_status.restype = WebKitLoadStatus
+    libwebkit3.webkit_web_view_get_load_status.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_icon_uri.restype = c_char_p
+    libwebkit3.webkit_web_view_get_icon_uri.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_editable.restype = None
+    libwebkit3.webkit_web_view_set_editable.argtypes = [_WebKitWebView,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_move_cursor.restype = None
+    libwebkit3.webkit_web_view_move_cursor.argtypes = [_WebKitWebView,GtkMovementStep,gint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_load_html_string.restype = None
+    libwebkit3.webkit_web_view_load_html_string.argtypes = [_WebKitWebView,c_char_p,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_paste_clipboard.restype = None
+    libwebkit3.webkit_web_view_paste_clipboard.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_title.restype = c_char_p
+    libwebkit3.webkit_web_view_get_title.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_go_back.restype = None
+    libwebkit3.webkit_web_view_go_back.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_redo.restype = None
+    libwebkit3.webkit_web_view_redo.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_go_forward.restype = None
+    libwebkit3.webkit_web_view_go_forward.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_maintains_back_forward_list.restype = None
+    libwebkit3.webkit_web_view_set_maintains_back_forward_list.argtypes = [_WebKitWebView,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_focused_frame.restype = _WebKitWebFrame
+    libwebkit3.webkit_web_view_get_focused_frame.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_show_mime_type.restype = gboolean
+    libwebkit3.webkit_web_view_can_show_mime_type.argtypes = [_WebKitWebView,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_window_features.restype = _WebKitWebWindowFeatures
+    libwebkit3.webkit_web_view_get_window_features.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_back_forward_list.restype = _WebKitWebBackForwardList
+    libwebkit3.webkit_web_view_get_back_forward_list.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_go_forward.restype = gboolean
+    libwebkit3.webkit_web_view_can_go_forward.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_settings.restype = _WebKitWebSettings
+    libwebkit3.webkit_web_view_get_settings.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_execute_script.restype = None
+    libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_cut_clipboard.restype = None
+    libwebkit3.webkit_web_view_cut_clipboard.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_inspector.restype = _WebKitWebInspector
+    libwebkit3.webkit_web_view_get_inspector.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_transparent.restype = gboolean
+    libwebkit3.webkit_web_view_get_transparent.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_custom_encoding.restype = c_char_p
+    libwebkit3.webkit_web_view_get_custom_encoding.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_icon_pixbuf.restype = _GdkPixbuf
+    libwebkit3.webkit_web_view_get_icon_pixbuf.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_undo.restype = gboolean
+    libwebkit3.webkit_web_view_can_undo.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_view_mode.restype = WebKitWebViewViewMode
+    libwebkit3.webkit_web_view_get_view_mode.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_zoom_level.restype = None
+    libwebkit3.webkit_web_view_set_zoom_level.argtypes = [_WebKitWebView,gfloat]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_search_text.restype = gboolean
+    libwebkit3.webkit_web_view_search_text.argtypes = [_WebKitWebView,c_char_p,gboolean,gboolean,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_load_uri.restype = None
+    libwebkit3.webkit_web_view_load_uri.argtypes = [_WebKitWebView,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_editable.restype = gboolean
+    libwebkit3.webkit_web_view_get_editable.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
+    libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_progress.restype = gdouble
+    libwebkit3.webkit_web_view_get_progress.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_open.restype = None
+    libwebkit3.webkit_web_view_open.argtypes = [_WebKitWebView,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_full_content_zoom.restype = None
+    libwebkit3.webkit_web_view_set_full_content_zoom.argtypes = [_WebKitWebView,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_delete_selection.restype = None
+    libwebkit3.webkit_web_view_delete_selection.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_select_all.restype = None
+    libwebkit3.webkit_web_view_select_all.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_try_get_favicon_pixbuf.restype = _GdkPixbuf
+    libwebkit3.webkit_web_view_try_get_favicon_pixbuf.argtypes = [_WebKitWebView,guint,guint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_hit_test_result.restype = _WebKitHitTestResult
+    libwebkit3.webkit_web_view_get_hit_test_result.argtypes = [_WebKitWebView,_GdkEventButton]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_mark_text_matches.restype = guint
+    libwebkit3.webkit_web_view_mark_text_matches.argtypes = [_WebKitWebView,c_char_p,gboolean,guint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_zoom_out.restype = None
+    libwebkit3.webkit_web_view_zoom_out.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_redo.restype = gboolean
+    libwebkit3.webkit_web_view_can_redo.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_load_request.restype = None
+    libwebkit3.webkit_web_view_load_request.argtypes = [_WebKitWebView,_WebKitNetworkRequest]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_stop_loading.restype = None
+    libwebkit3.webkit_web_view_stop_loading.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_copy_target_list.restype = _GtkTargetList
+    libwebkit3.webkit_web_view_get_copy_target_list.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_get_viewport_attributes.restype = _WebKitViewportAttributes
+    libwebkit3.webkit_web_view_get_viewport_attributes.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_highlight_text_matches.restype = None
+    libwebkit3.webkit_web_view_set_highlight_text_matches.argtypes = [_WebKitWebView,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_go_to_back_forward_item.restype = gboolean
+    libwebkit3.webkit_web_view_go_to_back_forward_item.argtypes = [_WebKitWebView,_WebKitWebHistoryItem]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_set_view_source_mode.restype = None
+    libwebkit3.webkit_web_view_set_view_source_mode.argtypes = [_WebKitWebView,gboolean]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_go_back.restype = gboolean
+    libwebkit3.webkit_web_view_can_go_back.argtypes = [_WebKitWebView]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_view_can_go_back_or_forward.restype = gboolean
+    libwebkit3.webkit_web_view_can_go_back_or_forward.argtypes = [_WebKitWebView,gint]
+except:
+   pass
 import gtk3__GtkContainer
 class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     """Class WebKitWebView Constructors"""
@@ -561,7 +905,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def get_focused_frame(  self, ):
 
         from webkit3 import WebKitWebFrame
-        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_focused_frame( self._object ) or POINTER(c_int)() )
+        return WebKitWebFrame(None,None, obj=libwebkit3.webkit_web_view_get_focused_frame( self._object ) or POINTER(c_int)() )
 
     def can_show_mime_type(  self, mime_type, ):
 
@@ -754,7 +1098,6 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         
         return libwebkit3.webkit_web_view_can_go_back_or_forward( self._object,steps )
 
-
     ##add-ons/overrides
     
     
@@ -770,11 +1113,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             self._env = ScriptEnv(self)
         except:
             import logging
-            import traceback
             logging.error("Unable to load javascript engine.  Ophidian interface to DOM will not function")
-            logging.error("######################")
-            logging.error(traceback.format_exc())
-            logging.error("######################")
             self._env = None
 
     def get_main_frame(  self, ):

@@ -53,55 +53,240 @@ from gtk3_enums import *
     
 """Derived Pointer Types"""
 _GtkRcStyle = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
 _GdkGeometry = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_WebKitNetworkResponse = POINTER(c_int)
+_GInterface = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
+_GtkBin = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
+_GtkRcStyle = POINTER(c_int)
+_WebKitWebPolicyDecision = POINTER(c_int)
+_PangoEngineShape = POINTER(c_int)
+_GtkRegionFlags = POINTER(c_int)
+_cairo_surface_t = POINTER(c_int)
+_WebKitDOMNode = POINTER(c_int)
+_GtkWindow = POINTER(c_int)
+_cairo_font_options_t = POINTER(c_int)
+_JSValue = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GtkIconFactory = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
+_GMainLoop = POINTER(c_int)
+_GdkTimeCoord = POINTER(c_int)
+_GdkColor = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+_GtkContainer = POINTER(c_int)
+_PangoItem = POINTER(c_int)
+_GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
+_GMainContext = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+_GtkStyleProvider = POINTER(c_int)
+_GtkScrolledWindow = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
+_GtkDialog = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_GInputStream = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
+_GBytes = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_PangoFont = POINTER(c_int)
+_GtkStyleContext = POINTER(c_int)
+_GMainContext = POINTER(c_int)
+_GtkTextBuffer = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+_GdkAppLaunchContext = POINTER(c_int)
+_GObject = POINTER(c_int)
+_PangoLayout = POINTER(c_int)
+_WebKitWebBackForwardList = POINTER(c_int)
+_GtkOffscreenWindow = POINTER(c_int)
+_GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
+_PangoAttrIterator = POINTER(c_int)
+_GtkRequisition = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_GtkSelectionData = POINTER(c_int)
+_GtkWindowGroup = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
+_GString = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+_WebKitWebSettings = POINTER(c_int)
+_GBoxed = POINTER(c_int)
+_GtkPathPriorityType = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_JSValue = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
+_GtkSettings = POINTER(c_int)
+_GSource = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GIOStream = POINTER(c_int)
+_GIOStream = POINTER(c_int)
+_JSString = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+_GOutputStream = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GSource = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
+_GMutex = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GdkGeometry = POINTER(c_int)
+_GAppLauncContext = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
+_WebKitWebInspector = POINTER(c_int)
+_GdkWindowAttr = POINTER(c_int)
+_GOptionGroup = POINTER(c_int)
+_GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
+_GCancellable = POINTER(c_int)
+_GtkWidgetClass = POINTER(c_int)
+_GtkContainerClass = POINTER(c_int)
+_GdkEventKey = POINTER(c_int)
+_GtkAdjustment = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GtkAssistant = POINTER(c_int)
+_GdkDisplay = POINTER(c_int)
+_GtkCssProvider = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
+_GtkWidgetPath = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoFontMetrics = POINTER(c_int)
+_GCond = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_PangoFontMap = POINTER(c_int)
+_GSList = POINTER(c_int)
+_WebKitWebFrame = POINTER(c_int)
+_JSString = POINTER(c_int)
+_GActionGroup = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+_WebKitNetworkRequest = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
+_GFile = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
+_cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
+_PangoFontset = POINTER(c_int)
+_GdkWindow = POINTER(c_int)
+_PangoFontDescription = POINTER(c_int)
+_GtkBorder = POINTER(c_int)
+_JSPropertyNameArray = POINTER(c_int)
+_GError = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
+_WebKitViewportAttributes = POINTER(c_int)
+_JSClass = POINTER(c_int)
+_WebKitWebHistoryItem = POINTER(c_int)
+_PangoFontFamily = POINTER(c_int)
+_cairo_t = POINTER(c_int)
+_GWeakRef = POINTER(c_int)
+_GtkAboutDialog = POINTER(c_int)
+_GdkVisual = POINTER(c_int)
+_GdkEventButton = POINTER(c_int)
+_GCancellable = POINTER(c_int)
+_GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
+_PangoRectangle = POINTER(c_int)
+_GtkAccelGroup = POINTER(c_int)
+_GObject = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+_GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
+_JSContext = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
+_PangoFontsetSimple = POINTER(c_int)
+_GtkAllocation = POINTER(c_int)
+_GtkWidget = POINTER(c_int)
+_PangoLayoutLine = POINTER(c_int)
+_GtkIconSet = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
+_WebKitHitTestResult = POINTER(c_int)
+_GValue = POINTER(c_int)
+_GdkDeviceManager = POINTER(c_int)
+_GdkCursor = POINTER(c_int)
+_WebKitDOMDocument = POINTER(c_int)
+_PangoMatrix = POINTER(c_int)
+_GtkPrintOperation = POINTER(c_int)
+_GString = POINTER(c_int)
+_PangoContext = POINTER(c_int)
+_GtkTargetList = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
+_GList = POINTER(c_int)
+_WebKitWebView = POINTER(c_int)
+_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoCoverage = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
 _GdkRGBA = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
+_GTimeVal = POINTER(c_int)
+_GtkInvisible = POINTER(c_int)
+_GSourceFuncs = POINTER(c_int)
+_JSPropertyNameAccumulator = POINTER(c_int)
+_PangoGlyphString = POINTER(c_int)
+_JSGlobalContext = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
+_WebKitSecurityOrigin = POINTER(c_int)
+_GObjectClass = POINTER(c_int)
+_GSList = POINTER(c_int)
+_PangoAnalysis = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
+_SoupMessage = POINTER(c_int)
+_WebKitWebDataSource = POINTER(c_int)
+_GdkAtom = POINTER(c_int)
 _GdkColor = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
+_JSContextGroup = POINTER(c_int)
 _GdkRectangle = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
+_PangoAttrList = POINTER(c_int)
+_gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
+_PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
+_GPollFD = POINTER(c_int)
+_JSObject = POINTER(c_int)
+_GdkDragContext = POINTER(c_int)
+_GInputStream = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
+_WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
+_GParameter = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _GtkWindow = POINTER(c_int)
+_PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
+_GSourceCallbackFuncs = POINTER(c_int)
+_GtkCssSection = POINTER(c_int)
+_PangoFontFace = POINTER(c_int)
+_GtkTargetEntry = POINTER(c_int)
+_GtkApplication = POINTER(c_int)
+_GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
+_GByteArray = POINTER(c_int)
+_GdkScreen = POINTER(c_int)
+_PangoLanguage = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_PangoTabArray = POINTER(c_int)
 """Enumerations"""
 GtkWidgetHelpType = c_int
 GtkTextDirection = c_int
@@ -122,275 +307,736 @@ GdkFilterReturn = c_int
 GdkModifierType = c_int
 GdkWMDecoration = c_int
 GdkWMFunction = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GdkCursorType = c_int
+GdkVisualType = c_int
+GdkByteOrder = c_int
+PangoStyle = c_int
+PangoWeight = c_int
+PangoVariant = c_int
+PangoStretch = c_int
+PangoFontMask = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+WebKitLoadStatus = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+WebKitEditingBehavior = c_int
+GdkInputSource = c_int
+GdkInputMode = c_int
+GdkAxisUse = c_int
+GdkDeviceType = c_int
+GdkGrabOwnership = c_int
+GApplicationFlags = c_int
+GtkDialogFlags = c_int
+GtkResponseType = c_int
+WebKitWebNavigationReason = c_int
+PangoWrapMode = c_int
+PangoEllipsizeMode = c_int
+PangoAlignment = c_int
+GdkPixbufError = c_int
+GdkColorspace = c_int
+GdkPixbufAlphaMode = c_int
+GtkLicense = c_int
+GtkIconSize = c_int
+GtkAssistantPageType = c_int
+GtkRcFlags = c_int
+GtkRcTokenType = c_int
+GtkDestDefaults = c_int
+GtkTargetFlags = c_int
+WebKitNavigationResponse = c_int
+WebKitWebViewTargetInfo = c_int
+WebKitWebViewViewMode = c_int
+GdkWindowType = c_int
+GdkWindowWindowClass = c_int
+GdkWindowHints = c_int
+GdkGravity = c_int
+GdkWindowEdgeh = c_int
+GdkWindowTypeHint = c_int
+GdkWindowAttributesType = c_int
+GdkFilterReturn = c_int
+GdkModifierType = c_int
+GdkWMDecoration = c_int
+GdkWMFunction = c_int
 
-libgtk3.gdk_window_get_geometry.restype = None
-libgtk3.gdk_window_get_geometry.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint),POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_set_background_rgba.restype = None
-libgtk3.gdk_window_set_background_rgba.argtypes = [_GdkWindow,_GdkRGBA]
-libgtk3.gdk_window_get_screen.restype = _GdkScreen
-libgtk3.gdk_window_get_screen.argtypes = [_GdkWindow]
-libgtk3.gdk_window_has_native.restype = gboolean
-libgtk3.gdk_window_has_native.argtypes = [_GdkWindow]
-libgtk3.gdk_window_constrain_size.restype = None
-libgtk3.gdk_window_constrain_size.argtypes = [_GdkWindow,_GdkGeometry,guint,gint,gint,POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_set_urgency_hint.restype = None
-libgtk3.gdk_window_set_urgency_hint.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_is_input_only.restype = gboolean
-libgtk3.gdk_window_is_input_only.argtypes = [_GdkWindow]
-libgtk3.gdk_window_lower.restype = None
-libgtk3.gdk_window_lower.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_composited.restype = None
-libgtk3.gdk_window_set_composited.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_set_icon_list.restype = None
-libgtk3.gdk_window_set_icon_list.argtypes = [_GdkWindow,_GList]
-libgtk3.gdk_window_enable_synchronized_configure.restype = None
-libgtk3.gdk_window_enable_synchronized_configure.argtypes = [_GdkWindow]
-libgtk3.gdk_window_iconify.restype = None
-libgtk3.gdk_window_iconify.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_decorations.restype = None
-libgtk3.gdk_window_set_decorations.argtypes = [_GdkWindow,GdkWMDecoration]
-libgtk3.gdk_window_set_source_events.restype = None
-libgtk3.gdk_window_set_source_events.argtypes = [_GdkWindow,GdkInputSource,GdkEventMask]
-libgtk3.gdk_window_set_user_data.restype = None
-libgtk3.gdk_window_set_user_data.argtypes = [_GdkWindow,gpointer]
-libgtk3.gdk_window_is_shaped.restype = gboolean
-libgtk3.gdk_window_is_shaped.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_override_redirect.restype = None
-libgtk3.gdk_window_set_override_redirect.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_set_support_multidevice.restype = None
-libgtk3.gdk_window_set_support_multidevice.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_withdraw.restype = None
-libgtk3.gdk_window_withdraw.argtypes = [_GdkWindow]
-libgtk3.gdk_window_begin_paint_rect.restype = None
-libgtk3.gdk_window_begin_paint_rect.argtypes = [_GdkWindow,_GdkRectangle]
-libgtk3.gdk_window_register_dnd.restype = None
-libgtk3.gdk_window_register_dnd.argtypes = [_GdkWindow]
-libgtk3.gdk_window_begin_resize_drag.restype = None
-libgtk3.gdk_window_begin_resize_drag.argtypes = [_GdkWindow,GdkWindowEdge,gint,gint,gint,guint32]
-libgtk3.gdk_window_set_accept_focus.restype = None
-libgtk3.gdk_window_set_accept_focus.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_get_support_multidevice.restype = gboolean
-libgtk3.gdk_window_get_support_multidevice.argtypes = [_GdkWindow]
-libgtk3.gdk_window_move_region.restype = None
-libgtk3.gdk_window_move_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
-libgtk3.gdk_window_get_device_events.restype = GdkEventMask
-libgtk3.gdk_window_get_device_events.argtypes = [_GdkWindow,_GdkDevice]
-libgtk3.gdk_window_set_focus_on_map.restype = None
-libgtk3.gdk_window_set_focus_on_map.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_set_icon_name.restype = None
-libgtk3.gdk_window_set_icon_name.argtypes = [_GdkWindow,c_char_p]
-libgtk3.gdk_window_is_viewable.restype = gboolean
-libgtk3.gdk_window_is_viewable.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_events.restype = GdkEventMask
-libgtk3.gdk_window_get_events.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_accept_focus.restype = gboolean
-libgtk3.gdk_window_get_accept_focus.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_transient_for.restype = None
-libgtk3.gdk_window_set_transient_for.argtypes = [_GdkWindow,_GdkWindow]
-libgtk3.gdk_window_destroy.restype = None
-libgtk3.gdk_window_destroy.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_focus_on_map.restype = gboolean
-libgtk3.gdk_window_get_focus_on_map.argtypes = [_GdkWindow]
-libgtk3.gdk_window_resize.restype = None
-libgtk3.gdk_window_resize.argtypes = [_GdkWindow,gint,gint]
-libgtk3.gdk_window_get_device_cursor.restype = _GdkCursor
-libgtk3.gdk_window_get_device_cursor.argtypes = [_GdkWindow,_GdkDevice]
-libgtk3.gdk_window_move_resize.restype = None
-libgtk3.gdk_window_move_resize.argtypes = [_GdkWindow,gint,gint,gint,gint]
-libgtk3.gdk_window_set_modal_hint.restype = None
-libgtk3.gdk_window_set_modal_hint.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_get_state.restype = GdkWindowState
-libgtk3.gdk_window_get_state.argtypes = [_GdkWindow]
-libgtk3.gdk_window_invalidate_maybe_recurse.restype = None
-libgtk3.gdk_window_invalidate_maybe_recurse.argtypes = [_GdkWindow,_cairo_region_t,GdkWindowChildFunc,gpointer]
-libgtk3.gdk_window_get_composited.restype = gboolean
-libgtk3.gdk_window_get_composited.argtypes = [_GdkWindow]
-libgtk3.gdk_window_end_paint.restype = None
-libgtk3.gdk_window_end_paint.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_height.restype = int
-libgtk3.gdk_window_get_height.argtypes = [_GdkWindow]
-libgtk3.gdk_window_move.restype = None
-libgtk3.gdk_window_move.argtypes = [_GdkWindow,gint,gint]
-libgtk3.gdk_window_configure_finished.restype = None
-libgtk3.gdk_window_configure_finished.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_visual.restype = _GdkVisual
-libgtk3.gdk_window_get_visual.argtypes = [_GdkWindow]
-libgtk3.gdk_window_maximize.restype = None
-libgtk3.gdk_window_maximize.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_root_origin.restype = None
-libgtk3.gdk_window_get_root_origin.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_set_skip_pager_hint.restype = None
-libgtk3.gdk_window_set_skip_pager_hint.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_begin_move_drag.restype = None
-libgtk3.gdk_window_begin_move_drag.argtypes = [_GdkWindow,gint,gint,gint,guint32]
-libgtk3.gdk_window_peek_children.restype = _GList
-libgtk3.gdk_window_peek_children.argtypes = [_GdkWindow]
-libgtk3.gdk_window_beep.restype = None
-libgtk3.gdk_window_beep.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_cursor.restype = None
-libgtk3.gdk_window_set_cursor.argtypes = [_GdkWindow,_GdkCursor]
-libgtk3.gdk_window_unfullscreen.restype = None
-libgtk3.gdk_window_unfullscreen.argtypes = [_GdkWindow]
-libgtk3.gdk_window_freeze_updates.restype = None
-libgtk3.gdk_window_freeze_updates.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_children.restype = _GList
-libgtk3.gdk_window_get_children.argtypes = [_GdkWindow]
-libgtk3.gdk_window_remove_filter.restype = None
-libgtk3.gdk_window_remove_filter.argtypes = [_GdkWindow,GdkFilterFunc,gpointer]
-libgtk3.gdk_window_begin_move_drag_for_device.restype = None
-libgtk3.gdk_window_begin_move_drag_for_device.argtypes = [_GdkWindow,_GdkDevice,gint,gint,gint,guint32]
-libgtk3.gdk_window_get_pointer.restype = _GdkWindow
-libgtk3.gdk_window_get_pointer.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint),POINTER(GdkModifierType)]
-libgtk3.gdk_window_get_decorations.restype = gboolean
-libgtk3.gdk_window_get_decorations.argtypes = [_GdkWindow,_GdkWMDecoration]
-libgtk3.gdk_window_set_skip_taskbar_hint.restype = None
-libgtk3.gdk_window_set_skip_taskbar_hint.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_invalidate_rect.restype = None
-libgtk3.gdk_window_invalidate_rect.argtypes = [_GdkWindow,_GdkRectangle,gboolean]
-libgtk3.gdk_window_set_geometry_hints.restype = None
-libgtk3.gdk_window_set_geometry_hints.argtypes = [_GdkWindow,_GdkGeometry,GdkWindowHints]
-libgtk3.gdk_window_set_group.restype = None
-libgtk3.gdk_window_set_group.argtypes = [_GdkWindow,_GdkWindow]
-libgtk3.gdk_window_hide.restype = None
-libgtk3.gdk_window_hide.argtypes = [_GdkWindow]
-libgtk3.gdk_window_reparent.restype = None
-libgtk3.gdk_window_reparent.argtypes = [_GdkWindow,_GdkWindow,gint,gint]
-libgtk3.gdk_window_get_modal_hint.restype = gboolean
-libgtk3.gdk_window_get_modal_hint.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_static_gravities.restype = gboolean
-libgtk3.gdk_window_set_static_gravities.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_deiconify.restype = None
-libgtk3.gdk_window_deiconify.argtypes = [_GdkWindow]
-libgtk3.gdk_window_input_shape_combine_region.restype = None
-libgtk3.gdk_window_input_shape_combine_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
-libgtk3.gdk_window_ensure_native.restype = gboolean
-libgtk3.gdk_window_ensure_native.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_root_coords.restype = None
-libgtk3.gdk_window_get_root_coords.argtypes = [_GdkWindow,gint,gint,POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_set_title.restype = None
-libgtk3.gdk_window_set_title.argtypes = [_GdkWindow,c_char_p]
-libgtk3.gdk_window_get_origin.restype = gint
-libgtk3.gdk_window_get_origin.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_flush.restype = None
-libgtk3.gdk_window_flush.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_source_events.restype = GdkEventMask
-libgtk3.gdk_window_get_source_events.argtypes = [_GdkWindow,GdkInputSource]
-libgtk3.gdk_window_set_device_cursor.restype = None
-libgtk3.gdk_window_set_device_cursor.argtypes = [_GdkWindow,_GdkDevice,_GdkCursor]
-libgtk3.gdk_window_add_filter.restype = None
-libgtk3.gdk_window_add_filter.argtypes = [_GdkWindow,GdkFilterFunc,gpointer]
-libgtk3.gdk_window_set_opacity.restype = None
-libgtk3.gdk_window_set_opacity.argtypes = [_GdkWindow,gdouble]
-libgtk3.gdk_window_fullscreen.restype = None
-libgtk3.gdk_window_fullscreen.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_startup_id.restype = None
-libgtk3.gdk_window_set_startup_id.argtypes = [_GdkWindow,c_char_p]
-libgtk3.gdk_window_get_window_type.restype = GdkWindowType
-libgtk3.gdk_window_get_window_type.argtypes = [_GdkWindow]
-libgtk3.gdk_window_coords_to_parent.restype = None
-libgtk3.gdk_window_coords_to_parent.argtypes = [_GdkWindow,gdouble,gdouble,POINTER(gdouble),POINTER(gdouble)]
-libgtk3.gdk_window_coords_from_parent.restype = None
-libgtk3.gdk_window_coords_from_parent.argtypes = [_GdkWindow,gdouble,gdouble,POINTER(gdouble),POINTER(gdouble)]
-libgtk3.gdk_window_get_user_data.restype = None
-libgtk3.gdk_window_get_user_data.argtypes = [_GdkWindow,POINTER(gpointer)]
-libgtk3.gdk_window_set_keep_below.restype = None
-libgtk3.gdk_window_set_keep_below.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_get_effective_toplevel.restype = _GdkWindow
-libgtk3.gdk_window_get_effective_toplevel.argtypes = [_GdkWindow]
-libgtk3.gdk_offscreen_window_get_embedder.restype = _GdkWindow
-libgtk3.gdk_offscreen_window_get_embedder.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_toplevel.restype = _GdkWindow
-libgtk3.gdk_window_get_toplevel.argtypes = [_GdkWindow]
-libgtk3.gdk_window_begin_resize_drag_for_device.restype = None
-libgtk3.gdk_window_begin_resize_drag_for_device.argtypes = [_GdkWindow,GdkWindowEdge,_GdkDevice,gint,gint,gint,guint32]
-libgtk3.gdk_window_stick.restype = None
-libgtk3.gdk_window_stick.argtypes = [_GdkWindow]
-libgtk3.gdk_window_scroll.restype = None
-libgtk3.gdk_window_scroll.argtypes = [_GdkWindow,gint,gint]
-libgtk3.gdk_offscreen_window_set_embedder.restype = None
-libgtk3.gdk_offscreen_window_set_embedder.argtypes = [_GdkWindow,_GdkWindow]
-libgtk3.gdk_window_unmaximize.restype = None
-libgtk3.gdk_window_unmaximize.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_background.restype = None
-libgtk3.gdk_window_set_background.argtypes = [_GdkWindow,_GdkColor]
-libgtk3.gdk_window_process_updates.restype = None
-libgtk3.gdk_window_process_updates.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_focus.restype = None
-libgtk3.gdk_window_focus.argtypes = [_GdkWindow,guint32]
-libgtk3.gdk_window_raise.restype = None
-libgtk3.gdk_window_raise.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_display.restype = _GdkDisplay
-libgtk3.gdk_window_get_display.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_frame_extents.restype = None
-libgtk3.gdk_window_get_frame_extents.argtypes = [_GdkWindow,_GdkRectangle]
-libgtk3.gdk_window_set_events.restype = None
-libgtk3.gdk_window_set_events.argtypes = [_GdkWindow,GdkEventMask]
-libgtk3.gdk_window_set_keep_above.restype = None
-libgtk3.gdk_window_set_keep_above.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_set_role.restype = None
-libgtk3.gdk_window_set_role.argtypes = [_GdkWindow,c_char_p]
-libgtk3.gdk_window_set_background_pattern.restype = None
-libgtk3.gdk_window_set_background_pattern.argtypes = [_GdkWindow,_cairo_pattern_t]
-libgtk3.gdk_window_set_debug_updates.restype = None
-libgtk3.gdk_window_set_debug_updates.argtypes = [_GdkWindow,gboolean]
-libgtk3.gdk_window_get_cursor.restype = _GdkCursor
-libgtk3.gdk_window_get_cursor.argtypes = [_GdkWindow]
-libgtk3.gdk_window_is_visible.restype = gboolean
-libgtk3.gdk_window_is_visible.argtypes = [_GdkWindow]
-libgtk3.gdk_window_merge_child_shapes.restype = None
-libgtk3.gdk_window_merge_child_shapes.argtypes = [_GdkWindow]
-libgtk3.gdk_window_geometry_changed.restype = None
-libgtk3.gdk_window_geometry_changed.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_type_hint.restype = GdkWindowTypeHint
-libgtk3.gdk_window_get_type_hint.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_child_input_shapes.restype = None
-libgtk3.gdk_window_set_child_input_shapes.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_device_events.restype = None
-libgtk3.gdk_window_set_device_events.argtypes = [_GdkWindow,_GdkDevice,GdkEventMask]
-libgtk3.gdk_window_restack.restype = None
-libgtk3.gdk_window_restack.argtypes = [_GdkWindow,_GdkWindow,gboolean]
-libgtk3.gdk_window_merge_child_input_shapes.restype = None
-libgtk3.gdk_window_merge_child_input_shapes.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_width.restype = int
-libgtk3.gdk_window_get_width.argtypes = [_GdkWindow]
-libgtk3.gdk_window_unstick.restype = None
-libgtk3.gdk_window_unstick.argtypes = [_GdkWindow]
-libgtk3.gdk_window_show_unraised.restype = None
-libgtk3.gdk_window_show_unraised.argtypes = [_GdkWindow]
-libgtk3.gdk_window_is_destroyed.restype = gboolean
-libgtk3.gdk_window_is_destroyed.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_effective_parent.restype = _GdkWindow
-libgtk3.gdk_window_get_effective_parent.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_device_position.restype = _GdkWindow
-libgtk3.gdk_window_get_device_position.argtypes = [_GdkWindow,_GdkDevice,POINTER(gint),POINTER(gint),POINTER(GdkModifierType)]
-libgtk3.gdk_window_get_group.restype = _GdkWindow
-libgtk3.gdk_window_get_group.argtypes = [_GdkWindow]
-libgtk3.gdk_window_get_position.restype = None
-libgtk3.gdk_window_get_position.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_show.restype = None
-libgtk3.gdk_window_show.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_functions.restype = None
-libgtk3.gdk_window_set_functions.argtypes = [_GdkWindow,GdkWMFunction]
-libgtk3.gdk_window_begin_paint_region.restype = None
-libgtk3.gdk_window_begin_paint_region.argtypes = [_GdkWindow,_cairo_region_t]
-libgtk3.gdk_window_shape_combine_region.restype = None
-libgtk3.gdk_window_shape_combine_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
-libgtk3.gdk_window_thaw_updates.restype = None
-libgtk3.gdk_window_thaw_updates.argtypes = [_GdkWindow]
-libgtk3.gdk_window_invalidate_region.restype = None
-libgtk3.gdk_window_invalidate_region.argtypes = [_GdkWindow,_cairo_region_t,gboolean]
-libgtk3.gdk_window_get_parent.restype = _GdkWindow
-libgtk3.gdk_window_get_parent.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_child_shapes.restype = None
-libgtk3.gdk_window_set_child_shapes.argtypes = [_GdkWindow]
-libgtk3.gdk_window_set_type_hint.restype = None
-libgtk3.gdk_window_set_type_hint.argtypes = [_GdkWindow,GdkWindowTypeHint]
-libgtk3.gdk_window_at_pointer.restype = _GdkWindow
-libgtk3.gdk_window_at_pointer.argtypes = [POINTER(gint),POINTER(gint)]
-libgtk3.gdk_window_process_all_updates.restype = None
-libgtk3.gdk_window_process_all_updates.argtypes = []
-libgtk3.gdk_get_default_root_window.restype = _GdkWindow
-libgtk3.gdk_get_default_root_window.argtypes = []
+try:
+    libgtk3.gdk_window_get_geometry.restype = None
+    libgtk3.gdk_window_get_geometry.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint),POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_background_rgba.restype = None
+    libgtk3.gdk_window_set_background_rgba.argtypes = [_GdkWindow,_GdkRGBA]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_screen.restype = _GdkScreen
+    libgtk3.gdk_window_get_screen.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_has_native.restype = gboolean
+    libgtk3.gdk_window_has_native.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_constrain_size.restype = None
+    libgtk3.gdk_window_constrain_size.argtypes = [_GdkWindow,_GdkGeometry,guint,gint,gint,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_urgency_hint.restype = None
+    libgtk3.gdk_window_set_urgency_hint.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_is_input_only.restype = gboolean
+    libgtk3.gdk_window_is_input_only.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_lower.restype = None
+    libgtk3.gdk_window_lower.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_composited.restype = None
+    libgtk3.gdk_window_set_composited.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_icon_list.restype = None
+    libgtk3.gdk_window_set_icon_list.argtypes = [_GdkWindow,_GList]
+except:
+   pass
+try:
+    libgtk3.gdk_window_enable_synchronized_configure.restype = None
+    libgtk3.gdk_window_enable_synchronized_configure.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_iconify.restype = None
+    libgtk3.gdk_window_iconify.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_decorations.restype = None
+    libgtk3.gdk_window_set_decorations.argtypes = [_GdkWindow,GdkWMDecoration]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_source_events.restype = None
+    libgtk3.gdk_window_set_source_events.argtypes = [_GdkWindow,GdkInputSource,GdkEventMask]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_user_data.restype = None
+    libgtk3.gdk_window_set_user_data.argtypes = [_GdkWindow,gpointer]
+except:
+   pass
+try:
+    libgtk3.gdk_window_is_shaped.restype = gboolean
+    libgtk3.gdk_window_is_shaped.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_override_redirect.restype = None
+    libgtk3.gdk_window_set_override_redirect.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_support_multidevice.restype = None
+    libgtk3.gdk_window_set_support_multidevice.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_withdraw.restype = None
+    libgtk3.gdk_window_withdraw.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_begin_paint_rect.restype = None
+    libgtk3.gdk_window_begin_paint_rect.argtypes = [_GdkWindow,_GdkRectangle]
+except:
+   pass
+try:
+    libgtk3.gdk_window_register_dnd.restype = None
+    libgtk3.gdk_window_register_dnd.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_begin_resize_drag.restype = None
+    libgtk3.gdk_window_begin_resize_drag.argtypes = [_GdkWindow,GdkWindowEdge,gint,gint,gint,guint32]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_accept_focus.restype = None
+    libgtk3.gdk_window_set_accept_focus.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_support_multidevice.restype = gboolean
+    libgtk3.gdk_window_get_support_multidevice.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_move_region.restype = None
+    libgtk3.gdk_window_move_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_device_events.restype = GdkEventMask
+    libgtk3.gdk_window_get_device_events.argtypes = [_GdkWindow,_GdkDevice]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_focus_on_map.restype = None
+    libgtk3.gdk_window_set_focus_on_map.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_icon_name.restype = None
+    libgtk3.gdk_window_set_icon_name.argtypes = [_GdkWindow,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gdk_window_is_viewable.restype = gboolean
+    libgtk3.gdk_window_is_viewable.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_events.restype = GdkEventMask
+    libgtk3.gdk_window_get_events.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_accept_focus.restype = gboolean
+    libgtk3.gdk_window_get_accept_focus.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_transient_for.restype = None
+    libgtk3.gdk_window_set_transient_for.argtypes = [_GdkWindow,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_destroy.restype = None
+    libgtk3.gdk_window_destroy.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_focus_on_map.restype = gboolean
+    libgtk3.gdk_window_get_focus_on_map.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_resize.restype = None
+    libgtk3.gdk_window_resize.argtypes = [_GdkWindow,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_device_cursor.restype = _GdkCursor
+    libgtk3.gdk_window_get_device_cursor.argtypes = [_GdkWindow,_GdkDevice]
+except:
+   pass
+try:
+    libgtk3.gdk_window_move_resize.restype = None
+    libgtk3.gdk_window_move_resize.argtypes = [_GdkWindow,gint,gint,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_modal_hint.restype = None
+    libgtk3.gdk_window_set_modal_hint.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_state.restype = GdkWindowState
+    libgtk3.gdk_window_get_state.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_invalidate_maybe_recurse.restype = None
+    libgtk3.gdk_window_invalidate_maybe_recurse.argtypes = [_GdkWindow,_cairo_region_t,GdkWindowChildFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_composited.restype = gboolean
+    libgtk3.gdk_window_get_composited.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_end_paint.restype = None
+    libgtk3.gdk_window_end_paint.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_height.restype = int
+    libgtk3.gdk_window_get_height.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_move.restype = None
+    libgtk3.gdk_window_move.argtypes = [_GdkWindow,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_configure_finished.restype = None
+    libgtk3.gdk_window_configure_finished.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_visual.restype = _GdkVisual
+    libgtk3.gdk_window_get_visual.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_maximize.restype = None
+    libgtk3.gdk_window_maximize.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_root_origin.restype = None
+    libgtk3.gdk_window_get_root_origin.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_skip_pager_hint.restype = None
+    libgtk3.gdk_window_set_skip_pager_hint.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_begin_move_drag.restype = None
+    libgtk3.gdk_window_begin_move_drag.argtypes = [_GdkWindow,gint,gint,gint,guint32]
+except:
+   pass
+try:
+    libgtk3.gdk_window_peek_children.restype = _GList
+    libgtk3.gdk_window_peek_children.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_beep.restype = None
+    libgtk3.gdk_window_beep.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_cursor.restype = None
+    libgtk3.gdk_window_set_cursor.argtypes = [_GdkWindow,_GdkCursor]
+except:
+   pass
+try:
+    libgtk3.gdk_window_unfullscreen.restype = None
+    libgtk3.gdk_window_unfullscreen.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_freeze_updates.restype = None
+    libgtk3.gdk_window_freeze_updates.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_children.restype = _GList
+    libgtk3.gdk_window_get_children.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_remove_filter.restype = None
+    libgtk3.gdk_window_remove_filter.argtypes = [_GdkWindow,GdkFilterFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.gdk_window_begin_move_drag_for_device.restype = None
+    libgtk3.gdk_window_begin_move_drag_for_device.argtypes = [_GdkWindow,_GdkDevice,gint,gint,gint,guint32]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_pointer.restype = _GdkWindow
+    libgtk3.gdk_window_get_pointer.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint),POINTER(GdkModifierType)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_decorations.restype = gboolean
+    libgtk3.gdk_window_get_decorations.argtypes = [_GdkWindow,POINTER(GdkWMDecoration)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_skip_taskbar_hint.restype = None
+    libgtk3.gdk_window_set_skip_taskbar_hint.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_invalidate_rect.restype = None
+    libgtk3.gdk_window_invalidate_rect.argtypes = [_GdkWindow,_GdkRectangle,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_geometry_hints.restype = None
+    libgtk3.gdk_window_set_geometry_hints.argtypes = [_GdkWindow,_GdkGeometry,GdkWindowHints]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_group.restype = None
+    libgtk3.gdk_window_set_group.argtypes = [_GdkWindow,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_hide.restype = None
+    libgtk3.gdk_window_hide.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_reparent.restype = None
+    libgtk3.gdk_window_reparent.argtypes = [_GdkWindow,_GdkWindow,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_modal_hint.restype = gboolean
+    libgtk3.gdk_window_get_modal_hint.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_static_gravities.restype = gboolean
+    libgtk3.gdk_window_set_static_gravities.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_deiconify.restype = None
+    libgtk3.gdk_window_deiconify.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_input_shape_combine_region.restype = None
+    libgtk3.gdk_window_input_shape_combine_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_ensure_native.restype = gboolean
+    libgtk3.gdk_window_ensure_native.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_root_coords.restype = None
+    libgtk3.gdk_window_get_root_coords.argtypes = [_GdkWindow,gint,gint,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_title.restype = None
+    libgtk3.gdk_window_set_title.argtypes = [_GdkWindow,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_origin.restype = gint
+    libgtk3.gdk_window_get_origin.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_flush.restype = None
+    libgtk3.gdk_window_flush.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_source_events.restype = GdkEventMask
+    libgtk3.gdk_window_get_source_events.argtypes = [_GdkWindow,GdkInputSource]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_device_cursor.restype = None
+    libgtk3.gdk_window_set_device_cursor.argtypes = [_GdkWindow,_GdkDevice,_GdkCursor]
+except:
+   pass
+try:
+    libgtk3.gdk_window_add_filter.restype = None
+    libgtk3.gdk_window_add_filter.argtypes = [_GdkWindow,GdkFilterFunc,gpointer]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_opacity.restype = None
+    libgtk3.gdk_window_set_opacity.argtypes = [_GdkWindow,gdouble]
+except:
+   pass
+try:
+    libgtk3.gdk_window_fullscreen.restype = None
+    libgtk3.gdk_window_fullscreen.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_startup_id.restype = None
+    libgtk3.gdk_window_set_startup_id.argtypes = [_GdkWindow,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_window_type.restype = GdkWindowType
+    libgtk3.gdk_window_get_window_type.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_coords_to_parent.restype = None
+    libgtk3.gdk_window_coords_to_parent.argtypes = [_GdkWindow,gdouble,gdouble,POINTER(gdouble),POINTER(gdouble)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_coords_from_parent.restype = None
+    libgtk3.gdk_window_coords_from_parent.argtypes = [_GdkWindow,gdouble,gdouble,POINTER(gdouble),POINTER(gdouble)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_user_data.restype = None
+    libgtk3.gdk_window_get_user_data.argtypes = [_GdkWindow,POINTER(gpointer)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_keep_below.restype = None
+    libgtk3.gdk_window_set_keep_below.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_effective_toplevel.restype = _GdkWindow
+    libgtk3.gdk_window_get_effective_toplevel.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_offscreen_window_get_embedder.restype = _GdkWindow
+    libgtk3.gdk_offscreen_window_get_embedder.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_toplevel.restype = _GdkWindow
+    libgtk3.gdk_window_get_toplevel.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_begin_resize_drag_for_device.restype = None
+    libgtk3.gdk_window_begin_resize_drag_for_device.argtypes = [_GdkWindow,GdkWindowEdge,_GdkDevice,gint,gint,gint,guint32]
+except:
+   pass
+try:
+    libgtk3.gdk_window_stick.restype = None
+    libgtk3.gdk_window_stick.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_scroll.restype = None
+    libgtk3.gdk_window_scroll.argtypes = [_GdkWindow,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_offscreen_window_set_embedder.restype = None
+    libgtk3.gdk_offscreen_window_set_embedder.argtypes = [_GdkWindow,_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_unmaximize.restype = None
+    libgtk3.gdk_window_unmaximize.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_background.restype = None
+    libgtk3.gdk_window_set_background.argtypes = [_GdkWindow,_GdkColor]
+except:
+   pass
+try:
+    libgtk3.gdk_window_process_updates.restype = None
+    libgtk3.gdk_window_process_updates.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_focus.restype = None
+    libgtk3.gdk_window_focus.argtypes = [_GdkWindow,guint32]
+except:
+   pass
+try:
+    libgtk3.gdk_window_raise.restype = None
+    libgtk3.gdk_window_raise.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_display.restype = _GdkDisplay
+    libgtk3.gdk_window_get_display.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_frame_extents.restype = None
+    libgtk3.gdk_window_get_frame_extents.argtypes = [_GdkWindow,_GdkRectangle]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_events.restype = None
+    libgtk3.gdk_window_set_events.argtypes = [_GdkWindow,GdkEventMask]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_keep_above.restype = None
+    libgtk3.gdk_window_set_keep_above.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_role.restype = None
+    libgtk3.gdk_window_set_role.argtypes = [_GdkWindow,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_background_pattern.restype = None
+    libgtk3.gdk_window_set_background_pattern.argtypes = [_GdkWindow,_cairo_pattern_t]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_debug_updates.restype = None
+    libgtk3.gdk_window_set_debug_updates.argtypes = [_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_cursor.restype = _GdkCursor
+    libgtk3.gdk_window_get_cursor.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_is_visible.restype = gboolean
+    libgtk3.gdk_window_is_visible.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_merge_child_shapes.restype = None
+    libgtk3.gdk_window_merge_child_shapes.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_geometry_changed.restype = None
+    libgtk3.gdk_window_geometry_changed.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_type_hint.restype = GdkWindowTypeHint
+    libgtk3.gdk_window_get_type_hint.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_child_input_shapes.restype = None
+    libgtk3.gdk_window_set_child_input_shapes.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_device_events.restype = None
+    libgtk3.gdk_window_set_device_events.argtypes = [_GdkWindow,_GdkDevice,GdkEventMask]
+except:
+   pass
+try:
+    libgtk3.gdk_window_restack.restype = None
+    libgtk3.gdk_window_restack.argtypes = [_GdkWindow,_GdkWindow,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_merge_child_input_shapes.restype = None
+    libgtk3.gdk_window_merge_child_input_shapes.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_width.restype = int
+    libgtk3.gdk_window_get_width.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_unstick.restype = None
+    libgtk3.gdk_window_unstick.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_show_unraised.restype = None
+    libgtk3.gdk_window_show_unraised.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_is_destroyed.restype = gboolean
+    libgtk3.gdk_window_is_destroyed.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_effective_parent.restype = _GdkWindow
+    libgtk3.gdk_window_get_effective_parent.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_device_position.restype = _GdkWindow
+    libgtk3.gdk_window_get_device_position.argtypes = [_GdkWindow,_GdkDevice,POINTER(gint),POINTER(gint),POINTER(GdkModifierType)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_group.restype = _GdkWindow
+    libgtk3.gdk_window_get_group.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_position.restype = None
+    libgtk3.gdk_window_get_position.argtypes = [_GdkWindow,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_show.restype = None
+    libgtk3.gdk_window_show.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_functions.restype = None
+    libgtk3.gdk_window_set_functions.argtypes = [_GdkWindow,GdkWMFunction]
+except:
+   pass
+try:
+    libgtk3.gdk_window_begin_paint_region.restype = None
+    libgtk3.gdk_window_begin_paint_region.argtypes = [_GdkWindow,_cairo_region_t]
+except:
+   pass
+try:
+    libgtk3.gdk_window_shape_combine_region.restype = None
+    libgtk3.gdk_window_shape_combine_region.argtypes = [_GdkWindow,_cairo_region_t,gint,gint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_thaw_updates.restype = None
+    libgtk3.gdk_window_thaw_updates.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_invalidate_region.restype = None
+    libgtk3.gdk_window_invalidate_region.argtypes = [_GdkWindow,_cairo_region_t,gboolean]
+except:
+   pass
+try:
+    libgtk3.gdk_window_get_parent.restype = _GdkWindow
+    libgtk3.gdk_window_get_parent.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_child_shapes.restype = None
+    libgtk3.gdk_window_set_child_shapes.argtypes = [_GdkWindow]
+except:
+   pass
+try:
+    libgtk3.gdk_window_set_type_hint.restype = None
+    libgtk3.gdk_window_set_type_hint.argtypes = [_GdkWindow,GdkWindowTypeHint]
+except:
+   pass
+try:
+    libgtk3.gdk_window_at_pointer.restype = _GdkWindow
+    libgtk3.gdk_window_at_pointer.argtypes = [POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libgtk3.gdk_window_process_all_updates.restype = None
+    libgtk3.gdk_window_process_all_updates.argtypes = []
+except:
+   pass
+try:
+    libgtk3.gdk_get_default_root_window.restype = _GdkWindow
+    libgtk3.gdk_get_default_root_window.argtypes = []
+except:
+   pass
 import gobject__GObject
 class GdkWindow( gobject__GObject.GObject):
     """Class GdkWindow Constructors"""
@@ -727,8 +1373,6 @@ class GdkWindow( gobject__GObject.GObject):
         return GdkWindow(None,None,None, obj=libgtk3.gdk_window_get_pointer( self._object,x,y,mask ) or POINTER(c_int)())
 
     def get_decorations(  self, decorations, ):
-        if decorations: decorations = decorations._object
-        else: decorations = POINTER(c_int)()
 
         
         return libgtk3.gdk_window_get_decorations( self._object,decorations )

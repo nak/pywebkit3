@@ -70,11 +70,14 @@ _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _PangoItem = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
+_GInputStream = POINTER(c_int)
 _GBytes = POINTER(c_int)
 _GScanner = POINTER(c_int)
 _PangoFont = POINTER(c_int)
@@ -89,6 +92,7 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
@@ -96,14 +100,16 @@ _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _GString = POINTER(c_int)
-_PangoLayoutIter = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GBoxed = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSource = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
@@ -121,6 +127,7 @@ _WebKitWebInspector = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
 _GdkDragContext = POINTER(c_int)
@@ -130,6 +137,7 @@ _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
 _GCond = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -140,7 +148,10 @@ _GtkWidget = POINTER(c_int)
 _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
+_GFile = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
@@ -148,6 +159,7 @@ _GtkBorder = POINTER(c_int)
 _JSPropertyNameArray = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
@@ -157,11 +169,13 @@ _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
 _GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _PangoFontsetSimple = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
@@ -178,6 +192,7 @@ _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
 _GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -189,6 +204,7 @@ _GTimeVal = POINTER(c_int)
 _GtkInvisible = POINTER(c_int)
 _GSourceFuncs = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -202,10 +218,12 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -216,12 +234,14 @@ _PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSourceCallbackFuncs = POINTER(c_int)
 _PangoFontFace = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
@@ -286,96 +306,251 @@ GdkPixbufError = c_int
 GdkColorspace = c_int
 GdkPixbufAlphaMode = c_int
 
-libgobject.g_object_disconnect.restype = None
-libgobject.g_object_disconnect.argtypes = [_GObject,c_char_p]
-libgobject.g_object_set_qdata_full.restype = None
-libgobject.g_object_set_qdata_full.argtypes = [_GObject,GQuark,gpointer,GDestroyNotify]
-libgobject.g_object_weak_unref.restype = None
-libgobject.g_object_weak_unref.argtypes = [_GObject,GWeakNotify,gpointer]
-libgobject.g_object_steal_data.restype = gpointer
-libgobject.g_object_steal_data.argtypes = [_GObject,c_char_p]
-libgobject.g_object_run_dispose.restype = None
-libgobject.g_object_run_dispose.argtypes = [_GObject]
-libgobject.g_object_set_qdata.restype = None
-libgobject.g_object_set_qdata.argtypes = [_GObject,GQuark,gpointer]
-libgobject.g_clear_object.restype = None
-libgobject.g_clear_object.argtypes = [_GObject]
-libgobject.g_object_set_data.restype = None
-libgobject.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
-libgobject.g_object_ref_sink.restype = gpointer
-libgobject.g_object_ref_sink.argtypes = [_GObject]
-libgobject.g_object_connect.restype = gpointer
-libgobject.g_object_connect.argtypes = [_GObject,c_char_p,]
-libgobject.g_object_notify.restype = None
-libgobject.g_object_notify.argtypes = [_GObject,c_char_p]
-libgobject.g_object_class_install_properties.restype = None
-libgobject.g_object_class_install_properties.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
-libgobject.g_object_interface_install_property.restype = None
-libgobject.g_object_interface_install_property.argtypes = [_GObject,gpointer,_GParamSpec]
-libgobject.g_object_get_qdata.restype = gpointer
-libgobject.g_object_get_qdata.argtypes = [_GObject,GQuark]
-libgobject.g_object_set_property.restype = None
-libgobject.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
-libgobject.g_object_set.restype = None
-libgobject.g_object_set.argtypes = [_GObject,c_char_p,]
-libgobject.g_object_ref.restype = gpointer
-libgobject.g_object_ref.argtypes = [_GObject]
-libgobject.g_object_steal_qdata.restype = gpointer
-libgobject.g_object_steal_qdata.argtypes = [_GObject,GQuark]
-libgobject.g_object_add_toggle_ref.restype = None
-libgobject.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
-libgobject.g_object_weak_ref.restype = None
-libgobject.g_object_weak_ref.argtypes = [_GObject,GWeakNotify,gpointer]
-libgobject.g_object_add_weak_pointer.restype = None
-libgobject.g_object_add_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
-libgobject.g_object_remove_weak_pointer.restype = None
-libgobject.g_object_remove_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
-libgobject.g_object_class_install_property.restype = None
-libgobject.g_object_class_install_property.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
-libgobject.g_object_freeze_notify.restype = None
-libgobject.g_object_freeze_notify.argtypes = [_GObject]
-libgobject.g_object_notify_by_pspec.restype = None
-libgobject.g_object_notify_by_pspec.argtypes = [_GObject,_GParamSpec]
-libgobject.g_object_remove_toggle_ref.restype = None
-libgobject.g_object_remove_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
-libgobject.g_object_thaw_notify.restype = None
-libgobject.g_object_thaw_notify.argtypes = [_GObject]
-libgobject.g_object_is_floating.restype = gboolean
-libgobject.g_object_is_floating.argtypes = [_GObject]
-libgobject.g_object_unref.restype = None
-libgobject.g_object_unref.argtypes = [_GObject]
-libgobject.g_object_get.restype = None
-libgobject.g_object_get.argtypes = [_GObject,c_char_p,]
-libgobject.g_weak_ref_set.restype = None
-libgobject.g_weak_ref_set.argtypes = [_GObject,_GWeakRef,gpointer]
-libgobject.g_object_get_data.restype = gpointer
-libgobject.g_object_get_data.argtypes = [_GObject,c_char_p]
-libgobject.g_object_get_property.restype = None
-libgobject.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
-libgobject.g_object_watch_closure.restype = None
-libgobject.g_object_watch_closure.argtypes = [_GObject,_GClosure]
-libgobject.g_weak_ref_clear.restype = None
-libgobject.g_weak_ref_clear.argtypes = [_GObject,_GWeakRef]
-libgobject.g_object_set_data_full.restype = None
-libgobject.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
-libgobject.g_weak_ref_init.restype = None
-libgobject.g_weak_ref_init.argtypes = [_GObject,_GWeakRef,gpointer]
-libgobject.g_object_force_floating.restype = None
-libgobject.g_object_force_floating.argtypes = [_GObject]
-libgobject.g_object_class_override_property.restype = None
-libgobject.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
-libgobject.g_object_class_find_property.restype = _GParamSpec
-libgobject.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
-libgobject.g_object_interface_list_properties.restype = _GParamSpec
-libgobject.g_object_interface_list_properties.argtypes = [gpointer,POINTER(guint)]
-libgobject.g_object_newv.restype = gpointer
-libgobject.g_object_newv.argtypes = [GType,guint,_GParameter]
-libgobject.g_object_class_list_properties.restype = _GParamSpec
-libgobject.g_object_class_list_properties.argtypes = [_GObjectClass,POINTER(guint)]
-libgobject.g_object_interface_find_property.restype = _GParamSpec
-libgobject.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
-libgobject.g_weak_ref_get.restype = gpointer
-libgobject.g_weak_ref_get.argtypes = [_GWeakRef]
+try:
+    libgobject.g_object_disconnect.restype = None
+    libgobject.g_object_disconnect.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_object_set_qdata_full.restype = None
+    libgobject.g_object_set_qdata_full.argtypes = [_GObject,GQuark,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_object_weak_unref.restype = None
+    libgobject.g_object_weak_unref.argtypes = [_GObject,GWeakNotify,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_steal_data.restype = gpointer
+    libgobject.g_object_steal_data.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_object_run_dispose.restype = None
+    libgobject.g_object_run_dispose.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_set_qdata.restype = None
+    libgobject.g_object_set_qdata.argtypes = [_GObject,GQuark,gpointer]
+except:
+   pass
+try:
+    libgobject.g_clear_object.restype = None
+    libgobject.g_clear_object.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_set_data.restype = None
+    libgobject.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_ref_sink.restype = gpointer
+    libgobject.g_object_ref_sink.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_connect.restype = gpointer
+    libgobject.g_object_connect.argtypes = [_GObject,c_char_p,]
+except:
+   pass
+try:
+    libgobject.g_object_notify.restype = None
+    libgobject.g_object_notify.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_object_class_install_properties.restype = None
+    libgobject.g_object_class_install_properties.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
+except:
+   pass
+try:
+    libgobject.g_object_replace_data.restype = gboolean
+    libgobject.g_object_replace_data.argtypes = [_GObject,c_char_p,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
+except:
+   pass
+try:
+    libgobject.g_object_interface_install_property.restype = None
+    libgobject.g_object_interface_install_property.argtypes = [_GObject,gpointer,_GParamSpec]
+except:
+   pass
+try:
+    libgobject.g_object_get_qdata.restype = gpointer
+    libgobject.g_object_get_qdata.argtypes = [_GObject,GQuark]
+except:
+   pass
+try:
+    libgobject.g_object_set_property.restype = None
+    libgobject.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
+except:
+   pass
+try:
+    libgobject.g_object_set.restype = None
+    libgobject.g_object_set.argtypes = [_GObject,c_char_p,]
+except:
+   pass
+try:
+    libgobject.g_object_ref.restype = gpointer
+    libgobject.g_object_ref.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_steal_qdata.restype = gpointer
+    libgobject.g_object_steal_qdata.argtypes = [_GObject,GQuark]
+except:
+   pass
+try:
+    libgobject.g_object_add_toggle_ref.restype = None
+    libgobject.g_object_add_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_weak_ref.restype = None
+    libgobject.g_object_weak_ref.argtypes = [_GObject,GWeakNotify,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_add_weak_pointer.restype = None
+    libgobject.g_object_add_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
+except:
+   pass
+try:
+    libgobject.g_object_remove_weak_pointer.restype = None
+    libgobject.g_object_remove_weak_pointer.argtypes = [_GObject,POINTER(gpointer)]
+except:
+   pass
+try:
+    libgobject.g_object_class_install_property.restype = None
+    libgobject.g_object_class_install_property.argtypes = [_GObject,_GObjectClass,guint,_GParamSpec]
+except:
+   pass
+try:
+    libgobject.g_object_freeze_notify.restype = None
+    libgobject.g_object_freeze_notify.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_notify_by_pspec.restype = None
+    libgobject.g_object_notify_by_pspec.argtypes = [_GObject,_GParamSpec]
+except:
+   pass
+try:
+    libgobject.g_object_remove_toggle_ref.restype = None
+    libgobject.g_object_remove_toggle_ref.argtypes = [_GObject,GToggleNotify,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_thaw_notify.restype = None
+    libgobject.g_object_thaw_notify.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_is_floating.restype = gboolean
+    libgobject.g_object_is_floating.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_dup_qdata.restype = gpointer
+    libgobject.g_object_dup_qdata.argtypes = [_GObject,GQuark,GDuplicateFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_unref.restype = None
+    libgobject.g_object_unref.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_get.restype = None
+    libgobject.g_object_get.argtypes = [_GObject,c_char_p,]
+except:
+   pass
+try:
+    libgobject.g_weak_ref_set.restype = None
+    libgobject.g_weak_ref_set.argtypes = [_GObject,_GWeakRef,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_dup_data.restype = gpointer
+    libgobject.g_object_dup_data.argtypes = [_GObject,c_char_p,GDuplicateFunc,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_replace_qdata.restype = gboolean
+    libgobject.g_object_replace_qdata.argtypes = [_GObject,GQuark,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
+except:
+   pass
+try:
+    libgobject.g_object_get_data.restype = gpointer
+    libgobject.g_object_get_data.argtypes = [_GObject,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_object_get_property.restype = None
+    libgobject.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
+except:
+   pass
+try:
+    libgobject.g_object_watch_closure.restype = None
+    libgobject.g_object_watch_closure.argtypes = [_GObject,_GClosure]
+except:
+   pass
+try:
+    libgobject.g_weak_ref_clear.restype = None
+    libgobject.g_weak_ref_clear.argtypes = [_GObject,_GWeakRef]
+except:
+   pass
+try:
+    libgobject.g_object_set_data_full.restype = None
+    libgobject.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_weak_ref_init.restype = None
+    libgobject.g_weak_ref_init.argtypes = [_GObject,_GWeakRef,gpointer]
+except:
+   pass
+try:
+    libgobject.g_object_force_floating.restype = None
+    libgobject.g_object_force_floating.argtypes = [_GObject]
+except:
+   pass
+try:
+    libgobject.g_object_class_override_property.restype = None
+    libgobject.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_object_class_find_property.restype = _GParamSpec
+    libgobject.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_object_interface_list_properties.restype = _GParamSpec
+    libgobject.g_object_interface_list_properties.argtypes = [gpointer,POINTER(guint)]
+except:
+   pass
+try:
+    libgobject.g_object_newv.restype = gpointer
+    libgobject.g_object_newv.argtypes = [GType,guint,_GParameter]
+except:
+   pass
+try:
+    libgobject.g_object_class_list_properties.restype = _GParamSpec
+    libgobject.g_object_class_list_properties.argtypes = [_GObjectClass,POINTER(guint)]
+except:
+   pass
+try:
+    libgobject.g_object_interface_find_property.restype = _GParamSpec
+    libgobject.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_weak_ref_get.restype = gpointer
+    libgobject.g_weak_ref_get.argtypes = [_GWeakRef]
+except:
+   pass
 class GObject( object):
     """Class GObject Constructors"""
     def __init__( self, object_type, first_property_name,  obj=None, *args):
@@ -680,7 +855,6 @@ class GObject( object):
         else: weak_ref = POINTER(c_int)()
         
         return     libgobject.g_weak_ref_get(weak_ref, )
-
 
 
     _cfuncs=[]

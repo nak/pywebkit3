@@ -25,3 +25,6 @@ else:
 
 GFileProgressCallback = CFUNCTYPE( c_void_p, c_uint, c_uint, c_void_p)
 GFileReadMoreCallback = CFUNCTYPE( c_void_p,c_char_p, c_uint, c_void_p)
+GCancellableSourceFunc= CFUNCTYPE( c_uint, c_void_p, c_void_p)
+
+goffset = c_uint

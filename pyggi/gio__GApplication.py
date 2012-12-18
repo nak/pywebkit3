@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -83,17 +84,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -127,6 +131,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -242,44 +247,101 @@ GdkDeviceType = c_int
 GdkGrabOwnership = c_int
 GApplicationFlags = c_int
 
-libgio.g_application_activate.restype = None
-libgio.g_application_activate.argtypes = [_GApplication]
-libgio.g_application_hold.restype = None
-libgio.g_application_hold.argtypes = [_GApplication]
-libgio.g_application_get_application_id.restype = c_char_p
-libgio.g_application_get_application_id.argtypes = [_GApplication]
-libgio.g_application_set_default.restype = None
-libgio.g_application_set_default.argtypes = [_GApplication]
-libgio.g_application_get_flags.restype = GApplicationFlags
-libgio.g_application_get_flags.argtypes = [_GApplication]
-libgio.g_application_register.restype = gboolean
-libgio.g_application_register.argtypes = [_GApplication,_GCancellable,_GError]
-libgio.g_application_set_application_id.restype = None
-libgio.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
-libgio.g_application_release.restype = None
-libgio.g_application_release.argtypes = [_GApplication]
-libgio.g_application_set_action_group.restype = None
-libgio.g_application_set_action_group.argtypes = [_GApplication,_GActionGroup]
-libgio.g_application_get_is_remote.restype = gboolean
-libgio.g_application_get_is_remote.argtypes = [_GApplication]
-libgio.g_application_set_inactivity_timeout.restype = None
-libgio.g_application_set_inactivity_timeout.argtypes = [_GApplication,guint]
-libgio.g_application_get_is_registered.restype = gboolean
-libgio.g_application_get_is_registered.argtypes = [_GApplication]
-libgio.g_application_quit.restype = None
-libgio.g_application_quit.argtypes = [_GApplication]
-libgio.g_application_get_inactivity_timeout.restype = guint
-libgio.g_application_get_inactivity_timeout.argtypes = [_GApplication]
-libgio.g_application_run.restype = int
-libgio.g_application_run.argtypes = [_GApplication,gint,c_char_p]
-libgio.g_application_open.restype = None
-libgio.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
-libgio.g_application_set_flags.restype = None
-libgio.g_application_set_flags.argtypes = [_GApplication,GApplicationFlags]
-libgio.g_application_get_default.restype = _GApplication
-libgio.g_application_get_default.argtypes = []
-libgio.g_application_id_is_valid.restype = gboolean
-libgio.g_application_id_is_valid.argtypes = [c_char_p]
+try:
+    libgio.g_application_activate.restype = None
+    libgio.g_application_activate.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_hold.restype = None
+    libgio.g_application_hold.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_get_application_id.restype = c_char_p
+    libgio.g_application_get_application_id.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_set_default.restype = None
+    libgio.g_application_set_default.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_get_flags.restype = GApplicationFlags
+    libgio.g_application_get_flags.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_register.restype = gboolean
+    libgio.g_application_register.argtypes = [_GApplication,_GCancellable,_GError]
+except:
+   pass
+try:
+    libgio.g_application_set_application_id.restype = None
+    libgio.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
+except:
+   pass
+try:
+    libgio.g_application_release.restype = None
+    libgio.g_application_release.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_set_action_group.restype = None
+    libgio.g_application_set_action_group.argtypes = [_GApplication,_GActionGroup]
+except:
+   pass
+try:
+    libgio.g_application_get_is_remote.restype = gboolean
+    libgio.g_application_get_is_remote.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_set_inactivity_timeout.restype = None
+    libgio.g_application_set_inactivity_timeout.argtypes = [_GApplication,guint]
+except:
+   pass
+try:
+    libgio.g_application_get_is_registered.restype = gboolean
+    libgio.g_application_get_is_registered.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_quit.restype = None
+    libgio.g_application_quit.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_get_inactivity_timeout.restype = guint
+    libgio.g_application_get_inactivity_timeout.argtypes = [_GApplication]
+except:
+   pass
+try:
+    libgio.g_application_run.restype = int
+    libgio.g_application_run.argtypes = [_GApplication,gint,c_char_p]
+except:
+   pass
+try:
+    libgio.g_application_open.restype = None
+    libgio.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
+except:
+   pass
+try:
+    libgio.g_application_set_flags.restype = None
+    libgio.g_application_set_flags.argtypes = [_GApplication,GApplicationFlags]
+except:
+   pass
+try:
+    libgio.g_application_get_default.restype = _GApplication
+    libgio.g_application_get_default.argtypes = []
+except:
+   pass
+try:
+    libgio.g_application_id_is_valid.restype = gboolean
+    libgio.g_application_id_is_valid.argtypes = [c_char_p]
+except:
+   pass
 import gobject__GObject
 class GApplication( gobject__GObject.GObject):
     """Class GApplication Constructors"""

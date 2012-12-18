@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -84,17 +85,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -128,6 +132,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -247,20 +252,41 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
-libwebkit3.webkit_web_navigation_action_get_original_uri.restype = c_char_p
-libwebkit3.webkit_web_navigation_action_get_original_uri.argtypes = [_WebKitWebNavigationAction]
-libwebkit3.webkit_web_navigation_action_get_button.restype = gint
-libwebkit3.webkit_web_navigation_action_get_button.argtypes = [_WebKitWebNavigationAction]
-libwebkit3.webkit_web_navigation_action_get_target_frame.restype = c_char_p
-libwebkit3.webkit_web_navigation_action_get_target_frame.argtypes = [_WebKitWebNavigationAction]
-libwebkit3.webkit_web_navigation_action_set_original_uri.restype = None
-libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,c_char_p]
-libwebkit3.webkit_web_navigation_action_get_modifier_state.restype = gint
-libwebkit3.webkit_web_navigation_action_get_modifier_state.argtypes = [_WebKitWebNavigationAction]
-libwebkit3.webkit_web_navigation_action_get_reason.restype = WebKitWebNavigationReason
-libwebkit3.webkit_web_navigation_action_get_reason.argtypes = [_WebKitWebNavigationAction]
-libwebkit3.webkit_web_navigation_action_set_reason.restype = None
-libwebkit3.webkit_web_navigation_action_set_reason.argtypes = [_WebKitWebNavigationAction,WebKitWebNavigationReason]
+try:
+    libwebkit3.webkit_web_navigation_action_get_original_uri.restype = c_char_p
+    libwebkit3.webkit_web_navigation_action_get_original_uri.argtypes = [_WebKitWebNavigationAction]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_navigation_action_get_button.restype = gint
+    libwebkit3.webkit_web_navigation_action_get_button.argtypes = [_WebKitWebNavigationAction]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_navigation_action_get_target_frame.restype = c_char_p
+    libwebkit3.webkit_web_navigation_action_get_target_frame.argtypes = [_WebKitWebNavigationAction]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_navigation_action_set_original_uri.restype = None
+    libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,c_char_p]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_navigation_action_get_modifier_state.restype = gint
+    libwebkit3.webkit_web_navigation_action_get_modifier_state.argtypes = [_WebKitWebNavigationAction]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_navigation_action_get_reason.restype = WebKitWebNavigationReason
+    libwebkit3.webkit_web_navigation_action_get_reason.argtypes = [_WebKitWebNavigationAction]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_navigation_action_set_reason.restype = None
+    libwebkit3.webkit_web_navigation_action_set_reason.argtypes = [_WebKitWebNavigationAction,WebKitWebNavigationReason]
+except:
+   pass
 import gobject__GObject
 class WebKitWebNavigationAction( gobject__GObject.GObject):
     """Class WebKitWebNavigationAction Constructors"""

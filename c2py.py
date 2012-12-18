@@ -45,7 +45,12 @@ DEFAULT_TYPES=['gboolean',
                'guint32',
                'gfloat',
                'gdouble',
+               'goffset',
+               'GFileMonitorEvent',
                'gsize',
+               'GFileType',
+               'GFileAttributeStatus',
+               'GFileAttributeType',
                'GdkGravity',
                'GdkWindowState',
                'GdkGrabStatus',
@@ -226,7 +231,10 @@ class Parser:
         elif returntype.startswith ("_Gtk"):
             return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:],paramtext, statement),
                      "from gtk3 import %s"%dependent)
-        elif returntype.startswith ("_G"):
+        elif returntype.startswith("_GFile") or returntype.startswith("_GInput") or returntype.startswith("_GOutput") or returntype.startswith("_GMount"):
+            return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:], paramtext, statement),
+                     "from gio import %s"%dependent)
+        elif returntype.startswith ("_G"):            
             return ( "return %s(%s obj=%s or POINTER(c_int)())"%(returntype[1:], paramtext, statement),
                      "from gobject import %s"%dependent)
         else:
@@ -587,18 +595,24 @@ from %(ns)s_enums import *
 
                 for methodname in self._methods.iterkeys():
                     params = get_param_list(methodname)
+                    f.write( "try:\n")
                     if self._methods[methodname][0]:
-                        f.write( "%s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
+                        f.write( "    %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._methods[methodname][0]))
                     else:
-                        f.write( "%s.%s.restype = None\n"%(LIB_NAME,methodname))
-                    f.write("%s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
+                        f.write( "    %s.%s.restype = None\n"%(LIB_NAME,methodname))
+                    f.write("    %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname,','.join([p[1] for p in params])))
+                    f.write( "except:\n")
+                    f.write( "   pass\n")
                     
                 for methodname in self._staticmethods.iterkeys():
+                    f.write( "try:\n")
                     if self._staticmethods[methodname][0]:
-                        f.write( "%s.%s.restype = %s\n"%(LIB_NAME,methodname, self._staticmethods[methodname][0]))
+                        f.write( "    %s.%s.restype = %s\n"%(LIB_NAME,methodname, self._staticmethods[methodname][0]))
                     else:
-                        f.write( "%s.%s.restype = None\n"%(LIB_NAME,methodname))
-                    f.write("%s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
+                        f.write( "    %s.%s.restype = None\n"%(LIB_NAME,methodname))
+                    f.write("    %s.%s.argtypes = [%s]\n"%(LIB_NAME,methodname, ','.join([p[1] for p in self._staticmethods[methodname][1:]])))
+                    f.write( "except:\n")
+                    f.write( "   pass\n")
                     
                 f.write("")
                 parentpackage = '%s'%inheritances[self._classname].replace('.','__')
@@ -714,7 +728,10 @@ from %(ns)s_enums import *
                 elif not text.startswith('#'):
                     line += text
                     if line.find(';')>=0:
-                        self.to_python(line.replace('const ',' '))
+                        try:
+                            self.to_python(line.replace('const ',' '))
+                        except:
+                            logging.error("ERROR processing line %s"%line)
                         line="" 
         
             self.emit_python(namespace)

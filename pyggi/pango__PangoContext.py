@@ -56,6 +56,7 @@ _GtkRcStyle = POINTER(c_int)
 _GdkGeometry = POINTER(c_int)
 _PangoFont = POINTER(c_int)
 _WebKitNetworkResponse = POINTER(c_int)
+_GInterface = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkRcStyle = POINTER(c_int)
@@ -75,14 +76,17 @@ _GtkWidgetPath = POINTER(c_int)
 _GtkContainer = POINTER(c_int)
 _PangoItem = POINTER(c_int)
 _GClosure = POINTER(c_int)
-_GtkAboutDialog = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkScrolledWindow = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
+_GInputStream = POINTER(c_int)
 _JSObject = POINTER(c_int)
+_WebKitWebResource = POINTER(c_int)
 _GBytes = POINTER(c_int)
 _GScanner = POINTER(c_int)
 _PangoFont = POINTER(c_int)
@@ -97,6 +101,7 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
@@ -105,9 +110,10 @@ _GtkWindowGroup = POINTER(c_int)
 _GtkAdjustment = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _GString = POINTER(c_int)
-_PangoLayoutIter = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _JSPropertyNameArray = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
@@ -116,11 +122,15 @@ _GtkPathPriorityType = POINTER(c_int)
 _JSClass = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _JSValue = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSource = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
+_GIOStream = POINTER(c_int)
+_GIOStream = POINTER(c_int)
 _JSString = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
+_GOutputStream = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
 _GSource = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
@@ -133,6 +143,8 @@ _WebKitWebInspector = POINTER(c_int)
 _GdkWindowAttr = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
+_GCancellable = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
 _GtkContainerClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
@@ -140,11 +152,13 @@ _GtkAdjustment = POINTER(c_int)
 _GdkDragContext = POINTER(c_int)
 _GtkAssistant = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
+_GtkCssProvider = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
 _GCond = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -156,8 +170,10 @@ _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
 _JSContextGroup = POINTER(c_int)
+_GFile = POINTER(c_int)
+_PangoLayoutIter = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
-_WebKitWebResource = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
@@ -165,16 +181,19 @@ _GtkBorder = POINTER(c_int)
 _JSPropertyNameArray = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _JSClass = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
 _cairo_t = POINTER(c_int)
 _GWeakRef = POINTER(c_int)
+_GtkAboutDialog = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
 _GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
@@ -182,6 +201,7 @@ _GPollFD = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
 _JSContext = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _PangoFontsetSimple = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
@@ -198,6 +218,7 @@ _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
 _GString = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -211,6 +232,7 @@ _GSourceFuncs = POINTER(c_int)
 _JSPropertyNameAccumulator = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -225,11 +247,14 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
 _JSObject = POINTER(c_int)
+_GInputStream = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -240,12 +265,15 @@ _PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSourceCallbackFuncs = POINTER(c_int)
+_GtkCssSection = POINTER(c_int)
 _PangoFontFace = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
@@ -313,62 +341,146 @@ GtkLicense = c_int
 GtkIconSize = c_int
 GtkAssistantPageType = c_int
 
-libpango.pango_find_paragraph_boundary.restype = None
-libpango.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
-libpango.pango_context_set_language.restype = None
-libpango.pango_context_set_language.argtypes = [_PangoContext,_PangoLanguage]
-libpango.pango_itemize.restype = _GList
-libpango.pango_itemize.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
-libpango.pango_shape_full.restype = None
-libpango.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
-libpango.pango_context_set_base_dir.restype = None
-libpango.pango_context_set_base_dir.argtypes = [_PangoContext,PangoDirection]
-libpango.pango_get_log_attrs.restype = None
-libpango.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoLanguage,_PangoLogAttr,gint]
-libpango.pango_context_set_matrix.restype = None
-libpango.pango_context_set_matrix.argtypes = [_PangoContext,_PangoMatrix]
-libpango.pango_context_get_matrix.restype = _PangoMatrix
-libpango.pango_context_get_matrix.argtypes = [_PangoContext]
-libpango.pango_context_set_font_description.restype = None
-libpango.pango_context_set_font_description.argtypes = [_PangoContext,_PangoFontDescription]
-libpango.pango_context_get_base_gravity.restype = PangoGravity
-libpango.pango_context_get_base_gravity.argtypes = [_PangoContext]
-libpango.pango_context_load_fontset.restype = _PangoFontset
-libpango.pango_context_load_fontset.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
-libpango.pango_default_break.restype = None
-libpango.pango_default_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
-libpango.pango_context_set_base_gravity.restype = None
-libpango.pango_context_set_base_gravity.argtypes = [_PangoContext,PangoGravity]
-libpango.pango_itemize_with_base_dir.restype = _GList
-libpango.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
-libpango.pango_context_list_families.restype = None
-libpango.pango_context_list_families.argtypes = [_PangoContext,POINTER(_PangoFontFamily),POINTER(gint)]
-libpango.pango_context_set_font_map.restype = None
-libpango.pango_context_set_font_map.argtypes = [_PangoContext,_PangoFontMap]
-libpango.pango_context_get_language.restype = _PangoLanguage
-libpango.pango_context_get_language.argtypes = [_PangoContext]
-libpango.pango_context_get_font_map.restype = _PangoFontMap
-libpango.pango_context_get_font_map.argtypes = [_PangoContext]
-libpango.pango_shape.restype = None
-libpango.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
-libpango.pango_context_get_base_dir.restype = PangoDirection
-libpango.pango_context_get_base_dir.argtypes = [_PangoContext]
-libpango.pango_context_set_gravity_hint.restype = None
-libpango.pango_context_set_gravity_hint.argtypes = [_PangoContext,PangoGravityHint]
-libpango.pango_context_get_gravity.restype = PangoGravity
-libpango.pango_context_get_gravity.argtypes = [_PangoContext]
-libpango.pango_context_get_font_description.restype = _PangoFontDescription
-libpango.pango_context_get_font_description.argtypes = [_PangoContext]
-libpango.pango_context_get_metrics.restype = _PangoFontMetrics
-libpango.pango_context_get_metrics.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
-libpango.pango_context_get_gravity_hint.restype = PangoGravityHint
-libpango.pango_context_get_gravity_hint.argtypes = [_PangoContext]
-libpango.pango_break.restype = None
-libpango.pango_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
-libpango.pango_context_load_font.restype = _PangoFont
-libpango.pango_context_load_font.argtypes = [_PangoContext,_PangoFontDescription]
-libpango.pango_reorder_items.restype = _GList
-libpango.pango_reorder_items.argtypes = [_GList]
+try:
+    libpango.pango_find_paragraph_boundary.restype = None
+    libpango.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
+except:
+   pass
+try:
+    libpango.pango_context_set_language.restype = None
+    libpango.pango_context_set_language.argtypes = [_PangoContext,_PangoLanguage]
+except:
+   pass
+try:
+    libpango.pango_itemize.restype = _GList
+    libpango.pango_itemize.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
+except:
+   pass
+try:
+    libpango.pango_shape_full.restype = None
+    libpango.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+except:
+   pass
+try:
+    libpango.pango_context_set_base_dir.restype = None
+    libpango.pango_context_set_base_dir.argtypes = [_PangoContext,PangoDirection]
+except:
+   pass
+try:
+    libpango.pango_get_log_attrs.restype = None
+    libpango.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoLanguage,_PangoLogAttr,gint]
+except:
+   pass
+try:
+    libpango.pango_context_set_matrix.restype = None
+    libpango.pango_context_set_matrix.argtypes = [_PangoContext,_PangoMatrix]
+except:
+   pass
+try:
+    libpango.pango_context_get_matrix.restype = _PangoMatrix
+    libpango.pango_context_get_matrix.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_context_set_font_description.restype = None
+    libpango.pango_context_set_font_description.argtypes = [_PangoContext,_PangoFontDescription]
+except:
+   pass
+try:
+    libpango.pango_context_get_base_gravity.restype = PangoGravity
+    libpango.pango_context_get_base_gravity.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_context_load_fontset.restype = _PangoFontset
+    libpango.pango_context_load_fontset.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
+except:
+   pass
+try:
+    libpango.pango_default_break.restype = None
+    libpango.pango_default_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
+except:
+   pass
+try:
+    libpango.pango_context_set_base_gravity.restype = None
+    libpango.pango_context_set_base_gravity.argtypes = [_PangoContext,PangoGravity]
+except:
+   pass
+try:
+    libpango.pango_itemize_with_base_dir.restype = _GList
+    libpango.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
+except:
+   pass
+try:
+    libpango.pango_context_list_families.restype = None
+    libpango.pango_context_list_families.argtypes = [_PangoContext,POINTER(_PangoFontFamily),POINTER(gint)]
+except:
+   pass
+try:
+    libpango.pango_context_set_font_map.restype = None
+    libpango.pango_context_set_font_map.argtypes = [_PangoContext,_PangoFontMap]
+except:
+   pass
+try:
+    libpango.pango_context_get_language.restype = _PangoLanguage
+    libpango.pango_context_get_language.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_context_get_font_map.restype = _PangoFontMap
+    libpango.pango_context_get_font_map.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_shape.restype = None
+    libpango.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+except:
+   pass
+try:
+    libpango.pango_context_get_base_dir.restype = PangoDirection
+    libpango.pango_context_get_base_dir.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_context_set_gravity_hint.restype = None
+    libpango.pango_context_set_gravity_hint.argtypes = [_PangoContext,PangoGravityHint]
+except:
+   pass
+try:
+    libpango.pango_context_get_gravity.restype = PangoGravity
+    libpango.pango_context_get_gravity.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_context_get_font_description.restype = _PangoFontDescription
+    libpango.pango_context_get_font_description.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_context_get_metrics.restype = _PangoFontMetrics
+    libpango.pango_context_get_metrics.argtypes = [_PangoContext,_PangoFontDescription,_PangoLanguage]
+except:
+   pass
+try:
+    libpango.pango_context_get_gravity_hint.restype = PangoGravityHint
+    libpango.pango_context_get_gravity_hint.argtypes = [_PangoContext]
+except:
+   pass
+try:
+    libpango.pango_break.restype = None
+    libpango.pango_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
+except:
+   pass
+try:
+    libpango.pango_context_load_font.restype = _PangoFont
+    libpango.pango_context_load_font.argtypes = [_PangoContext,_PangoFontDescription]
+except:
+   pass
+try:
+    libpango.pango_reorder_items.restype = _GList
+    libpango.pango_reorder_items.argtypes = [_GList]
+except:
+   pass
 import gobject__GObject
 class PangoContext( gobject__GObject.GObject):
     """Class PangoContext Constructors"""

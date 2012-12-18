@@ -68,9 +68,11 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GMainContext = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _GBytes = POINTER(c_int)
@@ -87,17 +89,21 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSource = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
@@ -112,12 +118,14 @@ _GtkBorder = POINTER(c_int)
 _WebKitWebInspector = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -127,13 +135,16 @@ _GtkWidget = POINTER(c_int)
 _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
+_GFile = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -142,11 +153,13 @@ _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
 _GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -161,6 +174,7 @@ _WebKitDOMDocument = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -171,6 +185,7 @@ _GdkRGBA = POINTER(c_int)
 _GTimeVal = POINTER(c_int)
 _GSourceFuncs = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -182,10 +197,12 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -196,11 +213,13 @@ _PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GSourceCallbackFuncs = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
@@ -262,58 +281,136 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libgobject.g_source_remove_poll.restype = None
-libgobject.g_source_remove_poll.argtypes = [_GSource,_GPollFD]
-libgobject.g_source_set_callback_indirect.restype = None
-libgobject.g_source_set_callback_indirect.argtypes = [_GSource,gpointer,_GSourceCallbackFuncs]
-libgobject.g_source_destroy.restype = None
-libgobject.g_source_destroy.argtypes = [_GSource]
-libgobject.g_source_get_id.restype = guint
-libgobject.g_source_get_id.argtypes = [_GSource]
-libgobject.g_source_get_context.restype = _GMainContext
-libgobject.g_source_get_context.argtypes = [_GSource]
-libgobject.g_source_set_can_recurse.restype = None
-libgobject.g_source_set_can_recurse.argtypes = [_GSource,gboolean]
-libgobject.g_source_get_name.restype = c_char_p
-libgobject.g_source_get_name.argtypes = [_GSource]
-libgobject.g_source_get_priority.restype = gint
-libgobject.g_source_get_priority.argtypes = [_GSource]
-libgobject.g_source_ref.restype = _GSource
-libgobject.g_source_ref.argtypes = [_GSource]
-libgobject.g_source_remove_child_source.restype = None
-libgobject.g_source_remove_child_source.argtypes = [_GSource,_GSource]
-libgobject.g_source_add_child_source.restype = None
-libgobject.g_source_add_child_source.argtypes = [_GSource,_GSource]
-libgobject.g_source_set_name.restype = None
-libgobject.g_source_set_name.argtypes = [_GSource,c_char_p]
-libgobject.g_source_get_can_recurse.restype = gboolean
-libgobject.g_source_get_can_recurse.argtypes = [_GSource]
-libgobject.g_source_get_current_time.restype = None
-libgobject.g_source_get_current_time.argtypes = [_GSource,_GTimeVal]
-libgobject.g_source_is_destroyed.restype = gboolean
-libgobject.g_source_is_destroyed.argtypes = [_GSource]
-libgobject.g_source_unref.restype = None
-libgobject.g_source_unref.argtypes = [_GSource]
-libgobject.g_source_add_poll.restype = None
-libgobject.g_source_add_poll.argtypes = [_GSource,_GPollFD]
-libgobject.g_source_set_priority.restype = None
-libgobject.g_source_set_priority.argtypes = [_GSource,gint]
-libgobject.g_source_set_funcs.restype = None
-libgobject.g_source_set_funcs.argtypes = [_GSource,_GSourceFuncs]
-libgobject.g_source_get_time.restype = gint64
-libgobject.g_source_get_time.argtypes = [_GSource]
-libgobject.g_source_set_name_by_id.restype = None
-libgobject.g_source_set_name_by_id.argtypes = [_GSource,guint,c_char_p]
-libgobject.g_source_set_callback.restype = None
-libgobject.g_source_set_callback.argtypes = [_GSource,GSourceFunc,gpointer,GDestroyNotify]
-libgobject.g_source_attach.restype = guint
-libgobject.g_source_attach.argtypes = [_GSource,_GMainContext]
-libgobject.g_source_remove_by_user_data.restype = gboolean
-libgobject.g_source_remove_by_user_data.argtypes = [gpointer]
-libgobject.g_source_remove.restype = gboolean
-libgobject.g_source_remove.argtypes = [guint]
-libgobject.g_source_remove_by_funcs_user_data.restype = gboolean
-libgobject.g_source_remove_by_funcs_user_data.argtypes = [_GSourceFuncs,gpointer]
+try:
+    libgobject.g_source_remove_poll.restype = None
+    libgobject.g_source_remove_poll.argtypes = [_GSource,_GPollFD]
+except:
+   pass
+try:
+    libgobject.g_source_set_callback_indirect.restype = None
+    libgobject.g_source_set_callback_indirect.argtypes = [_GSource,gpointer,_GSourceCallbackFuncs]
+except:
+   pass
+try:
+    libgobject.g_source_destroy.restype = None
+    libgobject.g_source_destroy.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_get_id.restype = guint
+    libgobject.g_source_get_id.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_get_context.restype = _GMainContext
+    libgobject.g_source_get_context.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_set_can_recurse.restype = None
+    libgobject.g_source_set_can_recurse.argtypes = [_GSource,gboolean]
+except:
+   pass
+try:
+    libgobject.g_source_get_name.restype = c_char_p
+    libgobject.g_source_get_name.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_get_priority.restype = gint
+    libgobject.g_source_get_priority.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_ref.restype = _GSource
+    libgobject.g_source_ref.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_remove_child_source.restype = None
+    libgobject.g_source_remove_child_source.argtypes = [_GSource,_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_add_child_source.restype = None
+    libgobject.g_source_add_child_source.argtypes = [_GSource,_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_set_name.restype = None
+    libgobject.g_source_set_name.argtypes = [_GSource,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_source_get_can_recurse.restype = gboolean
+    libgobject.g_source_get_can_recurse.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_get_current_time.restype = None
+    libgobject.g_source_get_current_time.argtypes = [_GSource,_GTimeVal]
+except:
+   pass
+try:
+    libgobject.g_source_is_destroyed.restype = gboolean
+    libgobject.g_source_is_destroyed.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_unref.restype = None
+    libgobject.g_source_unref.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_add_poll.restype = None
+    libgobject.g_source_add_poll.argtypes = [_GSource,_GPollFD]
+except:
+   pass
+try:
+    libgobject.g_source_set_priority.restype = None
+    libgobject.g_source_set_priority.argtypes = [_GSource,gint]
+except:
+   pass
+try:
+    libgobject.g_source_set_funcs.restype = None
+    libgobject.g_source_set_funcs.argtypes = [_GSource,_GSourceFuncs]
+except:
+   pass
+try:
+    libgobject.g_source_get_time.restype = gint64
+    libgobject.g_source_get_time.argtypes = [_GSource]
+except:
+   pass
+try:
+    libgobject.g_source_set_name_by_id.restype = None
+    libgobject.g_source_set_name_by_id.argtypes = [_GSource,guint,c_char_p]
+except:
+   pass
+try:
+    libgobject.g_source_set_callback.restype = None
+    libgobject.g_source_set_callback.argtypes = [_GSource,GSourceFunc,gpointer,GDestroyNotify]
+except:
+   pass
+try:
+    libgobject.g_source_attach.restype = guint
+    libgobject.g_source_attach.argtypes = [_GSource,_GMainContext]
+except:
+   pass
+try:
+    libgobject.g_source_remove_by_user_data.restype = gboolean
+    libgobject.g_source_remove_by_user_data.argtypes = [gpointer]
+except:
+   pass
+try:
+    libgobject.g_source_remove.restype = gboolean
+    libgobject.g_source_remove.argtypes = [guint]
+except:
+   pass
+try:
+    libgobject.g_source_remove_by_funcs_user_data.restype = gboolean
+    libgobject.g_source_remove_by_funcs_user_data.argtypes = [_GSourceFuncs,gpointer]
+except:
+   pass
 import gobject__GObject
 class GSource( gobject__GObject.GObject):
     """Class GSource Constructors"""

@@ -68,8 +68,10 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
+_GFileEnumerator = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _GBytes = POINTER(c_int)
@@ -85,17 +87,21 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -108,12 +114,14 @@ _GtkBorder = POINTER(c_int)
 _WebKitWebInspector = POINTER(c_int)
 _GOptionGroup = POINTER(c_int)
 _GScanner = POINTER(c_int)
+_GFileAttributeInfoList = POINTER(c_int)
 _GtkWidgetClass = POINTER(c_int)
 _GdkEventKey = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoFontMetrics = POINTER(c_int)
+_GAsyncResult = POINTER(c_int)
 _GdkVisual = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -123,13 +131,16 @@ _GtkWidget = POINTER(c_int)
 _WebKitNetworkRequest = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontFamily = POINTER(c_int)
+_GFile = POINTER(c_int)
 _cairo_region_t = POINTER(c_int)
+_GFileInputStream = POINTER(c_int)
 _PangoFontset = POINTER(c_int)
 _GdkWindow = POINTER(c_int)
 _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -138,11 +149,13 @@ _GdkVisual = POINTER(c_int)
 _GdkEventButton = POINTER(c_int)
 _GCancellable = POINTER(c_int)
 _GdkDevice = POINTER(c_int)
+_GMount = POINTER(c_int)
 _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -157,6 +170,7 @@ _WebKitDOMDocument = POINTER(c_int)
 _PangoMatrix = POINTER(c_int)
 _GtkPrintOperation = POINTER(c_int)
 _PangoContext = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GList = POINTER(c_int)
 _WebKitWebView = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
@@ -164,7 +178,9 @@ _PangoCoverage = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GList = POINTER(c_int)
 _GdkRGBA = POINTER(c_int)
+_GTimeVal = POINTER(c_int)
 _PangoGlyphString = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitSecurityOrigin = POINTER(c_int)
 _GObjectClass = POINTER(c_int)
 _GSList = POINTER(c_int)
@@ -176,9 +192,11 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
+_GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
 _GParameter = POINTER(c_int)
@@ -189,10 +207,12 @@ _PangoLayoutRun = POINTER(c_int)
 _cairo_pattern_t = POINTER(c_int)
 _GdkPixbuf = POINTER(c_int)
 _WebKitGeolocationPolicyDecision = POINTER(c_int)
+_GMountOperation = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _GtkTargetEntry = POINTER(c_int)
 _GtkApplication = POINTER(c_int)
 _GtkClipboard = POINTER(c_int)
+_GFileInfo = POINTER(c_int)
 _GByteArray = POINTER(c_int)
 _GdkScreen = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
@@ -254,18 +274,36 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libpango.pango_font_get_font_map.restype = _PangoFontMap
-libpango.pango_font_get_font_map.argtypes = [_PangoFont]
-libpango.pango_font_get_glyph_extents.restype = None
-libpango.pango_font_get_glyph_extents.argtypes = [_PangoFont,PangoGlyph,_PangoRectangle,_PangoRectangle]
-libpango.pango_font_get_coverage.restype = _PangoCoverage
-libpango.pango_font_get_coverage.argtypes = [_PangoFont,_PangoLanguage]
-libpango.pango_font_describe.restype = _PangoFontDescription
-libpango.pango_font_describe.argtypes = [_PangoFont]
-libpango.pango_font_get_metrics.restype = _PangoFontMetrics
-libpango.pango_font_get_metrics.argtypes = [_PangoFont,_PangoLanguage]
-libpango.pango_font_describe_with_absolute_size.restype = _PangoFontDescription
-libpango.pango_font_describe_with_absolute_size.argtypes = [_PangoFont]
+try:
+    libpango.pango_font_get_font_map.restype = _PangoFontMap
+    libpango.pango_font_get_font_map.argtypes = [_PangoFont]
+except:
+   pass
+try:
+    libpango.pango_font_get_glyph_extents.restype = None
+    libpango.pango_font_get_glyph_extents.argtypes = [_PangoFont,PangoGlyph,_PangoRectangle,_PangoRectangle]
+except:
+   pass
+try:
+    libpango.pango_font_get_coverage.restype = _PangoCoverage
+    libpango.pango_font_get_coverage.argtypes = [_PangoFont,_PangoLanguage]
+except:
+   pass
+try:
+    libpango.pango_font_describe.restype = _PangoFontDescription
+    libpango.pango_font_describe.argtypes = [_PangoFont]
+except:
+   pass
+try:
+    libpango.pango_font_get_metrics.restype = _PangoFontMetrics
+    libpango.pango_font_get_metrics.argtypes = [_PangoFont,_PangoLanguage]
+except:
+   pass
+try:
+    libpango.pango_font_describe_with_absolute_size.restype = _PangoFontDescription
+    libpango.pango_font_describe_with_absolute_size.argtypes = [_PangoFont]
+except:
+   pass
 import gobject__GObject
 class PangoFont( gobject__GObject.GObject):
     """Class PangoFont Constructors"""

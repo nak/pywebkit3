@@ -45,6 +45,10 @@ from gtk3__GtkClipboard import *
 from gtk3_types import *
 from gtk3__GtkContainer import *
 from gtk3_types import *
+from gtk3__GtkCssProvider import *
+from gtk3_types import *
+from gtk3__GtkCssSection import *
+from gtk3_types import *
 from gtk3__GtkDialog import *
 from gtk3_types import *
 from gtk3__GtkIconFactory import *

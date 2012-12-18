@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -85,17 +86,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -129,6 +133,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -249,32 +254,71 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
-libgobject.g_bytes_unref.restype = None
-libgobject.g_bytes_unref.argtypes = [_GBytes]
-libgobject.g_bytes_get_data.restype = gconstpointer
-libgobject.g_bytes_get_data.argtypes = [_GBytes,POINTER(gsize)]
-libgobject.g_bytes_ref.restype = _GBytes
-libgobject.g_bytes_ref.argtypes = [_GBytes]
-libgobject.g_bytes_new_from_bytes.restype = _GBytes
-libgobject.g_bytes_new_from_bytes.argtypes = [_GBytes,gsize,gsize]
-libgobject.g_bytes_get_size.restype = gsize
-libgobject.g_bytes_get_size.argtypes = [_GBytes]
-libgobject.g_bytes_unref_to_array.restype = _GByteArray
-libgobject.g_bytes_unref_to_array.argtypes = [_GBytes]
-libgobject.g_bytes_unref_to_data.restype = gpointer
-libgobject.g_bytes_unref_to_data.argtypes = [_GBytes,POINTER(gsize)]
-libgobject.g_bytes_new_static.restype = _GBytes
-libgobject.g_bytes_new_static.argtypes = [gconstpointer,gsize]
-libgobject.g_bytes_hash.restype = guint
-libgobject.g_bytes_hash.argtypes = [gconstpointer]
-libgobject.g_bytes_new_take.restype = _GBytes
-libgobject.g_bytes_new_take.argtypes = [gpointer,gsize]
-libgobject.g_bytes_new_with_free_func.restype = _GBytes
-libgobject.g_bytes_new_with_free_func.argtypes = [gconstpointer,gsize,GDestroyNotify,gpointer]
-libgobject.g_bytes_compare.restype = gint
-libgobject.g_bytes_compare.argtypes = [gconstpointer,gconstpointer]
-libgobject.g_bytes_equal.restype = gboolean
-libgobject.g_bytes_equal.argtypes = [gconstpointer,gconstpointer]
+try:
+    libgobject.g_bytes_unref.restype = None
+    libgobject.g_bytes_unref.argtypes = [_GBytes]
+except:
+   pass
+try:
+    libgobject.g_bytes_get_data.restype = gconstpointer
+    libgobject.g_bytes_get_data.argtypes = [_GBytes,POINTER(gsize)]
+except:
+   pass
+try:
+    libgobject.g_bytes_ref.restype = _GBytes
+    libgobject.g_bytes_ref.argtypes = [_GBytes]
+except:
+   pass
+try:
+    libgobject.g_bytes_new_from_bytes.restype = _GBytes
+    libgobject.g_bytes_new_from_bytes.argtypes = [_GBytes,gsize,gsize]
+except:
+   pass
+try:
+    libgobject.g_bytes_get_size.restype = gsize
+    libgobject.g_bytes_get_size.argtypes = [_GBytes]
+except:
+   pass
+try:
+    libgobject.g_bytes_unref_to_array.restype = _GByteArray
+    libgobject.g_bytes_unref_to_array.argtypes = [_GBytes]
+except:
+   pass
+try:
+    libgobject.g_bytes_unref_to_data.restype = gpointer
+    libgobject.g_bytes_unref_to_data.argtypes = [_GBytes,POINTER(gsize)]
+except:
+   pass
+try:
+    libgobject.g_bytes_new_static.restype = _GBytes
+    libgobject.g_bytes_new_static.argtypes = [gconstpointer,gsize]
+except:
+   pass
+try:
+    libgobject.g_bytes_hash.restype = guint
+    libgobject.g_bytes_hash.argtypes = [gconstpointer]
+except:
+   pass
+try:
+    libgobject.g_bytes_new_take.restype = _GBytes
+    libgobject.g_bytes_new_take.argtypes = [gpointer,gsize]
+except:
+   pass
+try:
+    libgobject.g_bytes_new_with_free_func.restype = _GBytes
+    libgobject.g_bytes_new_with_free_func.argtypes = [gconstpointer,gsize,GDestroyNotify,gpointer]
+except:
+   pass
+try:
+    libgobject.g_bytes_compare.restype = gint
+    libgobject.g_bytes_compare.argtypes = [gconstpointer,gconstpointer]
+except:
+   pass
+try:
+    libgobject.g_bytes_equal.restype = gboolean
+    libgobject.g_bytes_equal.argtypes = [gconstpointer,gconstpointer]
+except:
+   pass
 class GBytes( object):
     """Class GBytes Constructors"""
     def __init__( self, size,  obj = None):

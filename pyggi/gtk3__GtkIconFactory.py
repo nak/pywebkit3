@@ -81,6 +81,7 @@ _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
@@ -120,6 +121,7 @@ _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -203,16 +205,31 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libgtk3.gtk_icon_factory_remove_default.restype = None
-libgtk3.gtk_icon_factory_remove_default.argtypes = [_GtkIconFactory]
-libgtk3.gtk_icon_factory_add.restype = None
-libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,c_char_p,_GtkIconSet]
-libgtk3.gtk_icon_factory_add_default.restype = None
-libgtk3.gtk_icon_factory_add_default.argtypes = [_GtkIconFactory]
-libgtk3.gtk_icon_factory_lookup.restype = _GtkIconSet
-libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,c_char_p]
-libgtk3.gtk_icon_factory_lookup_default.restype = _GtkIconSet
-libgtk3.gtk_icon_factory_lookup_default.argtypes = [c_char_p]
+try:
+    libgtk3.gtk_icon_factory_remove_default.restype = None
+    libgtk3.gtk_icon_factory_remove_default.argtypes = [_GtkIconFactory]
+except:
+   pass
+try:
+    libgtk3.gtk_icon_factory_add.restype = None
+    libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,c_char_p,_GtkIconSet]
+except:
+   pass
+try:
+    libgtk3.gtk_icon_factory_add_default.restype = None
+    libgtk3.gtk_icon_factory_add_default.argtypes = [_GtkIconFactory]
+except:
+   pass
+try:
+    libgtk3.gtk_icon_factory_lookup.restype = _GtkIconSet
+    libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,c_char_p]
+except:
+   pass
+try:
+    libgtk3.gtk_icon_factory_lookup_default.restype = _GtkIconSet
+    libgtk3.gtk_icon_factory_lookup_default.argtypes = [c_char_p]
+except:
+   pass
 import gobject__GObject
 class GtkIconFactory( gobject__GObject.GObject):
     """Class GtkIconFactory Constructors"""

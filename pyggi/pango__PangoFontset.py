@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -84,17 +85,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -128,6 +132,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -245,10 +250,16 @@ GApplicationFlags = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 
-libpango.pango_fontset_get_metrics.restype = _PangoFontMetrics
-libpango.pango_fontset_get_metrics.argtypes = [_PangoFontset]
-libpango.pango_fontset_get_font.restype = _PangoFont
-libpango.pango_fontset_get_font.argtypes = [_PangoFontset,guint]
+try:
+    libpango.pango_fontset_get_metrics.restype = _PangoFontMetrics
+    libpango.pango_fontset_get_metrics.argtypes = [_PangoFontset]
+except:
+   pass
+try:
+    libpango.pango_fontset_get_font.restype = _PangoFont
+    libpango.pango_fontset_get_font.argtypes = [_PangoFontset,guint]
+except:
+   pass
 import gobject__GObject
 class PangoFontset( gobject__GObject.GObject):
     """Class PangoFontset Constructors"""

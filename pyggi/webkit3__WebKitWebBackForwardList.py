@@ -68,6 +68,7 @@ _GdkTimeCoord = POINTER(c_int)
 _GdkColor = POINTER(c_int)
 _GtkWidgetPath = POINTER(c_int)
 _GClosure = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GdkDisplay = POINTER(c_int)
 _GtkStyleProvider = POINTER(c_int)
 _GtkDialog = POINTER(c_int)
@@ -84,17 +85,20 @@ _PangoLayout = POINTER(c_int)
 _WebKitWebBackForwardList = POINTER(c_int)
 _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
+_GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
 _JSGlobalContext = POINTER(c_int)
 _GApplication = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _WebKitWebSettings = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
+_GAppInfo = POINTER(c_int)
 _GtkSettings = POINTER(c_int)
 _PangoFontMap = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
@@ -128,6 +132,7 @@ _PangoFontDescription = POINTER(c_int)
 _GtkBorder = POINTER(c_int)
 _GError = POINTER(c_int)
 _PangoCoverage = POINTER(c_int)
+_GIcon = POINTER(c_int)
 _WebKitViewportAttributes = POINTER(c_int)
 _WebKitWebHistoryItem = POINTER(c_int)
 _cairo_t = POINTER(c_int)
@@ -245,40 +250,91 @@ GApplicationFlags = c_int
 GtkDialogFlags = c_int
 GtkResponseType = c_int
 
-libwebkit3.webkit_web_back_forward_list_set_limit.restype = None
-libwebkit3.webkit_web_back_forward_list_set_limit.argtypes = [_WebKitWebBackForwardList,gint]
-libwebkit3.webkit_web_back_forward_list_add_item.restype = None
-libwebkit3.webkit_web_back_forward_list_add_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
-libwebkit3.webkit_web_back_forward_list_get_back_length.restype = gint
-libwebkit3.webkit_web_back_forward_list_get_back_length.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_go_back.restype = None
-libwebkit3.webkit_web_back_forward_list_go_back.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_get_back_item.restype = _WebKitWebHistoryItem
-libwebkit3.webkit_web_back_forward_list_get_back_item.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_get_forward_list_with_limit.restype = _GList
-libwebkit3.webkit_web_back_forward_list_get_forward_list_with_limit.argtypes = [_WebKitWebBackForwardList,gint]
-libwebkit3.webkit_web_back_forward_list_get_current_item.restype = _WebKitWebHistoryItem
-libwebkit3.webkit_web_back_forward_list_get_current_item.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_go_to_item.restype = None
-libwebkit3.webkit_web_back_forward_list_go_to_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
-libwebkit3.webkit_web_back_forward_list_get_back_list_with_limit.restype = _GList
-libwebkit3.webkit_web_back_forward_list_get_back_list_with_limit.argtypes = [_WebKitWebBackForwardList,gint]
-libwebkit3.webkit_web_back_forward_list_get_forward_length.restype = gint
-libwebkit3.webkit_web_back_forward_list_get_forward_length.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_get_forward_item.restype = _WebKitWebHistoryItem
-libwebkit3.webkit_web_back_forward_list_get_forward_item.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_contains_item.restype = gboolean
-libwebkit3.webkit_web_back_forward_list_contains_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
-libwebkit3.webkit_web_back_forward_list_get_nth_item.restype = _WebKitWebHistoryItem
-libwebkit3.webkit_web_back_forward_list_get_nth_item.argtypes = [_WebKitWebBackForwardList,gint]
-libwebkit3.webkit_web_back_forward_list_go_forward.restype = None
-libwebkit3.webkit_web_back_forward_list_go_forward.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_clear.restype = None
-libwebkit3.webkit_web_back_forward_list_clear.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_get_limit.restype = gint
-libwebkit3.webkit_web_back_forward_list_get_limit.argtypes = [_WebKitWebBackForwardList]
-libwebkit3.webkit_web_back_forward_list_new_with_web_view.restype = _WebKitWebBackForwardList
-libwebkit3.webkit_web_back_forward_list_new_with_web_view.argtypes = [_WebKitWebView]
+try:
+    libwebkit3.webkit_web_back_forward_list_set_limit.restype = None
+    libwebkit3.webkit_web_back_forward_list_set_limit.argtypes = [_WebKitWebBackForwardList,gint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_add_item.restype = None
+    libwebkit3.webkit_web_back_forward_list_add_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_back_length.restype = gint
+    libwebkit3.webkit_web_back_forward_list_get_back_length.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_go_back.restype = None
+    libwebkit3.webkit_web_back_forward_list_go_back.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_back_item.restype = _WebKitWebHistoryItem
+    libwebkit3.webkit_web_back_forward_list_get_back_item.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_forward_list_with_limit.restype = _GList
+    libwebkit3.webkit_web_back_forward_list_get_forward_list_with_limit.argtypes = [_WebKitWebBackForwardList,gint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_current_item.restype = _WebKitWebHistoryItem
+    libwebkit3.webkit_web_back_forward_list_get_current_item.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_go_to_item.restype = None
+    libwebkit3.webkit_web_back_forward_list_go_to_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_back_list_with_limit.restype = _GList
+    libwebkit3.webkit_web_back_forward_list_get_back_list_with_limit.argtypes = [_WebKitWebBackForwardList,gint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_forward_length.restype = gint
+    libwebkit3.webkit_web_back_forward_list_get_forward_length.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_forward_item.restype = _WebKitWebHistoryItem
+    libwebkit3.webkit_web_back_forward_list_get_forward_item.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_contains_item.restype = gboolean
+    libwebkit3.webkit_web_back_forward_list_contains_item.argtypes = [_WebKitWebBackForwardList,_WebKitWebHistoryItem]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_nth_item.restype = _WebKitWebHistoryItem
+    libwebkit3.webkit_web_back_forward_list_get_nth_item.argtypes = [_WebKitWebBackForwardList,gint]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_go_forward.restype = None
+    libwebkit3.webkit_web_back_forward_list_go_forward.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_clear.restype = None
+    libwebkit3.webkit_web_back_forward_list_clear.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_get_limit.restype = gint
+    libwebkit3.webkit_web_back_forward_list_get_limit.argtypes = [_WebKitWebBackForwardList]
+except:
+   pass
+try:
+    libwebkit3.webkit_web_back_forward_list_new_with_web_view.restype = _WebKitWebBackForwardList
+    libwebkit3.webkit_web_back_forward_list_new_with_web_view.argtypes = [_WebKitWebView]
+except:
+   pass
 import gobject__GObject
 class WebKitWebBackForwardList( gobject__GObject.GObject):
     """Class WebKitWebBackForwardList Constructors"""

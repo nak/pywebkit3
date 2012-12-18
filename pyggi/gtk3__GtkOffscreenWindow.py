@@ -82,6 +82,7 @@ _PangoAttrIterator = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
 _GtkWindowGroup = POINTER(c_int)
+_GFileMonitor = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoContext = POINTER(c_int)
 _GtkPathPriorityType = POINTER(c_int)
@@ -121,6 +122,7 @@ _PangoRectangle = POINTER(c_int)
 _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
+_GFile = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -204,8 +206,11 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-libgtk3.gtk_offscreen_window_get_pixbuf.restype = _GdkPixbuf
-libgtk3.gtk_offscreen_window_get_pixbuf.argtypes = [_GtkOffscreenWindow]
+try:
+    libgtk3.gtk_offscreen_window_get_pixbuf.restype = _GdkPixbuf
+    libgtk3.gtk_offscreen_window_get_pixbuf.argtypes = [_GtkOffscreenWindow]
+except:
+   pass
 import gtk3__GtkWindow
 class GtkOffscreenWindow( gtk3__GtkWindow.GtkWindow):
     """Class GtkOffscreenWindow Constructors"""
