@@ -1,0 +1,61 @@
+struct                   GAppInfo;
+inherit gio.GInterface;
+
+GAppInfo *          g_app_info_create_from_commandline  (const char *commandline,
+                                                         const char *application_name,
+                                                         GAppInfoCreateFlags flags,
+                                                         GError **error);
+GAppInfo *          g_app_info_dup                      (GAppInfo *appinfo);
+gboolean            g_app_info_equal                    (GAppInfo *appinfo1,
+                                                         GAppInfo *appinfo2);
+const char *        g_app_info_get_id                   (GAppInfo *appinfo);
+const char *        g_app_info_get_name                 (GAppInfo *appinfo);
+const char *        g_app_info_get_display_name         (GAppInfo *appinfo);
+const char *        g_app_info_get_description          (GAppInfo *appinfo);
+const char *        g_app_info_get_executable           (GAppInfo *appinfo);
+const char *        g_app_info_get_commandline          (GAppInfo *appinfo);
+GIcon *             g_app_info_get_icon                 (GAppInfo *appinfo);
+gboolean            g_app_info_launch                   (GAppInfo *appinfo,
+                                                         GList *files,
+                                                         GAppLaunchContext *launch_context,
+                                                         GError **error);
+gboolean            g_app_info_supports_files           (GAppInfo *appinfo);
+gboolean            g_app_info_supports_uris            (GAppInfo *appinfo);
+gboolean            g_app_info_launch_uris              (GAppInfo *appinfo,
+                                                         GList *uris,
+                                                         GAppLaunchContext *launch_context,
+                                                         GError **error);
+gboolean            g_app_info_should_show              (GAppInfo *appinfo);
+gboolean            g_app_info_can_delete               (GAppInfo *appinfo);
+gboolean            g_app_info_delete                   (GAppInfo *appinfo);
+void                g_app_info_reset_type_associations  (const char *content_type);
+gboolean            g_app_info_set_as_default_for_type  (GAppInfo *appinfo,
+                                                         const char *content_type,
+                                                         GError **error);
+gboolean            g_app_info_set_as_default_for_extension
+                                                        (GAppInfo *appinfo,
+                                                         const char *extension,
+                                                         GError **error);
+gboolean            g_app_info_set_as_last_used_for_type
+                                                        (GAppInfo *appinfo,
+                                                         const char *content_type,
+                                                         GError **error);
+gboolean            g_app_info_add_supports_type        (GAppInfo *appinfo,
+                                                         const char *content_type,
+                                                         GError **error);
+gboolean            g_app_info_can_remove_supports_type (GAppInfo *appinfo);
+gboolean            g_app_info_remove_supports_type     (GAppInfo *appinfo,
+                                                         const char *content_type,
+                                                         GError **error);
+GList *             g_app_info_get_all                  (void);
+GList *             g_app_info_get_all_for_type         (const char *content_type);
+GAppInfo *          g_app_info_get_default_for_type     (const char *content_type,
+                                                         gboolean must_support_uris);
+GAppInfo *          g_app_info_get_default_for_uri_scheme
+                                                        (const char *uri_scheme);
+GList *             g_app_info_get_fallback_for_type    (const gchar *content_type);
+GList *             g_app_info_get_recommended_for_type (const gchar *content_type);
+
+gboolean            g_app_info_launch_default_for_uri   (const char *uri,
+                                                         GAppLaunchContext *launch_context,
+                                                         GError **error);

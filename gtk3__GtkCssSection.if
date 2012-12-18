@@ -1,0 +1,12 @@
+                    GtkCssSection;
+inherit   gobject.GBoxed;
+
+guint               gtk_css_section_get_end_line        (const GtkCssSection *section);
+guint               gtk_css_section_get_end_position    (const GtkCssSection *section);
+GFile *             gtk_css_section_get_file            (const GtkCssSection *section);
+GtkCssSection *     gtk_css_section_get_parent          (const GtkCssSection *section);
+GtkCssSectionType   gtk_css_section_get_section_type    (const GtkCssSection *section);
+guint               gtk_css_section_get_start_line      (const GtkCssSection *section);
+guint               gtk_css_section_get_start_position  (const GtkCssSection *section);
+GtkCssSection *     gtk_css_section_ref                 (GtkCssSection *section);
+void                gtk_css_section_unref               (GtkCssSection *section);

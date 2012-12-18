@@ -1,0 +1,67 @@
+struct           GOutputStream;
+inherit          gobject.GObject;
+
+gssize              g_output_stream_write               (GOutputStream *stream,
+                                                         const char *buffer,
+                                                         gsize count,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+gboolean            g_output_stream_write_all           (GOutputStream *stream,
+                                                         const char *buffer,
+                                                         gsize count,
+                                                         gsize *bytes_written,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+gssize              g_output_stream_splice              (GOutputStream *stream,
+                                                         GInputStream *source,
+                                                         GOutputStreamSpliceFlags flags,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+gboolean            g_output_stream_flush               (GOutputStream *stream,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+gboolean            g_output_stream_close               (GOutputStream *stream,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+void                g_output_stream_write_async         (GOutputStream *stream,
+                                                         const char *buffer,
+                                                         gsize count,
+                                                         int io_priority,
+                                                         GCancellable *cancellable,
+                                                         GAsyncReadyCallback callback,
+                                                         gpointer user_data);
+gssize              g_output_stream_write_finish        (GOutputStream *stream,
+                                                         GAsyncResult *result,
+                                                         GError **error);
+void                g_output_stream_splice_async        (GOutputStream *stream,
+                                                         GInputStream *source,
+                                                         GOutputStreamSpliceFlags flags,
+                                                         int io_priority,
+                                                         GCancellable *cancellable,
+                                                         GAsyncReadyCallback callback,
+                                                         gpointer user_data);
+gssize              g_output_stream_splice_finish       (GOutputStream *stream,
+                                                         GAsyncResult *result,
+                                                         GError **error);
+void                g_output_stream_flush_async         (GOutputStream *stream,
+                                                         int io_priority,
+                                                         GCancellable *cancellable,
+                                                         GAsyncReadyCallback callback,
+                                                         gpointer user_data);
+gboolean            g_output_stream_flush_finish        (GOutputStream *stream,
+                                                         GAsyncResult *result,
+                                                         GError **error);
+void                g_output_stream_close_async         (GOutputStream *stream,
+                                                         int io_priority,
+                                                         GCancellable *cancellable,
+                                                         GAsyncReadyCallback callback,
+                                                         gpointer user_data);
+gboolean            g_output_stream_close_finish        (GOutputStream *stream,
+                                                         GAsyncResult *result,
+                                                         GError **error);
+gboolean            g_output_stream_is_closing          (GOutputStream *stream);
+gboolean            g_output_stream_is_closed           (GOutputStream *stream);
+gboolean            g_output_stream_has_pending         (GOutputStream *stream);
+gboolean            g_output_stream_set_pending         (GOutputStream *stream,
+                                                         GError **error);
+void                g_output_stream_clear_pending       (GOutputStream *stream);

@@ -1,0 +1,2 @@
+struct GFileOutputStream;
+inherit object;

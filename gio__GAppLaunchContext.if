@@ -1,0 +1,13 @@
+
+struct GAppLauncContext;
+inherit  gobject.GObject;
+char *              g_app_launch_context_get_display    (GAppLaunchContext *context,
+                                                         GAppInfo *info,
+                                                         GList *files);
+char *              g_app_launch_context_get_startup_notify_id
+                                                        (GAppLaunchContext *context,
+                                                         GAppInfo *info,
+                                                         GList *files);
+void                g_app_launch_context_launch_failed  (GAppLaunchContext *context,
+                                                         const char *startup_notify_id);
+GAppLaunchContext * g_app_launch_context_new            (void);

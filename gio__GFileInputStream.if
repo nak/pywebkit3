@@ -1,0 +1,2 @@
+struct GFileInputStream;
+inherit object;
