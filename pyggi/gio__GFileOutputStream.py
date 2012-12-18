@@ -91,6 +91,7 @@ _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
@@ -168,7 +169,7 @@ _GtkAccelGroup = POINTER(c_int)
 _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
-_GFileOutputStream = POINTER(c_int)
+_GDrive = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
 _PangoLayoutLine = POINTER(c_int)
@@ -209,11 +210,12 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
+_GVolume = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _GFileIOStream = POINTER(c_int)
 _WebKitWebNavigationAction = POINTER(c_int)
 _GtkStyle = POINTER(c_int)
@@ -293,9 +295,66 @@ WebKitWebNavigationReason = c_int
 PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
+GMountMountFlags = c_int
+GMountUnmountFlags = c_int
+GDriveStartFlags = c_int
+GDriveStartStopType = c_int
 
-class GFileOutputStream( object):
+try:
+    libgio.g_file_output_stream_get_etag.restype = c_char_p
+    libgio.g_file_output_stream_get_etag.argtypes = [_GFileOutputStream]
+except:
+   pass
+try:
+    libgio.g_file_output_stream_query_info_async.restype = None
+    libgio.g_file_output_stream_query_info_async.argtypes = [_GFileOutputStream,c_char_p,int,_GCancellable,GAsyncReadyCallback,gpointer]
+except:
+   pass
+try:
+    libgio.g_file_output_stream_query_info.restype = _GFileInfo
+    libgio.g_file_output_stream_query_info.argtypes = [_GFileOutputStream,c_char_p,_GCancellable,_GError]
+except:
+   pass
+try:
+    libgio.g_file_output_stream_query_info_finish.restype = _GFileInfo
+    libgio.g_file_output_stream_query_info_finish.argtypes = [_GFileOutputStream,_GAsyncResult,_GError]
+except:
+   pass
+import gio__GOutputStream
+class GFileOutputStream( gio__GOutputStream.GOutputStream):
     """Class GFileOutputStream Constructors"""
     def __init__(self, obj = None):
         self._object = obj
     """Methods"""
+    def get_etag(  self, ):
+
+        
+        return libgio.g_file_output_stream_get_etag( self._object )
+
+    def query_info_async(  self, attributes, io_priority, cancellable, callback, user_data, ):
+        if cancellable: cancellable = cancellable._object
+        else: cancellable = POINTER(c_int)()
+        if callback: callback = callback._object
+        else: callback = POINTER(c_int)()
+
+        
+        libgio.g_file_output_stream_query_info_async( self._object,attributes,io_priority,cancellable,callback,user_data )
+
+    def query_info(  self, attributes, cancellable, error, ):
+        if cancellable: cancellable = cancellable._object
+        else: cancellable = POINTER(c_int)()
+        if error: error = error._object
+        else: error = POINTER(c_int)()
+
+        from gio import GFileInfo
+        return GFileInfo(None,None, obj=libgio.g_file_output_stream_query_info( self._object,attributes,cancellable,error ) or POINTER(c_int)())
+
+    def query_info_finish(  self, result, error, ):
+        if result: result = result._object
+        else: result = POINTER(c_int)()
+        if error: error = error._object
+        else: error = POINTER(c_int)()
+
+        from gio import GFileInfo
+        return GFileInfo(None, obj=libgio.g_file_output_stream_query_info_finish( self._object,result,error ) or POINTER(c_int)())
+

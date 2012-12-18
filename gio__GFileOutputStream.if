@@ -1,2 +1,19 @@
 struct GFileOutputStream;
-inherit object;
+inherit gio.GOutputStream;
+
+GFileInfo *         g_file_output_stream_query_info     (GFileOutputStream *stream,
+                                                         const char *attributes,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+void                g_file_output_stream_query_info_async
+                                                        (GFileOutputStream *stream,
+                                                         const char *attributes,
+                                                         int io_priority,
+                                                         GCancellable *cancellable,
+                                                         GAsyncReadyCallback callback,
+                                                         gpointer user_data);
+GFileInfo *         g_file_output_stream_query_info_finish
+                                                        (GFileOutputStream *stream,
+                                                         GAsyncResult *result,
+                                                         GError **error);
+char *              g_file_output_stream_get_etag       (GFileOutputStream *stream);

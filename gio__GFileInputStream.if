@@ -1,2 +1,18 @@
 struct GFileInputStream;
-inherit object;
+inherit gio.GInputStream;
+
+GFileInfo *         g_file_input_stream_query_info      (GFileInputStream *stream,
+                                                         const char *attributes,
+                                                         GCancellable *cancellable,
+                                                         GError **error);
+void                g_file_input_stream_query_info_async
+                                                        (GFileInputStream *stream,
+                                                         const char *attributes,
+                                                         int io_priority,
+                                                         GCancellable *cancellable,
+                                                         GAsyncReadyCallback callback,
+                                                         gpointer user_data);
+GFileInfo *         g_file_input_stream_query_info_finish
+                                                        (GFileInputStream *stream,
+                                                         GAsyncResult *result,
+                                                         GError **error);

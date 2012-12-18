@@ -9,6 +9,8 @@ from gio__GApplication import *
 from gio_types import *
 from gio__GCancellable import *
 from gio_types import *
+from gio__GDrive import *
+from gio_types import *
 from gio__GFileAttributeInfoList import *
 from gio_types import *
 from gio__GFileAttributeMatcher import *
@@ -38,3 +40,5 @@ from gio_types import *
 from gio__GMount import *
 from gio_types import *
 from gio__GOutputStream import *
+from gio_types import *
+from gio__GVolume import *

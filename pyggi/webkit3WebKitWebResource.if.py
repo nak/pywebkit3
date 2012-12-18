@@ -20,3 +20,9 @@ from webkit3WebKitWebResource.if_types import *
 from webkit3_WebKitWebResource import *
 from webkit3WebKitWebResource.if_types import *
 from webkit3_WebKitWebResource import *
+from webkit3WebKitWebResource.if_types import *
+from webkit3_WebKitWebResource import *
+from webkit3WebKitWebResource.if_types import *
+from webkit3_WebKitWebResource import *
+from webkit3WebKitWebResource.if_types import *
+from webkit3_WebKitWebResource import *

@@ -99,6 +99,7 @@ _GtkOffscreenWindow = POINTER(c_int)
 _GParamSpec = POINTER(c_int)
 _GAppLaunchContext = POINTER(c_int)
 _PangoAttrIterator = POINTER(c_int)
+_GFileAttributeMatcher = POINTER(c_int)
 _GtkRequisition = POINTER(c_int)
 _GtkIconSet = POINTER(c_int)
 _GtkSelectionData = POINTER(c_int)
@@ -194,7 +195,7 @@ _GObject = POINTER(c_int)
 _GtkIconSource = POINTER(c_int)
 _GFile = POINTER(c_int)
 _JSContext = POINTER(c_int)
-_GFileOutputStream = POINTER(c_int)
+_GDrive = POINTER(c_int)
 _PangoFontsetSimple = POINTER(c_int)
 _GtkAllocation = POINTER(c_int)
 _GtkWidget = POINTER(c_int)
@@ -238,11 +239,12 @@ _GdkRectangle = POINTER(c_int)
 _PangoLanguage = POINTER(c_int)
 _PangoAttrList = POINTER(c_int)
 _gunichar = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
+_GVolume = POINTER(c_int)
 _GdkWMDecoration = POINTER(c_int)
 _PangoLogAttr = POINTER(c_int)
 _PangoLayout = POINTER(c_int)
 _GPollFD = POINTER(c_int)
+_GFileOutputStream = POINTER(c_int)
 _JSObject = POINTER(c_int)
 _GInputStream = POINTER(c_int)
 _GFileIOStream = POINTER(c_int)
@@ -324,11 +326,17 @@ WebKitWebNavigationReason = c_int
 PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
+GMountMountFlags = c_int
+GMountUnmountFlags = c_int
+GDriveStartFlags = c_int
+GDriveStartStopType = c_int
 GdkPixbufError = c_int
 GdkColorspace = c_int
 GdkPixbufAlphaMode = c_int
 GtkLicense = c_int
 GtkIconSize = c_int
+GDriveStartFlags = c_int
+GDriveStartStopType = c_int
 
 try:
     libgio.g_file_enumerate_children_finish.restype = _GFileEnumerator
@@ -1041,8 +1049,6 @@ class GFile( gio__GInterface.GInterface):
         return GFile(None, obj=libgio.g_file_get_child( self._object,name ) or POINTER(c_int)())
 
     def eject_mountable(  self, flags, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
         else: cancellable = POINTER(c_int)()
         if callback: callback = callback._object
@@ -1052,8 +1058,6 @@ class GFile( gio__GInterface.GInterface):
         libgio.g_file_eject_mountable( self._object,flags,cancellable,callback,user_data )
 
     def mount_mountable(  self, flags, mount_operation, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if mount_operation: mount_operation = mount_operation._object
         else: mount_operation = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
@@ -1283,8 +1287,6 @@ class GFile( gio__GInterface.GInterface):
         return GFileOutputStream( obj=libgio.g_file_append_to_finish( self._object,res,error ) or POINTER(c_int)())
 
     def mount_enclosing_volume(  self, flags, mount_operation, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if mount_operation: mount_operation = mount_operation._object
         else: mount_operation = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
@@ -1309,8 +1311,6 @@ class GFile( gio__GInterface.GInterface):
         return libgio.g_file_move( self._object,destination,flags,cancellable,progress_callback,progress_callback_data,error )
 
     def eject_mountable_with_operation(  self, flags, mount_operation, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if mount_operation: mount_operation = mount_operation._object
         else: mount_operation = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
@@ -1633,8 +1633,6 @@ class GFile( gio__GInterface.GInterface):
         return libgio.g_file_set_attribute_uint64( self._object,attribute,value,flags,cancellable,error )
 
     def unmount_mountable_with_operation(  self, flags, mount_operation, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if mount_operation: mount_operation = mount_operation._object
         else: mount_operation = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
@@ -1777,8 +1775,6 @@ class GFile( gio__GInterface.GInterface):
         return libgio.g_file_set_attribute( self._object,attribute,type,value_p,flags,cancellable,error )
 
     def stop_mountable(  self, flags, mount_operation, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if mount_operation: mount_operation = mount_operation._object
         else: mount_operation = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
@@ -1804,8 +1800,6 @@ class GFile( gio__GInterface.GInterface):
         return libgio.g_file_get_uri( self._object )
 
     def start_mountable(  self, flags, start_operation, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if start_operation: start_operation = start_operation._object
         else: start_operation = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
@@ -1828,8 +1822,6 @@ class GFile( gio__GInterface.GInterface):
         return libgio.g_file_set_attributes_finish( self._object,result,info,error )
 
     def unmount_mountable(  self, flags, cancellable, callback, user_data, ):
-        if flags: flags = flags._object
-        else: flags = POINTER(c_int)()
         if cancellable: cancellable = cancellable._object
         else: cancellable = POINTER(c_int)()
         if callback: callback = callback._object

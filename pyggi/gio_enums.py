@@ -11,3 +11,9 @@ GFileAttributeType = c_int
 
 #GFileMonitorEvent
 GFileMonitorEvent = c_int
+
+#GDriveStartFlags
+GDriveStartFlags = c_int
+
+#GDriveStartStopType
+GDriveStartStopType = c_int
