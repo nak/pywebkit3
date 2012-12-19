@@ -1,0 +1,20 @@
+
+struct              GdkPixbufAnimation;
+inherit gobject.GObject;
+
+GdkPixbufAnimation * gdk_pixbuf_animation_new_from_file (const char *filename,
+                                                         GError **error);
+GdkPixbufAnimation * gdk_pixbuf_animation_ref           (GdkPixbufAnimation *animation);
+void                gdk_pixbuf_animation_unref          (GdkPixbufAnimation *animation);
+int                 gdk_pixbuf_animation_get_width      (GdkPixbufAnimation *animation);
+int                 gdk_pixbuf_animation_get_height     (GdkPixbufAnimation *animation);
+
+
+GdkPixbufAnimationIter * gdk_pixbuf_animation_get_iter  (GdkPixbufAnimation *animation,
+                                                         const GTimeVal *start_time);
+gboolean            gdk_pixbuf_animation_is_static_image
+                                                        (GdkPixbufAnimation *animation);
+GdkPixbuf *         gdk_pixbuf_animation_get_static_image
+                                                        (GdkPixbufAnimation *animation);
+
+

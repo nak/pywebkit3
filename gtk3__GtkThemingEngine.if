@@ -1,0 +1,65 @@
+struct              GtkThemingEngine;
+inherit gobject.GObject;
+
+void                gtk_theming_engine_get              (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         ...);
+GtkTextDirection    gtk_theming_engine_get_direction    (GtkThemingEngine *engine);
+GtkJunctionSides    gtk_theming_engine_get_junction_sides
+                                                        (GtkThemingEngine *engine);
+const GtkWidgetPath * gtk_theming_engine_get_path       (GtkThemingEngine *engine);
+void                gtk_theming_engine_get_property     (GtkThemingEngine *engine,
+                                                         const gchar *property,
+                                                         GtkStateFlags state,
+                                                         GValue *value);
+GdkScreen *         gtk_theming_engine_get_screen       (GtkThemingEngine *engine);
+GtkStateFlags       gtk_theming_engine_get_state        (GtkThemingEngine *engine);
+void                gtk_theming_engine_get_style        (GtkThemingEngine *engine,
+                                                         ...);
+void                gtk_theming_engine_get_style_property
+                                                        (GtkThemingEngine *engine,
+                                                         const gchar *property_name,
+                                                         GValue *value);
+void                gtk_theming_engine_get_style_valist (GtkThemingEngine *engine,
+                                                         va_list args);
+void                gtk_theming_engine_get_valist       (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         va_list args);
+void                gtk_theming_engine_get_color        (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         GdkRGBA *color);
+void                gtk_theming_engine_get_background_color
+                                                        (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         GdkRGBA *color);
+void                gtk_theming_engine_get_border_color (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         GdkRGBA *color);
+void                gtk_theming_engine_get_border       (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         GtkBorder *border);
+void                gtk_theming_engine_get_padding      (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         GtkBorder *padding);
+void                gtk_theming_engine_get_margin       (GtkThemingEngine *engine,
+                                                         GtkStateFlags state,
+                                                         GtkBorder *margin);
+const PangoFontDescription * gtk_theming_engine_get_font
+                                                        (GtkThemingEngine *engine,
+                                                         GtkStateFlags state);
+gboolean            gtk_theming_engine_has_class        (GtkThemingEngine *engine,
+                                                         const gchar *style_class);
+gboolean            gtk_theming_engine_has_region       (GtkThemingEngine *engine,
+                                                         const gchar *style_region,
+                                                         GtkRegionFlags *flags);
+gboolean            gtk_theming_engine_lookup_color     (GtkThemingEngine *engine,
+                                                         const gchar *color_name,
+                                                         GdkRGBA *color);
+gboolean            gtk_theming_engine_state_is_running (GtkThemingEngine *engine,
+                                                         GtkStateType state,
+                                                         gdouble *progress);
+GtkThemingEngine *  gtk_theming_engine_load             (const gchar *name);
+void                gtk_theming_engine_register_property
+                                                        (const gchar *name_space,
+                                                         GtkStylePropertyParser parse_func,
+                                                         GParamSpec *pspec);

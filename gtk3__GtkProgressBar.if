@@ -1,0 +1,24 @@
+
+struct              GtkProgressBar;
+inherit gtk3.GtkWidget;
+
+GtkWidget *         gtk_progress_bar_new                (void);
+void                gtk_progress_bar_pulse              (GtkProgressBar *pbar);
+void                gtk_progress_bar_set_fraction       (GtkProgressBar *pbar,
+                                                         gdouble fraction);
+gdouble             gtk_progress_bar_get_fraction       (GtkProgressBar *pbar);
+void                gtk_progress_bar_set_inverted       (GtkProgressBar *pbar,
+                                                         gboolean inverted);
+gboolean            gtk_progress_bar_get_inverted       (GtkProgressBar *pbar);
+void                gtk_progress_bar_set_show_text      (GtkProgressBar *pbar,
+                                                         gboolean show_text);
+gboolean            gtk_progress_bar_get_show_text      (GtkProgressBar *pbar);
+void                gtk_progress_bar_set_text           (GtkProgressBar *pbar,
+                                                         const gchar *text);
+const gchar *       gtk_progress_bar_get_text           (GtkProgressBar *pbar);
+void                gtk_progress_bar_set_ellipsize      (GtkProgressBar *pbar,
+                                                         PangoEllipsizeMode mode);
+PangoEllipsizeMode  gtk_progress_bar_get_ellipsize      (GtkProgressBar *pbar);
+void                gtk_progress_bar_set_pulse_step     (GtkProgressBar *pbar,
+                                                         gdouble fraction);
+gdouble             gtk_progress_bar_get_pulse_step     (GtkProgressBar *pbar);

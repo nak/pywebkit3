@@ -110,8 +110,24 @@ GTK_REGION_FIRST   = c_int(1 << 2)
 GTK_REGION_LAST    = c_int(1 << 3)
 GTK_REGION_SORTED  = c_int(1 << 5)
 
+#GtkIconTheme
+GtkIconTheme = c_int
+
+#GtkIconThemeError
+GtkIconThemeError = c_int
+
+#GtkImageType
+GtkImageType = c_int
+
 #GtkAccelFags
 GtkAccelFlags = c_int
+
+#GtkJustification
+GtkJustificcation = c_int
+GTK_JUSTIFY_LEFT = c_int(0)
+GTK_JUSTIFY_RIGHT = c_int(1)
+GTK_JUSTIFY_CENTER = c_int(2)
+GTK_JUSTIFY_FILL = c_int(3)
 
 #GdkDeviceType
 GdkDeviceType = c_int

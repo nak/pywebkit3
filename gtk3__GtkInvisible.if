@@ -1,6 +1,7 @@
 
 struct              GtkInvisible;
-inherit             gtk3.GtkWidget;
+inherit             gobject.GObject;
+
 GtkWidget *         gtk_invisible_new                   (void);
 GtkWidget *         gtk_invisible_new_for_screen        (GdkScreen *screen);
 void                gtk_invisible_set_screen            (GtkInvisible *invisible,

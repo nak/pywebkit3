@@ -1,0 +1,21 @@
+
+struct                    GtkSymbolicColor;
+inherit object;
+
+GtkSymbolicColor *  gtk_symbolic_color_new_literal      (const GdkRGBA *color);
+GtkSymbolicColor *  gtk_symbolic_color_new_name         (const gchar *name);
+GtkSymbolicColor *  gtk_symbolic_color_new_shade        (GtkSymbolicColor *color,
+                                                         gdouble factor);
+GtkSymbolicColor *  gtk_symbolic_color_new_alpha        (GtkSymbolicColor *color,
+                                                         gdouble factor);
+GtkSymbolicColor *  gtk_symbolic_color_new_mix          (GtkSymbolicColor *color1,
+                                                         GtkSymbolicColor *color2,
+                                                         gdouble factor);
+GtkSymbolicColor *  gtk_symbolic_color_new_win32        (const gchar *theme_class,
+                                                         gint id);
+GtkSymbolicColor *  gtk_symbolic_color_ref              (GtkSymbolicColor *color);
+void                gtk_symbolic_color_unref            (GtkSymbolicColor *color);
+gboolean            gtk_symbolic_color_resolve          (GtkSymbolicColor *color,
+                                                         GtkStyleProperties *props,
+                                                         GdkRGBA *resolved_color);
+char *              gtk_symbolic_color_to_string        (GtkSymbolicColor *color);

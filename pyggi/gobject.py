@@ -6,6 +6,8 @@ from gobject__GByteArray import *
 from gobject_types import *
 from gobject__GBytes import *
 from gobject_types import *
+from gobject__GEmblemedIcon import *
+from gobject_types import *
 from gobject__GList import *
 from gobject_types import *
 from gobject__GMainContext import *

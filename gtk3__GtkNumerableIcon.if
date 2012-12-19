@@ -1,0 +1,29 @@
+
+struct              GtkNumerableIcon;
+inherit gobject.GEmblemedIcon;
+
+GIcon *             gtk_numerable_icon_new              (GIcon *base_icon);
+GIcon *             gtk_numerable_icon_new_with_style_context
+                                                        (GIcon *base_icon,
+                                                         GtkStyleContext *context);
+GIcon *             gtk_numerable_icon_get_background_gicon
+                                                        (GtkNumerableIcon *self);
+void                gtk_numerable_icon_set_background_gicon
+                                                        (GtkNumerableIcon *self,
+                                                         GIcon *icon);
+const gchar *       gtk_numerable_icon_get_background_icon_name
+                                                        (GtkNumerableIcon *self);
+void                gtk_numerable_icon_set_background_icon_name
+                                                        (GtkNumerableIcon *self,
+                                                         const gchar *icon_name);
+gint                gtk_numerable_icon_get_count        (GtkNumerableIcon *self);
+void                gtk_numerable_icon_set_count        (GtkNumerableIcon *self,
+                                                         gint count);
+const gchar *       gtk_numerable_icon_get_label        (GtkNumerableIcon *self);
+void                gtk_numerable_icon_set_label        (GtkNumerableIcon *self,
+                                                         const gchar *label);
+GtkStyleContext *   gtk_numerable_icon_get_style_context
+                                                        (GtkNumerableIcon *self);
+void                gtk_numerable_icon_set_style_context
+                                                        (GtkNumerableIcon *self,
+                                                         GtkStyleContext *style);

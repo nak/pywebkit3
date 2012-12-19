@@ -1,0 +1,11 @@
+struct              GdkPixbufAnimationIter;
+inherit gobject.GObject;
+
+gboolean            gdk_pixbuf_animation_iter_advance   (GdkPixbufAnimationIter *iter,
+                                                         const GTimeVal *current_time);
+int                 gdk_pixbuf_animation_iter_get_delay_time
+                                                        (GdkPixbufAnimationIter *iter);
+gboolean            gdk_pixbuf_animation_iter_on_currently_loading_frame
+                                                        (GdkPixbufAnimationIter *iter);
+GdkPixbuf *         gdk_pixbuf_animation_iter_get_pixbuf
+                                                        (GdkPixbufAnimationIter *iter);

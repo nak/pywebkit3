@@ -52,6 +52,8 @@ from webkit3_enums import *
 
     
 """Derived Pointer Types"""
+_GdkPixbufSimpleAnim = POINTER(c_int)
+_GdkPixbuf = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 _WebKitWebWindowFeatures = POINTER(c_int)
 """Enumerations"""

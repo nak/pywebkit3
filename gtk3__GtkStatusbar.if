@@ -1,0 +1,18 @@
+
+struct              GtkStatusbar;
+inherit gtk3.GtkBox;
+
+GtkStatusbar *         gtk_statusbar_new                   (void);
+guint               gtk_statusbar_get_context_id        (GtkStatusbar *statusbar,
+                                                         const gchar *context_description);
+guint               gtk_statusbar_push                  (GtkStatusbar *statusbar,
+                                                         guint context_id,
+                                                         const gchar *text);
+void                gtk_statusbar_pop                   (GtkStatusbar *statusbar,
+                                                         guint context_id);
+void                gtk_statusbar_remove                (GtkStatusbar *statusbar,
+                                                         guint context_id,
+                                                         guint message_id);
+void                gtk_statusbar_remove_all            (GtkStatusbar *statusbar,
+                                                         guint context_id);
+GtkWidget *         gtk_statusbar_get_message_area      (GtkStatusbar *statusbar);

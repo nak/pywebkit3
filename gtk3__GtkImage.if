@@ -1,0 +1,55 @@
+
+struct              GtkImage;
+inherit gtk3.GtkMisc;
+void                gtk_image_get_icon_set              (GtkImage *image,
+                                                         GtkIconSet **icon_set,
+                                                         GtkIconSize *size);
+GdkPixbuf *         gtk_image_get_pixbuf                (GtkImage *image);
+void                gtk_image_get_stock                 (GtkImage *image,
+                                                         gchar **stock_id,
+                                                         GtkIconSize *size);
+GdkPixbufAnimation * gtk_image_get_animation            (GtkImage *image);
+void                gtk_image_get_icon_name             (GtkImage *image,
+                                                         const gchar **icon_name,
+                                                         GtkIconSize *size);
+void                gtk_image_get_gicon                 (GtkImage *image,
+                                                         GIcon **gicon,
+                                                         GtkIconSize *size);
+GtkImageType        gtk_image_get_storage_type          (GtkImage *image);
+GtkWidget *         gtk_image_new_from_file             (const gchar *filename);
+GtkWidget *         gtk_image_new_from_icon_set         (GtkIconSet *icon_set,
+                                                         GtkIconSize size);
+GtkWidget *         gtk_image_new_from_pixbuf           (GdkPixbuf *pixbuf);
+GtkWidget *         gtk_image_new_from_stock            (const gchar *stock_id,
+                                                         GtkIconSize size);
+GtkWidget *         gtk_image_new_from_animation        (GdkPixbufAnimation *animation);
+GtkWidget *         gtk_image_new_from_icon_name        (const gchar *icon_name,
+                                                         GtkIconSize size);
+GtkWidget *         gtk_image_new_from_gicon            (GIcon *icon,
+                                                         GtkIconSize size);
+GtkWidget *         gtk_image_new_from_resource         (const gchar *resource_path);
+void                gtk_image_set_from_file             (GtkImage *image,
+                                                         const gchar *filename);
+void                gtk_image_set_from_icon_set         (GtkImage *image,
+                                                         GtkIconSet *icon_set,
+                                                         GtkIconSize size);
+void                gtk_image_set_from_pixbuf           (GtkImage *image,
+                                                         GdkPixbuf *pixbuf);
+void                gtk_image_set_from_stock            (GtkImage *image,
+                                                         const gchar *stock_id,
+                                                         GtkIconSize size);
+void                gtk_image_set_from_animation        (GtkImage *image,
+                                                         GdkPixbufAnimation *animation);
+void                gtk_image_set_from_icon_name        (GtkImage *image,
+                                                         const gchar *icon_name,
+                                                         GtkIconSize size);
+void                gtk_image_set_from_gicon            (GtkImage *image,
+                                                         GIcon *icon,
+                                                         GtkIconSize size);
+void                gtk_image_set_from_resource         (GtkImage *image,
+                                                         const gchar *resource_path);
+void                gtk_image_clear                     (GtkImage *image);
+GtkWidget *         gtk_image_new                       (void);
+void                gtk_image_set_pixel_size            (GtkImage *image,
+                                                         gint pixel_size);
+gint                gtk_image_get_pixel_size            (GtkImage *image);

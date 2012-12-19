@@ -1,0 +1,132 @@
+struct             CairoPattern;
+inherit object;
+
+void                cairo_pattern_add_color_stop_rgb    (CairoPattern *pattern,
+                                                         double offset,
+                                                         double red,
+                                                         double green,
+                                                         double blue);
+void                cairo_pattern_add_color_stop_rgba   (CairoPattern *pattern,
+                                                         double offset,
+                                                         double red,
+                                                         double green,
+                                                         double blue,
+                                                         double alpha);
+gint      cairo_pattern_get_color_stop_count  (CairoPattern *pattern,
+                                                         int *count);
+gint      cairo_pattern_get_color_stop_rgba   (CairoPattern *pattern,
+                                                         int index,
+                                                         double *offset,
+                                                         double *red,
+                                                         double *green,
+                                                         double *blue,
+                                                         double *alpha);
+CairoPattern *   cairo_pattern_create_rgb            (double red,
+                                                         double green,
+                                                         double blue);
+CairoPattern *   cairo_pattern_create_rgba           (double red,
+                                                         double green,
+                                                         double blue,
+                                                         double alpha);
+gint      cairo_pattern_get_rgba              (CairoPattern *pattern,
+                                                         double *red,
+                                                         double *green,
+                                                         double *blue,
+                                                         double *alpha);
+CairoPattern *   cairo_pattern_create_for_surface    (cairo_surface_t *surface);
+gint      cairo_pattern_get_surface           (CairoPattern *pattern,
+                                                         cairo_surface_t **surface);
+CairoPattern *   cairo_pattern_create_linear         (double x0,
+                                                         double y0,
+                                                         double x1,
+                                                         double y1);
+gint      cairo_pattern_get_linear_points     (CairoPattern *pattern,
+                                                         double *x0,
+                                                         double *y0,
+                                                         double *x1,
+                                                         double *y1);
+CairoPattern *   cairo_pattern_create_radial         (double cx0,
+                                                         double cy0,
+                                                         double radius0,
+                                                         double cx1,
+                                                         double cy1,
+                                                         double radius1);
+gint      cairo_pattern_get_radial_circles    (CairoPattern *pattern,
+                                                         double *x0,
+                                                         double *y0,
+                                                         double *r0,
+                                                         double *x1,
+                                                         double *y1,
+                                                         double *r1);
+CairoPattern *   cairo_pattern_create_mesh           (void);
+void                cairo_mesh_pattern_begin_patch      (CairoPattern *pattern);
+void                cairo_mesh_pattern_end_patch        (CairoPattern *pattern);
+void                cairo_mesh_pattern_move_to          (CairoPattern *pattern,
+                                                         double x,
+                                                         double y);
+void                cairo_mesh_pattern_line_to          (CairoPattern *pattern,
+                                                         double x,
+                                                         double y);
+void                cairo_mesh_pattern_curve_to         (CairoPattern *pattern,
+                                                         double x1,
+                                                         double y1,
+                                                         double x2,
+                                                         double y2,
+                                                         double x3,
+                                                         double y3);
+void                cairo_mesh_pattern_set_control_point
+                                                        (CairoPattern *pattern,
+                                                         unsigned int point_num,
+                                                         double x,
+                                                         double y);
+void                cairo_mesh_pattern_set_corner_color_rgb
+                                                        (CairoPattern *pattern,
+                                                         unsigned int corner_num,
+                                                         double red,
+                                                         double green,
+                                                         double blue);
+void                cairo_mesh_pattern_set_corner_color_rgba
+                                                        (CairoPattern *pattern,
+                                                         unsigned int corner_num,
+                                                         double red,
+                                                         double green,
+                                                         double blue,
+                                                         double alpha);
+gint      cairo_mesh_pattern_get_patch_count  (CairoPattern *pattern,
+                                                         unsigned int *count);
+char *      cairo_mesh_pattern_get_path         (CairoPattern *pattern,
+                                                         unsigned int patch_num);
+gint      cairo_mesh_pattern_get_control_point
+                                                        (CairoPattern *pattern,
+                                                         unsigned int patch_num,
+                                                         unsigned int point_num,
+                                                         double *x,
+                                                         double *y);
+gint      cairo_mesh_pattern_get_corner_color_rgba
+                                                        (CairoPattern *pattern,
+                                                         unsigned int patch_num,
+                                                         unsigned int corner_num,
+                                                         double *red,
+                                                         double *green,
+                                                         double *blue,
+                                                         double *alpha);
+CairoPattern *   cairo_pattern_reference             (CairoPattern *pattern);
+void                cairo_pattern_destroy               (CairoPattern *pattern);
+gint      cairo_pattern_status                (CairoPattern *pattern);
+enum                cairo_extend_t;
+void                cairo_pattern_set_extend            (CairoPattern *pattern,
+                                                         cairo_extend_t extend);
+cairo_extend_t      cairo_pattern_get_extend            (CairoPattern *pattern);
+enum                cairo_filter_t;
+void                cairo_pattern_set_filter            (CairoPattern *pattern,
+                                                         cairo_filter_t filter);
+cairo_filter_t      cairo_pattern_get_filter            (CairoPattern *pattern);
+void                cairo_pattern_set_matrix            (CairoPattern *pattern,
+                                                         const cairo_matrix_t *matrix);
+void                cairo_pattern_get_matrix            (CairoPattern *pattern,
+                                                         cairo_matrix_t *matrix);
+enum                CairoPatternype_t;
+CairoPatternype_t cairo_pattern_get_type             (CairoPattern *pattern);
+unsigned int        cairo_pattern_get_reference_count   (CairoPattern *pattern);
+void *              cairo_pattern_get_user_data         (CairoPattern *pattern,
+                                                         gpointer key);
