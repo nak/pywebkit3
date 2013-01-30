@@ -304,5 +304,24 @@ PANGO_DIRECTION_NEUTRAL = c_int(6)
 
 
 #AtkRole
-AtkRole = c_int
+AtkRole = c_int(0)
+
+#GtkFileChooserAction
+GTK_FILE_CHOOSER_ACTION_OPEN = c_int(0)
+GTK_FILE_CHOOSER_ACTION_SAVE = c_int(1)
+GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER = c_int(2)
+GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER = c_int(3)
+
+#GtkResposne
+GTK_RESPONSE_NONE         = c_int(-1)
+GTK_RESPONSE_REJECT       = c_int(-2)
+GTK_RESPONSE_ACCEPT       = c_int(-3)
+GTK_RESPONSE_DELETE_EVENT = c_int(-4)
+GTK_RESPONSE_OK           = c_int(-5)
+GTK_RESPONSE_CANCEL       = c_int(-6)
+GTK_RESPONSE_CLOSE        = c_int(-7)
+GTK_RESPONSE_YES          = c_int(-8)
+GTK_RESPONSE_NO           = c_int(-9)
+GTK_RESPONSE_APPLY        = c_int(-10)
+GTK_RESPONSE_HELP         = c_int(-11)
 

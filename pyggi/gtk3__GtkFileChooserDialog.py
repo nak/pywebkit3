@@ -223,15 +223,26 @@ cairo_extend_t = c_int
 cairo_filter_t = c_int
 CairoPatternype_t = c_int
 
+libgtk3.gtk_file_chooser_get_filename.argtypes = [_GtkWidget]
+libgtk3.gtk_file_chooser_get_filename.restype = c_char_p
+
 import gtk3__GtkDialog
 class GtkFileChooserDialog( gtk3__GtkDialog.GtkDialog):
     """Class GtkFileChooserDialog Constructors"""
-    def __init__( self, first_button_text,  obj = None):
-        if obj: self._object = obj
-        else:
+    def __init__( self, title, parent, action, *args):
             libgtk3.gtk_file_chooser_dialog_new.restype = POINTER(c_int)
             
-            libgtk3.gtk_file_chooser_dialog_new.argtypes = [c_char_p]
-            self._object = libgtk3.gtk_file_chooser_dialog_new(first_button_text, )
+            argtypes = [c_char_p, _GtkWindow, gint]
+            args2 = [c_char_p(title), parent._object, action]
+            for index in xrange(len(args)):
+                argtypes += [c_char_p, gint]
+                args2 += [ c_char_p(args[index][0]), args[index][1]]
+            libgtk3.gtk_file_chooser_dialog_new.argtypes = argtypes
+            NULL = POINTER(c_int)()
+            args2.append(NULL)
+            self._object = libgtk3.gtk_file_chooser_dialog_new( *args2 )
 
     """Methods"""
+    def get_filename( self ):
+        return libgtk3.gtk_file_chooser_get_filename(self._object )
+        

@@ -122,3 +122,4 @@ from gtk3_types import *
 from gtk3__ import *
 from gtk3_types import *
 from gtk3__SoupMessage import *
+from gtk3__GtkFileChooserDialog import *
