@@ -36,7 +36,7 @@ def initialize( env):
             _ = ___
             global jQurey
             jQuery = env.get_jsobject( "jQuery", can_call = False)
-            logging.error("############## GOT JQUREY")
+            #logging.error("############## GOT JQUREY")
         else:
             logging.error("jQuery not detected.")
         return False

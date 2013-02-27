@@ -385,7 +385,6 @@ class JavascriptClass(object):
                 #if the object self is itself the global namespace
                 self._javascript_obj = env._context.GetGlobalObject()
         else:
-            logging.error("MAKING OBJ %s: %s"%(var_name,ns._name))
             self._javascript_obj = JSObject.Make(env._context, cls._classDef, None)  
 
         env._jsobjects[ strid(self._javascript_obj)] = self
