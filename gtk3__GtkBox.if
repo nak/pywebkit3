@@ -1,6 +1,6 @@
 
 struct              GtkBox;
-inherit gtk3.GtkWidget;
+inherit gtk3.GtkContainer;
 
 GtkWidget *         gtk_box_new                         (GtkOrientation orientation,
                                                          gint spacing);
