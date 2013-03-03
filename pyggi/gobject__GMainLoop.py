@@ -472,6 +472,18 @@ def idle_add( func , *args, **kargs):
     cfuncs.append(cfunc)
     GMainContext.g_idle_add(cfunc, cfunc )
     
+def timeout_add( interval_in_ms, func , *args, **kargs):
+    cfunc = c_void_p()
+    def C_Callable( param ):
+        retval = func( *args, **kargs )
+        if not retval:
+            cfuncs.remove(cfunc)
+            retval = 0
+        return retval
+    cfunc = GSourceFunc(C_Callable)
+    cfuncs.append(cfunc)
+    GMainContext.g_timeout_add(c_float(interval_in_ms), cfunc, cfunc )
+    
 
 def set_interval( time_interval, func, *args ):
     import time
