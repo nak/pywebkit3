@@ -482,7 +482,7 @@ def timeout_add( interval_in_ms, func , *args, **kargs):
         return retval
     cfunc = GSourceFunc(C_Callable)
     cfuncs.append(cfunc)
-    GMainContext.g_timeout_add(c_float(interval_in_ms), cfunc, cfunc )
+    GMainContext.g_timeout_add(c_uint(interval_in_ms), cfunc, cfunc )
     
 
 def set_interval( time_interval, func, *args ):
