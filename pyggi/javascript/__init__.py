@@ -650,8 +650,7 @@ class ScriptEnv(JavascriptClass):
         JavascriptClass.__init__(self, self, "python")
         
         #self._sem = ScriptEnv._sem[id]
-        import jquery
-        jquery.initialize(self)
+        
         def get_document():
             global document
             document = self.get_jsobject( "document")

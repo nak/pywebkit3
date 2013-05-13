@@ -1,7 +1,13 @@
 #!/usr/bin/env python
+import sys
+import os.path
+sys.path = [os.path.dirname(__file__)+"/../../"]+sys.path
+print sys.path
 from pyggi.gtk3 import GtkWindow, GtkScrolledWindow
 from pyggi import gtk3
 from pyggi.webkit3 import WebKitWebView
+
+from pyggi import gobject
 
 #Create the GUI component stack
 window = GtkWindow( gtk3.GTK_WINDOW_TOPLEVEL )
@@ -18,53 +24,31 @@ webview.open( os.path.join( os.path.dirname(os.path.abspath(__file__)),"example2
 window.show_all()
 
 
-#setup the environment and get the javascript object
-color_block = None
-from pyggi.javascript import ScriptEnv
-env = ScriptEnv( webview)
-#must get the object only when javascript has been processed,
-#so setup callback 
-def import_element():
-    global color_block
-    color_block = env.get_jsobject( "color_block", can_call=False)
-    assert(color_block)
-webview.on_view_ready( import_element )
 
-#set up a loop to continually increment the color
+#set up a loop to continually increment the color via a gobject timeout add function:
 color = int("00FF00",16)
-def update_color( increment ):
+increment = 0
+def update_color( ):
     global color
-    global color_block
+    global increment
     hex_color = "#%0.6X"%color
-    color_block.set_color( hex_color )
+    webview._color_block.set_color( hex_color )
     color += increment + (increment/2)*256 + (increment/4)*256*256
     if color > int('FFFFFF',16):
         color = 0
-    return False
+    increment += 1
+    return True
 
-import threading
-class Thread(threading.Thread):
 
-    def run(self):
-        while self._active:
-            #Must run actualy javascript manipulation in gtk main thread:
-            gobject.idle_add( update_color, 20 )
-            #we put this code in a real Python thread, to be able to
-            #sleep here.  Doing this in the gtk main thread will hamper
-            #the display of the GUI, locking any display updates out
-            #during the sleep call
-            import time
-            time.sleep(0.2)
-        
-thread = Thread()
-thread._active = True
+#to be called only once the webpage loads:
+def start_update():
+    webview._color_block = webview.get_jsobject( "color_block", can_call=False)
+    assert(webview._color_block)
+    gobject.timeout_add(100, update_color)
+webview.on_view_ready( start_update )
 
-from pyggi import gobject
-#start the color update thread ONLY when view is ready:
-webview.on_view_ready( thread.start )
 
 def do_quit():
-    thread._active = False
     gtk3.main_quit()
     
 #on delete of window, exit:
