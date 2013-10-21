@@ -4,11 +4,12 @@ from gdk_types import *
 from gobject_types import *
 
 import platform
+from pyggi import load
 
 if platform.platform().startswith("Windows"):
-    libgtk = load("libgtk-win32-2.0","0")
+    libgtk3 = load("libgtk-win32-2.0","0")
 else:
-    libgtk = load( "libgtk-3","0")
+    libgtk3 = load( "libgtk-3","0")
 
 """default gtk types"""
 

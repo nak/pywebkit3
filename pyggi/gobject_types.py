@@ -1,6 +1,7 @@
 from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint, c_longlong, POINTER
 
 import platform
+from pyggi import load
 
 if platform.platform().startswith("Windows"):
     libgobbject = load("libgobject-2.0","0")

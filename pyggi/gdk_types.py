@@ -1,5 +1,8 @@
 from ctypes import cdll, CDLL, c_int
+
 import platform
+
+from pyggi import load
 
 if platform.platform().startswith("Windows"):
     libgdk = load("libgdk-win32-3.0","0")

@@ -26,7 +26,7 @@ def load( libname, postversion ):
                 return CDLL("%s.%s.dylib"%( libname, postversion))
             except:
                 import logging
-                logging.error("Unable to load %s. Aborting"%libname)
+                logging.error("Unable to load '/opt/local/lib/%s.%s.dylib'. Aborting"%(libname,postversion))
                 import sys
                 sys.exit(1)
         
