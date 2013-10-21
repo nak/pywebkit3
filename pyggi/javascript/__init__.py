@@ -30,7 +30,7 @@ def to_jsfunction(env, func):
         else:
             thisObject = JSObject(obj = thisObject, context = context._object)
         try:
-            args = []
+            args = [thisObject]
             for i in xrange(argumentCount):
                 argument = JSValue(obj = arguments[i], context = context._object)
                 valtype = argument.GetType(context)
@@ -56,9 +56,12 @@ def to_jsfunction(env, func):
                 else:
                     logging.error("Invalid javascript value type encountered!: %d" % valtype)
                     return c_longlong(0)
-            assert(len(args) == argumentCount)
-            
-            retval = func(*args)
+            assert(len(args) == argumentCount +1)
+            try:
+                args2 = args[1:]
+                retval = func(*args2)
+            except TypeError:
+                retval = func(*args)
             del args
             
             if retval == None:
@@ -155,6 +158,19 @@ class JSFunction(JSObject):
                 jsarg = to_jsfunction(self._env, arg)
                 assert(jsarg.IsFunction(self._env._context))
                 self._callable = arg#must maintain this to prevent from going out of scope!!
+            elif isinstance( arg, dict):
+                this = self
+                class Arg(JavascriptClass):
+                    def __init__(self, env):
+                        JavascriptClass.__init__(self, env, "tmpjs%d"%len(this._jsArgs))
+                
+                        for key,value in arg.iteritems( ):
+                            if callable(value):
+                                value = to_jsfunction(this._env, value)
+                            setattr(self, key, value)
+                                
+                jsarg = Arg()._javascript_obj
+                
             
             self._jsArgs.append( jsarg )
         if len(self._jsArgs)==0:

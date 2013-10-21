@@ -3,24 +3,9 @@ from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint, c_
 import platform
 
 if platform.platform().startswith("Windows"):
-    try:
-        cdll.LoadLibrary("libgobject-2.0-0.dll")
-        libgobject = CDLL("libgobject-2.0-0.dll")
-        HAVE_CSS3D= True
-    except:
-        import logging
-        logging.error("Unable to load webkitgtk. Aborting")
-        import sys
-        sys.exit(1)
+    libgobbject = load("libgobject-2.0","0")
 else:
-    try:
-        cdll.LoadLibrary("libgobject-2.0.so.0")
-        libgobject = CDLL("libgobject-2.0.so.0")
-    except:
-        import logging
-        logging.error("Unable to load webkitgtk. Aborting")
-        import sys
-        sys.exit(1)
+    libgobject = load("libgobject-2.0","0")
         
 GType = c_int
 G_TYPE_INVALID                  = c_int (0)

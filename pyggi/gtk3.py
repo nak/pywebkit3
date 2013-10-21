@@ -48,6 +48,7 @@ from gtk3_types import *
 from gtk3__GtkBin import *
 from gtk3_types import *
 from gtk3__GtkBorder import *
+from gtk3__GtkViewPort import *
 from gtk3_types import *
 from gtk3__GtkBox import *
 from gtk3_types import *

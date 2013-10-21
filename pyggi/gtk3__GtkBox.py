@@ -425,7 +425,7 @@ except:
    pass
 import gtk3__GtkWidget
 import gtk3__GtkContainer
-class GtkBox( gtk3__GtkContainer):
+class GtkBox( gtk3__GtkContainer.GtkContainer):
     """Class GtkBox Constructors"""
     def __init__( self, orientation, spacing,  obj = None):
         if obj: self._object = obj
