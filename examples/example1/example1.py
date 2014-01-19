@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+import os.path
+import sys
+sys.path = [ os.path.abspath( os.path.join( os.path.dirname(__file__),"..", ".."))] + \
+           sys.path
+
 from pyggi.gtk3 import GtkWindow, GtkScrolledWindow
 from pyggi import gtk3
 from pyggi.webkit3 import WebKitWebView
