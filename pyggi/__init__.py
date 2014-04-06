@@ -8,9 +8,11 @@ def load( libname, postversion ):
     
     if PLATFORM.startswith("Windows"):
         try:
-            cdll.LoadLibrary("%s-%s.dll"%( libname, postversion))
-            return CDLL("%s-%s.dll"%( libname, postversion))
+            cdll.LoadLibrary("%s.dll"%(libname))
+            return CDLL("%s.dll"%( libname))
         except:
+            import traceback
+            traceback.print_exc()
             import logging
             logging.error("Unable to load %s. Aborting"%libname)
             import sys

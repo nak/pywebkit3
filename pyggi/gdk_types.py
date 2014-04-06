@@ -5,7 +5,7 @@ import platform
 from pyggi import load
 
 if platform.platform().startswith("Windows"):
-    libgdk = load("libgdk-win32-3.0","0")
+    libgdk = load("libgdk-3-0","0")
 else:
     libgdk = load("libgdk-3","0")
         
