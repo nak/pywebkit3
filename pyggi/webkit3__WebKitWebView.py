@@ -1154,12 +1154,12 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             libwebkit3.webkit_web_view_new.argtypes = []
             self._object = libwebkit3.webkit_web_view_new()
 
-        self._jqueryEnv = jquery.JQuery_Env(self)
         try:
             from javascript import ScriptEnv
             self._env = ScriptEnv(self)
             def set_jquery():
-                self._jQuery = self._jqueryEnv.jquery()
+                self._jqueryEnv = jquery.initialize(self.get_env())
+                #self._jQuery = self._jqueryEnv.jquery()
             self.on_view_ready(set_jquery)
         except:
             import traceback

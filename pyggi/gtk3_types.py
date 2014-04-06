@@ -7,7 +7,7 @@ import platform
 from pyggi import load
 
 if platform.platform().startswith("Windows"):
-    libgtk3 = load("libgtk-win32-2.0","0")
+    libgtk3 = load("libgtk-3-0","0")
 else:
     libgtk3 = load( "libgtk-3","0")
 

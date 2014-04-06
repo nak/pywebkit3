@@ -4,7 +4,7 @@ import platform
 from pyggi import load
 
 if platform.platform().startswith("Windows"):
-    libgobbject = load("libgobject-2.0","0")
+    libgobbject = load("libgobject-2.0-0","0")
 else:
     libgobject = load("libgobject-2.0","0")
         

@@ -1,7 +1,7 @@
 from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER, c_longlong
-from pyggi.webkit3_types import libwebkit3
+from pyggi.webkit3_types import load
 
-libjavascriptcore = libwebkit3
+libjavascriptcore = load("libjavascriptcoregtk-3.0","0")
 
 JSPropertyAttributes = c_uint;
 JSClassAttributes = c_uint;
@@ -55,6 +55,6 @@ class JSClassDefinition(Structure):
                ('convertToType',JSObjectConvertToTypeCallback)]
 
 
-kJSClassDefinitionEmpty = libwebkit3.kJSClassDefinitionEmpty
+kJSClassDefinitionEmpty = libjavascriptcore.kJSClassDefinitionEmpty
 
 NULL = POINTER(c_int)()
