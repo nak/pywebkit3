@@ -15,7 +15,8 @@ def load( libname, postversion ):
             return CDLL("%s.dll"%( libname))
         except:
             try:
-                logging.error("Unable to load %s trying %s-0"%(libname, libname))
+                import logging
+                logging.info("Unable to load %s trying %s-0"%(libname, libname))
                 cdll.LoadLibrary("%s-0.dll"%(libname))
                 return CDLL("%s-0.dll"%(libname))
             except:
