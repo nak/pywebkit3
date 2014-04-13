@@ -36,8 +36,8 @@ def import_element():
     assert(color_block)
     import logging
     logging.error("GOT COLOR BLOCK %s"%color_block)
-webview.on_view_ready( import_element )
 
+webview.on_view_ready( import_element )
 #set up a loop to continually increment the color
 color = int("00FF00",16)
 def update_color( increment ):

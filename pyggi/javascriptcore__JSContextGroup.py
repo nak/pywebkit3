@@ -318,8 +318,12 @@ GMountUnmountFlags = c_int
 GDriveStartFlags = c_int
 GDriveStartStopType = c_int
 
+import weakref
+
 class JSContextGroup( object):
     """Class JSContextGroup Constructors"""
     def __init__(self, obj = None):
-        self._object = obj
+        self._object = weakref.ref(obj)
+        self._strongref = obj
+        
     """Methods"""

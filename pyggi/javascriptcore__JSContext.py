@@ -417,75 +417,78 @@ try:
 except:
    pass
 import javascriptcore__JSObject
+
+import weakref
+
 class JSContext( javascriptcore__JSObject.JSObject):
     """Class JSContext Constructors"""
-    def __init__(self, obj = None):
-        self._object = obj
+        
     """Methods"""
     def JSGlobalContextRelease(  self, ctx, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        libjavascriptcore.JSGlobalContextRelease( self._object,ctx )
+        libjavascriptcore.JSGlobalContextRelease( self._object(),ctx )
 
     def GroupRelease(  self, group, ):
-        if group: group = group._object
+        if group: group = group._object()
         else: group = POINTER(c_int)()
 
         
-        libjavascriptcore.JSContextGroupRelease( self._object,group )
+        libjavascriptcore.JSContextGroupRelease( self._object(),group )
 
     def GetGroup(  self, ):
 
         from javascriptcore import JSContextGroup
-        return JSContextGroup( obj=libjavascriptcore.JSContextGetGroup( self._object )  or POINTER(c_int)())
+        return JSContextGroup( obj=libjavascriptcore.JSContextGetGroup( self._object() )  or POINTER(c_int)())
 
     def GetGlobalObject(  self, ):
 
         from javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object )  or POINTER(c_int)())
+        return JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object() )  or POINTER(c_int)())
 
     @staticmethod
     def JSGlobalContextCreate( globalObjectClass,):
-        if globalObjectClass: globalObjectClass = globalObjectClass._object
+        if globalObjectClass: globalObjectClass = globalObjectClass._object()
         else: globalObjectClass = POINTER(c_int)()
         from javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextCreate(globalObjectClass, )
   or POINTER(c_int)())
     @staticmethod
     def JSGlobalContextCreateInGroup( group, globalObjectClass,):
-        if group: group = group._object
+        if group: group = group._object()
         else: group = POINTER(c_int)()
-        if globalObjectClass: globalObjectClass = globalObjectClass._object
+        if globalObjectClass: globalObjectClass = globalObjectClass._object()
         else: globalObjectClass = POINTER(c_int)()
         from javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextCreateInGroup(group, globalObjectClass, )
   or POINTER(c_int)())
     @staticmethod
     def GroupRetain( group,):
-        if group: group = group._object
+        if group: group = group._object()
         else: group = POINTER(c_int)()
         from javascriptcore import JSContextGroup
         return JSContextGroup( obj=    libjavascriptcore.JSContextGroupRetain(group, )
   or POINTER(c_int)())
     @staticmethod
     def JSGlobalContextRetain( ctx,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
         from javascriptcore import JSGlobalContext
-        return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextRetain(ctx, )
+        return JSGlobalContext( obj = libjavascriptcore.JSGlobalContextRetain(ctx, )
   or POINTER(c_int)())
 
     def __init__(self, obj = None):
-        self._object = obj
+        javascriptcore__JSObject.JSObject.__init__(self, obj, None)
+        #import logging
+        #self._object = weakref.ref(obj)
+        #self._strongref = obj
         self._global = None
-        self._context = None
+        #self._context = None
 
     def GetGlobalObject(  self, ):
        if not self._global:
-           libjavascriptcore.JSContextGetGlobalObject.restype = _JSObject
-           libjavascriptcore.JSContextGetGlobalObject.argtypes = [_JSContext]
            from javascriptcore import JSObject
-           self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object ), context = self._object)
+           self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object() ), context = self._object())
        return self._global

@@ -759,8 +759,6 @@ try:
 except:
    pass
 import gtk3__GtkContainer
-import javascript.jquery as jquery
-
 class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     """Class WebKitWebView Constructors"""
     def __init__( self,  obj = None):
@@ -770,7 +768,6 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             
             libwebkit3.webkit_web_view_new.argtypes = []
             self._object = libwebkit3.webkit_web_view_new()
-        
 
     """Methods"""
     def zoom_in(  self, ):
@@ -1153,21 +1150,15 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             
             libwebkit3.webkit_web_view_new.argtypes = []
             self._object = libwebkit3.webkit_web_view_new()
-
         try:
             from javascript import ScriptEnv
             self._env = ScriptEnv(self)
-            def set_jquery():
-                self._jqueryEnv = jquery.initialize(self.get_env())
-                #self._jQuery = self._jqueryEnv.jquery()
-            self.on_view_ready(set_jquery)
         except:
-            import traceback
-            traceback.print_exc()
             import logging
+            import traceback
+            logging.error(traceback.format_exc())
             logging.error("Unable to load javascript engine.  Ophidian interface to DOM will not function")
             self._env = None
-        
 
     def get_main_frame(  self, ):
         #workaround since it appears calling get_main_frame twice on
@@ -1203,10 +1194,5 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         from gobject import GObject
         GObject.connect( self, 'load-finished', func, *args)
 
-    def jquery(self):
-        return self._jqueryEnv.jquery()
-    
-    def get_jsobject(self, name, can_call):
-        return self._env.get_jsobject(name, can_call)
-    
+
     

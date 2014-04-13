@@ -367,47 +367,54 @@ try:
     libjavascriptcore.JSStringCreateWithUTF8CString.argtypes = [c_char_p]
 except:
    pass
+
+import weakref
+
 class JSString( object):
     """Class JSString Constructors"""
     def __init__(self, obj = None):
-        self._object = obj
+        self._object = weakref.ref(obj)
+        self._strongref = obj
+        #self.Retain()
+        
     """Methods"""
     def GetCharactersPtr(  self, ):
 
         
-        return libjavascriptcore.JSStringGetCharactersPtr( self._object )
+        return libjavascriptcore.JSStringGetCharactersPtr( self._object() )
 
     def IsEqual(  self, b, ):
-        if b: b = b._object
+        if b: b = b._object()
         else: b = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSStringIsEqual( self._object,b )
+        return libjavascriptcore.JSStringIsEqual( self._object(),b )
 
     def Retain(  self, ):
 
         from javascriptcore import JSString
-        return JSString( obj=libjavascriptcore.JSStringRetain( self._object )  or POINTER(c_int)())
+        libjavascriptcore.JSStringRetain( self._object() )
+        return self
 
     def IsEqualToUTF8CString(  self, b, ):
 
         
-        return libjavascriptcore.JSStringIsEqualToUTF8CString( self._object,b )
+        return libjavascriptcore.JSStringIsEqualToUTF8CString( self._object(),b )
 
     def GetUTF8CString(  self, buffer, bufferSize, ):
 
         
-        return libjavascriptcore.JSStringGetUTF8CString( self._object,buffer,bufferSize )
+        return libjavascriptcore.JSStringGetUTF8CString( self._object(),buffer,bufferSize )
 
     def GetMaximumUTF8CStringSize(  self, ):
 
         
-        return libjavascriptcore.JSStringGetMaximumUTF8CStringSize( self._object )
+        return libjavascriptcore.JSStringGetMaximumUTF8CStringSize( self._object() )
 
     def GetLength(  self, ):
 
         
-        return libjavascriptcore.JSStringGetLength( self._object )
+        return libjavascriptcore.JSStringGetLength( self._object() )
 
     @staticmethod
     def CreateWithCharacters( chars, numChars,):
@@ -417,16 +424,20 @@ class JSString( object):
     @staticmethod
     def CreateWithUTF8CString( string,):
         from javascriptcore import JSString
-        return JSString( obj=    libjavascriptcore.JSStringCreateWithUTF8CString(string, )
-  or POINTER(c_int)())
+        string2 =  libjavascriptcore.JSStringCreateWithUTF8CString(string, )
+        retval =  JSString( obj=   string2  or POINTER(c_int)())
+        
+        return retval
 
     def Release( self ):
         libjavascriptcore.JSStringRelease.restype = None
         libjavascriptcore.JSStringRelease.argtypes = [_JSString]
-        libjavascriptcore.JSStringRelease( self._object )
-        self._object = None
+        libjavascriptcore.JSStringRelease( self._object() )
+        self._object = weakref.ref( POINTER( c_int)() )
+        self._strongref = None
         
     def __del__(self):
-        if self._object and cast(self._object, c_void_p).value != None:
+        if self._object and cast(self._object(), c_void_p).value != None:
             self.Release()
-        self._object = None
+        self._object = weakref.ref( POINTER( c_int)() )
+        self._strongref = None

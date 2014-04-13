@@ -369,178 +369,178 @@ class JSObject( JSValue ):
         
     """Methods"""
     def GetProperty(  self, ctx, propertyName, exception, ):
-        #if ctx: ctx = ctx._object
+        #if ctx: ctx = ctx._object()
         #else: ctx = POINTER(c_int)()
-        #if propertyName: propertyName = propertyName._object
+        #if propertyName: propertyName = propertyName._object()
         #else: propertyName = POINTER(c_int)()
 
         from javascriptcore import JSValue
-        return JSValue( obj=libjavascriptcore.JSObjectGetProperty( ctx._object,self._object,propertyName._object,exception ),
-                        context = ctx._object)
+        return JSValue( obj=libjavascriptcore.JSObjectGetProperty( ctx._object(),self._object(),propertyName._object(),exception ),
+                        context = ctx._object())
 
     def JSPropertyNameAccumulatorAddName(  self, accumulator, propertyName, ):
-        if accumulator: accumulator = accumulator._object
+        if accumulator: accumulator = accumulator._object()
         else: accumulator = POINTER(c_int)()
-        if propertyName: propertyName = propertyName._object
+        if propertyName: propertyName = propertyName._object()
         else: propertyName = POINTER(c_int)()
 
-        libjavascriptcore.JSPropertyNameAccumulatorAddName( self._object,accumulator,propertyName )
+        libjavascriptcore.JSPropertyNameAccumulatorAddName( self._object(),accumulator,propertyName )
 
     def SetPrototype(  self, ctx, value, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if value: value = value._object
+        if value: value = value._object()
         else: value = POINTER(c_int)()
 
         
-        libjavascriptcore.JSObjectSetPrototype( ctx,self._object,value )
+        libjavascriptcore.JSObjectSetPrototype( ctx,self._object(),value )
 
     def HasProperty(  self, ctx, propertyName, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if propertyName: propertyName = propertyName._object
+        if propertyName: propertyName = propertyName._object()
         else: propertyName = POINTER(c_int)()
 
-        return libjavascriptcore.JSObjectHasProperty( ctx,self._object,propertyName )
+        return libjavascriptcore.JSObjectHasProperty( ctx,self._object(),propertyName )
 
     def GetPrototype(  self, ctx, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         from javascriptcore import JSValue
-        return JSValue( obj=libjavascriptcore.JSObjectGetPrototype( ctx,self._object )  or POINTER(c_int)())
+        return JSValue( obj=libjavascriptcore.JSObjectGetPrototype( ctx,self._object() )  or POINTER(c_int)())
 
     def CallAsConstructor(  self, ctx, argumentCount, arguments, exception, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
         jsargs = _JSValue*argumentCount
         for index in len(argumentCount):
-            jsargs[index] = arguments[index]._object
-        if exception: exception = exception._object
+            jsargs[index] = arguments[index]._object()
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
         from javascriptcore import JSObject
-        return JSObject(None,None,None,None, obj=libjavascriptcore.JSObjectCallAsConstructor( ctx,self._object,argumentCount,arguments,exception )  or POINTER(c_int)())
+        return JSObject(None,None,None,None, obj=libjavascriptcore.JSObjectCallAsConstructor( ctx,self._object(),argumentCount,arguments,exception )  or POINTER(c_int)())
 
     def JSPropertyNameArrayRelease(  self, array, ):
-        if array: array = array._object
+        if array: array = array._object()
         else: array = POINTER(c_int)()        
-        libjavascriptcore.JSPropertyNameArrayRelease( self._object,array )
+        libjavascriptcore.JSPropertyNameArrayRelease( self._object(),array )
 
     def DeleteProperty(  self, ctx, propertyName, exception, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if propertyName: propertyName = propertyName._object
+        if propertyName: propertyName = propertyName._object()
         else: propertyName = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
         libjavascriptcore.JSObjectDeleteProperty.restype = bool
         libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
         
-        return libjavascriptcore.JSObjectDeleteProperty( ctx,self._object,propertyName,exception )
+        return libjavascriptcore.JSObjectDeleteProperty( ctx,self._object(),propertyName,exception )
 
     def IsConstructor(  self, ctx, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         libjavascriptcore.JSObjectIsConstructor.restype = bool
         libjavascriptcore.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
         
-        return libjavascriptcore.JSObjectIsConstructor( ctx,self._object )
+        return libjavascriptcore.JSObjectIsConstructor( ctx,self._object() )
 
     def SetPropertyAtIndex(  self, ctx, propertyIndex, value, exception, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if propertyIndex: propertyIndex = propertyIndex._object
+        if propertyIndex: propertyIndex = propertyIndex._object()
         else: propertyIndex = POINTER(c_int)()
-        if value: value = value._object
+        if value: value = value._object()
         else: value = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
         
-        libjavascriptcore.JSObjectSetPropertyAtIndex( ctx,self._object,propertyIndex,value,exception )
+        libjavascriptcore.JSObjectSetPropertyAtIndex( ctx,self._object(),propertyIndex,value,exception )
 
     def SetPrivate(  self, data, ):
         
-        return libjavascriptcore.JSObjectSetPrivate( self._object,data )
+        return libjavascriptcore.JSObjectSetPrivate( self._object(), data )
 
     def JSClassRelease(  self, jsClass, ):
-        if jsClass: jsClass = jsClass._object
+        if jsClass: jsClass = jsClass._object()
         else: jsClass = POINTER(c_int)()
 
         
-        libjavascriptcore.JSClassRelease( self._object,jsClass )
+        libjavascriptcore.JSClassRelease( self._object(),jsClass )
 
     def CallAsFunction(  self, ctx, thisObject, argumentCount, arguments, exception, ):
         
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = None
         if argumentCount.value:
             args = (_JSValue*argumentCount.value)()
             for index in xrange(argumentCount.value):
-                args[index] = arguments[index]._object
+                args[index] = arguments[index]._object()
             
         else:
             args = NULL
         if thisObject:
-            thisObject = thisObject._object
+            thisObject = thisObject._object()
         else:
             thisObject = NULL
         
-        retval = libjavascriptcore.JSObjectCallAsFunction( ctx._object,
-                                                           self._object,
+        retval = libjavascriptcore.JSObjectCallAsFunction( ctx._object(),
+                                                           self._object(),
                                                            thisObject,
                                                            argumentCount,
                                                            cast(args, POINTER(c_int)),exception )
       
-        return JSValue( obj= retval, context = ctx._object)
+        return JSValue( obj= retval, context = ctx._object())
 
     def CopyPropertyNames(  self, ctx, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         from javascriptcore import JSPropertyNameArray
-        return JSPropertyNameArray( obj=libjavascriptcore.JSObjectCopyPropertyNames( ctx,self._object )  or POINTER(c_int)())
+        return JSPropertyNameArray( obj=libjavascriptcore.JSObjectCopyPropertyNames( ctx,self._object() )  or POINTER(c_int)())
 
     def GetPropertyAtIndex(  self, ctx, propertyIndex, exc, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: raise Exception("NULL CONTEXT")
         
         from javascriptcore import JSValue
-        return JSValue( obj=libjavascriptcore.JSObjectGetPropertyAtIndex( ctx,self._object,propertyIndex,exc)  or POINTER(c_int)())
+        return JSValue( obj=libjavascriptcore.JSObjectGetPropertyAtIndex( ctx,self._object(),propertyIndex,exc)  or POINTER(c_int)())
 
     def GetPrivate(  self, ):
         
-        return libjavascriptcore.JSObjectGetPrivate( self._object )
+        return libjavascriptcore.JSObjectGetPrivate( self._object() )
 
     def SetProperty(  self, ctx, propertyName, value, attributes, exception, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if propertyName: propertyName = propertyName._object
+        if propertyName: propertyName = propertyName._object()
         else: propertyName = POINTER(c_int)()
-        if value: value = value._object
+        if value: value = value._object()
         else: value = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
         libjavascriptcore.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
         
-        libjavascriptcore.JSObjectSetProperty( ctx,self._object,propertyName,value,attributes,exception )
+        libjavascriptcore.JSObjectSetProperty( ctx,self._object(),propertyName,value,attributes,exception )
 
     def IsFunction(  self, ctx, ):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         libjavascriptcore.JSObjectIsFunction.restype = bool
         libjavascriptcore.JSObjectIsFunction.argtypes = [_JSContext,_JSObject]
         
-        return libjavascriptcore.JSObjectIsFunction( ctx,self._object )
+        return libjavascriptcore.JSObjectIsFunction( ctx,self._object() )
 
     @staticmethod
     def JSClassRetain( jsClass,):
-        if jsClass: jsClass = jsClass._object
+        if jsClass: jsClass = jsClass._object()
         else: jsClass = POINTER(c_int)()
         libjavascriptcore.JSClassRetain.restype = _JSClass
         libjavascriptcore.JSClassRetain.argtypes = [_JSClass]
@@ -549,11 +549,11 @@ class JSObject( JSValue ):
   or POINTER(c_int)())
     @staticmethod
     def MakeError( ctx, argumentCount, arguments, exception,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if arguments: arguments = arguments._object
+        if arguments: arguments = arguments._object()
         else: arguments = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeError.restype = _JSObject
         libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
@@ -562,9 +562,9 @@ class JSObject( JSValue ):
   or POINTER(c_int)())
     @staticmethod
     def MakeFunctionWithCallback( ctx, name, callAsFunction,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if name: name = name._object
+        if name: name = name._object()
         else: name = POINTER(c_int)()
         from javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx, name, callAsFunction, ),
@@ -572,11 +572,11 @@ class JSObject( JSValue ):
                          
     @staticmethod
     def MakeArray( ctx, argumentCount, arguments, exception,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if arguments: arguments = arguments._object
+        if arguments: arguments = arguments._object()
         else: arguments = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeArray.restype = _JSObject
         libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
@@ -585,9 +585,9 @@ class JSObject( JSValue ):
   or POINTER(c_int)())
     @staticmethod
     def MakeConstructor( ctx, jsClass, callAsConstructor,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if jsClass: jsClass = jsClass._object
+        if jsClass: jsClass = jsClass._object()
         else: jsClass = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeConstructor.restype = _JSObject
         libjavascriptcore.JSObjectMakeConstructor.argtypes = [_JSContext,_JSClass,JSObjectCallAsConstructorCallback]
@@ -596,11 +596,11 @@ class JSObject( JSValue ):
   or POINTER(c_int)())
     @staticmethod
     def MakeDate( ctx, argumentCount, arguments, exception,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if arguments: arguments = arguments._object
+        if arguments: arguments = arguments._object()
         else: arguments = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         libjavascriptcore.JSObjectMakeDate.restype = _JSObject
         libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
@@ -609,14 +609,14 @@ class JSObject( JSValue ):
   or POINTER(c_int)())
     @staticmethod
     def JSPropertyNameArrayRetain( array,):
-        if array: array = array._object
+        if array: array = array._object()
         else: array = POINTER(c_int)()
         from javascriptcore import JSPropertyNameArray
         return JSPropertyNameArray( obj=    libjavascriptcore.JSPropertyNameArrayRetain(array, )
   or POINTER(c_int)())
     @staticmethod
     def JSPropertyNameArrayGetNameAtIndex( array, index,):
-        if array: array = array._object
+        if array: array = array._object()
         else: array = POINTER(c_int)()
         libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.restype = _JSString
         libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.argtypes = [_JSPropertyNameArray,size_t]
@@ -625,28 +625,28 @@ class JSObject( JSValue ):
   or POINTER(c_int)())
     @staticmethod
     def MakeFunction( ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if name: name = name._object
+        if name: name = name._object()
         else: name = POINTER(c_int)()
-        if parameterCount: parameterCount = parameterCount._object
+        if parameterCount: parameterCount = parameterCount._object()
         else: parameterCount = POINTER(c_int)()
-        if parameterNames: parameterNames = parameterNames._object
+        if parameterNames: parameterNames = parameterNames._object()
         else: parameterNames = POINTER(c_int)()
-        if body: body = body._object
+        if body: body = body._object()
         else: body = POINTER(c_int)()
-        if sourceURL: sourceURL = sourceURL._object
+        if sourceURL: sourceURL = sourceURL._object()
         else: sourceURL = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         from javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
   or POINTER(c_int)())
     @staticmethod
     def Make( ctx, jsClass, data,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if jsClass: jsClass = jsClass._object
+        if jsClass: jsClass = jsClass._object()
         else: jsClass = POINTER(c_int)()
         from javascriptcore import JSObject, JSValue
         obj =   libjavascriptcore.JSObjectMake(ctx, jsClass, data, )
@@ -654,18 +654,18 @@ class JSObject( JSValue ):
                          context = ctx)
     @staticmethod
     def JSPropertyNameArrayGetCount( array,):
-        if array: array = array._object
+        if array: array = array._object()
         else: array = POINTER(c_int)()
         
         return     libjavascriptcore.JSPropertyNameArrayGetCount(array, )
 
     @staticmethod
     def MakeRegExp( ctx, argumentCount, arguments, exception,):
-        if ctx: ctx = ctx._object
+        if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        if arguments: arguments = arguments._object
+        if arguments: arguments = arguments._object()
         else: arguments = POINTER(c_int)()
-        if exception: exception = exception._object
+        if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         from javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )

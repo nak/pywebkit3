@@ -15,10 +15,13 @@ import logging
 document = None
 
 def strid(obj):
-    return str(cast(obj._object, c_void_p).value)
+    try:
+        return str(cast(obj._object(), c_void_p).value)
+    except:
+        return str(cast(obj._object, c_void_p).value)
 
 def jsEqual(obj1, obj2):
-    return cast(obj1._object, c_void_p).value == cast(obj2._object, c_void_p).value 
+    return cast(obj1._object(), c_void_p).value == cast(obj2._object(), c_void_p).value 
 
 funccount = 0
 def to_jsfunction(env, func):
@@ -28,11 +31,11 @@ def to_jsfunction(env, func):
         if cast(thisObject, c_void_p).value == None:
             thisObject= None
         else:
-            thisObject = JSObject(obj = thisObject, context = context._object)
+            thisObject = JSObject(obj = thisObject, context = context._object())
         try:
             args = [thisObject]
             for i in xrange(argumentCount):
-                argument = JSValue(obj = arguments[i], context = context._object)
+                argument = JSValue(obj = arguments[i], context = context._object())
                 valtype = argument.GetType(context)
                 if valtype == kJSTypeObject.value:
                     jsobject = argument.ToObject(context, NULL)
@@ -70,13 +73,14 @@ def to_jsfunction(env, func):
                 retval = JSValue.MakeNumber( context, retval)
             elif isinstance(retval, str):
                 cstring = c_char_p(retval)
+                text = JSString.CreateWithUTF8String(cstring)
                 retval = JSValue.MakeString(context, text);
-                #text.Release()
+                text.Release()
             elif retval in [True, False]:
                 retval = JSValue.MakeBoolean(context, retval)
             assert( isinstance(retval, JSValue))
             #retval.Protect(context)#will go out of scope and underlying object needs to be retained
-            retval =  cast(byref(retval._object),POINTER(c_longlong)).contents
+            retval =  cast(byref(retval._object()),POINTER(c_longlong)).contents
             return retval.value
         except:
             logging.error(traceback.format_exc())
@@ -84,7 +88,7 @@ def to_jsfunction(env, func):
             return 0
     cfunc = JSObjectCallAsFunctionCallback(C_Callable)
     jsobj = JSObject.MakeFunctionWithCallback(env._context, NULL, cfunc)
-    assert ( not cast(jsobj._object,c_void_p).value == None)
+    assert ( not cast(jsobj._object(),c_void_p).value == None)
     jsobj._callable = cfunc
     return jsobj
 
@@ -121,10 +125,10 @@ def to_pythonjs( env, val):
 class JSFunction(JSObject):
 
     def __init__(self, env, obj, thisobj, name):
-        JSObject.__init__(self, obj=obj._object, context = env._context._object)
+        JSObject.__init__(self, obj=obj._object(), context = env._context._object())
         self._thisjsobj = thisobj
         self._jsfuncobj = obj
-        if thisobj and cast(thisobj._object, c_void_p ).value == None:
+        if thisobj and cast(thisobj._object(), c_void_p ).value == None:
             self._thisjsobj = None
         self._env  = env
         self._callable = None
@@ -180,7 +184,7 @@ class JSFunction(JSObject):
                                         c_int(len(args)),
                                         self._jsArgs,
                                         NULL)
-        if cast( retval._object, c_void_p).value == None:
+        if cast( retval._object(), c_void_p).value == None:
             return None
         return  to_pythonjs(self._env, retval)
 
@@ -270,12 +274,12 @@ class JavascriptClass(object):
                     elif isinstance(value, JSObject):
                         retval = value
                     elif isinstance(value, JavascriptClass):
-                        retval = JSObject(obj  = value._javascript_obj._object, context = context._object)
+                        retval = JSObject(obj  = value._javascript_obj._object(), context = context._object()  )
                     else:
                         retval = NULL
                         return cast(byref(retval), POINTER(c_longlong)).contents.value
-                    retval.Protect(context)
-                    retval = cast(byref(retval._object), POINTER(c_longlong)).contents
+                    #retval.Protect(context)
+                    retval = cast(byref(retval._object()), POINTER(c_longlong)).contents
                     
                 except:
                     logging.error("EXCEPTION calling python method from javascript:")
@@ -300,6 +304,7 @@ class JavascriptClass(object):
           
         def _finalize_cb(obj):
             #cleanup if javascript side decides to delete the object:
+            logging.error("FINALIZ %s"%obj)
             pass
                 
 
@@ -373,7 +378,7 @@ class JavascriptClass(object):
             #associated with it
             ns = Namespace.get_namespace(env, modulename)
             assert(ns)
-            assert(str(cast(env._context._object, c_void_p)) + modulename in Namespace._namespaces.iterkeys())
+            assert(str(cast(env._context._object(), c_void_p)) + modulename in Namespace._namespaces.iterkeys())
         else:
             if var_name and modulename == "":
                 #have global namespace:
@@ -404,16 +409,16 @@ class JavascriptClass(object):
             self._javascript_obj = JSObject.Make(env._context, cls._classDef, None)  
 
         env._jsobjects[ strid(self._javascript_obj)] = self
-        self._javascript_obj.Protect( env._context)
+        #self._javascript_obj.Protect( env._context)
         if ns and self._javascript_obj:
             #if not global namespace, add javascript namespace object
             #explicitly to ns
             text = JSString.CreateWithUTF8CString(var_name.split('.')[-1])
             ns._javascript_obj.SetProperty(env._context,
-                                            text,
-                                            self._javascript_obj,
-                                            kJSPropertyAttributeNone,
-                                            NULL)
+                                           text,
+                                           self._javascript_obj,
+                                           kJSPropertyAttributeNone,
+                                           NULL)
             
             text.Release()
         #assert(self._javascript_obj)
@@ -492,7 +497,7 @@ class Namespace(JavascriptClass):
             self._context = env._context
             self._javascript_obj = env._context.GetGlobalObject()
             
-        Namespace._namespaces[ str(cast(env._context._object, c_void_p)) + module_name ] = self
+        Namespace._namespaces[ str(cast(env._context._object(), c_void_p)) + module_name ] = self
         if module and module_name != "":
             self._export_classes()
         
@@ -517,7 +522,7 @@ class Namespace(JavascriptClass):
         Get or create the namespace for the given module name
         """
         assert(isinstance(env, ScriptEnv))
-        id = str(cast(env._context._object, c_void_p)) + modulename
+        id = str(cast(env._context._object(), c_void_p)) + modulename
         if not id in Namespace._namespaces.iterkeys():
             if modulename:
                 m = importlib.import_module(modulename)
@@ -577,7 +582,7 @@ class PythonWrapper(JSObject):
         assert(isinstance(env, ScriptEnv))
         assert(obj)
         self._cmd = ""
-        JSObject.__init__(self, obj=obj._object, context=env._context._object)
+        JSObject.__init__(self, obj=obj._object(), context=env._context._object())
         self._varname = var_name
         self._can_call = can_call
         self._context = env._context
@@ -607,7 +612,7 @@ class PythonWrapper(JSObject):
                     jsfunc = JSFunction(self._env, obj = propobj, thisobj = self, name = attr)
                     setattr(self, attr, 
                             jsfunc)
-                    #if cast (propobj._object,c_void_p).value != cast (prop._object,c_void_p).value:
+                    #if cast (propobj._object(),c_void_p).value != cast (prop._object(),c_void_p).value:
                     #    prop.Unprotect(self._env._context)
                     return jsfunc
                 else:

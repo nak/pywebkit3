@@ -383,8 +383,14 @@ GDriveStartFlags = c_int
 GDriveStartStopType = c_int
 GtkAssistantPageType = c_int
 
+import weakref
+
 class JSClass( object):
     """Class JSClass Constructors"""
     def __init__(self, obj = None):
-        self._object = obj
+        self._object = weakref.ref(obj)
+        self._strongref = obj
+
+    def __del__( self ):
+        del self._strongref
     """Methods"""

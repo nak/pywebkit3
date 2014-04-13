@@ -271,10 +271,11 @@ GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
 import javascriptcore__JSContext
+import weakref
+
 class JSGlobalContext( javascriptcore__JSContext.JSContext):
     """Class JSGlobalContext Constructors"""
-    def __init__(self, obj = None):
-        self._object = obj
+        
     """Methods"""
 
     def __init__(self, obj = None):
