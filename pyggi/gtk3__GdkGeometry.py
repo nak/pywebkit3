@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -391,7 +391,7 @@ GtkAssistantPageType = c_int
 GtkRcFlags = c_int
 GtkRcTokenType = c_int
 
-import gobject__GObject
+from . import gobject__GObject
 class GdkGeometry( gobject__GObject.GObject):
     """Class GdkGeometry Constructors"""
     def __init__(self, obj = None):

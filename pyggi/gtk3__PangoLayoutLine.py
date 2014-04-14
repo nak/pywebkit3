@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -239,7 +239,7 @@ try:
     libgtk3.pango_layout_line_get_pixel_extents.argtypes = [_PangoLayoutLine,_PangoRectangle,_PangoRectangle]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class PangoLayoutLine( gobject__GBoxed.GBoxed):
     """Class PangoLayoutLine Constructors"""
     def __init__(self, obj = None):
@@ -276,7 +276,7 @@ class PangoLayoutLine( gobject__GBoxed.GBoxed):
 
     def ref(  self, ):
 
-        from gtk3 import PangoLayoutLine
+        from .gtk3 import PangoLayoutLine
         return PangoLayoutLine( obj=libgtk3.pango_layout_line_ref( self._object )  or POINTER(c_int)())
 
     def get_pixel_extents(  self, ink_rect, logical_rect, ):

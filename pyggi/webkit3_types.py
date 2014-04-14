@@ -9,3 +9,11 @@ if platform.platform().startswith("Windows"):
 else:
     libwebkit3 = load("libwebkitgtk-3.0","0")
     HAVE_CSS3D= True
+
+class Asciifier(object):
+    @classmethod
+    def from_param(cls, value):
+        if isinstance(value, bytes):
+            return value
+        else:
+            return value.encode('ascii')

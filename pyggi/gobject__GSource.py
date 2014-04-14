@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -368,7 +368,7 @@ except:
    pass
 try:
     libgobject.g_source_set_name.restype = None
-    libgobject.g_source_set_name.argtypes = [_GSource,c_char_p]
+    libgobject.g_source_set_name.argtypes = [_GSource,Asciifier]
 except:
    pass
 try:
@@ -413,7 +413,7 @@ except:
    pass
 try:
     libgobject.g_source_set_name_by_id.restype = None
-    libgobject.g_source_set_name_by_id.argtypes = [_GSource,guint,c_char_p]
+    libgobject.g_source_set_name_by_id.argtypes = [_GSource,guint,Asciifier]
 except:
    pass
 try:
@@ -441,7 +441,7 @@ try:
     libgobject.g_source_remove_by_funcs_user_data.argtypes = [_GSourceFuncs,gpointer]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GSource( gobject__GObject.GObject):
     """Class GSource Constructors"""
     def __init__( self, struct_size,  obj = None):
@@ -479,7 +479,7 @@ class GSource( gobject__GObject.GObject):
 
     def get_context(  self, ):
 
-        from gobject import GMainContext
+        from .gobject import GMainContext
         return GMainContext(None,None, obj=libgobject.g_source_get_context( self._object ) or POINTER(c_int)())
 
     def set_can_recurse(  self, can_recurse, ):
@@ -499,7 +499,7 @@ class GSource( gobject__GObject.GObject):
 
     def ref(  self, ):
 
-        from gobject import GSource
+        from .gobject import GSource
         return GSource( obj=libgobject.g_source_ref( self._object ) or POINTER(c_int)())
 
     def remove_child_source(  self, child_source, ):

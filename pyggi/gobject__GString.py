@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -343,7 +343,7 @@ except:
    pass
 try:
     libgobject.g_string_insert.restype = _GString
-    libgobject.g_string_insert.argtypes = [_GString,gssize,c_char_p]
+    libgobject.g_string_insert.argtypes = [_GString,gssize,Asciifier]
 except:
    pass
 try:
@@ -353,7 +353,7 @@ except:
    pass
 try:
     libgobject.g_string_append_printf.restype = None
-    libgobject.g_string_append_printf.argtypes = [_GString,c_char_p,]
+    libgobject.g_string_append_printf.argtypes = [_GString,Asciifier,]
 except:
    pass
 try:
@@ -363,7 +363,7 @@ except:
    pass
 try:
     libgobject.g_string_append_uri_escaped.restype = _GString
-    libgobject.g_string_append_uri_escaped.argtypes = [_GString,c_char_p,c_char_p,gboolean]
+    libgobject.g_string_append_uri_escaped.argtypes = [_GString,Asciifier,Asciifier,gboolean]
 except:
    pass
 try:
@@ -378,17 +378,17 @@ except:
    pass
 try:
     libgobject.g_string_prepend_len.restype = _GString
-    libgobject.g_string_prepend_len.argtypes = [_GString,c_char_p,gssize]
+    libgobject.g_string_prepend_len.argtypes = [_GString,Asciifier,gssize]
 except:
    pass
 try:
     libgobject.g_string_overwrite_len.restype = _GString
-    libgobject.g_string_overwrite_len.argtypes = [_GString,gsize,c_char_p,gssize]
+    libgobject.g_string_overwrite_len.argtypes = [_GString,gsize,Asciifier,gssize]
 except:
    pass
 try:
     libgobject.g_string_assign.restype = _GString
-    libgobject.g_string_assign.argtypes = [_GString,c_char_p]
+    libgobject.g_string_assign.argtypes = [_GString,Asciifier]
 except:
    pass
 try:
@@ -403,12 +403,12 @@ except:
    pass
 try:
     libgobject.g_string_append_len.restype = _GString
-    libgobject.g_string_append_len.argtypes = [_GString,c_char_p,gssize]
+    libgobject.g_string_append_len.argtypes = [_GString,Asciifier,gssize]
 except:
    pass
 try:
     libgobject.g_string_printf.restype = None
-    libgobject.g_string_printf.argtypes = [_GString,c_char_p,]
+    libgobject.g_string_printf.argtypes = [_GString,Asciifier,]
 except:
    pass
 try:
@@ -418,12 +418,12 @@ except:
    pass
 try:
     libgobject.g_string_append.restype = _GString
-    libgobject.g_string_append.argtypes = [_GString,c_char_p]
+    libgobject.g_string_append.argtypes = [_GString,Asciifier]
 except:
    pass
 try:
     libgobject.g_string_prepend.restype = _GString
-    libgobject.g_string_prepend.argtypes = [_GString,c_char_p]
+    libgobject.g_string_prepend.argtypes = [_GString,Asciifier]
 except:
    pass
 try:
@@ -438,12 +438,12 @@ except:
    pass
 try:
     libgobject.g_string_insert_len.restype = _GString
-    libgobject.g_string_insert_len.argtypes = [_GString,gssize,c_char_p,gssize]
+    libgobject.g_string_insert_len.argtypes = [_GString,gssize,Asciifier,gssize]
 except:
    pass
 try:
     libgobject.g_string_overwrite.restype = _GString
-    libgobject.g_string_overwrite.argtypes = [_GString,gsize,c_char_p]
+    libgobject.g_string_overwrite.argtypes = [_GString,gsize,Asciifier]
 except:
    pass
 try:
@@ -463,7 +463,7 @@ except:
    pass
 try:
     libgobject.g_string_new_len.restype = _GString
-    libgobject.g_string_new_len.argtypes = [c_char_p,gssize]
+    libgobject.g_string_new_len.argtypes = [Asciifier,gssize]
 except:
    pass
 class GString( object):
@@ -479,12 +479,12 @@ class GString( object):
     """Methods"""
     def append_c(  self, c, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_append_c( self._object,c ) or POINTER(c_int)())
 
     def prepend_c(  self, c, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_prepend_c( self._object,c ) or POINTER(c_int)())
 
     def equal(  self, v2, ):
@@ -496,12 +496,12 @@ class GString( object):
 
     def insert(  self, pos, val, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_insert( self._object,pos,val ) or POINTER(c_int)())
 
     def set_size(  self, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_set_size( self._object,len ) or POINTER(c_int)())
 
     def append_printf(  self, format,*args  ):
@@ -516,12 +516,12 @@ class GString( object):
 
     def free_to_bytes(  self, ):
 
-        from gobject import GBytes
+        from .gobject import GBytes
         return GBytes(None,None, obj=libgobject.g_string_free_to_bytes( self._object ) or POINTER(c_int)())
 
     def append_uri_escaped(  self, unescaped, reserved_chars_allowed, allow_utf8, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None,None, obj=libgobject.g_string_append_uri_escaped( self._object,unescaped,reserved_chars_allowed,allow_utf8 ) or POINTER(c_int)())
 
     def free(  self, free_segment, ):
@@ -531,37 +531,37 @@ class GString( object):
 
     def up(  self, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString( obj=libgobject.g_string_up( self._object ) or POINTER(c_int)())
 
     def prepend_len(  self, val, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_prepend_len( self._object,val,len ) or POINTER(c_int)())
 
     def overwrite_len(  self, pos, val, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None,None, obj=libgobject.g_string_overwrite_len( self._object,pos,val,len ) or POINTER(c_int)())
 
     def assign(  self, rval, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_assign( self._object,rval ) or POINTER(c_int)())
 
     def erase(  self, pos, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_erase( self._object,pos,len ) or POINTER(c_int)())
 
     def down(  self, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString( obj=libgobject.g_string_down( self._object ) or POINTER(c_int)())
 
     def append_len(  self, val, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_append_len( self._object,val,len ) or POINTER(c_int)())
 
     def printf(  self, format,*args  ):
@@ -576,46 +576,46 @@ class GString( object):
 
     def truncate(  self, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_truncate( self._object,len ) or POINTER(c_int)())
 
     def append(  self, val, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_append( self._object,val ) or POINTER(c_int)())
 
     def prepend(  self, val, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_prepend( self._object,val ) or POINTER(c_int)())
 
     def append_unichar(  self, wc, ):
         if wc: wc = wc._object
         else: wc = POINTER(c_int)()
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_append_unichar( self._object,wc ) or POINTER(c_int)())
 
     def prepend_unichar(  self, wc, ):
         if wc: wc = wc._object
         else: wc = POINTER(c_int)()
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=libgobject.g_string_prepend_unichar( self._object,wc ) or POINTER(c_int)())
 
     def insert_len(  self, pos, val, len, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None,None, obj=libgobject.g_string_insert_len( self._object,pos,val,len ) or POINTER(c_int)())
 
     def overwrite(  self, pos, val, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_overwrite( self._object,pos,val ) or POINTER(c_int)())
 
     def insert_c(  self, pos, c, ):
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_insert_c( self._object,pos,c ) or POINTER(c_int)())
 
     def hash(  self, ):
@@ -627,11 +627,11 @@ class GString( object):
         if wc: wc = wc._object
         else: wc = POINTER(c_int)()
 
-        from gobject import GString
+        from .gobject import GString
         return GString(None,None, obj=libgobject.g_string_insert_unichar( self._object,pos,wc ) or POINTER(c_int)())
 
     @staticmethod
     def new_len( init, len,):
-        from gobject import GString
+        from .gobject import GString
         return GString(None, obj=    libgobject.g_string_new_len(init, len, )
  or POINTER(c_int)())

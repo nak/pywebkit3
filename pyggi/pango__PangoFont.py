@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -334,7 +334,7 @@ try:
     libpango.pango_font_describe_with_absolute_size.argtypes = [_PangoFont]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoFont( gobject__GObject.GObject):
     """Class PangoFont Constructors"""
     def __init__(self, obj = None):
@@ -342,7 +342,7 @@ class PangoFont( gobject__GObject.GObject):
     """Methods"""
     def get_font_map(  self, ):
 
-        from gtk3 import PangoFontMap
+        from .gtk3 import PangoFontMap
         return PangoFontMap( obj=libpango.pango_font_get_font_map( self._object )  or POINTER(c_int)())
 
     def get_glyph_extents(  self, glyph, ink_rect, logical_rect, ):
@@ -360,23 +360,23 @@ class PangoFont( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        from gtk3 import PangoCoverage
+        from .gtk3 import PangoCoverage
         return PangoCoverage(None, obj=libpango.pango_font_get_coverage( self._object,language )  or POINTER(c_int)())
 
     def describe(  self, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libpango.pango_font_describe( self._object )  or POINTER(c_int)())
 
     def get_metrics(  self, language, ):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        from gtk3 import PangoFontMetrics
+        from .gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libpango.pango_font_get_metrics( self._object,language )  or POINTER(c_int)())
 
     def describe_with_absolute_size(  self, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription( obj=libpango.pango_font_describe_with_absolute_size( self._object )  or POINTER(c_int)())
 

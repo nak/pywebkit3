@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -351,7 +351,7 @@ try:
     libwebkit3.webkit_web_back_forward_list_new_with_web_view.argtypes = [_WebKitWebView]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebBackForwardList( gobject__GObject.GObject):
     """Class WebKitWebBackForwardList Constructors"""
     def __init__(self, obj = None):
@@ -381,17 +381,17 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
 
     def get_back_item(  self, ):
 
-        from webkit3 import WebKitWebHistoryItem
+        from .webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem(None, obj=libwebkit3.webkit_web_back_forward_list_get_back_item( self._object ) or POINTER(c_int)() )
 
     def get_forward_list_with_limit(  self, limit, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libwebkit3.webkit_web_back_forward_list_get_forward_list_with_limit( self._object,limit ) or POINTER(c_int)())
 
     def get_current_item(  self, ):
 
-        from webkit3 import WebKitWebHistoryItem
+        from .webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=libwebkit3.webkit_web_back_forward_list_get_current_item( self._object ) or POINTER(c_int)() )
 
     def go_to_item(  self, history_item, ):
@@ -403,7 +403,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
 
     def get_back_list_with_limit(  self, limit, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libwebkit3.webkit_web_back_forward_list_get_back_list_with_limit( self._object,limit ) or POINTER(c_int)())
 
     def get_forward_length(  self, ):
@@ -413,7 +413,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
 
     def get_forward_item(  self, ):
 
-        from webkit3 import WebKitWebHistoryItem
+        from .webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=libwebkit3.webkit_web_back_forward_list_get_forward_item( self._object ) or POINTER(c_int)() )
 
     def contains_item(  self, history_item, ):
@@ -425,7 +425,7 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
 
     def get_nth_item(  self, index, ):
 
-        from webkit3 import WebKitWebHistoryItem
+        from .webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=libwebkit3.webkit_web_back_forward_list_get_nth_item( self._object,index ) or POINTER(c_int)() )
 
     def go_forward(  self, ):
@@ -447,6 +447,6 @@ class WebKitWebBackForwardList( gobject__GObject.GObject):
     def new_with_web_view( web_view,):
         if web_view: web_view = web_view._object
         else: web_view = POINTER(c_int)()
-        from webkit3 import WebKitWebBackForwardList
+        from .webkit3 import WebKitWebBackForwardList
         return WebKitWebBackForwardList( obj=    libwebkit3.webkit_web_back_forward_list_new_with_web_view(web_view, )
  or POINTER(c_int)() )

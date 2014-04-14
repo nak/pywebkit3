@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -318,7 +318,7 @@ GDriveStartStopType = c_int
 
 try:
     libgtk3.gtk_style_properties_unset_property.restype = None
-    libgtk3.gtk_style_properties_unset_property.argtypes = [_GtkStyleProperties,c_char_p,GtkStateFlags]
+    libgtk3.gtk_style_properties_unset_property.argtypes = [_GtkStyleProperties,Asciifier,GtkStateFlags]
 except:
    pass
 try:
@@ -328,12 +328,12 @@ except:
    pass
 try:
     libgtk3.gtk_style_properties_map_color.restype = None
-    libgtk3.gtk_style_properties_map_color.argtypes = [_GtkStyleProperties,c_char_p,_GtkSymbolicColor]
+    libgtk3.gtk_style_properties_map_color.argtypes = [_GtkStyleProperties,Asciifier,_GtkSymbolicColor]
 except:
    pass
 try:
     libgtk3.gtk_style_properties_set_property.restype = None
-    libgtk3.gtk_style_properties_set_property.argtypes = [_GtkStyleProperties,c_char_p,GtkStateFlags,_GValue]
+    libgtk3.gtk_style_properties_set_property.argtypes = [_GtkStyleProperties,Asciifier,GtkStateFlags,_GValue]
 except:
    pass
 try:
@@ -348,7 +348,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_properties_get_property.restype = gboolean
-    libgtk3.gtk_style_properties_get_property.argtypes = [_GtkStyleProperties,c_char_p,GtkStateFlags,_GValue]
+    libgtk3.gtk_style_properties_get_property.argtypes = [_GtkStyleProperties,Asciifier,GtkStateFlags,_GValue]
 except:
    pass
 try:
@@ -363,12 +363,12 @@ except:
    pass
 try:
     libgtk3.gtk_style_properties_lookup_color.restype = _GtkSymbolicColor
-    libgtk3.gtk_style_properties_lookup_color.argtypes = [_GtkStyleProperties,c_char_p]
+    libgtk3.gtk_style_properties_lookup_color.argtypes = [_GtkStyleProperties,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_style_properties_lookup_property.restype = gboolean
-    libgtk3.gtk_style_properties_lookup_property.argtypes = [c_char_p,_GtkStylePropertyParser,_GParamSpec]
+    libgtk3.gtk_style_properties_lookup_property.argtypes = [Asciifier,_GtkStylePropertyParser,_GParamSpec]
 except:
    pass
 class GtkStyleProperties( object):
@@ -451,7 +451,7 @@ class GtkStyleProperties( object):
 
     def lookup_color(  self, name, ):
 
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor( obj=libgtk3.gtk_style_properties_lookup_color( self._object,name ) or POINTER(c_int)())
 
     @staticmethod

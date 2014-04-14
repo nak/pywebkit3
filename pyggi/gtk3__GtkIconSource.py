@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -384,7 +384,7 @@ except:
    pass
 try:
     libgtk3.gtk_icon_source_set_icon_name.restype = None
-    libgtk3.gtk_icon_source_set_icon_name.argtypes = [_GtkIconSource,c_char_p]
+    libgtk3.gtk_icon_source_set_icon_name.argtypes = [_GtkIconSource,Asciifier]
 except:
    pass
 try:
@@ -407,7 +407,7 @@ try:
     libgtk3.gtk_icon_source_get_state.argtypes = [_GtkIconSource]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkIconSource( gobject__GObject.GObject):
     """Class GtkIconSource Constructors"""
     def __init__( self,  obj = None):
@@ -421,7 +421,7 @@ class GtkIconSource( gobject__GObject.GObject):
     """Methods"""
     def get_pixbuf(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_source_get_pixbuf( self._object ) or POINTER(c_int)())
 
     def get_size_wildcarded(  self, ):
@@ -461,7 +461,7 @@ class GtkIconSource( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from gtk3 import GtkIconSource
+        from .gtk3 import GtkIconSource
         return GtkIconSource( obj=libgtk3.gtk_icon_source_copy( self._object ) or POINTER(c_int)())
 
     def set_state(  self, state, ):

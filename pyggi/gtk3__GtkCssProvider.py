@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -364,7 +364,7 @@ GtkIconSize = c_int
 
 try:
     libgtk3.gtk_css_provider_load_from_data.restype = gboolean
-    libgtk3.gtk_css_provider_load_from_data.argtypes = [_GtkCssProvider,c_char_p,gssize,_GError]
+    libgtk3.gtk_css_provider_load_from_data.argtypes = [_GtkCssProvider,Asciifier,gssize,_GError]
 except:
    pass
 try:
@@ -379,12 +379,12 @@ except:
    pass
 try:
     libgtk3.gtk_css_provider_load_from_path.restype = gboolean
-    libgtk3.gtk_css_provider_load_from_path.argtypes = [_GtkCssProvider,c_char_p,_GError]
+    libgtk3.gtk_css_provider_load_from_path.argtypes = [_GtkCssProvider,Asciifier,_GError]
 except:
    pass
 try:
     libgtk3.gtk_css_provider_get_named.restype = _GtkCssProvider
-    libgtk3.gtk_css_provider_get_named.argtypes = [c_char_p,c_char_p]
+    libgtk3.gtk_css_provider_get_named.argtypes = [Asciifier,Asciifier]
 except:
    pass
 try:
@@ -392,7 +392,7 @@ try:
     libgtk3.gtk_css_provider_get_default.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkCssProvider( gobject__GObject.GObject):
     """Class GtkCssProvider Constructors"""
     def __init__( self,  obj = None):
@@ -434,11 +434,11 @@ class GtkCssProvider( gobject__GObject.GObject):
 
     @staticmethod
     def get_named( name, variant,):
-        from gtk3 import GtkCssProvider
+        from .gtk3 import GtkCssProvider
         return GtkCssProvider( obj=    libgtk3.gtk_css_provider_get_named(name, variant, )
  or POINTER(c_int)())
     @staticmethod
     def get_default():
-        from gtk3 import GtkCssProvider
+        from .gtk3 import GtkCssProvider
         return GtkCssProvider( obj=    libgtk3.gtk_css_provider_get_default()
  or POINTER(c_int)())

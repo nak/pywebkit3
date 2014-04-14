@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -278,17 +278,17 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_has_class.restype = gboolean
-    libgtk3.gtk_style_context_has_class.argtypes = [_GtkStyleContext,c_char_p]
+    libgtk3.gtk_style_context_has_class.argtypes = [_GtkStyleContext,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_style_context_add_class.restype = None
-    libgtk3.gtk_style_context_add_class.argtypes = [_GtkStyleContext,c_char_p]
+    libgtk3.gtk_style_context_add_class.argtypes = [_GtkStyleContext,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_style_context_add_region.restype = None
-    libgtk3.gtk_style_context_add_region.argtypes = [_GtkStyleContext,c_char_p,GtkRegionFlags]
+    libgtk3.gtk_style_context_add_region.argtypes = [_GtkStyleContext,Asciifier,GtkRegionFlags]
 except:
    pass
 try:
@@ -318,7 +318,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_get_style_property.restype = None
-    libgtk3.gtk_style_context_get_style_property.argtypes = [_GtkStyleContext,c_char_p,_GValue]
+    libgtk3.gtk_style_context_get_style_property.argtypes = [_GtkStyleContext,Asciifier,_GValue]
 except:
    pass
 try:
@@ -353,7 +353,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_lookup_icon_set.restype = _GtkIconSet
-    libgtk3.gtk_style_context_lookup_icon_set.argtypes = [_GtkStyleContext,c_char_p]
+    libgtk3.gtk_style_context_lookup_icon_set.argtypes = [_GtkStyleContext,Asciifier]
 except:
    pass
 try:
@@ -363,7 +363,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_get_property.restype = None
-    libgtk3.gtk_style_context_get_property.argtypes = [_GtkStyleContext,c_char_p,GtkStateFlags,_GValue]
+    libgtk3.gtk_style_context_get_property.argtypes = [_GtkStyleContext,Asciifier,GtkStateFlags,_GValue]
 except:
    pass
 try:
@@ -403,7 +403,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_lookup_color.restype = gboolean
-    libgtk3.gtk_style_context_lookup_color.argtypes = [_GtkStyleContext,c_char_p,_GdkRGBA]
+    libgtk3.gtk_style_context_lookup_color.argtypes = [_GtkStyleContext,Asciifier,_GdkRGBA]
 except:
    pass
 try:
@@ -413,12 +413,12 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_remove_class.restype = None
-    libgtk3.gtk_style_context_remove_class.argtypes = [_GtkStyleContext,c_char_p]
+    libgtk3.gtk_style_context_remove_class.argtypes = [_GtkStyleContext,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_style_context_remove_region.restype = None
-    libgtk3.gtk_style_context_remove_region.argtypes = [_GtkStyleContext,c_char_p]
+    libgtk3.gtk_style_context_remove_region.argtypes = [_GtkStyleContext,Asciifier]
 except:
    pass
 try:
@@ -468,7 +468,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_context_has_region.restype = gboolean
-    libgtk3.gtk_style_context_has_region.argtypes = [_GtkStyleContext,c_char_p,_GtkRegionFlags]
+    libgtk3.gtk_style_context_has_region.argtypes = [_GtkStyleContext,Asciifier,_GtkRegionFlags]
 except:
    pass
 try:
@@ -496,7 +496,7 @@ try:
     libgtk3.gtk_style_context_get_padding.argtypes = [_GtkStyleContext,GtkStateFlags,_GtkBorder]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkStyleContext( gobject__GObject.GObject):
     """Class GtkStyleContext Constructors"""
     def __init__( self,  obj = None):
@@ -575,7 +575,7 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def list_regions(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gtk_style_context_list_regions( self._object ) or POINTER(c_int)())
 
     def set_background(  self, window, ):
@@ -587,7 +587,7 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def get_screen(  self, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gtk_style_context_get_screen( self._object ) or POINTER(c_int)())
 
     def save(  self, ):
@@ -611,7 +611,7 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def lookup_icon_set(  self, stock_id, ):
 
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet(None, obj=libgtk3.gtk_style_context_lookup_icon_set( self._object,stock_id ) or POINTER(c_int)())
 
     def get_direction(  self, ):
@@ -633,7 +633,7 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def get_font(  self, state, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libgtk3.gtk_style_context_get_font( self._object,state )  or POINTER(c_int)())
 
     def get(  self, state,*args  ):
@@ -648,7 +648,7 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def list_classes(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gtk_style_context_list_classes( self._object ) or POINTER(c_int)())
 
     def add_provider(  self, provider, priority, ):
@@ -759,7 +759,7 @@ class GtkStyleContext( gobject__GObject.GObject):
 
     def get_path(  self, ):
 
-        from gtk3 import GtkWidgetPath
+        from .gtk3 import GtkWidgetPath
         return GtkWidgetPath(None, obj=libgtk3.gtk_style_context_get_path( self._object ) or POINTER(c_int)())
 
     def notify_state_change(  self, window, region_id, state, state_value, ):

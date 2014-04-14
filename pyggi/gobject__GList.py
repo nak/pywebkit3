@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -461,19 +461,19 @@ class GList( object):
     """Methods"""
     def copy(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgobject.g_list_copy( self._object ) or POINTER(c_int)())
 
     def remove_all(  self, data, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_remove_all( self._object,data ) or POINTER(c_int)())
 
     def sort_with_data(  self, compare_func, user_data, ):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None,None, obj=libgobject.g_list_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_int)())
 
     def index(  self, data, ):
@@ -483,7 +483,7 @@ class GList( object):
 
     def nth_prev(  self, n, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_nth_prev( self._object,n ) or POINTER(c_int)())
 
     def length(  self, ):
@@ -493,39 +493,39 @@ class GList( object):
 
     def insert(  self, data, position, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None,None, obj=libgobject.g_list_insert( self._object,data,position ) or POINTER(c_int)())
 
     def prepend(  self, data, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_prepend( self._object,data ) or POINTER(c_int)())
 
     def reverse(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgobject.g_list_reverse( self._object ) or POINTER(c_int)())
 
     def find(  self, data, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_find( self._object,data ) or POINTER(c_int)())
 
     def remove(  self, data, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_remove( self._object,data ) or POINTER(c_int)())
 
     def delete_link(  self, link_, ):
         if link_: link_ = link_._object
         else: link_ = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_delete_link( self._object,link_ ) or POINTER(c_int)())
 
     def append(  self, data, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_append( self._object,data ) or POINTER(c_int)())
 
     def free(  self, ):
@@ -537,7 +537,7 @@ class GList( object):
         if llink: llink = llink._object
         else: llink = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_remove_link( self._object,llink ) or POINTER(c_int)())
 
     def nth_data(  self, n, ):
@@ -547,14 +547,14 @@ class GList( object):
 
     def nth(  self, n, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_nth( self._object,n ) or POINTER(c_int)())
 
     def insert_sorted(  self, data, func, ):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None,None, obj=libgobject.g_list_insert_sorted( self._object,data,func ) or POINTER(c_int)())
 
     def foreach(  self, func, user_data, ):
@@ -568,7 +568,7 @@ class GList( object):
         if list2: list2 = list2._object
         else: list2 = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_concat( self._object,list2 ) or POINTER(c_int)())
 
     def free_1(  self, ):
@@ -587,17 +587,17 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None,None, obj=libgobject.g_list_find_custom( self._object,data,func ) or POINTER(c_int)())
 
     def last(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgobject.g_list_last( self._object ) or POINTER(c_int)())
 
     def first(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgobject.g_list_first( self._object ) or POINTER(c_int)())
 
     def free_full(  self, free_func, ):
@@ -609,25 +609,25 @@ class GList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None,None,None, obj=libgobject.g_list_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_int)())
 
     def insert_before(  self, sibling, data, ):
         if sibling: sibling = sibling._object
         else: sibling = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None,None, obj=libgobject.g_list_insert_before( self._object,sibling,data ) or POINTER(c_int)())
 
     def sort(  self, compare_func, ):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList(None, obj=libgobject.g_list_sort( self._object,compare_func ) or POINTER(c_int)())
 
     @staticmethod
     def alloc():
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgobject.g_list_alloc()
  or POINTER(c_int)())

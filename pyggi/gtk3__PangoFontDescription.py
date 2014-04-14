@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -149,7 +149,7 @@ except:
    pass
 try:
     libgtk3.pango_font_description_set_family_static.restype = None
-    libgtk3.pango_font_description_set_family_static.argtypes = [_PangoFontDescription,c_char_p]
+    libgtk3.pango_font_description_set_family_static.argtypes = [_PangoFontDescription,Asciifier]
 except:
    pass
 try:
@@ -229,7 +229,7 @@ except:
    pass
 try:
     libgtk3.pango_font_description_set_family.restype = None
-    libgtk3.pango_font_description_set_family.argtypes = [_PangoFontDescription,c_char_p]
+    libgtk3.pango_font_description_set_family.argtypes = [_PangoFontDescription,Asciifier]
 except:
    pass
 try:
@@ -284,10 +284,10 @@ except:
    pass
 try:
     libgtk3.pango_font_description_from_string.restype = _PangoFontDescription
-    libgtk3.pango_font_description_from_string.argtypes = [c_char_p]
+    libgtk3.pango_font_description_from_string.argtypes = [Asciifier]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class PangoFontDescription( gobject__GBoxed.GBoxed):
     """Class PangoFontDescription Constructors"""
     def __init__( self,  obj = None):
@@ -306,7 +306,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def copy(  self, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription( obj=libgtk3.pango_font_description_copy( self._object )  or POINTER(c_int)())
 
     def equal(  self, desc2, ):
@@ -424,7 +424,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def copy_static(  self, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription( obj=libgtk3.pango_font_description_copy_static( self._object )  or POINTER(c_int)())
 
     def set_absolute_size(  self, size, ):
@@ -461,6 +461,6 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     @staticmethod
     def from_string( str,):
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription( obj=    libgtk3.pango_font_description_from_string(str, )
   or POINTER(c_int)())

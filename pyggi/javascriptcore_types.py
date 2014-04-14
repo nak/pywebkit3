@@ -58,3 +58,12 @@ class JSClassDefinition(Structure):
 kJSClassDefinitionEmpty = libjavascriptcore.kJSClassDefinitionEmpty
 
 NULL = POINTER(c_int)()
+
+
+class Asciifier(object):
+    @classmethod
+    def from_param(cls, value):
+        if isinstance(value, bytes):
+            return value
+        else:
+            return value.encode('ascii')

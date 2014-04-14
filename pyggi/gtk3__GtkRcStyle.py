@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -390,12 +390,12 @@ GtkRcTokenType = c_int
 
 try:
     libgtk3.gtk_rc_set_default_files.restype = None
-    libgtk3.gtk_rc_set_default_files.argtypes = [_GtkRcStyle,c_char_p]
+    libgtk3.gtk_rc_set_default_files.argtypes = [_GtkRcStyle,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_rc_parse.restype = None
-    libgtk3.gtk_rc_parse.argtypes = [_GtkRcStyle,c_char_p]
+    libgtk3.gtk_rc_parse.argtypes = [_GtkRcStyle,Asciifier]
 except:
    pass
 try:
@@ -410,12 +410,12 @@ except:
    pass
 try:
     libgtk3.gtk_rc_parse_string.restype = None
-    libgtk3.gtk_rc_parse_string.argtypes = [_GtkRcStyle,c_char_p]
+    libgtk3.gtk_rc_parse_string.argtypes = [_GtkRcStyle,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_rc_add_default_file.restype = None
-    libgtk3.gtk_rc_add_default_file.argtypes = [_GtkRcStyle,c_char_p]
+    libgtk3.gtk_rc_add_default_file.argtypes = [_GtkRcStyle,Asciifier]
 except:
    pass
 try:
@@ -450,7 +450,7 @@ except:
    pass
 try:
     libgtk3.gtk_rc_find_module_in_path.restype = c_char_p
-    libgtk3.gtk_rc_find_module_in_path.argtypes = [c_char_p]
+    libgtk3.gtk_rc_find_module_in_path.argtypes = [Asciifier]
 except:
    pass
 try:
@@ -470,7 +470,7 @@ except:
    pass
 try:
     libgtk3.gtk_rc_get_style_by_paths.restype = _GtkStyle
-    libgtk3.gtk_rc_get_style_by_paths.argtypes = [_GtkSettings,c_char_p,c_char_p,GType]
+    libgtk3.gtk_rc_get_style_by_paths.argtypes = [_GtkSettings,Asciifier,Asciifier,GType]
 except:
    pass
 try:
@@ -480,7 +480,7 @@ except:
    pass
 try:
     libgtk3.gtk_rc_find_pixmap_in_path.restype = c_char_p
-    libgtk3.gtk_rc_find_pixmap_in_path.argtypes = [_GtkSettings,_GScanner,c_char_p]
+    libgtk3.gtk_rc_find_pixmap_in_path.argtypes = [_GtkSettings,_GScanner,Asciifier]
 except:
    pass
 try:
@@ -493,7 +493,7 @@ try:
     libgtk3.gtk_rc_get_style.argtypes = [_GtkWidget]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkRcStyle( gobject__GObject.GObject):
     """Class GtkRcStyle Constructors"""
     def __init__( self,  obj = None):
@@ -517,7 +517,7 @@ class GtkRcStyle( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from gtk3 import GtkRcStyle
+        from .gtk3 import GtkRcStyle
         return GtkRcStyle( obj=libgtk3.gtk_rc_style_copy( self._object ) or POINTER(c_int)())
 
     def gtk_rc_reset_styles(  self, settings, ):
@@ -609,7 +609,7 @@ class GtkRcStyle( gobject__GObject.GObject):
     def gtk_rc_get_style_by_paths( settings, widget_path, class_path, type,):
         if settings: settings = settings._object
         else: settings = POINTER(c_int)()
-        from gtk3 import GtkStyle
+        from .gtk3 import GtkStyle
         return GtkStyle(None, obj=    libgtk3.gtk_rc_get_style_by_paths(settings, widget_path, class_path, type, )
  or POINTER(c_int)())
     @staticmethod
@@ -635,6 +635,6 @@ class GtkRcStyle( gobject__GObject.GObject):
     def gtk_rc_get_style( widget,):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
-        from gtk3 import GtkStyle
+        from .gtk3 import GtkStyle
         return GtkStyle( obj=    libgtk3.gtk_rc_get_style(widget, )
  or POINTER(c_int)())

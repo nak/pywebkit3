@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from javascriptcore_types import *
-from javascriptcore_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .javascriptcore_types import *
+from .javascriptcore_enums import *
 
     
 """Derived Pointer Types"""
@@ -416,7 +416,7 @@ try:
     libjavascriptcore.JSGlobalContextRetain.argtypes = [_JSGlobalContext]
 except:
    pass
-import javascriptcore__JSObject
+from . import javascriptcore__JSObject
 
 import weakref
 
@@ -440,19 +440,19 @@ class JSContext( javascriptcore__JSObject.JSObject):
 
     def GetGroup(  self, ):
 
-        from javascriptcore import JSContextGroup
+        from .javascriptcore import JSContextGroup
         return JSContextGroup( obj=libjavascriptcore.JSContextGetGroup( self._object() )  or POINTER(c_int)())
 
     def GetGlobalObject(  self, ):
 
-        from javascriptcore import JSObject
+        from .javascriptcore import JSObject
         return JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object() )  or POINTER(c_int)())
 
     @staticmethod
     def JSGlobalContextCreate( globalObjectClass,):
         if globalObjectClass: globalObjectClass = globalObjectClass._object()
         else: globalObjectClass = POINTER(c_int)()
-        from javascriptcore import JSGlobalContext
+        from .javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextCreate(globalObjectClass, )
   or POINTER(c_int)())
     @staticmethod
@@ -461,21 +461,21 @@ class JSContext( javascriptcore__JSObject.JSObject):
         else: group = POINTER(c_int)()
         if globalObjectClass: globalObjectClass = globalObjectClass._object()
         else: globalObjectClass = POINTER(c_int)()
-        from javascriptcore import JSGlobalContext
+        from .javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=    libjavascriptcore.JSGlobalContextCreateInGroup(group, globalObjectClass, )
   or POINTER(c_int)())
     @staticmethod
     def GroupRetain( group,):
         if group: group = group._object()
         else: group = POINTER(c_int)()
-        from javascriptcore import JSContextGroup
+        from .javascriptcore import JSContextGroup
         return JSContextGroup( obj=    libjavascriptcore.JSContextGroupRetain(group, )
   or POINTER(c_int)())
     @staticmethod
     def JSGlobalContextRetain( ctx,):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        from javascriptcore import JSGlobalContext
+        from .javascriptcore import JSGlobalContext
         return JSGlobalContext( obj = libjavascriptcore.JSGlobalContextRetain(ctx, )
   or POINTER(c_int)())
 
@@ -489,6 +489,53 @@ class JSContext( javascriptcore__JSObject.JSObject):
 
     def GetGlobalObject(  self, ):
        if not self._global:
-           from javascriptcore import JSObject
-           self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object() ), context = self._object())
+           from .javascriptcore import JSObject
+           self._global = JSObject( obj=libjavascriptcore.JSContextGetGlobalObject( self._object() ), context = self)
        return self._global
+
+
+    def get_jsobject(context, name , can_call=False):
+        from .javascript import strid, JavascriptClass, JSString, JSFunction
+        ident = strid(context)
+        import logging
+        logging.error("@@@@@@@@@@@@@@@Getting %s.%s", ident, name)
+        retval = JavascriptClass._globalobjects.get(ident + name)
+        
+        if retval is None:
+            names = name.split('.')
+            obj = JSContext.GetGlobalObject(context)
+            import logging
+            for n in names:
+                text = JSString.CreateWithUTF8CString( n )
+                obj = obj.GetProperty( text, NULL)
+                text.Release()
+                if not obj:
+                    break
+            if obj:
+                valtype = obj.GetType( context )
+                if valtype == kJSTypeObject.value:
+                    retval = obj.ToObject( context, NULL )
+                    can_call = retval.IsFunction(context)
+                    if can_call:
+                        retval = JSFunction( context, obj = retval, thisobj = None, name = name)
+                elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
+                    retval = obj.ToObject(context)
+                elif valtype == kJSTypeNumber.value:
+                    retval = obj.ToNumber( context, NULL )
+                elif valtype == kJSTypeBoolean.value:
+                    retval = obj.ToBoolean( context )
+                elif valtype == kJSTypeString.value:
+                    retval = obj.ToStringCopy(context, NULL )
+                else:
+                    logging.error("Invalid javascript value type encountered!: %d" % valtype)
+                    retval = None
+            if retval:
+                JavascriptClass._globalobjects[ident + name] = retval
+            #self._webview.execute_script("python.export_to_python(%s,'%s', %s);" % (name, name, int(can_call)))
+            retval = JavascriptClass._globalobjects.get(ident + name)
+            if not retval:
+                raise Exception("Unknown javascript object by name %s" % name)
+        JavascriptClass._globalobjects[ident + name] = retval
+        return retval
+
+

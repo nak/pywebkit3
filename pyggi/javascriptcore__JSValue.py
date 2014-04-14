@@ -45,8 +45,8 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from javascriptcore_types import *
+from .gtk3_types import *
+from .javascriptcore_types import *
     
     
 """Derived Pointer Types"""
@@ -348,17 +348,17 @@ class JSValue( object ):
         self._object = weakref.ref(obj)
         self._strongref = obj
         self._context = context
-        import traceback
-        traceback.print_stack()
-        import logging
-        logging.error("=====================")
-        assert( isinstance(context, POINTER(c_int)) or context == None)
-        if context and cast(context, c_void_p).value != None and \
-            obj:
-            #import logging
-            #logging.error("PROTECTING@ %s %s", self._context,
-            #              self._object())
-            libjavascriptcore.JSValueProtect( self._context,self._object() )   
+        #import traceback
+        #traceback.print_stack()
+        #import logging
+        #logging.error("=====================")
+        from .javascript import JSContext
+        assert( isinstance(context, JSContext) or context == None)
+        if context and cast(context._object(), c_void_p).value != None and \
+            obj and \
+            cast( self._strongref, c_void_p).value != None:
+            libjavascriptcore.JSValueProtect( self._context._object(),
+                                              self._object() )   
         
     """Methods"""
     def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
@@ -375,8 +375,8 @@ class JSValue( object ):
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
-        from javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx._object(),self._object(),exception ), context = ctx._object())
+        from .javascriptcore import JSObject
+        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx._object(),self._object(),exception ), context = ctx)
 
     def IsUndefined(  self, ctx, ):
         if ctx: ctx = ctx._object()
@@ -441,7 +441,7 @@ class JSValue( object ):
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
-        from javascriptcore import JSString
+        from .javascriptcore import JSString
         return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object(), exception )  or POINTER(c_int)())
 
     def ToPyString(self , ctx, exception):
@@ -477,101 +477,87 @@ class JSValue( object ):
         return libjavascriptcore.JSValueIsEqual( ctx,self._object(),b,exception )
 
     def CreateJSONString(  self, ctx, indent, exception, ):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
         if indent: indent = indent._object()
         else: indent = POINTER(c_int)()
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
-        from javascriptcore import JSString
-        return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx,self._object(),indent,exception )  or POINTER(c_int)())
+        from .javascriptcore import JSString
+        return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx._object(),self._object(),indent,exception )  or POINTER(c_int)())
 
     def Unprotect(  self, ctx, ):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
-        if cast(ctx, c_void_p).value != None:
+        if cast(ctx._object(), c_void_p).value != None:
         
-            libjavascriptcore.JSValueUnprotect( ctx,self._object() )
+            libjavascriptcore.JSValueUnprotect( ctx._object(),self._object() )
 
     def GetType(  self, ctx, ):
         #import logging,traceback
         #logging.error(traceback.format_stack())
-        if ctx: ctx = ctx._object()
+        if ctx:
+            if not isinstance(ctx, POINTER(c_int)):
+                ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
         return libjavascriptcore.JSValueGetType( ctx,self._object() )
 
     def ToNumber(  self, ctx, exception, ):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         
-        return libjavascriptcore.JSValueToNumber( ctx,self._object(),exception )
+        return libjavascriptcore.JSValueToNumber( ctx._object(),self._object(),exception )
 
     @staticmethod
     def MakeNumber( ctx, number,):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
-        from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeNumber(ctx, number, ), context=ctx)
+        from .javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeNumber(ctx._object(), number, ), context=ctx)
 
     @staticmethod
     def MakeUndefined( ctx,):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
-        from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeUndefined(ctx, ), context=ctx)
+        from .javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeUndefined(ctx._object(), ), context=ctx)
 
     @staticmethod
     def MakeNull( ctx,):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
-        from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeNull(ctx, ), context=ctx)
+        from .javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeNull(ctx._object(), ),
+                        context=ctx)
 
     @staticmethod
     def MakeFromJSONString( ctx, string,):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
         if string: string = string._object()
         else: string = POINTER(c_int)()
         libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
         libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext,_JSString]
-        from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeFromJSONString(ctx, string), context=ctx )
+        from .javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeFromJSONString(ctx._object(), string), context=ctx )
   
     @staticmethod
     def MakeBoolean( ctx, boolean,):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
-        from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx, boolean), context=ctx )
+        from .javascriptcore import JSValue
+        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx._object(), boolean), context=ctx )
 
     @staticmethod
     def MakeString( ctx, string,):
-        if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
         if string: string = string._object()
         else: string = POINTER(c_int)()
-        from javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx, string), context=ctx)
-  
+        from .javascriptcore import JSValue
+        retval =  JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx._object(), string), context=ctx)
+        retval.Unprotect(ctx)
+        return retval
 
 
     def __del__(self):
         if self._object and self._context:
-            from javascriptcore import JSContext
-            if isinstance(self._context, JSContext):
-                self._context = self._context._object()
+            from .javascriptcore import JSContext
             #import logging
             #logging.error("UNPROTECTING@ %s %s", self._context,
             #              self._object())
-            if cast(self._context, c_void_p).value != None:
-                libjavascriptcore.JSValueUnprotect( self._context,self._object() )
-        self._contexrt = None
+            if cast(self._context._object(), c_void_p).value != None and\
+                   cast(self._object(), c_void_p).value != None:
+                libjavascriptcore.JSValueUnprotect( self._context._object(),
+                                                    self._object() )
+        self._context = None
         self._strongref = None
-        
+        self._object = None
                 

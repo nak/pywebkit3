@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -428,7 +428,7 @@ try:
     libgtk3.gtk_css_section_get_end_position.argtypes = [_GtkCssSection]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class GtkCssSection( gobject__GBoxed.GBoxed):
     """Class GtkCssSection Constructors"""
     def __init__(self, obj = None):
@@ -446,12 +446,12 @@ class GtkCssSection( gobject__GBoxed.GBoxed):
 
     def get_parent(  self, ):
 
-        from gtk3 import GtkCssSection
+        from .gtk3 import GtkCssSection
         return GtkCssSection( obj=libgtk3.gtk_css_section_get_parent( self._object ) or POINTER(c_int)())
 
     def ref(  self, ):
 
-        from gtk3 import GtkCssSection
+        from .gtk3 import GtkCssSection
         return GtkCssSection( obj=libgtk3.gtk_css_section_ref( self._object ) or POINTER(c_int)())
 
     def get_section_type(  self, ):
@@ -461,7 +461,7 @@ class GtkCssSection( gobject__GBoxed.GBoxed):
 
     def get_file(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgtk3.gtk_css_section_get_file( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from javascriptcore_types import *
-from javascriptcore_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .javascriptcore_types import *
+from .javascriptcore_enums import *
 
     
 """Derived Pointer Types"""
@@ -339,12 +339,12 @@ except:
    pass
 try:
     libjavascriptcore.JSStringIsEqualToUTF8CString.restype = bool
-    libjavascriptcore.JSStringIsEqualToUTF8CString.argtypes = [_JSString,c_char_p]
+    libjavascriptcore.JSStringIsEqualToUTF8CString.argtypes = [_JSString,Asciifier]
 except:
    pass
 try:
     libjavascriptcore.JSStringGetUTF8CString.restype = size_t
-    libjavascriptcore.JSStringGetUTF8CString.argtypes = [_JSString,c_char_p,size_t]
+    libjavascriptcore.JSStringGetUTF8CString.argtypes = [_JSString,Asciifier,size_t]
 except:
    pass
 try:
@@ -364,7 +364,7 @@ except:
    pass
 try:
     libjavascriptcore.JSStringCreateWithUTF8CString.restype = _JSString
-    libjavascriptcore.JSStringCreateWithUTF8CString.argtypes = [c_char_p]
+    libjavascriptcore.JSStringCreateWithUTF8CString.argtypes = [Asciifier]
 except:
    pass
 
@@ -392,19 +392,19 @@ class JSString( object):
 
     def Retain(  self, ):
 
-        from javascriptcore import JSString
+        from .javascriptcore import JSString
         libjavascriptcore.JSStringRetain( self._object() )
         return self
 
     def IsEqualToUTF8CString(  self, b, ):
 
         
-        return libjavascriptcore.JSStringIsEqualToUTF8CString( self._object(),b )
+        return libjavascriptcore.JSStringIsEqualToUTF8CString( self._object(),str(b).encode('ascii') )
 
     def GetUTF8CString(  self, buffer, bufferSize, ):
 
         
-        return libjavascriptcore.JSStringGetUTF8CString( self._object(),buffer,bufferSize )
+        return libjavascriptcore.JSStringGetUTF8CString( self._object(),str(buffer).encode('ascii'),bufferSize )
 
     def GetMaximumUTF8CStringSize(  self, ):
 
@@ -418,13 +418,13 @@ class JSString( object):
 
     @staticmethod
     def CreateWithCharacters( chars, numChars,):
-        from javascriptcore import JSString
-        return JSString( obj=    libjavascriptcore.JSStringCreateWithCharacters(chars, numChars, )
+        from .javascriptcore import JSString
+        return JSString( obj=    libjavascriptcore.JSStringCreateWithCharacters(str(chars).encode('ascii'), numChars, )
   or POINTER(c_int)())
     @staticmethod
     def CreateWithUTF8CString( string,):
-        from javascriptcore import JSString
-        string2 =  libjavascriptcore.JSStringCreateWithUTF8CString(string, )
+        from .javascriptcore import JSString
+        string2 =  libjavascriptcore.JSStringCreateWithUTF8CString(str(string).encode('ascii'), )
         retval =  JSString( obj=   string2  or POINTER(c_int)())
         
         return retval

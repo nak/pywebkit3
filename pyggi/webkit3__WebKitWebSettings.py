@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -423,7 +423,7 @@ try:
     libwebkit3.webkit_web_settings_get_user_agent.argtypes = [_WebKitWebSettings]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebSettings( gobject__GObject.GObject):
     """Class WebKitWebSettings Constructors"""
     def __init__( self,  obj = None):
@@ -437,7 +437,7 @@ class WebKitWebSettings( gobject__GObject.GObject):
     """Methods"""
     def copy(  self, ):
 
-        from webkit3 import WebKitWebSettings
+        from .webkit3 import WebKitWebSettings
         return WebKitWebSettings( obj=libwebkit3.webkit_web_settings_copy( self._object ) or POINTER(c_int)() )
 
     def get_user_agent(  self, ):

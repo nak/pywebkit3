@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -338,12 +338,12 @@ except:
    pass
 try:
     libgio.g_file_output_stream_query_info_async.restype = None
-    libgio.g_file_output_stream_query_info_async.argtypes = [_GFileOutputStream,c_char_p,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_output_stream_query_info_async.argtypes = [_GFileOutputStream,Asciifier,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
     libgio.g_file_output_stream_query_info.restype = _GFileInfo
-    libgio.g_file_output_stream_query_info.argtypes = [_GFileOutputStream,c_char_p,_GCancellable,_GError]
+    libgio.g_file_output_stream_query_info.argtypes = [_GFileOutputStream,Asciifier,_GCancellable,_GError]
 except:
    pass
 try:
@@ -351,7 +351,7 @@ try:
     libgio.g_file_output_stream_query_info_finish.argtypes = [_GFileOutputStream,_GAsyncResult,_GError]
 except:
    pass
-import gio__GOutputStream
+from . import gio__GOutputStream
 class GFileOutputStream( gio__GOutputStream.GOutputStream):
     """Class GFileOutputStream Constructors"""
     def __init__(self, obj = None):
@@ -377,7 +377,7 @@ class GFileOutputStream( gio__GOutputStream.GOutputStream):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None,None, obj=libgio.g_file_output_stream_query_info( self._object,attributes,cancellable,error ) or POINTER(c_int)())
 
     def query_info_finish(  self, result, error, ):
@@ -386,6 +386,6 @@ class GFileOutputStream( gio__GOutputStream.GOutputStream):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None, obj=libgio.g_file_output_stream_query_info_finish( self._object,result,error ) or POINTER(c_int)())
 

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -293,7 +293,7 @@ try:
     libgtk3.gtk_application_get_windows.argtypes = [_GtkApplication]
 except:
    pass
-import gio__GApplication
+from . import gio__GApplication
 class GtkApplication( gio__GApplication.GApplication):
     """Class GtkApplication Constructors"""
     def __init__( self, flags,  obj = None):
@@ -321,6 +321,6 @@ class GtkApplication( gio__GApplication.GApplication):
 
     def get_windows(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gtk_application_get_windows( self._object ) or POINTER(c_int)())
 

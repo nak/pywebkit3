@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -425,7 +425,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_load_string.restype = None
-    libwebkit3.webkit_web_view_load_string.argtypes = [_WebKitWebView,c_char_p,c_char_p,c_char_p,c_char_p]
+    libwebkit3.webkit_web_view_load_string.argtypes = [_WebKitWebView,Asciifier,Asciifier,Asciifier,Asciifier]
 except:
    pass
 try:
@@ -445,7 +445,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_set_custom_encoding.restype = None
-    libwebkit3.webkit_web_view_set_custom_encoding.argtypes = [_WebKitWebView,c_char_p]
+    libwebkit3.webkit_web_view_set_custom_encoding.argtypes = [_WebKitWebView,Asciifier]
 except:
    pass
 try:
@@ -535,7 +535,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_load_html_string.restype = None
-    libwebkit3.webkit_web_view_load_html_string.argtypes = [_WebKitWebView,c_char_p,c_char_p]
+    libwebkit3.webkit_web_view_load_html_string.argtypes = [_WebKitWebView,Asciifier,Asciifier]
 except:
    pass
 try:
@@ -575,7 +575,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_can_show_mime_type.restype = gboolean
-    libwebkit3.webkit_web_view_can_show_mime_type.argtypes = [_WebKitWebView,c_char_p]
+    libwebkit3.webkit_web_view_can_show_mime_type.argtypes = [_WebKitWebView,Asciifier]
 except:
    pass
 try:
@@ -600,7 +600,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_execute_script.restype = None
-    libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,c_char_p]
+    libwebkit3.webkit_web_view_execute_script.argtypes = [_WebKitWebView,Asciifier]
 except:
    pass
 try:
@@ -645,12 +645,12 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_search_text.restype = gboolean
-    libwebkit3.webkit_web_view_search_text.argtypes = [_WebKitWebView,c_char_p,gboolean,gboolean,gboolean]
+    libwebkit3.webkit_web_view_search_text.argtypes = [_WebKitWebView,Asciifier,gboolean,gboolean,gboolean]
 except:
    pass
 try:
     libwebkit3.webkit_web_view_load_uri.restype = None
-    libwebkit3.webkit_web_view_load_uri.argtypes = [_WebKitWebView,c_char_p]
+    libwebkit3.webkit_web_view_load_uri.argtypes = [_WebKitWebView,Asciifier]
 except:
    pass
 try:
@@ -670,7 +670,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_open.restype = None
-    libwebkit3.webkit_web_view_open.argtypes = [_WebKitWebView,c_char_p]
+    libwebkit3.webkit_web_view_open.argtypes = [_WebKitWebView,Asciifier]
 except:
    pass
 try:
@@ -700,7 +700,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_view_mark_text_matches.restype = guint
-    libwebkit3.webkit_web_view_mark_text_matches.argtypes = [_WebKitWebView,c_char_p,gboolean,guint]
+    libwebkit3.webkit_web_view_mark_text_matches.argtypes = [_WebKitWebView,Asciifier,gboolean,guint]
 except:
    pass
 try:
@@ -758,7 +758,7 @@ try:
     libwebkit3.webkit_web_view_can_go_back_or_forward.argtypes = [_WebKitWebView,gint]
 except:
    pass
-import gtk3__GtkContainer
+from . import gtk3__GtkContainer
 class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     """Class WebKitWebView Constructors"""
     def __init__( self,  obj = None):
@@ -839,12 +839,12 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_paste_target_list(  self, ):
 
-        from gtk3 import GtkTargetList
+        from .gtk3 import GtkTargetList
         return GtkTargetList( obj=libwebkit3.webkit_web_view_get_paste_target_list( self._object ) or POINTER(c_int)())
 
     def get_dom_document(  self, ):
 
-        from webkit3 import WebKitDOMDocument
+        from .webkit3 import WebKitDOMDocument
         return WebKitDOMDocument( obj=libwebkit3.webkit_web_view_get_dom_document( self._object ) or POINTER(c_int)() )
 
     def can_cut_clipboard(  self, ):
@@ -946,7 +946,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_focused_frame(  self, ):
 
-        from webkit3 import WebKitWebFrame
+        from .webkit3 import WebKitWebFrame
         return WebKitWebFrame(None,None, obj=libwebkit3.webkit_web_view_get_focused_frame( self._object ) or POINTER(c_int)() )
 
     def can_show_mime_type(  self, mime_type, ):
@@ -956,12 +956,12 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_window_features(  self, ):
 
-        from webkit3 import WebKitWebWindowFeatures
+        from .webkit3 import WebKitWebWindowFeatures
         return WebKitWebWindowFeatures(None, obj=libwebkit3.webkit_web_view_get_window_features( self._object ) or POINTER(c_int)() )
 
     def get_back_forward_list(  self, ):
 
-        from webkit3 import WebKitWebBackForwardList
+        from .webkit3 import WebKitWebBackForwardList
         return WebKitWebBackForwardList( obj=libwebkit3.webkit_web_view_get_back_forward_list( self._object ) or POINTER(c_int)() )
 
     def can_go_forward(  self, ):
@@ -971,7 +971,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_settings(  self, ):
 
-        from webkit3 import WebKitWebSettings
+        from .webkit3 import WebKitWebSettings
         return WebKitWebSettings(None, obj=libwebkit3.webkit_web_view_get_settings( self._object ) or POINTER(c_int)() )
 
     def execute_script(  self, script, ):
@@ -986,7 +986,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_inspector(  self, ):
 
-        from webkit3 import WebKitWebInspector
+        from .webkit3 import WebKitWebInspector
         return WebKitWebInspector( obj=libwebkit3.webkit_web_view_get_inspector( self._object ) or POINTER(c_int)() )
 
     def get_transparent(  self, ):
@@ -1001,7 +1001,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_icon_pixbuf(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libwebkit3.webkit_web_view_get_icon_pixbuf( self._object ) or POINTER(c_int)())
 
     def can_undo(  self, ):
@@ -1036,7 +1036,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_main_frame(  self, ):
 
-        from webkit3 import WebKitWebFrame
+        from .webkit3 import WebKitWebFrame
         return WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
 
     def get_progress(  self, ):
@@ -1047,7 +1047,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def open(  self, uri, ):
 
         
-        libwebkit3.webkit_web_view_open( self._object,uri )
+        libwebkit3.webkit_web_view_open( self._object,str(uri).encode('ascii') )
 
     def set_full_content_zoom(  self, full_content_zoom, ):
 
@@ -1066,14 +1066,14 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def try_get_favicon_pixbuf(  self, width, height, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libwebkit3.webkit_web_view_try_get_favicon_pixbuf( self._object,width,height ) or POINTER(c_int)())
 
     def get_hit_test_result(  self, event, ):
         if event: event = event._object
         else: event = POINTER(c_int)()
 
-        from webkit3 import WebKitHitTestResult
+        from .webkit3 import WebKitHitTestResult
         return WebKitHitTestResult( obj=libwebkit3.webkit_web_view_get_hit_test_result( self._object,event ) or POINTER(c_int)() )
 
     def mark_text_matches(  self, string, case_sensitive, limit, ):
@@ -1105,12 +1105,12 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
 
     def get_copy_target_list(  self, ):
 
-        from gtk3 import GtkTargetList
+        from .gtk3 import GtkTargetList
         return GtkTargetList( obj=libwebkit3.webkit_web_view_get_copy_target_list( self._object ) or POINTER(c_int)())
 
     def get_viewport_attributes(  self, ):
 
-        from webkit3 import WebKitViewportAttributes
+        from .webkit3 import WebKitViewportAttributes
         return WebKitViewportAttributes( obj=libwebkit3.webkit_web_view_get_viewport_attributes( self._object ) or POINTER(c_int)() )
 
     def set_highlight_text_matches(  self, highlight, ):
@@ -1151,14 +1151,13 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             libwebkit3.webkit_web_view_new.argtypes = []
             self._object = libwebkit3.webkit_web_view_new()
         try:
-            from javascript import ScriptEnv
-            self._env = ScriptEnv(self)
+            self._context = self.get_main_frame().get_global_context()
         except:
             import logging
             import traceback
             logging.error(traceback.format_exc())
             logging.error("Unable to load javascript engine.  Ophidian interface to DOM will not function")
-            self._env = None
+            self._context = None
 
     def get_main_frame(  self, ):
         #workaround since it appears calling get_main_frame twice on
@@ -1167,20 +1166,19 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
             return self._main_frame
         libwebkit3.webkit_web_view_get_main_frame.restype = _WebKitWebFrame
         libwebkit3.webkit_web_view_get_main_frame.argtypes = [_WebKitWebView]
-        from webkit3 import WebKitWebFrame
+        from .webkit3 import WebKitWebFrame
         self._main_frame =  WebKitWebFrame(None, obj=libwebkit3.webkit_web_view_get_main_frame( self._object ) or POINTER(c_int)() )
         return self._main_frame
 
         
     def get_context(self):
-        return self.get_main_frame().get_global_context()
+        return self._context
     
-    def get_env(self):
-        return self._env
-    
+    def get_env( self ):
+        return self._context
     
     def on_resource_load_finished(self, func, *args ):
-        from gobject import GObject
+        from .gobject import GObject
         def WebView_C_Callable( _webview, _webframe, _webresource, data):
             from .webkit3__WebKitWebFrame import WebKitWebFrame
             from .webkit3__WebKitWebResource import WebKitWebResource
@@ -1191,7 +1189,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
         GObject.connect( self, 'resource-load-finished', func, *args, cfunc = (CFUNC(WebView_C_Callable),CFUNC))
         
     def on_view_ready(self, func, *args):
-        from gobject import GObject
+        from .gobject import GObject
         GObject.connect( self, 'load-finished', func, *args)
 
 

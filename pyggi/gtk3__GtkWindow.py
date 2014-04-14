@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -458,7 +458,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_icon_from_file.restype = gboolean
-    libgtk3.gtk_window_set_icon_from_file.argtypes = [_GtkWindow,c_char_p,_GError]
+    libgtk3.gtk_window_set_icon_from_file.argtypes = [_GtkWindow,Asciifier,_GError]
 except:
    pass
 try:
@@ -683,7 +683,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_role.restype = None
-    libgtk3.gtk_window_set_role.argtypes = [_GtkWindow,c_char_p]
+    libgtk3.gtk_window_set_role.argtypes = [_GtkWindow,Asciifier]
 except:
    pass
 try:
@@ -708,7 +708,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_title.restype = None
-    libgtk3.gtk_window_set_title.argtypes = [_GtkWindow,c_char_p]
+    libgtk3.gtk_window_set_title.argtypes = [_GtkWindow,Asciifier]
 except:
    pass
 try:
@@ -723,7 +723,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_icon_name.restype = None
-    libgtk3.gtk_window_set_icon_name.argtypes = [_GtkWindow,c_char_p]
+    libgtk3.gtk_window_set_icon_name.argtypes = [_GtkWindow,Asciifier]
 except:
    pass
 try:
@@ -773,7 +773,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_parse_geometry.restype = gboolean
-    libgtk3.gtk_window_parse_geometry.argtypes = [_GtkWindow,c_char_p]
+    libgtk3.gtk_window_parse_geometry.argtypes = [_GtkWindow,Asciifier]
 except:
    pass
 try:
@@ -793,7 +793,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_startup_id.restype = None
-    libgtk3.gtk_window_set_startup_id.argtypes = [_GtkWindow,c_char_p]
+    libgtk3.gtk_window_set_startup_id.argtypes = [_GtkWindow,Asciifier]
 except:
    pass
 try:
@@ -813,7 +813,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_wmclass.restype = None
-    libgtk3.gtk_window_set_wmclass.argtypes = [_GtkWindow,c_char_p,c_char_p]
+    libgtk3.gtk_window_set_wmclass.argtypes = [_GtkWindow,Asciifier,Asciifier]
 except:
    pass
 try:
@@ -863,7 +863,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_default_icon_name.restype = None
-    libgtk3.gtk_window_set_default_icon_name.argtypes = [_GtkWindow,c_char_p]
+    libgtk3.gtk_window_set_default_icon_name.argtypes = [_GtkWindow,Asciifier]
 except:
    pass
 try:
@@ -943,7 +943,7 @@ except:
    pass
 try:
     libgtk3.gtk_window_set_default_icon_from_file.restype = gboolean
-    libgtk3.gtk_window_set_default_icon_from_file.argtypes = [c_char_p,_GError]
+    libgtk3.gtk_window_set_default_icon_from_file.argtypes = [Asciifier,_GError]
 except:
    pass
 try:
@@ -961,7 +961,7 @@ try:
     libgtk3.gtk_window_list_toplevels.argtypes = []
 except:
    pass
-import gtk3__GtkBin
+from . import gtk3__GtkBin
 class GtkWindow( gtk3__GtkBin.GtkBin):
     """Class GtkWindow Constructors"""
     def __init__( self, type,  obj = None):
@@ -994,7 +994,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_group(  self, ):
 
-        from gtk3 import GtkWindowGroup
+        from .gtk3 import GtkWindowGroup
         return GtkWindowGroup(None, obj=libgtk3.gtk_window_get_group( self._object ) or POINTER(c_int)())
 
     def set_has_resize_grip(  self, value, ):
@@ -1213,7 +1213,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_focus(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_window_get_focus( self._object ) or POINTER(c_int)())
 
     def set_auto_startup_notification(  self, setting, ):
@@ -1252,7 +1252,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_icon(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_window_get_icon( self._object ) or POINTER(c_int)())
 
     def set_role(  self, role, ):
@@ -1283,7 +1283,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def set_title(  self, title, ):
 
         
-        libgtk3.gtk_window_set_title( self._object,title )
+        libgtk3.gtk_window_set_title( self._object, str(title).encode('ascii') )
 
     def set_transient_for(  self, parent, ):
         if parent: parent = parent._object
@@ -1326,7 +1326,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_transient_for(  self, ):
 
-        from gtk3 import GtkWindow
+        from .gtk3 import GtkWindow
         return GtkWindow( obj=libgtk3.gtk_window_get_transient_for( self._object ) or POINTER(c_int)())
 
     def get_window_type(  self, ):
@@ -1358,12 +1358,12 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_application(  self, ):
 
-        from gtk3 import GtkApplication
+        from .gtk3 import GtkApplication
         return GtkApplication(None,None, obj=libgtk3.gtk_window_get_application( self._object ) or POINTER(c_int)())
 
     def get_default_widget(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_window_get_default_widget( self._object ) or POINTER(c_int)())
 
     def set_mnemonic_modifier(  self, modifier, ):
@@ -1390,7 +1390,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_screen(  self, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gtk_window_get_screen( self._object ) or POINTER(c_int)())
 
     def set_wmclass(  self, wmclass_name, wmclass_class, ):
@@ -1454,7 +1454,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_icon_list(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gtk_window_get_icon_list( self._object ) or POINTER(c_int)())
 
     def set_keep_above(  self, setting, ):
@@ -1549,11 +1549,11 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     @staticmethod
     def get_default_icon_list():
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgtk3.gtk_window_get_default_icon_list()
  or POINTER(c_int)())
     @staticmethod
     def list_toplevels():
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgtk3.gtk_window_list_toplevels()
  or POINTER(c_int)())

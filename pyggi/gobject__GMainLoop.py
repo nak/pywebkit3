@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -415,7 +415,7 @@ try:
     libgobject.g_main_loop_run.argtypes = [_GMainLoop]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GMainLoop( gobject__GObject.GObject):
     """Class GMainLoop Constructors"""
     def __init__( self, is_running,  obj = None):
@@ -434,7 +434,7 @@ class GMainLoop( gobject__GObject.GObject):
 
     def get_context(  self, ):
 
-        from gobject import GMainContext
+        from .gobject import GMainContext
         return GMainContext(None,None, obj=libgobject.g_main_loop_get_context( self._object ) or POINTER(c_int)())
 
     def quit(  self, ):
@@ -444,7 +444,7 @@ class GMainLoop( gobject__GObject.GObject):
 
     def ref(  self, ):
 
-        from gobject import GMainLoop
+        from .gobject import GMainLoop
         return GMainLoop( obj=libgobject.g_main_loop_ref( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):
@@ -463,7 +463,14 @@ from .gobject import GMainContext
 def idle_add( func , *args, **kargs):
     cfunc = c_void_p()
     def C_Callable( param ):
-        retval = func( *args, **kargs )
+        try:
+            retval = func( *args, **kargs )
+        except:
+            import traceback
+            import logging
+            logging.error("Exception in Glib callback to client: \n%s"%
+                          traceback.format_exc())
+            retval = None
         if not retval:
             cfuncs.remove(cfunc)
             retval = 0

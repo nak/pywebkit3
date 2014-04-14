@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -360,7 +360,7 @@ try:
     libgtk3.gtk_window_group_remove_window.argtypes = [_GtkWindowGroup,_GtkWindow]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkWindowGroup( gobject__GObject.GObject):
     """Class GtkWindowGroup Constructors"""
     def __init__( self,  obj = None):
@@ -374,7 +374,7 @@ class GtkWindowGroup( gobject__GObject.GObject):
     """Methods"""
     def get_current_grab(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_window_group_get_current_grab( self._object ) or POINTER(c_int)())
 
     def add_window(  self, window, ):
@@ -386,14 +386,14 @@ class GtkWindowGroup( gobject__GObject.GObject):
 
     def list_windows(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gtk_window_group_list_windows( self._object ) or POINTER(c_int)())
 
     def get_current_device_grab(  self, device, ):
         if device: device = device._object
         else: device = POINTER(c_int)()
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_window_group_get_current_device_grab( self._object,device ) or POINTER(c_int)())
 
     def remove_window(  self, window, ):

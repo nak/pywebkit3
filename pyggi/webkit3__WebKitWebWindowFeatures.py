@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -63,7 +63,7 @@ try:
     libwebkit3.webkit_web_window_features_equal.argtypes = [_WebKitWebWindowFeatures,_WebKitWebWindowFeatures]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebWindowFeatures( gobject__GObject.GObject):
     """Class WebKitWebWindowFeatures Constructors"""
     def __init__( self,  obj = None):

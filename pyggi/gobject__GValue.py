@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -517,7 +517,7 @@ class GValue( object):
 
     def init(  self, g_type, ):
 
-        from gobject import GValue
+        from .gobject import GValue
         return GValue(None, obj=libgobject.g_value_init( self._object,g_type ) or POINTER(c_int)())
 
     def peek_pointer(  self, ):
@@ -532,7 +532,7 @@ class GValue( object):
 
     def reset(  self, ):
 
-        from gobject import GValue
+        from .gobject import GValue
         return GValue( obj=libgobject.g_value_reset( self._object ) or POINTER(c_int)())
 
     def set_instance(  self, instance, ):

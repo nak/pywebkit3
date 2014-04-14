@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -216,7 +216,7 @@ except:
    pass
 try:
     libgtk3.gtk_icon_factory_add.restype = None
-    libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,c_char_p,_GtkIconSet]
+    libgtk3.gtk_icon_factory_add.argtypes = [_GtkIconFactory,Asciifier,_GtkIconSet]
 except:
    pass
 try:
@@ -226,15 +226,15 @@ except:
    pass
 try:
     libgtk3.gtk_icon_factory_lookup.restype = _GtkIconSet
-    libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,c_char_p]
+    libgtk3.gtk_icon_factory_lookup.argtypes = [_GtkIconFactory,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_icon_factory_lookup_default.restype = _GtkIconSet
-    libgtk3.gtk_icon_factory_lookup_default.argtypes = [c_char_p]
+    libgtk3.gtk_icon_factory_lookup_default.argtypes = [Asciifier]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkIconFactory( gobject__GObject.GObject):
     """Class GtkIconFactory Constructors"""
     def __init__( self,  obj = None):
@@ -265,11 +265,11 @@ class GtkIconFactory( gobject__GObject.GObject):
 
     def lookup(  self, stock_id, ):
 
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet(None, obj=libgtk3.gtk_icon_factory_lookup( self._object,stock_id ) or POINTER(c_int)())
 
     @staticmethod
     def lookup_default( stock_id,):
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet( obj=    libgtk3.gtk_icon_factory_lookup_default(stock_id, )
  or POINTER(c_int)())

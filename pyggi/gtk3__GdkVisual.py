@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -524,7 +524,7 @@ try:
     libgtk3.gdk_screen_get_system_visual.argtypes = [_GdkScreen]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkVisual( gobject__GObject.GObject):
     """Class GdkVisual Constructors"""
     def __init__(self, obj = None):
@@ -584,12 +584,12 @@ class GdkVisual( gobject__GObject.GObject):
     def gdk_screen_get_rgba_visual( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_screen_get_rgba_visual(screen, )
  or POINTER(c_int)())
     @staticmethod
     def get_best_with_both( depth, visual_type,):
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best_with_both(depth, visual_type, )
  or POINTER(c_int)())
     @staticmethod
@@ -599,17 +599,17 @@ class GdkVisual( gobject__GObject.GObject):
 
     @staticmethod
     def get_best_with_depth( depth,):
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best_with_depth(depth, )
  or POINTER(c_int)())
     @staticmethod
     def get_system():
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_system()
  or POINTER(c_int)())
     @staticmethod
     def get_best_with_type( visual_type,):
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best_with_type(visual_type, )
  or POINTER(c_int)())
     @staticmethod
@@ -619,18 +619,18 @@ class GdkVisual( gobject__GObject.GObject):
 
     @staticmethod
     def get_best():
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_visual_get_best()
  or POINTER(c_int)())
     @staticmethod
     def gdk_list_visuals():
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgtk3.gdk_list_visuals()
  or POINTER(c_int)())
     @staticmethod
     def gdk_screen_get_system_visual( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=    libgtk3.gdk_screen_get_system_visual(screen, )
  or POINTER(c_int)())

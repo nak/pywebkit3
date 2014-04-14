@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -197,7 +197,7 @@ GtkRcTokenType = c_int
 
 try:
     libgtk3.g_object_disconnect.restype = None
-    libgtk3.g_object_disconnect.argtypes = [_GObject,c_char_p]
+    libgtk3.g_object_disconnect.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
@@ -212,7 +212,7 @@ except:
    pass
 try:
     libgtk3.g_object_steal_data.restype = gpointer
-    libgtk3.g_object_steal_data.argtypes = [_GObject,c_char_p]
+    libgtk3.g_object_steal_data.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
@@ -232,7 +232,7 @@ except:
    pass
 try:
     libgtk3.g_object_set_data.restype = None
-    libgtk3.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
+    libgtk3.g_object_set_data.argtypes = [_GObject,Asciifier,gpointer]
 except:
    pass
 try:
@@ -242,12 +242,12 @@ except:
    pass
 try:
     libgtk3.g_object_connect.restype = gpointer
-    libgtk3.g_object_connect.argtypes = [_GObject,c_char_p,]
+    libgtk3.g_object_connect.argtypes = [_GObject,Asciifier,]
 except:
    pass
 try:
     libgtk3.g_object_notify.restype = None
-    libgtk3.g_object_notify.argtypes = [_GObject,c_char_p]
+    libgtk3.g_object_notify.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
@@ -257,7 +257,7 @@ except:
    pass
 try:
     libgtk3.g_object_replace_data.restype = gboolean
-    libgtk3.g_object_replace_data.argtypes = [_GObject,c_char_p,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
+    libgtk3.g_object_replace_data.argtypes = [_GObject,Asciifier,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
 except:
    pass
 try:
@@ -272,12 +272,12 @@ except:
    pass
 try:
     libgtk3.g_object_set_property.restype = None
-    libgtk3.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
+    libgtk3.g_object_set_property.argtypes = [_GObject,Asciifier,_GValue]
 except:
    pass
 try:
     libgtk3.g_object_set.restype = None
-    libgtk3.g_object_set.argtypes = [_GObject,c_char_p,]
+    libgtk3.g_object_set.argtypes = [_GObject,Asciifier,]
 except:
    pass
 try:
@@ -352,7 +352,7 @@ except:
    pass
 try:
     libgtk3.g_object_get.restype = None
-    libgtk3.g_object_get.argtypes = [_GObject,c_char_p,]
+    libgtk3.g_object_get.argtypes = [_GObject,Asciifier,]
 except:
    pass
 try:
@@ -362,7 +362,7 @@ except:
    pass
 try:
     libgtk3.g_object_dup_data.restype = gpointer
-    libgtk3.g_object_dup_data.argtypes = [_GObject,c_char_p,GDuplicateFunc,gpointer]
+    libgtk3.g_object_dup_data.argtypes = [_GObject,Asciifier,GDuplicateFunc,gpointer]
 except:
    pass
 try:
@@ -372,12 +372,12 @@ except:
    pass
 try:
     libgtk3.g_object_get_data.restype = gpointer
-    libgtk3.g_object_get_data.argtypes = [_GObject,c_char_p]
+    libgtk3.g_object_get_data.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
     libgtk3.g_object_get_property.restype = None
-    libgtk3.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
+    libgtk3.g_object_get_property.argtypes = [_GObject,Asciifier,_GValue]
 except:
    pass
 try:
@@ -392,7 +392,7 @@ except:
    pass
 try:
     libgtk3.g_object_set_data_full.restype = None
-    libgtk3.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
+    libgtk3.g_object_set_data_full.argtypes = [_GObject,Asciifier,gpointer,GDestroyNotify]
 except:
    pass
 try:
@@ -407,12 +407,12 @@ except:
    pass
 try:
     libgtk3.g_object_class_override_property.restype = None
-    libgtk3.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
+    libgtk3.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,Asciifier]
 except:
    pass
 try:
     libgtk3.g_object_class_find_property.restype = _GParamSpec
-    libgtk3.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
+    libgtk3.g_object_class_find_property.argtypes = [_GObjectClass,Asciifier]
 except:
    pass
 try:
@@ -432,7 +432,7 @@ except:
    pass
 try:
     libgtk3.g_object_interface_find_property.restype = _GParamSpec
-    libgtk3.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
+    libgtk3.g_object_interface_find_property.argtypes = [gpointer,Asciifier]
 except:
    pass
 try:
@@ -447,7 +447,7 @@ class GObject( object):
         else:
             libgtk3.g_object_new.restype = POINTER(c_int)
             
-            libgtk3.g_object_new.argtypes = [GType,c_char_p,]
+            libgtk3.g_object_new.argtypes = [GType,Asciifier,]
             self._object = libgtk3.g_object_new(object_type, first_property_name, *args )
 
     """Methods"""
@@ -711,12 +711,12 @@ class GObject( object):
     def class_find_property( oclass, property_name,):
         if oclass: oclass = oclass._object
         else: oclass = POINTER(c_int)()
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_class_find_property(oclass, property_name, )
  or POINTER(c_int)())
     @staticmethod
     def interface_list_properties( g_iface, n_properties_p,):
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_interface_list_properties(g_iface, n_properties_p, )
  or POINTER(c_int)())
     @staticmethod
@@ -730,12 +730,12 @@ class GObject( object):
     def class_list_properties( oclass, n_properties,):
         if oclass: oclass = oclass._object
         else: oclass = POINTER(c_int)()
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_class_list_properties(oclass, n_properties, )
  or POINTER(c_int)())
     @staticmethod
     def interface_find_property( g_iface, property_name,):
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_interface_find_property(g_iface, property_name, )
  or POINTER(c_int)())
     @staticmethod

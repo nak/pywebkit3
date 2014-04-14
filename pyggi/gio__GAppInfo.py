@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -265,12 +265,12 @@ except:
    pass
 try:
     libgio.g_app_info_set_as_last_used_for_type.restype = gboolean
-    libgio.g_app_info_set_as_last_used_for_type.argtypes = [_GAppInfo,c_char_p,_GError]
+    libgio.g_app_info_set_as_last_used_for_type.argtypes = [_GAppInfo,Asciifier,_GError]
 except:
    pass
 try:
     libgio.g_app_info_reset_type_associations.restype = None
-    libgio.g_app_info_reset_type_associations.argtypes = [_GAppInfo,c_char_p]
+    libgio.g_app_info_reset_type_associations.argtypes = [_GAppInfo,Asciifier]
 except:
    pass
 try:
@@ -290,17 +290,17 @@ except:
    pass
 try:
     libgio.g_app_info_add_supports_type.restype = gboolean
-    libgio.g_app_info_add_supports_type.argtypes = [_GAppInfo,c_char_p,_GError]
+    libgio.g_app_info_add_supports_type.argtypes = [_GAppInfo,Asciifier,_GError]
 except:
    pass
 try:
     libgio.g_app_info_set_as_default_for_extension.restype = gboolean
-    libgio.g_app_info_set_as_default_for_extension.argtypes = [_GAppInfo,c_char_p,_GError]
+    libgio.g_app_info_set_as_default_for_extension.argtypes = [_GAppInfo,Asciifier,_GError]
 except:
    pass
 try:
     libgio.g_app_info_remove_supports_type.restype = gboolean
-    libgio.g_app_info_remove_supports_type.argtypes = [_GAppInfo,c_char_p,_GError]
+    libgio.g_app_info_remove_supports_type.argtypes = [_GAppInfo,Asciifier,_GError]
 except:
    pass
 try:
@@ -360,7 +360,7 @@ except:
    pass
 try:
     libgio.g_app_info_set_as_default_for_type.restype = gboolean
-    libgio.g_app_info_set_as_default_for_type.argtypes = [_GAppInfo,c_char_p,_GError]
+    libgio.g_app_info_set_as_default_for_type.argtypes = [_GAppInfo,Asciifier,_GError]
 except:
    pass
 try:
@@ -375,7 +375,7 @@ except:
    pass
 try:
     libgio.g_app_info_get_all_for_type.restype = _GList
-    libgio.g_app_info_get_all_for_type.argtypes = [c_char_p]
+    libgio.g_app_info_get_all_for_type.argtypes = [Asciifier]
 except:
    pass
 try:
@@ -385,35 +385,35 @@ except:
    pass
 try:
     libgio.g_app_info_create_from_commandline.restype = _GAppInfo
-    libgio.g_app_info_create_from_commandline.argtypes = [c_char_p,c_char_p,GAppInfoCreateFlags,_GError]
+    libgio.g_app_info_create_from_commandline.argtypes = [Asciifier,Asciifier,GAppInfoCreateFlags,_GError]
 except:
    pass
 try:
     libgio.g_app_info_get_recommended_for_type.restype = _GList
-    libgio.g_app_info_get_recommended_for_type.argtypes = [c_char_p]
+    libgio.g_app_info_get_recommended_for_type.argtypes = [Asciifier]
 except:
    pass
 try:
     libgio.g_app_info_get_fallback_for_type.restype = _GList
-    libgio.g_app_info_get_fallback_for_type.argtypes = [c_char_p]
+    libgio.g_app_info_get_fallback_for_type.argtypes = [Asciifier]
 except:
    pass
 try:
     libgio.g_app_info_launch_default_for_uri.restype = gboolean
-    libgio.g_app_info_launch_default_for_uri.argtypes = [c_char_p,_GAppLaunchContext,_GError]
+    libgio.g_app_info_launch_default_for_uri.argtypes = [Asciifier,_GAppLaunchContext,_GError]
 except:
    pass
 try:
     libgio.g_app_info_get_default_for_uri_scheme.restype = _GAppInfo
-    libgio.g_app_info_get_default_for_uri_scheme.argtypes = [c_char_p]
+    libgio.g_app_info_get_default_for_uri_scheme.argtypes = [Asciifier]
 except:
    pass
 try:
     libgio.g_app_info_get_default_for_type.restype = _GAppInfo
-    libgio.g_app_info_get_default_for_type.argtypes = [c_char_p,gboolean]
+    libgio.g_app_info_get_default_for_type.argtypes = [Asciifier,gboolean]
 except:
    pass
-import gio__GInterface
+from . import gio__GInterface
 class GAppInfo( gio__GInterface.GInterface):
     """Class GAppInfo Constructors"""
     def __init__(self, obj = None):
@@ -482,7 +482,7 @@ class GAppInfo( gio__GInterface.GInterface):
 
     def dup(  self, ):
 
-        from gobject import GAppInfo
+        from .gobject import GAppInfo
         return GAppInfo( obj=libgio.g_app_info_dup( self._object ) or POINTER(c_int)())
 
     def can_delete(  self, ):
@@ -527,7 +527,7 @@ class GAppInfo( gio__GInterface.GInterface):
 
     def get_icon(  self, ):
 
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=libgio.g_app_info_get_icon( self._object ) or POINTER(c_int)())
 
     def launch(  self, files, launch_context, error, ):
@@ -560,12 +560,12 @@ class GAppInfo( gio__GInterface.GInterface):
 
     @staticmethod
     def get_all_for_type( content_type,):
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgio.g_app_info_get_all_for_type(content_type, )
  or POINTER(c_int)())
     @staticmethod
     def get_all():
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgio.g_app_info_get_all()
  or POINTER(c_int)())
     @staticmethod
@@ -574,17 +574,17 @@ class GAppInfo( gio__GInterface.GInterface):
         else: flags = POINTER(c_int)()
         if error: error = error._object
         else: error = POINTER(c_int)()
-        from gobject import GAppInfo
+        from .gobject import GAppInfo
         return GAppInfo( obj=    libgio.g_app_info_create_from_commandline(commandline, application_name, flags, error, )
  or POINTER(c_int)())
     @staticmethod
     def get_recommended_for_type( content_type,):
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgio.g_app_info_get_recommended_for_type(content_type, )
  or POINTER(c_int)())
     @staticmethod
     def get_fallback_for_type( content_type,):
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgio.g_app_info_get_fallback_for_type(content_type, )
  or POINTER(c_int)())
     @staticmethod
@@ -598,11 +598,11 @@ class GAppInfo( gio__GInterface.GInterface):
 
     @staticmethod
     def get_default_for_uri_scheme( uri_scheme,):
-        from gobject import GAppInfo
+        from .gobject import GAppInfo
         return GAppInfo( obj=    libgio.g_app_info_get_default_for_uri_scheme(uri_scheme, )
  or POINTER(c_int)())
     @staticmethod
     def get_default_for_type( content_type, must_support_uris,):
-        from gobject import GAppInfo
+        from .gobject import GAppInfo
         return GAppInfo( obj=    libgio.g_app_info_get_default_for_type(content_type, must_support_uris, )
  or POINTER(c_int)())

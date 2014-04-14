@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -392,7 +392,7 @@ GtkRcTokenType = c_int
 
 try:
     libgio.g_app_launch_context_launch_failed.restype = None
-    libgio.g_app_launch_context_launch_failed.argtypes = [_GAppLauncContext,_GAppLaunchContext,c_char_p]
+    libgio.g_app_launch_context_launch_failed.argtypes = [_GAppLauncContext,_GAppLaunchContext,Asciifier]
 except:
    pass
 try:
@@ -405,7 +405,7 @@ try:
     libgio.g_app_launch_context_get_startup_notify_id.argtypes = [_GAppLauncContext,_GAppLaunchContext,_GAppInfo,_GList]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GAppLauncContext( gobject__GObject.GObject):
     """Class GAppLauncContext Constructors"""
     def __init__( self,  obj = None):

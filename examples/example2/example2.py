@@ -25,11 +25,9 @@ window.show_all()
 
 #setup the environment and get the javascript object
 color_block = None
-from pyggi.javascript import ScriptEnv
-env = ScriptEnv( webview)
 #must get the object only when javascript has been processed,
 #so setup callback 
-
+env = webview.get_env()
 def import_element():
     global color_block
     color_block = env.get_jsobject( "color_block", can_call=False)

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -324,7 +324,7 @@ try:
     libgtk3.gdk_disable_multidevice.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkDeviceManager( gobject__GObject.GObject):
     """Class GdkDeviceManager Constructors"""
     def __init__(self, obj = None):
@@ -332,17 +332,17 @@ class GdkDeviceManager( gobject__GObject.GObject):
     """Methods"""
     def get_display(  self, ):
 
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_device_manager_get_display( self._object ) or POINTER(c_int)())
 
     def list_devices(  self, type, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_device_manager_list_devices( self._object,type ) or POINTER(c_int)())
 
     def get_client_pointer(  self, ):
 
-        from gobject import GdkDevice
+        from .gobject import GdkDevice
         return GdkDevice( obj=libgtk3.gdk_device_manager_get_client_pointer( self._object ) or POINTER(c_int)())
 
     @staticmethod

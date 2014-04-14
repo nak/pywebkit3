@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -437,17 +437,17 @@ class GByteArray( object):
     """Methods"""
     def ref(  self, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray( obj=libgobject.g_byte_array_ref( self._object ) or POINTER(c_int)())
 
     def set_size(  self, length, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None, obj=libgobject.g_byte_array_set_size( self._object,length ) or POINTER(c_int)())
 
     def remove_index_fast(  self, index_, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None, obj=libgobject.g_byte_array_remove_index_fast( self._object,index_ ) or POINTER(c_int)())
 
     def sort_with_data(  self, compare_func, user_data, ):
@@ -471,7 +471,7 @@ class GByteArray( object):
 
     def append(  self, data, len, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_byte_array_append( self._object,data,len ) or POINTER(c_int)())
 
     def free(  self, free_segment, ):
@@ -481,21 +481,21 @@ class GByteArray( object):
 
     def remove_index(  self, index_, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None, obj=libgobject.g_byte_array_remove_index( self._object,index_ ) or POINTER(c_int)())
 
     def remove_range(  self, index_, length, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_byte_array_remove_range( self._object,index_,length ) or POINTER(c_int)())
 
     def prepend(  self, data, len, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_byte_array_prepend( self._object,data,len ) or POINTER(c_int)())
 
     @staticmethod
     def new_take( data, len,):
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None, obj=    libgobject.g_byte_array_new_take(data, len, )
  or POINTER(c_int)())

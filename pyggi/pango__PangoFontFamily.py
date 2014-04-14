@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -339,7 +339,7 @@ try:
     libpango.pango_font_family_is_monospace.argtypes = [_PangoFontFamily]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoFontFamily( gobject__GObject.GObject):
     """Class PangoFontFamily Constructors"""
     def __init__(self, obj = None):

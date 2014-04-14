@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -384,7 +384,7 @@ try:
     libwebkit3.webkit_web_resource_get_uri.argtypes = [_WebKitWebResource]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebResource( gobject__GObject.GObject):
     """Class WebKitWebResource Constructors"""
     def __init__( self, frame_name,  obj = None):
@@ -392,7 +392,7 @@ class WebKitWebResource( gobject__GObject.GObject):
         else:
             libwebkit3.webkit_web_resource_new.restype = POINTER(c_int)
             
-            libwebkit3.webkit_web_resource_new.argtypes = [c_char_p]
+            libwebkit3.webkit_web_resource_new.argtypes = [Asciifier]
             self._object = libwebkit3.webkit_web_resource_new(frame_name, )
 
     """Methods"""

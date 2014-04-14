@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -454,7 +454,7 @@ except:
    pass
 try:
     libgtk3.gdk_cursor_new_from_name.restype = _GdkCursor
-    libgtk3.gdk_cursor_new_from_name.argtypes = [_GdkDisplay,c_char_p]
+    libgtk3.gdk_cursor_new_from_name.argtypes = [_GdkDisplay,Asciifier]
 except:
    pass
 try:
@@ -462,7 +462,7 @@ try:
     libgtk3.gdk_cursor_new_for_display.argtypes = [_GdkDisplay,GdkCursorType]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkCursor( gobject__GObject.GObject):
     """Class GdkCursor Constructors"""
     def __init__( self, cursor_type,  obj = None):
@@ -481,7 +481,7 @@ class GdkCursor( gobject__GObject.GObject):
 
     def ref(  self, ):
 
-        from gobject import GdkCursor
+        from .gobject import GdkCursor
         return GdkCursor( obj=libgtk3.gdk_cursor_ref( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):
@@ -491,12 +491,12 @@ class GdkCursor( gobject__GObject.GObject):
 
     def get_display(  self, ):
 
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_cursor_get_display( self._object ) or POINTER(c_int)())
 
     def get_image(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gdk_cursor_get_image( self._object ) or POINTER(c_int)())
 
     @staticmethod
@@ -505,20 +505,20 @@ class GdkCursor( gobject__GObject.GObject):
         else: display = POINTER(c_int)()
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
-        from gobject import GdkCursor
+        from .gobject import GdkCursor
         return GdkCursor(None, obj=    libgtk3.gdk_cursor_new_from_pixbuf(display, pixbuf, x, y, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_name( display, name,):
         if display: display = display._object
         else: display = POINTER(c_int)()
-        from gobject import GdkCursor
+        from .gobject import GdkCursor
         return GdkCursor(None, obj=    libgtk3.gdk_cursor_new_from_name(display, name, )
  or POINTER(c_int)())
     @staticmethod
     def new_for_display( display, cursor_type,):
         if display: display = display._object
         else: display = POINTER(c_int)()
-        from gobject import GdkCursor
+        from .gobject import GdkCursor
         return GdkCursor(None, obj=    libgtk3.gdk_cursor_new_for_display(display, cursor_type, )
  or POINTER(c_int)())

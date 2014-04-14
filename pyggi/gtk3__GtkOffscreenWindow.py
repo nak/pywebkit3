@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -215,7 +215,7 @@ try:
     libgtk3.gtk_offscreen_window_get_pixbuf.argtypes = [_GtkOffscreenWindow]
 except:
    pass
-import gtk3__GtkWindow
+from . import gtk3__GtkWindow
 class GtkOffscreenWindow( gtk3__GtkWindow.GtkWindow):
     """Class GtkOffscreenWindow Constructors"""
     def __init__( self,  obj = None):
@@ -229,6 +229,6 @@ class GtkOffscreenWindow( gtk3__GtkWindow.GtkWindow):
     """Methods"""
     def get_pixbuf(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_offscreen_window_get_pixbuf( self._object ) or POINTER(c_int)())
 

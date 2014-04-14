@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -462,7 +462,7 @@ except:
    pass
 try:
     libgio.g_output_stream_write.restype = gssize
-    libgio.g_output_stream_write.argtypes = [_GOutputStream,c_char_p,gsize,_GCancellable,_GError]
+    libgio.g_output_stream_write.argtypes = [_GOutputStream,Asciifier,gsize,_GCancellable,_GError]
 except:
    pass
 try:
@@ -477,7 +477,7 @@ except:
    pass
 try:
     libgio.g_output_stream_write_all.restype = gboolean
-    libgio.g_output_stream_write_all.argtypes = [_GOutputStream,c_char_p,gsize,POINTER(gsize),_GCancellable,_GError]
+    libgio.g_output_stream_write_all.argtypes = [_GOutputStream,Asciifier,gsize,POINTER(gsize),_GCancellable,_GError]
 except:
    pass
 try:
@@ -497,7 +497,7 @@ except:
    pass
 try:
     libgio.g_output_stream_write_async.restype = None
-    libgio.g_output_stream_write_async.argtypes = [_GOutputStream,c_char_p,gsize,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_output_stream_write_async.argtypes = [_GOutputStream,Asciifier,gsize,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -510,7 +510,7 @@ try:
     libgio.g_output_stream_clear_pending.argtypes = [_GOutputStream]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GOutputStream( gobject__GObject.GObject):
     """Class GOutputStream Constructors"""
     def __init__(self, obj = None):

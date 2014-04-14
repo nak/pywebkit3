@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -359,7 +359,7 @@ try:
     libpango.pango_item_copy.argtypes = [_PangoItem]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class PangoItem( gobject__GBoxed.GBoxed):
     """Class PangoItem Constructors"""
     def __init__( self,  obj = None):
@@ -373,7 +373,7 @@ class PangoItem( gobject__GBoxed.GBoxed):
     """Methods"""
     def split(  self, split_index, split_offset, ):
 
-        from gtk3 import PangoItem
+        from .gtk3 import PangoItem
         return PangoItem(None,None, obj=libpango.pango_item_split( self._object,split_index,split_offset )  or POINTER(c_int)())
 
     def free(  self, ):
@@ -383,6 +383,6 @@ class PangoItem( gobject__GBoxed.GBoxed):
 
     def copy(  self, ):
 
-        from gtk3 import PangoItem
+        from .gtk3 import PangoItem
         return PangoItem( obj=libpango.pango_item_copy( self._object )  or POINTER(c_int)())
 

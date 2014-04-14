@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -358,12 +358,12 @@ class GBytes( object):
 
     def ref(  self, ):
 
-        from gobject import GBytes
+        from .gobject import GBytes
         return GBytes( obj=libgobject.g_bytes_ref( self._object ) or POINTER(c_int)())
 
     def new_from_bytes(  self, offset, length, ):
 
-        from gobject import GBytes
+        from .gobject import GBytes
         return GBytes(None,None, obj=libgobject.g_bytes_new_from_bytes( self._object,offset,length ) or POINTER(c_int)())
 
     def get_size(  self, ):
@@ -373,7 +373,7 @@ class GBytes( object):
 
     def unref_to_array(  self, ):
 
-        from gobject import GByteArray
+        from .gobject import GByteArray
         return GByteArray(None,None, obj=libgobject.g_bytes_unref_to_array( self._object ) or POINTER(c_int)())
 
     def unref_to_data(  self, size, ):
@@ -383,7 +383,7 @@ class GBytes( object):
 
     @staticmethod
     def new_static( data, size,):
-        from gobject import GBytes
+        from .gobject import GBytes
         return GBytes(None, obj=    libgobject.g_bytes_new_static(data, size, )
  or POINTER(c_int)())
     @staticmethod
@@ -393,12 +393,12 @@ class GBytes( object):
 
     @staticmethod
     def new_take( data, size,):
-        from gobject import GBytes
+        from .gobject import GBytes
         return GBytes(None, obj=    libgobject.g_bytes_new_take(data, size, )
  or POINTER(c_int)())
     @staticmethod
     def new_with_free_func( data, size, free_func, user_data,):
-        from gobject import GBytes
+        from .gobject import GBytes
         return GBytes(None, obj=    libgobject.g_bytes_new_with_free_func(data, size, free_func, user_data, )
  or POINTER(c_int)())
     @staticmethod

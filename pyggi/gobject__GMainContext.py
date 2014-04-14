@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -522,7 +522,7 @@ try:
     libgobject.g_main_context_ref_thread_default.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GMainContext( gobject__GObject.GObject):
     """Class GMainContext Constructors"""
     def __init__( self, pid,  obj = None):
@@ -541,7 +541,7 @@ class GMainContext( gobject__GObject.GObject):
         if funcs: funcs = funcs._object
         else: funcs = POINTER(c_int)()
 
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None,None, obj=libgobject.g_main_context_find_source_by_funcs_user_data( self._object,funcs,user_data ) or POINTER(c_int)())
 
     def pending(  self, ):
@@ -587,7 +587,7 @@ class GMainContext( gobject__GObject.GObject):
 
     def find_source_by_id(  self, source_id, ):
 
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None, obj=libgobject.g_main_context_find_source_by_id( self._object,source_id ) or POINTER(c_int)())
 
     def check(  self, max_priority, fds, n_fds, ):
@@ -624,7 +624,7 @@ class GMainContext( gobject__GObject.GObject):
 
     def ref(  self, ):
 
-        from gobject import GMainContext
+        from .gobject import GMainContext
         return GMainContext( obj=libgobject.g_main_context_ref( self._object ) or POINTER(c_int)())
 
     def wait(  self, cond, mutex, ):
@@ -668,7 +668,7 @@ class GMainContext( gobject__GObject.GObject):
 
     def find_source_by_user_data(  self, user_data, ):
 
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None, obj=libgobject.g_main_context_find_source_by_user_data( self._object,user_data ) or POINTER(c_int)())
 
     @staticmethod
@@ -688,12 +688,12 @@ class GMainContext( gobject__GObject.GObject):
 
     @staticmethod
     def g_main_current_source():
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None, obj=    libgobject.g_main_current_source()
  or POINTER(c_int)())
     @staticmethod
     def g_idle_source_new():
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None, obj=    libgobject.g_idle_source_new()
  or POINTER(c_int)())
     @staticmethod
@@ -703,7 +703,7 @@ class GMainContext( gobject__GObject.GObject):
 
     @staticmethod
     def default():
-        from gobject import GMainContext
+        from .gobject import GMainContext
         return GMainContext(None, obj=    libgobject.g_main_context_default()
  or POINTER(c_int)())
     @staticmethod
@@ -727,7 +727,7 @@ class GMainContext( gobject__GObject.GObject):
 
     @staticmethod
     def g_timeout_source_new_seconds( interval,):
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None, obj=    libgobject.g_timeout_source_new_seconds(interval, )
  or POINTER(c_int)())
     @staticmethod
@@ -751,11 +751,11 @@ class GMainContext( gobject__GObject.GObject):
 
     @staticmethod
     def get_thread_default():
-        from gobject import GMainContext
+        from .gobject import GMainContext
         return GMainContext(None, obj=    libgobject.g_main_context_get_thread_default()
  or POINTER(c_int)())
     @staticmethod
     def ref_thread_default():
-        from gobject import GMainContext
+        from .gobject import GMainContext
         return GMainContext(None, obj=    libgobject.g_main_context_ref_thread_default()
  or POINTER(c_int)())

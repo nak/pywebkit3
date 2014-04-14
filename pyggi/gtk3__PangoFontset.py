@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -183,7 +183,7 @@ try:
     libgtk3.pango_fontset_get_font.argtypes = [_PangoFontset,guint]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoFontset( gobject__GObject.GObject):
     """Class PangoFontset Constructors"""
     def __init__(self, obj = None):
@@ -191,11 +191,11 @@ class PangoFontset( gobject__GObject.GObject):
     """Methods"""
     def get_metrics(  self, ):
 
-        from gtk3 import PangoFontMetrics
+        from .gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_fontset_get_metrics( self._object )  or POINTER(c_int)())
 
     def get_font(  self, wc, ):
 
-        from gtk3 import PangoFont
+        from .gtk3 import PangoFont
         return PangoFont( obj=libgtk3.pango_fontset_get_font( self._object,wc )  or POINTER(c_int)())
 

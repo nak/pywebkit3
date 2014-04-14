@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -382,7 +382,7 @@ GDriveStartStopType = c_int
 
 try:
     libwebkit3.webkit_network_response_set_uri.restype = None
-    libwebkit3.webkit_network_response_set_uri.argtypes = [_WebKitNetworkResponse,c_char_p]
+    libwebkit3.webkit_network_response_set_uri.argtypes = [_WebKitNetworkResponse,Asciifier]
 except:
    pass
 try:
@@ -400,7 +400,7 @@ try:
     libwebkit3.webkit_network_response_get_suggested_filename.argtypes = [_WebKitNetworkResponse]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitNetworkResponse( gobject__GObject.GObject):
     """Class WebKitNetworkResponse Constructors"""
     def __init__(self, obj = None):

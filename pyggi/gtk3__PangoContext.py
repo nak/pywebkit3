@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -174,7 +174,7 @@ GtkAlign = c_int
 
 try:
     libgtk3.pango_find_paragraph_boundary.restype = None
-    libgtk3.pango_find_paragraph_boundary.argtypes = [_PangoContext,c_char_p,gint,POINTER(gint),POINTER(gint)]
+    libgtk3.pango_find_paragraph_boundary.argtypes = [_PangoContext,Asciifier,gint,POINTER(gint),POINTER(gint)]
 except:
    pass
 try:
@@ -184,12 +184,12 @@ except:
    pass
 try:
     libgtk3.pango_itemize.restype = _GList
-    libgtk3.pango_itemize.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
+    libgtk3.pango_itemize.argtypes = [_PangoContext,Asciifier,gint,gint,_PangoAttrList,_PangoAttrIterator]
 except:
    pass
 try:
     libgtk3.pango_shape_full.restype = None
-    libgtk3.pango_shape_full.argtypes = [_PangoContext,c_char_p,gint,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+    libgtk3.pango_shape_full.argtypes = [_PangoContext,Asciifier,gint,Asciifier,gint,_PangoAnalysis,_PangoGlyphString]
 except:
    pass
 try:
@@ -199,7 +199,7 @@ except:
    pass
 try:
     libgtk3.pango_get_log_attrs.restype = None
-    libgtk3.pango_get_log_attrs.argtypes = [_PangoContext,c_char_p,gint,gint,_PangoLanguage,_PangoLogAttr,gint]
+    libgtk3.pango_get_log_attrs.argtypes = [_PangoContext,Asciifier,gint,gint,_PangoLanguage,_PangoLogAttr,gint]
 except:
    pass
 try:
@@ -229,7 +229,7 @@ except:
    pass
 try:
     libgtk3.pango_default_break.restype = None
-    libgtk3.pango_default_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
+    libgtk3.pango_default_break.argtypes = [_PangoContext,Asciifier,gint,_PangoAnalysis,_PangoLogAttr,gint]
 except:
    pass
 try:
@@ -239,7 +239,7 @@ except:
    pass
 try:
     libgtk3.pango_itemize_with_base_dir.restype = _GList
-    libgtk3.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,c_char_p,gint,gint,_PangoAttrList,_PangoAttrIterator]
+    libgtk3.pango_itemize_with_base_dir.argtypes = [_PangoContext,PangoDirection,Asciifier,gint,gint,_PangoAttrList,_PangoAttrIterator]
 except:
    pass
 try:
@@ -264,7 +264,7 @@ except:
    pass
 try:
     libgtk3.pango_shape.restype = None
-    libgtk3.pango_shape.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoGlyphString]
+    libgtk3.pango_shape.argtypes = [_PangoContext,Asciifier,gint,_PangoAnalysis,_PangoGlyphString]
 except:
    pass
 try:
@@ -299,7 +299,7 @@ except:
    pass
 try:
     libgtk3.pango_break.restype = None
-    libgtk3.pango_break.argtypes = [_PangoContext,c_char_p,gint,_PangoAnalysis,_PangoLogAttr,gint]
+    libgtk3.pango_break.argtypes = [_PangoContext,Asciifier,gint,_PangoAnalysis,_PangoLogAttr,gint]
 except:
    pass
 try:
@@ -312,7 +312,7 @@ try:
     libgtk3.pango_reorder_items.argtypes = [_GList]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoContext( gobject__GObject.GObject):
     """Class PangoContext Constructors"""
     def __init__( self,  obj = None):
@@ -342,7 +342,7 @@ class PangoContext( gobject__GObject.GObject):
         if cached_iter: cached_iter = cached_iter._object
         else: cached_iter = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.pango_itemize( self._object,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
 
     def pango_shape_full(  self, item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs, ):
@@ -377,7 +377,7 @@ class PangoContext( gobject__GObject.GObject):
 
     def get_matrix(  self, ):
 
-        from gtk3 import PangoMatrix
+        from .gtk3 import PangoMatrix
         return PangoMatrix( obj=libgtk3.pango_context_get_matrix( self._object )  or POINTER(c_int)())
 
     def set_font_description(  self, desc, ):
@@ -398,7 +398,7 @@ class PangoContext( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        from gtk3 import PangoFontset
+        from .gtk3 import PangoFontset
         return PangoFontset( obj=libgtk3.pango_context_load_fontset( self._object,desc,language )  or POINTER(c_int)())
 
     def pango_default_break(  self, text, length, analysis, attrs, attrs_len, ):
@@ -421,7 +421,7 @@ class PangoContext( gobject__GObject.GObject):
         if cached_iter: cached_iter = cached_iter._object
         else: cached_iter = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.pango_itemize_with_base_dir( self._object,base_dir,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
 
     def list_families(  self, families, n_families, ):
@@ -440,12 +440,12 @@ class PangoContext( gobject__GObject.GObject):
 
     def get_language(  self, ):
 
-        from gtk3 import PangoLanguage
+        from .gtk3 import PangoLanguage
         return PangoLanguage( obj=libgtk3.pango_context_get_language( self._object )  or POINTER(c_int)())
 
     def get_font_map(  self, ):
 
-        from gtk3 import PangoFontMap
+        from .gtk3 import PangoFontMap
         return PangoFontMap( obj=libgtk3.pango_context_get_font_map( self._object )  or POINTER(c_int)())
 
     def pango_shape(  self, text, length, analysis, glyphs, ):
@@ -474,7 +474,7 @@ class PangoContext( gobject__GObject.GObject):
 
     def get_font_description(  self, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription( obj=libgtk3.pango_context_get_font_description( self._object )  or POINTER(c_int)())
 
     def get_metrics(  self, desc, language, ):
@@ -483,7 +483,7 @@ class PangoContext( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        from gtk3 import PangoFontMetrics
+        from .gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_context_get_metrics( self._object,desc,language )  or POINTER(c_int)())
 
     def get_gravity_hint(  self, ):
@@ -504,13 +504,13 @@ class PangoContext( gobject__GObject.GObject):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
-        from gtk3 import PangoFont
+        from .gtk3 import PangoFont
         return PangoFont( obj=libgtk3.pango_context_load_font( self._object,desc )  or POINTER(c_int)())
 
     @staticmethod
     def pango_reorder_items( logical_items,):
         if logical_items: logical_items = logical_items._object
         else: logical_items = POINTER(c_int)()
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgtk3.pango_reorder_items(logical_items, )
  or POINTER(c_int)())

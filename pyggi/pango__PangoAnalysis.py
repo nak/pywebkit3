@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -338,7 +338,7 @@ cairo_extend_t = c_int
 cairo_filter_t = c_int
 CairoPatternype_t = c_int
 
-import gobject__GObject
+from . import gobject__GObject
 class PangoAnalysis( gobject__GObject.GObject):
     """Class PangoAnalysis Constructors"""
     def __init__(self, obj = None):

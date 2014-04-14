@@ -2,6 +2,10 @@ from .. import  gobject
 from ..gobject import GObject
 from ..gtk3 import libgtk3
 
+try:
+    test = unicode
+except:
+    unicode = str
 import inspect
 import numbers
 import threading
@@ -11,6 +15,7 @@ import logging
 import traceback
 import importlib
 import logging
+import collections
 
 document = None
 
@@ -23,24 +28,22 @@ def strid(obj):
 def jsEqual(obj1, obj2):
     return cast(obj1._object(), c_void_p).value == cast(obj2._object(), c_void_p).value 
 
-funccount = 0
-def to_jsfunction(env, func):
-    global funccount
+def to_jsfunction( ctxt, func):
     def C_Callable( context, function, thisObject,  argumentCount, arguments, exception):
-        context = JSObject(obj = context, context = None)
+        context = JSContext(obj = context)
         if cast(thisObject, c_void_p).value == None:
             thisObject= None
         else:
             thisObject = JSObject(obj = thisObject, context = context._object())
         try:
             args = [thisObject]
-            for i in xrange(argumentCount):
-                argument = JSValue(obj = arguments[i], context = context._object())
+            for i in range(argumentCount):
+                argument = JSValue(obj = arguments[i],
+                                   context = context)
                 valtype = argument.GetType(context)
                 if valtype == kJSTypeObject.value:
                     jsobject = argument.ToObject(context, NULL)
-                    can_call = jsobject.IsFunction(context)
-                    pyarg = _wrapJs(env, jsobject, None, can_call=can_call)
+                    pyarg = _wrapJs(context, jsobject, None)
                     #pyarg._javascript_obj = jsobject
                     args.append(pyarg)
                 elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
@@ -61,12 +64,23 @@ def to_jsfunction(env, func):
                     return c_longlong(0)
             assert(len(args) == argumentCount +1)
             try:
-                args2 = args[1:]
-                retval = func(*args2)
+                if len(args) >=1:
+                    args2 = args[1:]
+                else:
+                    args2 = args
+                retval = func(None, None)#func(*args2)
             except TypeError:
-                retval = func(*args)
-            del args
-            
+                try:
+                    retval = func(None,None)#*args)
+                except:
+                    import traceback
+                    import logging
+                    logging.error(traceback.format_exc())
+            except:
+                import traceback
+                import logging
+                logging.error(traceback.format_exc())
+                
             if retval == None:
                 retval = JSValue.MakeNull(context)
             elif isinstance(retval, numbers.Number):
@@ -83,19 +97,21 @@ def to_jsfunction(env, func):
             retval =  cast(byref(retval._object()),POINTER(c_longlong)).contents
             return retval.value
         except:
+            import traceback
+            import logging
             logging.error(traceback.format_exc())
             logging.error("Error in calling argument function ")
             return 0
     cfunc = JSObjectCallAsFunctionCallback(C_Callable)
-    jsobj = JSObject.MakeFunctionWithCallback(env._context, NULL, cfunc)
+    jsobj = JSObject.MakeFunctionWithCallback(ctxt, NULL, cfunc)
     assert ( not cast(jsobj._object(),c_void_p).value == None)
     jsobj._callable = cfunc
+    jsobj._func = func
     return jsobj
 
 
 
-def to_pythonjs( env, val): 
-    context = env._context
+def to_pythonjs( context, val): 
     valtype= val.GetType(context)
     if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
         return None
@@ -109,13 +125,11 @@ def to_pythonjs( env, val):
         cstring = (c_char * (length))()
         jstext.GetUTF8CString(cstring, length)
         jstext.Release()
-        retval = cstring.value
+        retval = cstring.value.decode('ascii')
         del cstring
     elif valtype == kJSTypeObject.value:
         jsobject = val.ToObject(context, NULL)
-        can_call = jsobject.IsFunction(context)
-        pyarg = _wrapJs(env, jsobject, None, can_call=can_call)
-        retval = pyarg
+        retval = _wrapJs(context, jsobject, None)
     else:
         logging.error("Invalid javascript value type encountered!: %d" % valtype)
         retval = None
@@ -124,17 +138,14 @@ def to_pythonjs( env, val):
 
 class JSFunction(JSObject):
 
-    def __init__(self, env, obj, thisobj, name):
-        JSObject.__init__(self, obj=obj._object(), context = env._context._object())
+    def __init__(self, context, obj, thisobj, name):
+        assert(isinstance(context, JSContext))
+        JSObject.__init__(self, obj=obj._object(), context = context)
         self._thisjsobj = thisobj
         self._jsfuncobj = obj
         if thisobj and cast(thisobj._object(), c_void_p ).value == None:
             self._thisjsobj = None
-        self._env  = env
-        self._callable = None
         self._name = name
-        self._count = 0
-        self._jsArgs = []
         
     def __call__(self, *args):
         #We must keep the javascript arguments active while this object is active 
@@ -142,63 +153,63 @@ class JSFunction(JSObject):
         #when the jsFunction will be invoked (CallAsFunction seems to squirrel it 
         #away until it is called).  It is assumed that a second call will be made
         #to the jsfunction by the core engine only when a first call has been fully
-        #processed (args will then go away).  
-        self._jsArgs = []
-        self._count += 1
-            
+        #processed (args will then go away).
+        jsArgs = []
         for arg in args:
             if isinstance(arg, numbers.Number):
-                jsarg = JSValue.MakeNumber( self._env._context, arg)
-            elif isinstance(arg, str):
-                cstring = c_char_p(arg)
-                jsstring = JSString.CreateWithUTF8CString(cstring)
-                jsarg = JSValue.MakeString(self._env._context, jsstring)
+                jsarg = JSValue.MakeNumber( self._context, arg)
+                
+            elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
+                jsstring = JSString.CreateWithUTF8CString(arg)
+                jsarg = JSValue.MakeString(self._context, jsstring)
                 ##according to doc, arg now retains the string, but memory leak ensues if we don't do this??
                 jsstring.Release()
-                del cstring
             elif isinstance( arg, JSObject):
                 jsarg = arg
-            elif callable(arg):
-                jsarg = to_jsfunction(self._env, arg)
-                assert(jsarg.IsFunction(self._env._context))
-                self._callable = arg#must maintain this to prevent from going out of scope!!
+            elif isinstance(arg, collections.Callable):
+                jsarg = to_jsfunction(self._context, arg)
+                assert(jsarg.IsFunction(self._context))
             elif isinstance( arg, dict):
                 this = self
                 class Arg(JavascriptClass):
-                    def __init__(self, env):
-                        JavascriptClass.__init__(self, env, "tmpjs%d"%len(this._jsArgs))
+                    def __init__(self, context):
+                        #JavascriptClass.__init__(self, context, "tmpjs%d"%len(this._jsArgs))
                 
-                        for key,value in arg.iteritems( ):
-                            if callable(value):
-                                value = to_jsfunction(this._env, value)
+                        for key,value in arg.items( ):
+                            if isinstance(value, collections.Callable):
+                                value = to_jsfunction(this._context, value)
                             setattr(self, key, value)
                                 
                 jsarg = Arg()._javascript_obj
-                
-            
-            self._jsArgs.append( jsarg )
-        if len(self._jsArgs)==0:
-            self._jsArgs = NULL
-        
-        retval =  self._jsfuncobj.CallAsFunction( self._env._context, self._thisjsobj,
-                                        c_int(len(args)),
-                                        self._jsArgs,
-                                        NULL)
+            elif arg is None:
+                jsarg =  JSObject(NULL )
+            else:
+                import logging
+                logging.error("ARG UNKNOWN %s"%type(arg))
+            jsArgs.append( jsarg )
+        if len(jsArgs)==0:
+            jsArgs = NULL
+        import logging
+        retval =  self._jsfuncobj.CallAsFunction( self._context,
+                                                  self._thisjsobj,
+                                                  c_int(len(args)),
+                                                  jsArgs,
+                                                  NULL)
         if cast( retval._object(), c_void_p).value == None:
             return None
-        return  to_pythonjs(self._env, retval)
+        return  to_pythonjs(self._context, retval)
 
 
         
 class JavascriptClass(object):
-    """Class instance of which are accessible within a javascript"""
+    """Class instance which is accessible within a javascript script"""
     _methods = None
     _methods_by_name = {}
     _globalobjects = {}
     _constructors = {}
 
     @classmethod
-    def _populate(cls , env, ns, _module):
+    def _populate(cls , context, ns, _module):
         """
         Called once per derived class to populate the
         methods made available to javascript
@@ -215,7 +226,7 @@ class JavascriptClass(object):
                 try:
                     context = JSContext(obj=ctxt)
                     val = JSObject(obj = obj, context= ctxt)
-                    pyobj = env._jsobjects[ strid(val) ]
+                    pyobj = context._jsobjects[ strid(val) ]
                     #get the method to be called
                     methodname = cls.staticmethods[index].name
                     to_call = cls._methods_by_name.get(methodname)
@@ -227,7 +238,7 @@ class JavascriptClass(object):
                     arguments = cast(arguments, POINTER(POINTER(c_int)))
                     ctxt = cast(ctxt, POINTER(c_int))
                     args = []
-                    for i in xrange(argumentCount):
+                    for i in range(argumentCount):
                         if isinstance(arguments[i], numbers.Number):
                             args.append(arguments[i])
                         else:
@@ -250,9 +261,8 @@ class JavascriptClass(object):
                                 del cstring
                             elif valtype == kJSTypeObject.value:
                                 jsobject = JSValue(arguments[i], context = ctxt).ToObject(context, NULL)
-                                can_call = jsobject.IsFunction(context)
                                 
-                                pyarg = _wrapJs(env, jsobject, "arg%s" % i, can_call=can_call)
+                                pyarg = _wrapJs(context, jsobject, "arg%s" % i)
                               
                                 #pyarg._javascript_obj = jsobject
                                 args.append(pyarg)
@@ -274,7 +284,7 @@ class JavascriptClass(object):
                     elif isinstance(value, JSObject):
                         retval = value
                     elif isinstance(value, JavascriptClass):
-                        retval = JSObject(obj  = value._javascript_obj._object(), context = context._object()  )
+                        retval = JSObject(obj  = value._javascript_obj._object(), context = context  )
                     else:
                         retval = NULL
                         return cast(byref(retval), POINTER(c_longlong)).contents.value
@@ -291,7 +301,7 @@ class JavascriptClass(object):
 
         #poptulate all the classmethods into the javascript
         #class definition structure:
-        for index in xrange(len(cls._methods)):
+        for index in range(len(cls._methods)):
             name = cls._methods[index][0]
             call_method = getfunc(index)
             cls.staticmethods[index].name = c_char_p(name)
@@ -336,17 +346,17 @@ class JavascriptClass(object):
         cls._classDef = JSObject.JSClassCreate(byref(jscd))
         cls._jscd = jscd #don't let it go out of scope!!!
         if not _module:
-            if not cls.__name__ in JavascriptClass._constructors and not cls.__name__=="ScriptEnv":
+            if not cls.__name__ in JavascriptClass._constructors and not cls.__name__=="JSContext":
                 #export this class  to be visible in javascript namespace
-                cls.export_class(env, ns)
+                cls.export_class( context, ns)
 
 
-    def __init__(self, env, var_name, **kargs):
-        assert isinstance(env, ScriptEnv)
+    def __init__(self, context, var_name, **kargs):
+        assert isinstance(context, JSContext)
 
         #see if the module was explcitly called out:
-        self._env = env
-        if not "_module" in kargs.iterkeys():
+        self._context = context
+        if not "_module" in iter(kargs.keys()):
             _module = None
         else:
             _module = kargs['_module']
@@ -376,21 +386,21 @@ class JavascriptClass(object):
         if modulename:
             #if we determined a module name, get/create the namespace
             #associated with it
-            ns = Namespace.get_namespace(env, modulename)
+            ns = Namespace.get_namespace( context, modulename)
             assert(ns)
-            assert(str(cast(env._context._object(), c_void_p)) + modulename in Namespace._namespaces.iterkeys())
+            assert(str(cast(context._object(), c_void_p)) + modulename in iter(Namespace._namespaces.keys()))
         else:
             if var_name and modulename == "":
                 #have global namespace:
-                ns = Namespace.get_global(env)                
+                ns = Namespace.get_global( context )                
                 assert(ns)
                 #now make the object and squirrel it away:
-                #self._javascript_obj = JSObject.Make( env._context, cls._classDef, None )   
+                #self._javascript_obj = JSObject.Make( context, cls._classDef, None )   
             else:
                 ns = None
                 #self._javascript_obj = None
 
-        cls._populate(env , ns, _module)
+        cls._populate( context , ns, _module)
 
         if ns:
             name = ns.get_name() + "." + var_name.split('.')[-1]
@@ -400,40 +410,38 @@ class JavascriptClass(object):
         if not modulename:
             if var_name and modulename == "":
                 #now make the object and squirrel it away:
-                self._javascript_obj = JSObject.Make(env._context, cls._classDef, None)   
+                self._javascript_obj = JSObject.Make( context, cls._classDef, None)   
             elif var_name == "":
                 #have no namespace.  This should only happen
                 #if the object self is itself the global namespace
-                self._javascript_obj = env._context.GetGlobalObject()
+                self._javascript_obj = context.GetGlobalObject()
         else:
-            self._javascript_obj = JSObject.Make(env._context, cls._classDef, None)  
+            self._javascript_obj = JSObject.Make( context, cls._classDef, None)  
 
-        env._jsobjects[ strid(self._javascript_obj)] = self
-        #self._javascript_obj.Protect( env._context)
+        context._jsobjects[ strid(self._javascript_obj)] = self
+        #self._javascript_obj.Protect( context)
         if ns and self._javascript_obj:
             #if not global namespace, add javascript namespace object
             #explicitly to ns
             text = JSString.CreateWithUTF8CString(var_name.split('.')[-1])
-            ns._javascript_obj.SetProperty(env._context,
-                                           text,
-                                           self._javascript_obj,
-                                           kJSPropertyAttributeNone,
-                                           NULL)
+            ns._javascript_obj.SetProperty( context,
+                                            text,
+                                            self._javascript_obj,
+                                            kJSPropertyAttributeNone,
+                                            NULL)
             
             text.Release()
-        #assert(self._javascript_obj)
-        self._env = env
                
     def __del__(self):
         if hasattr(self, '_varname'):
             self._env._webview.execute_script("delete %s;" % self._varname)
             
     @classmethod
-    def export_class(cls, env, ns):
+    def export_class(cls, context , ns):
         """Export a class to be visible within javascript"""
-        assert(isinstance(env, ScriptEnv))
-        if not issubclass(cls, Constructor) and not cls.__name__ in JavascriptClass._constructors.iterkeys():
-            js_constructor = JavascriptClass.get_constructor(cls, env, ns)
+        assert(isinstance(context, JSContext))
+        if not issubclass(cls, Constructor) and not cls.__name__ in iter(JavascriptClass._constructors.keys()):
+            js_constructor = JavascriptClass.get_constructor(cls, context, ns)
             text = JSString.CreateWithUTF8CString("%s" % (cls.__name__.split('.')[-1]))
             JavascriptClass._constructors[cls.__name__] = js_constructor
             text.Release()
@@ -441,7 +449,7 @@ class JavascriptClass(object):
     @staticmethod
     def get_constructor(pyclass, context, namespace):
         if namespace == None:
-            namespace = Namespace.get_namespace(context._env, "")#global
+            namespace = Namespace.get_namespace(context, "")#global
         assert(isinstance(namespace, Namespace))
         pyclass._constructor = Constructor
         retval = pyclass._constructor(pyclass, context, namespace)
@@ -466,8 +474,7 @@ class Constructor(JavascriptClass):
         within javascript
         """
         try:
-            logging.error("ARGS ARE %s"%[a for a in args])
-            return self._pyclass(self._env, *args)
+            return self._pyclass(self._context, *args)
         except:
             logging.error("Exception instantiating %s" % self._pyclass)
             logging.error(traceback.format_exc())
@@ -477,10 +484,10 @@ class Namespace(JavascriptClass):
 
     _namespaces = {}
     
-    def __init__(self, env, module):
-        assert(isinstance(env, ScriptEnv))
+    def __init__(self, context, module):
+        assert(isinstance(context, JSContext))
         module_name = module.__name__ if module else ""
-        self._context = env._context
+        self._context = context
         self._module = module
         if module_name == "__main__":
             module_name = ""
@@ -488,16 +495,15 @@ class Namespace(JavascriptClass):
         
         if module and module_name != "": 
             module_name = module.__name__
-            JavascriptClass.__init__(self, env, module_name , _module=module)
+            JavascriptClass.__init__(self, context, module_name , _module=module)
         else:
             #if global namespace, do not call base class __init__ (infinite recurion),
             #but set necessary properties explicitly
             module_name = ""
-            self._env = env
-            self._context = env._context
-            self._javascript_obj = env._context.GetGlobalObject()
+            self._context = context
+            self._javascript_obj = context.GetGlobalObject()
             
-        Namespace._namespaces[ str(cast(env._context._object(), c_void_p)) + module_name ] = self
+        Namespace._namespaces[ str(cast(context._object(), c_void_p)) + module_name ] = self
         if module and module_name != "":
             self._export_classes()
         
@@ -517,187 +523,72 @@ class Namespace(JavascriptClass):
         
             
     @staticmethod
-    def get_namespace(env, modulename):
+    def get_namespace(context, modulename):
         """
         Get or create the namespace for the given module name
         """
-        assert(isinstance(env, ScriptEnv))
-        id = str(cast(env._context._object(), c_void_p)) + modulename
-        if not id in Namespace._namespaces.iterkeys():
+        assert(isinstance(context, JSContext))
+        id = str(cast(context._object(), c_void_p)) + modulename
+        if not id in iter(Namespace._namespaces.keys()):
             if modulename:
                 m = importlib.import_module(modulename)
-                Namespace._namespaces[id] = Namespace(env, m)
+                Namespace._namespaces[id] = Namespace(context, m)
             else:
-                Namespace._namespaces[id] = Namespace(env, None)
+                Namespace._namespaces[id] = Namespace(context, None)
         return Namespace._namespaces[id]
     
     @staticmethod
-    def get_global(env):
+    def get_global( context ):
         """
         Get or create the global namespace
         """
-        assert(isinstance(env, ScriptEnv))
-        ns = Namespace.get_namespace(env, "")
+        assert(isinstance(context, JSContext))
+        ns = Namespace.get_namespace(context, "")
         return ns
         
     @staticmethod
-    def add_global_class(env, pyclass , *args):
+    def add_global_class(context, pyclass , *args):
         """
         Add a python class to be accessible at global level
         in javascript
         """
-        assert(isinstance(env, ScriptEnv))
-        pyclass.export_class(env, Namespace.get_global(env))
+        assert(isinstance(context, JSContext))
+        pyclass.export_class(env, Namespace.get_global( context))
         
     def _add_child_class(self, cls):
         """Add a child class to this namespace, avaiable in js"""
-        cls.export_class(self._env, self)
+        cls.export_class(self._context, self)
 
 
 
 
-def _wrapJs(env, jsobj, var_name, can_call=False):
+def _wrapJs(context, jsobj, var_name):
     """
     Wrap a provided js object as a python object, with a given
     js name.  Can set a flag if js object is callable to make
     it callable in python too.  This is to be used only internally
     """
-    assert(isinstance(env, ScriptEnv))
-    if jsobj.IsFunction(env._context):
-        wrapped = JSFunction(env, obj=jsobj, thisobj = None, name = var_name)
+    assert(isinstance(context, JSContext))
+    if jsobj.IsFunction(context):
+        wrapped = JSFunction(context, obj=jsobj, thisobj = None, name = var_name)
     else:
-        wrapped = PythonWrapper(env, jsobj, var_name, can_call)
+        wrapped = jsobj#PythonWrapper(context, jsobj, var_name, can_call)
     return wrapped
     
 
-class PythonWrapper(JSObject):
-    """
-    Wrap a javascript object into a python object that transparently
-    interacts with the javascript environment, with all js methods
-    available to the created python class!!
-    """
-    
-    
-    def __init__(self, env, obj, var_name, can_call=False):
-        assert(isinstance(env, ScriptEnv))
-        assert(obj)
-        self._cmd = ""
-        JSObject.__init__(self, obj=obj._object(), context=env._context._object())
-        self._varname = var_name
-        self._can_call = can_call
-        self._context = env._context
-        self._env = env
-        self._iteritems = []
-        itercount = 0
-        while True:
-            prop = obj.GetProperty(env._context,JSString.CreateWithUTF8CString("%d"%itercount), NULL)
-            if prop.IsUndefined(env._context):
-                break
-            else:
-                prop._context = None
-                self._iteritems.append(prop)
-            itercount += 1
-          
-            
-    def __getattr__(self, attr):
-        prop = self.GetProperty(self._context, JSString.CreateWithUTF8CString( attr) , NULL)
-        jstype = prop.GetType(self._env._context)
-        if jstype == kJSTypeUndefined.value:
-            return object.__getattribute__(self, attr)
-        else:
-            
-            if jstype == kJSTypeObject.value:
-                propobj = prop.ToObject(self._env._context, NULL)
-                if propobj.IsFunction(self._env._context):
-                    jsfunc = JSFunction(self._env, obj = propobj, thisobj = self, name = attr)
-                    setattr(self, attr, 
-                            jsfunc)
-                    #if cast (propobj._object(),c_void_p).value != cast (prop._object(),c_void_p).value:
-                    #    prop.Unprotect(self._env._context)
-                    return jsfunc
-                else:
-                    setattr(self, attr, prop)
-                    return prop
-            elif jstype== kJSTypeNumber.value:
-                val = prop.ToNumber( self._env._context, NULL)
-                setattr(self, attr, val)    
-                
-                return val
-            elif jstype==kJSTypeBoolean.value:
-                val = prop.ToBoolean( self._env._context, NULL)
-                setattr(self, attr, val)
-                return val
-            elif jstype == kJSTypeString.value:
-                val = prop.ToPyString( self._env._cpntext, NULL)
-                setattr (self, attr, val)
-                return val
-            elif jstype == kJSTypeNull.value:
-                return None
-        raise Exception("unknown javascript type")
-                
-    def __iter__(self, index):
-        return self._iteritems[index]
-    
-    def __call__(self, *args):
-        raise Exception()
-        
-        
+               
      
         
-def export_module(env, module):
+def export_module( context, module):
     """Export a python module and all JavascriptClass derived
     subclasses to javascript execution environment
     """
-    assert(isinstance(env, ScriptEnv))
+    assert(isinstance(context, JSContext))
     import importlib
     importlib.import_module(module.__name__)
     if module.__name__ in Namespace._namespaces:
         return
-    return Namespace(env, module)
+    return Namespace(context, module)
 
-
-
-class ScriptEnv(JavascriptClass):
-    """Javascript execution environment"""
-    _jsobjects = {}
-         
-
-        
-    
-    def __init__(self, webview):
-        
-        self._webview = webview
-        self._context = webview.get_main_frame().get_global_context()
-        JavascriptClass.__init__(self, self, "python")
-        
-        #self._sem = ScriptEnv._sem[id]
-        
-        def get_document():
-            global document
-            document = self.get_jsobject( "document")
-        webview.on_view_ready( get_document )
-        
-    def export_to_python(self, jsobj , var_name, can_call=False):
-        wrapped = _wrapJs(self._env, jsobj, var_name, can_call)
-        JavascriptClass._globalobjects[strid(self._context) + var_name] = wrapped
-   
-    
-    def get_jsobject(self, name , can_call=False):
-        ident = strid(self._context)
-        retval = JavascriptClass._globalobjects.get(ident + name)
-        
-        if retval:
-            retval._webview = self._webview
-            
-        else:
-            self._webview.execute_script("python.export_to_python(%s,'%s', %s);" % (name, name, int(can_call)))
-            retval = JavascriptClass._globalobjects.get(ident + name)
-            if retval:
-                retval._webview = self._webview
-                retval._env = self
-            else:                
-                raise Exception("Unknown javascript object by name %s" % name)
-        JavascriptClass._globalobjects[ident + name] = retval
-        return retval
 
 

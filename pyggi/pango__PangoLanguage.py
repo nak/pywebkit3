@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -281,7 +281,7 @@ PangoWrapMode = c_int
 PangoEllipsizeMode = c_int
 PangoAlignment = c_int
 
-import gobject__GObject
+from . import gobject__GObject
 class PangoLanguage( gobject__GObject.GObject):
     """Class PangoLanguage Constructors"""
     def __init__(self, obj = None):

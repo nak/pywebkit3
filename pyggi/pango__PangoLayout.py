@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -300,7 +300,7 @@ except:
    pass
 try:
     libpango.pango_layout_set_markup.restype = None
-    libpango.pango_layout_set_markup.argtypes = [_PangoLayout,c_char_p,int]
+    libpango.pango_layout_set_markup.argtypes = [_PangoLayout,Asciifier,int]
 except:
    pass
 try:
@@ -385,7 +385,7 @@ except:
    pass
 try:
     libpango.pango_layout_set_text.restype = None
-    libpango.pango_layout_set_text.argtypes = [_PangoLayout,c_char_p,int]
+    libpango.pango_layout_set_text.argtypes = [_PangoLayout,Asciifier,int]
 except:
    pass
 try:
@@ -495,7 +495,7 @@ except:
    pass
 try:
     libpango.pango_layout_set_markup_with_accel.restype = None
-    libpango.pango_layout_set_markup_with_accel.argtypes = [_PangoLayout,c_char_p,int,gunichar,_gunichar]
+    libpango.pango_layout_set_markup_with_accel.argtypes = [_PangoLayout,Asciifier,int,gunichar,_gunichar]
 except:
    pass
 try:
@@ -548,7 +548,7 @@ try:
     libpango.pango_layout_set_justify.argtypes = [_PangoLayout,gboolean]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoLayout( gobject__GObject.GObject):
     """Class PangoLayout Constructors"""
     def __init__( self, context,  obj = None):
@@ -580,7 +580,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from gtk3 import PangoLayout
+        from .gtk3 import PangoLayout
         return PangoLayout( obj=libpango.pango_layout_copy( self._object )  or POINTER(c_int)())
 
     def set_markup(  self, markup, length, ):
@@ -590,12 +590,12 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_attributes(  self, ):
 
-        from gtk3 import PangoAttrList
+        from .gtk3 import PangoAttrList
         return PangoAttrList( obj=libpango.pango_layout_get_attributes( self._object )  or POINTER(c_int)())
 
     def get_context(  self, ):
 
-        from gtk3 import PangoContext
+        from .gtk3 import PangoContext
         return PangoContext(None, obj=libpango.pango_layout_get_context( self._object )  or POINTER(c_int)())
 
     def set_wrap(  self, wrap, ):
@@ -647,7 +647,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_lines(  self, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libpango.pango_layout_get_lines( self._object ) or POINTER(c_int)())
 
     def set_ellipsize(  self, ellipsize, ):
@@ -715,7 +715,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_tabs(  self, ):
 
-        from gtk3 import PangoTabArray
+        from .gtk3 import PangoTabArray
         return PangoTabArray( obj=libpango.pango_layout_get_tabs( self._object )  or POINTER(c_int)())
 
     def get_extents(  self, ink_rect, logical_rect, ):
@@ -763,7 +763,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_line_readonly(  self, line, ):
 
-        from gtk3 import PangoLayoutLine
+        from .gtk3 import PangoLayoutLine
         return PangoLayoutLine( obj=libpango.pango_layout_get_line_readonly( self._object,line )  or POINTER(c_int)())
 
     def set_attributes(  self, attrs, ):
@@ -775,7 +775,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_lines_readonly(  self, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libpango.pango_layout_get_lines_readonly( self._object ) or POINTER(c_int)())
 
     def context_changed(  self, ):
@@ -797,7 +797,7 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_log_attrs_readonly(  self, n_attrs, ):
 
-        from gtk3 import PangoLogAttr
+        from .gtk3 import PangoLogAttr
         return PangoLogAttr( obj=libpango.pango_layout_get_log_attrs_readonly( self._object,n_attrs )  or POINTER(c_int)())
 
     def set_markup_with_accel(  self, markup, length, accel_marker, accel_char, ):
@@ -821,12 +821,12 @@ class PangoLayout( gobject__GObject.GObject):
 
     def get_font_description(  self, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libpango.pango_layout_get_font_description( self._object )  or POINTER(c_int)())
 
     def get_line(  self, line, ):
 
-        from gtk3 import PangoLayoutLine
+        from .gtk3 import PangoLayoutLine
         return PangoLayoutLine( obj=libpango.pango_layout_get_line( self._object,line )  or POINTER(c_int)())
 
     def index_to_line_x(  self, index_, trailing, line, x_pos, ):

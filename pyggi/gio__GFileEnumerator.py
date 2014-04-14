@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -352,7 +352,7 @@ try:
     libgio.g_file_enumerator_next_files_async.argtypes = [_GFileEnumerator,int,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GFileEnumerator( gobject__GObject.GObject):
     """Class GFileEnumerator Constructors"""
     def __init__(self, obj = None):
@@ -360,7 +360,7 @@ class GFileEnumerator( gobject__GObject.GObject):
     """Methods"""
     def get_container(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgio.g_file_enumerator_get_container( self._object ) or POINTER(c_int)())
 
     def close_finish(  self, result, error, ):
@@ -378,7 +378,7 @@ class GFileEnumerator( gobject__GObject.GObject):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgio.g_file_enumerator_next_files_finish( self._object,result,error ) or POINTER(c_int)())
 
     def close(  self, cancellable, error, ):
@@ -401,7 +401,7 @@ class GFileEnumerator( gobject__GObject.GObject):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None,None, obj=libgio.g_file_enumerator_next_file( self._object,cancellable,error ) or POINTER(c_int)())
 
     def set_pending(  self, pending, ):

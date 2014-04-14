@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -339,27 +339,27 @@ except:
    pass
 try:
     libgio.g_file_info_set_display_name.restype = None
-    libgio.g_file_info_set_display_name.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_set_display_name.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_attribute_stringv.restype = None
-    libgio.g_file_info_set_attribute_stringv.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,c_char_p]
+    libgio.g_file_info_set_attribute_stringv.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_attribute_byte_string.restype = None
-    libgio.g_file_info_set_attribute_byte_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,c_char_p]
+    libgio.g_file_info_set_attribute_byte_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_stringv.restype = None
-    libgio.g_file_info_get_attribute_stringv.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_stringv.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_attribute_object.restype = None
-    libgio.g_file_info_set_attribute_object.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,_GObject]
+    libgio.g_file_info_set_attribute_object.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,_GObject]
 except:
    pass
 try:
@@ -369,17 +369,17 @@ except:
    pass
 try:
     libgio.g_file_attribute_matcher_enumerate_namespace.restype = gboolean
-    libgio.g_file_attribute_matcher_enumerate_namespace.argtypes = [_GFileAttributeMatcher,c_char_p]
+    libgio.g_file_attribute_matcher_enumerate_namespace.argtypes = [_GFileAttributeMatcher,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_symlink_target.restype = None
-    libgio.g_file_info_set_symlink_target.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_set_symlink_target.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_attribute_string.restype = None
-    libgio.g_file_info_set_attribute_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,c_char_p]
+    libgio.g_file_info_set_attribute_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,Asciifier]
 except:
    pass
 try:
@@ -409,12 +409,12 @@ except:
    pass
 try:
     libgio.g_file_info_get_attribute_byte_string.restype = None
-    libgio.g_file_info_get_attribute_byte_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_byte_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_attribute_int64.restype = None
-    libgio.g_file_info_set_attribute_int64.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,gint64]
+    libgio.g_file_info_set_attribute_int64.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,gint64]
 except:
    pass
 try:
@@ -424,7 +424,7 @@ except:
    pass
 try:
     libgio.g_file_info_set_attribute.restype = None
-    libgio.g_file_info_set_attribute.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,GFileAttributeType,gpointer]
+    libgio.g_file_info_set_attribute.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,GFileAttributeType,gpointer]
 except:
    pass
 try:
@@ -434,17 +434,17 @@ except:
    pass
 try:
     libgio.g_file_info_set_attribute_uint64.restype = None
-    libgio.g_file_info_set_attribute_uint64.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,guint64]
+    libgio.g_file_info_set_attribute_uint64.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,guint64]
 except:
    pass
 try:
     libgio.g_file_info_set_content_type.restype = None
-    libgio.g_file_info_set_content_type.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_set_content_type.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_as_string.restype = None
-    libgio.g_file_info_get_attribute_as_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_as_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
@@ -459,7 +459,7 @@ except:
    pass
 try:
     libgio.g_file_info_list_attributes.restype = None
-    libgio.g_file_info_list_attributes.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_list_attributes.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
@@ -469,12 +469,12 @@ except:
    pass
 try:
     libgio.g_file_info_set_edit_name.restype = None
-    libgio.g_file_info_set_edit_name.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_set_edit_name.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_attribute_matcher_matches_only.restype = gboolean
-    libgio.g_file_attribute_matcher_matches_only.argtypes = [_GFileAttributeMatcher,c_char_p]
+    libgio.g_file_attribute_matcher_matches_only.argtypes = [_GFileAttributeMatcher,Asciifier]
 except:
    pass
 try:
@@ -484,12 +484,12 @@ except:
    pass
 try:
     libgio.g_file_info_set_attribute_boolean.restype = None
-    libgio.g_file_info_set_attribute_boolean.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,gboolean]
+    libgio.g_file_info_set_attribute_boolean.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,gboolean]
 except:
    pass
 try:
     libgio.g_file_info_set_name.restype = None
-    libgio.g_file_info_set_name.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_set_name.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
@@ -524,12 +524,12 @@ except:
    pass
 try:
     libgio.g_file_info_set_attribute_int32.restype = None
-    libgio.g_file_info_set_attribute_int32.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,gint32]
+    libgio.g_file_info_set_attribute_int32.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,gint32]
 except:
    pass
 try:
     libgio.g_file_attribute_matcher_matches.restype = gboolean
-    libgio.g_file_attribute_matcher_matches.argtypes = [_GFileAttributeMatcher,c_char_p]
+    libgio.g_file_attribute_matcher_matches.argtypes = [_GFileAttributeMatcher,Asciifier]
 except:
    pass
 try:
@@ -539,12 +539,12 @@ except:
    pass
 try:
     libgio.g_file_info_remove_attribute.restype = None
-    libgio.g_file_info_remove_attribute.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_remove_attribute.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_set_attribute_uint32.restype = None
-    libgio.g_file_info_set_attribute_uint32.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p,guint32]
+    libgio.g_file_info_set_attribute_uint32.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier,guint32]
 except:
    pass
 try:
@@ -554,27 +554,27 @@ except:
    pass
 try:
     libgio.g_file_info_get_attribute_string.restype = None
-    libgio.g_file_info_get_attribute_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_string.argtypes = [_GFileAttributeMatcher,_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_status.restype = GFileAttributeStatus
-    libgio.g_file_info_get_attribute_status.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_status.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_int64.restype = gint64
-    libgio.g_file_info_get_attribute_int64.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_int64.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_boolean.restype = gboolean
-    libgio.g_file_info_get_attribute_boolean.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_boolean.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_data.restype = gboolean
-    libgio.g_file_info_get_attribute_data.argtypes = [_GFileInfo,c_char_p,POINTER(GFileAttributeType),POINTER(gpointer),POINTER(GFileAttributeStatus)]
+    libgio.g_file_info_get_attribute_data.argtypes = [_GFileInfo,Asciifier,POINTER(GFileAttributeType),POINTER(gpointer),POINTER(GFileAttributeStatus)]
 except:
    pass
 try:
@@ -594,7 +594,7 @@ except:
    pass
 try:
     libgio.g_file_info_has_attribute.restype = gboolean
-    libgio.g_file_info_has_attribute.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_has_attribute.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
@@ -604,12 +604,12 @@ except:
    pass
 try:
     libgio.g_file_info_get_attribute_uint32.restype = guint32
-    libgio.g_file_info_get_attribute_uint32.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_uint32.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_has_namespace.restype = gboolean
-    libgio.g_file_info_has_namespace.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_has_namespace.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
@@ -619,17 +619,17 @@ except:
    pass
 try:
     libgio.g_file_info_get_attribute_int32.restype = gint32
-    libgio.g_file_info_get_attribute_int32.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_int32.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_uint64.restype = guint64
-    libgio.g_file_info_get_attribute_uint64.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_uint64.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
     libgio.g_file_info_get_attribute_type.restype = GFileAttributeType
-    libgio.g_file_info_get_attribute_type.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_type.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
 try:
@@ -639,7 +639,7 @@ except:
    pass
 try:
     libgio.g_file_info_set_attribute_status.restype = gboolean
-    libgio.g_file_info_set_attribute_status.argtypes = [_GFileInfo,c_char_p,GFileAttributeStatus]
+    libgio.g_file_info_set_attribute_status.argtypes = [_GFileInfo,Asciifier,GFileAttributeStatus]
 except:
    pass
 try:
@@ -654,10 +654,10 @@ except:
    pass
 try:
     libgio.g_file_info_get_attribute_object.restype = _GObject
-    libgio.g_file_info_get_attribute_object.argtypes = [_GFileInfo,c_char_p]
+    libgio.g_file_info_get_attribute_object.argtypes = [_GFileInfo,Asciifier]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class GFileAttributeMatcher( gobject__GBoxed.GBoxed):
     """Class GFileAttributeMatcher Constructors"""
     def __init__( self, attributes,  obj = None):
@@ -665,7 +665,7 @@ class GFileAttributeMatcher( gobject__GBoxed.GBoxed):
         else:
             libgio.g_file_attribute_matcher_new.restype = POINTER(c_int)
             
-            libgio.g_file_attribute_matcher_new.argtypes = [c_char_p]
+            libgio.g_file_attribute_matcher_new.argtypes = [Asciifier]
             self._object = libgio.g_file_attribute_matcher_new(attributes, )
 
     """Methods"""
@@ -788,7 +788,7 @@ class GFileAttributeMatcher( gobject__GBoxed.GBoxed):
 
     def ref(  self, ):
 
-        from gio import GFileAttributeMatcher
+        from .gio import GFileAttributeMatcher
         return GFileAttributeMatcher( obj=libgio.g_file_attribute_matcher_ref( self._object ) or POINTER(c_int)())
 
     def g_file_info_set_attribute(  self, info, attribute, type, value_p, ):
@@ -1065,7 +1065,7 @@ class GFileAttributeMatcher( gobject__GBoxed.GBoxed):
     def g_file_info_get_icon( info,):
         if info: info = info._object
         else: info = POINTER(c_int)()
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=    libgio.g_file_info_get_icon(info, )
  or POINTER(c_int)())
     @staticmethod
@@ -1114,13 +1114,13 @@ class GFileAttributeMatcher( gobject__GBoxed.GBoxed):
     def g_file_info_dup( other,):
         if other: other = other._object
         else: other = POINTER(c_int)()
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None,None, obj=    libgio.g_file_info_dup(other, )
  or POINTER(c_int)())
     @staticmethod
     def g_file_info_get_attribute_object( info, attribute,):
         if info: info = info._object
         else: info = POINTER(c_int)()
-        from gobject import GObject
+        from .gobject import GObject
         return GObject(None,None,None,None, obj=    libgio.g_file_info_get_attribute_object(info, attribute, )
  or POINTER(c_int)())

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -386,7 +386,7 @@ try:
     libgtk3.gdk_pixbuf_animation_iter_on_currently_loading_frame.argtypes = [_GdkPixbufAnimationIter]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkPixbufAnimationIter( gobject__GObject.GObject):
     """Class GdkPixbufAnimationIter Constructors"""
     def __init__(self, obj = None):
@@ -399,7 +399,7 @@ class GdkPixbufAnimationIter( gobject__GObject.GObject):
 
     def get_pixbuf(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gdk_pixbuf_animation_iter_get_pixbuf( self._object ) or POINTER(c_int)())
 
     def advance(  self, current_time, ):

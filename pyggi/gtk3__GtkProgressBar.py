@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -411,7 +411,7 @@ except:
    pass
 try:
     libgtk3.gtk_progress_bar_set_text.restype = None
-    libgtk3.gtk_progress_bar_set_text.argtypes = [_GtkProgressBar,c_char_p]
+    libgtk3.gtk_progress_bar_set_text.argtypes = [_GtkProgressBar,Asciifier]
 except:
    pass
 try:
@@ -449,7 +449,7 @@ try:
     libgtk3.gtk_progress_bar_set_pulse_step.argtypes = [_GtkProgressBar,gdouble]
 except:
    pass
-import gtk3__GtkWidget
+from . import gtk3__GtkWidget
 class GtkProgressBar( gtk3__GtkWidget.GtkWidget):
     """Class GtkProgressBar Constructors"""
     def __init__( self,  obj = None):

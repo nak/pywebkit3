@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -395,7 +395,7 @@ class GEmblemedIcon( object):
 
     def get_icon(  self, ):
 
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=libgobject.g_emblemed_icon_get_icon( self._object ) or POINTER(c_int)())
 
     def clear_emblems(  self, ):
@@ -405,7 +405,7 @@ class GEmblemedIcon( object):
 
     def get_emblems(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgobject.g_emblemed_icon_get_emblems( self._object ) or POINTER(c_int)())
 
     @staticmethod

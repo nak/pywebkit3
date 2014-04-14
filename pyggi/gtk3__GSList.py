@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -288,7 +288,7 @@ class GSList( object):
         if sibling: sibling = sibling._object
         else: sibling = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None, obj=libgtk3.g_slist_insert_before( self._object,sibling,data ) or POINTER(c_int)())
 
     def g_slist_free(  self, ):
@@ -300,24 +300,24 @@ class GSList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None,None, obj=libgtk3.g_slist_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_int)())
 
     def g_slist_copy(  self, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libgtk3.g_slist_copy( self._object ) or POINTER(c_int)())
 
     def g_slist_concat(  self, list2, ):
         if list2: list2 = list2._object
         else: list2 = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_concat( self._object,list2 ) or POINTER(c_int)())
 
     def g_slist_nth(  self, n, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_nth( self._object,n ) or POINTER(c_int)())
 
     def g_slist_free_full(  self, free_func, ):
@@ -334,43 +334,43 @@ class GSList( object):
 
     def g_slist_remove(  self, data, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_remove( self._object,data ) or POINTER(c_int)())
 
     def g_slist_insert(  self, data, position, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None, obj=libgtk3.g_slist_insert( self._object,data,position ) or POINTER(c_int)())
 
     def g_slist_last(  self, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libgtk3.g_slist_last( self._object ) or POINTER(c_int)())
 
     def g_slist_reverse(  self, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libgtk3.g_slist_reverse( self._object ) or POINTER(c_int)())
 
     def g_slist_find_custom(  self, data, func, ):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None, obj=libgtk3.g_slist_find_custom( self._object,data,func ) or POINTER(c_int)())
 
     def g_slist_sort(  self, compare_func, ):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_sort( self._object,compare_func ) or POINTER(c_int)())
 
     def g_slist_delete_link(  self, link_, ):
         if link_: link_ = link_._object
         else: link_ = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_delete_link( self._object,link_ ) or POINTER(c_int)())
 
     def g_slist_length(  self, ):
@@ -387,48 +387,48 @@ class GSList( object):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None, obj=libgtk3.g_slist_insert_sorted( self._object,data,func ) or POINTER(c_int)())
 
     def g_slist_remove_all(  self, data, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_remove_all( self._object,data ) or POINTER(c_int)())
 
     def g_slist_sort_with_data(  self, compare_func, user_data, ):
         if compare_func: compare_func = compare_func._object
         else: compare_func = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None, obj=libgtk3.g_slist_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_int)())
 
     def g_slist_find(  self, data, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_find( self._object,data ) or POINTER(c_int)())
 
     def g_slist_append(  self, data, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_append( self._object,data ) or POINTER(c_int)())
 
     def g_slist_remove_link(  self, link_, ):
         if link_: link_ = link_._object
         else: link_ = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_remove_link( self._object,link_ ) or POINTER(c_int)())
 
     def g_slist_copy_deep(  self, func, user_data, ):
         if func: func = func._object
         else: func = POINTER(c_int)()
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None,None, obj=libgtk3.g_slist_copy_deep( self._object,func,user_data ) or POINTER(c_int)())
 
     def g_slist_prepend(  self, data, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList(None, obj=libgtk3.g_slist_prepend( self._object,data ) or POINTER(c_int)())
 
     def g_slist_index(  self, data, ):
@@ -450,6 +450,6 @@ class GSList( object):
 
     @staticmethod
     def g_slist_alloc():
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=    libgtk3.g_slist_alloc()
  or POINTER(c_int)())

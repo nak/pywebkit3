@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -368,12 +368,12 @@ except:
    pass
 try:
     libgtk3.gtk_symbolic_color_new_win32.restype = _GtkSymbolicColor
-    libgtk3.gtk_symbolic_color_new_win32.argtypes = [c_char_p,gint]
+    libgtk3.gtk_symbolic_color_new_win32.argtypes = [Asciifier,gint]
 except:
    pass
 try:
     libgtk3.gtk_symbolic_color_new_name.restype = _GtkSymbolicColor
-    libgtk3.gtk_symbolic_color_new_name.argtypes = [c_char_p]
+    libgtk3.gtk_symbolic_color_new_name.argtypes = [Asciifier]
 except:
    pass
 try:
@@ -404,22 +404,22 @@ class GtkSymbolicColor( object):
         if color2: color2 = color2._object
         else: color2 = POINTER(c_int)()
 
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor(None,None, obj=libgtk3.gtk_symbolic_color_new_mix( self._object,color2,factor ) or POINTER(c_int)())
 
     def new_shade(  self, factor, ):
 
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor(None, obj=libgtk3.gtk_symbolic_color_new_shade( self._object,factor ) or POINTER(c_int)())
 
     def ref(  self, ):
 
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor( obj=libgtk3.gtk_symbolic_color_ref( self._object ) or POINTER(c_int)())
 
     def new_alpha(  self, factor, ):
 
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor(None, obj=libgtk3.gtk_symbolic_color_new_alpha( self._object,factor ) or POINTER(c_int)())
 
     def unref(  self, ):
@@ -429,18 +429,18 @@ class GtkSymbolicColor( object):
 
     @staticmethod
     def new_win32( theme_class, id,):
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor( obj=    libgtk3.gtk_symbolic_color_new_win32(theme_class, id, )
  or POINTER(c_int)())
     @staticmethod
     def new_name( name,):
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor( obj=    libgtk3.gtk_symbolic_color_new_name(name, )
  or POINTER(c_int)())
     @staticmethod
     def new_literal( color,):
         if color: color = color._object
         else: color = POINTER(c_int)()
-        from gtk3 import GtkSymbolicColor
+        from .gtk3 import GtkSymbolicColor
         return GtkSymbolicColor( obj=    libgtk3.gtk_symbolic_color_new_literal(color, )
  or POINTER(c_int)())

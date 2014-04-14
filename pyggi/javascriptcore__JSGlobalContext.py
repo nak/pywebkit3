@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from javascriptcore_types import *
-from javascriptcore_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .javascriptcore_types import *
+from .javascriptcore_enums import *
 
     
 """Derived Pointer Types"""
@@ -270,7 +270,7 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
-import javascriptcore__JSContext
+from . import javascriptcore__JSContext
 import weakref
 
 class JSGlobalContext( javascriptcore__JSContext.JSContext):

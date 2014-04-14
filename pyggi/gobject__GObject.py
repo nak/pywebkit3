@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -346,7 +346,7 @@ GdkPixbufAlphaMode = c_int
 
 try:
     libgobject.g_object_disconnect.restype = None
-    libgobject.g_object_disconnect.argtypes = [_GObject,c_char_p]
+    libgobject.g_object_disconnect.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
@@ -361,7 +361,7 @@ except:
    pass
 try:
     libgobject.g_object_steal_data.restype = gpointer
-    libgobject.g_object_steal_data.argtypes = [_GObject,c_char_p]
+    libgobject.g_object_steal_data.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
@@ -381,7 +381,7 @@ except:
    pass
 try:
     libgobject.g_object_set_data.restype = None
-    libgobject.g_object_set_data.argtypes = [_GObject,c_char_p,gpointer]
+    libgobject.g_object_set_data.argtypes = [_GObject,Asciifier,gpointer]
 except:
    pass
 try:
@@ -391,12 +391,12 @@ except:
    pass
 try:
     libgobject.g_object_connect.restype = gpointer
-    libgobject.g_object_connect.argtypes = [_GObject,c_char_p,]
+    libgobject.g_object_connect.argtypes = [_GObject,Asciifier,]
 except:
    pass
 try:
     libgobject.g_object_notify.restype = None
-    libgobject.g_object_notify.argtypes = [_GObject,c_char_p]
+    libgobject.g_object_notify.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
@@ -406,7 +406,7 @@ except:
    pass
 try:
     libgobject.g_object_replace_data.restype = gboolean
-    libgobject.g_object_replace_data.argtypes = [_GObject,c_char_p,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
+    libgobject.g_object_replace_data.argtypes = [_GObject,Asciifier,gpointer,gpointer,GDestroyNotify,POINTER(GDestroyNotify)]
 except:
    pass
 try:
@@ -421,12 +421,12 @@ except:
    pass
 try:
     libgobject.g_object_set_property.restype = None
-    libgobject.g_object_set_property.argtypes = [_GObject,c_char_p,_GValue]
+    libgobject.g_object_set_property.argtypes = [_GObject,Asciifier,_GValue]
 except:
    pass
 try:
     libgobject.g_object_set.restype = None
-    libgobject.g_object_set.argtypes = [_GObject,c_char_p,]
+    libgobject.g_object_set.argtypes = [_GObject,Asciifier,]
 except:
    pass
 try:
@@ -501,7 +501,7 @@ except:
    pass
 try:
     libgobject.g_object_get.restype = None
-    libgobject.g_object_get.argtypes = [_GObject,c_char_p,]
+    libgobject.g_object_get.argtypes = [_GObject,Asciifier,]
 except:
    pass
 try:
@@ -511,7 +511,7 @@ except:
    pass
 try:
     libgobject.g_object_dup_data.restype = gpointer
-    libgobject.g_object_dup_data.argtypes = [_GObject,c_char_p,GDuplicateFunc,gpointer]
+    libgobject.g_object_dup_data.argtypes = [_GObject,Asciifier,GDuplicateFunc,gpointer]
 except:
    pass
 try:
@@ -521,12 +521,12 @@ except:
    pass
 try:
     libgobject.g_object_get_data.restype = gpointer
-    libgobject.g_object_get_data.argtypes = [_GObject,c_char_p]
+    libgobject.g_object_get_data.argtypes = [_GObject,Asciifier]
 except:
    pass
 try:
     libgobject.g_object_get_property.restype = None
-    libgobject.g_object_get_property.argtypes = [_GObject,c_char_p,_GValue]
+    libgobject.g_object_get_property.argtypes = [_GObject,Asciifier,_GValue]
 except:
    pass
 try:
@@ -541,7 +541,7 @@ except:
    pass
 try:
     libgobject.g_object_set_data_full.restype = None
-    libgobject.g_object_set_data_full.argtypes = [_GObject,c_char_p,gpointer,GDestroyNotify]
+    libgobject.g_object_set_data_full.argtypes = [_GObject,Asciifier,gpointer,GDestroyNotify]
 except:
    pass
 try:
@@ -556,12 +556,12 @@ except:
    pass
 try:
     libgobject.g_object_class_override_property.restype = None
-    libgobject.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,c_char_p]
+    libgobject.g_object_class_override_property.argtypes = [_GObject,_GObjectClass,guint,Asciifier]
 except:
    pass
 try:
     libgobject.g_object_class_find_property.restype = _GParamSpec
-    libgobject.g_object_class_find_property.argtypes = [_GObjectClass,c_char_p]
+    libgobject.g_object_class_find_property.argtypes = [_GObjectClass,Asciifier]
 except:
    pass
 try:
@@ -581,7 +581,7 @@ except:
    pass
 try:
     libgobject.g_object_interface_find_property.restype = _GParamSpec
-    libgobject.g_object_interface_find_property.argtypes = [gpointer,c_char_p]
+    libgobject.g_object_interface_find_property.argtypes = [gpointer,Asciifier]
 except:
    pass
 try:
@@ -596,7 +596,7 @@ class GObject( object):
         else:
             libgobject.g_object_new.restype = POINTER(c_int)
             
-            libgobject.g_object_new.argtypes = [GType,c_char_p,]
+            libgobject.g_object_new.argtypes = [GType,Asciifier,]
             self._object = libgobject.g_object_new(object_type, first_property_name, *args )
 
     """Methods"""
@@ -860,12 +860,12 @@ class GObject( object):
     def class_find_property( oclass, property_name,):
         if oclass: oclass = oclass._object
         else: oclass = POINTER(c_int)()
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgobject.g_object_class_find_property(oclass, property_name, )
  or POINTER(c_int)())
     @staticmethod
     def interface_list_properties( g_iface, n_properties_p,):
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgobject.g_object_interface_list_properties(g_iface, n_properties_p, )
  or POINTER(c_int)())
     @staticmethod
@@ -879,12 +879,12 @@ class GObject( object):
     def class_list_properties( oclass, n_properties,):
         if oclass: oclass = oclass._object
         else: oclass = POINTER(c_int)()
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgobject.g_object_class_list_properties(oclass, n_properties, )
  or POINTER(c_int)())
     @staticmethod
     def interface_find_property( g_iface, property_name,):
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgobject.g_object_interface_find_property(g_iface, property_name, )
  or POINTER(c_int)())
     @staticmethod
@@ -902,7 +902,7 @@ class GObject( object):
         def C_Callable():
             try:
                 newkargs = kargs
-                if newkargs.has_key('cfunc'):
+                if 'cfunc' in newkargs:
                     del newkargs['cfunc']
                 retval = func(*args, **newkargs)
                 if not retval:
@@ -919,7 +919,7 @@ class GObject( object):
                 except:
                     pass
                 return False
-        if 'cfunc' in kargs.iterkeys():
+        if 'cfunc' in iter(kargs.keys()):
             (cfunc, cfunctype) = kargs['cfunc']
         else:
             cfunc = CFUNCTYPE(None)(C_Callable) 
@@ -927,7 +927,7 @@ class GObject( object):
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)
         libgobject.g_signal_connect_data.restype = c_ulonglong
-        libgobject.g_signal_connect_data.argtypes = [c_void_p, c_char_p, CFUNCTYPE(None), c_void_p, c_void_p, c_int]
+        libgobject.g_signal_connect_data.argtypes = [c_void_p, Asciifier, CFUNCTYPE(None), c_void_p, c_void_p, c_int]
         return libgobject.g_signal_connect_data(self._object, name, cfunc, 0,0,0)
 
 

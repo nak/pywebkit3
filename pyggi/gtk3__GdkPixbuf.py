@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -388,7 +388,7 @@ except:
    pass
 try:
     libgtk3.gdk_pixbuf_get_option.restype = c_char_p
-    libgtk3.gdk_pixbuf_get_option.argtypes = [_GdkPixbuf,c_char_p]
+    libgtk3.gdk_pixbuf_get_option.argtypes = [_GdkPixbuf,Asciifier]
 except:
    pass
 try:
@@ -396,7 +396,7 @@ try:
     libgtk3.gdk_pixbuf_get_colorspace.argtypes = [_GdkPixbuf]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkPixbuf( gobject__GObject.GObject):
     """Class GdkPixbuf Constructors"""
     def __init__(self, obj = None):

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -145,7 +145,7 @@ try:
     libwebkit3.webkit_geolocation_policy_allow.argtypes = [_WebKitGeolocationPolicyDecision]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitGeolocationPolicyDecision( gobject__GObject.GObject):
     """Class WebKitGeolocationPolicyDecision Constructors"""
     def __init__(self, obj = None):

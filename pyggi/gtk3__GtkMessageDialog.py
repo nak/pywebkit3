@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -419,17 +419,17 @@ except:
    pass
 try:
     libgtk3.gtk_message_dialog_format_secondary_text.restype = None
-    libgtk3.gtk_message_dialog_format_secondary_text.argtypes = [_GtkMessageDialog,c_char_p,]
+    libgtk3.gtk_message_dialog_format_secondary_text.argtypes = [_GtkMessageDialog,Asciifier,]
 except:
    pass
 try:
     libgtk3.gtk_message_dialog_set_markup.restype = None
-    libgtk3.gtk_message_dialog_set_markup.argtypes = [_GtkMessageDialog,c_char_p]
+    libgtk3.gtk_message_dialog_set_markup.argtypes = [_GtkMessageDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_message_dialog_format_secondary_markup.restype = None
-    libgtk3.gtk_message_dialog_format_secondary_markup.argtypes = [_GtkMessageDialog,c_char_p,]
+    libgtk3.gtk_message_dialog_format_secondary_markup.argtypes = [_GtkMessageDialog,Asciifier,]
 except:
    pass
 try:
@@ -444,10 +444,10 @@ except:
    pass
 try:
     libgtk3.gtk_message_dialog_new_with_markup.restype = _GtkWidget
-    libgtk3.gtk_message_dialog_new_with_markup.argtypes = [_GtkWindow,GtkDialogFlags,GtkMessageType,GtkButtonsType,c_char_p,]
+    libgtk3.gtk_message_dialog_new_with_markup.argtypes = [_GtkWindow,GtkDialogFlags,GtkMessageType,GtkButtonsType,Asciifier,]
 except:
    pass
-import gtk3__GtkDialog
+from . import gtk3__GtkDialog
 class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
     """Class GtkMessageDialog Constructors"""
     def __init__( self, parent, flags, type, buttons, message_format,  obj=None, *args):
@@ -458,13 +458,13 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
             if parent : parent = parent._object
             else :  parent = POINTER(c_int)()
 
-            libgtk3.gtk_message_dialog_new.argtypes = [_GtkWindow,GtkDialogFlags,GtkMessageType,GtkButtonsType,c_char_p,]
+            libgtk3.gtk_message_dialog_new.argtypes = [_GtkWindow,GtkDialogFlags,GtkMessageType,GtkButtonsType,Asciifier,]
             self._object = libgtk3.gtk_message_dialog_new(parent, flags, type, buttons, message_format, *args )
 
     """Methods"""
     def get_image(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_message_dialog_get_image( self._object ) or POINTER(c_int)())
 
     def format_secondary_text(  self, message_format,*args  ):
@@ -494,7 +494,7 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
 
     def get_message_area(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_message_dialog_get_message_area( self._object ) or POINTER(c_int)())
 
     def set_image(  self, image, ):
@@ -508,6 +508,6 @@ class GtkMessageDialog( gtk3__GtkDialog.GtkDialog):
     def new_with_markup( parent, flags, type, buttons, message_format,*args ):
         if parent: parent = parent._object
         else: parent = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_message_dialog_new_with_markup(parent, flags, type, buttons, message_format, *args)
  or POINTER(c_int)())

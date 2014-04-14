@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -426,42 +426,42 @@ GdkByteOrder = c_int
 
 try:
     libgtk3.gtk_paint_slider.restype = None
-    libgtk3.gtk_paint_slider.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkOrientation]
+    libgtk3.gtk_paint_slider.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint,GtkOrientation]
 except:
    pass
 try:
     libgtk3.gtk_paint_resize_grip.restype = None
-    libgtk3.gtk_paint_resize_grip.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,GdkWindowEdge,gint,gint,gint,gint]
+    libgtk3.gtk_paint_resize_grip.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,Asciifier,GdkWindowEdge,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_arrow.restype = None
-    libgtk3.gtk_paint_arrow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,GtkArrowType,gboolean,gint,gint,gint,gint]
+    libgtk3.gtk_paint_arrow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,GtkArrowType,gboolean,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_style_get_style_property.restype = None
-    libgtk3.gtk_style_get_style_property.argtypes = [_GtkStyle,GType,c_char_p,_GValue]
+    libgtk3.gtk_style_get_style_property.argtypes = [_GtkStyle,GType,Asciifier,_GValue]
 except:
    pass
 try:
     libgtk3.gtk_paint_expander.restype = None
-    libgtk3.gtk_paint_expander.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,GtkExpanderStyle]
+    libgtk3.gtk_paint_expander.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,Asciifier,gint,gint,GtkExpanderStyle]
 except:
    pass
 try:
     libgtk3.gtk_paint_flat_box.restype = None
-    libgtk3.gtk_paint_flat_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_flat_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_style_get.restype = None
-    libgtk3.gtk_style_get.argtypes = [_GtkStyle,GType,c_char_p,]
+    libgtk3.gtk_style_get.argtypes = [_GtkStyle,GType,Asciifier,]
 except:
    pass
 try:
     libgtk3.gtk_style_render_icon.restype = _GdkPixbuf
-    libgtk3.gtk_style_render_icon.argtypes = [_GtkStyle,_GtkIconSource,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,c_char_p]
+    libgtk3.gtk_style_render_icon.argtypes = [_GtkStyle,_GtkIconSource,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,Asciifier]
 except:
    pass
 try:
@@ -471,32 +471,32 @@ except:
    pass
 try:
     libgtk3.gtk_style_lookup_icon_set.restype = _GtkIconSet
-    libgtk3.gtk_style_lookup_icon_set.argtypes = [_GtkStyle,c_char_p]
+    libgtk3.gtk_style_lookup_icon_set.argtypes = [_GtkStyle,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_paint_shadow_gap.restype = None
-    libgtk3.gtk_paint_shadow_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType,gint,gint]
+    libgtk3.gtk_paint_shadow_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint,GtkPositionType,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_check.restype = None
-    libgtk3.gtk_paint_check.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_check.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_hline.restype = None
-    libgtk3.gtk_paint_hline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint]
+    libgtk3.gtk_paint_hline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,Asciifier,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_shadow.restype = None
-    libgtk3.gtk_paint_shadow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_shadow.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_diamond.restype = None
-    libgtk3.gtk_paint_diamond.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_diamond.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
@@ -506,7 +506,7 @@ except:
    pass
 try:
     libgtk3.gtk_style_lookup_color.restype = gboolean
-    libgtk3.gtk_style_lookup_color.argtypes = [_GtkStyle,c_char_p,_GdkColor]
+    libgtk3.gtk_style_lookup_color.argtypes = [_GtkStyle,Asciifier,_GdkColor]
 except:
    pass
 try:
@@ -516,22 +516,22 @@ except:
    pass
 try:
     libgtk3.gtk_paint_box_gap.restype = None
-    libgtk3.gtk_paint_box_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType,gint,gint]
+    libgtk3.gtk_paint_box_gap.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint,GtkPositionType,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_tab.restype = None
-    libgtk3.gtk_paint_tab.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_tab.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_spinner.restype = None
-    libgtk3.gtk_paint_spinner.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,guint,gint,gint,gint,gint]
+    libgtk3.gtk_paint_spinner.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,Asciifier,guint,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_layout.restype = None
-    libgtk3.gtk_paint_layout.argtypes = [_GtkStyle,_cairo_t,GtkStateType,gboolean,_GtkWidget,c_char_p,gint,gint,_PangoLayout]
+    libgtk3.gtk_paint_layout.argtypes = [_GtkStyle,_cairo_t,GtkStateType,gboolean,_GtkWidget,Asciifier,gint,gint,_PangoLayout]
 except:
    pass
 try:
@@ -546,12 +546,12 @@ except:
    pass
 try:
     libgtk3.gtk_paint_focus.restype = None
-    libgtk3.gtk_paint_focus.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_focus.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_extension.restype = None
-    libgtk3.gtk_paint_extension.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkPositionType]
+    libgtk3.gtk_paint_extension.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint,GtkPositionType]
 except:
    pass
 try:
@@ -561,17 +561,17 @@ except:
    pass
 try:
     libgtk3.gtk_paint_vline.restype = None
-    libgtk3.gtk_paint_vline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,c_char_p,gint,gint,gint]
+    libgtk3.gtk_paint_vline.argtypes = [_GtkStyle,_cairo_t,GtkStateType,_GtkWidget,Asciifier,gint,gint,gint]
 except:
    pass
 try:
     libgtk3.gtk_paint_handle.restype = None
-    libgtk3.gtk_paint_handle.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint,GtkOrientation]
+    libgtk3.gtk_paint_handle.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint,GtkOrientation]
 except:
    pass
 try:
     libgtk3.gtk_paint_box.restype = None
-    libgtk3.gtk_paint_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_box.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
 try:
@@ -581,10 +581,10 @@ except:
    pass
 try:
     libgtk3.gtk_paint_option.restype = None
-    libgtk3.gtk_paint_option.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,c_char_p,gint,gint,gint,gint]
+    libgtk3.gtk_paint_option.argtypes = [_GtkStyle,_cairo_t,GtkStateType,GtkShadowType,_GtkWidget,Asciifier,gint,gint,gint,gint]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkStyle( gobject__GObject.GObject):
     """Class GtkStyle Constructors"""
     def __init__( self,  obj = None):
@@ -668,7 +668,7 @@ class GtkStyle( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_style_render_icon( self._object,source,direction,state,size,widget,detail ) or POINTER(c_int)())
 
     def has_context(  self, ):
@@ -678,7 +678,7 @@ class GtkStyle( gobject__GObject.GObject):
 
     def lookup_icon_set(  self, stock_id, ):
 
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet(None, obj=libgtk3.gtk_style_lookup_icon_set( self._object,stock_id ) or POINTER(c_int)())
 
     def gtk_paint_shadow_gap(  self, cr, state_type, shadow_type, widget, detail, x, y, width, height, gap_side, gap_x, gap_width, ):
@@ -744,7 +744,7 @@ class GtkStyle( gobject__GObject.GObject):
         if window: window = window._object
         else: window = POINTER(c_int)()
 
-        from gtk3 import GtkStyle
+        from .gtk3 import GtkStyle
         return GtkStyle(None, obj=libgtk3.gtk_style_attach( self._object,window ) or POINTER(c_int)())
 
     def gtk_paint_box_gap(  self, cr, state_type, shadow_type, widget, detail, x, y, width, height, gap_side, gap_x, gap_width, ):
@@ -829,7 +829,7 @@ class GtkStyle( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from gtk3 import GtkStyle
+        from .gtk3 import GtkStyle
         return GtkStyle( obj=libgtk3.gtk_style_copy( self._object ) or POINTER(c_int)())
 
     def gtk_paint_vline(  self, cr, state_type, widget, detail, y1_, y2_, x, ):

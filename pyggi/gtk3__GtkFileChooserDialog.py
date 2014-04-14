@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -226,17 +226,17 @@ CairoPatternype_t = c_int
 libgtk3.gtk_file_chooser_get_filename.argtypes = [_GtkWidget]
 libgtk3.gtk_file_chooser_get_filename.restype = c_char_p
 
-import gtk3__GtkDialog
+from . import gtk3__GtkDialog
 class GtkFileChooserDialog( gtk3__GtkDialog.GtkDialog):
     """Class GtkFileChooserDialog Constructors"""
     def __init__( self, title, parent, action, *args):
             libgtk3.gtk_file_chooser_dialog_new.restype = POINTER(c_int)
             
-            argtypes = [c_char_p, _GtkWindow, gint]
-            args2 = [c_char_p(title), parent._object, action]
-            for index in xrange(len(args)):
-                argtypes += [c_char_p, gint]
-                args2 += [ c_char_p(args[index][0]), args[index][1]]
+            argtypes = [Asciifier, _GtkWindow, gint]
+            args2 = [Asciifier(title), parent._object, action]
+            for index in range(len(args)):
+                argtypes += [Asciifier, gint]
+                args2 += [ c_char_p(str(args[index][0]).encode('ascii')), args[index][1]]
             libgtk3.gtk_file_chooser_dialog_new.argtypes = argtypes
             NULL = POINTER(c_int)()
             args2.append(NULL)

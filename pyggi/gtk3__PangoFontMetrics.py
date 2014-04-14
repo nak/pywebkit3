@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -223,7 +223,7 @@ try:
     libgtk3.pango_font_metrics_get_underline_thickness.argtypes = [_PangoFontMetrics]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class PangoFontMetrics( gobject__GBoxed.GBoxed):
     """Class PangoFontMetrics Constructors"""
     def __init__(self, obj = None):
@@ -251,7 +251,7 @@ class PangoFontMetrics( gobject__GBoxed.GBoxed):
 
     def ref(  self, ):
 
-        from gtk3 import PangoFontMetrics
+        from .gtk3 import PangoFontMetrics
         return PangoFontMetrics( obj=libgtk3.pango_font_metrics_ref( self._object )  or POINTER(c_int)())
 
     def get_approximate_char_width(  self, ):

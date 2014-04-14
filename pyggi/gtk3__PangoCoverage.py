@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -216,7 +216,7 @@ try:
     libgtk3.pango_coverage_from_bytes.argtypes = [POINTER(guchar),int]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoCoverage( gobject__GObject.GObject):
     """Class PangoCoverage Constructors"""
     def __init__( self,  obj = None):
@@ -235,7 +235,7 @@ class PangoCoverage( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from gtk3 import PangoCoverage
+        from .gtk3 import PangoCoverage
         return PangoCoverage( obj=libgtk3.pango_coverage_copy( self._object )  or POINTER(c_int)())
 
     def set(  self, index_, level, ):
@@ -245,7 +245,7 @@ class PangoCoverage( gobject__GObject.GObject):
 
     def ref(  self, ):
 
-        from gtk3 import PangoCoverage
+        from .gtk3 import PangoCoverage
         return PangoCoverage( obj=libgtk3.pango_coverage_ref( self._object )  or POINTER(c_int)())
 
     def get(  self, index_, ):
@@ -267,6 +267,6 @@ class PangoCoverage( gobject__GObject.GObject):
 
     @staticmethod
     def from_bytes( bytes, n_bytes,):
-        from gtk3 import PangoCoverage
+        from .gtk3 import PangoCoverage
         return PangoCoverage( obj=    libgtk3.pango_coverage_from_bytes(bytes, n_bytes, )
   or POINTER(c_int)())

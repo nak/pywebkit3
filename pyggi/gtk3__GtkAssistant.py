@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -459,7 +459,7 @@ except:
    pass
 try:
     libgtk3.gtk_assistant_set_page_title.restype = None
-    libgtk3.gtk_assistant_set_page_title.argtypes = [_GtkAssistant,_GtkWidget,c_char_p]
+    libgtk3.gtk_assistant_set_page_title.argtypes = [_GtkAssistant,_GtkWidget,Asciifier]
 except:
    pass
 try:
@@ -507,7 +507,7 @@ try:
     libgtk3.gtk_assistant_remove_action_widget.argtypes = [_GtkAssistant,_GtkWidget]
 except:
    pass
-import gtk3__GtkWindow
+from . import gtk3__GtkWindow
 class GtkAssistant( gtk3__GtkWindow.GtkWindow):
     """Class GtkAssistant Constructors"""
     def __init__( self,  obj = None):
@@ -584,7 +584,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_assistant_get_page_header_image( self._object,page ) or POINTER(c_int)())
 
     def add_action_widget(  self, child, ):
@@ -644,7 +644,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
         if page: page = page._object
         else: page = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_assistant_get_page_side_image( self._object,page ) or POINTER(c_int)())
 
     def prepend_page(  self, page, ):
@@ -663,7 +663,7 @@ class GtkAssistant( gtk3__GtkWindow.GtkWindow):
 
     def get_nth_page(  self, page_num, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_assistant_get_nth_page( self._object,page_num ) or POINTER(c_int)())
 
     def set_page_type(  self, page, type, ):

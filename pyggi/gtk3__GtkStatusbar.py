@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -341,15 +341,15 @@ except:
    pass
 try:
     libgtk3.gtk_statusbar_get_context_id.restype = guint
-    libgtk3.gtk_statusbar_get_context_id.argtypes = [_GtkStatusbar,c_char_p]
+    libgtk3.gtk_statusbar_get_context_id.argtypes = [_GtkStatusbar,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_statusbar_push.restype = guint
-    libgtk3.gtk_statusbar_push.argtypes = [_GtkStatusbar,guint,c_char_p]
+    libgtk3.gtk_statusbar_push.argtypes = [_GtkStatusbar,guint,Asciifier]
 except:
    pass
-import gtk3__GtkBox
+from . import gtk3__GtkBox
 class GtkStatusbar( gtk3__GtkBox.GtkBox):
     """Class GtkStatusbar Constructors"""
     def __init__( self,  obj = None):
@@ -368,7 +368,7 @@ class GtkStatusbar( gtk3__GtkBox.GtkBox):
 
     def get_message_area(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_statusbar_get_message_area( self._object ) or POINTER(c_int)())
 
     def remove_all(  self, context_id, ):

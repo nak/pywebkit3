@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -270,7 +270,7 @@ GtkDialogFlags = c_int
 GtkResponseType = c_int
 WebKitWebNavigationReason = c_int
 
-import gobject__GObject
+from . import gobject__GObject
 class PangoAttrList( gobject__GObject.GObject):
     """Class PangoAttrList Constructors"""
     def __init__(self, obj = None):

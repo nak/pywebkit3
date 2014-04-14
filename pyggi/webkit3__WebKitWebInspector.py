@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -400,7 +400,7 @@ try:
     libwebkit3.webkit_web_inspector_inspect_coordinates.argtypes = [_WebKitWebInspector,gdouble,gdouble]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebInspector( gobject__GObject.GObject):
     """Class WebKitWebInspector Constructors"""
     def __init__(self, obj = None):
@@ -418,7 +418,7 @@ class WebKitWebInspector( gobject__GObject.GObject):
 
     def get_web_view(  self, ):
 
-        from webkit3 import WebKitWebView
+        from .webkit3 import WebKitWebView
         return WebKitWebView(None, obj=libwebkit3.webkit_web_inspector_get_web_view( self._object ) or POINTER(c_int)() )
 
     def inspect_node(  self, node, ):

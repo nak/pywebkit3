@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -333,7 +333,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_history_item_set_alternate_title.restype = None
-    libwebkit3.webkit_web_history_item_set_alternate_title.argtypes = [_WebKitWebHistoryItem,c_char_p]
+    libwebkit3.webkit_web_history_item_set_alternate_title.argtypes = [_WebKitWebHistoryItem,Asciifier]
 except:
    pass
 try:
@@ -353,10 +353,10 @@ except:
    pass
 try:
     libwebkit3.webkit_web_history_item_new_with_data.restype = _WebKitWebHistoryItem
-    libwebkit3.webkit_web_history_item_new_with_data.argtypes = [c_char_p,c_char_p]
+    libwebkit3.webkit_web_history_item_new_with_data.argtypes = [Asciifier,Asciifier]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebHistoryItem( gobject__GObject.GObject):
     """Class WebKitWebHistoryItem Constructors"""
     def __init__( self,  obj = None):
@@ -395,7 +395,7 @@ class WebKitWebHistoryItem( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from webkit3 import WebKitWebHistoryItem
+        from .webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=libwebkit3.webkit_web_history_item_copy( self._object ) or POINTER(c_int)() )
 
     def get_uri(  self, ):
@@ -405,6 +405,6 @@ class WebKitWebHistoryItem( gobject__GObject.GObject):
 
     @staticmethod
     def new_with_data( uri, title,):
-        from webkit3 import WebKitWebHistoryItem
+        from .webkit3 import WebKitWebHistoryItem
         return WebKitWebHistoryItem( obj=    libwebkit3.webkit_web_history_item_new_with_data(uri, title, )
  or POINTER(c_int)() )

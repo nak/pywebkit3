@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -71,7 +71,7 @@ try:
     libgtk3.gdk_pixbuf_simple_anim_set_loop.argtypes = [_GdkPixbufSimpleAnim,gboolean]
 except:
    pass
-import gtk3__GdkPixbufAnimation
+from . import gtk3__GdkPixbufAnimation
 class GdkPixbufSimpleAnim( gtk3__GdkPixbufAnimation.GdkPixbufAnimation):
     """Class GdkPixbufSimpleAnim Constructors"""
     def __init__( self, rate,  obj = None):

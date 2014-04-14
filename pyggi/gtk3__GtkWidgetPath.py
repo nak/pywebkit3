@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -389,7 +389,7 @@ except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_add_region.restype = None
-    libgtk3.gtk_widget_path_iter_add_region.argtypes = [_GtkWidgetPath,gint,c_char_p,GtkRegionFlags]
+    libgtk3.gtk_widget_path_iter_add_region.argtypes = [_GtkWidgetPath,gint,Asciifier,GtkRegionFlags]
 except:
    pass
 try:
@@ -399,7 +399,7 @@ except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_has_name.restype = gboolean
-    libgtk3.gtk_widget_path_iter_has_name.argtypes = [_GtkWidgetPath,gint,c_char_p]
+    libgtk3.gtk_widget_path_iter_has_name.argtypes = [_GtkWidgetPath,gint,Asciifier]
 except:
    pass
 try:
@@ -409,7 +409,7 @@ except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_remove_region.restype = None
-    libgtk3.gtk_widget_path_iter_remove_region.argtypes = [_GtkWidgetPath,gint,c_char_p]
+    libgtk3.gtk_widget_path_iter_remove_region.argtypes = [_GtkWidgetPath,gint,Asciifier]
 except:
    pass
 try:
@@ -464,7 +464,7 @@ except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_remove_class.restype = None
-    libgtk3.gtk_widget_path_iter_remove_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
+    libgtk3.gtk_widget_path_iter_remove_class.argtypes = [_GtkWidgetPath,gint,Asciifier]
 except:
    pass
 try:
@@ -474,12 +474,12 @@ except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_has_region.restype = gboolean
-    libgtk3.gtk_widget_path_iter_has_region.argtypes = [_GtkWidgetPath,gint,c_char_p,_GtkRegionFlags]
+    libgtk3.gtk_widget_path_iter_has_region.argtypes = [_GtkWidgetPath,gint,Asciifier,_GtkRegionFlags]
 except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_set_name.restype = None
-    libgtk3.gtk_widget_path_iter_set_name.argtypes = [_GtkWidgetPath,gint,c_char_p]
+    libgtk3.gtk_widget_path_iter_set_name.argtypes = [_GtkWidgetPath,gint,Asciifier]
 except:
    pass
 try:
@@ -494,12 +494,12 @@ except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_add_class.restype = None
-    libgtk3.gtk_widget_path_iter_add_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
+    libgtk3.gtk_widget_path_iter_add_class.argtypes = [_GtkWidgetPath,gint,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_widget_path_iter_has_class.restype = gboolean
-    libgtk3.gtk_widget_path_iter_has_class.argtypes = [_GtkWidgetPath,gint,c_char_p]
+    libgtk3.gtk_widget_path_iter_has_class.argtypes = [_GtkWidgetPath,gint,Asciifier]
 except:
    pass
 try:
@@ -614,7 +614,7 @@ class GtkWidgetPath( object):
 
     def iter_list_regions(  self, pos, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libgtk3.gtk_widget_path_iter_list_regions( self._object,pos ) or POINTER(c_int)())
 
     def iter_has_region(  self, pos, name, flags, ):
@@ -636,7 +636,7 @@ class GtkWidgetPath( object):
 
     def iter_list_classes(  self, pos, ):
 
-        from gobject import GSList
+        from .gobject import GSList
         return GSList( obj=libgtk3.gtk_widget_path_iter_list_classes( self._object,pos ) or POINTER(c_int)())
 
     def iter_add_class(  self, pos, name, ):
@@ -651,7 +651,7 @@ class GtkWidgetPath( object):
 
     def copy(  self, ):
 
-        from gtk3 import GtkWidgetPath
+        from .gtk3 import GtkWidgetPath
         return GtkWidgetPath( obj=libgtk3.gtk_widget_path_copy( self._object ) or POINTER(c_int)())
 
     def length(  self, ):

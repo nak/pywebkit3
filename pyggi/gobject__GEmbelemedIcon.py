@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -413,13 +413,13 @@ class GEmbelemedIcon( object):
     def g_emblemed_icon_get_icon( emblemed,):
         if emblemed: emblemed = emblemed._object
         else: emblemed = POINTER(c_int)()
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=    libgobject.g_emblemed_icon_get_icon(emblemed, )
  or POINTER(c_int)())
     @staticmethod
     def g_emblemed_icon_get_emblems( emblemed,):
         if emblemed: emblemed = emblemed._object
         else: emblemed = POINTER(c_int)()
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=    libgobject.g_emblemed_icon_get_emblems(emblemed, )
  or POINTER(c_int)())

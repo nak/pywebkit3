@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -302,7 +302,7 @@ try:
     libgtk3.gtk_accel_label_set_accel_widget.argtypes = [_GtkAccelLabel,_GtkWidget]
 except:
    pass
-import gtk3__GtkLabel
+from . import gtk3__GtkLabel
 class GtkAccelLabel( gtk3__GtkLabel.GtkLabel):
     """Class GtkAccelLabel Constructors"""
     def __init__( self, string,  obj = None):
@@ -310,7 +310,7 @@ class GtkAccelLabel( gtk3__GtkLabel.GtkLabel):
         else:
             libgtk3.gtk_accel_label_new.restype = POINTER(c_int)
             
-            libgtk3.gtk_accel_label_new.argtypes = [c_char_p]
+            libgtk3.gtk_accel_label_new.argtypes = [Asciifier]
             self._object = libgtk3.gtk_accel_label_new(string, )
 
     """Methods"""
@@ -321,7 +321,7 @@ class GtkAccelLabel( gtk3__GtkLabel.GtkLabel):
 
     def get_accel_widget(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_accel_label_get_accel_widget( self._object ) or POINTER(c_int)())
 
     def get_accel_width(  self, ):

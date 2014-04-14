@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -357,12 +357,12 @@ except:
    pass
 try:
     libgio.g_input_stream_read_all.restype = gboolean
-    libgio.g_input_stream_read_all.argtypes = [_GInputStream,c_char_p,gsize,POINTER(gsize),_GCancellable,_GError]
+    libgio.g_input_stream_read_all.argtypes = [_GInputStream,Asciifier,gsize,POINTER(gsize),_GCancellable,_GError]
 except:
    pass
 try:
     libgio.g_input_stream_read_async.restype = None
-    libgio.g_input_stream_read_async.argtypes = [_GInputStream,c_char_p,gsize,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_input_stream_read_async.argtypes = [_GInputStream,Asciifier,gsize,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -377,7 +377,7 @@ except:
    pass
 try:
     libgio.g_input_stream_read.restype = gssize
-    libgio.g_input_stream_read.argtypes = [_GInputStream,c_char_p,gsize,_GCancellable,_GError]
+    libgio.g_input_stream_read.argtypes = [_GInputStream,Asciifier,gsize,_GCancellable,_GError]
 except:
    pass
 try:
@@ -405,7 +405,7 @@ try:
     libgio.g_input_stream_skip_finish.argtypes = [_GInputStream,_GAsyncResult,_GError]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GInputStream( gobject__GObject.GObject):
     """Class GInputStream Constructors"""
     def __init__(self, obj = None):

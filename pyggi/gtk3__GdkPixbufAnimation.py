@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -341,10 +341,10 @@ except:
    pass
 try:
     libgtk3.gdk_pixbuf_animation_new_from_file.restype = _GdkPixbufAnimation
-    libgtk3.gdk_pixbuf_animation_new_from_file.argtypes = [c_char_p,_GError]
+    libgtk3.gdk_pixbuf_animation_new_from_file.argtypes = [Asciifier,_GError]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkPixbufAnimation( gobject__GObject.GObject):
     """Class GdkPixbufAnimation Constructors"""
     def __init__(self, obj = None):
@@ -354,7 +354,7 @@ class GdkPixbufAnimation( gobject__GObject.GObject):
         if start_time: start_time = start_time._object
         else: start_time = POINTER(c_int)()
 
-        from gobject import GdkPixbufAnimationIter
+        from .gobject import GdkPixbufAnimationIter
         return GdkPixbufAnimationIter( obj=libgtk3.gdk_pixbuf_animation_get_iter( self._object,start_time ) or POINTER(c_int)())
 
     def get_width(  self, ):
@@ -364,7 +364,7 @@ class GdkPixbufAnimation( gobject__GObject.GObject):
 
     def ref(  self, ):
 
-        from gobject import GdkPixbufAnimation
+        from .gobject import GdkPixbufAnimation
         return GdkPixbufAnimation( obj=libgtk3.gdk_pixbuf_animation_ref( self._object ) or POINTER(c_int)())
 
     def is_static_image(  self, ):
@@ -379,7 +379,7 @@ class GdkPixbufAnimation( gobject__GObject.GObject):
 
     def get_static_image(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gdk_pixbuf_animation_get_static_image( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):
@@ -391,6 +391,6 @@ class GdkPixbufAnimation( gobject__GObject.GObject):
     def new_from_file( filename, error,):
         if error: error = error._object
         else: error = POINTER(c_int)()
-        from gobject import GdkPixbufAnimation
+        from .gobject import GdkPixbufAnimation
         return GdkPixbufAnimation( obj=    libgtk3.gdk_pixbuf_animation_new_from_file(filename, error, )
  or POINTER(c_int)())

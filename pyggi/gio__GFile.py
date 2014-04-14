@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -377,17 +377,17 @@ except:
    pass
 try:
     libgio.g_file_enumerate_children.restype = _GFileEnumerator
-    libgio.g_file_enumerate_children.argtypes = [_GFile,c_char_p,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_enumerate_children.argtypes = [_GFile,Asciifier,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
     libgio.g_file_query_info.restype = _GFileInfo
-    libgio.g_file_query_info.argtypes = [_GFile,c_char_p,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_query_info.argtypes = [_GFile,Asciifier,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
     libgio.g_file_make_symbolic_link.restype = gboolean
-    libgio.g_file_make_symbolic_link.argtypes = [_GFile,c_char_p,_GCancellable,_GError]
+    libgio.g_file_make_symbolic_link.argtypes = [_GFile,Asciifier,_GCancellable,_GError]
 except:
    pass
 try:
@@ -397,7 +397,7 @@ except:
    pass
 try:
     libgio.g_file_set_attribute_int64.restype = gboolean
-    libgio.g_file_set_attribute_int64.argtypes = [_GFile,c_char_p,gint64,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute_int64.argtypes = [_GFile,Asciifier,gint64,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -412,7 +412,7 @@ except:
    pass
 try:
     libgio.g_file_get_child_for_display_name.restype = _GFile
-    libgio.g_file_get_child_for_display_name.argtypes = [_GFile,c_char_p,_GError]
+    libgio.g_file_get_child_for_display_name.argtypes = [_GFile,Asciifier,_GError]
 except:
    pass
 try:
@@ -427,7 +427,7 @@ except:
    pass
 try:
     libgio.g_file_enumerate_children_async.restype = None
-    libgio.g_file_enumerate_children_async.argtypes = [_GFile,c_char_p,GFileQueryInfoFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_enumerate_children_async.argtypes = [_GFile,Asciifier,GFileQueryInfoFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -452,7 +452,7 @@ except:
    pass
 try:
     libgio.g_file_get_child.restype = _GFile
-    libgio.g_file_get_child.argtypes = [_GFile,c_char_p]
+    libgio.g_file_get_child.argtypes = [_GFile,Asciifier]
 except:
    pass
 try:
@@ -477,12 +477,12 @@ except:
    pass
 try:
     libgio.g_file_replace_readwrite.restype = _GFileIOStream
-    libgio.g_file_replace_readwrite.argtypes = [_GFile,c_char_p,gboolean,GFileCreateFlags,_GCancellable,_GError]
+    libgio.g_file_replace_readwrite.argtypes = [_GFile,Asciifier,gboolean,GFileCreateFlags,_GCancellable,_GError]
 except:
    pass
 try:
     libgio.g_file_set_attribute_uint32.restype = gboolean
-    libgio.g_file_set_attribute_uint32.argtypes = [_GFile,c_char_p,guint32,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute_uint32.argtypes = [_GFile,Asciifier,guint32,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -497,7 +497,7 @@ except:
    pass
 try:
     libgio.g_file_replace_async.restype = None
-    libgio.g_file_replace_async.argtypes = [_GFile,c_char_p,gboolean,GFileCreateFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_replace_async.argtypes = [_GFile,Asciifier,gboolean,GFileCreateFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -532,7 +532,7 @@ except:
    pass
 try:
     libgio.g_file_query_filesystem_info.restype = _GFileInfo
-    libgio.g_file_query_filesystem_info.argtypes = [_GFile,c_char_p,_GCancellable,_GError]
+    libgio.g_file_query_filesystem_info.argtypes = [_GFile,Asciifier,_GCancellable,_GError]
 except:
    pass
 try:
@@ -542,7 +542,7 @@ except:
    pass
 try:
     libgio.g_file_set_attribute_string.restype = gboolean
-    libgio.g_file_set_attribute_string.argtypes = [_GFile,c_char_p,c_char_p,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute_string.argtypes = [_GFile,Asciifier,Asciifier,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -557,7 +557,7 @@ except:
    pass
 try:
     libgio.g_file_query_info_async.restype = None
-    libgio.g_file_query_info_async.argtypes = [_GFile,c_char_p,GFileQueryInfoFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_query_info_async.argtypes = [_GFile,Asciifier,GFileQueryInfoFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -602,7 +602,7 @@ except:
    pass
 try:
     libgio.g_file_replace.restype = _GFileOutputStream
-    libgio.g_file_replace.argtypes = [_GFile,c_char_p,gboolean,GFileCreateFlags,_GCancellable,_GError]
+    libgio.g_file_replace.argtypes = [_GFile,Asciifier,gboolean,GFileCreateFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -612,12 +612,12 @@ except:
    pass
 try:
     libgio.g_file_replace_contents.restype = gboolean
-    libgio.g_file_replace_contents.argtypes = [_GFile,c_char_p,gsize,c_char_p,gboolean,GFileCreateFlags,c_char_p,_GCancellable,_GError]
+    libgio.g_file_replace_contents.argtypes = [_GFile,Asciifier,gsize,Asciifier,gboolean,GFileCreateFlags,Asciifier,_GCancellable,_GError]
 except:
    pass
 try:
     libgio.g_file_resolve_relative_path.restype = _GFile
-    libgio.g_file_resolve_relative_path.argtypes = [_GFile,c_char_p]
+    libgio.g_file_resolve_relative_path.argtypes = [_GFile,Asciifier]
 except:
    pass
 try:
@@ -707,7 +707,7 @@ except:
    pass
 try:
     libgio.g_file_load_contents.restype = gboolean
-    libgio.g_file_load_contents.argtypes = [_GFile,_GCancellable,c_char_p,POINTER(gsize),c_char_p,_GError]
+    libgio.g_file_load_contents.argtypes = [_GFile,_GCancellable,Asciifier,POINTER(gsize),Asciifier,_GError]
 except:
    pass
 try:
@@ -722,12 +722,12 @@ except:
    pass
 try:
     libgio.g_file_replace_readwrite_async.restype = None
-    libgio.g_file_replace_readwrite_async.argtypes = [_GFile,c_char_p,gboolean,GFileCreateFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_replace_readwrite_async.argtypes = [_GFile,Asciifier,gboolean,GFileCreateFlags,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
     libgio.g_file_load_contents_finish.restype = gboolean
-    libgio.g_file_load_contents_finish.argtypes = [_GFile,_GAsyncResult,c_char_p,POINTER(gsize),c_char_p,_GError]
+    libgio.g_file_load_contents_finish.argtypes = [_GFile,_GAsyncResult,Asciifier,POINTER(gsize),Asciifier,_GError]
 except:
    pass
 try:
@@ -737,7 +737,7 @@ except:
    pass
 try:
     libgio.g_file_replace_contents_finish.restype = gboolean
-    libgio.g_file_replace_contents_finish.argtypes = [_GFile,_GAsyncResult,c_char_p,_GError]
+    libgio.g_file_replace_contents_finish.argtypes = [_GFile,_GAsyncResult,Asciifier,_GError]
 except:
    pass
 try:
@@ -762,7 +762,7 @@ except:
    pass
 try:
     libgio.g_file_set_attribute_int32.restype = gboolean
-    libgio.g_file_set_attribute_int32.argtypes = [_GFile,c_char_p,gint32,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute_int32.argtypes = [_GFile,Asciifier,gint32,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -772,7 +772,7 @@ except:
    pass
 try:
     libgio.g_file_replace_contents_async.restype = None
-    libgio.g_file_replace_contents_async.argtypes = [_GFile,c_char_p,gsize,c_char_p,gboolean,GFileCreateFlags,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_replace_contents_async.argtypes = [_GFile,Asciifier,gsize,Asciifier,gboolean,GFileCreateFlags,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -782,7 +782,7 @@ except:
    pass
 try:
     libgio.g_file_set_attribute_uint64.restype = gboolean
-    libgio.g_file_set_attribute_uint64.argtypes = [_GFile,c_char_p,guint64,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute_uint64.argtypes = [_GFile,Asciifier,guint64,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -797,12 +797,12 @@ except:
    pass
 try:
     libgio.g_file_load_partial_contents_finish.restype = gboolean
-    libgio.g_file_load_partial_contents_finish.argtypes = [_GFile,_GAsyncResult,c_char_p,POINTER(gsize),c_char_p,_GError]
+    libgio.g_file_load_partial_contents_finish.argtypes = [_GFile,_GAsyncResult,Asciifier,POINTER(gsize),Asciifier,_GError]
 except:
    pass
 try:
     libgio.g_file_set_display_name.restype = _GFile
-    libgio.g_file_set_display_name.argtypes = [_GFile,c_char_p,_GCancellable,_GError]
+    libgio.g_file_set_display_name.argtypes = [_GFile,Asciifier,_GCancellable,_GError]
 except:
    pass
 try:
@@ -832,7 +832,7 @@ except:
    pass
 try:
     libgio.g_file_set_display_name_async.restype = None
-    libgio.g_file_set_display_name_async.argtypes = [_GFile,c_char_p,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_set_display_name_async.argtypes = [_GFile,Asciifier,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
@@ -862,7 +862,7 @@ except:
    pass
 try:
     libgio.g_file_set_attribute.restype = gboolean
-    libgio.g_file_set_attribute.argtypes = [_GFile,c_char_p,GFileAttributeType,gpointer,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute.argtypes = [_GFile,Asciifier,GFileAttributeType,gpointer,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -872,7 +872,7 @@ except:
    pass
 try:
     libgio.g_file_set_attribute_byte_string.restype = gboolean
-    libgio.g_file_set_attribute_byte_string.argtypes = [_GFile,c_char_p,c_char_p,GFileQueryInfoFlags,_GCancellable,_GError]
+    libgio.g_file_set_attribute_byte_string.argtypes = [_GFile,Asciifier,Asciifier,GFileQueryInfoFlags,_GCancellable,_GError]
 except:
    pass
 try:
@@ -897,27 +897,27 @@ except:
    pass
 try:
     libgio.g_file_has_uri_scheme.restype = gboolean
-    libgio.g_file_has_uri_scheme.argtypes = [_GFile,c_char_p]
+    libgio.g_file_has_uri_scheme.argtypes = [_GFile,Asciifier]
 except:
    pass
 try:
     libgio.g_file_query_filesystem_info_async.restype = None
-    libgio.g_file_query_filesystem_info_async.argtypes = [_GFile,c_char_p,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_query_filesystem_info_async.argtypes = [_GFile,Asciifier,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
 try:
     libgio.g_file_parse_name.restype = _GFile
-    libgio.g_file_parse_name.argtypes = [c_char_p]
+    libgio.g_file_parse_name.argtypes = [Asciifier]
 except:
    pass
 try:
     libgio.g_file_new_for_path.restype = _GFile
-    libgio.g_file_new_for_path.argtypes = [c_char_p]
+    libgio.g_file_new_for_path.argtypes = [Asciifier]
 except:
    pass
 try:
     libgio.g_file_new_tmp.restype = _GFile
-    libgio.g_file_new_tmp.argtypes = [c_char_p,_GFileIOStream,_GError]
+    libgio.g_file_new_tmp.argtypes = [Asciifier,_GFileIOStream,_GError]
 except:
    pass
 try:
@@ -927,15 +927,15 @@ except:
    pass
 try:
     libgio.g_file_new_for_commandline_arg.restype = _GFile
-    libgio.g_file_new_for_commandline_arg.argtypes = [c_char_p]
+    libgio.g_file_new_for_commandline_arg.argtypes = [Asciifier]
 except:
    pass
 try:
     libgio.g_file_new_for_uri.restype = _GFile
-    libgio.g_file_new_for_uri.argtypes = [c_char_p]
+    libgio.g_file_new_for_uri.argtypes = [Asciifier]
 except:
    pass
-import gio__GInterface
+from . import gio__GInterface
 class GFile( gio__GInterface.GInterface):
     """Class GFile Constructors"""
     def __init__(self, obj = None):
@@ -947,7 +947,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileEnumerator
+        from .gio import GFileEnumerator
         return GFileEnumerator( obj=libgio.g_file_enumerate_children_finish( self._object,res,error ) or POINTER(c_int)())
 
     def enumerate_children(  self, attributes, flags, cancellable, error, ):
@@ -956,7 +956,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileEnumerator
+        from .gio import GFileEnumerator
         return GFileEnumerator( obj=libgio.g_file_enumerate_children( self._object,attributes,flags,cancellable,error ) or POINTER(c_int)())
 
     def query_info(  self, attributes, flags, cancellable, error, ):
@@ -965,7 +965,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None,None, obj=libgio.g_file_query_info( self._object,attributes,flags,cancellable,error ) or POINTER(c_int)())
 
     def make_symbolic_link(  self, symlink_value, cancellable, error, ):
@@ -1021,7 +1021,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFile
+        from .gio import GFile
         return GFile(None,None, obj=libgio.g_file_get_child_for_display_name( self._object,display_name,error ) or POINTER(c_int)())
 
     def open_readwrite_async(  self, io_priority, cancellable, callback, user_data, ):
@@ -1077,7 +1077,7 @@ class GFile( gio__GInterface.GInterface):
 
     def get_child(  self, name, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile(None, obj=libgio.g_file_get_child( self._object,name ) or POINTER(c_int)())
 
     def eject_mountable(  self, flags, cancellable, callback, user_data, ):
@@ -1106,7 +1106,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileIOStream
+        from .gio import GFileIOStream
         return GFileIOStream( obj=libgio.g_file_open_readwrite_finish( self._object,res,error ) or POINTER(c_int)())
 
     def find_enclosing_mount(  self, cancellable, error, ):
@@ -1115,7 +1115,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GMount
+        from .gio import GMount
         return GMount( obj=libgio.g_file_find_enclosing_mount( self._object,cancellable,error ) or POINTER(c_int)())
 
     def replace_readwrite(  self, etag, make_backup, flags, cancellable, error, ):
@@ -1124,7 +1124,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileIOStream
+        from .gio import GFileIOStream
         return GFileIOStream( obj=libgio.g_file_replace_readwrite( self._object,etag,make_backup,flags,cancellable,error ) or POINTER(c_int)())
 
     def set_attribute_uint32(  self, attribute, value, flags, cancellable, error, ):
@@ -1142,7 +1142,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None, obj=libgio.g_file_query_filesystem_info_finish( self._object,res,error ) or POINTER(c_int)())
 
     def has_prefix(  self, prefix, ):
@@ -1174,7 +1174,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFile
+        from .gio import GFile
         return GFile(None,None, obj=libgio.g_file_set_display_name_finish( self._object,res,error ) or POINTER(c_int)())
 
     def set_attributes_async(  self, info, flags, io_priority, cancellable, callback, user_data, ):
@@ -1212,7 +1212,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileIOStream
+        from .gio import GFileIOStream
         return GFileIOStream( obj=libgio.g_file_create_readwrite_finish( self._object,res,error ) or POINTER(c_int)())
 
     def query_filesystem_info(  self, attributes, cancellable, error, ):
@@ -1221,7 +1221,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None, obj=libgio.g_file_query_filesystem_info( self._object,attributes,cancellable,error ) or POINTER(c_int)())
 
     def query_info_finish(  self, res, error, ):
@@ -1230,7 +1230,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None, obj=libgio.g_file_query_info_finish( self._object,res,error ) or POINTER(c_int)())
 
     def set_attribute_string(  self, attribute, value, flags, cancellable, error, ):
@@ -1248,7 +1248,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GMount
+        from .gio import GMount
         return GMount( obj=libgio.g_file_find_enclosing_mount_finish( self._object,res,error ) or POINTER(c_int)())
 
     def create(  self, flags, cancellable, error, ):
@@ -1257,7 +1257,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileOutputStream
+        from .gio import GFileOutputStream
         return GFileOutputStream( obj=libgio.g_file_create( self._object,flags,cancellable,error ) or POINTER(c_int)())
 
     def query_info_async(  self, attributes, flags, io_priority, cancellable, callback, user_data, ):
@@ -1284,7 +1284,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileIOStream
+        from .gio import GFileIOStream
         return GFileIOStream( obj=libgio.g_file_create_readwrite( self._object,flags,cancellable,error ) or POINTER(c_int)())
 
     def copy_async(  self, destination, flags, io_priority, cancellable, progress_callback, progress_callback_data, callback, user_data, ):
@@ -1306,7 +1306,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileAttributeInfoList
+        from .gio import GFileAttributeInfoList
         return GFileAttributeInfoList( obj=libgio.g_file_query_writable_namespaces( self._object,cancellable,error ) or POINTER(c_int)())
 
     def append_to_finish(  self, res, error, ):
@@ -1315,7 +1315,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileOutputStream
+        from .gio import GFileOutputStream
         return GFileOutputStream( obj=libgio.g_file_append_to_finish( self._object,res,error ) or POINTER(c_int)())
 
     def mount_enclosing_volume(  self, flags, mount_operation, cancellable, callback, user_data, ):
@@ -1359,7 +1359,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileOutputStream
+        from .gio import GFileOutputStream
         return GFileOutputStream( obj=libgio.g_file_replace( self._object,etag,make_backup,flags,cancellable,error ) or POINTER(c_int)())
 
     def read(  self, cancellable, error, ):
@@ -1368,7 +1368,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInputStream
+        from .gio import GFileInputStream
         return GFileInputStream( obj=libgio.g_file_read( self._object,cancellable,error ) or POINTER(c_int)())
 
     def replace_contents(  self, contents, length, etag, make_backup, flags, new_etag, cancellable, error, ):
@@ -1382,7 +1382,7 @@ class GFile( gio__GInterface.GInterface):
 
     def resolve_relative_path(  self, relative_path, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile(None, obj=libgio.g_file_resolve_relative_path( self._object,relative_path ) or POINTER(c_int)())
 
     def get_path(  self, ):
@@ -1414,7 +1414,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileIOStream
+        from .gio import GFileIOStream
         return GFileIOStream( obj=libgio.g_file_replace_readwrite_finish( self._object,res,error ) or POINTER(c_int)())
 
     def append_to(  self, flags, cancellable, error, ):
@@ -1423,7 +1423,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileOutputStream
+        from .gio import GFileOutputStream
         return GFileOutputStream( obj=libgio.g_file_append_to( self._object,flags,cancellable,error ) or POINTER(c_int)())
 
     def make_directory_with_parents(  self, cancellable, error, ):
@@ -1437,7 +1437,7 @@ class GFile( gio__GInterface.GInterface):
 
     def get_parent(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgio.g_file_get_parent( self._object ) or POINTER(c_int)())
 
     def create_finish(  self, res, error, ):
@@ -1446,7 +1446,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileOutputStream
+        from .gio import GFileOutputStream
         return GFileOutputStream( obj=libgio.g_file_create_finish( self._object,res,error ) or POINTER(c_int)())
 
     def mount_enclosing_volume_finish(  self, result, error, ):
@@ -1491,7 +1491,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInputStream
+        from .gio import GFileInputStream
         return GFileInputStream( obj=libgio.g_file_read_finish( self._object,res,error ) or POINTER(c_int)())
 
     def create_async(  self, flags, io_priority, cancellable, callback, user_data, ):
@@ -1525,7 +1525,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileMonitor
+        from .gio import GFileMonitor
         return GFileMonitor( obj=libgio.g_file_monitor_file( self._object,flags,cancellable,error ) or POINTER(c_int)())
 
     def load_contents(  self, cancellable, contents, length, etag_out, error, ):
@@ -1606,7 +1606,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileIOStream
+        from .gio import GFileIOStream
         return GFileIOStream( obj=libgio.g_file_open_readwrite( self._object,cancellable,error ) or POINTER(c_int)())
 
     def monitor_directory(  self, flags, cancellable, error, ):
@@ -1615,12 +1615,12 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileMonitor
+        from .gio import GFileMonitor
         return GFileMonitor( obj=libgio.g_file_monitor_directory( self._object,flags,cancellable,error ) or POINTER(c_int)())
 
     def dup(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgio.g_file_dup( self._object ) or POINTER(c_int)())
 
     def set_attribute_int32(  self, attribute, value, flags, cancellable, error, ):
@@ -1638,7 +1638,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileMonitor
+        from .gio import GFileMonitor
         return GFileMonitor( obj=libgio.g_file_monitor( self._object,flags,cancellable,error ) or POINTER(c_int)())
 
     def replace_contents_async(  self, contents, length, etag, make_backup, flags, cancellable, callback, user_data, ):
@@ -1699,7 +1699,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFile
+        from .gio import GFile
         return GFile(None,None,None, obj=libgio.g_file_set_display_name( self._object,display_name,cancellable,error ) or POINTER(c_int)())
 
     def copy_finish(  self, res, error, ):
@@ -1717,7 +1717,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileOutputStream
+        from .gio import GFileOutputStream
         return GFileOutputStream( obj=libgio.g_file_replace_finish( self._object,res,error ) or POINTER(c_int)())
 
     def has_parent(  self, parent, ):
@@ -1733,7 +1733,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileAttributeInfoList
+        from .gio import GFileAttributeInfoList
         return GFileAttributeInfoList( obj=libgio.g_file_query_settable_attributes( self._object,cancellable,error ) or POINTER(c_int)())
 
     def read_async(  self, io_priority, cancellable, callback, user_data, ):
@@ -1780,7 +1780,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gobject import GAppInfo
+        from .gobject import GAppInfo
         return GAppInfo( obj=libgio.g_file_query_default_handler( self._object,cancellable,error ) or POINTER(c_int)())
 
     def mount_mountable_finish(  self, result, error, ):
@@ -1789,7 +1789,7 @@ class GFile( gio__GInterface.GInterface):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFile
+        from .gio import GFile
         return GFile(None,None, obj=libgio.g_file_mount_mountable_finish( self._object,result,error ) or POINTER(c_int)())
 
     def supports_thread_contexts(  self, ):
@@ -1878,12 +1878,12 @@ class GFile( gio__GInterface.GInterface):
 
     @staticmethod
     def parse_name( parse_name,):
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=    libgio.g_file_parse_name(parse_name, )
  or POINTER(c_int)())
     @staticmethod
     def new_for_path( path,):
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=    libgio.g_file_new_for_path(path, )
  or POINTER(c_int)())
     @staticmethod
@@ -1892,7 +1892,7 @@ class GFile( gio__GInterface.GInterface):
         else: iostream = POINTER(c_int)()
         if error: error = error._object
         else: error = POINTER(c_int)()
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=    libgio.g_file_new_tmp(tmpl, iostream, error, )
  or POINTER(c_int)())
     @staticmethod
@@ -1902,11 +1902,11 @@ class GFile( gio__GInterface.GInterface):
 
     @staticmethod
     def new_for_commandline_arg( arg,):
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=    libgio.g_file_new_for_commandline_arg(arg, )
  or POINTER(c_int)())
     @staticmethod
     def new_for_uri( uri,):
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=    libgio.g_file_new_for_uri(uri, )
  or POINTER(c_int)())

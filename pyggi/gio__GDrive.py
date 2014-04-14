@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -488,10 +488,10 @@ except:
    pass
 try:
     libgio.g_drive_get_identifier.restype = c_char_p
-    libgio.g_drive_get_identifier.argtypes = [_GDrive,c_char_p]
+    libgio.g_drive_get_identifier.argtypes = [_GDrive,Asciifier]
 except:
    pass
-import gio__GInterface
+from . import gio__GInterface
 class GDrive( gio__GInterface.GInterface):
     """Class GDrive Constructors"""
     def __init__(self, obj = None):
@@ -509,7 +509,7 @@ class GDrive( gio__GInterface.GInterface):
 
     def get_icon(  self, ):
 
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=libgio.g_drive_get_icon( self._object ) or POINTER(c_int)())
 
     def is_media_check_automatic(  self, ):
@@ -563,7 +563,7 @@ class GDrive( gio__GInterface.GInterface):
 
     def get_volumes(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgio.g_drive_get_volumes( self._object ) or POINTER(c_int)())
 
     def eject(  self, flags, cancellable, callback, user_data, ):

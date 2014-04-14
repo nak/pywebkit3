@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -385,7 +385,7 @@ try:
     libgtk3.gdk_device_get_state.argtypes = [_GdkDevice,_GdkWindow,POINTER(gdouble),POINTER(GdkModifierType)]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkDevice( gobject__GObject.GObject):
     """Class GdkDevice Constructors"""
     def __init__(self, obj = None):
@@ -427,7 +427,7 @@ class GdkDevice( gobject__GObject.GObject):
 
     def get_window_at_position(  self, win_x, win_y, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None,None, obj=libgtk3.gdk_device_get_window_at_position( self._object,win_x,win_y ) or POINTER(c_int)())
 
     def get_device_type(  self, ):
@@ -454,7 +454,7 @@ class GdkDevice( gobject__GObject.GObject):
 
     def list_axes(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_device_list_axes( self._object ) or POINTER(c_int)())
 
     def set_axis_use(  self, index_, use, ):
@@ -476,7 +476,7 @@ class GdkDevice( gobject__GObject.GObject):
 
     def get_display(  self, ):
 
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_device_get_display( self._object ) or POINTER(c_int)())
 
     def free_history(  self, events, n_events, ):
@@ -488,7 +488,7 @@ class GdkDevice( gobject__GObject.GObject):
 
     def get_associated_device(  self, ):
 
-        from gobject import GdkDevice
+        from .gobject import GdkDevice
         return GdkDevice( obj=libgtk3.gdk_device_get_associated_device( self._object ) or POINTER(c_int)())
 
     def get_name(  self, ):
@@ -529,7 +529,7 @@ class GdkDevice( gobject__GObject.GObject):
 
     def list_slave_devices(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_device_list_slave_devices( self._object ) or POINTER(c_int)())
 
     def get_state(  self, window, axes, mask, ):

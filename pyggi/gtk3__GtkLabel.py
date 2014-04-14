@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -282,7 +282,7 @@ except:
    pass
 try:
     libgtk3.gtk_label_set_text_with_mnemonic.restype = None
-    libgtk3.gtk_label_set_text_with_mnemonic.argtypes = [_GtkLabel,c_char_p]
+    libgtk3.gtk_label_set_text_with_mnemonic.argtypes = [_GtkLabel,Asciifier]
 except:
    pass
 try:
@@ -312,7 +312,7 @@ except:
    pass
 try:
     libgtk3.gtk_label_set_label.restype = None
-    libgtk3.gtk_label_set_label.argtypes = [_GtkLabel,c_char_p]
+    libgtk3.gtk_label_set_label.argtypes = [_GtkLabel,Asciifier]
 except:
    pass
 try:
@@ -342,12 +342,12 @@ except:
    pass
 try:
     libgtk3.gtk_label_set_markup_with_mnemonic.restype = None
-    libgtk3.gtk_label_set_markup_with_mnemonic.argtypes = [_GtkLabel,c_char_p]
+    libgtk3.gtk_label_set_markup_with_mnemonic.argtypes = [_GtkLabel,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_label_set_text.restype = None
-    libgtk3.gtk_label_set_text.argtypes = [_GtkLabel,c_char_p]
+    libgtk3.gtk_label_set_text.argtypes = [_GtkLabel,Asciifier]
 except:
    pass
 try:
@@ -447,12 +447,12 @@ except:
    pass
 try:
     libgtk3.gtk_label_set_pattern.restype = None
-    libgtk3.gtk_label_set_pattern.argtypes = [_GtkLabel,c_char_p]
+    libgtk3.gtk_label_set_pattern.argtypes = [_GtkLabel,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_label_set_markup.restype = None
-    libgtk3.gtk_label_set_markup.argtypes = [_GtkLabel,c_char_p]
+    libgtk3.gtk_label_set_markup.argtypes = [_GtkLabel,Asciifier]
 except:
    pass
 try:
@@ -462,10 +462,10 @@ except:
    pass
 try:
     libgtk3.gtk_label_new_with_mnemonic.restype = _GtkWidget
-    libgtk3.gtk_label_new_with_mnemonic.argtypes = [c_char_p]
+    libgtk3.gtk_label_new_with_mnemonic.argtypes = [Asciifier]
 except:
    pass
-import gtk3__GtkMisc
+from . import gtk3__GtkMisc
 class GtkLabel( gtk3__GtkMisc.GtkMisc):
     """Class GtkLabel Constructors"""
     def __init__( self, str,  obj = None):
@@ -473,7 +473,7 @@ class GtkLabel( gtk3__GtkMisc.GtkMisc):
         else:
             libgtk3.gtk_label_new.restype = POINTER(c_int)
             
-            libgtk3.gtk_label_new.argtypes = [c_char_p]
+            libgtk3.gtk_label_new.argtypes = [Asciifier]
             self._object = libgtk3.gtk_label_new(str, )
 
     """Methods"""
@@ -521,7 +521,7 @@ class GtkLabel( gtk3__GtkMisc.GtkMisc):
 
     def get_mnemonic_widget(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_label_get_mnemonic_widget( self._object ) or POINTER(c_int)())
 
     def get_ellipsize(  self, ):
@@ -536,7 +536,7 @@ class GtkLabel( gtk3__GtkMisc.GtkMisc):
 
     def get_attributes(  self, ):
 
-        from gtk3 import PangoAttrList
+        from .gtk3 import PangoAttrList
         return PangoAttrList( obj=libgtk3.gtk_label_get_attributes( self._object )  or POINTER(c_int)())
 
     def set_label(  self, str, ):
@@ -601,7 +601,7 @@ class GtkLabel( gtk3__GtkMisc.GtkMisc):
 
     def get_layout(  self, ):
 
-        from gtk3 import PangoLayout
+        from .gtk3 import PangoLayout
         return PangoLayout(None,None, obj=libgtk3.gtk_label_get_layout( self._object )  or POINTER(c_int)())
 
     def set_justify(  self, jtype, ):
@@ -693,6 +693,6 @@ class GtkLabel( gtk3__GtkMisc.GtkMisc):
 
     @staticmethod
     def new_with_mnemonic( str,):
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_label_new_with_mnemonic(str, )
  or POINTER(c_int)())

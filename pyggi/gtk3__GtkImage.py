@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -437,12 +437,12 @@ except:
    pass
 try:
     libgtk3.gtk_image_get_icon_name.restype = None
-    libgtk3.gtk_image_get_icon_name.argtypes = [_GtkImage,c_char_p,POINTER(GtkIconSize)]
+    libgtk3.gtk_image_get_icon_name.argtypes = [_GtkImage,Asciifier,POINTER(GtkIconSize)]
 except:
    pass
 try:
     libgtk3.gtk_image_set_from_stock.restype = None
-    libgtk3.gtk_image_set_from_stock.argtypes = [_GtkImage,c_char_p,GtkIconSize]
+    libgtk3.gtk_image_set_from_stock.argtypes = [_GtkImage,Asciifier,GtkIconSize]
 except:
    pass
 try:
@@ -457,17 +457,17 @@ except:
    pass
 try:
     libgtk3.gtk_image_set_from_icon_name.restype = None
-    libgtk3.gtk_image_set_from_icon_name.argtypes = [_GtkImage,c_char_p,GtkIconSize]
+    libgtk3.gtk_image_set_from_icon_name.argtypes = [_GtkImage,Asciifier,GtkIconSize]
 except:
    pass
 try:
     libgtk3.gtk_image_get_stock.restype = None
-    libgtk3.gtk_image_get_stock.argtypes = [_GtkImage,c_char_p,POINTER(GtkIconSize)]
+    libgtk3.gtk_image_get_stock.argtypes = [_GtkImage,Asciifier,POINTER(GtkIconSize)]
 except:
    pass
 try:
     libgtk3.gtk_image_set_from_resource.restype = None
-    libgtk3.gtk_image_set_from_resource.argtypes = [_GtkImage,c_char_p]
+    libgtk3.gtk_image_set_from_resource.argtypes = [_GtkImage,Asciifier]
 except:
    pass
 try:
@@ -502,7 +502,7 @@ except:
    pass
 try:
     libgtk3.gtk_image_set_from_file.restype = None
-    libgtk3.gtk_image_set_from_file.argtypes = [_GtkImage,c_char_p]
+    libgtk3.gtk_image_set_from_file.argtypes = [_GtkImage,Asciifier]
 except:
    pass
 try:
@@ -512,7 +512,7 @@ except:
    pass
 try:
     libgtk3.gtk_image_new_from_stock.restype = _GtkWidget
-    libgtk3.gtk_image_new_from_stock.argtypes = [c_char_p,GtkIconSize]
+    libgtk3.gtk_image_new_from_stock.argtypes = [Asciifier,GtkIconSize]
 except:
    pass
 try:
@@ -522,12 +522,12 @@ except:
    pass
 try:
     libgtk3.gtk_image_new_from_resource.restype = _GtkWidget
-    libgtk3.gtk_image_new_from_resource.argtypes = [c_char_p]
+    libgtk3.gtk_image_new_from_resource.argtypes = [Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_image_new_from_file.restype = _GtkWidget
-    libgtk3.gtk_image_new_from_file.argtypes = [c_char_p]
+    libgtk3.gtk_image_new_from_file.argtypes = [Asciifier]
 except:
    pass
 try:
@@ -542,10 +542,10 @@ except:
    pass
 try:
     libgtk3.gtk_image_new_from_icon_name.restype = _GtkWidget
-    libgtk3.gtk_image_new_from_icon_name.argtypes = [c_char_p,GtkIconSize]
+    libgtk3.gtk_image_new_from_icon_name.argtypes = [Asciifier,GtkIconSize]
 except:
    pass
-import gtk3__GtkMisc
+from . import gtk3__GtkMisc
 class GtkImage( gtk3__GtkMisc.GtkMisc):
     """Class GtkImage Constructors"""
     def __init__( self,  obj = None):
@@ -624,7 +624,7 @@ class GtkImage( gtk3__GtkMisc.GtkMisc):
 
     def get_pixbuf(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_image_get_pixbuf( self._object ) or POINTER(c_int)())
 
     def get_pixel_size(  self, ):
@@ -634,7 +634,7 @@ class GtkImage( gtk3__GtkMisc.GtkMisc):
 
     def get_animation(  self, ):
 
-        from gobject import GdkPixbufAnimation
+        from .gobject import GdkPixbufAnimation
         return GdkPixbufAnimation( obj=libgtk3.gtk_image_get_animation( self._object ) or POINTER(c_int)())
 
     def get_gicon(  self, gicon, size, ):
@@ -663,47 +663,47 @@ class GtkImage( gtk3__GtkMisc.GtkMisc):
     def new_from_pixbuf( pixbuf,):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=    libgtk3.gtk_image_new_from_pixbuf(pixbuf, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_stock( stock_id, size,):
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_stock(stock_id, size, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_gicon( icon, size,):
         if icon: icon = icon._object
         else: icon = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_gicon(icon, size, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_resource( resource_path,):
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_resource(resource_path, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_file( filename,):
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_file(filename, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_icon_set( icon_set, size,):
         if icon_set: icon_set = icon_set._object
         else: icon_set = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_icon_set(icon_set, size, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_animation( animation,):
         if animation: animation = animation._object
         else: animation = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_animation(animation, )
  or POINTER(c_int)())
     @staticmethod
     def new_from_icon_name( icon_name, size,):
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_image_new_from_icon_name(icon_name, size, )
  or POINTER(c_int)())

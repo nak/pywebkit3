@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -340,7 +340,7 @@ try:
     libgtk3.gtk_requisition_free.argtypes = [_GtkRequisition]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkRequisition( gobject__GObject.GObject):
     """Class GtkRequisition Constructors"""
     def __init__( self,  obj = None):
@@ -354,7 +354,7 @@ class GtkRequisition( gobject__GObject.GObject):
     """Methods"""
     def copy(  self, ):
 
-        from gtk3 import GtkRequisition
+        from .gtk3 import GtkRequisition
         return GtkRequisition( obj=libgtk3.gtk_requisition_copy( self._object ) or POINTER(c_int)())
 
     def free(  self, ):

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -263,7 +263,7 @@ class GtkGradient( object):
     """Methods"""
     def ref(  self, ):
 
-        from gtk3 import GtkGradient
+        from .gtk3 import GtkGradient
         return GtkGradient( obj=libgtk3.gtk_gradient_ref( self._object ) or POINTER(c_int)())
 
     def unref(  self, ):
@@ -301,11 +301,11 @@ class GtkGradient( object):
 
     @staticmethod
     def new_radial( x0, y0, radius0, x1, y1, radius1,):
-        from gtk3 import GtkGradient
+        from .gtk3 import GtkGradient
         return GtkGradient( obj=    libgtk3.gtk_gradient_new_radial(x0, y0, radius0, x1, y1, radius1, )
  or POINTER(c_int)())
     @staticmethod
     def new_linear( x0, y0, x1, y1,):
-        from gtk3 import GtkGradient
+        from .gtk3 import GtkGradient
         return GtkGradient( obj=    libgtk3.gtk_gradient_new_linear(x0, y0, x1, y1, )
  or POINTER(c_int)())

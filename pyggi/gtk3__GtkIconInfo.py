@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -356,7 +356,7 @@ class GtkIconInfo( object):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_info_load_symbolic_for_style( self._object,style,state,was_symbolic,error ) or POINTER(c_int)())
 
     def get_embedded_rect(  self, rectangle, ):
@@ -368,7 +368,7 @@ class GtkIconInfo( object):
 
     def copy(  self, ):
 
-        from gtk3 import GtkIconInfo
+        from .gtk3 import GtkIconInfo
         return GtkIconInfo( obj=libgtk3.gtk_icon_info_copy( self._object ) or POINTER(c_int)())
 
     def get_filename(  self, ):
@@ -378,7 +378,7 @@ class GtkIconInfo( object):
 
     def get_builtin_pixbuf(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_info_get_builtin_pixbuf( self._object ) or POINTER(c_int)())
 
     def get_attach_points(  self, points, n_points, ):
@@ -400,7 +400,7 @@ class GtkIconInfo( object):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_info_load_symbolic( self._object,fg,success_color,warning_color,error_color,was_symbolic,error ) or POINTER(c_int)())
 
     def load_symbolic_for_context(  self, context, was_symbolic, error, ):
@@ -409,14 +409,14 @@ class GtkIconInfo( object):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_info_load_symbolic_for_context( self._object,context,was_symbolic,error ) or POINTER(c_int)())
 
     def load_icon(  self, error, ):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_info_load_icon( self._object,error ) or POINTER(c_int)())
 
     def set_raw_coordinates(  self, raw_coordinates, ):
@@ -445,6 +445,6 @@ class GtkIconInfo( object):
         else: icon_theme = POINTER(c_int)()
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
-        from gtk3 import GtkIconInfo
+        from .gtk3 import GtkIconInfo
         return GtkIconInfo( obj=    libgtk3.gtk_icon_info_new_for_pixbuf(icon_theme, pixbuf, )
  or POINTER(c_int)())

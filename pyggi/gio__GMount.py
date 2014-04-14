@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -414,7 +414,7 @@ try:
     libgio.g_mount_get_volume.argtypes = [_GMount]
 except:
    pass
-import gio__GInterface
+from . import gio__GInterface
 class GMount( gio__GInterface.GInterface):
     """Class GMount Constructors"""
     def __init__(self, obj = None):
@@ -464,7 +464,7 @@ class GMount( gio__GInterface.GInterface):
 
     def get_default_location(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgio.g_mount_get_default_location( self._object ) or POINTER(c_int)())
 
     def remount(  self, flags, mount_operation, cancellable, callback, user_data, ):
@@ -480,7 +480,7 @@ class GMount( gio__GInterface.GInterface):
 
     def get_icon(  self, ):
 
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=libgio.g_mount_get_icon( self._object ) or POINTER(c_int)())
 
     def guess_content_type_finish(  self, result, error, ):
@@ -503,7 +503,7 @@ class GMount( gio__GInterface.GInterface):
 
     def get_drive(  self, ):
 
-        from gobject import GDrive
+        from .gobject import GDrive
         return GDrive( obj=libgio.g_mount_get_drive( self._object ) or POINTER(c_int)())
 
     def eject_finish(  self, result, error, ):
@@ -526,7 +526,7 @@ class GMount( gio__GInterface.GInterface):
 
     def get_root(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgio.g_mount_get_root( self._object ) or POINTER(c_int)())
 
     def unmount_with_operation(  self, flags, mount_operation, cancellable, callback, user_data, ):
@@ -600,6 +600,6 @@ class GMount( gio__GInterface.GInterface):
 
     def get_volume(  self, ):
 
-        from gobject import GVolume
+        from .gobject import GVolume
         return GVolume( obj=libgio.g_mount_get_volume( self._object ) or POINTER(c_int)())
 

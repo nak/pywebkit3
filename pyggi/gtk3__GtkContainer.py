@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -367,12 +367,12 @@ except:
    pass
 try:
     libgtk3.gtk_container_add_with_properties.restype = None
-    libgtk3.gtk_container_add_with_properties.argtypes = [_GtkContainer,_GtkWidget,c_char_p,]
+    libgtk3.gtk_container_add_with_properties.argtypes = [_GtkContainer,_GtkWidget,Asciifier,]
 except:
    pass
 try:
     libgtk3.gtk_container_child_notify.restype = None
-    libgtk3.gtk_container_child_notify.argtypes = [_GtkContainer,_GtkWidget,c_char_p]
+    libgtk3.gtk_container_child_notify.argtypes = [_GtkContainer,_GtkWidget,Asciifier]
 except:
    pass
 try:
@@ -397,7 +397,7 @@ except:
    pass
 try:
     libgtk3.gtk_container_child_set_property.restype = None
-    libgtk3.gtk_container_child_set_property.argtypes = [_GtkContainer,_GtkWidget,c_char_p,_GValue]
+    libgtk3.gtk_container_child_set_property.argtypes = [_GtkContainer,_GtkWidget,Asciifier,_GValue]
 except:
    pass
 try:
@@ -422,7 +422,7 @@ except:
    pass
 try:
     libgtk3.gtk_container_child_get_property.restype = None
-    libgtk3.gtk_container_child_get_property.argtypes = [_GtkContainer,_GtkWidget,c_char_p,_GValue]
+    libgtk3.gtk_container_child_get_property.argtypes = [_GtkContainer,_GtkWidget,Asciifier,_GValue]
 except:
    pass
 try:
@@ -452,7 +452,7 @@ except:
    pass
 try:
     libgtk3.gtk_container_child_get.restype = None
-    libgtk3.gtk_container_child_get.argtypes = [_GtkContainer,_GtkWidget,c_char_p,]
+    libgtk3.gtk_container_child_get.argtypes = [_GtkContainer,_GtkWidget,Asciifier,]
 except:
    pass
 try:
@@ -502,7 +502,7 @@ except:
    pass
 try:
     libgtk3.gtk_container_child_set.restype = None
-    libgtk3.gtk_container_child_set.argtypes = [_GtkContainer,_GtkWidget,c_char_p,]
+    libgtk3.gtk_container_child_set.argtypes = [_GtkContainer,_GtkWidget,Asciifier,]
 except:
    pass
 try:
@@ -527,10 +527,10 @@ except:
    pass
 try:
     libgtk3.gtk_container_class_find_child_property.restype = _GParamSpec
-    libgtk3.gtk_container_class_find_child_property.argtypes = [_GObjectClass,c_char_p]
+    libgtk3.gtk_container_class_find_child_property.argtypes = [_GObjectClass,Asciifier]
 except:
    pass
-import gtk3__GtkWidget
+from . import gtk3__GtkWidget
 class GtkContainer( gtk3__GtkWidget.GtkWidget):
     """Class GtkContainer Constructors"""
     def __init__(self, obj = None):
@@ -675,7 +675,7 @@ class GtkContainer( gtk3__GtkWidget.GtkWidget):
         if child: child = child._object
         else: child = POINTER(c_int)()
 
-        from gtk3 import GtkWidgetPath
+        from .gtk3 import GtkWidgetPath
         return GtkWidgetPath(None, obj=libgtk3.gtk_container_get_path_for_child( self._object,child ) or POINTER(c_int)())
 
     def foreach(  self, callback, callback_data, ):
@@ -708,7 +708,7 @@ class GtkContainer( gtk3__GtkWidget.GtkWidget):
 
     def get_focus_vadjustment(  self, ):
 
-        from gtk3 import GtkAdjustment
+        from .gtk3 import GtkAdjustment
         return GtkAdjustment(None,None, obj=libgtk3.gtk_container_get_focus_vadjustment( self._object ) or POINTER(c_int)())
 
     def set_focus_vadjustment(  self, adjustment, ):
@@ -744,30 +744,30 @@ class GtkContainer( gtk3__GtkWidget.GtkWidget):
 
     def get_focus_hadjustment(  self, ):
 
-        from gtk3 import GtkAdjustment
+        from .gtk3 import GtkAdjustment
         return GtkAdjustment(None, obj=libgtk3.gtk_container_get_focus_hadjustment( self._object ) or POINTER(c_int)())
 
     def get_children(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gtk_container_get_children( self._object ) or POINTER(c_int)())
 
     def get_focus_child(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_container_get_focus_child( self._object ) or POINTER(c_int)())
 
     @staticmethod
     def class_list_child_properties( cclass, n_properties,):
         if cclass: cclass = cclass._object
         else: cclass = POINTER(c_int)()
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.gtk_container_class_list_child_properties(cclass, n_properties, )
  or POINTER(c_int)())
     @staticmethod
     def class_find_child_property( cclass, property_name,):
         if cclass: cclass = cclass._object
         else: cclass = POINTER(c_int)()
-        from gobject import GParamSpec
+        from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.gtk_container_class_find_child_property(cclass, property_name, )
  or POINTER(c_int)())

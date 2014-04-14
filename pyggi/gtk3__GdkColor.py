@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -234,7 +234,7 @@ except:
    pass
 try:
     libgtk3.gdk_color_parse.restype = gboolean
-    libgtk3.gdk_color_parse.argtypes = [c_char_p,_GdkColor]
+    libgtk3.gdk_color_parse.argtypes = [Asciifier,_GdkColor]
 except:
    pass
 class GdkColor( object):
@@ -244,7 +244,7 @@ class GdkColor( object):
     """Methods"""
     def copy(  self, ):
 
-        from gobject import GdkColor
+        from .gobject import GdkColor
         return GdkColor( obj=libgtk3.gdk_color_copy( self._object ) or POINTER(c_int)())
 
     def to_string(  self, ):

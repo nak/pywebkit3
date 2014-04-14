@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -423,8 +423,8 @@ try:
     libgtk3.gtk_box_set_homogeneous.argtypes = [_GtkBox,gboolean]
 except:
    pass
-import gtk3__GtkWidget
-import gtk3__GtkContainer
+from . import gtk3__GtkWidget
+from . import gtk3__GtkContainer
 class GtkBox( gtk3__GtkContainer.GtkContainer):
     """Class GtkBox Constructors"""
     def __init__( self, orientation, spacing,  obj = None):

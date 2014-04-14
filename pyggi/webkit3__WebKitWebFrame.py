@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -240,12 +240,12 @@ except:
    pass
 try:
     libwebkit3.webkit_web_frame_load_alternate_string.restype = None
-    libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p]
+    libwebkit3.webkit_web_frame_load_alternate_string.argtypes = [_WebKitWebFrame,Asciifier,Asciifier,Asciifier]
 except:
    pass
 try:
     libwebkit3.webkit_web_frame_find_frame.restype = _WebKitWebFrame
-    libwebkit3.webkit_web_frame_find_frame.argtypes = [_WebKitWebFrame,c_char_p]
+    libwebkit3.webkit_web_frame_find_frame.argtypes = [_WebKitWebFrame,Asciifier]
 except:
    pass
 try:
@@ -305,7 +305,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_frame_load_string.restype = None
-    libwebkit3.webkit_web_frame_load_string.argtypes = [_WebKitWebFrame,c_char_p,c_char_p,c_char_p,c_char_p]
+    libwebkit3.webkit_web_frame_load_string.argtypes = [_WebKitWebFrame,Asciifier,Asciifier,Asciifier,Asciifier]
 except:
    pass
 try:
@@ -340,7 +340,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_frame_load_uri.restype = None
-    libwebkit3.webkit_web_frame_load_uri.argtypes = [_WebKitWebFrame,c_char_p]
+    libwebkit3.webkit_web_frame_load_uri.argtypes = [_WebKitWebFrame,Asciifier]
 except:
    pass
 try:
@@ -348,7 +348,7 @@ try:
     libwebkit3.webkit_web_frame_get_title.argtypes = [_WebKitWebFrame]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebFrame( gobject__GObject.GObject):
     """Class WebKitWebFrame Constructors"""
     def __init__( self, web_view,  obj = None):
@@ -377,7 +377,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def find_frame(  self, name, ):
 
-        from webkit3 import WebKitWebFrame
+        from .webkit3 import WebKitWebFrame
         return WebKitWebFrame(None, obj=libwebkit3.webkit_web_frame_find_frame( self._object,name ) or POINTER(c_int)() )
 
     def get_uri(  self, ):
@@ -387,7 +387,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def get_data_source(  self, ):
 
-        from webkit3 import WebKitWebDataSource
+        from .webkit3 import WebKitWebDataSource
         return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_data_source( self._object ) or POINTER(c_int)() )
 
     def stop_loading(  self, ):
@@ -397,7 +397,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def get_web_view(  self, ):
 
-        from webkit3 import WebKitWebView
+        from .webkit3 import WebKitWebView
         return WebKitWebView(None, obj=libwebkit3.webkit_web_frame_get_web_view( self._object ) or POINTER(c_int)() )
 
     def get_horizontal_scrollbar_policy(  self, ):
@@ -407,17 +407,17 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def get_security_origin(  self, ):
 
-        from webkit3 import WebKitSecurityOrigin
+        from .webkit3 import WebKitSecurityOrigin
         return WebKitSecurityOrigin( obj=libwebkit3.webkit_web_frame_get_security_origin( self._object ) or POINTER(c_int)() )
 
     def get_parent(  self, ):
 
-        from webkit3 import WebKitWebFrame
+        from .webkit3 import WebKitWebFrame
         return WebKitWebFrame( obj=libwebkit3.webkit_web_frame_get_parent( self._object ) or POINTER(c_int)() )
 
     def get_network_response(  self, ):
 
-        from webkit3 import WebKitNetworkResponse
+        from .webkit3 import WebKitNetworkResponse
         return WebKitNetworkResponse( obj=libwebkit3.webkit_web_frame_get_network_response( self._object ) or POINTER(c_int)() )
 
     def py_print(  self, ):
@@ -427,7 +427,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def get_provisional_data_source(  self, ):
 
-        from webkit3 import WebKitWebDataSource
+        from .webkit3 import WebKitWebDataSource
         return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_provisional_data_source( self._object ) or POINTER(c_int)() )
 
     def get_name(  self, ):
@@ -442,7 +442,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def get_dom_document(  self, ):
 
-        from webkit3 import WebKitDOMDocument
+        from .webkit3 import WebKitDOMDocument
         return WebKitDOMDocument( obj=libwebkit3.webkit_web_frame_get_dom_document( self._object ) or POINTER(c_int)() )
 
     def reload(  self, ):
@@ -452,7 +452,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def get_global_context(  self, ):
 
-        from javascriptcore import JSGlobalContext
+        from .javascriptcore import JSGlobalContext
         return JSGlobalContext( obj=libwebkit3.webkit_web_frame_get_global_context( self._object )  or POINTER(c_int)())
 
     def get_vertical_scrollbar_policy(  self, ):

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -226,7 +226,7 @@ try:
     libgio.g_file_monitor_is_cancelled.argtypes = [_GFileMonitor]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GFileMonitor( gobject__GObject.GObject):
     """Class GFileMonitor Constructors"""
     def __init__(self, obj = None):

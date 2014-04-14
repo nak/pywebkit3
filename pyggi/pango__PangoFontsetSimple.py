@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -353,7 +353,7 @@ try:
     libpango.pango_fontset_simple_append.argtypes = [_PangoFontsetSimple,_PangoFont]
 except:
    pass
-import gtk3__PangoFontset
+from . import gtk3__PangoFontset
 class PangoFontsetSimple( gtk3__PangoFontset.PangoFontset):
     """Class PangoFontsetSimple Constructors"""
     def __init__( self, language,  obj = None):

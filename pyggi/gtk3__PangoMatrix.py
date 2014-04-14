@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -228,7 +228,7 @@ try:
     libgtk3.pango_matrix_concat.argtypes = [_PangoMatrix,_PangoMatrix]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class PangoMatrix( gobject__GBoxed.GBoxed):
     """Class PangoMatrix Constructors"""
     def __init__(self, obj = None):
@@ -275,7 +275,7 @@ class PangoMatrix( gobject__GBoxed.GBoxed):
 
     def copy(  self, ):
 
-        from gtk3 import PangoMatrix
+        from .gtk3 import PangoMatrix
         return PangoMatrix( obj=libgtk3.pango_matrix_copy( self._object )  or POINTER(c_int)())
 
     def get_font_scale_factor(  self, ):

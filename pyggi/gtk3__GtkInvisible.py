@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -346,7 +346,7 @@ try:
     libgtk3.gtk_invisible_new_for_screen.argtypes = [_GdkScreen]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkInvisible( gobject__GObject.GObject):
     """Class GtkInvisible Constructors"""
     def __init__( self,  obj = None):
@@ -367,13 +367,13 @@ class GtkInvisible( gobject__GObject.GObject):
 
     def get_screen(  self, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gtk_invisible_get_screen( self._object ) or POINTER(c_int)())
 
     @staticmethod
     def new_for_screen( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=    libgtk3.gtk_invisible_new_for_screen(screen, )
  or POINTER(c_int)())

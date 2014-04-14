@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -294,7 +294,7 @@ except:
    pass
 try:
     libgio.g_application_set_application_id.restype = None
-    libgio.g_application_set_application_id.argtypes = [_GApplication,c_char_p]
+    libgio.g_application_set_application_id.argtypes = [_GApplication,Asciifier]
 except:
    pass
 try:
@@ -334,12 +334,12 @@ except:
    pass
 try:
     libgio.g_application_run.restype = int
-    libgio.g_application_run.argtypes = [_GApplication,gint,c_char_p]
+    libgio.g_application_run.argtypes = [_GApplication,gint,Asciifier]
 except:
    pass
 try:
     libgio.g_application_open.restype = None
-    libgio.g_application_open.argtypes = [_GApplication,_GFile,gint,c_char_p]
+    libgio.g_application_open.argtypes = [_GApplication,_GFile,gint,Asciifier]
 except:
    pass
 try:
@@ -354,10 +354,10 @@ except:
    pass
 try:
     libgio.g_application_id_is_valid.restype = gboolean
-    libgio.g_application_id_is_valid.argtypes = [c_char_p]
+    libgio.g_application_id_is_valid.argtypes = [Asciifier]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GApplication( gobject__GObject.GObject):
     """Class GApplication Constructors"""
     def __init__( self, flags,  obj = None):
@@ -464,7 +464,7 @@ class GApplication( gobject__GObject.GObject):
 
     @staticmethod
     def get_default():
-        from gobject import GApplication
+        from .gobject import GApplication
         return GApplication(None, obj=    libgio.g_application_get_default()
  or POINTER(c_int)())
     @staticmethod

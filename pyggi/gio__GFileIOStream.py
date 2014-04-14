@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -344,7 +344,7 @@ except:
    pass
 try:
     libgio.g_file_io_stream_query_info.restype = _GFileInfo
-    libgio.g_file_io_stream_query_info.argtypes = [_GFileIOStream,c_char_p,_GCancellable,_GError]
+    libgio.g_file_io_stream_query_info.argtypes = [_GFileIOStream,Asciifier,_GCancellable,_GError]
 except:
    pass
 try:
@@ -354,10 +354,10 @@ except:
    pass
 try:
     libgio.g_file_io_stream_query_info_async.restype = None
-    libgio.g_file_io_stream_query_info_async.argtypes = [_GFileIOStream,c_char_p,int,_GCancellable,GAsyncReadyCallback,gpointer]
+    libgio.g_file_io_stream_query_info_async.argtypes = [_GFileIOStream,Asciifier,int,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
-import gio__GIOStream
+from . import gio__GIOStream
 class GFileIOStream( gio__GIOStream.GIOStream):
     """Class GFileIOStream Constructors"""
     def __init__(self, obj = None):
@@ -374,7 +374,7 @@ class GFileIOStream( gio__GIOStream.GIOStream):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None,None, obj=libgio.g_file_io_stream_query_info( self._object,attributes,cancellable,error ) or POINTER(c_int)())
 
     def g_file_io_stream_query_info_finish(  self, result, error, ):
@@ -383,7 +383,7 @@ class GFileIOStream( gio__GIOStream.GIOStream):
         if error: error = error._object
         else: error = POINTER(c_int)()
 
-        from gio import GFileInfo
+        from .gio import GFileInfo
         return GFileInfo(None, obj=libgio.g_file_io_stream_query_info_finish( self._object,result,error ) or POINTER(c_int)())
 
     def g_file_io_stream_query_info_async(  self, attributes, io_priority, cancellable, callback, user_data, ):

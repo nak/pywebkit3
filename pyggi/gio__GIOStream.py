@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -424,7 +424,7 @@ try:
     libgio.g_io_stream_splice_finish.argtypes = [_GAsyncResult,_GError]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GIOStream( gobject__GObject.GObject):
     """Class GIOStream Constructors"""
     def __init__(self, obj = None):
@@ -455,7 +455,7 @@ class GIOStream( gobject__GObject.GObject):
 
     def g_io_stream_get_input_stream(  self, ):
 
-        from gio import GInputStream
+        from .gio import GInputStream
         return GInputStream( obj=libgio.g_io_stream_get_input_stream( self._object ) or POINTER(c_int)())
 
     def g_io_stream_clear_pending(  self, ):
@@ -490,7 +490,7 @@ class GIOStream( gobject__GObject.GObject):
 
     def g_io_stream_get_output_stream(  self, ):
 
-        from gio import GOutputStream
+        from .gio import GOutputStream
         return GOutputStream( obj=libgio.g_io_stream_get_output_stream( self._object ) or POINTER(c_int)())
 
     def g_io_stream_set_pending(  self, error, ):

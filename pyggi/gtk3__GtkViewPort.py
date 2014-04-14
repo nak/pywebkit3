@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -419,7 +419,7 @@ try:
     libgtk3.gtk_viewport_get_shadow_type.argtypes = [_GtkViewport]
 except:
    pass
-import gtk3__GtkBin
+from . import gtk3__GtkBin
 class GtkViewPort( gtk3__GtkBin.GtkBin):
     """Class GtkViewPort Constructors"""
     def __init__( self, hadjustment, vadjustment,  obj = None):
@@ -466,14 +466,14 @@ class GtkViewPort( gtk3__GtkBin.GtkBin):
     def gtk_viewport_get_hadjustment( viewport,):
         if viewport: viewport = viewport._object
         else: viewport = POINTER(c_int)()
-        from gtk3 import GtkAdjustment
+        from .gtk3 import GtkAdjustment
         return GtkAdjustment(None,None, obj=    libgtk3.gtk_viewport_get_hadjustment(viewport, )
  or POINTER(c_int)())
     @staticmethod
     def gtk_viewport_get_vadjustment( viewport,):
         if viewport: viewport = viewport._object
         else: viewport = POINTER(c_int)()
-        from gtk3 import GtkAdjustment
+        from .gtk3 import GtkAdjustment
         return GtkAdjustment(None, obj=    libgtk3.gtk_viewport_get_vadjustment(viewport, )
  or POINTER(c_int)())
     @staticmethod

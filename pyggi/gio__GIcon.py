@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -396,7 +396,7 @@ except:
    pass
 try:
     libgio.g_icon_new_for_string.restype = _GIcon
-    libgio.g_icon_new_for_string.argtypes = [c_char_p,_GError]
+    libgio.g_icon_new_for_string.argtypes = [Asciifier,_GError]
 except:
    pass
 try:
@@ -404,7 +404,7 @@ try:
     libgio.g_icon_hash.argtypes = [gconstpointer]
 except:
    pass
-import gio__GInterface
+from . import gio__GInterface
 class GIcon( gio__GInterface.GInterface):
     """Class GIcon Constructors"""
     def __init__(self, obj = None):
@@ -426,7 +426,7 @@ class GIcon( gio__GInterface.GInterface):
     def new_for_string( str, error,):
         if error: error = error._object
         else: error = POINTER(c_int)()
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=    libgio.g_icon_new_for_string(str, error, )
  or POINTER(c_int)())
     @staticmethod

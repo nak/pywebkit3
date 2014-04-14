@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gobject_types import *
-from gobject_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gobject_types import *
+from .gobject_enums import *
 
     
 """Derived Pointer Types"""
@@ -377,7 +377,7 @@ try:
     libgobject.g_poll.argtypes = [_GPollFD,guint,gint]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GPollFD( gobject__GObject.GObject):
     """Class GPollFD Constructors"""
     def __init__(self, obj = None):

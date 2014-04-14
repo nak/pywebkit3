@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -427,7 +427,7 @@ GdkByteOrder = c_int
 
 try:
     libwebkit3.webkit_network_request_set_uri.restype = None
-    libwebkit3.webkit_network_request_set_uri.argtypes = [_WebKitNetworkRequest,c_char_p]
+    libwebkit3.webkit_network_request_set_uri.argtypes = [_WebKitNetworkRequest,Asciifier]
 except:
    pass
 try:
@@ -440,7 +440,7 @@ try:
     libwebkit3.webkit_network_request_get_uri.argtypes = [_WebKitNetworkRequest]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitNetworkRequest( gobject__GObject.GObject):
     """Class WebKitNetworkRequest Constructors"""
     def __init__( self, uri,  obj = None):
@@ -448,7 +448,7 @@ class WebKitNetworkRequest( gobject__GObject.GObject):
         else:
             libwebkit3.webkit_network_request_new.restype = POINTER(c_int)
             
-            libwebkit3.webkit_network_request_new.argtypes = [c_char_p]
+            libwebkit3.webkit_network_request_new.argtypes = [Asciifier]
             self._object = libwebkit3.webkit_network_request_new(uri, )
 
     """Methods"""

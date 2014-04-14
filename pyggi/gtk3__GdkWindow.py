@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -546,7 +546,7 @@ except:
    pass
 try:
     libgtk3.gdk_window_set_icon_name.restype = None
-    libgtk3.gdk_window_set_icon_name.argtypes = [_GdkWindow,c_char_p]
+    libgtk3.gdk_window_set_icon_name.argtypes = [_GdkWindow,Asciifier]
 except:
    pass
 try:
@@ -771,7 +771,7 @@ except:
    pass
 try:
     libgtk3.gdk_window_set_title.restype = None
-    libgtk3.gdk_window_set_title.argtypes = [_GdkWindow,c_char_p]
+    libgtk3.gdk_window_set_title.argtypes = [_GdkWindow,Asciifier]
 except:
    pass
 try:
@@ -811,7 +811,7 @@ except:
    pass
 try:
     libgtk3.gdk_window_set_startup_id.restype = None
-    libgtk3.gdk_window_set_startup_id.argtypes = [_GdkWindow,c_char_p]
+    libgtk3.gdk_window_set_startup_id.argtypes = [_GdkWindow,Asciifier]
 except:
    pass
 try:
@@ -921,7 +921,7 @@ except:
    pass
 try:
     libgtk3.gdk_window_set_role.restype = None
-    libgtk3.gdk_window_set_role.argtypes = [_GdkWindow,c_char_p]
+    libgtk3.gdk_window_set_role.argtypes = [_GdkWindow,Asciifier]
 except:
    pass
 try:
@@ -1079,7 +1079,7 @@ try:
     libgtk3.gdk_get_default_root_window.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkWindow( gobject__GObject.GObject):
     """Class GdkWindow Constructors"""
     def __init__( self, attributes_mask,  obj = None):
@@ -1105,7 +1105,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_screen(  self, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gdk_window_get_screen( self._object ) or POINTER(c_int)())
 
     def has_native(  self, ):
@@ -1286,7 +1286,7 @@ class GdkWindow( gobject__GObject.GObject):
         if device: device = device._object
         else: device = POINTER(c_int)()
 
-        from gobject import GdkCursor
+        from .gobject import GdkCursor
         return GdkCursor(None,None, obj=libgtk3.gdk_window_get_device_cursor( self._object,device ) or POINTER(c_int)())
 
     def move_resize(  self, x, y, width, height, ):
@@ -1340,7 +1340,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_visual(  self, ):
 
-        from gobject import GdkVisual
+        from .gobject import GdkVisual
         return GdkVisual( obj=libgtk3.gdk_window_get_visual( self._object ) or POINTER(c_int)())
 
     def maximize(  self, ):
@@ -1365,7 +1365,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def peek_children(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_window_peek_children( self._object ) or POINTER(c_int)())
 
     def beep(  self, ):
@@ -1392,7 +1392,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_children(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_window_get_children( self._object ) or POINTER(c_int)())
 
     def remove_filter(  self, function, data, ):
@@ -1411,7 +1411,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_pointer(  self, x, y, mask, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None,None,None, obj=libgtk3.gdk_window_get_pointer( self._object,x,y,mask ) or POINTER(c_int)())
 
     def get_decorations(  self, decorations, ):
@@ -1567,17 +1567,17 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_effective_toplevel(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow( obj=libgtk3.gdk_window_get_effective_toplevel( self._object ) or POINTER(c_int)())
 
     def gdk_offscreen_window_get_embedder(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow( obj=libgtk3.gdk_offscreen_window_get_embedder( self._object ) or POINTER(c_int)())
 
     def get_toplevel(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow( obj=libgtk3.gdk_window_get_toplevel( self._object ) or POINTER(c_int)())
 
     def begin_resize_drag_for_device(  self, edge, device, button, root_x, root_y, timestamp, ):
@@ -1635,7 +1635,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_display(  self, ):
 
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_window_get_display( self._object ) or POINTER(c_int)())
 
     def get_frame_extents(  self, rect, ):
@@ -1674,7 +1674,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_cursor(  self, ):
 
-        from gobject import GdkCursor
+        from .gobject import GdkCursor
         return GdkCursor(None, obj=libgtk3.gdk_window_get_cursor( self._object ) or POINTER(c_int)())
 
     def is_visible(  self, ):
@@ -1743,19 +1743,19 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_effective_parent(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow( obj=libgtk3.gdk_window_get_effective_parent( self._object ) or POINTER(c_int)())
 
     def get_device_position(  self, device, x, y, mask, ):
         if device: device = device._object
         else: device = POINTER(c_int)()
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None,None,None,None, obj=libgtk3.gdk_window_get_device_position( self._object,device,x,y,mask ) or POINTER(c_int)())
 
     def get_group(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow( obj=libgtk3.gdk_window_get_group( self._object ) or POINTER(c_int)())
 
     def get_position(  self, x, y, ):
@@ -1801,7 +1801,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     def get_parent(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow( obj=libgtk3.gdk_window_get_parent( self._object ) or POINTER(c_int)())
 
     def set_child_shapes(  self, ):
@@ -1816,7 +1816,7 @@ class GdkWindow( gobject__GObject.GObject):
 
     @staticmethod
     def at_pointer( win_x, win_y,):
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None, obj=    libgtk3.gdk_window_at_pointer(win_x, win_y, )
  or POINTER(c_int)())
     @staticmethod
@@ -1826,6 +1826,6 @@ class GdkWindow( gobject__GObject.GObject):
 
     @staticmethod
     def gdk_get_default_root_window():
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None, obj=    libgtk3.gdk_get_default_root_window()
  or POINTER(c_int)())

@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -439,7 +439,7 @@ try:
     libpango.pango_layout_get_iter.argtypes = [_PangoLayout]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class PangoLayoutIter( gobject__GBoxed.GBoxed):
     """Class PangoLayoutIter Constructors"""
     def __init__(self, obj = None):
@@ -483,7 +483,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def get_line(  self, ):
 
-        from gtk3 import PangoLayoutLine
+        from .gtk3 import PangoLayoutLine
         return PangoLayoutLine( obj=libpango.pango_layout_iter_get_line( self._object )  or POINTER(c_int)())
 
     def free(  self, ):
@@ -493,7 +493,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def get_line_readonly(  self, ):
 
-        from gtk3 import PangoLayoutLine
+        from .gtk3 import PangoLayoutLine
         return PangoLayoutLine( obj=libpango.pango_layout_iter_get_line_readonly( self._object )  or POINTER(c_int)())
 
     def get_index(  self, ):
@@ -503,7 +503,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def get_layout(  self, ):
 
-        from gtk3 import PangoLayout
+        from .gtk3 import PangoLayout
         return PangoLayout(None,None, obj=libpango.pango_layout_iter_get_layout( self._object )  or POINTER(c_int)())
 
     def get_run_extents(  self, ink_rect, logical_rect, ):
@@ -522,12 +522,12 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def get_run_readonly(  self, ):
 
-        from gtk3 import PangoLayoutRun
+        from .gtk3 import PangoLayoutRun
         return PangoLayoutRun( obj=libpango.pango_layout_iter_get_run_readonly( self._object )  or POINTER(c_int)())
 
     def copy(  self, ):
 
-        from gtk3 import PangoLayoutIter
+        from .gtk3 import PangoLayoutIter
         return PangoLayoutIter( obj=libpango.pango_layout_iter_copy( self._object )  or POINTER(c_int)())
 
     def next_cluster(  self, ):
@@ -537,7 +537,7 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
 
     def get_run(  self, ):
 
-        from gtk3 import PangoLayoutRun
+        from .gtk3 import PangoLayoutRun
         return PangoLayoutRun( obj=libpango.pango_layout_iter_get_run( self._object )  or POINTER(c_int)())
 
     def get_baseline(  self, ):
@@ -567,6 +567,6 @@ class PangoLayoutIter( gobject__GBoxed.GBoxed):
     def pango_layout_get_iter( layout,):
         if layout: layout = layout._object
         else: layout = POINTER(c_int)()
-        from gtk3 import PangoLayoutIter
+        from .gtk3 import PangoLayoutIter
         return PangoLayoutIter( obj=    libpango.pango_layout_get_iter(layout, )
   or POINTER(c_int)())

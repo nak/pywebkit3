@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -463,7 +463,7 @@ try:
     libgtk3.gtk_scrolled_window_set_policy.argtypes = [_GtkScrolledWindow,GtkPolicyType,GtkPolicyType]
 except:
    pass
-import gtk3__GtkBin
+from . import gtk3__GtkBin
 class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
     """Class GtkScrolledWindow Constructors"""
     def __init__( self, hadjustment, vadjustment,  obj = None):
@@ -493,7 +493,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def get_hscrollbar(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_scrolled_window_get_hscrollbar( self._object ) or POINTER(c_int)())
 
     def get_placement(  self, ):
@@ -525,7 +525,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def get_vscrollbar(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_scrolled_window_get_vscrollbar( self._object ) or POINTER(c_int)())
 
     def set_placement(  self, window_placement, ):
@@ -547,7 +547,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def get_vadjustment(  self, ):
 
-        from gtk3 import GtkAdjustment
+        from .gtk3 import GtkAdjustment
         return GtkAdjustment(None,None, obj=libgtk3.gtk_scrolled_window_get_vadjustment( self._object ) or POINTER(c_int)())
 
     def get_min_content_width(  self, ):
@@ -569,7 +569,7 @@ class GtkScrolledWindow( gtk3__GtkBin.GtkBin):
 
     def get_hadjustment(  self, ):
 
-        from gtk3 import GtkAdjustment
+        from .gtk3 import GtkAdjustment
         return GtkAdjustment(None, obj=libgtk3.gtk_scrolled_window_get_hadjustment( self._object ) or POINTER(c_int)())
 
     def set_policy(  self, hscrollbar_policy, vscrollbar_policy, ):

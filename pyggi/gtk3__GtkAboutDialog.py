@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -348,7 +348,7 @@ GtkLicense = c_int
 
 try:
     libgtk3.gtk_about_dialog_set_authors.restype = None
-    libgtk3.gtk_about_dialog_set_authors.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_authors.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
@@ -368,12 +368,12 @@ except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_logo_icon_name.restype = None
-    libgtk3.gtk_about_dialog_set_logo_icon_name.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_logo_icon_name.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_documenters.restype = None
-    libgtk3.gtk_about_dialog_set_documenters.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_documenters.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
@@ -388,37 +388,37 @@ except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_website_label.restype = None
-    libgtk3.gtk_about_dialog_set_website_label.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_website_label.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_license.restype = None
-    libgtk3.gtk_about_dialog_set_license.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_license.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_artists.restype = None
-    libgtk3.gtk_about_dialog_set_artists.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_artists.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_program_name.restype = None
-    libgtk3.gtk_about_dialog_set_program_name.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_program_name.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_translator_credits.restype = None
-    libgtk3.gtk_about_dialog_set_translator_credits.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_translator_credits.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_website.restype = None
-    libgtk3.gtk_about_dialog_set_website.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_website.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_copyright.restype = None
-    libgtk3.gtk_about_dialog_set_copyright.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_copyright.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
@@ -448,7 +448,7 @@ except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_version.restype = None
-    libgtk3.gtk_about_dialog_set_version.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_version.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
@@ -463,7 +463,7 @@ except:
    pass
 try:
     libgtk3.gtk_about_dialog_set_comments.restype = None
-    libgtk3.gtk_about_dialog_set_comments.argtypes = [_GtkAboutDialog,c_char_p]
+    libgtk3.gtk_about_dialog_set_comments.argtypes = [_GtkAboutDialog,Asciifier]
 except:
    pass
 try:
@@ -473,7 +473,7 @@ except:
    pass
 try:
     libgtk3.gtk_show_about_dialog.restype = None
-    libgtk3.gtk_show_about_dialog.argtypes = [_GtkAboutDialog,_GtkWindow,c_char_p,]
+    libgtk3.gtk_show_about_dialog.argtypes = [_GtkAboutDialog,_GtkWindow,Asciifier,]
 except:
    pass
 try:
@@ -501,7 +501,7 @@ try:
     libgtk3.gtk_about_dialog_get_comments.argtypes = [_GtkAboutDialog]
 except:
    pass
-import gtk3__GtkDialog
+from . import gtk3__GtkDialog
 class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
     """Class GtkAboutDialog Constructors"""
     def __init__( self,  obj = None):
@@ -637,7 +637,7 @@ class GtkAboutDialog( gtk3__GtkDialog.GtkDialog):
 
     def get_logo(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_about_dialog_get_logo( self._object ) or POINTER(c_int)())
 
     def gtk_show_about_dialog(  self, parent, first_property_name,*args  ):

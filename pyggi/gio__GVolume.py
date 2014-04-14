@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -441,7 +441,7 @@ try:
     libgio.g_volume_eject_with_operation.argtypes = [_GVolume,GMountUnmountFlags,_GMountOperation,_GCancellable,GAsyncReadyCallback,gpointer]
 except:
    pass
-import gio__GInterface
+from . import gio__GInterface
 class GVolume( gio__GInterface.GInterface):
     """Class GVolume Constructors"""
     def __init__(self, obj = None):
@@ -459,7 +459,7 @@ class GVolume( gio__GInterface.GInterface):
 
     def get_activation_root(  self, ):
 
-        from gio import GFile
+        from .gio import GFile
         return GFile( obj=libgio.g_volume_get_activation_root( self._object ) or POINTER(c_int)())
 
     def eject_finish(  self, result, error, ):
@@ -484,12 +484,12 @@ class GVolume( gio__GInterface.GInterface):
 
     def get_drive(  self, ):
 
-        from gobject import GDrive
+        from .gobject import GDrive
         return GDrive( obj=libgio.g_volume_get_drive( self._object ) or POINTER(c_int)())
 
     def get_mount(  self, ):
 
-        from gio import GMount
+        from .gio import GMount
         return GMount( obj=libgio.g_volume_get_mount( self._object ) or POINTER(c_int)())
 
     def can_mount(  self, ):
@@ -536,7 +536,7 @@ class GVolume( gio__GInterface.GInterface):
 
     def get_icon(  self, ):
 
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=libgio.g_volume_get_icon( self._object ) or POINTER(c_int)())
 
     def eject_with_operation(  self, flags, mount_operation, cancellable, callback, user_data, ):

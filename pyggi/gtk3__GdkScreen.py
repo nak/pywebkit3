@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -373,7 +373,7 @@ except:
    pass
 try:
     libgtk3.gdk_screen_get_setting.restype = gboolean
-    libgtk3.gdk_screen_get_setting.argtypes = [_GdkScreen,c_char_p,_GValue]
+    libgtk3.gdk_screen_get_setting.argtypes = [_GdkScreen,Asciifier,_GValue]
 except:
    pass
 try:
@@ -471,7 +471,7 @@ try:
     libgtk3.gdk_screen_get_default.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkScreen( gobject__GObject.GObject):
     """Class GdkScreen Constructors"""
     def __init__(self, obj = None):
@@ -484,7 +484,7 @@ class GdkScreen( gobject__GObject.GObject):
 
     def get_toplevel_windows(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_screen_get_toplevel_windows( self._object ) or POINTER(c_int)())
 
     def is_composited(  self, ):
@@ -540,7 +540,7 @@ class GdkScreen( gobject__GObject.GObject):
 
     def get_display(  self, ):
 
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gdk_screen_get_display( self._object ) or POINTER(c_int)())
 
     def make_display_name(  self, ):
@@ -562,7 +562,7 @@ class GdkScreen( gobject__GObject.GObject):
 
     def list_visuals(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_screen_list_visuals( self._object ) or POINTER(c_int)())
 
     def get_monitor_plug_name(  self, monitor_num, ):
@@ -584,7 +584,7 @@ class GdkScreen( gobject__GObject.GObject):
 
     def get_root_window(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None,None, obj=libgtk3.gdk_screen_get_root_window( self._object ) or POINTER(c_int)())
 
     def get_height(  self, ):
@@ -604,7 +604,7 @@ class GdkScreen( gobject__GObject.GObject):
 
     def get_active_window(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None, obj=libgtk3.gdk_screen_get_active_window( self._object ) or POINTER(c_int)())
 
     def get_width_mm(  self, ):
@@ -614,18 +614,18 @@ class GdkScreen( gobject__GObject.GObject):
 
     def get_window_stack(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_screen_get_window_stack( self._object ) or POINTER(c_int)())
 
     @staticmethod
     def gdk_visual_get_screen( visual,):
         if visual: visual = visual._object
         else: visual = POINTER(c_int)()
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=    libgtk3.gdk_visual_get_screen(visual, )
  or POINTER(c_int)())
     @staticmethod
     def get_default():
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=    libgtk3.gdk_screen_get_default()
  or POINTER(c_int)())

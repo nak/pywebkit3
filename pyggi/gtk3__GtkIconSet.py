@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -369,7 +369,7 @@ except:
    pass
 try:
     libgtk3.gtk_icon_set_render_icon.restype = _GdkPixbuf
-    libgtk3.gtk_icon_set_render_icon.argtypes = [_GtkIconSet,_GtkStyle,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,c_char_p]
+    libgtk3.gtk_icon_set_render_icon.argtypes = [_GtkIconSet,_GtkStyle,GtkTextDirection,GtkStateType,GtkIconSize,_GtkWidget,Asciifier]
 except:
    pass
 try:
@@ -382,7 +382,7 @@ try:
     libgtk3.gtk_icon_set_new_from_pixbuf.argtypes = [_GdkPixbuf]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkIconSet( gobject__GObject.GObject):
     """Class GtkIconSet Constructors"""
     def __init__( self,  obj = None):
@@ -408,12 +408,12 @@ class GtkIconSet( gobject__GObject.GObject):
 
     def copy(  self, ):
 
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet( obj=libgtk3.gtk_icon_set_copy( self._object ) or POINTER(c_int)())
 
     def ref(  self, ):
 
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet( obj=libgtk3.gtk_icon_set_ref( self._object ) or POINTER(c_int)())
 
     def render_icon(  self, style, direction, state, size, widget, detail, ):
@@ -422,7 +422,7 @@ class GtkIconSet( gobject__GObject.GObject):
         if widget: widget = widget._object
         else: widget = POINTER(c_int)()
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_icon_set_render_icon( self._object,style,direction,state,size,widget,detail ) or POINTER(c_int)())
 
     def get_sizes(  self, sizes, n_sizes, ):
@@ -434,6 +434,6 @@ class GtkIconSet( gobject__GObject.GObject):
     def new_from_pixbuf( pixbuf,):
         if pixbuf: pixbuf = pixbuf._object
         else: pixbuf = POINTER(c_int)()
-        from gtk3 import GtkIconSet
+        from .gtk3 import GtkIconSet
         return GtkIconSet( obj=    libgtk3.gtk_icon_set_new_from_pixbuf(pixbuf, )
  or POINTER(c_int)())

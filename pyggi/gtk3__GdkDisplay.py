@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -496,7 +496,7 @@ except:
    pass
 try:
     libgtk3.gdk_display_notify_startup_complete.restype = None
-    libgtk3.gdk_display_notify_startup_complete.argtypes = [_GdkDisplay,c_char_p]
+    libgtk3.gdk_display_notify_startup_complete.argtypes = [_GdkDisplay,Asciifier]
 except:
    pass
 try:
@@ -616,7 +616,7 @@ except:
    pass
 try:
     libgtk3.gdk_display_open.restype = _GdkDisplay
-    libgtk3.gdk_display_open.argtypes = [c_char_p]
+    libgtk3.gdk_display_open.argtypes = [Asciifier]
 except:
    pass
 try:
@@ -624,7 +624,7 @@ try:
     libgtk3.gdk_display_get_default.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkDisplay( gobject__GObject.GObject):
     """Class GdkDisplay Constructors"""
     def __init__(self, obj = None):
@@ -637,7 +637,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def get_screen(  self, screen_num, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gdk_display_get_screen( self._object,screen_num ) or POINTER(c_int)())
 
     def get_default_cursor_size(  self, ):
@@ -716,7 +716,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def list_devices(  self, ):
 
-        from gobject import GList
+        from .gobject import GList
         return GList( obj=libgtk3.gdk_display_list_devices( self._object ) or POINTER(c_int)())
 
     def has_pending(  self, ):
@@ -731,7 +731,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def get_default_group(  self, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None,None, obj=libgtk3.gdk_display_get_default_group( self._object ) or POINTER(c_int)())
 
     def get_event(  self, ):
@@ -746,7 +746,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def get_window_at_pointer(  self, win_x, win_y, ):
 
-        from gobject import GdkWindow
+        from .gobject import GdkWindow
         return GdkWindow(None, obj=libgtk3.gdk_display_get_window_at_pointer( self._object,win_x,win_y ) or POINTER(c_int)())
 
     def supports_composite(  self, ):
@@ -766,7 +766,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def get_app_launch_context(  self, ):
 
-        from gobject import GdkAppLaunchContext
+        from .gobject import GdkAppLaunchContext
         return GdkAppLaunchContext(None, obj=libgtk3.gdk_display_get_app_launch_context( self._object ) or POINTER(c_int)())
 
     def get_name(  self, ):
@@ -776,7 +776,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def get_device_manager(  self, ):
 
-        from gobject import GdkDeviceManager
+        from .gobject import GdkDeviceManager
         return GdkDeviceManager( obj=libgtk3.gdk_display_get_device_manager( self._object ) or POINTER(c_int)())
 
     def keyboard_ungrab(  self, time_, ):
@@ -786,7 +786,7 @@ class GdkDisplay( gobject__GObject.GObject):
 
     def get_default_screen(  self, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gdk_display_get_default_screen( self._object ) or POINTER(c_int)())
 
     def warp_pointer(  self, screen, x, y, ):
@@ -834,11 +834,11 @@ class GdkDisplay( gobject__GObject.GObject):
 
     @staticmethod
     def open( display_name,):
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=    libgtk3.gdk_display_open(display_name, )
  or POINTER(c_int)())
     @staticmethod
     def get_default():
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=    libgtk3.gdk_display_get_default()
  or POINTER(c_int)())

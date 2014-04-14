@@ -1,7 +1,7 @@
 from ctypes import *
 c_void_p = c_ulonglong
-from gdk_types import *
-from gobject_types import *
+from .gdk_types import *
+from .gobject_types import *
 
 import platform
 from pyggi import load
@@ -83,3 +83,11 @@ def main_quit():
     
 
 GdkEvent = POINTER(c_int)
+
+class Asciifier(object):
+    @classmethod
+    def from_param(cls, value):
+        if isinstance(value, bytes):
+            return value
+        else:
+            return value.encode('ascii')

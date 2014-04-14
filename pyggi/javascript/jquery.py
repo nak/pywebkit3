@@ -1,5 +1,5 @@
-from ..javascript import ScriptEnv
-from ..javascriptcore import JSString, JSObject
+#from ..javascript import ScriptEnv
+from ..javascriptcore import JSString, JSObject, JSContext
 from ..javascriptcore_enums import *
 from ..webkit3_enums import *
 import logging 
@@ -7,34 +7,36 @@ from ctypes import POINTER, c_int
 
 
 
-def on_jquery_ready( env, callback , *args):
-    if not hasattr(env, "_callbacks"):
-        env._callbacks = []
-    env._callbacks.append(( callback, args ))
+def on_jquery_ready( context, callback , *args):
+    if not hasattr(context, "_callbacks"):
+        context._callbacks = []
+    context._callbacks.append(( callback, args ))
 
-def initialize( env):
-    if hasattr(env, "_dollarsign") and env._dollarsign:
-        return env.__jq
-    assert(isinstance( env, ScriptEnv))
+def initialize(  context , on_view_ready):
+    assert(context is not None)
+    assert( isinstance( context, JSContext))
+    if hasattr(context, "_dollarsign") and context._dollarsign:
+        return context.__jq
+    assert(isinstance( context, JSContext))
     def view_ready():
         try:
-            env._dollarsign= env.get_jsobject(  "$", can_call = True)
-            if not hasattr( env, "_callbacks"):
-                env._callbacks=[]
-            for cb, args in env._callbacks:
+            context._dollarsign= context.get_jsobject(  "$", can_call = True)
+            if not hasattr( context, "_callbacks"):
+                context._callbacks=[]
+            for cb, args in context._callbacks:
                 cb( *args)
         except:
             import traceback
             traceback.print_exc()
-            env._dollarsign = None
+            context._dollarsign = None
             raise Exception("No jquery")
-        if env._dollarsign:
+        if context._dollarsign:
             
-            env._jQuery = env.get_jsobject( "jQuery", can_call = False)
+            context._jQuery = context.get_jsobject( "jQuery", can_call = False)
         else:
             logging.error("jQuery not detected.")
         return False
-    env._webview.on_view_ready( view_ready)
+    on_view_ready( view_ready)
     class _(object):
         
         def __exit__(self,type, value, traceback):
@@ -45,9 +47,9 @@ def initialize( env):
         
         def __call__(self,*args):
             #try:
-                return env._dollarsign(*args)
+                return context._dollarsign(*args)
             #except:
             #    return None
-    env.__jq = _()
-    return env.__jq
+    context.__jq = _()
+    return context.__jq
 

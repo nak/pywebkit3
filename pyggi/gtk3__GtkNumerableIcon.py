@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -65,12 +65,12 @@ _GtkNumerableIcon = POINTER(c_int)
 
 try:
     libgtk3.gtk_numerable_icon_set_background_icon_name.restype = None
-    libgtk3.gtk_numerable_icon_set_background_icon_name.argtypes = [_GtkNumerableIcon,c_char_p]
+    libgtk3.gtk_numerable_icon_set_background_icon_name.argtypes = [_GtkNumerableIcon,Asciifier]
 except:
    pass
 try:
     libgtk3.gtk_numerable_icon_set_label.restype = None
-    libgtk3.gtk_numerable_icon_set_label.argtypes = [_GtkNumerableIcon,c_char_p]
+    libgtk3.gtk_numerable_icon_set_label.argtypes = [_GtkNumerableIcon,Asciifier]
 except:
    pass
 try:
@@ -118,7 +118,7 @@ try:
     libgtk3.gtk_numerable_icon_new_with_style_context.argtypes = [_GIcon,_GtkStyleContext]
 except:
    pass
-import gobject__GEmblemedIcon
+from . import gobject__GEmblemedIcon
 class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
     """Class GtkNumerableIcon Constructors"""
     def __init__( self, base_icon,  obj = None):
@@ -179,12 +179,12 @@ class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
 
     def get_background_gicon(  self, ):
 
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=libgtk3.gtk_numerable_icon_get_background_gicon( self._object ) or POINTER(c_int)())
 
     def get_style_context(  self, ):
 
-        from gtk3 import GtkStyleContext
+        from .gtk3 import GtkStyleContext
         return GtkStyleContext(None, obj=libgtk3.gtk_numerable_icon_get_style_context( self._object ) or POINTER(c_int)())
 
     @staticmethod
@@ -193,6 +193,6 @@ class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
         else: base_icon = POINTER(c_int)()
         if context: context = context._object
         else: context = POINTER(c_int)()
-        from gobject import GIcon
+        from .gobject import GIcon
         return GIcon( obj=    libgtk3.gtk_numerable_icon_new_with_style_context(base_icon, context, )
  or POINTER(c_int)())

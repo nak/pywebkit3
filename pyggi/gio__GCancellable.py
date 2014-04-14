@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gio_types import *
-from gio_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gio_types import *
+from .gio_enums import *
 
     
 """Derived Pointer Types"""
@@ -426,7 +426,7 @@ try:
     libgio.g_cancellable_get_current.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GCancellable( gobject__GObject.GObject):
     """Class GCancellable Constructors"""
     def __init__( self,  obj = None):
@@ -445,7 +445,7 @@ class GCancellable( gobject__GObject.GObject):
 
     def source_new(  self, ):
 
-        from gobject import GSource
+        from .gobject import GSource
         return GSource(None,None, obj=libgio.g_cancellable_source_new( self._object ) or POINTER(c_int)())
 
     def release_fd(  self, ):
@@ -506,6 +506,6 @@ class GCancellable( gobject__GObject.GObject):
 
     @staticmethod
     def get_current():
-        from gobject import GCancellable
+        from .gobject import GCancellable
         return GCancellable( obj=    libgio.g_cancellable_get_current()
  or POINTER(c_int)())

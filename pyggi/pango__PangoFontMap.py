@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from pango_types import *
-from pango_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .pango_types import *
+from .pango_enums import *
 
     
 """Derived Pointer Types"""
@@ -341,7 +341,7 @@ try:
     libpango.pango_font_map_load_fontset.argtypes = [_PangoFontMap,_PangoContext,_PangoFontDescription,_PangoLanguage]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class PangoFontMap( gobject__GObject.GObject):
     """Class PangoFontMap Constructors"""
     def __init__(self, obj = None):
@@ -349,7 +349,7 @@ class PangoFontMap( gobject__GObject.GObject):
     """Methods"""
     def create_context(  self, ):
 
-        from gtk3 import PangoContext
+        from .gtk3 import PangoContext
         return PangoContext(None, obj=libpango.pango_font_map_create_context( self._object )  or POINTER(c_int)())
 
     def load_font(  self, context, desc, ):
@@ -358,7 +358,7 @@ class PangoFontMap( gobject__GObject.GObject):
         if desc: desc = desc._object
         else: desc = POINTER(c_int)()
 
-        from gtk3 import PangoFont
+        from .gtk3 import PangoFont
         return PangoFont( obj=libpango.pango_font_map_load_font( self._object,context,desc )  or POINTER(c_int)())
 
     def list_families(  self, families, n_families, ):
@@ -381,6 +381,6 @@ class PangoFontMap( gobject__GObject.GObject):
         if language: language = language._object
         else: language = POINTER(c_int)()
 
-        from gtk3 import PangoFontset
+        from .gtk3 import PangoFontset
         return PangoFontset( obj=libpango.pango_font_map_load_fontset( self._object,context,desc,language )  or POINTER(c_int)())
 

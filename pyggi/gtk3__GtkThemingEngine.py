@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -265,7 +265,7 @@ GApplicationFlags = c_int
 
 try:
     libgtk3.gtk_theming_engine_get_style_property.restype = None
-    libgtk3.gtk_theming_engine_get_style_property.argtypes = [_GtkThemingEngine,c_char_p,_GValue]
+    libgtk3.gtk_theming_engine_get_style_property.argtypes = [_GtkThemingEngine,Asciifier,_GValue]
 except:
    pass
 try:
@@ -295,12 +295,12 @@ except:
    pass
 try:
     libgtk3.gtk_theming_engine_register_property.restype = None
-    libgtk3.gtk_theming_engine_register_property.argtypes = [_GtkThemingEngine,c_char_p,GtkStylePropertyParser,_GParamSpec]
+    libgtk3.gtk_theming_engine_register_property.argtypes = [_GtkThemingEngine,Asciifier,GtkStylePropertyParser,_GParamSpec]
 except:
    pass
 try:
     libgtk3.gtk_theming_engine_lookup_color.restype = gboolean
-    libgtk3.gtk_theming_engine_lookup_color.argtypes = [_GtkThemingEngine,c_char_p,_GdkRGBA]
+    libgtk3.gtk_theming_engine_lookup_color.argtypes = [_GtkThemingEngine,Asciifier,_GdkRGBA]
 except:
    pass
 try:
@@ -310,7 +310,7 @@ except:
    pass
 try:
     libgtk3.gtk_theming_engine_get_property.restype = None
-    libgtk3.gtk_theming_engine_get_property.argtypes = [_GtkThemingEngine,c_char_p,GtkStateFlags,_GValue]
+    libgtk3.gtk_theming_engine_get_property.argtypes = [_GtkThemingEngine,Asciifier,GtkStateFlags,_GValue]
 except:
    pass
 try:
@@ -335,7 +335,7 @@ except:
    pass
 try:
     libgtk3.gtk_theming_engine_has_region.restype = gboolean
-    libgtk3.gtk_theming_engine_has_region.argtypes = [_GtkThemingEngine,c_char_p,_GtkRegionFlags]
+    libgtk3.gtk_theming_engine_has_region.argtypes = [_GtkThemingEngine,Asciifier,_GtkRegionFlags]
 except:
    pass
 try:
@@ -350,7 +350,7 @@ except:
    pass
 try:
     libgtk3.gtk_theming_engine_has_class.restype = gboolean
-    libgtk3.gtk_theming_engine_has_class.argtypes = [_GtkThemingEngine,c_char_p]
+    libgtk3.gtk_theming_engine_has_class.argtypes = [_GtkThemingEngine,Asciifier]
 except:
    pass
 try:
@@ -370,10 +370,10 @@ except:
    pass
 try:
     libgtk3.gtk_theming_engine_load.restype = _GtkThemingEngine
-    libgtk3.gtk_theming_engine_load.argtypes = [c_char_p]
+    libgtk3.gtk_theming_engine_load.argtypes = [Asciifier]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkThemingEngine( gobject__GObject.GObject):
     """Class GtkThemingEngine Constructors"""
     def __init__(self, obj = None):
@@ -395,7 +395,7 @@ class GtkThemingEngine( gobject__GObject.GObject):
 
     def get_font(  self, state, ):
 
-        from gtk3 import PangoFontDescription
+        from .gtk3 import PangoFontDescription
         return PangoFontDescription(None, obj=libgtk3.gtk_theming_engine_get_font( self._object,state )  or POINTER(c_int)())
 
     def get_border(  self, state, border, ):
@@ -407,7 +407,7 @@ class GtkThemingEngine( gobject__GObject.GObject):
 
     def get_screen(  self, ):
 
-        from gobject import GdkScreen
+        from .gobject import GdkScreen
         return GdkScreen( obj=libgtk3.gtk_theming_engine_get_screen( self._object ) or POINTER(c_int)())
 
     def get_style(  self,*args  ):
@@ -459,7 +459,7 @@ class GtkThemingEngine( gobject__GObject.GObject):
 
     def get_path(  self, ):
 
-        from gtk3 import GtkWidgetPath
+        from .gtk3 import GtkWidgetPath
         return GtkWidgetPath(None, obj=libgtk3.gtk_theming_engine_get_path( self._object ) or POINTER(c_int)())
 
     def state_is_running(  self, state, progress, ):
@@ -520,6 +520,6 @@ class GtkThemingEngine( gobject__GObject.GObject):
 
     @staticmethod
     def load( name,):
-        from gtk3 import GtkThemingEngine
+        from .gtk3 import GtkThemingEngine
         return GtkThemingEngine( obj=    libgtk3.gtk_theming_engine_load(name, )
  or POINTER(c_int)())

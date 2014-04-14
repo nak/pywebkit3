@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -291,7 +291,7 @@ try:
     libgtk3.gtk_border_free.argtypes = [_GtkBorder]
 except:
    pass
-import gobject__GBoxed
+from . import gobject__GBoxed
 class GtkBorder( gobject__GBoxed.GBoxed):
     """Class GtkBorder Constructors"""
     def __init__( self,  obj = None):
@@ -305,7 +305,7 @@ class GtkBorder( gobject__GBoxed.GBoxed):
     """Methods"""
     def copy(  self, ):
 
-        from gtk3 import GtkBorder
+        from .gtk3 import GtkBorder
         return GtkBorder( obj=libgtk3.gtk_border_copy( self._object ) or POINTER(c_int)())
 
     def free(  self, ):

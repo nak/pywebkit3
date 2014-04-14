@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -356,7 +356,7 @@ try:
     libgtk3.gtk_misc_set_alignment.argtypes = [_GtkMisc,gfloat,gfloat]
 except:
    pass
-import gtk3__GtkWidget
+from . import gtk3__GtkWidget
 class GtkMisc( gtk3__GtkWidget.GtkWidget):
     """Class GtkMisc Constructors"""
     def __init__(self, obj = None):

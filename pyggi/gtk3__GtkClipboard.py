@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -414,7 +414,7 @@ except:
    pass
 try:
     libgtk3.gtk_clipboard_set_text.restype = None
-    libgtk3.gtk_clipboard_set_text.argtypes = [_GtkClipboard,c_char_p,gint]
+    libgtk3.gtk_clipboard_set_text.argtypes = [_GtkClipboard,Asciifier,gint]
 except:
    pass
 try:
@@ -522,7 +522,7 @@ try:
     libgtk3.gtk_clipboard_get_for_display.argtypes = [_GdkDisplay,POINTER(c_int)]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkClipboard( gobject__GObject.GObject):
     """Class GtkClipboard Constructors"""
     def __init__(self, obj = None):
@@ -544,7 +544,7 @@ class GtkClipboard( gobject__GObject.GObject):
 
     def get_owner(  self, ):
 
-        from gobject import GObject
+        from .gobject import GObject
         return GObject(None,None,None,None, obj=libgtk3.gtk_clipboard_get_owner( self._object ) or POINTER(c_int)())
 
     def wait_is_target_available(  self, target, ):
@@ -587,7 +587,7 @@ class GtkClipboard( gobject__GObject.GObject):
         if target: target = target._object
         else: target = POINTER(c_int)()
 
-        from gtk3 import GtkSelectionData
+        from .gtk3 import GtkSelectionData
         return GtkSelectionData( obj=libgtk3.gtk_clipboard_wait_for_contents( self._object,target ) or POINTER(c_int)())
 
     def set_can_store(  self, targets, n_targets, ):
@@ -611,7 +611,7 @@ class GtkClipboard( gobject__GObject.GObject):
 
     def wait_for_image(  self, ):
 
-        from gobject import GdkPixbuf
+        from .gobject import GdkPixbuf
         return GdkPixbuf( obj=libgtk3.gtk_clipboard_wait_for_image( self._object ) or POINTER(c_int)())
 
     def wait_for_rich_text(  self, buffer, format, length, ):
@@ -630,7 +630,7 @@ class GtkClipboard( gobject__GObject.GObject):
 
     def get_display(  self, ):
 
-        from gobject import GdkDisplay
+        from .gobject import GdkDisplay
         return GdkDisplay( obj=libgtk3.gtk_clipboard_get_display( self._object ) or POINTER(c_int)())
 
     def wait_for_uris(  self, ):
@@ -688,7 +688,7 @@ class GtkClipboard( gobject__GObject.GObject):
     def get( selection,):
         if selection: selection = selection._object
         else: selection = POINTER(c_int)()
-        from gtk3 import GtkClipboard
+        from .gtk3 import GtkClipboard
         return GtkClipboard( obj=    libgtk3.gtk_clipboard_get(selection, )
  or POINTER(c_int)())
     @staticmethod
@@ -697,6 +697,6 @@ class GtkClipboard( gobject__GObject.GObject):
         else: display = POINTER(c_int)()
         if selection: selection = selection._object
         else: selection = POINTER(c_int)()
-        from gtk3 import GtkClipboard
+        from .gtk3 import GtkClipboard
         return GtkClipboard( obj=    libgtk3.gtk_clipboard_get_for_display(display, selection, )
  or POINTER(c_int)())

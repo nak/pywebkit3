@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -283,7 +283,7 @@ except:
    pass
 try:
     libgtk3.gtk_dialog_add_button.restype = _GtkWidget
-    libgtk3.gtk_dialog_add_button.argtypes = [_GtkDialog,c_char_p,gint]
+    libgtk3.gtk_dialog_add_button.argtypes = [_GtkDialog,Asciifier,gint]
 except:
    pass
 try:
@@ -328,7 +328,7 @@ except:
    pass
 try:
     libgtk3.gtk_dialog_add_buttons.restype = None
-    libgtk3.gtk_dialog_add_buttons.argtypes = [_GtkDialog,c_char_p,]
+    libgtk3.gtk_dialog_add_buttons.argtypes = [_GtkDialog,Asciifier,]
 except:
    pass
 try:
@@ -338,10 +338,10 @@ except:
    pass
 try:
     libgtk3.gtk_dialog_new_with_buttons.restype = _GtkWidget
-    libgtk3.gtk_dialog_new_with_buttons.argtypes = [c_char_p,_GtkWindow,GtkDialogFlags,c_char_p,]
+    libgtk3.gtk_dialog_new_with_buttons.argtypes = [Asciifier,_GtkWindow,GtkDialogFlags,Asciifier,]
 except:
    pass
-import gtk3__GtkBin
+from . import gtk3__GtkBin
 class GtkDialog( gtk3__GtkBin.GtkBin):
     """Class GtkDialog Constructors"""
     def __init__( self,  obj = None):
@@ -377,7 +377,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def add_button(  self, button_text, response_id, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_dialog_add_button( self._object,button_text,response_id ) or POINTER(c_int)())
 
     def set_default_response(  self, response_id, ):
@@ -392,7 +392,7 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def get_content_area(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_dialog_get_content_area( self._object ) or POINTER(c_int)())
 
     def response(  self, response_id, ):
@@ -414,12 +414,12 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
 
     def get_action_area(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_dialog_get_action_area( self._object ) or POINTER(c_int)())
 
     def get_widget_for_response(  self, response_id, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=libgtk3.gtk_dialog_get_widget_for_response( self._object,response_id ) or POINTER(c_int)())
 
     def add_buttons(  self, first_button_text,*args  ):
@@ -443,6 +443,6 @@ class GtkDialog( gtk3__GtkBin.GtkBin):
     def new_with_buttons( title, parent, flags, first_button_text,*args ):
         if parent: parent = parent._object
         else: parent = POINTER(c_int)()
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget( obj=    libgtk3.gtk_dialog_new_with_buttons(title, parent, flags, first_button_text, *args)
  or POINTER(c_int)())

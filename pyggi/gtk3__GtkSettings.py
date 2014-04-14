@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -402,7 +402,7 @@ try:
     libgtk3.gtk_settings_get_default.argtypes = []
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GtkSettings( gobject__GObject.GObject):
     """Class GtkSettings Constructors"""
     def __init__(self, obj = None):
@@ -428,11 +428,11 @@ class GtkSettings( gobject__GObject.GObject):
     def get_for_screen( screen,):
         if screen: screen = screen._object
         else: screen = POINTER(c_int)()
-        from gtk3 import GtkSettings
+        from .gtk3 import GtkSettings
         return GtkSettings( obj=    libgtk3.gtk_settings_get_for_screen(screen, )
  or POINTER(c_int)())
     @staticmethod
     def get_default():
-        from gtk3 import GtkSettings
+        from .gtk3 import GtkSettings
         return GtkSettings( obj=    libgtk3.gtk_settings_get_default()
  or POINTER(c_int)())

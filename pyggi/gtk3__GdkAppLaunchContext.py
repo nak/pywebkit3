@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -331,7 +331,7 @@ except:
    pass
 try:
     libgtk3.gdk_app_launch_context_set_icon_name.restype = None
-    libgtk3.gdk_app_launch_context_set_icon_name.argtypes = [_GdkAppLaunchContext,c_char_p]
+    libgtk3.gdk_app_launch_context_set_icon_name.argtypes = [_GdkAppLaunchContext,Asciifier]
 except:
    pass
 try:
@@ -349,7 +349,7 @@ try:
     libgtk3.gdk_app_launch_context_set_desktop.argtypes = [_GdkAppLaunchContext,gint]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class GdkAppLaunchContext( gobject__GObject.GObject):
     """Class GdkAppLaunchContext Constructors"""
     def __init__( self,  obj = None):

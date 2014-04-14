@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from webkit3_types import *
-from webkit3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .webkit3_types import *
+from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
@@ -285,7 +285,7 @@ except:
    pass
 try:
     libwebkit3.webkit_web_navigation_action_set_original_uri.restype = None
-    libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,c_char_p]
+    libwebkit3.webkit_web_navigation_action_set_original_uri.argtypes = [_WebKitWebNavigationAction,Asciifier]
 except:
    pass
 try:
@@ -303,7 +303,7 @@ try:
     libwebkit3.webkit_web_navigation_action_set_reason.argtypes = [_WebKitWebNavigationAction,WebKitWebNavigationReason]
 except:
    pass
-import gobject__GObject
+from . import gobject__GObject
 class WebKitWebNavigationAction( gobject__GObject.GObject):
     """Class WebKitWebNavigationAction Constructors"""
     def __init__(self, obj = None):

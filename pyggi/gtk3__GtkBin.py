@@ -45,10 +45,10 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
-from gtk3_types import *
-from gtk3_enums import *
-from gtk3_types import *
-from gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
+from .gtk3_types import *
+from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
@@ -391,7 +391,7 @@ try:
     libgtk3.gtk_bin_get_child.argtypes = [_GtkBin]
 except:
    pass
-import gtk3__GtkContainer
+from . import gtk3__GtkContainer
 class GtkBin( gtk3__GtkContainer.GtkContainer):
     """Class GtkBin Constructors"""
     def __init__(self, obj = None):
@@ -399,6 +399,6 @@ class GtkBin( gtk3__GtkContainer.GtkContainer):
     """Methods"""
     def get_child(  self, ):
 
-        from gtk3 import GtkWidget
+        from .gtk3 import GtkWidget
         return GtkWidget(None, obj=libgtk3.gtk_bin_get_child( self._object ) or POINTER(c_int)())
 
