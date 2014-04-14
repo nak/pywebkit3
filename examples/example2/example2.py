@@ -32,8 +32,6 @@ def import_element():
     global color_block
     color_block = env.get_jsobject( "color_block", can_call=False)
     assert(color_block)
-    import logging
-    logging.error("GOT COLOR BLOCK %s"%color_block)
 
 webview.on_view_ready( import_element )
 #set up a loop to continually increment the color

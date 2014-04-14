@@ -498,7 +498,6 @@ class JSContext( javascriptcore__JSObject.JSObject):
         from .javascript import strid, JavascriptClass, JSString, JSFunction
         ident = strid(context)
         import logging
-        logging.error("@@@@@@@@@@@@@@@Getting %s.%s", ident, name)
         retval = JavascriptClass._globalobjects.get(ident + name)
         
         if retval is None:
