@@ -28,7 +28,7 @@ def make_object( from_dict):
         def __getattr__(self, attr):
             return self.get(attr)
     ret = struct()
-    for key,value in from_dict.iteritems():
+    for key,value in from_dict.items():
         if isinstance(value, dict):
             value = make_object(value)
         setattr(ret, key, value)
@@ -328,7 +328,7 @@ def setupSlider(_, elem, ui, obj):
     textDiv.appendChild(valueDiv)
     elem.appendChild(textDiv)
     elem.appendChild(sliderDiv)
-    if not g_uiWidgets.has_key(ui.obj):
+    if not ui.obj in g_uiWidgets:
         g_uiWidgets[ui.obj] = { }
         
     g_uiWidgets[ui.obj][ui.name] = sliderDiv
@@ -347,7 +347,7 @@ def AddUI(uiObj):
   uiElem = document.getElementById('ui')
   for  ui in uiObj:
       obj = g[ui.obj]
-      if not obj.has_key(ui.name):
+      if not ui.name in obj:
           obj[ui.name] = ui.value
           
       div = document.createElement('div')

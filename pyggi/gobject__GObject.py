@@ -913,7 +913,6 @@ class GObject( object):
                 import traceback
                 import logging
                 logging.error("Error executing callback: %s"%(name))
-                logging.error("TRACE: %s"%traceback.format_stack())
                 logging.error(traceback.format_exc())
                 try:
                     GObject._cfuncs.remove(cfunc)
@@ -927,7 +926,7 @@ class GObject( object):
             cfunctype= CFUNCTYPE(None)
         #prevent from gonig out of scope:
         GObject._cfuncs.append(cfunc)
-        libgobject.g_signal_connect_data.restype = c_ulonglong
+        libgobject.g_signal_connect_data.restype = POINTER(c_int)
         libgobject.g_signal_connect_data.argtypes = [c_void_p, Asciifier, CFUNCTYPE(None), c_void_p, c_void_p, c_int]
         return libgobject.g_signal_connect_data(self._object, name, cfunc, 0,0,0)
 

@@ -1,3 +1,4 @@
+import logging
 from .. import  gobject
 from ..gobject import GObject
 from ..gtk3 import libgtk3
@@ -109,7 +110,8 @@ def to_jsfunction( ctxt, func):
 
 def to_pythonjs( context, val): 
     valtype= val.GetType(context)
-    if not valtype or valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
+    if valtype is None or valtype == kJSTypeNull.value:
+        
         return None
     elif valtype == kJSTypeNumber.value:
         retval = val.ToNumber(context, NULL)
@@ -123,7 +125,7 @@ def to_pythonjs( context, val):
         jstext.Release()
         retval = cstring.value.decode('ascii')
         del cstring
-    elif valtype == kJSTypeObject.value:
+    elif valtype == kJSTypeObject.value or valtype == kJSTypeUndefined.value:
         jsobject = val.ToObject(context, NULL)
         retval = _wrapJs(context, jsobject, None)
     else:
@@ -134,7 +136,8 @@ def to_pythonjs( context, val):
 
 class JSFunction(JSObject):
 
-    def __init__(self, context, obj, thisobj, name):
+    def __init__(self, context, obj, thisobj, name,
+                 _call_as_constructor = False):
         assert(isinstance(context, JSContext))
         JSObject.__init__(self, obj=obj._object(), context = context)
         self._thisjsobj = thisobj
@@ -142,6 +145,10 @@ class JSFunction(JSObject):
         if thisobj and cast(thisobj._object(), c_void_p ).value == None:
             self._thisjsobj = None
         self._name = name
+        self._call_as_constructor = _call_as_constructor
+
+    def promote_to_constructor( self ):
+        self._call_as_constructor = True
         
     def __call__(self, *args):
         #We must keep the javascript arguments active while this object is active 
@@ -215,20 +222,19 @@ class JSFunction(JSObject):
             jsArgs =  NULL#JSValue.MakeNull( self._context )
         else:
             jsArgs.append(JSValue.MakeNull(self._context))
-        import logging
-        logging.error( "CALLING %s "%(self._name))
-        if args:
-            logging.error( "WITH ARGS (%s)"%len(jsArgs))
-            for i in range(len(args)):
-                logging.error( "WITH ARGS (%s)"%jsArgs[i])
-        retval =  self._jsfuncobj.CallAsFunction( self._context,
+        if self._jsfuncobj.IsConstructor( self._context ) and self._call_as_constructor:
+            retval =  self._jsfuncobj.CallAsConstructor( self._context,
+                                                         c_int(len(args)),
+                                                         jsArgs,
+                                                         NULL)
+        else:
+            retval =  self._jsfuncobj.CallAsFunction( self._context,
                                                   self._thisjsobj,
                                                   c_int(len(args)),
                                                   jsArgs,
                                                   NULL)
-        logging.error(" GOT %s"%retval)
-        return  to_pythonjs(self._context, retval)
-
+        retval =   to_pythonjs(self._context, retval)
+        return retval
 
         
 class JavascriptClass(object):
@@ -274,7 +280,7 @@ class JavascriptClass(object):
                         else:
                             
                             valtype = JSValue(obj=arguments[i], context = context).GetType(context)#None context here to prevent unprotect on __del__
-                            if valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
+                            if valtype == kJSTypeNull.value:
                                 args.append(None)
                             elif valtype == kJSTypeNumber.value:
                                 args.append(JSValue(arguments[i], context = context ).ToNumber(context, NULL))
@@ -289,7 +295,7 @@ class JavascriptClass(object):
                                 jstext.Release()
                                 args.append(cstring.value)
                                 del cstring
-                            elif valtype == kJSTypeObject.value:
+                            elif valtype == kJSTypeObject.value  or valtype == kJSTypeUndefined.value:
                                 jsobject = JSValue(arguments[i], context = context).ToObject(context, NULL)
                                 
                                 pyarg = _wrapJs(context, jsobject, "arg%s" % i)
@@ -352,7 +358,7 @@ class JavascriptClass(object):
         jscd = JSClassDefinition()
         jscd.version = 0
         jscd.attributes = kJSClassAttributeNone
-        jscd.className = c_char_p(cls.__name__) 
+        jscd.className = c_char_p(cls.__name__.encode('ascii')) 
         jscd.parentClass = NULL
         jscd.staticValues = POINTER(JSStaticValue)()
         jscd.staticFunctions = cls.staticmethods

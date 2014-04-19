@@ -47,7 +47,8 @@
 from ctypes import *
 from .gtk3_types import *
 from .javascriptcore_types import *
-    
+import logging
+            
     
 """Derived Pointer Types"""
 __GtkRcStyle = POINTER(c_int)
@@ -372,17 +373,23 @@ class JSObject( JSValue ):
     """Methods"""
     def GetProperty(  self, propertyName, exception, ):
         if propertyName: propertyName = propertyName._object()
-        else: propertyName = POINTER(c_int)()
+        else: propertyName = JSValue.MakeNull(self._context)
+        if exception: exception = exception._object()
+        else: exception = POINTER(c_int)()
 
-        from .javascriptcore import JSValue
-        if self._object() and self._context._object():
-            #import logging
-            #logging.error("GET PROP %s %s %s"%(self._object(),
-            #                                   self._context._object(),
-            #                                   propertyName.contents))
-            return JSValue( obj=libjavascriptcore.JSObjectGetProperty\
-                        ( self._context._object(),self._object(),propertyName,exception ),
-                        context = self._context)
+        from .javascriptcore import JSValue, JSContext
+        if isinstance( self, JSContext):
+            raise AttributeError("No such attribute")
+        else:
+            context = self._context
+        if self._object() and propertyName and context._object():
+            retval =  JSValue( obj=libjavascriptcore.JSObjectGetProperty\
+                            ( context._object(),
+                              self._object(),propertyName,exception ),
+                            context = context)
+            return retval
+        else:
+            return None
 
     def JSPropertyNameAccumulatorAddName(  self, accumulator, propertyName, ):
         if accumulator: accumulator = accumulator._object()
@@ -423,16 +430,23 @@ class JSObject( JSValue ):
     def CallAsConstructor(  self, ctx, argumentCount, arguments, exception, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        jsargs = _JSValue*argumentCount
-        for index in len(argumentCount):
-            jsargs[index] = arguments[index]._object()
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
         from .javascriptcore import JSObject
+        if argumentCount.value:
+            args = (_JSValue*(argumentCount.value))()
+            for index in range(argumentCount.value):
+                args[index] = arguments[index]._object()
+                
+        else:
+            args = NULL
         if self._object():
-            return JSObject(None,None,None,None, obj=libjavascriptcore.JSObjectCallAsConstructor( ctx,self._object(),argumentCount,arguments,exception )  or POINTER(c_int)())
-
+            return JSObject(obj=libjavascriptcore.JSObjectCallAsConstructor\
+                            ( ctx,self._object(),argumentCount.value,
+                              cast(args, POINTER(c_int)),exception ),
+                            context = self._context)
+        
     def JSPropertyNameArrayRelease(  self, array, ):
         if array: array = array._object()
         else: array = POINTER(c_int)()        
@@ -461,7 +475,7 @@ class JSObject( JSValue ):
         libjavascriptcore.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
         
         if self._object():
-            return libjavascriptcore.JSObjectIsConstructor( ctx,self._object() )
+            return libjavascriptcore.JSObjectIsConstructor( ctx, self._object() )
 
     def SetPropertyAtIndex(  self, ctx, propertyIndex, value, exception, ):
         if ctx: ctx = ctx._object()
@@ -505,7 +519,6 @@ class JSObject( JSValue ):
             thisObject = NULL
         
         if self._object():
-            import logging
             if not thisObject:
                 thisObject = self._object()
             retval = libjavascriptcore.JSObjectCallAsFunction( ctx._object(),
@@ -702,60 +715,64 @@ class JSObject( JSValue ):
         return JSClass( obj= libjavascriptcore.JSClassCreate(definition, )  or POINTER(c_int)())
 
     def __getattr__(self, attr):
+        from .javascriptcore import JSContext
+        assert(self._context or isinstance(self, JSContext))
+        if isinstance(self, JSContext):
+            context = self
+        else:
+            assert(self._context)
+            context = self._context
         if attr == "__len__":
             from .javascript import JSString
             name = JSString.CreateWithUTF8CString("length")
             length = self.GetProperty( name, NULL )
             name.Release()
-            if length.GetType( self._context ) == kJSTypeUndefined.value:
+            if length.GetType( context ) == kJSTypeUndefined.value:
                 raise AttributeError( "No such attribute: length")
-            val = int(length.ToNumber( self._context, NULL ))
+            val = int(length.ToNumber( context, NULL ))
             def _len():
                 return val
             return _len
-        
-        assert(self._context)
         from .javascriptcore import JSString
         text = JSString.CreateWithUTF8CString( attr)
         prop = self.GetProperty( text , NULL)
         text.Release()
-        jstype = prop.GetType(self._context)
-        if jstype == kJSTypeUndefined.value:
+        if prop is None:
+            return None
+        jstype = prop.GetType(context)
+        if jstype == kJSTypeNull.value:
             return None#object.__getattribute__(self, attr)
-        else:
-            
-            if jstype == kJSTypeObject.value:
-                propobj = prop.ToObject(self._context, NULL)
-                if propobj.IsFunction(self._context):
-                    from .javascript import JSFunction
-                    jsfunc = JSFunction(self._context, obj = propobj, thisobj = self, name = attr)
-                    setattr(self, attr, 
-                            jsfunc)
-                    return jsfunc
-                else:
-                    setattr(self, attr, propobj)
-                    return propobj
-            elif jstype== kJSTypeNumber.value:
-                val = prop.ToNumber( self._context, NULL)
+        elif jstype == kJSTypeObject.value or jstype == kJSTypeUndefined.value:
+            propobj = prop.ToObject(context, NULL)
+            if propobj.IsFunction(context):
+                from .javascript import JSFunction
+                jsfunc = JSFunction(context, obj = propobj, thisobj = self, name = attr)
+                setattr(self, attr, 
+                        jsfunc)
+                return jsfunc
+            else:
+                setattr(self, attr, propobj)
+                return propobj
+        elif jstype== kJSTypeNumber.value:
+                val = prop.ToNumber( context, NULL)
                 setattr(self, attr, val)    
                 
                 return val
-            elif jstype==kJSTypeBoolean.value:
-                val = prop.ToBoolean( self._context, NULL)
+        elif jstype==kJSTypeBoolean.value:
+                val = prop.ToBoolean( context, NULL)
                 setattr(self, attr, val)
                 return val
-            elif jstype == kJSTypeString.value:
-                val = prop.ToPyString( self._context, NULL)
+        elif jstype == kJSTypeString.value:
+                val = prop.ToPyString( context, NULL)
                 setattr (self, attr, val)
                 return val
-            elif jstype == kJSTypeNull.value:
-                raise AttributeError("Instance of type %s has no attribute %s"%(type(self),attr))
         raise Exception("unknown javascript type")
         
     def __iter__(self, index):
         if isinstance(self, JSContext):
             context = self
         else:
+            assert(self._context)
             context = self._context
         prop = self.GetPropertyAtIndex( index , NULL)
         jstype = prop.GetType(context)

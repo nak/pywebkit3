@@ -1,5 +1,6 @@
 import math
 import logging
+import re
 from pyggi.javascript import jquery
 from .common import *
 #Log = logging.info
@@ -11,18 +12,26 @@ _ = None
 import math    
 # globals
 gl = None                   # the gl context.
-canvas = None               # the canvas
 fast = None                 # the fast math lib.
-g_fpsTimer = None           # object to measure frames per second
+class Globals:
+    g_fpsTimer = None           # object to measure frames per second
+    setPretty = True
+    checkResTimer = 2
+    clock = 0.0
+    then = 0.0
+    frameCount = 0
+    eyeClock = 0
+    canvas = None               # the canvas
+
 g_logGLCalls = True   # whether or not to log webgl calls
 g_debug = False      # whether or not to debug.
 g_drawOnce = False
 g_setSettingElements = []
-g_numSettingElements = {}
+g_numSettingElements = make_object({})
 g_sharkWorldMats = []
 g_beamWorldMats = []
-g_scenes = {}  # each of the models
-g_sceneGroups = {}  # the placement of the models
+g_scenes = make_object({})  # each of the models
+g_sceneGroups = make_object({})  # the placement of the models
 g_fog = True
 g_requestId = None
 
@@ -446,19 +455,19 @@ def createProgramFromTags(
     fs = getScriptText(fragmentTagId)
 
     if (g_fog and fog):
-        fs = fs.replace('# #fogUniforms', fogUniforms)
-        fs = fs.replace('# #fogCode', fogCode)
+        fs = re.sub('# #fogUniforms', fogUniforms,fs)
+        fs = re.sub('# #fogCode', fogCode,fs)
 
     if (opt_reflection) :
-        fs = fs.replace("/^.*?\/\/ #noReflection\n/gm", "")
+        fs = re.sub("/^.*?\/\/ #noReflection\n/gm", "",str(fs))
     else:
-        fs = fs.replace("/^.*?\/\/ #reflection\n/gm", "")
+        fs = re.sub("/^.*?\/\/ #reflection\n/gm", "",str(fs))
 
 
     if (opt_normalMaps):
-        fs = fs.replace("/^.*?\/\/ #noNormalMap\n/gm", "")
+        fs = re.sub("/^.*?\/\/ #noNormalMap\n/gm", "",fs)
     else:
-        fs = fs.replace("/^.*?\/\/ #normalMap\n/gm", "")
+        fs = re.sub("/^.*?\/\/ #normalMap\n/gm", "",fs)
 
 
     return tdl.programs.loadProgram(getScriptText(vertexTagId), fs)
@@ -615,7 +624,7 @@ def loadScenes():
     for ii in range( len(g_sceneInfo) ):
         info = g_sceneInfo[ii]
         fog = True
-        if info.has_key('fog'):
+        if 'fog' not in info:
             fog = info.fog
         try:
             logging.error("LOADING SCENE %s %s %s"%(info.name, info.program, fog))
@@ -750,7 +759,7 @@ def setupBubbles(particleSystem):
         #function(index, parameters) {
         #    var speed = Math.random() * 0.6 + 0.2
         #    var speed2 = Math.random() * 0.2 + 0.1
-        #    var angle = Math.random() * 2 * Math.PI
+        #    var angle = Math.random() * 2 * math.pi
         #    parameters.velocity = math.matrix4.transformPoint(
         #        math.matrix4.rotationZ(angle), [speed, speed2, 0])
         #}
@@ -822,17 +831,20 @@ def setSetting(elem, id):
 # */
 def main( document ):
   global gl
-  canvas = document.getElementById("canvas")
+
+  Globals.canvas = document.getElementById("canvas")
 
   #clanvas = WebGLDebugUtils.makeLostContextSimulatingCanvas(canvas)
   # tell the simulator when to lose context.
   #canvas.loseContextInNCalls(1500)
 
-  tdl.webgl.registerContextLostHandler(canvas, handleContextLost)
-  tdl.webgl.registerContextRestoredHandler(canvas, handleContextRestored)
-
-  g_fpsTimer =  tdl.fps.FPSTimer()
-  gl = tdl.webgl.setupWebGL(canvas, g.globals.canvasAttributes)
+  tdl.webgl.registerContextLostHandler(Globals.canvas, handleContextLost)
+  tdl.webgl.registerContextRestoredHandler(Globals.canvas, handleContextRestored)
+  tdl.fps.FPSTimer.promote_to_constructor()
+  Globals.g_fpsTimer =  tdl.fps.FPSTimer()
+  logging.error("GFPS IS %s"%Globals.g_fpsTimer)
+  assert(Globals.g_fpsTimer is not None)
+  gl = tdl.webgl.setupWebGL(Globals.canvas, g.globals.canvasAttributes)
   if (not gl):
       return False
   
@@ -865,6 +877,7 @@ def Float32Array(l):
     else:
         return array.array('f', [0.0 for _ in range(l)])
 
+
 def initialize():
     maxViewportDims = gl.getParameter(gl.MAX_VIEWPORT_DIMS)
     
@@ -877,8 +890,6 @@ def initialize():
     Log("--Load Scenes---------------")
     loadScenes()
     Log("--Setup Laser----------------------------------------")
-    import logging
-    logging.error("HEREEEEEEEEEEEEEEEEEE")
     document =  context.get_jsobject("document")
     laser = setupLaser()
     Log("--Populating fish data------")
@@ -895,10 +906,10 @@ def initialize():
 
     lightRay = setupLightRay()
     Log("--Setup light rays--- %s"%document)
-    then = 0.0
-    clock = 0.0
+    Globals.then = 0.0
     fpsElem = document.getElementById("fps")
 
+    import logging
     logging.error("Populating float array")
     projection = Float32Array(16)
     view = Float32Array(16)
@@ -947,49 +958,49 @@ def initialize():
         'worldInverseTranspose': worldInverseTranspose}
     
     # Generic uniforms.
-    genericConst = {
+    genericConst = make_object({
         'viewInverse': viewInverse,
         'lightWorldPos': lightWorldPos,
         'lightColor': one4,
         'specular': one4,
         'shininess': 50,
         'specularFactor': 1,
-        'ambient': ambient}
-    genericPer = {
+        'ambient': ambient})
+    genericPer = make_object({
         'world': world,
         'worldViewProjection': worldViewProjection,
         'worldInverse': worldInverse,
-        'worldInverseTranspose': worldInverseTranspose}
+        'worldInverseTranspose': worldInverseTranspose})
     
     # outside uniforms.
-    outsideConst = {
+    outsideConst = make_object({
         'viewInverse': viewInverse,
         'lightWorldPos': lightWorldPos,
         'lightColor': one4,
         'specular': one4,
         'shininess': 50,
         'specularFactor': 0,
-        'ambient': ambient}
-    outsidePer = {
+        'ambient': ambient})
+    outsidePer = make_object({
         'world': world,
         'worldViewProjection': worldViewProjection,
         'worldInverse': worldInverse,
-        'worldInverseTranspose': worldInverseTranspose}
+        'worldInverseTranspose': worldInverseTranspose})
     
     # Seaweed uniforms.
-    seaweedConst = {
+    seaweedConst = make_object({
         'viewInverse': viewInverse,
         'lightWorldPos': lightWorldPos,
         'lightColor': one4,
         'specular': one4,
         'shininess': 50,
         'specularFactor': 1,
-        'ambient': ambient}
-    seaweedPer = {
+        'ambient': ambient})
+    seaweedPer = make_object({
         'world': world,
         'viewProjection': viewProjection,
-        'worldInverse': worldInverse,
-        'worldInverseTranspose': worldInverseTranspose}
+        'worltdInverse': worldInverse,
+        'worldInverseTranspose': worldInverseTranspose})
     
     # Laser uniforms
     laserConst = {}
@@ -1010,7 +1021,7 @@ def initialize():
         'worldInverseTranspose': worldInverseTranspose}
     
     # Fish uniforms.
-    fishConst = {
+    fishConst = make_object({
         'viewProjection': viewProjection,
         'viewInverse': viewInverse,
         'lightWorldPos': lightWorldPos,
@@ -1018,582 +1029,589 @@ def initialize():
         'specular': one4,
         'shininess': 5,
         'specularFactor': 0.3,
-        'ambient': ambient}
-    fishPer = {
+        'ambient': ambient})
+    fishPer = make_object({
         'worldPosition': Float32Array(3), #[0,0,0],
         'nextPosition': Float32Array(3), #[0,0,0],
-        'scale': 1}
+        'scale': 1})
     
     # lightRay uniforms.
     lightRayConst = {}
-    lightRayPer = {
+    lightRayPer = make_object({
         'worldViewProjection': worldViewProjection,
-        'colorMult': Float32Array([1,1,1,1])}
+        'colorMult': Float32Array([1,1,1,1])})
+    theClock = tdl.clock.createClock({True:10, False:None}[g.net.sync or False])
+    def DrawGroup(group, constUniforms, perUniforms):
+        numObjects = group.length
+        currentModel = None
+        for ii in range(numObjs):
+            obj = group[ii]
+            scene = g_scenes[obj.name]
+            info = g_sceneInfoByName[obj.name]
+            if (not scene):
+                g_scenes[obj.name] = { missing: True }
+                tdl.log("missing scene:", obj.name)
+                continue
 
-def DrawGroup(group, constUniforms, perUniforms):
-    numObjects = group.length
-    currentModel = None
-    for ii in range(numObjs):
-        obj = group[ii]
-        scene = g_scenes[obj.name]
-        info = g_sceneInfoByName[obj.name]
-        if (not scene):
-            g_scenes[obj.name] = { missing: True }
-            tdl.log("missing scene:", obj.name)
-            continue
-      
-        if (scene.missing or not scene.loaded):
-            continue
-        
+            if (scene.missing or not scene.loaded):
+                continue
 
-        if (info.blend):
-            gl.enable(gl.BLEND)
+
+            if (info.blend):
+                gl.enable(gl.BLEND)
+            else:
+                gl.disable(gl.BLEND)
+
+
+            models = scene.models
+            numModels = models.length
+            for  jj in range(numModels):
+                 model = models[jj]
+                 if (model != currentModel):
+                     currentModel = model
+                     model.drawPrep(constUniforms)
+
+            fast.matrix4.copy(world, obj.worldMatrix)
+            fast.matrix4.mul(worldViewProjection, world, viewProjection)
+            fast.matrix4.inverse(worldInverse, world)
+            fast.matrix4.transpose(worldInverseTranspose, worldInverse)
+            perUniforms.time = Globals.clock + ii
+            model.draw(perUniforms)
+
+
+
+
+        initUIStuff()
+        initializeCommon()
+
+
+        now = theClock.getTime()
+        if (g.net.sync):
+            Globals.clock = now
+            Globals.eyeClock = now
+
+
+    def setCanvasSize(canvas, newWidth, newHeight):
+        changed = False
+        ratio = {True: window.devicePixelRatio, False:1}[g.win.useDevicePixelRation and window.devicePixelRatio]
+        newWidth *= ratio
+        newHeight *= ratio
+        if (newWidth != canvas.width):
+            canvas.width = newWidth
+            changed = True
+            tdl.log("canvas width:", newWidth)
+
+        if (newHeight != canvas.height):
+            canvas.height = newHeight
+            changed = True
+            tdl.log("canvas height:", newHeight)
+
+        if (changed):
+            #tdl.log("drawingBufferDimensions:" + gl.drawingBufferWidth + ", " + gl.drawingBufferHeight)
+            gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
+
+        return changed
+
+
+    def increaseCanvasSize(canvas):
+        #tdl.log(canvas.width, canvas.clientWidth, canvas.width / canvas.clientWidth)
+        #tdl.log(canvas.height, canvas.clientHeight, canvas.height / canvas.clientHeight)
+        newWidth = min(maxViewportDims[0],
+                       canvas.width * ({True:2, False:1}[canvas.clientWidth / canvas.width > 1.2]))
+        newHeight = min(maxViewportDims[1],
+                        canvas.height * ({True:2, False:1}[(canvas.clientHeight / canvas.height > 1.2)] ) )
+        return setCanvasSize(canvas, newWidth, newHeight)
+
+
+    def decreaseCanvasSize(canvas):
+        newWidth = max(512,
+                            canvas.width * ({True:0.5, False:1}[canvas.clientWidth / canvas.width]))
+        newHeight = max(512,
+                             canvas.height * ({True:0.5, False:1}[canvas.clientHeight / canvas.height < 0.5]))
+
+
+    #??????????    
+        if ('width' in g.globals and 'height' in g.globals):
+            return setCanvasSize(canvas, g.globals.width, g.globals.height)
         else:
-            gl.disable(gl.BLEND)
-      
-
-        models = scene.models
-        numModels = models.length
-        for  jj in range(numModels):
-             model = models[jj]
-             if (model != currentModel):
-                 currentModel = model
-                 model.drawPrep(constUniforms)
-                 
-        fast.matrix4.copy(world, obj.worldMatrix)
-        fast.matrix4.mul(worldViewProjection, world, viewProjection)
-        fast.matrix4.inverse(worldInverse, world)
-        fast.matrix4.transpose(worldInverseTranspose, worldInverse)
-        perUniforms.time = clock + ii
-        model.draw(perUniforms)
-      
-    
-  
+            return setCanvasSize(canvas, newWidth, newHeight)
+    def render():
         
-    initUIStuff()
-    initializeCommon()
-    
-    frameCount = 0
-    eyeClock = 0
-    setPretty = True
-
-    theClock = tdl.clock.createClock({True:10, False:None}[g.net.sync])
-    now = theClock.getTime()
-    if (g.net.sync):
-        clock = now
-        eyeClock = now
-  
-
-def setCanvasSize(canvas, newWidth, newHeight):
-    changed = False
-    ratio = {True: window.devicePixelRatio, False:1}[g.win.useDevicePixelRation and window.devicePixelRatio]
-    newWidth *= ratio
-    newHeight *= ratio
-    if (newWidth != canvas.width):
-        canvas.width = newWidth
-        changed = True
-        tdl.log("canvas width:", newWidth)
-    
-    if (newHeight != canvas.height):
-        canvas.height = newHeight
-        changed = True
-        tdl.log("canvas height:", newHeight)
-    
-    if (changed):
-        #tdl.log("drawingBufferDimensions:" + gl.drawingBufferWidth + ", " + gl.drawingBufferHeight)
-        gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight)
-    
-    return changed
-  
-
-def increaseCanvasSize(canvas):
-    #tdl.log(canvas.width, canvas.clientWidth, canvas.width / canvas.clientWidth)
-    #tdl.log(canvas.height, canvas.clientHeight, canvas.height / canvas.clientHeight)
-    newWidth = min(maxViewportDims[0],
-                   canvas.width * ({True:2, False:1}[canvas.clientWidth / canvas.width > 1.2]))
-    newHeight = min(maxViewportDims[1],
-                    canvas.height * ({True:2, False:1}[(canvas.clientHeight / canvas.height > 1.2)] ) )
-    return setCanvasSize(canvas, newWidth, newHeight)
-  
-
-def decreaseCanvasSize(canvas):
-    newWidth = Math.max(512,
-                        canvas.width * ({True:0.5, False:1}[canvas.clientWidth / canvas.width]))
-    newHeight = Math.max(512,
-                         canvas.height * ({True:0.5, False:1}[canvas.clientHeight / canvas.height < 0.5]))
-  
-
-    checkResTimer = 2
-#??????????    
-    if (g.globals.width and g.globals.height):
-        setCanvasSize(canvas, g.globals.width, g.globals.height)
-  
-    return setCanvasSize(canvas, newWidth, newHeight)
-
-def render():
-    global g_logGLCalls
-    now = theClock.getTime()
-    elapsedTime = None
-    if(then == 0.0):
-        elapsedTime = 0.0
-    else:
-        elapsedTime = now - then
-    
-    then = now
-
-    frameCount += 1
-
-    g_fpsTimer.update(elapsedTime)
-    fpsElem.innerHTML = g_fpsTimer.averageFPS
-
-    # If we are running > 40hz then turn on a few more options.
-    if (setPretty and g_fpsTimer.averageFPS > 40):
-        setPretty = False
-        if (not g.options.normalMaps.enabled): g.options.normalMaps.toggle() 
-        if (not g.options.reflection.enabled): g.options.reflection.toggle() 
-    
-
-    # See if we should increase/decrease the rendering resolution
-    checkResTimer -= elapsedTime
-    if (checkResTimer < 0):
-        if (g.win and g.win.adjustRes):
-            if (g_fpsTimer.averageFPS > 35):
-                if (increaseCanvasSize(canvas)):
-                    checkResTimer = 2
-                    
-            elif (g_fpsTimer.averageFPS < 15):
-                if (decreaseCanvasSize(canvas)):
-                    checkResTimer = 2
-          
         
-      
-    
+        import logging
+        logging.error("RENDER")
+        global g_logGLCalls
+        now = theClock.getTime()
+        elapsedTime = None
+        if(Globals.then == 0.0):
+            elapsedTime = 0.0
+        else:
+            elapsedTime = now - Globals.then
 
-    if (g.net.sync):
-        clock = now * g.globals.speed
-        eyeClock = now * g.globals.eyeSpeed
-    else:
-        # we have our own clock.
-        clock += elapsedTime * g.globals.speed
-        eyeClock += elapsedTime * g.globals.eyeSpeed
-    
-    eyePosition[0] = Math.sin(eyeClock) * g.globals.eyeRadius
-    eyePosition[1] = g.globals.eyeHeight
-    eyePosition[2] = Math.cos(eyeClock) * g.globals.eyeRadius
-    target[0] = Math.sin(eyeClock + Math.PI) * g.globals.targetRadius
-    target[1] = g.globals.targetHeight
-    target[2] = Math.cos(eyeClock + Math.PI) * g.globals.targetRadius
+        Globals.then = now
 
-    ambient[0] = g.globals.ambientRed
-    ambient[1] = g.globals.ambientGreen
-    ambient[2] = g.globals.ambientBlue
+        Globals.frameCount += 1
 
-    gl.colorMask(True, True, True, True)
-    gl.clearColor(0,0.8,1,0)
-    gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT | gl.STENCIL_BUFFER_BIT)
+        Globals.g_fpsTimer.update(elapsedTime)
+        fpsElem.innerHTML = Globals.g_fpsTimer.averageFPS
 
-    near = 1
-    far = 25000
-    aspect = canvas.clientWidth / canvas.clientHeight
-    top = Math.tan(math.degToRad(g.globals.fieldOfView * g.net.fovFudge) * 0.5) * near
-    bottom = -top
-    left = aspect * bottom
-    right = aspect * top
-    width = Math.abs(right - left)
-    height = Math.abs(top - bottom)
-    xOff = width * g.net.offset[0] * g.net.offsetMult
-    yOff = height * g.net.offset[1] * g.net.offsetMult
-    fast.matrix4.frustum(
-      projection,
-      left + xOff,
-      right + xOff,
-      bottom + yOff,
-      top + yOff,
-      near,
-      far)
+        # If we are running > 40hz then turn on a few more options.
+        if (Globals.setPretty and Globals.g_fpsTimer.averageFPS > 40):
+            Globals.ssetPretty = False
+            if (not g.options.normalMaps.enabled): g.options.normalMaps.toggle() 
+            if (not g.options.reflection.enabled): g.options.reflection.toggle() 
 
-    fast.matrix4.cameraLookAt(
-        viewInverse,
-        eyePosition,
-        target,
-        up)
-    if (g.net.slave):
-        # compute X fov from y fov
-        fovy = math.degToRad(g.globals.fieldOfView * g.net.fovFudge)
-        fovx = Math.atan(
-            math.tan(fovy * 0.5) * canvas.clientWidth / canvas.clientHeight) * 2
-        fast.matrix4.rotationY(
-            m4t0, g.net.rotYMult * fovx * -g.net.fovMult)
-        fast.matrix4.mul(viewInverse, m4t0, viewInverse)
-    
-    fast.matrix4.inverse(view, viewInverse)
-    fast.matrix4.mul(viewProjection, view, projection)
-    fast.matrix4.inverse(viewProjectionInverse, viewProjection)
 
-    fast.matrix4.copy(skyView, view)
-    skyView[12] = 0
-    skyView[13] = 0
-    skyView[14] = 0
-    fast.matrix4.mul(skyViewProjection, skyView, projection)
-    fast.matrix4.inverse(skyViewProjectionInverse, skyViewProjection)
+        # See if we should increase/decrease the rendering resolution
+        Globals.checkResTimer -= elapsedTime
+        if (Globals.checkResTimer < 0):
+            if (g.win and g.win.adjustRes):
+                if (Globals.g_fpsTimer.averageFPS > 35):
+                    if (increaseCanvasSize(canvas)):
+                        Globals.checkResTimer = 2
 
-    fast.matrix4.getAxis(v3t0, viewInverse, 0) # x
-    fast.matrix4.getAxis(v3t1, viewInverse, 1) # y
-    fast.mulScalarVector(v3t0, 20, v3t0)
-    fast.mulScalarVector(v3t1, 30, v3t1)
-    fast.addVector(lightWorldPos, eyePosition, v3t0)
-    fast.addVector(lightWorldPos, lightWorldPos, v3t1)
-
-#      view: view,
-#      projection: projection,
-#      viewProjection: viewProjection,
-
-    gl.disable(gl.BLEND)
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-    gl.blendEquation(gl.FUNC_ADD)
-    gl.enable(gl.CULL_FACE)
-
-    tdl.math.resetPseudoRandom()
-    pseudoRandom = tdl.math.pseudoRandom
-    #pseudoRandom = function() {
-    #  return 0.5
-    #}
-
-    # Draw Skybox
-    #Log("--Draw Sky---------------------------------------")
-    #if (g.options.skybox.enabled) {
-    #  gl.depthMask(False)
-    #  skybox.drawPrep(skyConst)
-    #  skybox.draw(skyPer)
-    #}
-    gl.depthMask(True)
-
-    if (g_fog):
-      genericConst.fogPower  = g.globals.fogPower
-      genericConst.fogMult   = g.globals.fogMult
-      genericConst.fogOffset = g.globals.fogOffset
-      genericConst.fogOffset = g.globals.fogOffset
-      genericConst.fogColor  = fogColor
-      fishConst.fogPower     = g.globals.fogPower
-      fishConst.fogMult      = g.globals.fogMult
-      fishConst.fogOffset    = g.globals.fogOffset
-      fishConst.fogColor     = fogColor
-      g.innerConst.fogPower  = g.globals.fogPower
-      g.innerConst.fogMult   = g.globals.fogMult
-      g.innerConst.fogOffset = g.globals.fogOffset
-      g.innerConst.fogColor  = fogColor
-      seaweedConst.fogPower  = g.globals.fogPower
-      seaweedConst.fogMult   = g.globals.fogMult
-      seaweedConst.fogOffset = g.globals.fogOffset
-      seaweedConst.fogColor  = fogColor
-      fogColor[0] = g.globals.fogRed
-      fogColor[1] = g.globals.fogGreen
-      fogColor[2] = g.globals.fogBlue
-    
-
-    # Draw Scene
-    if (g_sceneGroups.base):
-        DrawGroup(g_sceneGroups.base, genericConst, genericPer)
-    
-
-    # Draw Fishes.
-    Log("--Draw Fish---------------------------------------")
-
-    gl.enable(gl.BLEND)
-    for ff in range(eg_fishTable.length):
-        fishInfo = g_fishTable[ff]
-        fishName = fishInfo.name
-        numFish = fishInfo.num[g.globals.fishSetting]
-        matMul = fast.matrix4.mul
-        matInverse = fast.matrix4.inverse
-        matScaling = fast.matrix4.scaling
-        matCameraLookAt = fast.matrix4.cameraLookAt
-        matTranspose = fast.matrix4.transpose
-        scene = g_scenes[fishName]
-        if (scene and scene.loaded and not scene.bad):
-            fish = scene.models[0]
-            f = g.fish
-            for  p in fishInfo.constUniforms:
-                fishConst[p] = fishInfo.constUniforms[p]
-
-            fish.drawPrep(fishConst)
-            fishBaseClock = clock * f.fishSpeed
-            fishRadius = fishInfo.radius
-            fishRadiusRange = fishInfo.radiusRange
-            fishSpeed = fishInfo.speed
-            fishSpeedRange = fishInfo.speedRange
-            fishTailSpeed = fishInfo.tailSpeed * f.fishTailSpeed
-            fishOffset = f.fishOffset
-            fishClockSpeed = f.fishSpeed
-            fishHeight = f.fishHeight + fishInfo.heightOffset
-            fishHeightRange = f.fishHeightRange * fishInfo.heightRange
-            fishXClock = f.fishXClock
-            fishYClock = f.fishYClock
-            fishZClock = f.fishZClock
-            fishPosition = fishPer.worldPosition
-            fishNextPosition = fishPer.nextPosition
-            for ii in range(numFish):
-                fishClock = fishBaseClock + ii * fishOffset
-                speed = fishSpeed + math.pseudoRandom() * fishSpeedRange
-                scale = 1.0 + math.pseudoRandom() * 1
-                xRadius = fishRadius + pseudoRandom() * fishRadiusRange
-                yRadius = 2.0 + pseudoRandom() * fishHeightRange
-                zRadius = fishRadius + pseudoRandom() * fishRadiusRange
-                fishSpeedClock = fishClock * speed
-                xClock = fishSpeedClock * fishXClock
-                yClock = fishSpeedClock * fishYClock
-                zClock = fishSpeedClock * fishZClock
-
-                fishPosition[0] = Math.sin(xClock) * xRadius
-                fishPosition[1] = Math.sin(yClock) * yRadius + fishHeight
-                fishPosition[2] = Math.cos(zClock) * zRadius
-                fishNextPosition[0] = Math.sin(xClock - 0.04) * xRadius
-                fishNextPosition[1] = Math.sin(yClock - 0.01) * yRadius + fishHeight
-                fishNextPosition[2] = Math.cos(zClock - 0.04) * zRadius
-                fishPer.scale = scale
-
-                fishPer.time = \
-                             ((clock + ii * g_tailOffsetMult) * fishTailSpeed * speed) % \
-                             (Math.PI * 2)
-                fish.draw(fishPer)
-
-                if (g.drawLasers and fishInfo.lasers):
-                    fishInfo.fishData[ii] = {
-                        position: [
-                            fishPosition[0],
-                            fishPosition[1],
-                            fishPosition[2]],
-                        target: [
-                            fishNextPosition[0],
-                            fishNextPosition[1],
-                            fishNextPosition[2]],
-                        scale: scale,
-                        time: fishPer.time
-                        }
+                elif (Globals.g_fpsTimer.averageFPS < 15):
+                    if (decreaseCanvasSize(canvas)):
+                        Globals.checkResTimer = 2
 
 
 
 
 
-        if (g.options.tank.enabled):
-            if (g_sceneGroups.inner):
-                Log("--Draw GlobeInner----------------")
-                DrawGroup(g_sceneGroups.inner, g.innerConst, innerPer)
-          
+        if (g.net.sync):
+            Globals.clock = now * g.globals.speed
+            Globals.eyeClock = now * g.globals.eyeSpeed
+        else:
+            # we have our own clock.
+            Globals.clock += elapsedTime * g.globals.speed
+            Globals.eyeClock += elapsedTime * g.globals.eyeSpeed
+
+        eyePosition[0] = math.sin(Globals.eyeClock) * g.globals.eyeRadius
+        eyePosition[1] = g.globals.eyeHeight
+        eyePosition[2] = math.cos(Globals.eyeClock) * g.globals.eyeRadius
+        target[0] = math.sin(Globals.eyeClock + math.pi) * g.globals.targetRadius
+        target[1] = g.globals.targetHeight
+        target[2] = math.cos(Globals.eyeClock + math.pi) * g.globals.targetRadius
+
+        ambient[0] = g.globals.ambientRed
+        ambient[1] = g.globals.ambientGreen
+        ambient[2] = g.globals.ambientBlue
+
+        gl.colorMask(True, True, True, True)
+        gl.clearColor(0,0.8,1,0)
+        gl.clear(int(gl.COLOR_BUFFER_BIT) | int(gl.DEPTH_BUFFER_BIT) |
+                 int(gl.STENCIL_BUFFER_BIT))
+
+        near = 1
+        far = 25000
         
+        aspect = Globals.canvas.clientWidth / Globals.canvas.clientHeight
+        top = math.tan(tdl.math.degToRad(g.globals.fieldOfView * g.net.fovFudge) * 0.5) * near
+        bottom = -top
+        left = aspect * bottom
+        right = aspect * top
+        width = abs(right - left)
+        height = abs(top - bottom)
+        xOff = width * g.net.offset[0] * g.net.offsetMult
+        yOff = height * g.net.offset[1] * g.net.offsetMult
+        tdl.fast.matrix4.frustum(
+          projection,
+          left + xOff,
+          right + xOff,
+          bottom + yOff,
+          top + yOff,
+          near,
+          far)
 
-    if (g_sceneGroups.seaweed):
-        Log("--Draw Seaweed----------------")
-        DrawGroup(g_sceneGroups.seaweed, seaweedConst, seaweedPer)
-    
+        tdl.fast.matrix4.cameraLookAt(
+            viewInverse,
+            eyePosition,
+            target,
+            up)
+        if ('slave' in g.net and g.net.slave):
+            # compute X fov from y fov
+            fovy = tdl.math.degToRad(g.globals.fieldOfView * g.net.fovFudge)
+            fovx = math.atan(
+                math.tan(fovy * 0.5) * Globals.canvas.clientWidth / Globals.canvas.clientHeight) * 2
+            fast.matrix4.rotationY(
+                m4t0, g.net.rotYMult * fovx * -g.net.fovMult)
+            fast.matrix4.mul(viewInverse, m4t0, viewInverse)
 
-    # Draw Lasers
-    if (g.drawLasers):
-        Log("--Draw Lasers---------------------------------------")
+        tdl.fast.matrix4.inverse(view, viewInverse)
+        tdl.fast.matrix4.mul(viewProjection, view, projection)
+        tdl.fast.matrix4.inverse(viewProjectionInverse, viewProjection)
+
+        tdl.fast.matrix4.copy(skyView, view)
+        skyView[12] = 0
+        skyView[13] = 0
+        skyView[14] = 0
+        tdl.fast.matrix4.mul(skyViewProjection, skyView, projection)
+        tdl.fast.matrix4.inverse(skyViewProjectionInverse, skyViewProjection)
+
+        tdl.fast.matrix4.getAxis(v3t0, viewInverse, 0) # x
+        tdl.fast.matrix4.getAxis(v3t1, viewInverse, 1) # y
+        tdl.fast.mulScalarVector(v3t0, 20, v3t0)
+        tdl.fast.mulScalarVector(v3t1, 30, v3t1)
+        tdl.fast.addVector(lightWorldPos, eyePosition, v3t0)
+        tdl.fast.addVector(lightWorldPos, lightWorldPos, v3t1)
+
+    #      view: view,
+    #      projection: projection,
+    #      viewProjection: viewProjection,
+
+        gl.disable(gl.BLEND)
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+        gl.blendEquation(gl.FUNC_ADD)
+        gl.enable(gl.CULL_FACE)
+
+        tdl.math.resetPseudoRandom()
+        pseudoRandom = tdl.math.pseudoRandom
+        #pseudoRandom = function() {
+        #  return 0.5
+        #}
+
+        # Draw Skybox
+        #Log("--Draw Sky---------------------------------------")
+        #if (g.options.skybox.enabled) {
+        #  gl.depthMask(False)
+        #  skybox.drawPrep(skyConst)
+        #  skybox.draw(skyPer)
+        #}
+        gl.depthMask(True)
+
+        if (g_fog):
+            genericConst.fogPower  = g.globals.fogPower
+            genericConst.fogMult   = g.globals.fogMult
+            genericConst.fogOffset = g.globals.fogOffset
+            genericConst.fogOffset = g.globals.fogOffset
+            genericConst.fogColor  = fogColor
+            fishConst.fogPower     = g.globals.fogPower
+            fishConst.fogMult      = g.globals.fogMult
+            fishConst.fogOffset    = g.globals.fogOffset
+            fishConst.fogColor     = fogColor
+            g.innerConst.fogPower  = g.globals.fogPower
+            g.innerConst.fogMult   = g.globals.fogMult
+            g.innerConst.fogOffset = g.globals.fogOffset
+            g.innerConst.fogColor  = fogColor
+            seaweedConst.fogPower  = g.globals.fogPower
+            seaweedConst.fogMult   = g.globals.fogMult
+            seaweedConst.fogOffset = g.globals.fogOffset
+            seaweedConst.fogColor  = fogColor
+            fogColor[0] = g.globals.fogRed
+            fogColor[1] = g.globals.fogGreen
+            fogColor[2] = g.globals.fogBlue
+
+
+        # Draw Scene
+        if (g_sceneGroups.base):
+            DrawGroup(g_sceneGroups.base, genericConst, genericPer)
+
+
+        # Draw Fishes.
+        Log("--Draw Fish---------------------------------------")
+
         gl.enable(gl.BLEND)
-        gl.blendFunc(gl.ONE, gl.ONE)
-        gl.disable(gl.CULL_FACE)
-        gl.depthMask(False)
-        
-        laser.drawPrep(laserConst)
-        c = 0.5 + (frameCount % 2) + 0.5
-        laserConst.colorMult = [c * 1, c * 0.1, c * 0.1, c]
-        for  ff in range(g_fishTable.length):
+        fast = tdl.fast
+        for ff in range(len(g_fishTable)):
+            
             fishInfo = g_fishTable[ff]
-            numFish = fishInfo.num[g.globals.fishSetting]
             fishName = fishInfo.name
+            numFish = fishInfo.num[g.globals.fishSetting]
+            matMul = fast.matrix4.mul
+            matInverse = fast.matrix4.inverse
+            matScaling = fast.matrix4.scaling
+            matCameraLookAt = fast.matrix4.cameraLookAt
+            matTranspose = fast.matrix4.transpose
             scene = g_scenes[fishName]
-            center = [0, g_tankHeight, 0]
             if (scene and scene.loaded and not scene.bad):
                 fish = scene.models[0]
-                mult = fish.extents.max[2] / fishInfo.constUniforms.fishLength
-                waveLength = fishInfo.constUniforms.fishWaveLength
-                bendAmount = fishInfo.constUniforms.fishBendAmount
-                for ii in range( numFish ):
-                    if (fishInfo.lasers):
-                        data = fishInfo.fishData[ii]
-                        time = data.time
-                        s = Math.sin(time + mult * waveLength)
-                        scale = data.scale
-                        offset = mult * mult * s * bendAmount
-                        off = [offset, fishInfo.laserOff[1], fishInfo.laserOff[2]]
-                        
-                        scale = 1
-                        fast.matrix4.mul(world,
-                                         fast.matrix4.scaling(m4t1, [scale, scale, scale]),
-                                         fast.matrix4.cameraLookAt(
-                                             m4t2, data.position, data.target, up))
-                        fast.matrix4.mul(
-                            m4t2,
-                            fast.matrix4.rotationY(
-                                m4t3, s * fishInfo.laserRot),
-                            fast.matrix4.translation(m4t1, off))
-                        fast.matrix4.mul(
-                            world,
-                            m4t2,
-                            world)
+                f = g.fish
+                for  p in fishInfo.constUniforms:
+                    fishConst[p] = fishInfo.constUniforms[p]
 
-                        laserDir = math.normalize([world[8], world[9], world[10]])
-                        point1 = [
-                            world[12],
-                            world[13],
-                            world[14]]
-                        point2 = math.addVector(
-                            point1, tdl.math.mulVectorScalar(laserDir, 1000))
-                        intersection = raySphereIntersection(
-                            point1, point2, center, g_tankRadius)
-                        if (intersection):
-                            len = tdl.math.length(math.subVector(intersection, point1)) *\
-                                  g_laserLenFudge
+                fish.drawPrep(fishConst)
+                fishBaseClock = Globals.clock * f.fishSpeed
+                fishRadius = fishInfo.radius
+                fishRadiusRange = fishInfo.radiusRange
+                fishSpeed = fishInfo.speed
+                fishSpeedRange = fishInfo.speedRange
+                fishTailSpeed = fishInfo.tailSpeed * f.fishTailSpeed
+                fishOffset = f.fishOffset
+                fishClockSpeed = f.fishSpeed
+                fishHeight = f.fishHeight + fishInfo.heightOffset
+                fishHeightRange = f.fishHeightRange * fishInfo.heightRange
+                fishXClock = f.fishXClock
+                fishYClock = f.fishYClock
+                fishZClock = f.fishZClock
+                fishPosition = fishPer.worldPosition
+                fishNextPosition = fishPer.nextPosition
+                for ii in range(numFish):
+                    fishClock = fishBaseClock + ii * fishOffset
+                    speed = fishSpeed + math.pseudoRandom() * fishSpeedRange
+                    scale = 1.0 + math.pseudoRandom() * 1
+                    xRadius = fishRadius + pseudoRandom() * fishRadiusRange
+                    yRadius = 2.0 + pseudoRandom() * fishHeightRange
+                    zRadius = fishRadius + pseudoRandom() * fishRadiusRange
+                    fishSpeedClock = fishClock * speed
+                    xClock = fishSpeedClock * fishXClock
+                    yClock = fishSpeedClock * fishYClock
+                    zClock = fishSpeedClock * fishZClock
+
+                    fishPosition[0] = math.sin(xClock) * xRadius
+                    fishPosition[1] = math.sin(yClock) * yRadius + fishHeight
+                    fishPosition[2] = math.cos(zClock) * zRadius
+                    fishNextPosition[0] = math.sin(xClock - 0.04) * xRadius
+                    fishNextPosition[1] = math.sin(yClock - 0.01) * yRadius + fishHeight
+                    fishNextPosition[2] = math.cos(zClock - 0.04) * zRadius
+                    fishPer.scale = scale
+
+                    fishPer.time = \
+                                 ((clock + ii * g_tailOffsetMult) * fishTailSpeed * speed) % \
+                                 (math.pi * 2)
+                    fish.draw(fishPer)
+
+                    if (g.drawLasers and fishInfo.lasers):
+                        fishInfo.fishData[ii] = {
+                            position: [
+                                fishPosition[0],
+                                fishPosition[1],
+                                fishPosition[2]],
+                            target: [
+                                fishNextPosition[0],
+                                fishNextPosition[1],
+                                fishNextPosition[2]],
+                            scale: scale,
+                            time: fishPer.time
+                            }
+
+
+
+
+            Log("--Drew fish-----------------------")
+            if (g.options.tank.enabled):
+                if (g_sceneGroups.inner):
+                    Log("--Draw GlobeInner----------------")
+                    DrawGroup(g_sceneGroups.inner, g.innerConst, innerPer)
+
+
+        logging.error("SEAWEED %s"%g_sceneGroups.seaweed)
+        if (g_sceneGroups.seaweed):
+            Log("--Draw Seaweed----------------")
+            DrawGroup(g_sceneGroups.seaweed, seaweedConst, seaweedPer)
+
+
+        logging.error("LASERS %s"%g.drawLasers)
+        # Draw Lasers
+        if (g.drawLasers):
+            Log("--Draw Lasers---------------------------------------")
+            gl.enable(gl.BLEND)
+            gl.blendFunc(gl.ONE, gl.ONE)
+            gl.disable(gl.CULL_FACE)
+            gl.depthMask(False)
+
+            laser.drawPrep(laserConst)
+            c = 0.5 + (Globals.frameCount % 2) + 0.5
+            laserConst.colorMult = [c * 1, c * 0.1, c * 0.1, c]
+            for  ff in range(len(g_fishTable)):
+                fishInfo = g_fishTable[ff]
+                numFish = fishInfo.num[g.globals.fishSetting]
+                fishName = fishInfo.name
+                scene = g_scenes[fishName]
+                center = [0, g_tankHeight, 0]
+                if (scene and scene.loaded and not scene.bad):
+                    fish = scene.models[0]
+                    mult = fish.extents.max[2] / fishInfo.constUniforms.fishLength
+                    waveLength = fishInfo.constUniforms.fishWaveLength
+                    bendAmount = fishInfo.constUniforms.fishBendAmount
+                    for ii in range( numFish ):
+                        if (fishInfo.lasers):
+                            data = fishInfo.fishData[ii]
+                            time = data.time
+                            s = math.sin(time + mult * waveLength)
+                            scale = data.scale
+                            offset = mult * mult * s * bendAmount
+                            off = [offset, fishInfo.laserOff[1], fishInfo.laserOff[2]]
+
+                            scale = 1
+                            fast.matrix4.mul(world,
+                                             fast.matrix4.scaling(m4t1, [scale, scale, scale]),
+                                             fast.matrix4.cameraLookAt(
+                                                 m4t2, data.position, data.target, up))
+                            fast.matrix4.mul(
+                                m4t2,
+                                fast.matrix4.rotationY(
+                                    m4t3, s * fishInfo.laserRot),
+                                fast.matrix4.translation(m4t1, off))
                             fast.matrix4.mul(
                                 world,
-                                            fast.matrix4.scaling(
-                                    m4t0,
-                                    [fishInfo.laserScale[0],
-                                     fishInfo.laserScale[1],
-                                     len]),
+                                m4t2,
                                 world)
-                            fast.matrix4.mul(worldViewProjection, world, viewProjection)
-                            laser.draw(laserPer)
-                            surfaceNorm = math.normalize(intersection)
-                            newDir = refract(
-                                math.negativeVector(laserDir), surfaceNorm, g_laserEta)
-                            data.laser = {
-                                position: intersection,
-                                
-                                target:  {True: math.addVector(intersection, newDir), False: None}[newDir]
-                                }
-                            
-                        
-              
-            
-          
 
-        gl.disable(gl.BLEND)
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-        gl.enable(gl.CULL_FACE)
+                            laserDir = math.normalize([world[8], world[9], world[10]])
+                            point1 = [
+                                world[12],
+                                world[13],
+                                world[14]]
+                            point2 = math.addVector(
+                                point1, tdl.math.mulVectorScalar(laserDir, 1000))
+                            intersection = raySphereIntersection(
+                                point1, point2, center, g_tankRadius)
+                            if (intersection):
+                                length = tdl.math.length(math.subVector(intersection, point1)) *\
+                                      g_laserLenFudge
+                                fast.matrix4.mul(
+                                    world,
+                                                fast.matrix4.scaling(
+                                        m4t0,
+                                        [fishInfo.laserScale[0],
+                                         fishInfo.laserScale[1],
+                                         length]),
+                                    world)
+                                fast.matrix4.mul(worldViewProjection, world, viewProjection)
+                                laser.draw(laserPer)
+                                surfaceNorm = math.normalize(intersection)
+                                newDir = refract(
+                                    math.negativeVector(laserDir), surfaceNorm, g_laserEta)
+                                data.laser = {
+                                    position: intersection,
+
+                                    target:  {True: math.addVector(intersection, newDir), False: None}[newDir]
+                                    }
+
+
+
+
+
+            gl.disable(gl.BLEND)
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+            gl.enable(gl.CULL_FACE)
+            gl.depthMask(True)
+
+
+            if (g.options.museum.enabled):
+                if (g_sceneGroups.outside):
+                    Log("--Draw outside----------------")
+                    DrawGroup(g_sceneGroups.outside, outsideConst, outsidePer)
+
+
+
+            bubbleTimer -= elapsedTime * g.globals.speed
+            if (bubbleTimer < 0):
+                bubbleTimer = 2 + random.gauss(0.5,0.5) * 8
+                radius = random.gauss(0.5,0.5) * 50
+                angle = random.gauss(0.5,0.5) * math.pi * 2
+                fast.matrix4.translation(
+                    world,
+                    [math.sin(angle) * radius,
+                     0,
+                     math.cos(angle) * radius])
+                g_bubbleSets[bubbleIndex].trigger(world)
+                bubbleIndex += 1
+                bubbleIndex = bubbleIndex % g_numBubbleSets
+
+                fast.matrix4.translation(world, [0, 0, 0])
+                if (g.options.bubbles.enabled):
+                    particleSystem.draw(viewProjection, world, viewInverse)
+
+
+            gl.enable(gl.BLEND)
+            gl.disable(gl.CULL_FACE)
+            if (g.options.lightRays.enabled):
+                gl.blendFunc(gl.SRC_ALPHA, gl.ONE)
+                gl.depthMask(False)
+                lightRay.drawPrep(lightRayConst)
+                for ii in range( g_lightRayInfo.length):
+                  info = g_lightRayInfo[ii]
+                  lerp = info.timer / info.duration
+                  y = math.max(70, math.min(120, g_lightRayY + g.globals.eyeHeight))
+                  info.timer -= elapsedTime * g.globals.speed
+                  if (info.timer < 0):
+                      initLightRay(info)
+
+                      fast.matrix4.mul(
+                      m4t1,
+                      fast.matrix4.rotationZ(m4t0, info.rot + lerp * g_lightRayRotLerp),
+                      fast.matrix4.translation(m4t2, [info.x, y, 0])
+                      )
+                      fast.matrix4.mul(world,
+                      fast.matrix4.scaling(m4t0, [10, -100, 10]),
+                      m4t1
+                      )
+                      # compute a view with no rotation
+                      fast.matrix4.translation(m4t1, [view[12], view[13], view[14]])
+                      fast.matrix4.mul(m4t0, m4t1, projection)
+                      fast.matrix4.mul(worldViewProjection, world, m4t0)
+                      lightRayPer.colorMult[3] = math.sin(lerp * math.pi)
+                      lightRay.draw(lightRayPer)
+
+
+
+        logging.error("DREW LASERS")                    
         gl.depthMask(True)
-    
-
-        if (g.options.museum.enabled):
-            if (g_sceneGroups.outside):
-                Log("--Draw outside----------------")
-                DrawGroup(g_sceneGroups.outside, outsideConst, outsidePer)
-              
-          
-
-        bubbleTimer -= elapsedTime * g.globals.speed
-        if (bubbleTimer < 0):
-            bubbleTimer = 2 + Math.random() * 8
-            radius = Math.random() * 50
-            angle = Math.random() * Math.PI * 2
-            fast.matrix4.translation(
-                world,
-                [math.sin(angle) * radius,
-                 0,
-                 math.cos(angle) * radius])
-            g_bubbleSets[bubbleIndex].trigger(world)
-            bubbleIndex += 1
-            bubbleIndex = bubbleIndex % g_numBubbleSets
-          
-            fast.matrix4.translation(world, [0, 0, 0])
-            if (g.options.bubbles.enabled):
-                particleSystem.draw(viewProjection, world, viewInverse)
-    
-
-        gl.enable(gl.BLEND)
-        gl.disable(gl.CULL_FACE)
-        if (g.options.lightRays.enabled):
-            gl.blendFunc(gl.SRC_ALPHA, gl.ONE)
-            gl.depthMask(False)
-            lightRay.drawPrep(lightRayConst)
-            for ii in range( g_lightRayInfo.length):
-              info = g_lightRayInfo[ii]
-              lerp = info.timer / info.duration
-              y = math.max(70, math.min(120, g_lightRayY + g.globals.eyeHeight))
-              info.timer -= elapsedTime * g.globals.speed
-              if (info.timer < 0):
-                  initLightRay(info)
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+        gl.blendEquation(gl.FUNC_ADD)
         
-                  fast.matrix4.mul(
-                  m4t1,
-                  fast.matrix4.rotationZ(m4t0, info.rot + lerp * g_lightRayRotLerp),
-                  fast.matrix4.translation(m4t2, [info.x, y, 0])
-                  )
-                  fast.matrix4.mul(world,
-                  fast.matrix4.scaling(m4t0, [10, -100, 10]),
-                  m4t1
-                  )
-                  # compute a view with no rotation
-                  fast.matrix4.translation(m4t1, [view[12], view[13], view[14]])
-                  fast.matrix4.mul(m4t0, m4t1, projection)
-                  fast.matrix4.mul(worldViewProjection, world, m4t0)
-                  lightRayPer.colorMult[3] = math.sin(lerp * math.pi)
-                  lightRay.draw(lightRayPer)
-                  
-    
+        if (g.options.tank.enabled):
+            if (g_sceneGroups.outer):
+                Log("--Draw GlobeOuter----------------")
+                DrawGroup(g_sceneGroups.outer, g.innerConst, innerPer)
 
-    gl.depthMask(True)
-    gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-    gl.blendEquation(gl.FUNC_ADD)
 
-    if (g.options.tank.enabled):
-        if (g_sceneGroups.outer):
-            Log("--Draw GlobeOuter----------------")
-            DrawGroup(g_sceneGroups.outer, g.innerConst, innerPer)
-      
-    
+        logging.error("LASERS OUT %s"%g)
+        logging.error("LASERS OUT %s"%g.drawLasers)
+        # Draw Lasers Outside
+        if (g.drawLasers):
+            Log("--Draw Lasers Outside---------------------------------------")
+            gl.enable(gl.BLEND)
+            gl.blendFunc(gl.ONE, gl.ONE)
+            gl.disable(gl.CULL_FACE)
+            gl.depthMask(False)
 
-    # Draw Lasers Outside
-    if (g.drawLasers):
-        Log("--Draw Lasers Outside---------------------------------------")
-        gl.enable(gl.BLEND)
-        gl.blendFunc(gl.ONE, gl.ONE)
-        gl.disable(gl.CULL_FACE)
-        gl.depthMask(False)
+            laser.drawPrep(laserConst)
+            for ff in range(g_fishTable.length):
+                fishInfo = g_fishTable[ff]
+                numFish = fishInfo.num[g.globals.fishSetting]
+                fishName = fishInfo.name
+                scene = g_scenes[fishName]
+                if (scene and scene.loaded and not scene.bad):
+                    fish = scene.models[0]
+                    for ii in range(  numFish ):
+                        if (fishInfo.lasers) :
+                            data = fishInfo.fishData[ii]
+                            laserInfo = data.laser
+                            if (laserInfo.target):
+                                fast.matrix4.mul(
+                                world,
+                                fast.matrix4.scaling(m4t1, [0.5, 0.5, 200]),
+                                fast.matrix4.cameraLookAt(
+                                    m4t0,
+                                    laserInfo.position,
+                                    laserInfo.target,
+                                    up))
+                                fast.matrix4.mul(worldViewProjection, world, viewProjection)
+                                laser.draw(laserPer)
 
-        laser.drawPrep(laserConst)
-        for ff in range(g_fishTable.length):
-            fishInfo = g_fishTable[ff]
-            numFish = fishInfo.num[g.globals.fishSetting]
-            fishName = fishInfo.name
-            scene = g_scenes[fishName]
-            if (scene and scene.loaded and not scene.bad):
-                fish = scene.models[0]
-                for ii in range(  numFish ):
-                    if (fishInfo.lasers) :
-                        data = fishInfo.fishData[ii]
-                        laserInfo = data.laser
-                        if (laserInfo.target):
-                            fast.matrix4.mul(
-                            world,
-                            fast.matrix4.scaling(m4t1, [0.5, 0.5, 200]),
-                            fast.matrix4.cameraLookAt(
-                                m4t0,
-                                laserInfo.position,
-                                laserInfo.target,
-                                up))
-                            fast.matrix4.mul(worldViewProjection, world, viewProjection)
-                            laser.draw(laserPer)
+            gl.disable(gl.BLEND)
+            gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
+            gl.enable(gl.CULL_FACE)
+            gl.depthMask(True)
 
-        gl.disable(gl.BLEND)
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
-        gl.enable(gl.CULL_FACE)
-        gl.depthMask(True)
-    
 
-    # Set the alpha to 255.
-    gl.colorMask(False, False, False, True)
-    gl.clearColor(0,0,0,1)
-    gl.clear(gl.COLOR_BUFFER_BIT)
+        # Set the alpha to 255.
+        logging.error("COLOR MASK GL %s"%gl)
+        gl.colorMask(False, False, False, True)
+        gl.clearColor(0,0,0,1)
+        gl.clear(gl.COLOR_BUFFER_BIT)
 
-    # turn off logging after 1 frame.
-    g_logGLCalls = False
+        # turn off logging after 1 frame.
+        g_logGLCalls = False
 
-    if (not g_drawOnce):
-        g_requestId = tdl.webgl.requestAnimationFrame(render, canvas)
-    
-  
+        if (not g_drawOnce):
+            g_requestId = tdl.webgl.requestAnimationFrame( render, Globals.canvas)
+            logging.error("G_REQ : %s %s %s"%(g_requestId, render, Globals.canvas))
+
+    if not hasattr(Globals,"render"):
+        Globals.render = render
     render()
     return True
 
@@ -1719,7 +1737,7 @@ def init( document ):
                 return
                 if (event.keyCode == 'l'.charCodeAt(0) or \
                     event.keyCode == 'L'.charCodeAt(0)):
-                    setSettings({drawLasers: not g.drawLasers})
+                    setSettings({'drawLasers': not (g.drawLasers or False)})
                 elif (event.keyCode == ' '.charCodeAt(0)):
                     advanceViewSettings()
                 elif (event.keyCode == 's'.charCodeAt(0) or \
@@ -1739,8 +1757,9 @@ from pyggi.javascript import jquery
 def initialize_aquarium(ctxt, on_view_ready):
     global context
     context = ctxt
+    assert(ctxt)
     def view_ready( *args):
-        with jquery.initialize( context, on_view_ready) as jq:
+        with jquery.initialize( ctxt, on_view_ready) as jq:
             global tdl
             global _
             _ = jq
@@ -1760,7 +1779,6 @@ def initialize_aquarium(ctxt, on_view_ready):
             tdl.require('tdl.sync')
             tdl.require('tdl.textures')
             tdl.require('tdl.webgl')
-            fast = tdl.fast
             document = initialize_common(context, tdl, _)
             assert(document)
             init(document)
