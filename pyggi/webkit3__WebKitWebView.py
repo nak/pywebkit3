@@ -972,7 +972,7 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def get_settings(  self, ):
 
         from .webkit3 import WebKitWebSettings
-        return WebKitWebSettings(None, obj=libwebkit3.webkit_web_view_get_settings( self._object ) or POINTER(c_int)() )
+        return WebKitWebSettings( obj=libwebkit3.webkit_web_view_get_settings( self._object ) or POINTER(c_int)() )
 
     def execute_script(  self, script, ):
 
@@ -1191,6 +1191,5 @@ class WebKitWebView( gtk3__GtkContainer.GtkContainer):
     def on_view_ready(self, func, *args):
         from .gobject import GObject
         GObject.connect( self, 'load-finished', func, *args)
-
 
     

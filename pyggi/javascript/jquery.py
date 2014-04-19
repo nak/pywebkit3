@@ -38,6 +38,11 @@ def initialize(  context , on_view_ready):
         return False
     on_view_ready( view_ready)
     class _(object):
+        attempt = context.get_jsobject(  "$", can_call = True)
+        if attempt and attempt._object().contents.value is not None:
+            jq = attempt
+        else:
+            jq = None
         
         def __exit__(self,type, value, traceback):
             pass
@@ -46,10 +51,11 @@ def initialize(  context , on_view_ready):
             return self
         
         def __call__(self,*args):
-            #try:
-                return context._dollarsign(*args)
-            #except:
-            #    return None
-    context.__jq = _()
-    return context.__jq
+            if _.jq is None:
+                attempt = context.get_jsobject(  "$", can_call = True)
+                if attempt and attempt._object().contents.value is not None:
+                    _.jq = attempt                    
+            return _.jq(*args)
+
+    return  _()
 

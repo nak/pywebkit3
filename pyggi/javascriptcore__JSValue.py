@@ -324,7 +324,7 @@ libjavascriptcore.JSValueGetType.argtypes = [_JSContext,_JSValue]
 libjavascriptcore.JSValueToNumber.restype = double
 libjavascriptcore.JSValueToNumber.argtypes = [_JSContext,_JSValue,_JSValue]
 libjavascriptcore.JSValueMakeNumber.restype = _JSValue
-libjavascriptcore.JSValueMakeNumber.argtypes = [_JSContext,double]
+libjavascriptcore.JSValueMakeNumber.argtypes = [_JSContext,c_double]
 libjavascriptcore.JSValueMakeUndefined.restype = _JSValue
 libjavascriptcore.JSValueMakeUndefined.argtypes = [_JSContext]
 libjavascriptcore.JSValueMakeNull.restype = _JSValue
@@ -354,9 +354,8 @@ class JSValue( object ):
         #logging.error("=====================")
         from .javascript import JSContext
         assert( isinstance(context, JSContext) or context == None)
-        if context and cast(context._object(), c_void_p).value != None and \
-            obj and \
-            cast( self._strongref, c_void_p).value != None:
+        if not isinstance(self, JSContext):
+            assert( context )
             libjavascriptcore.JSValueProtect( self._context._object(),
                                               self._object() )   
         
@@ -368,22 +367,24 @@ class JSValue( object ):
         else: ructor = POINTER(c_int)()
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
-
-        return libjavascriptcore.JSValueIsInstanceOfConstructor( ctx,self._object(),ructor,exception )
+        if self._object():
+            return libjavascriptcore.JSValueIsInstanceOfConstructor( ctx,self._object(),ructor,exception )
 
     def ToObject(  self, ctx, exception, ):
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
 
         from .javascriptcore import JSObject
-        return JSObject( obj=libjavascriptcore.JSValueToObject( ctx._object(),self._object(),exception ), context = ctx)
+        if self._object():
+            return JSObject( obj=libjavascriptcore.JSValueToObject( ctx._object(),self._object(),exception ), context = ctx)
 
     def IsUndefined(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueIsUndefined( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueIsUndefined( ctx,self._object() )
 
     def IsObjectOfClass(  self, ctx, jsClass, ):
         if ctx: ctx = ctx._object()
@@ -391,7 +392,8 @@ class JSValue( object ):
         if jsClass: jsClass = jsClass._object()
         else: jsClass = POINTER(c_int)()
         
-        return libjavascriptcore.JSValueIsObjectOfClass( ctx,self._object(),jsClass )
+        if self._object():
+            return libjavascriptcore.JSValueIsObjectOfClass( ctx,self._object(),jsClass )
 
     def IsStrictEqual(  self, ctx, b, ):
         if ctx: ctx = ctx._object()
@@ -400,40 +402,46 @@ class JSValue( object ):
         else: b = POINTER(c_int)()
 
        
-        return libjavascriptcore.JSValueIsStrictEqual( ctx,self._object(),b )
+        if self._object():
+            return libjavascriptcore.JSValueIsStrictEqual( ctx,self._object(),b )
 
     def IsNull(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueIsNull( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueIsNull( ctx,self._object() )
 
     def Protect(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
-        libjavascriptcore.JSValueProtect( ctx,self._object() )
+        if self._object():
+            libjavascriptcore.JSValueProtect( ctx,self._object() )
 
     def IsObject(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueIsObject( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueIsObject( ctx,self._object() )
 
     def IsBoolean(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueIsBoolean( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueIsBoolean( ctx,self._object() )
 
     def IsString(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueIsString( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueIsString( ctx,self._object() )
 
     def ToStringCopy(  self, ctx, exception, ):
         if ctx: ctx = ctx._object()
@@ -442,7 +450,8 @@ class JSValue( object ):
         else: exception = POINTER(c_int)()
 
         from .javascriptcore import JSString
-        return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object(), exception )  or POINTER(c_int)())
+        if self._object():
+            return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object(), exception )  or POINTER(c_int)())
 
     def ToPyString(self , ctx, exception):
         jstext = self.ToStringCopy(ctx, exception)
@@ -457,14 +466,16 @@ class JSValue( object ):
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueToBoolean( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueToBoolean( ctx,self._object() )
 
     def IsNumber(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
         
-        return libjavascriptcore.JSValueIsNumber( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueIsNumber( ctx,self._object() )
 
     def IsEqual(  self, ctx, b, exception, ):
         if ctx: ctx = ctx._object()
@@ -474,7 +485,8 @@ class JSValue( object ):
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
         
-        return libjavascriptcore.JSValueIsEqual( ctx,self._object(),b,exception )
+        if self._object():
+            return libjavascriptcore.JSValueIsEqual( ctx,self._object(),b,exception )
 
     def CreateJSONString(  self, ctx, indent, exception, ):
         if indent: indent = indent._object()
@@ -483,10 +495,11 @@ class JSValue( object ):
         else: exception = POINTER(c_int)()
 
         from .javascriptcore import JSString
-        return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx._object(),self._object(),indent,exception )  or POINTER(c_int)())
+        if self._object():
+            return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx._object(),self._object(),indent,exception )  or POINTER(c_int)())
 
     def Unprotect(  self, ctx, ):
-        if cast(ctx._object(), c_void_p).value != None:
+        if self._object() and ctx._object():
         
             libjavascriptcore.JSValueUnprotect( ctx._object(),self._object() )
 
@@ -498,19 +511,22 @@ class JSValue( object ):
                 ctx = ctx._object()
         else: ctx = POINTER(c_int)()
 
-        
-        return libjavascriptcore.JSValueGetType( ctx,self._object() )
+        if self._object():
+            return libjavascriptcore.JSValueGetType( ctx,self._object() )
 
     def ToNumber(  self, ctx, exception, ):
         if exception: exception = exception._object()
         else: exception = POINTER(c_int)()
-        
-        return libjavascriptcore.JSValueToNumber( ctx._object(),self._object(),exception )
+        if self._object():
+           return libjavascriptcore.JSValueToNumber( self._context._object(),self._object(),exception )
 
     @staticmethod
     def MakeNumber( ctx, number,):
         from .javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeNumber(ctx._object(), number, ), context=ctx)
+        obj=    libjavascriptcore.JSValueMakeNumber(ctx._object(),
+                                                    c_double(number), )
+        
+        return JSValue( obj, context=ctx)
 
     @staticmethod
     def MakeUndefined( ctx,):
@@ -543,20 +559,21 @@ class JSValue( object ):
         else: string = POINTER(c_int)()
         from .javascriptcore import JSValue
         retval =  JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx._object(), string), context=ctx)
-        retval.Unprotect(ctx)
         return retval
 
 
     def __del__(self):
-        if self._object and self._context:
+        try:
             from .javascriptcore import JSContext
-            #import logging
-            #logging.error("UNPROTECTING@ %s %s", self._context,
-            #              self._object())
-            if cast(self._context._object(), c_void_p).value != None and\
-                   cast(self._object(), c_void_p).value != None:
+            if not isinstance(self, JSContext) and \
+                   self._object and self._context \
+                   and self._object() and self._context._object():
                 libjavascriptcore.JSValueUnprotect( self._context._object(),
                                                     self._object() )
+        except:
+            import traceback
+            traceback.print_stack()
+            pass
         self._context = None
         self._strongref = None
         self._object = None

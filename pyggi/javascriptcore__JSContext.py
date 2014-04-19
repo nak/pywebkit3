@@ -481,11 +481,7 @@ class JSContext( javascriptcore__JSObject.JSObject):
 
     def __init__(self, obj = None):
         javascriptcore__JSObject.JSObject.__init__(self, obj, None)
-        #import logging
-        #self._object = weakref.ref(obj)
-        #self._strongref = obj
         self._global = None
-        #self._context = None
 
     def GetGlobalObject(  self, ):
        if not self._global:
@@ -518,7 +514,7 @@ class JSContext( javascriptcore__JSObject.JSObject):
                     if can_call:
                         retval = JSFunction( context, obj = retval, thisobj = None, name = name)
                 elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
-                    retval = obj.ToObject(context)
+                    retval = None#obj.ToObject(context, NULL)
                 elif valtype == kJSTypeNumber.value:
                     retval = obj.ToNumber( context, NULL )
                 elif valtype == kJSTypeBoolean.value:

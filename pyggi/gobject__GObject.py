@@ -912,7 +912,8 @@ class GObject( object):
             except:
                 import traceback
                 import logging
-                logging.error("Error executing callback:")
+                logging.error("Error executing callback: %s"%(name))
+                logging.error("TRACE: %s"%traceback.format_stack())
                 logging.error(traceback.format_exc())
                 try:
                     GObject._cfuncs.remove(cfunc)
