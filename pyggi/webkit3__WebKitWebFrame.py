@@ -50,146 +50,148 @@ from .gtk3_enums import *
 from .webkit3_types import *
 from .webkit3_enums import *
 
-    
+OPAQUE_PTR = POINTER(c_void_p)
+NULL = OPAQUE_PTR()
+
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_WebKitNetworkResponse = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_cairo_matrix_t = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GtkIconFactory = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GClosure = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_void = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkTextBuffer = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GObject = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkSymbolicColor = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkOffscreenWindow = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_PangoAttrIterator = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_GFileMonitor = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GtkPathPriorityType = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GOptionGroup = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GdkEventKey = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-_cairo_surface_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_WebKitWebFrame = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_WebKitNetworkRequest = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_GError = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GWeakRef = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_PangoRectangle = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GFile = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_PangoLayoutLine = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_WebKitDOMDocument = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkPrintOperation = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_PangoGlyphString = POINTER(c_int)
-_WebKitSecurityOrigin = POINTER(c_int)
-_GObjectClass = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_WebKitWebDataSource = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_gunichar = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkStyleProperties = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GParameter = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GtkGradient = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GtkTargetEntry = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
+_GtkRcStyle = OPAQUE_PTR
+_GdkGeometry = OPAQUE_PTR
+_WebKitNetworkResponse = OPAQUE_PTR
+_GdkPixbuf = OPAQUE_PTR
+_GtkRequisition = OPAQUE_PTR
+_GtkRcStyle = OPAQUE_PTR
+_GtkRegionFlags = OPAQUE_PTR
+_cairo_matrix_t = OPAQUE_PTR
+_GtkWindow = OPAQUE_PTR
+_cairo_font_options_t = OPAQUE_PTR
+_GtkIconFactory = OPAQUE_PTR
+_GdkAtom = OPAQUE_PTR
+_GdkTimeCoord = OPAQUE_PTR
+_GdkColor = OPAQUE_PTR
+_GtkWidgetPath = OPAQUE_PTR
+_GClosure = OPAQUE_PTR
+_GIcon = OPAQUE_PTR
+_GdkDisplay = OPAQUE_PTR
+_GtkStyleProvider = OPAQUE_PTR
+_WebKitWebWindowFeatures = OPAQUE_PTR
+_void = OPAQUE_PTR
+_GScanner = OPAQUE_PTR
+_PangoFont = OPAQUE_PTR
+_GtkStyleContext = OPAQUE_PTR
+_GtkTextBuffer = OPAQUE_PTR
+_GtkNumerableIcon = OPAQUE_PTR
+_GdkAppLaunchContext = OPAQUE_PTR
+_GObject = OPAQUE_PTR
+_PangoLayout = OPAQUE_PTR
+_GtkSymbolicColor = OPAQUE_PTR
+_GtkWidget = OPAQUE_PTR
+_GtkOffscreenWindow = OPAQUE_PTR
+_GParamSpec = OPAQUE_PTR
+_PangoAttrIterator = OPAQUE_PTR
+_GtkIconSet = OPAQUE_PTR
+_GtkSelectionData = OPAQUE_PTR
+_GtkWindowGroup = OPAQUE_PTR
+_JSGlobalContext = OPAQUE_PTR
+_GFileMonitor = OPAQUE_PTR
+_PangoLogAttr = OPAQUE_PTR
+_PangoContext = OPAQUE_PTR
+_GtkPathPriorityType = OPAQUE_PTR
+_GtkSettings = OPAQUE_PTR
+_PangoFontMap = OPAQUE_PTR
+_PangoAttrList = OPAQUE_PTR
+_PangoMatrix = OPAQUE_PTR
+_GtkApplication = OPAQUE_PTR
+_PangoAnalysis = OPAQUE_PTR
+_PangoFontDescription = OPAQUE_PTR
+_GdkCursor = OPAQUE_PTR
+_GOptionGroup = OPAQUE_PTR
+_GScanner = OPAQUE_PTR
+_GtkWidgetClass = OPAQUE_PTR
+_GdkEventKey = OPAQUE_PTR
+_GdkDisplay = OPAQUE_PTR
+_GtkSettings = OPAQUE_PTR
+_GdkScreen = OPAQUE_PTR
+_PangoFontMetrics = OPAQUE_PTR
+_cairo_surface_t = OPAQUE_PTR
+_GdkVisual = OPAQUE_PTR
+_PangoFontMap = OPAQUE_PTR
+_GSList = OPAQUE_PTR
+_WebKitWebFrame = OPAQUE_PTR
+_cairo_region_t = OPAQUE_PTR
+_WebKitNetworkRequest = OPAQUE_PTR
+_GdkWindow = OPAQUE_PTR
+_PangoFontFamily = OPAQUE_PTR
+_GtkClipboard = OPAQUE_PTR
+_PangoFontset = OPAQUE_PTR
+_GdkWindow = OPAQUE_PTR
+_PangoFontDescription = OPAQUE_PTR
+_GtkBorder = OPAQUE_PTR
+_GError = OPAQUE_PTR
+_PangoCoverage = OPAQUE_PTR
+_cairo_t = OPAQUE_PTR
+_GWeakRef = OPAQUE_PTR
+_GdkVisual = OPAQUE_PTR
+_CairoPattern = OPAQUE_PTR
+_GdkDevice = OPAQUE_PTR
+_PangoRectangle = OPAQUE_PTR
+_GtkAccelGroup = OPAQUE_PTR
+_GObject = OPAQUE_PTR
+_GtkIconSource = OPAQUE_PTR
+_GFile = OPAQUE_PTR
+_GtkAllocation = OPAQUE_PTR
+_GtkWidget = OPAQUE_PTR
+_PangoLayoutLine = OPAQUE_PTR
+_GtkIconSet = OPAQUE_PTR
+_WebKitWebView = OPAQUE_PTR
+_PangoTabArray = OPAQUE_PTR
+_GtkStyleContext = OPAQUE_PTR
+_GValue = OPAQUE_PTR
+_GdkDeviceManager = OPAQUE_PTR
+_GdkCursor = OPAQUE_PTR
+_WebKitDOMDocument = OPAQUE_PTR
+_PangoMatrix = OPAQUE_PTR
+_GtkPrintOperation = OPAQUE_PTR
+_PangoContext = OPAQUE_PTR
+_GList = OPAQUE_PTR
+_WebKitWebView = OPAQUE_PTR
+_WebKitWebWindowFeatures = OPAQUE_PTR
+_PangoCoverage = OPAQUE_PTR
+_GParamSpec = OPAQUE_PTR
+_GList = OPAQUE_PTR
+_GdkRGBA = OPAQUE_PTR
+_PangoGlyphString = OPAQUE_PTR
+_WebKitSecurityOrigin = OPAQUE_PTR
+_GObjectClass = OPAQUE_PTR
+_GSList = OPAQUE_PTR
+_GdkWindowAttr = OPAQUE_PTR
+_WebKitWebDataSource = OPAQUE_PTR
+_GdkColor = OPAQUE_PTR
+_GdkRectangle = OPAQUE_PTR
+_PangoLanguage = OPAQUE_PTR
+_PangoAttrList = OPAQUE_PTR
+_gunichar = OPAQUE_PTR
+_GdkWMDecoration = OPAQUE_PTR
+_PangoLogAttr = OPAQUE_PTR
+_PangoLayout = OPAQUE_PTR
+_GtkStyleProperties = OPAQUE_PTR
+_GtkStyle = OPAQUE_PTR
+_GParameter = OPAQUE_PTR
+_GtkStyle = OPAQUE_PTR
+_GIcon = OPAQUE_PTR
+_GtkWindow = OPAQUE_PTR
+_GtkGradient = OPAQUE_PTR
+_cairo_pattern_t = OPAQUE_PTR
+_GdkPixbuf = OPAQUE_PTR
+_GdkScreen = OPAQUE_PTR
+_GtkWidgetPath = OPAQUE_PTR
+_GtkTargetEntry = OPAQUE_PTR
+_GtkApplication = OPAQUE_PTR
+_CairoPattern = OPAQUE_PTR
+_GdkPixbufSimpleAnim = OPAQUE_PTR
+_WebKitGeolocationPolicyDecision = OPAQUE_PTR
+_PangoLanguage = OPAQUE_PTR
+_GdkDevice = OPAQUE_PTR
+_PangoTabArray = OPAQUE_PTR
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -354,10 +356,10 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def __init__( self, web_view,  obj = None):
         if obj: self._object = obj
         else:
-            libwebkit3.webkit_web_frame_new.restype = POINTER(c_int)
+            libwebkit3.webkit_web_frame_new.restype = OPAQUE_PTR
             
             if web_view : web_view = web_view._object
-            else :  web_view = POINTER(c_int)()
+            else :  web_view = OPAQUE_PTR()
 
             libwebkit3.webkit_web_frame_new.argtypes = [_WebKitWebView]
             self._object = libwebkit3.webkit_web_frame_new(web_view, )
@@ -365,7 +367,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     """Methods"""
     def load_request(  self, request, ):
         if request: request = request._object
-        else: request = POINTER(c_int)()
+        else: request = OPAQUE_PTR()
 
         
         libwebkit3.webkit_web_frame_load_request( self._object,request )
@@ -378,7 +380,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def find_frame(  self, name, ):
 
         from .webkit3 import WebKitWebFrame
-        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_frame_find_frame( self._object,name ) or POINTER(c_int)() )
+        return WebKitWebFrame(None, obj=libwebkit3.webkit_web_frame_find_frame( self._object,name ) or OPAQUE_PTR() )
 
     def get_uri(  self, ):
 
@@ -388,7 +390,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def get_data_source(  self, ):
 
         from .webkit3 import WebKitWebDataSource
-        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_data_source( self._object ) or POINTER(c_int)() )
+        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_data_source( self._object ) or OPAQUE_PTR() )
 
     def stop_loading(  self, ):
 
@@ -398,7 +400,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def get_web_view(  self, ):
 
         from .webkit3 import WebKitWebView
-        return WebKitWebView(None, obj=libwebkit3.webkit_web_frame_get_web_view( self._object ) or POINTER(c_int)() )
+        return WebKitWebView(None, obj=libwebkit3.webkit_web_frame_get_web_view( self._object ) or OPAQUE_PTR() )
 
     def get_horizontal_scrollbar_policy(  self, ):
 
@@ -408,17 +410,17 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def get_security_origin(  self, ):
 
         from .webkit3 import WebKitSecurityOrigin
-        return WebKitSecurityOrigin( obj=libwebkit3.webkit_web_frame_get_security_origin( self._object ) or POINTER(c_int)() )
+        return WebKitSecurityOrigin( obj=libwebkit3.webkit_web_frame_get_security_origin( self._object ) or OPAQUE_PTR() )
 
     def get_parent(  self, ):
 
         from .webkit3 import WebKitWebFrame
-        return WebKitWebFrame( obj=libwebkit3.webkit_web_frame_get_parent( self._object ) or POINTER(c_int)() )
+        return WebKitWebFrame( obj=libwebkit3.webkit_web_frame_get_parent( self._object ) or OPAQUE_PTR() )
 
     def get_network_response(  self, ):
 
         from .webkit3 import WebKitNetworkResponse
-        return WebKitNetworkResponse( obj=libwebkit3.webkit_web_frame_get_network_response( self._object ) or POINTER(c_int)() )
+        return WebKitNetworkResponse( obj=libwebkit3.webkit_web_frame_get_network_response( self._object ) or OPAQUE_PTR() )
 
     def py_print(  self, ):
 
@@ -428,7 +430,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def get_provisional_data_source(  self, ):
 
         from .webkit3 import WebKitWebDataSource
-        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_provisional_data_source( self._object ) or POINTER(c_int)() )
+        return WebKitWebDataSource( obj=libwebkit3.webkit_web_frame_get_provisional_data_source( self._object ) or OPAQUE_PTR() )
 
     def get_name(  self, ):
 
@@ -443,7 +445,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def get_dom_document(  self, ):
 
         from .webkit3 import WebKitDOMDocument
-        return WebKitDOMDocument( obj=libwebkit3.webkit_web_frame_get_dom_document( self._object ) or POINTER(c_int)() )
+        return WebKitDOMDocument( obj=libwebkit3.webkit_web_frame_get_dom_document( self._object ) or OPAQUE_PTR() )
 
     def reload(  self, ):
 
@@ -453,7 +455,7 @@ class WebKitWebFrame( gobject__GObject.GObject):
     def get_global_context(  self, ):
 
         from .javascriptcore import JSGlobalContext
-        return JSGlobalContext( obj=libwebkit3.webkit_web_frame_get_global_context( self._object )  or POINTER(c_int)())
+        return JSGlobalContext( obj=libwebkit3.webkit_web_frame_get_global_context( self._object )  or OPAQUE_PTR())
 
     def get_vertical_scrollbar_policy(  self, ):
 
@@ -462,11 +464,11 @@ class WebKitWebFrame( gobject__GObject.GObject):
 
     def print_full(  self, operation, action, error, ):
         if operation: operation = operation._object
-        else: operation = POINTER(c_int)()
+        else: operation = OPAQUE_PTR()
         if action: action = action._object
-        else: action = POINTER(c_int)()
+        else: action = OPAQUE_PTR()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = OPAQUE_PTR()
 
         
         return libwebkit3.webkit_web_frame_print_full( self._object,operation,action,error )

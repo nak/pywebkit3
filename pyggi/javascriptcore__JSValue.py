@@ -50,189 +50,189 @@ from .javascriptcore_types import *
     
     
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_int)
-__GdkGeometry = POINTER(c_int)
-_WebKitNetworkResponse = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-__GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-__GtkRegionFlags = POINTER(c_int)
-__WebKitDOMNode = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-__cairo_font_options_t = POINTER(c_int)
-__JSValue = POINTER(c_int)
-_JSContext = POINTER(c_int)
-_GtkIconFactory = POINTER(c_int)
-__GdkAtom = POINTER(c_int)
-__GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-__GtkWidgetPath = POINTER(c_int)
-_PangoItem = POINTER(c_int)
-__GClosure = POINTER(c_int)
-_GtkAboutDialog = POINTER(c_int)
-__GMainContext = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-__GtkStyleProvider = POINTER(c_int)
-_GtkDialog = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
-_JSObject = POINTER(c_int)
-_GBytes = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GMainContext = POINTER(c_int)
-_GBoxed = POINTER(c_int)
-__GtkTextBuffer = POINTER(c_int)
-_GtkTargetList = POINTER(c_int)
-__WebKitWebSettings = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-__GObject = POINTER(c_int)
-__PangoLayout = POINTER(c_int)
-_WebKitWebBackForwardList = POINTER(c_int)
-_GtkOffscreenWindow = POINTER(c_int)
-__GParamSpec = POINTER(c_int)
-__PangoAttrIterator = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_GString = POINTER(c_int)
-__PangoContext = POINTER(c_int)
-__JSPropertyNameArray = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-__PangoFont = POINTER(c_int)
-__GtkPathPriorityType = POINTER(c_int)
-__JSClass = POINTER(c_int)
-__WebKitWebHistoryItem = POINTER(c_int)
-_JSValue = POINTER(c_int)
-__GtkSettings = POINTER(c_int)
-_GSource = POINTER(c_int)
-__PangoFontMap = POINTER(c_int)
-__JSString = POINTER(c_int)
-__PangoAttrList = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-__GSource = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-__PangoAnalysis = POINTER(c_int)
-__GMutex = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-__GdkCursor = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_WebKitWebInspector = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GOptionGroup = POINTER(c_int)
-__GScanner = POINTER(c_int)
-__GtkWidgetClass = POINTER(c_int)
-__GdkEventKey = POINTER(c_int)
-_GdkDragContext = POINTER(c_int)
-__GdkDisplay = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-__GCond = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_WebKitWebFrame = POINTER(c_int)
-_JSString = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-__WebKitNetworkRequest = POINTER(c_int)
-__GdkWindow = POINTER(c_int)
-__PangoFontFamily = POINTER(c_int)
-__JSContextGroup = POINTER(c_int)
-__GPollFD = POINTER(c_int)
-__cairo_region_t = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-__PangoFontDescription = POINTER(c_int)
-__GtkBorder = POINTER(c_int)
-__GError = POINTER(c_int)
-__PangoCoverage = POINTER(c_int)
-_WebKitViewportAttributes = POINTER(c_int)
-_JSClass = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-__cairo_t = POINTER(c_int)
-__GWeakRef = POINTER(c_int)
-__GdkVisual = POINTER(c_int)
-__GdkEventButton = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-__PangoRectangle = POINTER(c_int)
-__GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-__GtkIconSource = POINTER(c_int)
-__JSContext = POINTER(c_int)
-_PangoFontsetSimple = POINTER(c_int)
-__GtkAllocation = POINTER(c_int)
-__GtkWidget = POINTER(c_int)
-_PangoLayoutLine = POINTER(c_int)
-__GtkIconSet = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-__PangoTabArray = POINTER(c_int)
-_WebKitHitTestResult = POINTER(c_int)
-__GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_WebKitDOMDocument = POINTER(c_int)
-__PangoMatrix = POINTER(c_int)
-__GtkPrintOperation = POINTER(c_int)
-__GString = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-__GList = POINTER(c_int)
-__WebKitWebView = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-__GdkRGBA = POINTER(c_int)
-__GTimeVal = POINTER(c_int)
-_GtkInvisible = POINTER(c_int)
-__GSourceFuncs = POINTER(c_int)
-__JSPropertyNameAccumulator = POINTER(c_int)
-__PangoGlyphString = POINTER(c_int)
-__JSGlobalContext = POINTER(c_int)
-_WebKitSecurityOrigin = POINTER(c_int)
-__GObjectClass = POINTER(c_int)
-__GSList = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-__GdkWindowAttr = POINTER(c_int)
-_SoupMessage = POINTER(c_int)
-_WebKitWebDataSource = POINTER(c_int)
-__GdkColor = POINTER(c_int)
-_JSContextGroup = POINTER(c_int)
-__GdkRectangle = POINTER(c_int)
-__PangoLanguage = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-__gunichar = POINTER(c_int)
-__GdkWMDecoration = POINTER(c_int)
-__PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-__JSObject = POINTER(c_int)
-_WebKitWebNavigationAction = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-__GParameter = POINTER(c_int)
-__GtkStyle = POINTER(c_int)
-__GIcon = POINTER(c_int)
-__GtkWindow = POINTER(c_int)
-_PangoLayoutRun = POINTER(c_int)
-__cairo_pattern_t = POINTER(c_int)
-__GdkPixbuf = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-__GSourceCallbackFuncs = POINTER(c_int)
-__PangoFontFace = POINTER(c_int)
-__GtkTargetEntry = POINTER(c_int)
-__GtkApplication = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_GByteArray = POINTER(c_int)
-__GdkScreen = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-__GdkDevice = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
+__GtkRcStyle = POINTER(c_void_p)
+__GdkGeometry = POINTER(c_void_p)
+_WebKitNetworkResponse = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+__GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+__GtkRegionFlags = POINTER(c_void_p)
+__WebKitDOMNode = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+__cairo_font_options_t = POINTER(c_void_p)
+__JSValue = POINTER(c_void_p)
+_JSContext = POINTER(c_void_p)
+_GtkIconFactory = POINTER(c_void_p)
+__GdkAtom = POINTER(c_void_p)
+__GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+__GtkWidgetPath = POINTER(c_void_p)
+_PangoItem = POINTER(c_void_p)
+__GClosure = POINTER(c_void_p)
+_GtkAboutDialog = POINTER(c_void_p)
+__GMainContext = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+__GtkStyleProvider = POINTER(c_void_p)
+_GtkDialog = POINTER(c_void_p)
+__WebKitWebWindowFeatures = POINTER(c_void_p)
+_JSObject = POINTER(c_void_p)
+_GBytes = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GMainContext = POINTER(c_void_p)
+_GBoxed = POINTER(c_void_p)
+__GtkTextBuffer = POINTER(c_void_p)
+_GtkTargetList = POINTER(c_void_p)
+__WebKitWebSettings = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+__GObject = POINTER(c_void_p)
+__PangoLayout = POINTER(c_void_p)
+_WebKitWebBackForwardList = POINTER(c_void_p)
+_GtkOffscreenWindow = POINTER(c_void_p)
+__GParamSpec = POINTER(c_void_p)
+__PangoAttrIterator = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GtkSelectionData = POINTER(c_void_p)
+_GtkWindowGroup = POINTER(c_void_p)
+_JSGlobalContext = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_GString = POINTER(c_void_p)
+__PangoContext = POINTER(c_void_p)
+__JSPropertyNameArray = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+__PangoFont = POINTER(c_void_p)
+__GtkPathPriorityType = POINTER(c_void_p)
+__JSClass = POINTER(c_void_p)
+__WebKitWebHistoryItem = POINTER(c_void_p)
+_JSValue = POINTER(c_void_p)
+__GtkSettings = POINTER(c_void_p)
+_GSource = POINTER(c_void_p)
+__PangoFontMap = POINTER(c_void_p)
+__JSString = POINTER(c_void_p)
+__PangoAttrList = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+__GSource = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+__PangoAnalysis = POINTER(c_void_p)
+__GMutex = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+__GdkCursor = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_WebKitWebInspector = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GOptionGroup = POINTER(c_void_p)
+__GScanner = POINTER(c_void_p)
+__GtkWidgetClass = POINTER(c_void_p)
+__GdkEventKey = POINTER(c_void_p)
+_GdkDragContext = POINTER(c_void_p)
+__GdkDisplay = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_PangoFontMetrics = POINTER(c_void_p)
+__GCond = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_WebKitWebFrame = POINTER(c_void_p)
+_JSString = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+__WebKitNetworkRequest = POINTER(c_void_p)
+__GdkWindow = POINTER(c_void_p)
+__PangoFontFamily = POINTER(c_void_p)
+__JSContextGroup = POINTER(c_void_p)
+__GPollFD = POINTER(c_void_p)
+__cairo_region_t = POINTER(c_void_p)
+_PangoFontset = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+__PangoFontDescription = POINTER(c_void_p)
+__GtkBorder = POINTER(c_void_p)
+__GError = POINTER(c_void_p)
+__PangoCoverage = POINTER(c_void_p)
+_WebKitViewportAttributes = POINTER(c_void_p)
+_JSClass = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+__cairo_t = POINTER(c_void_p)
+__GWeakRef = POINTER(c_void_p)
+__GdkVisual = POINTER(c_void_p)
+__GdkEventButton = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+__PangoRectangle = POINTER(c_void_p)
+__GtkAccelGroup = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+__GtkIconSource = POINTER(c_void_p)
+__JSContext = POINTER(c_void_p)
+_PangoFontsetSimple = POINTER(c_void_p)
+__GtkAllocation = POINTER(c_void_p)
+__GtkWidget = POINTER(c_void_p)
+_PangoLayoutLine = POINTER(c_void_p)
+__GtkIconSet = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+__PangoTabArray = POINTER(c_void_p)
+_WebKitHitTestResult = POINTER(c_void_p)
+__GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_WebKitDOMDocument = POINTER(c_void_p)
+__PangoMatrix = POINTER(c_void_p)
+__GtkPrintOperation = POINTER(c_void_p)
+__GString = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+__GList = POINTER(c_void_p)
+__WebKitWebView = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+__GdkRGBA = POINTER(c_void_p)
+__GTimeVal = POINTER(c_void_p)
+_GtkInvisible = POINTER(c_void_p)
+__GSourceFuncs = POINTER(c_void_p)
+__JSPropertyNameAccumulator = POINTER(c_void_p)
+__PangoGlyphString = POINTER(c_void_p)
+__JSGlobalContext = POINTER(c_void_p)
+_WebKitSecurityOrigin = POINTER(c_void_p)
+__GObjectClass = POINTER(c_void_p)
+__GSList = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+__GdkWindowAttr = POINTER(c_void_p)
+_SoupMessage = POINTER(c_void_p)
+_WebKitWebDataSource = POINTER(c_void_p)
+__GdkColor = POINTER(c_void_p)
+_JSContextGroup = POINTER(c_void_p)
+__GdkRectangle = POINTER(c_void_p)
+__PangoLanguage = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+__gunichar = POINTER(c_void_p)
+__GdkWMDecoration = POINTER(c_void_p)
+__PangoLogAttr = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_JSPropertyNameArray = POINTER(c_void_p)
+__JSObject = POINTER(c_void_p)
+_WebKitWebNavigationAction = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+__GParameter = POINTER(c_void_p)
+__GtkStyle = POINTER(c_void_p)
+__GIcon = POINTER(c_void_p)
+__GtkWindow = POINTER(c_void_p)
+_PangoLayoutRun = POINTER(c_void_p)
+__cairo_pattern_t = POINTER(c_void_p)
+__GdkPixbuf = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+__GSourceCallbackFuncs = POINTER(c_void_p)
+__PangoFontFace = POINTER(c_void_p)
+__GtkTargetEntry = POINTER(c_void_p)
+__GtkApplication = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_GByteArray = POINTER(c_void_p)
+__GdkScreen = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+__GdkDevice = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
 """Enumerations"""
 PangoStyle = c_int
 PangoWeight = c_int
@@ -362,17 +362,17 @@ class JSValue( object ):
     """Methods"""
     def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
         if ructor: ructor = ructor._object()
-        else: ructor = POINTER(c_int)()
+        else: ructor = POINTER(c_void_p)()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = POINTER(c_void_p)()
         if self._object():
             return libjavascriptcore.JSValueIsInstanceOfConstructor( ctx,self._object(),ructor,exception )
 
     def ToObject(  self, ctx, exception, ):
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = POINTER(c_void_p)()
 
         from .javascriptcore import JSObject
         if self._object():
@@ -380,7 +380,7 @@ class JSValue( object ):
 
     def IsUndefined(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -388,18 +388,18 @@ class JSValue( object ):
 
     def IsObjectOfClass(  self, ctx, jsClass, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
         if jsClass: jsClass = jsClass._object()
-        else: jsClass = POINTER(c_int)()
+        else: jsClass = POINTER(c_void_p)()
         
         if self._object():
             return libjavascriptcore.JSValueIsObjectOfClass( ctx,self._object(),jsClass )
 
     def IsStrictEqual(  self, ctx, b, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
         if b: b = b._object()
-        else: b = POINTER(c_int)()
+        else: b = POINTER(c_void_p)()
 
        
         if self._object():
@@ -407,7 +407,7 @@ class JSValue( object ):
 
     def IsNull(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -415,13 +415,13 @@ class JSValue( object ):
 
     def Protect(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
         if self._object():
             libjavascriptcore.JSValueProtect( ctx,self._object() )
 
     def IsObject(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -429,7 +429,7 @@ class JSValue( object ):
 
     def IsBoolean(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -437,7 +437,7 @@ class JSValue( object ):
 
     def IsString(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -445,13 +445,13 @@ class JSValue( object ):
 
     def ToStringCopy(  self, ctx, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = POINTER(c_void_p)()
 
         from .javascriptcore import JSString
         if self._object():
-            return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object(), exception )  or POINTER(c_int)())
+            return JSString( obj=libjavascriptcore.JSValueToStringCopy( ctx,self._object(), exception )  or POINTER(c_void_p)())
 
     def ToPyString(self , ctx, exception):
         jstext = self.ToStringCopy(ctx, exception)
@@ -463,7 +463,7 @@ class JSValue( object ):
     
     def ToBoolean(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -471,7 +471,7 @@ class JSValue( object ):
 
     def IsNumber(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         
         if self._object():
@@ -479,24 +479,24 @@ class JSValue( object ):
 
     def IsEqual(  self, ctx, b, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
         if b: b = b._object()
-        else: b = POINTER(c_int)()
+        else: b = POINTER(c_void_p)()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = POINTER(c_void_p)()
         
         if self._object():
             return libjavascriptcore.JSValueIsEqual( ctx,self._object(),b,exception )
 
     def CreateJSONString(  self, ctx, indent, exception, ):
         if indent: indent = indent._object()
-        else: indent = POINTER(c_int)()
+        else: indent = POINTER(c_void_p)()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = POINTER(c_void_p)()
 
         from .javascriptcore import JSString
         if self._object():
-            return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx._object(),self._object(),indent,exception )  or POINTER(c_int)())
+            return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx._object(),self._object(),indent,exception )  or POINTER(c_void_p)())
 
     def Unprotect(  self, ctx, ):
         if self._object() and ctx._object():
@@ -507,16 +507,16 @@ class JSValue( object ):
         #import logging,traceback
         #logging.error(traceback.format_stack())
         if ctx:
-            if not isinstance(ctx, POINTER(c_int)):
+            if not isinstance(ctx, POINTER(c_void_p)):
                 ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = POINTER(c_void_p)()
 
         if self._object():
             return libjavascriptcore.JSValueGetType( ctx,self._object() )
 
     def ToNumber(  self, ctx, exception, ):
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = POINTER(c_void_p)()
         if self._object():
            return libjavascriptcore.JSValueToNumber( self._context._object(),self._object(),exception )
 
@@ -542,7 +542,7 @@ class JSValue( object ):
     @staticmethod
     def MakeFromJSONString( ctx, string,):
         if string: string = string._object()
-        else: string = POINTER(c_int)()
+        else: string = POINTER(c_void_p)()
         libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
         libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext,_JSString]
         from .javascriptcore import JSValue
@@ -556,7 +556,7 @@ class JSValue( object ):
     @staticmethod
     def MakeString( ctx, string,):
         if string: string = string._object()
-        else: string = POINTER(c_int)()
+        else: string = POINTER(c_void_p)()
         from .javascriptcore import JSValue
         retval =  JSValue( obj=    libjavascriptcore.JSValueMakeString(ctx._object(), string), context=ctx)
         return retval

@@ -52,15 +52,15 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
 """Enumerations"""
 
 try:
@@ -124,10 +124,10 @@ class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
     def __init__( self, base_icon,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gtk_numerable_icon_new.restype = POINTER(c_int)
+            libgtk3.gtk_numerable_icon_new.restype = POINTER(c_void_p)
             
             if base_icon : base_icon = base_icon._object
-            else :  base_icon = POINTER(c_int)()
+            else :  base_icon = POINTER(c_void_p)()
 
             libgtk3.gtk_numerable_icon_new.argtypes = [_GIcon]
             self._object = libgtk3.gtk_numerable_icon_new(base_icon, )
@@ -145,7 +145,7 @@ class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
 
     def set_style_context(  self, style, ):
         if style: style = style._object
-        else: style = POINTER(c_int)()
+        else: style = POINTER(c_void_p)()
 
         
         libgtk3.gtk_numerable_icon_set_style_context( self._object,style )
@@ -157,7 +157,7 @@ class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
 
     def set_background_gicon(  self, icon, ):
         if icon: icon = icon._object
-        else: icon = POINTER(c_int)()
+        else: icon = POINTER(c_void_p)()
 
         
         libgtk3.gtk_numerable_icon_set_background_gicon( self._object,icon )
@@ -180,19 +180,19 @@ class GtkNumerableIcon( gobject__GEmblemedIcon.GEmblemedIcon):
     def get_background_gicon(  self, ):
 
         from .gobject import GIcon
-        return GIcon( obj=libgtk3.gtk_numerable_icon_get_background_gicon( self._object ) or POINTER(c_int)())
+        return GIcon( obj=libgtk3.gtk_numerable_icon_get_background_gicon( self._object ) or POINTER(c_void_p)())
 
     def get_style_context(  self, ):
 
         from .gtk3 import GtkStyleContext
-        return GtkStyleContext(None, obj=libgtk3.gtk_numerable_icon_get_style_context( self._object ) or POINTER(c_int)())
+        return GtkStyleContext(None, obj=libgtk3.gtk_numerable_icon_get_style_context( self._object ) or POINTER(c_void_p)())
 
     @staticmethod
     def new_with_style_context( base_icon, context,):
         if base_icon: base_icon = base_icon._object
-        else: base_icon = POINTER(c_int)()
+        else: base_icon = POINTER(c_void_p)()
         if context: context = context._object
-        else: context = POINTER(c_int)()
+        else: context = POINTER(c_void_p)()
         from .gobject import GIcon
         return GIcon( obj=    libgtk3.gtk_numerable_icon_new_with_style_context(base_icon, context, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())

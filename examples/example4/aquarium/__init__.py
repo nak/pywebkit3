@@ -474,11 +474,11 @@ def createProgramFromTags(
 
 from pyggi.javascript import JavascriptClass
     
-class Scene(JavascriptClass):
+class Scene(object):
 
   def __init__(self,opt_programIds, fog):
       global context
-      JavascriptClass.__init__(self, context, "scene")
+      #JavascriptClass.__init__(self, context, "scene")
       self.programIds = opt_programIds
       self.bad = False
       self.loaded = False
@@ -495,7 +495,7 @@ class Scene(JavascriptClass):
   def stop(self):
       self.ignore = False
 
-  def onload_(self, data, exception):
+  def onload_(self, data, exception, *argsz):
       if (self.ignore):
           return
   
@@ -878,7 +878,13 @@ def Float32Array(l):
         return array.array('f', [0.0 for _ in range(l)])
 
 
+def tryit():
+    raise Exception("TRIED")
+
 def initialize():
+    window = context.get_jsobject("window")
+    window.setTimeout( tryit, 100)
+    
     maxViewportDims = gl.getParameter(gl.MAX_VIEWPORT_DIMS)
     
     gl.enable(gl.DEPTH_TEST)
@@ -1135,7 +1141,7 @@ def initialize():
             return setCanvasSize(canvas, g.globals.width, g.globals.height)
         else:
             return setCanvasSize(canvas, newWidth, newHeight)
-    def render():
+    def render(*args):
         
         
         import logging
@@ -1607,8 +1613,9 @@ def initialize():
         g_logGLCalls = False
 
         if (not g_drawOnce):
-            g_requestId = tdl.webgl.requestAnimationFrame( render, Globals.canvas)
-            logging.error("G_REQ : %s %s %s"%(g_requestId, render, Globals.canvas))
+            assert( Globals.canvas._object())
+            window = context.get_jsobject("window")
+            g_requestId = tdl.webgl.requestAnimationFrame(  render, Globals.canvas )
 
     if not hasattr(Globals,"render"):
         Globals.render = render

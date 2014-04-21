@@ -52,195 +52,195 @@ from .gobject_enums import *
 
     
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_WebKitNetworkResponse = POINTER(c_int)
-_GtkLabel = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GAsyncResult = POINTER(c_int)
-_cairo_matrix_t = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GtkIconFactory = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GClosure = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_GFileEnumerator = POINTER(c_int)
-_GtkDialog = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_void = POINTER(c_int)
-_GtkIconInfo = POINTER(c_int)
-_GAppInfo = POINTER(c_int)
-_GBytes = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkTextBuffer = POINTER(c_int)
-_GtkTargetList = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GObject = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkSymbolicColor = POINTER(c_int)
-_WebKitWebBackForwardList = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkOffscreenWindow = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GAppLaunchContext = POINTER(c_int)
-_PangoAttrIterator = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkIconTheme = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_GtkAccelLabel = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_GApplication = POINTER(c_int)
-_GFileMonitor = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_WebKitHitTestResult = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-_GtkPathPriorityType = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_GdkPoint = POINTER(c_int)
-_GAppInfo = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_GFileInfo = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_GEmblemedIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_WebKitWebInspector = POINTER(c_int)
-_GOptionGroup = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_GFileAttributeInfoList = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GdkEventKey = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GFileIOStream = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-_cairo_surface_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_WebKitWebFrame = POINTER(c_int)
-_GActionGroup = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_WebKitNetworkRequest = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_GFile = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_PangoLayoutRun = POINTER(c_int)
-_GFileInputStream = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_GError = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_WebKitViewportAttributes = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GWeakRef = POINTER(c_int)
-_GdkPixbufAnimationIter = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GdkEventButton = POINTER(c_int)
-_GCancellable = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GMount = POINTER(c_int)
-_PangoRectangle = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GFile = POINTER(c_int)
-_GDrive = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_PangoLayoutLine = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_WebKitDOMDocument = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkPrintOperation = POINTER(c_int)
-_GtkThemingEngine = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GFileInfo = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GTimeVal = POINTER(c_int)
-_PangoGlyphString = POINTER(c_int)
-_GFileIOStream = POINTER(c_int)
-_WebKitSecurityOrigin = POINTER(c_int)
-_GObjectClass = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_SoupMessage = POINTER(c_int)
-_WebKitWebDataSource = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GdkPixbufAnimation = POINTER(c_int)
-_GEmblem = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_gunichar = POINTER(c_int)
-_GVolume = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GFileOutputStream = POINTER(c_int)
-_WebKitDOMNode = POINTER(c_int)
-_GtkStyleProperties = POINTER(c_int)
-_WebKitWebNavigationAction = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GParameter = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GtkGradient = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GMountOperation = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GtkTargetEntry = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GByteArray = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
+_GtkRcStyle = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_WebKitNetworkResponse = POINTER(c_void_p)
+_GtkLabel = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GAsyncResult = POINTER(c_void_p)
+_cairo_matrix_t = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_GtkIconFactory = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GClosure = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_GFileEnumerator = POINTER(c_void_p)
+_GtkDialog = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_void = POINTER(c_void_p)
+_GtkIconInfo = POINTER(c_void_p)
+_GAppInfo = POINTER(c_void_p)
+_GBytes = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkTextBuffer = POINTER(c_void_p)
+_GtkTargetList = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkSymbolicColor = POINTER(c_void_p)
+_WebKitWebBackForwardList = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GtkOffscreenWindow = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GAppLaunchContext = POINTER(c_void_p)
+_PangoAttrIterator = POINTER(c_void_p)
+_GFileAttributeMatcher = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GtkIconTheme = POINTER(c_void_p)
+_GtkSelectionData = POINTER(c_void_p)
+_GtkWindowGroup = POINTER(c_void_p)
+_GtkAccelLabel = POINTER(c_void_p)
+_JSGlobalContext = POINTER(c_void_p)
+_GApplication = POINTER(c_void_p)
+_GFileMonitor = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_GFileAttributeMatcher = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_WebKitHitTestResult = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+_GtkPathPriorityType = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_GdkPoint = POINTER(c_void_p)
+_GAppInfo = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_GFileInfo = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_GEmblemedIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_WebKitWebInspector = POINTER(c_void_p)
+_GOptionGroup = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_GFileAttributeInfoList = POINTER(c_void_p)
+_GtkWidgetClass = POINTER(c_void_p)
+_GdkEventKey = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GFileIOStream = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_PangoFontMetrics = POINTER(c_void_p)
+_cairo_surface_t = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_WebKitWebFrame = POINTER(c_void_p)
+_GActionGroup = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_WebKitNetworkRequest = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_GFile = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_PangoLayoutRun = POINTER(c_void_p)
+_GFileInputStream = POINTER(c_void_p)
+_PangoFontset = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_WebKitViewportAttributes = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_cairo_t = POINTER(c_void_p)
+_GWeakRef = POINTER(c_void_p)
+_GdkPixbufAnimationIter = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GdkEventButton = POINTER(c_void_p)
+_GCancellable = POINTER(c_void_p)
+_CairoPattern = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GMount = POINTER(c_void_p)
+_PangoRectangle = POINTER(c_void_p)
+_GtkAccelGroup = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GFile = POINTER(c_void_p)
+_GDrive = POINTER(c_void_p)
+_GtkAllocation = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_PangoLayoutLine = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_WebKitDOMDocument = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GtkPrintOperation = POINTER(c_void_p)
+_GtkThemingEngine = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GFileInfo = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GTimeVal = POINTER(c_void_p)
+_PangoGlyphString = POINTER(c_void_p)
+_GFileIOStream = POINTER(c_void_p)
+_WebKitSecurityOrigin = POINTER(c_void_p)
+_GObjectClass = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_SoupMessage = POINTER(c_void_p)
+_WebKitWebDataSource = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GdkPixbufAnimation = POINTER(c_void_p)
+_GEmblem = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_gunichar = POINTER(c_void_p)
+_GVolume = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GFileOutputStream = POINTER(c_void_p)
+_WebKitDOMNode = POINTER(c_void_p)
+_GtkStyleProperties = POINTER(c_void_p)
+_WebKitWebNavigationAction = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GParameter = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_GtkGradient = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GMountOperation = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GtkTargetEntry = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_CairoPattern = POINTER(c_void_p)
+_GByteArray = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -462,19 +462,19 @@ class GList( object):
     def copy(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgobject.g_list_copy( self._object ) or POINTER(c_int)())
+        return GList( obj=libgobject.g_list_copy( self._object ) or POINTER(c_void_p)())
 
     def remove_all(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_remove_all( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_remove_all( self._object,data ) or POINTER(c_void_p)())
 
     def sort_with_data(  self, compare_func, user_data, ):
         if compare_func: compare_func = compare_func._object
-        else: compare_func = POINTER(c_int)()
+        else: compare_func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgobject.g_list_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_int)())
+        return GList(None,None, obj=libgobject.g_list_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_void_p)())
 
     def index(  self, data, ):
 
@@ -484,7 +484,7 @@ class GList( object):
     def nth_prev(  self, n, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_nth_prev( self._object,n ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_nth_prev( self._object,n ) or POINTER(c_void_p)())
 
     def length(  self, ):
 
@@ -494,39 +494,39 @@ class GList( object):
     def insert(  self, data, position, ):
 
         from .gobject import GList
-        return GList(None,None, obj=libgobject.g_list_insert( self._object,data,position ) or POINTER(c_int)())
+        return GList(None,None, obj=libgobject.g_list_insert( self._object,data,position ) or POINTER(c_void_p)())
 
     def prepend(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_prepend( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_prepend( self._object,data ) or POINTER(c_void_p)())
 
     def reverse(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgobject.g_list_reverse( self._object ) or POINTER(c_int)())
+        return GList( obj=libgobject.g_list_reverse( self._object ) or POINTER(c_void_p)())
 
     def find(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_find( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_find( self._object,data ) or POINTER(c_void_p)())
 
     def remove(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_remove( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_remove( self._object,data ) or POINTER(c_void_p)())
 
     def delete_link(  self, link_, ):
         if link_: link_ = link_._object
-        else: link_ = POINTER(c_int)()
+        else: link_ = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_delete_link( self._object,link_ ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_delete_link( self._object,link_ ) or POINTER(c_void_p)())
 
     def append(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_append( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_append( self._object,data ) or POINTER(c_void_p)())
 
     def free(  self, ):
 
@@ -535,10 +535,10 @@ class GList( object):
 
     def remove_link(  self, llink, ):
         if llink: llink = llink._object
-        else: llink = POINTER(c_int)()
+        else: llink = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_remove_link( self._object,llink ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_remove_link( self._object,llink ) or POINTER(c_void_p)())
 
     def nth_data(  self, n, ):
 
@@ -548,28 +548,28 @@ class GList( object):
     def nth(  self, n, ):
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_nth( self._object,n ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_nth( self._object,n ) or POINTER(c_void_p)())
 
     def insert_sorted(  self, data, func, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgobject.g_list_insert_sorted( self._object,data,func ) or POINTER(c_int)())
+        return GList(None,None, obj=libgobject.g_list_insert_sorted( self._object,data,func ) or POINTER(c_void_p)())
 
     def foreach(  self, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         
         libgobject.g_list_foreach( self._object,func,user_data )
 
     def concat(  self, list2, ):
         if list2: list2 = list2._object
-        else: list2 = POINTER(c_int)()
+        else: list2 = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_concat( self._object,list2 ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_concat( self._object,list2 ) or POINTER(c_void_p)())
 
     def free_1(  self, ):
 
@@ -578,27 +578,27 @@ class GList( object):
 
     def position(  self, llink, ):
         if llink: llink = llink._object
-        else: llink = POINTER(c_int)()
+        else: llink = POINTER(c_void_p)()
 
         
         return libgobject.g_list_position( self._object,llink )
 
     def find_custom(  self, data, func, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgobject.g_list_find_custom( self._object,data,func ) or POINTER(c_int)())
+        return GList(None,None, obj=libgobject.g_list_find_custom( self._object,data,func ) or POINTER(c_void_p)())
 
     def last(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgobject.g_list_last( self._object ) or POINTER(c_int)())
+        return GList( obj=libgobject.g_list_last( self._object ) or POINTER(c_void_p)())
 
     def first(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgobject.g_list_first( self._object ) or POINTER(c_int)())
+        return GList( obj=libgobject.g_list_first( self._object ) or POINTER(c_void_p)())
 
     def free_full(  self, free_func, ):
 
@@ -607,27 +607,27 @@ class GList( object):
 
     def insert_sorted_with_data(  self, data, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None,None, obj=libgobject.g_list_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_int)())
+        return GList(None,None,None, obj=libgobject.g_list_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_void_p)())
 
     def insert_before(  self, sibling, data, ):
         if sibling: sibling = sibling._object
-        else: sibling = POINTER(c_int)()
+        else: sibling = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgobject.g_list_insert_before( self._object,sibling,data ) or POINTER(c_int)())
+        return GList(None,None, obj=libgobject.g_list_insert_before( self._object,sibling,data ) or POINTER(c_void_p)())
 
     def sort(  self, compare_func, ):
         if compare_func: compare_func = compare_func._object
-        else: compare_func = POINTER(c_int)()
+        else: compare_func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgobject.g_list_sort( self._object,compare_func ) or POINTER(c_int)())
+        return GList(None, obj=libgobject.g_list_sort( self._object,compare_func ) or POINTER(c_void_p)())
 
     @staticmethod
     def alloc():
         from .gobject import GList
         return GList( obj=    libgobject.g_list_alloc()
- or POINTER(c_int)())
+ or POINTER(c_void_p)())

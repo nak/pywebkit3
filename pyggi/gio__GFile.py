@@ -52,251 +52,251 @@ from .gio_enums import *
 
     
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_WebKitNetworkResponse = POINTER(c_int)
-_GtkLabel = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GAsyncResult = POINTER(c_int)
-_cairo_matrix_t = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_JSValue = POINTER(c_int)
-_GtkIconFactory = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GtkContainer = POINTER(c_int)
-_PangoItem = POINTER(c_int)
-_GClosure = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GMainContext = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GInterface = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_JSContextGroup = POINTER(c_int)
-_GFileEnumerator = POINTER(c_int)
-_GtkDialog = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GtkCssProvider = POINTER(c_int)
-_GtkSymbolicColor = POINTER(c_int)
-_void = POINTER(c_int)
-_GtkStyleProperties = POINTER(c_int)
-_GInputStream = POINTER(c_int)
-_GtkIconInfo = POINTER(c_int)
-_GAppInfo = POINTER(c_int)
-_WebKitWebResource = POINTER(c_int)
-_GBytes = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GMainContext = POINTER(c_int)
-_GtkTextBuffer = POINTER(c_int)
-_GtkTargetList = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GObject = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkSymbolicColor = POINTER(c_int)
-_WebKitWebBackForwardList = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkOffscreenWindow = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GAppLaunchContext = POINTER(c_int)
-_PangoAttrIterator = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkIconTheme = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_GtkAccelLabel = POINTER(c_int)
-_GtkAdjustment = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_GApplication = POINTER(c_int)
-_GFileMonitor = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_GString = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_WebKitHitTestResult = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-_GBoxed = POINTER(c_int)
-_GtkPathPriorityType = POINTER(c_int)
-_JSClass = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_JSValue = POINTER(c_int)
-_GdkPoint = POINTER(c_int)
-_GAppInfo = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GSource = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GIOStream = POINTER(c_int)
-_GIOStream = POINTER(c_int)
-_JSString = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_GOutputStream = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GSource = POINTER(c_int)
-_GtkMisc = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_GFileInfo = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_GEmblemedIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_WebKitWebInspector = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GOptionGroup = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_GFileAttributeInfoList = POINTER(c_int)
-_GCancellable = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GtkContainerClass = POINTER(c_int)
-_GdkEventKey = POINTER(c_int)
-_GtkAdjustment = POINTER(c_int)
-_GdkDragContext = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GFileIOStream = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-_GCond = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_cairo_surface_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_WebKitWebFrame = POINTER(c_int)
-_JSString = POINTER(c_int)
-_GActionGroup = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_WebKitNetworkRequest = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_GFile = POINTER(c_int)
-_PangoLayoutIter = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_PangoLayoutRun = POINTER(c_int)
-_GFileInputStream = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-_GError = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GtkAboutDialog = POINTER(c_int)
-_WebKitViewportAttributes = POINTER(c_int)
-_JSClass = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GWeakRef = POINTER(c_int)
-_GdkPixbufAnimationIter = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GdkEventButton = POINTER(c_int)
-_GCancellable = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GMount = POINTER(c_int)
-_PangoRectangle = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GFile = POINTER(c_int)
-_JSContext = POINTER(c_int)
-_GDrive = POINTER(c_int)
-_PangoFontsetSimple = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_PangoLayoutLine = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_GMutex = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GtkStatusbar = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_WebKitDOMDocument = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkPrintOperation = POINTER(c_int)
-_GtkThemingEngine = POINTER(c_int)
-_GString = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GFileInfo = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GTimeVal = POINTER(c_int)
-_GtkInvisible = POINTER(c_int)
-_GSourceFuncs = POINTER(c_int)
-_JSPropertyNameAccumulator = POINTER(c_int)
-_PangoGlyphString = POINTER(c_int)
-_GFileIOStream = POINTER(c_int)
-_WebKitSecurityOrigin = POINTER(c_int)
-_GObjectClass = POINTER(c_int)
-_GSList = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_GtkStylePropertyParser = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_SoupMessage = POINTER(c_int)
-_WebKitWebDataSource = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GdkPixbufAnimation = POINTER(c_int)
-_GEmblem = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_gunichar = POINTER(c_int)
-_GVolume = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GPollFD = POINTER(c_int)
-_GFileOutputStream = POINTER(c_int)
-_JSObject = POINTER(c_int)
-_WebKitDOMNode = POINTER(c_int)
-_GInputStream = POINTER(c_int)
-_GtkStyleProperties = POINTER(c_int)
-_WebKitWebNavigationAction = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GParameter = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GtkGradient = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GMountOperation = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-_GSourceCallbackFuncs = POINTER(c_int)
-_PangoFontFace = POINTER(c_int)
-_GtkTargetEntry = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GByteArray = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_JSObject = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
+_GtkRcStyle = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_WebKitNetworkResponse = POINTER(c_void_p)
+_GtkLabel = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GAsyncResult = POINTER(c_void_p)
+_cairo_matrix_t = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_JSValue = POINTER(c_void_p)
+_GtkIconFactory = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GtkContainer = POINTER(c_void_p)
+_PangoItem = POINTER(c_void_p)
+_GClosure = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GMainContext = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GInterface = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_JSContextGroup = POINTER(c_void_p)
+_GFileEnumerator = POINTER(c_void_p)
+_GtkDialog = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GtkCssProvider = POINTER(c_void_p)
+_GtkSymbolicColor = POINTER(c_void_p)
+_void = POINTER(c_void_p)
+_GtkStyleProperties = POINTER(c_void_p)
+_GInputStream = POINTER(c_void_p)
+_GtkIconInfo = POINTER(c_void_p)
+_GAppInfo = POINTER(c_void_p)
+_WebKitWebResource = POINTER(c_void_p)
+_GBytes = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GMainContext = POINTER(c_void_p)
+_GtkTextBuffer = POINTER(c_void_p)
+_GtkTargetList = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkSymbolicColor = POINTER(c_void_p)
+_WebKitWebBackForwardList = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GtkOffscreenWindow = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GAppLaunchContext = POINTER(c_void_p)
+_PangoAttrIterator = POINTER(c_void_p)
+_GFileAttributeMatcher = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GtkIconTheme = POINTER(c_void_p)
+_GtkSelectionData = POINTER(c_void_p)
+_GtkWindowGroup = POINTER(c_void_p)
+_GtkAccelLabel = POINTER(c_void_p)
+_GtkAdjustment = POINTER(c_void_p)
+_JSGlobalContext = POINTER(c_void_p)
+_GApplication = POINTER(c_void_p)
+_GFileMonitor = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_GString = POINTER(c_void_p)
+_GFileAttributeMatcher = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_WebKitHitTestResult = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+_GBoxed = POINTER(c_void_p)
+_GtkPathPriorityType = POINTER(c_void_p)
+_JSClass = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_JSValue = POINTER(c_void_p)
+_GdkPoint = POINTER(c_void_p)
+_GAppInfo = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GSource = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GIOStream = POINTER(c_void_p)
+_GIOStream = POINTER(c_void_p)
+_JSString = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_GOutputStream = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GSource = POINTER(c_void_p)
+_GtkMisc = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_GFileInfo = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_GEmblemedIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_WebKitWebInspector = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GOptionGroup = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_GFileAttributeInfoList = POINTER(c_void_p)
+_GCancellable = POINTER(c_void_p)
+_GtkWidgetClass = POINTER(c_void_p)
+_GtkContainerClass = POINTER(c_void_p)
+_GdkEventKey = POINTER(c_void_p)
+_GtkAdjustment = POINTER(c_void_p)
+_GdkDragContext = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GFileIOStream = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_PangoFontMetrics = POINTER(c_void_p)
+_GCond = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_cairo_surface_t = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_WebKitWebFrame = POINTER(c_void_p)
+_JSString = POINTER(c_void_p)
+_GActionGroup = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_WebKitNetworkRequest = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_GFile = POINTER(c_void_p)
+_PangoLayoutIter = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_PangoLayoutRun = POINTER(c_void_p)
+_GFileInputStream = POINTER(c_void_p)
+_PangoFontset = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_JSPropertyNameArray = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GtkAboutDialog = POINTER(c_void_p)
+_WebKitViewportAttributes = POINTER(c_void_p)
+_JSClass = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_cairo_t = POINTER(c_void_p)
+_GWeakRef = POINTER(c_void_p)
+_GdkPixbufAnimationIter = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GdkEventButton = POINTER(c_void_p)
+_GCancellable = POINTER(c_void_p)
+_CairoPattern = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GMount = POINTER(c_void_p)
+_PangoRectangle = POINTER(c_void_p)
+_GtkAccelGroup = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GFile = POINTER(c_void_p)
+_JSContext = POINTER(c_void_p)
+_GDrive = POINTER(c_void_p)
+_PangoFontsetSimple = POINTER(c_void_p)
+_GtkAllocation = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_PangoLayoutLine = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+_GMutex = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GtkStatusbar = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_WebKitDOMDocument = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GtkPrintOperation = POINTER(c_void_p)
+_GtkThemingEngine = POINTER(c_void_p)
+_GString = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GFileInfo = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GTimeVal = POINTER(c_void_p)
+_GtkInvisible = POINTER(c_void_p)
+_GSourceFuncs = POINTER(c_void_p)
+_JSPropertyNameAccumulator = POINTER(c_void_p)
+_PangoGlyphString = POINTER(c_void_p)
+_GFileIOStream = POINTER(c_void_p)
+_WebKitSecurityOrigin = POINTER(c_void_p)
+_GObjectClass = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_GtkStylePropertyParser = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_SoupMessage = POINTER(c_void_p)
+_WebKitWebDataSource = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GdkPixbufAnimation = POINTER(c_void_p)
+_GEmblem = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_gunichar = POINTER(c_void_p)
+_GVolume = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GPollFD = POINTER(c_void_p)
+_GFileOutputStream = POINTER(c_void_p)
+_JSObject = POINTER(c_void_p)
+_WebKitDOMNode = POINTER(c_void_p)
+_GInputStream = POINTER(c_void_p)
+_GtkStyleProperties = POINTER(c_void_p)
+_WebKitWebNavigationAction = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GParameter = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_GtkGradient = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GMountOperation = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_JSPropertyNameArray = POINTER(c_void_p)
+_GSourceCallbackFuncs = POINTER(c_void_p)
+_PangoFontFace = POINTER(c_void_p)
+_GtkTargetEntry = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_CairoPattern = POINTER(c_void_p)
+_GByteArray = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_JSObject = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -943,92 +943,92 @@ class GFile( gio__GInterface.GInterface):
     """Methods"""
     def enumerate_children_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileEnumerator
-        return GFileEnumerator( obj=libgio.g_file_enumerate_children_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileEnumerator( obj=libgio.g_file_enumerate_children_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def enumerate_children(  self, attributes, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileEnumerator
-        return GFileEnumerator( obj=libgio.g_file_enumerate_children( self._object,attributes,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileEnumerator( obj=libgio.g_file_enumerate_children( self._object,attributes,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def query_info(  self, attributes, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileInfo
-        return GFileInfo(None,None, obj=libgio.g_file_query_info( self._object,attributes,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileInfo(None,None, obj=libgio.g_file_query_info( self._object,attributes,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def make_symbolic_link(  self, symlink_value, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_make_symbolic_link( self._object,symlink_value,cancellable,error )
 
     def copy(  self, destination, flags, cancellable, progress_callback, progress_callback_data, error, ):
         if destination: destination = destination._object
-        else: destination = POINTER(c_int)()
+        else: destination = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if progress_callback: progress_callback = progress_callback._object
-        else: progress_callback = POINTER(c_int)()
+        else: progress_callback = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_copy( self._object,destination,flags,cancellable,progress_callback,progress_callback_data,error )
 
     def set_attribute_int64(  self, attribute, value, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute_int64( self._object,attribute,value,flags,cancellable,error )
 
     def find_enclosing_mount_async(  self, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_find_enclosing_mount_async( self._object,io_priority,cancellable,callback,user_data )
 
     def poll_mountable_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_poll_mountable_finish( self._object,result,error )
 
     def get_child_for_display_name(  self, display_name, error, ):
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFile
-        return GFile(None,None, obj=libgio.g_file_get_child_for_display_name( self._object,display_name,error ) or POINTER(c_int)())
+        return GFile(None,None, obj=libgio.g_file_get_child_for_display_name( self._object,display_name,error ) or POINTER(c_void_p)())
 
     def open_readwrite_async(  self, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_open_readwrite_async( self._object,io_priority,cancellable,callback,user_data )
@@ -1040,18 +1040,18 @@ class GFile( gio__GInterface.GInterface):
 
     def enumerate_children_async(  self, attributes, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_enumerate_children_async( self._object,attributes,flags,io_priority,cancellable,callback,user_data )
 
     def make_directory(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_make_directory( self._object,cancellable,error )
@@ -1063,9 +1063,9 @@ class GFile( gio__GInterface.GInterface):
 
     def poll_mountable(  self, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_poll_mountable( self._object,cancellable,callback,user_data )
@@ -1078,304 +1078,304 @@ class GFile( gio__GInterface.GInterface):
     def get_child(  self, name, ):
 
         from .gio import GFile
-        return GFile(None, obj=libgio.g_file_get_child( self._object,name ) or POINTER(c_int)())
+        return GFile(None, obj=libgio.g_file_get_child( self._object,name ) or POINTER(c_void_p)())
 
     def eject_mountable(  self, flags, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_eject_mountable( self._object,flags,cancellable,callback,user_data )
 
     def mount_mountable(  self, flags, mount_operation, cancellable, callback, user_data, ):
         if mount_operation: mount_operation = mount_operation._object
-        else: mount_operation = POINTER(c_int)()
+        else: mount_operation = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_mount_mountable( self._object,flags,mount_operation,cancellable,callback,user_data )
 
     def open_readwrite_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileIOStream
-        return GFileIOStream( obj=libgio.g_file_open_readwrite_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileIOStream( obj=libgio.g_file_open_readwrite_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def find_enclosing_mount(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GMount
-        return GMount( obj=libgio.g_file_find_enclosing_mount( self._object,cancellable,error ) or POINTER(c_int)())
+        return GMount( obj=libgio.g_file_find_enclosing_mount( self._object,cancellable,error ) or POINTER(c_void_p)())
 
     def replace_readwrite(  self, etag, make_backup, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileIOStream
-        return GFileIOStream( obj=libgio.g_file_replace_readwrite( self._object,etag,make_backup,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileIOStream( obj=libgio.g_file_replace_readwrite( self._object,etag,make_backup,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def set_attribute_uint32(  self, attribute, value, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute_uint32( self._object,attribute,value,flags,cancellable,error )
 
     def query_filesystem_info_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileInfo
-        return GFileInfo(None, obj=libgio.g_file_query_filesystem_info_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileInfo(None, obj=libgio.g_file_query_filesystem_info_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def has_prefix(  self, prefix, ):
         if prefix: prefix = prefix._object
-        else: prefix = POINTER(c_int)()
+        else: prefix = POINTER(c_void_p)()
 
         
         return libgio.g_file_has_prefix( self._object,prefix )
 
     def replace_async(  self, etag, make_backup, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_replace_async( self._object,etag,make_backup,flags,io_priority,cancellable,callback,user_data )
 
     def equal(  self, file2, ):
         if file2: file2 = file2._object
-        else: file2 = POINTER(c_int)()
+        else: file2 = POINTER(c_void_p)()
 
         
         return libgio.g_file_equal( self._object,file2 )
 
     def set_display_name_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFile
-        return GFile(None,None, obj=libgio.g_file_set_display_name_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFile(None,None, obj=libgio.g_file_set_display_name_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def set_attributes_async(  self, info, flags, io_priority, cancellable, callback, user_data, ):
         if info: info = info._object
-        else: info = POINTER(c_int)()
+        else: info = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_set_attributes_async( self._object,info,flags,io_priority,cancellable,callback,user_data )
 
     def copy_attributes(  self, destination, flags, cancellable, error, ):
         if destination: destination = destination._object
-        else: destination = POINTER(c_int)()
+        else: destination = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_copy_attributes( self._object,destination,flags,cancellable,error )
 
     def query_exists(  self, cancellable, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
 
         
         return libgio.g_file_query_exists( self._object,cancellable )
 
     def create_readwrite_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileIOStream
-        return GFileIOStream( obj=libgio.g_file_create_readwrite_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileIOStream( obj=libgio.g_file_create_readwrite_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def query_filesystem_info(  self, attributes, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileInfo
-        return GFileInfo(None, obj=libgio.g_file_query_filesystem_info( self._object,attributes,cancellable,error ) or POINTER(c_int)())
+        return GFileInfo(None, obj=libgio.g_file_query_filesystem_info( self._object,attributes,cancellable,error ) or POINTER(c_void_p)())
 
     def query_info_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileInfo
-        return GFileInfo(None, obj=libgio.g_file_query_info_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileInfo(None, obj=libgio.g_file_query_info_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def set_attribute_string(  self, attribute, value, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute_string( self._object,attribute,value,flags,cancellable,error )
 
     def find_enclosing_mount_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GMount
-        return GMount( obj=libgio.g_file_find_enclosing_mount_finish( self._object,res,error ) or POINTER(c_int)())
+        return GMount( obj=libgio.g_file_find_enclosing_mount_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def create(  self, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileOutputStream
-        return GFileOutputStream( obj=libgio.g_file_create( self._object,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileOutputStream( obj=libgio.g_file_create( self._object,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def query_info_async(  self, attributes, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_query_info_async( self._object,attributes,flags,io_priority,cancellable,callback,user_data )
 
     def load_contents_async(  self, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_load_contents_async( self._object,cancellable,callback,user_data )
 
     def create_readwrite(  self, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileIOStream
-        return GFileIOStream( obj=libgio.g_file_create_readwrite( self._object,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileIOStream( obj=libgio.g_file_create_readwrite( self._object,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def copy_async(  self, destination, flags, io_priority, cancellable, progress_callback, progress_callback_data, callback, user_data, ):
         if destination: destination = destination._object
-        else: destination = POINTER(c_int)()
+        else: destination = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if progress_callback: progress_callback = progress_callback._object
-        else: progress_callback = POINTER(c_int)()
+        else: progress_callback = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_copy_async( self._object,destination,flags,io_priority,cancellable,progress_callback,progress_callback_data,callback,user_data )
 
     def query_writable_namespaces(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileAttributeInfoList
-        return GFileAttributeInfoList( obj=libgio.g_file_query_writable_namespaces( self._object,cancellable,error ) or POINTER(c_int)())
+        return GFileAttributeInfoList( obj=libgio.g_file_query_writable_namespaces( self._object,cancellable,error ) or POINTER(c_void_p)())
 
     def append_to_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileOutputStream
-        return GFileOutputStream( obj=libgio.g_file_append_to_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileOutputStream( obj=libgio.g_file_append_to_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def mount_enclosing_volume(  self, flags, mount_operation, cancellable, callback, user_data, ):
         if mount_operation: mount_operation = mount_operation._object
-        else: mount_operation = POINTER(c_int)()
+        else: mount_operation = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_mount_enclosing_volume( self._object,flags,mount_operation,cancellable,callback,user_data )
 
     def move(  self, destination, flags, cancellable, progress_callback, progress_callback_data, error, ):
         if destination: destination = destination._object
-        else: destination = POINTER(c_int)()
+        else: destination = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if progress_callback: progress_callback = progress_callback._object
-        else: progress_callback = POINTER(c_int)()
+        else: progress_callback = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_move( self._object,destination,flags,cancellable,progress_callback,progress_callback_data,error )
 
     def eject_mountable_with_operation(  self, flags, mount_operation, cancellable, callback, user_data, ):
         if mount_operation: mount_operation = mount_operation._object
-        else: mount_operation = POINTER(c_int)()
+        else: mount_operation = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_eject_mountable_with_operation( self._object,flags,mount_operation,cancellable,callback,user_data )
 
     def replace(  self, etag, make_backup, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileOutputStream
-        return GFileOutputStream( obj=libgio.g_file_replace( self._object,etag,make_backup,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileOutputStream( obj=libgio.g_file_replace( self._object,etag,make_backup,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def read(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileInputStream
-        return GFileInputStream( obj=libgio.g_file_read( self._object,cancellable,error ) or POINTER(c_int)())
+        return GFileInputStream( obj=libgio.g_file_read( self._object,cancellable,error ) or POINTER(c_void_p)())
 
     def replace_contents(  self, contents, length, etag, make_backup, flags, new_etag, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_replace_contents( self._object,contents,length,etag,make_backup,flags,new_etag,cancellable,error )
@@ -1383,7 +1383,7 @@ class GFile( gio__GInterface.GInterface):
     def resolve_relative_path(  self, relative_path, ):
 
         from .gio import GFile
-        return GFile(None, obj=libgio.g_file_resolve_relative_path( self._object,relative_path ) or POINTER(c_int)())
+        return GFile(None, obj=libgio.g_file_resolve_relative_path( self._object,relative_path ) or POINTER(c_void_p)())
 
     def get_path(  self, ):
 
@@ -1392,45 +1392,45 @@ class GFile( gio__GInterface.GInterface):
 
     def trash(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_trash( self._object,cancellable,error )
 
     def unmount_mountable_with_operation_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_unmount_mountable_with_operation_finish( self._object,result,error )
 
     def replace_readwrite_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileIOStream
-        return GFileIOStream( obj=libgio.g_file_replace_readwrite_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileIOStream( obj=libgio.g_file_replace_readwrite_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def append_to(  self, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileOutputStream
-        return GFileOutputStream( obj=libgio.g_file_append_to( self._object,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileOutputStream( obj=libgio.g_file_append_to( self._object,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def make_directory_with_parents(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_make_directory_with_parents( self._object,cancellable,error )
@@ -1438,214 +1438,214 @@ class GFile( gio__GInterface.GInterface):
     def get_parent(  self, ):
 
         from .gio import GFile
-        return GFile( obj=libgio.g_file_get_parent( self._object ) or POINTER(c_int)())
+        return GFile( obj=libgio.g_file_get_parent( self._object ) or POINTER(c_void_p)())
 
     def create_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileOutputStream
-        return GFileOutputStream( obj=libgio.g_file_create_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileOutputStream( obj=libgio.g_file_create_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def mount_enclosing_volume_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_mount_enclosing_volume_finish( self._object,result,error )
 
     def query_file_type(  self, flags, cancellable, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
 
         
         return libgio.g_file_query_file_type( self._object,flags,cancellable )
 
     def eject_mountable_with_operation_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_eject_mountable_with_operation_finish( self._object,result,error )
 
     def set_attributes_from_info(  self, info, flags, cancellable, error, ):
         if info: info = info._object
-        else: info = POINTER(c_int)()
+        else: info = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attributes_from_info( self._object,info,flags,cancellable,error )
 
     def read_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileInputStream
-        return GFileInputStream( obj=libgio.g_file_read_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileInputStream( obj=libgio.g_file_read_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def create_async(  self, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_create_async( self._object,flags,io_priority,cancellable,callback,user_data )
 
     def get_relative_path(  self, descendant, ):
         if descendant: descendant = descendant._object
-        else: descendant = POINTER(c_int)()
+        else: descendant = POINTER(c_void_p)()
 
         
         return libgio.g_file_get_relative_path( self._object,descendant )
 
     def stop_mountable_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_stop_mountable_finish( self._object,result,error )
 
     def monitor_file(  self, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileMonitor
-        return GFileMonitor( obj=libgio.g_file_monitor_file( self._object,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileMonitor( obj=libgio.g_file_monitor_file( self._object,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def load_contents(  self, cancellable, contents, length, etag_out, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_load_contents( self._object,cancellable,contents,length,etag_out,error )
 
     def delete(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_delete( self._object,cancellable,error )
 
     def start_mountable_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_start_mountable_finish( self._object,result,error )
 
     def replace_readwrite_async(  self, etag, make_backup, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_replace_readwrite_async( self._object,etag,make_backup,flags,io_priority,cancellable,callback,user_data )
 
     def load_contents_finish(  self, res, contents, length, etag_out, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_load_contents_finish( self._object,res,contents,length,etag_out,error )
 
     def eject_mountable_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_eject_mountable_finish( self._object,result,error )
 
     def replace_contents_finish(  self, res, new_etag, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_replace_contents_finish( self._object,res,new_etag,error )
 
     def create_readwrite_async(  self, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_create_readwrite_async( self._object,flags,io_priority,cancellable,callback,user_data )
 
     def open_readwrite(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileIOStream
-        return GFileIOStream( obj=libgio.g_file_open_readwrite( self._object,cancellable,error ) or POINTER(c_int)())
+        return GFileIOStream( obj=libgio.g_file_open_readwrite( self._object,cancellable,error ) or POINTER(c_void_p)())
 
     def monitor_directory(  self, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileMonitor
-        return GFileMonitor( obj=libgio.g_file_monitor_directory( self._object,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileMonitor( obj=libgio.g_file_monitor_directory( self._object,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def dup(  self, ):
 
         from .gio import GFile
-        return GFile( obj=libgio.g_file_dup( self._object ) or POINTER(c_int)())
+        return GFile( obj=libgio.g_file_dup( self._object ) or POINTER(c_void_p)())
 
     def set_attribute_int32(  self, attribute, value, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute_int32( self._object,attribute,value,flags,cancellable,error )
 
     def monitor(  self, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileMonitor
-        return GFileMonitor( obj=libgio.g_file_monitor( self._object,flags,cancellable,error ) or POINTER(c_int)())
+        return GFileMonitor( obj=libgio.g_file_monitor( self._object,flags,cancellable,error ) or POINTER(c_void_p)())
 
     def replace_contents_async(  self, contents, length, etag, make_backup, flags, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_replace_contents_async( self._object,contents,length,etag,make_backup,flags,cancellable,callback,user_data )
@@ -1657,140 +1657,140 @@ class GFile( gio__GInterface.GInterface):
 
     def set_attribute_uint64(  self, attribute, value, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute_uint64( self._object,attribute,value,flags,cancellable,error )
 
     def unmount_mountable_with_operation(  self, flags, mount_operation, cancellable, callback, user_data, ):
         if mount_operation: mount_operation = mount_operation._object
-        else: mount_operation = POINTER(c_int)()
+        else: mount_operation = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_unmount_mountable_with_operation( self._object,flags,mount_operation,cancellable,callback,user_data )
 
     def append_to_async(  self, flags, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_append_to_async( self._object,flags,io_priority,cancellable,callback,user_data )
 
     def load_partial_contents_finish(  self, res, contents, length, etag_out, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_load_partial_contents_finish( self._object,res,contents,length,etag_out,error )
 
     def set_display_name(  self, display_name, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFile
-        return GFile(None,None,None, obj=libgio.g_file_set_display_name( self._object,display_name,cancellable,error ) or POINTER(c_int)())
+        return GFile(None,None,None, obj=libgio.g_file_set_display_name( self._object,display_name,cancellable,error ) or POINTER(c_void_p)())
 
     def copy_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_copy_finish( self._object,res,error )
 
     def replace_finish(  self, res, error, ):
         if res: res = res._object
-        else: res = POINTER(c_int)()
+        else: res = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileOutputStream
-        return GFileOutputStream( obj=libgio.g_file_replace_finish( self._object,res,error ) or POINTER(c_int)())
+        return GFileOutputStream( obj=libgio.g_file_replace_finish( self._object,res,error ) or POINTER(c_void_p)())
 
     def has_parent(  self, parent, ):
         if parent: parent = parent._object
-        else: parent = POINTER(c_int)()
+        else: parent = POINTER(c_void_p)()
 
         
         return libgio.g_file_has_parent( self._object,parent )
 
     def query_settable_attributes(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFileAttributeInfoList
-        return GFileAttributeInfoList( obj=libgio.g_file_query_settable_attributes( self._object,cancellable,error ) or POINTER(c_int)())
+        return GFileAttributeInfoList( obj=libgio.g_file_query_settable_attributes( self._object,cancellable,error ) or POINTER(c_void_p)())
 
     def read_async(  self, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_read_async( self._object,io_priority,cancellable,callback,user_data )
 
     def set_display_name_async(  self, display_name, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_set_display_name_async( self._object,display_name,io_priority,cancellable,callback,user_data )
 
     def load_partial_contents_async(  self, cancellable, read_more_callback, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if read_more_callback: read_more_callback = read_more_callback._object
-        else: read_more_callback = POINTER(c_int)()
+        else: read_more_callback = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_load_partial_contents_async( self._object,cancellable,read_more_callback,callback,user_data )
 
     def unmount_mountable_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_unmount_mountable_finish( self._object,result,error )
 
     def query_default_handler(  self, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gobject import GAppInfo
-        return GAppInfo( obj=libgio.g_file_query_default_handler( self._object,cancellable,error ) or POINTER(c_int)())
+        return GAppInfo( obj=libgio.g_file_query_default_handler( self._object,cancellable,error ) or POINTER(c_void_p)())
 
     def mount_mountable_finish(  self, result, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         from .gio import GFile
-        return GFile(None,None, obj=libgio.g_file_mount_mountable_finish( self._object,result,error ) or POINTER(c_int)())
+        return GFile(None,None, obj=libgio.g_file_mount_mountable_finish( self._object,result,error ) or POINTER(c_void_p)())
 
     def supports_thread_contexts(  self, ):
 
@@ -1799,29 +1799,29 @@ class GFile( gio__GInterface.GInterface):
 
     def set_attribute(  self, attribute, type, value_p, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute( self._object,attribute,type,value_p,flags,cancellable,error )
 
     def stop_mountable(  self, flags, mount_operation, cancellable, callback, user_data, ):
         if mount_operation: mount_operation = mount_operation._object
-        else: mount_operation = POINTER(c_int)()
+        else: mount_operation = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_stop_mountable( self._object,flags,mount_operation,cancellable,callback,user_data )
 
     def set_attribute_byte_string(  self, attribute, value, flags, cancellable, error, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attribute_byte_string( self._object,attribute,value,flags,cancellable,error )
@@ -1833,31 +1833,31 @@ class GFile( gio__GInterface.GInterface):
 
     def start_mountable(  self, flags, start_operation, cancellable, callback, user_data, ):
         if start_operation: start_operation = start_operation._object
-        else: start_operation = POINTER(c_int)()
+        else: start_operation = POINTER(c_void_p)()
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_start_mountable( self._object,flags,start_operation,cancellable,callback,user_data )
 
     def set_attributes_finish(  self, result, info, error, ):
         if result: result = result._object
-        else: result = POINTER(c_int)()
+        else: result = POINTER(c_void_p)()
         if info: info = info._object
-        else: info = POINTER(c_int)()
+        else: info = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
 
         
         return libgio.g_file_set_attributes_finish( self._object,result,info,error )
 
     def unmount_mountable(  self, flags, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_unmount_mountable( self._object,flags,cancellable,callback,user_data )
@@ -1869,9 +1869,9 @@ class GFile( gio__GInterface.GInterface):
 
     def query_filesystem_info_async(  self, attributes, io_priority, cancellable, callback, user_data, ):
         if cancellable: cancellable = cancellable._object
-        else: cancellable = POINTER(c_int)()
+        else: cancellable = POINTER(c_void_p)()
         if callback: callback = callback._object
-        else: callback = POINTER(c_int)()
+        else: callback = POINTER(c_void_p)()
 
         
         libgio.g_file_query_filesystem_info_async( self._object,attributes,io_priority,cancellable,callback,user_data )
@@ -1880,21 +1880,21 @@ class GFile( gio__GInterface.GInterface):
     def parse_name( parse_name,):
         from .gio import GFile
         return GFile( obj=    libgio.g_file_parse_name(parse_name, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def new_for_path( path,):
         from .gio import GFile
         return GFile( obj=    libgio.g_file_new_for_path(path, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def new_tmp( tmpl, iostream, error,):
         if iostream: iostream = iostream._object
-        else: iostream = POINTER(c_int)()
+        else: iostream = POINTER(c_void_p)()
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
         from .gio import GFile
         return GFile( obj=    libgio.g_file_new_tmp(tmpl, iostream, error, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def hash( file,):
         
@@ -1904,9 +1904,9 @@ class GFile( gio__GInterface.GInterface):
     def new_for_commandline_arg( arg,):
         from .gio import GFile
         return GFile( obj=    libgio.g_file_new_for_commandline_arg(arg, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def new_for_uri( uri,):
         from .gio import GFile
         return GFile( obj=    libgio.g_file_new_for_uri(uri, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())

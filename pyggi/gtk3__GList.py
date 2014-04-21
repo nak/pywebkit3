@@ -52,30 +52,30 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GError = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
+_GList = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
 """Enumerations"""
 
 try:
@@ -236,19 +236,19 @@ class GList( object):
     def copy(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.g_list_copy( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.g_list_copy( self._object ) or POINTER(c_void_p)())
 
     def remove_all(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_remove_all( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_remove_all( self._object,data ) or POINTER(c_void_p)())
 
     def sort_with_data(  self, compare_func, user_data, ):
         if compare_func: compare_func = compare_func._object
-        else: compare_func = POINTER(c_int)()
+        else: compare_func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgtk3.g_list_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_int)())
+        return GList(None,None, obj=libgtk3.g_list_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_void_p)())
 
     def index(  self, data, ):
 
@@ -258,7 +258,7 @@ class GList( object):
     def nth_prev(  self, n, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_nth_prev( self._object,n ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_nth_prev( self._object,n ) or POINTER(c_void_p)())
 
     def length(  self, ):
 
@@ -268,39 +268,39 @@ class GList( object):
     def insert(  self, data, position, ):
 
         from .gobject import GList
-        return GList(None,None, obj=libgtk3.g_list_insert( self._object,data,position ) or POINTER(c_int)())
+        return GList(None,None, obj=libgtk3.g_list_insert( self._object,data,position ) or POINTER(c_void_p)())
 
     def prepend(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_prepend( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_prepend( self._object,data ) or POINTER(c_void_p)())
 
     def reverse(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.g_list_reverse( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.g_list_reverse( self._object ) or POINTER(c_void_p)())
 
     def find(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_find( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_find( self._object,data ) or POINTER(c_void_p)())
 
     def remove(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_remove( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_remove( self._object,data ) or POINTER(c_void_p)())
 
     def delete_link(  self, link_, ):
         if link_: link_ = link_._object
-        else: link_ = POINTER(c_int)()
+        else: link_ = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_delete_link( self._object,link_ ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_delete_link( self._object,link_ ) or POINTER(c_void_p)())
 
     def append(  self, data, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_append( self._object,data ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_append( self._object,data ) or POINTER(c_void_p)())
 
     def free(  self, ):
 
@@ -309,10 +309,10 @@ class GList( object):
 
     def remove_link(  self, llink, ):
         if llink: llink = llink._object
-        else: llink = POINTER(c_int)()
+        else: llink = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_remove_link( self._object,llink ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_remove_link( self._object,llink ) or POINTER(c_void_p)())
 
     def nth_data(  self, n, ):
 
@@ -322,28 +322,28 @@ class GList( object):
     def nth(  self, n, ):
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_nth( self._object,n ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_nth( self._object,n ) or POINTER(c_void_p)())
 
     def insert_sorted(  self, data, func, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgtk3.g_list_insert_sorted( self._object,data,func ) or POINTER(c_int)())
+        return GList(None,None, obj=libgtk3.g_list_insert_sorted( self._object,data,func ) or POINTER(c_void_p)())
 
     def foreach(  self, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         
         libgtk3.g_list_foreach( self._object,func,user_data )
 
     def concat(  self, list2, ):
         if list2: list2 = list2._object
-        else: list2 = POINTER(c_int)()
+        else: list2 = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_concat( self._object,list2 ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_concat( self._object,list2 ) or POINTER(c_void_p)())
 
     def free_1(  self, ):
 
@@ -352,27 +352,27 @@ class GList( object):
 
     def position(  self, llink, ):
         if llink: llink = llink._object
-        else: llink = POINTER(c_int)()
+        else: llink = POINTER(c_void_p)()
 
         
         return libgtk3.g_list_position( self._object,llink )
 
     def find_custom(  self, data, func, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgtk3.g_list_find_custom( self._object,data,func ) or POINTER(c_int)())
+        return GList(None,None, obj=libgtk3.g_list_find_custom( self._object,data,func ) or POINTER(c_void_p)())
 
     def last(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.g_list_last( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.g_list_last( self._object ) or POINTER(c_void_p)())
 
     def first(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.g_list_first( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.g_list_first( self._object ) or POINTER(c_void_p)())
 
     def free_full(  self, free_func, ):
 
@@ -381,27 +381,27 @@ class GList( object):
 
     def insert_sorted_with_data(  self, data, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None,None, obj=libgtk3.g_list_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_int)())
+        return GList(None,None,None, obj=libgtk3.g_list_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_void_p)())
 
     def insert_before(  self, sibling, data, ):
         if sibling: sibling = sibling._object
-        else: sibling = POINTER(c_int)()
+        else: sibling = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None,None, obj=libgtk3.g_list_insert_before( self._object,sibling,data ) or POINTER(c_int)())
+        return GList(None,None, obj=libgtk3.g_list_insert_before( self._object,sibling,data ) or POINTER(c_void_p)())
 
     def sort(  self, compare_func, ):
         if compare_func: compare_func = compare_func._object
-        else: compare_func = POINTER(c_int)()
+        else: compare_func = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList(None, obj=libgtk3.g_list_sort( self._object,compare_func ) or POINTER(c_int)())
+        return GList(None, obj=libgtk3.g_list_sort( self._object,compare_func ) or POINTER(c_void_p)())
 
     @staticmethod
     def alloc():
         from .gobject import GList
         return GList( obj=    libgtk3.g_list_alloc()
- or POINTER(c_int)())
+ or POINTER(c_void_p)())

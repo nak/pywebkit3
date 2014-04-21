@@ -28,7 +28,15 @@ color_block = None
 #must get the object only when javascript has been processed,
 #so setup callback 
 env = webview.get_env()
+
+def tryit(*args):
+    window = env.get_jsobject("window")
+    window.alert("Test of setTimeout callback into Python")
+
 def import_element():
+    
+    window = env.get_jsobject("window")
+    window.setTimeout( tryit ,100)
     global color_block
     color_block = env.get_jsobject( "color_block", can_call=False)
     assert(color_block)

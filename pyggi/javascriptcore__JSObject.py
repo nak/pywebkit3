@@ -49,212 +49,213 @@ from .gtk3_types import *
 from .javascriptcore_types import *
 import logging
             
-    
+OPAQUE_PTR = POINTER(c_void_p)
+NULL = OPAQUE_PTR()
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_int)
-__GdkGeometry = POINTER(c_int)
-_WebKitWebPolicyDecision = POINTER(c_int)
-_WebKitNetworkResponse = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkBin = POINTER(c_int)
-__GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_PangoEngineShape = POINTER(c_int)
-__GtkRegionFlags = POINTER(c_int)
-__WebKitDOMNode = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-__cairo_font_options_t = POINTER(c_int)
-__JSValue = POINTER(c_int)
-_JSContext = POINTER(c_int)
-_GtkIconFactory = POINTER(c_int)
-__GdkAtom = POINTER(c_int)
-_GMainLoop = POINTER(c_int)
-__GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-__GtkWidgetPath = POINTER(c_int)
-_GtkContainer = POINTER(c_int)
-_PangoItem = POINTER(c_int)
-__GClosure = POINTER(c_int)
-_GtkAboutDialog = POINTER(c_int)
-__GMainContext = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-__GtkStyleProvider = POINTER(c_int)
-_GtkScrolledWindow = POINTER(c_int)
-_GtkDialog = POINTER(c_int)
-__WebKitWebWindowFeatures = POINTER(c_int)
-_JSObject = POINTER(c_int)
-_GBytes = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GMainContext = POINTER(c_int)
-_GBoxed = POINTER(c_int)
-__GtkTextBuffer = POINTER(c_int)
-_GtkTargetList = POINTER(c_int)
-__WebKitWebSettings = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-__GObject = POINTER(c_int)
-__PangoLayout = POINTER(c_int)
-_WebKitWebBackForwardList = POINTER(c_int)
-_GtkOffscreenWindow = POINTER(c_int)
-__GParamSpec = POINTER(c_int)
-__PangoAttrIterator = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_GtkAdjustment = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_GApplication = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_GString = POINTER(c_int)
-__PangoContext = POINTER(c_int)
-__JSPropertyNameArray = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-__PangoFont = POINTER(c_int)
-__GtkPathPriorityType = POINTER(c_int)
-__JSClass = POINTER(c_int)
-__WebKitWebHistoryItem = POINTER(c_int)
-_JSValue = POINTER(c_int)
-__GtkSettings = POINTER(c_int)
-_GSource = POINTER(c_int)
-__PangoFontMap = POINTER(c_int)
-__JSString = POINTER(c_int)
-__PangoAttrList = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-__GSource = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-__PangoAnalysis = POINTER(c_int)
-__GMutex = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-__GdkCursor = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_WebKitWebInspector = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GOptionGroup = POINTER(c_int)
-__GScanner = POINTER(c_int)
-__GtkWidgetClass = POINTER(c_int)
-__GtkContainerClass = POINTER(c_int)
-__GdkEventKey = POINTER(c_int)
-__GtkAdjustment = POINTER(c_int)
-_GdkDragContext = POINTER(c_int)
-_GtkAssistant = POINTER(c_int)
-__GdkDisplay = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-__GCond = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-__cairo_surface_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_WebKitWebFrame = POINTER(c_int)
-_JSString = POINTER(c_int)
-__GActionGroup = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-__WebKitNetworkRequest = POINTER(c_int)
-__GdkWindow = POINTER(c_int)
-__PangoFontFamily = POINTER(c_int)
-__JSContextGroup = POINTER(c_int)
-__GPollFD = POINTER(c_int)
-__cairo_region_t = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-__PangoFontDescription = POINTER(c_int)
-__GtkBorder = POINTER(c_int)
-__GError = POINTER(c_int)
-__PangoCoverage = POINTER(c_int)
-_WebKitViewportAttributes = POINTER(c_int)
-_JSClass = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-__cairo_t = POINTER(c_int)
-__GWeakRef = POINTER(c_int)
-__GdkVisual = POINTER(c_int)
-__GdkEventButton = POINTER(c_int)
-__GCancellable = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-__PangoRectangle = POINTER(c_int)
-__GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-_GPollFD = POINTER(c_int)
-__GtkIconSource = POINTER(c_int)
-__GFile = POINTER(c_int)
-__JSContext = POINTER(c_int)
-_PangoFontsetSimple = POINTER(c_int)
-__GtkAllocation = POINTER(c_int)
-__GtkWidget = POINTER(c_int)
-_PangoLayoutLine = POINTER(c_int)
-__GtkIconSet = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-__PangoTabArray = POINTER(c_int)
-_WebKitHitTestResult = POINTER(c_int)
-__GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_WebKitDOMDocument = POINTER(c_int)
-__PangoMatrix = POINTER(c_int)
-__GtkPrintOperation = POINTER(c_int)
-__GString = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-__GtkTargetList = POINTER(c_int)
-__GList = POINTER(c_int)
-__WebKitWebView = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-__GdkRGBA = POINTER(c_int)
-__GTimeVal = POINTER(c_int)
-_GtkInvisible = POINTER(c_int)
-__GSourceFuncs = POINTER(c_int)
-__JSPropertyNameAccumulator = POINTER(c_int)
-__PangoGlyphString = POINTER(c_int)
-__JSGlobalContext = POINTER(c_int)
-_WebKitSecurityOrigin = POINTER(c_int)
-__GObjectClass = POINTER(c_int)
-__GSList = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-__GdkWindowAttr = POINTER(c_int)
-_SoupMessage = POINTER(c_int)
-_WebKitWebDataSource = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-__GdkColor = POINTER(c_int)
-_JSContextGroup = POINTER(c_int)
-__GdkRectangle = POINTER(c_int)
-__PangoLanguage = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-__gunichar = POINTER(c_int)
-__GdkWMDecoration = POINTER(c_int)
-__PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-__JSObject = POINTER(c_int)
-__GdkDragContext = POINTER(c_int)
-_WebKitWebNavigationAction = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-__GParameter = POINTER(c_int)
-__GtkStyle = POINTER(c_int)
-__GIcon = POINTER(c_int)
-__GtkWindow = POINTER(c_int)
-_PangoLayoutRun = POINTER(c_int)
-__cairo_pattern_t = POINTER(c_int)
-__GdkPixbuf = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-__GSourceCallbackFuncs = POINTER(c_int)
-__PangoFontFace = POINTER(c_int)
-__GtkTargetEntry = POINTER(c_int)
-__GtkApplication = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_GByteArray = POINTER(c_int)
-__GdkScreen = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-__GdkDevice = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
-_JSPropertyNameAccumulator = POINTER(c_int)
+__GtkRcStyle = OPAQUE_PTR
+__GdkGeometry = OPAQUE_PTR
+_WebKitWebPolicyDecision = OPAQUE_PTR
+_WebKitNetworkResponse = OPAQUE_PTR
+_GdkPixbuf = OPAQUE_PTR
+_GtkBin = OPAQUE_PTR
+__GtkRequisition = OPAQUE_PTR
+_GtkRcStyle = OPAQUE_PTR
+_PangoEngineShape = OPAQUE_PTR
+__GtkRegionFlags = OPAQUE_PTR
+__WebKitDOMNode = OPAQUE_PTR
+_GtkWindow = OPAQUE_PTR
+__cairo_font_options_t = OPAQUE_PTR
+__JSValue = OPAQUE_PTR
+_JSContext = OPAQUE_PTR
+_GtkIconFactory = OPAQUE_PTR
+__GdkAtom = OPAQUE_PTR
+_GMainLoop = OPAQUE_PTR
+__GdkTimeCoord = OPAQUE_PTR
+_GdkColor = OPAQUE_PTR
+__GtkWidgetPath = OPAQUE_PTR
+_GtkContainer = OPAQUE_PTR
+_PangoItem = OPAQUE_PTR
+__GClosure = OPAQUE_PTR
+_GtkAboutDialog = OPAQUE_PTR
+__GMainContext = OPAQUE_PTR
+_GdkDisplay = OPAQUE_PTR
+__GtkStyleProvider = OPAQUE_PTR
+_GtkScrolledWindow = OPAQUE_PTR
+_GtkDialog = OPAQUE_PTR
+__WebKitWebWindowFeatures = OPAQUE_PTR
+_JSObject = OPAQUE_PTR
+_GBytes = OPAQUE_PTR
+_GScanner = OPAQUE_PTR
+_PangoFont = OPAQUE_PTR
+_GtkStyleContext = OPAQUE_PTR
+_GMainContext = OPAQUE_PTR
+_GBoxed = OPAQUE_PTR
+__GtkTextBuffer = OPAQUE_PTR
+_GtkTargetList = OPAQUE_PTR
+__WebKitWebSettings = OPAQUE_PTR
+_GdkAppLaunchContext = OPAQUE_PTR
+__GObject = OPAQUE_PTR
+__PangoLayout = OPAQUE_PTR
+_WebKitWebBackForwardList = OPAQUE_PTR
+_GtkOffscreenWindow = OPAQUE_PTR
+__GParamSpec = OPAQUE_PTR
+__PangoAttrIterator = OPAQUE_PTR
+_GtkRequisition = OPAQUE_PTR
+_GtkIconSet = OPAQUE_PTR
+_GtkSelectionData = OPAQUE_PTR
+_GtkWindowGroup = OPAQUE_PTR
+_GtkAdjustment = OPAQUE_PTR
+_JSGlobalContext = OPAQUE_PTR
+_GApplication = OPAQUE_PTR
+_PangoLogAttr = OPAQUE_PTR
+_GString = OPAQUE_PTR
+__PangoContext = OPAQUE_PTR
+__JSPropertyNameArray = OPAQUE_PTR
+_WebKitWebSettings = OPAQUE_PTR
+__PangoFont = OPAQUE_PTR
+__GtkPathPriorityType = OPAQUE_PTR
+__JSClass = OPAQUE_PTR
+__WebKitWebHistoryItem = OPAQUE_PTR
+_JSValue = OPAQUE_PTR
+__GtkSettings = OPAQUE_PTR
+_GSource = OPAQUE_PTR
+__PangoFontMap = OPAQUE_PTR
+__JSString = OPAQUE_PTR
+__PangoAttrList = OPAQUE_PTR
+_PangoMatrix = OPAQUE_PTR
+__GSource = OPAQUE_PTR
+_GtkApplication = OPAQUE_PTR
+__PangoAnalysis = OPAQUE_PTR
+__GMutex = OPAQUE_PTR
+_PangoFontDescription = OPAQUE_PTR
+_GdkGeometry = OPAQUE_PTR
+__GdkCursor = OPAQUE_PTR
+_GtkBorder = OPAQUE_PTR
+_WebKitWebInspector = OPAQUE_PTR
+_GdkWindowAttr = OPAQUE_PTR
+_GOptionGroup = OPAQUE_PTR
+__GScanner = OPAQUE_PTR
+__GtkWidgetClass = OPAQUE_PTR
+__GtkContainerClass = OPAQUE_PTR
+__GdkEventKey = OPAQUE_PTR
+__GtkAdjustment = OPAQUE_PTR
+_GdkDragContext = OPAQUE_PTR
+_GtkAssistant = OPAQUE_PTR
+__GdkDisplay = OPAQUE_PTR
+_GtkWidgetPath = OPAQUE_PTR
+_GdkScreen = OPAQUE_PTR
+_PangoFontMetrics = OPAQUE_PTR
+__GCond = OPAQUE_PTR
+_GtkIconSource = OPAQUE_PTR
+__cairo_surface_t = OPAQUE_PTR
+_GdkVisual = OPAQUE_PTR
+_PangoFontMap = OPAQUE_PTR
+_GSList = OPAQUE_PTR
+_WebKitWebFrame = OPAQUE_PTR
+_JSString = OPAQUE_PTR
+__GActionGroup = OPAQUE_PTR
+_GtkWidget = OPAQUE_PTR
+__WebKitNetworkRequest = OPAQUE_PTR
+__GdkWindow = OPAQUE_PTR
+__PangoFontFamily = OPAQUE_PTR
+__JSContextGroup = OPAQUE_PTR
+__GPollFD = OPAQUE_PTR
+__cairo_region_t = OPAQUE_PTR
+_PangoFontset = OPAQUE_PTR
+_GdkWindow = OPAQUE_PTR
+__PangoFontDescription = OPAQUE_PTR
+__GtkBorder = OPAQUE_PTR
+__GError = OPAQUE_PTR
+__PangoCoverage = OPAQUE_PTR
+_WebKitViewportAttributes = OPAQUE_PTR
+_JSClass = OPAQUE_PTR
+_WebKitWebHistoryItem = OPAQUE_PTR
+_PangoFontFamily = OPAQUE_PTR
+__cairo_t = OPAQUE_PTR
+__GWeakRef = OPAQUE_PTR
+__GdkVisual = OPAQUE_PTR
+__GdkEventButton = OPAQUE_PTR
+__GCancellable = OPAQUE_PTR
+_GdkDevice = OPAQUE_PTR
+__PangoRectangle = OPAQUE_PTR
+__GtkAccelGroup = OPAQUE_PTR
+_GObject = OPAQUE_PTR
+_GPollFD = OPAQUE_PTR
+__GtkIconSource = OPAQUE_PTR
+__GFile = OPAQUE_PTR
+__JSContext = OPAQUE_PTR
+_PangoFontsetSimple = OPAQUE_PTR
+__GtkAllocation = OPAQUE_PTR
+__GtkWidget = OPAQUE_PTR
+_PangoLayoutLine = OPAQUE_PTR
+__GtkIconSet = OPAQUE_PTR
+_WebKitWebView = OPAQUE_PTR
+__PangoTabArray = OPAQUE_PTR
+_WebKitHitTestResult = OPAQUE_PTR
+__GValue = OPAQUE_PTR
+_GdkDeviceManager = OPAQUE_PTR
+_GdkCursor = OPAQUE_PTR
+_WebKitDOMDocument = OPAQUE_PTR
+__PangoMatrix = OPAQUE_PTR
+__GtkPrintOperation = OPAQUE_PTR
+__GString = OPAQUE_PTR
+_PangoContext = OPAQUE_PTR
+__GtkTargetList = OPAQUE_PTR
+__GList = OPAQUE_PTR
+__WebKitWebView = OPAQUE_PTR
+_WebKitWebWindowFeatures = OPAQUE_PTR
+_PangoCoverage = OPAQUE_PTR
+_GParamSpec = OPAQUE_PTR
+_GList = OPAQUE_PTR
+__GdkRGBA = OPAQUE_PTR
+__GTimeVal = OPAQUE_PTR
+_GtkInvisible = OPAQUE_PTR
+__GSourceFuncs = OPAQUE_PTR
+__JSPropertyNameAccumulator = OPAQUE_PTR
+__PangoGlyphString = OPAQUE_PTR
+__JSGlobalContext = OPAQUE_PTR
+_WebKitSecurityOrigin = OPAQUE_PTR
+__GObjectClass = OPAQUE_PTR
+__GSList = OPAQUE_PTR
+_PangoAnalysis = OPAQUE_PTR
+__GdkWindowAttr = OPAQUE_PTR
+_SoupMessage = OPAQUE_PTR
+_WebKitWebDataSource = OPAQUE_PTR
+_GdkAtom = OPAQUE_PTR
+__GdkColor = OPAQUE_PTR
+_JSContextGroup = OPAQUE_PTR
+__GdkRectangle = OPAQUE_PTR
+__PangoLanguage = OPAQUE_PTR
+_PangoAttrList = OPAQUE_PTR
+__gunichar = OPAQUE_PTR
+__GdkWMDecoration = OPAQUE_PTR
+__PangoLogAttr = OPAQUE_PTR
+_PangoLayout = OPAQUE_PTR
+_JSPropertyNameArray = OPAQUE_PTR
+__JSObject = OPAQUE_PTR
+__GdkDragContext = OPAQUE_PTR
+_WebKitWebNavigationAction = OPAQUE_PTR
+_GtkStyle = OPAQUE_PTR
+__GParameter = OPAQUE_PTR
+__GtkStyle = OPAQUE_PTR
+__GIcon = OPAQUE_PTR
+__GtkWindow = OPAQUE_PTR
+_PangoLayoutRun = OPAQUE_PTR
+__cairo_pattern_t = OPAQUE_PTR
+__GdkPixbuf = OPAQUE_PTR
+_WebKitGeolocationPolicyDecision = OPAQUE_PTR
+_GtkSettings = OPAQUE_PTR
+__GSourceCallbackFuncs = OPAQUE_PTR
+__PangoFontFace = OPAQUE_PTR
+__GtkTargetEntry = OPAQUE_PTR
+__GtkApplication = OPAQUE_PTR
+_GtkClipboard = OPAQUE_PTR
+_GByteArray = OPAQUE_PTR
+__GdkScreen = OPAQUE_PTR
+_PangoLanguage = OPAQUE_PTR
+__GdkDevice = OPAQUE_PTR
+_PangoTabArray = OPAQUE_PTR
+_JSPropertyNameAccumulator = OPAQUE_PTR
 
 from .javascriptcore_enums import *
 """Enumerations"""
@@ -349,7 +350,7 @@ libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [_JSContext,_JSObject,un
 libjavascriptcore.JSPropertyNameArrayRetain.restype = _JSPropertyNameArray
 libjavascriptcore.JSPropertyNameArrayRetain.argtypes = [_JSPropertyNameArray]
 libjavascriptcore.JSClassRelease.argtypes = [_JSObject,_JSClass]
-libjavascriptcore.JSObjectGetPropertyAtIndex.restype = POINTER(c_int)
+libjavascriptcore.JSObjectGetPropertyAtIndex.restype = OPAQUE_PTR
 libjavascriptcore.JSObjectGetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue]
 libjavascriptcore.JSObjectMakeFunctionWithCallback.restype = _JSObject
 libjavascriptcore.JSObjectMakeFunctionWithCallback.argtypes = [_JSContext,_JSString,JSObjectCallAsFunctionCallback]
@@ -368,6 +369,7 @@ libjavascriptcore.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString
 class JSObject( JSValue ):
     """Class JSObject Constructors"""
     def __init__(self, obj , context):
+        #assert( isinstance( obj, OPAQUE_PTR))
         JSValue.__init__(self, obj, context)
         
     """Methods"""
@@ -375,7 +377,7 @@ class JSObject( JSValue ):
         if propertyName: propertyName = propertyName._object()
         else: propertyName = JSValue.MakeNull(self._context)
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
 
         from .javascriptcore import JSValue, JSContext
         if isinstance( self, JSContext):
@@ -393,18 +395,18 @@ class JSObject( JSValue ):
 
     def JSPropertyNameAccumulatorAddName(  self, accumulator, propertyName, ):
         if accumulator: accumulator = accumulator._object()
-        else: accumulator = POINTER(c_int)()
+        else: accumulator = OPAQUE_PTR()
         if propertyName: propertyName = propertyName._object()
-        else: propertyName = POINTER(c_int)()
+        else: propertyName = OPAQUE_PTR()
         if self._object():
 
             libjavascriptcore.JSPropertyNameAccumulatorAddName( self._object(),accumulator,propertyName )
 
     def SetPrototype(  self, ctx, value, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if value: value = value._object()
-        else: value = POINTER(c_int)()
+        else: value = OPAQUE_PTR()
 
         
         if self._object():
@@ -412,26 +414,26 @@ class JSObject( JSValue ):
 
     def HasProperty(  self, ctx, propertyName, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if propertyName: propertyName = propertyName._object()
-        else: propertyName = POINTER(c_int)()
+        else: propertyName = OPAQUE_PTR()
 
         if self._object():
             return libjavascriptcore.JSObjectHasProperty( ctx,self._object(),propertyName )
 
     def GetPrototype(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
 
         from .javascriptcore import JSValue
         if self._object():
-            return JSValue( obj=libjavascriptcore.JSObjectGetPrototype( ctx,self._object() )  or POINTER(c_int)())
+            return JSValue( obj=libjavascriptcore.JSObjectGetPrototype( ctx,self._object() )  or OPAQUE_PTR())
 
     def CallAsConstructor(  self, ctx, argumentCount, arguments, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
 
         from .javascriptcore import JSObject
         if argumentCount.value:
@@ -444,22 +446,22 @@ class JSObject( JSValue ):
         if self._object():
             return JSObject(obj=libjavascriptcore.JSObjectCallAsConstructor\
                             ( ctx,self._object(),argumentCount.value,
-                              cast(args, POINTER(c_int)),exception ),
+                              cast(args, OPAQUE_PTR),exception ),
                             context = self._context)
         
     def JSPropertyNameArrayRelease(  self, array, ):
         if array: array = array._object()
-        else: array = POINTER(c_int)()        
+        else: array = OPAQUE_PTR()        
         if self._object():
             libjavascriptcore.JSPropertyNameArrayRelease( self._object(),array )
 
     def DeleteProperty(  self, ctx, propertyName, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if propertyName: propertyName = propertyName._object()
-        else: propertyName = POINTER(c_int)()
+        else: propertyName = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
 
         libjavascriptcore.JSObjectDeleteProperty.restype = bool
         libjavascriptcore.JSObjectDeleteProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue]
@@ -469,7 +471,7 @@ class JSObject( JSValue ):
 
     def IsConstructor(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
 
         libjavascriptcore.JSObjectIsConstructor.restype = bool
         libjavascriptcore.JSObjectIsConstructor.argtypes = [_JSContext,_JSObject]
@@ -479,13 +481,13 @@ class JSObject( JSValue ):
 
     def SetPropertyAtIndex(  self, ctx, propertyIndex, value, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if propertyIndex: propertyIndex = propertyIndex._object()
-        else: propertyIndex = POINTER(c_int)()
+        else: propertyIndex = OPAQUE_PTR()
         if value: value = value._object()
-        else: value = POINTER(c_int)()
+        else: value = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
 
         
         if self._object():
@@ -497,7 +499,7 @@ class JSObject( JSValue ):
 
     def JSClassRelease(  self, jsClass, ):
         if jsClass: jsClass = jsClass._object()
-        else: jsClass = POINTER(c_int)()
+        else: jsClass = OPAQUE_PTR()
 
         
         if self._object():
@@ -525,16 +527,16 @@ class JSObject( JSValue ):
                                                            self._object(),
                                                            thisObject,
                                                            argumentCount,
-                                                           cast(args, POINTER(c_int)),
+                                                           cast(args, OPAQUE_PTR),
                                                            exception )
             return JSValue( obj= retval, context = ctx)
 
     def CopyPropertyNames(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
 
         from .javascriptcore import JSPropertyNameArray
-        return JSPropertyNameArray( obj=libjavascriptcore.JSObjectCopyPropertyNames( ctx,self._object() )  or POINTER(c_int)())
+        return JSPropertyNameArray( obj=libjavascriptcore.JSObjectCopyPropertyNames( ctx,self._object() )  or OPAQUE_PTR())
 
     def GetPropertyAtIndex(  self, propertyIndex, exc, ):
         
@@ -543,7 +545,7 @@ class JSObject( JSValue ):
             return JSValue( obj=libjavascriptcore.JSObjectGetPropertyAtIndex
                             ( self._context._object(),
                               self._object(),propertyIndex,exc)  or
-                            POINTER(c_int)())
+                            OPAQUE_PTR())
 
     def GetPrivate(  self, ):
         
@@ -552,20 +554,20 @@ class JSObject( JSValue ):
 
     def SetProperty(  self, ctx, propertyName, value, attributes, exception, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if propertyName: propertyName = propertyName._object()
-        else: propertyName = POINTER(c_int)()
+        else: propertyName = OPAQUE_PTR()
         if value: value = value._object()
-        else: value = POINTER(c_int)()
+        else: value = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
 
         if self._object():
             libjavascriptcore.JSObjectSetProperty( ctx,self._object(),propertyName,value,attributes,exception )
 
     def IsFunction(  self, ctx, ):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
 
         if self._object():
             libjavascriptcore.JSObjectIsFunction.restype = bool
@@ -576,31 +578,31 @@ class JSObject( JSValue ):
     @staticmethod
     def JSClassRetain( jsClass,):
         if jsClass: jsClass = jsClass._object()
-        else: jsClass = POINTER(c_int)()
+        else: jsClass = OPAQUE_PTR()
         libjavascriptcore.JSClassRetain.restype = _JSClass
         libjavascriptcore.JSClassRetain.argtypes = [_JSClass]
         from .javascriptcore import JSClass
         return JSClass( obj=    libjavascriptcore.JSClassRetain(jsClass, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
 
     @staticmethod
     def MakeError( ctx, argumentCount, arguments, exception,):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if arguments: arguments = arguments._object()
-        else: arguments = POINTER(c_int)()
+        else: arguments = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
         libjavascriptcore.JSObjectMakeError.restype = _JSObject
         libjavascriptcore.JSObjectMakeError.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeError(ctx, argumentCount, arguments, exception, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def MakeFunctionWithCallback( ctx, name, callAsFunction,):
         if name: name = name._object()
-        else: name = POINTER(c_int)()
+        else: name = OPAQUE_PTR()
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx._object(), name, callAsFunction, ),
                          context = ctx)
@@ -608,84 +610,84 @@ class JSObject( JSValue ):
     @staticmethod
     def MakeArray( ctx, argumentCount, arguments, exception,):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if arguments: arguments = arguments._object()
-        else: arguments = POINTER(c_int)()
+        else: arguments = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
         libjavascriptcore.JSObjectMakeArray.restype = _JSObject
         libjavascriptcore.JSObjectMakeArray.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeArray(ctx, argumentCount, arguments, exception, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     @staticmethod
     def MakeConstructor( ctx, jsClass, callAsConstructor,):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if jsClass: jsClass = jsClass._object()
-        else: jsClass = POINTER(c_int)()
+        else: jsClass = OPAQUE_PTR()
         libjavascriptcore.JSObjectMakeConstructor.restype = _JSObject
         libjavascriptcore.JSObjectMakeConstructor.argtypes = [_JSContext,_JSClass,JSObjectCallAsConstructorCallback]
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeConstructor(ctx, jsClass, callAsConstructor, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def MakeDate( ctx, argumentCount, arguments, exception,):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if arguments: arguments = arguments._object()
-        else: arguments = POINTER(c_int)()
+        else: arguments = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
         libjavascriptcore.JSObjectMakeDate.restype = _JSObject
         libjavascriptcore.JSObjectMakeDate.argtypes = [_JSContext,size_t,_JSValue,_JSValue]
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeDate(ctx, argumentCount, arguments, exception, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def JSPropertyNameArrayRetain( array,):
         if array: array = array._object()
-        else: array = POINTER(c_int)()
+        else: array = OPAQUE_PTR()
         from .javascriptcore import JSPropertyNameArray
         return JSPropertyNameArray( obj=    libjavascriptcore.JSPropertyNameArrayRetain(array, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def JSPropertyNameArrayGetNameAtIndex( array, index,):
         if array: array = array._object()
-        else: array = POINTER(c_int)()
+        else: array = OPAQUE_PTR()
         libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.restype = _JSString
         libjavascriptcore.JSPropertyNameArrayGetNameAtIndex.argtypes = [_JSPropertyNameArray,size_t]
         from .javascriptcore import JSString
         return JSString( obj=    libjavascriptcore.JSPropertyNameArrayGetNameAtIndex(array, index, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def MakeFunction( ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception,):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if name: name = name._object()
-        else: name = POINTER(c_int)()
+        else: name = OPAQUE_PTR()
         if parameterCount: parameterCount = parameterCount._object()
-        else: parameterCount = POINTER(c_int)()
+        else: parameterCount = OPAQUE_PTR()
         if parameterNames: parameterNames = parameterNames._object()
-        else: parameterNames = POINTER(c_int)()
+        else: parameterNames = OPAQUE_PTR()
         if body: body = body._object()
-        else: body = POINTER(c_int)()
+        else: body = OPAQUE_PTR()
         if sourceURL: sourceURL = sourceURL._object()
-        else: sourceURL = POINTER(c_int)()
+        else: sourceURL = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeFunction(ctx, name, parameterCount, parameterNames, body, sourceURL, startingLineNumber, exception, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def Make( ctx, jsClass, data,):
         if jsClass: jsClass = jsClass._object()
-        else: jsClass = POINTER(c_int)()
+        else: jsClass = OPAQUE_PTR()
         from .javascriptcore import JSObject, JSValue
         obj =   libjavascriptcore.JSObjectMake(ctx._object(), jsClass, str(data).encode('ascii'))
         return JSObject( obj=  obj,
@@ -693,26 +695,27 @@ class JSObject( JSValue ):
     @staticmethod
     def JSPropertyNameArrayGetCount( array,):
         if array: array = array._object()
-        else: array = POINTER(c_int)()
+        else: array = OPAQUE_PTR()
         
         return     libjavascriptcore.JSPropertyNameArrayGetCount(array, )
 
     @staticmethod
     def MakeRegExp( ctx, argumentCount, arguments, exception,):
         if ctx: ctx = ctx._object()
-        else: ctx = POINTER(c_int)()
+        else: ctx = OPAQUE_PTR()
         if arguments: arguments = arguments._object()
-        else: arguments = POINTER(c_int)()
+        else: arguments = OPAQUE_PTR()
         if exception: exception = exception._object()
-        else: exception = POINTER(c_int)()
+        else: exception = OPAQUE_PTR()
         from .javascriptcore import JSObject
         return JSObject( obj=    libjavascriptcore.JSObjectMakeRegExp(ctx, argumentCount, arguments, exception, )
-  or POINTER(c_int)())
+  or OPAQUE_PTR())
     
     @staticmethod
     def JSClassCreate( definition,):
         from .javascriptcore import JSClass
-        return JSClass( obj= libjavascriptcore.JSClassCreate(definition, )  or POINTER(c_int)())
+        obj= libjavascriptcore.JSClassCreate(definition )
+        return JSClass( obj = obj  or OPAQUE_PTR())
 
     def __getattr__(self, attr):
         from .javascriptcore import JSContext

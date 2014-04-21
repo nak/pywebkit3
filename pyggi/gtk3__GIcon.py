@@ -52,16 +52,16 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GError = POINTER(c_int)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
 """Enumerations"""
 
 try:
@@ -92,7 +92,7 @@ class GIcon( gio__GInterface.GInterface):
     """Methods"""
     def equal(  self, icon2, ):
         if icon2: icon2 = icon2._object
-        else: icon2 = POINTER(c_int)()
+        else: icon2 = POINTER(c_void_p)()
 
         
         return libgtk3.g_icon_equal( self._object,icon2 )
@@ -105,10 +105,10 @@ class GIcon( gio__GInterface.GInterface):
     @staticmethod
     def new_for_string( str, error,):
         if error: error = error._object
-        else: error = POINTER(c_int)()
+        else: error = POINTER(c_void_p)()
         from .gobject import GIcon
         return GIcon( obj=    libgtk3.g_icon_new_for_string(str, error, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def hash( icon,):
         

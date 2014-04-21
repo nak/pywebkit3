@@ -52,113 +52,113 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GClosure = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkTextBuffer = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GObject = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_PangoAttrIterator = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GtkPathPriorityType = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GdkEventKey = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_GError = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GWeakRef = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_PangoRectangle = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_PangoGlyphString = POINTER(c_int)
-_GObjectClass = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GParameter = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GtkTargetEntry = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
+_GtkRcStyle = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GClosure = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkTextBuffer = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_PangoAttrIterator = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GtkSelectionData = POINTER(c_void_p)
+_GtkWindowGroup = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GtkPathPriorityType = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_GtkWidgetClass = POINTER(c_void_p)
+_GdkEventKey = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_PangoFontMetrics = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_PangoFontset = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_cairo_t = POINTER(c_void_p)
+_GWeakRef = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_PangoRectangle = POINTER(c_void_p)
+_GtkAccelGroup = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GtkAllocation = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_PangoGlyphString = POINTER(c_void_p)
+_GObjectClass = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GParameter = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GtkTargetEntry = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -445,7 +445,7 @@ class GObject( object):
     def __init__( self, object_type, first_property_name,  obj=None, *args):
         if obj: self._object = obj
         else:
-            libgtk3.g_object_new.restype = POINTER(c_int)
+            libgtk3.g_object_new.restype = POINTER(c_void_p)
             
             libgtk3.g_object_new.argtypes = [GType,Asciifier,]
             self._object = libgtk3.g_object_new(object_type, first_property_name, *args )
@@ -513,9 +513,9 @@ class GObject( object):
 
     def class_install_properties(  self, oclass, n_pspecs, pspecs, ):
         if oclass: oclass = oclass._object
-        else: oclass = POINTER(c_int)()
+        else: oclass = POINTER(c_void_p)()
         if pspecs: pspecs = pspecs._object
-        else: pspecs = POINTER(c_int)()
+        else: pspecs = POINTER(c_void_p)()
 
         
         libgtk3.g_object_class_install_properties( self._object,oclass,n_pspecs,pspecs )
@@ -527,7 +527,7 @@ class GObject( object):
 
     def interface_install_property(  self, g_iface, pspec, ):
         if pspec: pspec = pspec._object
-        else: pspec = POINTER(c_int)()
+        else: pspec = POINTER(c_void_p)()
 
         
         libgtk3.g_object_interface_install_property( self._object,g_iface,pspec )
@@ -539,7 +539,7 @@ class GObject( object):
 
     def set_property(  self, property_name, value, ):
         if value: value = value._object
-        else: value = POINTER(c_int)()
+        else: value = POINTER(c_void_p)()
 
         
         libgtk3.g_object_set_property( self._object,property_name,value )
@@ -586,9 +586,9 @@ class GObject( object):
 
     def class_install_property(  self, oclass, property_id, pspec, ):
         if oclass: oclass = oclass._object
-        else: oclass = POINTER(c_int)()
+        else: oclass = POINTER(c_void_p)()
         if pspec: pspec = pspec._object
-        else: pspec = POINTER(c_int)()
+        else: pspec = POINTER(c_void_p)()
 
         
         libgtk3.g_object_class_install_property( self._object,oclass,property_id,pspec )
@@ -600,7 +600,7 @@ class GObject( object):
 
     def notify_by_pspec(  self, pspec, ):
         if pspec: pspec = pspec._object
-        else: pspec = POINTER(c_int)()
+        else: pspec = POINTER(c_void_p)()
 
         
         libgtk3.g_object_notify_by_pspec( self._object,pspec )
@@ -642,7 +642,7 @@ class GObject( object):
 
     def g_weak_ref_set(  self, weak_ref, object, ):
         if weak_ref: weak_ref = weak_ref._object
-        else: weak_ref = POINTER(c_int)()
+        else: weak_ref = POINTER(c_void_p)()
 
         
         libgtk3.g_weak_ref_set( self._object,weak_ref,object )
@@ -664,21 +664,21 @@ class GObject( object):
 
     def get_property(  self, property_name, value, ):
         if value: value = value._object
-        else: value = POINTER(c_int)()
+        else: value = POINTER(c_void_p)()
 
         
         libgtk3.g_object_get_property( self._object,property_name,value )
 
     def watch_closure(  self, closure, ):
         if closure: closure = closure._object
-        else: closure = POINTER(c_int)()
+        else: closure = POINTER(c_void_p)()
 
         
         libgtk3.g_object_watch_closure( self._object,closure )
 
     def g_weak_ref_clear(  self, weak_ref, ):
         if weak_ref: weak_ref = weak_ref._object
-        else: weak_ref = POINTER(c_int)()
+        else: weak_ref = POINTER(c_void_p)()
 
         
         libgtk3.g_weak_ref_clear( self._object,weak_ref )
@@ -690,7 +690,7 @@ class GObject( object):
 
     def g_weak_ref_init(  self, weak_ref, object, ):
         if weak_ref: weak_ref = weak_ref._object
-        else: weak_ref = POINTER(c_int)()
+        else: weak_ref = POINTER(c_void_p)()
 
         
         libgtk3.g_weak_ref_init( self._object,weak_ref,object )
@@ -702,7 +702,7 @@ class GObject( object):
 
     def class_override_property(  self, oclass, property_id, name, ):
         if oclass: oclass = oclass._object
-        else: oclass = POINTER(c_int)()
+        else: oclass = POINTER(c_void_p)()
 
         
         libgtk3.g_object_class_override_property( self._object,oclass,property_id,name )
@@ -710,38 +710,38 @@ class GObject( object):
     @staticmethod
     def class_find_property( oclass, property_name,):
         if oclass: oclass = oclass._object
-        else: oclass = POINTER(c_int)()
+        else: oclass = POINTER(c_void_p)()
         from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_class_find_property(oclass, property_name, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def interface_list_properties( g_iface, n_properties_p,):
         from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_interface_list_properties(g_iface, n_properties_p, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def newv( object_type, n_parameters, parameters,):
         if parameters: parameters = parameters._object
-        else: parameters = POINTER(c_int)()
+        else: parameters = POINTER(c_void_p)()
         
         return     libgtk3.g_object_newv(object_type, n_parameters, parameters, )
 
     @staticmethod
     def class_list_properties( oclass, n_properties,):
         if oclass: oclass = oclass._object
-        else: oclass = POINTER(c_int)()
+        else: oclass = POINTER(c_void_p)()
         from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_class_list_properties(oclass, n_properties, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def interface_find_property( g_iface, property_name,):
         from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.g_object_interface_find_property(g_iface, property_name, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def g_weak_ref_get( weak_ref,):
         if weak_ref: weak_ref = weak_ref._object
-        else: weak_ref = POINTER(c_int)()
+        else: weak_ref = POINTER(c_void_p)()
         
         return     libgtk3.g_weak_ref_get(weak_ref, )
 

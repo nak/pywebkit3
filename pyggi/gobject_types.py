@@ -1,4 +1,7 @@
-from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint, c_longlong, POINTER
+from ctypes import cdll, CDLL, c_int, CFUNCTYPE, c_void_p, Structure, c_uint, c_longlong, POINTER, c_void_p
+
+
+OPAQUE_PTR = POINTER(c_void_p)
 
 import platform
 from pyggi import load
@@ -34,7 +37,7 @@ G_TYPE_VARIANT                  = c_int (21)
 
 
 GSourceFunc = CFUNCTYPE(c_int, c_void_p)
-GThreadFunc = CFUNCTYPE(c_longlong, POINTER(c_int))
+GThreadFunc = CFUNCTYPE(c_longlong, OPAQUE_PTR)
 GDestroyNotifyCB = CFUNCTYPE(None, c_void_p)
 GDuplicateFunc = CFUNCTYPE( c_void_p, c_void_p, c_void_p)
 GPollFunc = CFUNCTYPE(c_int, c_void_p, c_uint, c_int)

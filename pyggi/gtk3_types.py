@@ -3,13 +3,13 @@ c_void_p = c_ulonglong
 from .gdk_types import *
 from .gobject_types import *
 
+
+OPAQUE_PTR = POINTER(c_void_p)
+NULL = OPAQUE_PTR()
 import platform
 from pyggi import load
 
-if platform.platform().startswith("Windows"):
-    libgtk3 = load("libgtk-3-0","0")
-else:
-    libgtk3 = load( "libgtk-3","0")
+libgtk3 = load("libgtk-3","0")
 
 """default gtk types"""
 
@@ -82,7 +82,7 @@ def main_quit():
     libgtk3.gtk_main_quit()
     
 
-GdkEvent = POINTER(c_int)
+GdkEvent = OPAQUE_PTR
 
 class Asciifier(object):
     @classmethod

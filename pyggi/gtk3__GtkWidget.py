@@ -52,76 +52,76 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GError = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
+_GtkRcStyle = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_cairo_t = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GtkAccelGroup = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkAllocation = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GtkWidgetClass = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -923,7 +923,7 @@ except:
    pass
 try:
     libgtk3.gtk_widget_get_clipboard.restype = _GtkClipboard
-    libgtk3.gtk_widget_get_clipboard.argtypes = [_GtkWidget,POINTER(c_int)]
+    libgtk3.gtk_widget_get_clipboard.argtypes = [_GtkWidget,POINTER(c_void_p)]
 except:
    pass
 try:
@@ -1217,7 +1217,7 @@ class GtkWidget( gobject__GObject.GObject):
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gtk_widget_new.restype = POINTER(c_int)
+            libgtk3.gtk_widget_new.restype = POINTER(c_void_p)
             
             libgtk3.gtk_widget_new.argtypes = []
             self._object = libgtk3.gtk_widget_new()
@@ -1225,14 +1225,14 @@ class GtkWidget( gobject__GObject.GObject):
     """Methods"""
     def set_device_enabled(  self, device, enabled, ):
         if device: device = device._object
-        else: device = POINTER(c_int)()
+        else: device = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_device_enabled( self._object,device,enabled )
 
     def modify_text(  self, state, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_text( self._object,state,color )
@@ -1245,7 +1245,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_style(  self, ):
 
         from .gtk3 import GtkStyle
-        return GtkStyle(None, obj=libgtk3.gtk_widget_get_style( self._object ) or POINTER(c_int)())
+        return GtkStyle(None, obj=libgtk3.gtk_widget_get_style( self._object ) or POINTER(c_void_p)())
 
     def set_composite_name(  self, name, ):
 
@@ -1255,7 +1255,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_parent_window(  self, ):
 
         from .gobject import GdkWindow
-        return GdkWindow(None,None, obj=libgtk3.gtk_widget_get_parent_window( self._object ) or POINTER(c_int)())
+        return GdkWindow(None,None, obj=libgtk3.gtk_widget_get_parent_window( self._object ) or POINTER(c_void_p)())
 
     def is_toplevel(  self, ):
 
@@ -1274,9 +1274,9 @@ class GtkWidget( gobject__GObject.GObject):
 
     def class_set_accessible_role(  self, widget_class, role, ):
         if widget_class: widget_class = widget_class._object
-        else: widget_class = POINTER(c_int)()
+        else: widget_class = POINTER(c_void_p)()
         if role: role = role._object
-        else: role = POINTER(c_int)()
+        else: role = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_class_set_accessible_role( self._object,widget_class,role )
@@ -1288,7 +1288,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def override_background_color(  self, state, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_override_background_color( self._object,state,color )
@@ -1330,7 +1330,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def override_font(  self, font_desc, ):
         if font_desc: font_desc = font_desc._object
-        else: font_desc = POINTER(c_int)()
+        else: font_desc = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_override_font( self._object,font_desc )
@@ -1342,7 +1342,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_window(  self, window, ):
         if window: window = window._object
-        else: window = POINTER(c_int)()
+        else: window = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_window( self._object,window )
@@ -1369,23 +1369,23 @@ class GtkWidget( gobject__GObject.GObject):
 
     def size_allocate(  self, allocation, ):
         if allocation: allocation = allocation._object
-        else: allocation = POINTER(c_int)()
+        else: allocation = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_size_allocate( self._object,allocation )
 
     def draw(  self, cr, ):
         if cr: cr = cr._object
-        else: cr = POINTER(c_int)()
+        else: cr = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_draw( self._object,cr )
 
     def class_install_style_property(  self, klass, pspec, ):
         if klass: klass = klass._object
-        else: klass = POINTER(c_int)()
+        else: klass = POINTER(c_void_p)()
         if pspec: pspec = pspec._object
-        else: pspec = POINTER(c_int)()
+        else: pspec = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_class_install_style_property( self._object,klass,pspec )
@@ -1432,16 +1432,16 @@ class GtkWidget( gobject__GObject.GObject):
 
     def get_preferred_size(  self, minimum_size, natural_size, ):
         if minimum_size: minimum_size = minimum_size._object
-        else: minimum_size = POINTER(c_int)()
+        else: minimum_size = POINTER(c_void_p)()
         if natural_size: natural_size = natural_size._object
-        else: natural_size = POINTER(c_int)()
+        else: natural_size = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_get_preferred_size( self._object,minimum_size,natural_size )
 
     def modify_font(  self, font_desc, ):
         if font_desc: font_desc = font_desc._object
-        else: font_desc = POINTER(c_int)()
+        else: font_desc = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_font( self._object,font_desc )
@@ -1453,7 +1453,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_allocation(  self, allocation, ):
         if allocation: allocation = allocation._object
-        else: allocation = POINTER(c_int)()
+        else: allocation = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_allocation( self._object,allocation )
@@ -1505,14 +1505,14 @@ class GtkWidget( gobject__GObject.GObject):
 
     def modify_style(  self, style, ):
         if style: style = style._object
-        else: style = POINTER(c_int)()
+        else: style = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_style( self._object,style )
 
     def shape_combine_region(  self, region, ):
         if region: region = region._object
-        else: region = POINTER(c_int)()
+        else: region = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_shape_combine_region( self._object,region )
@@ -1524,7 +1524,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def device_is_shadowed(  self, device, ):
         if device: device = device._object
-        else: device = POINTER(c_int)()
+        else: device = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_device_is_shadowed( self._object,device )
@@ -1561,7 +1561,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def size_request(  self, requisition, ):
         if requisition: requisition = requisition._object
-        else: requisition = POINTER(c_int)()
+        else: requisition = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_size_request( self._object,requisition )
@@ -1569,7 +1569,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_root_window(  self, ):
 
         from .gobject import GdkWindow
-        return GdkWindow(None, obj=libgtk3.gtk_widget_get_root_window( self._object ) or POINTER(c_int)())
+        return GdkWindow(None, obj=libgtk3.gtk_widget_get_root_window( self._object ) or POINTER(c_void_p)())
 
     def set_no_show_all(  self, no_show_all, ):
 
@@ -1608,16 +1608,16 @@ class GtkWidget( gobject__GObject.GObject):
 
     def remove_accelerator(  self, accel_group, accel_key, accel_mods, ):
         if accel_group: accel_group = accel_group._object
-        else: accel_group = POINTER(c_int)()
+        else: accel_group = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_remove_accelerator( self._object,accel_group,accel_key,accel_mods )
 
     def modify_cursor(  self, primary, secondary, ):
         if primary: primary = primary._object
-        else: primary = POINTER(c_int)()
+        else: primary = POINTER(c_void_p)()
         if secondary: secondary = secondary._object
-        else: secondary = POINTER(c_int)()
+        else: secondary = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_cursor( self._object,primary,secondary )
@@ -1634,7 +1634,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def queue_draw_region(  self, region, ):
         if region: region = region._object
-        else: region = POINTER(c_int)()
+        else: region = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_queue_draw_region( self._object,region )
@@ -1651,7 +1651,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_parent_window(  self, parent_window, ):
         if parent_window: parent_window = parent_window._object
-        else: parent_window = POINTER(c_int)()
+        else: parent_window = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_parent_window( self._object,parent_window )
@@ -1659,7 +1659,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_ancestor(  self, widget_type, ):
 
         from .gtk3 import GtkWidget
-        return GtkWidget(None, obj=libgtk3.gtk_widget_get_ancestor( self._object,widget_type ) or POINTER(c_int)())
+        return GtkWidget(None, obj=libgtk3.gtk_widget_get_ancestor( self._object,widget_type ) or POINTER(c_void_p)())
 
     def activate(  self, ):
 
@@ -1673,7 +1673,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_tooltip_window(  self, custom_window, ):
         if custom_window: custom_window = custom_window._object
-        else: custom_window = POINTER(c_int)()
+        else: custom_window = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_tooltip_window( self._object,custom_window )
@@ -1685,7 +1685,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def translate_coordinates(  self, dest_widget, src_x, src_y, dest_x, dest_y, ):
         if dest_widget: dest_widget = dest_widget._object
-        else: dest_widget = POINTER(c_int)()
+        else: dest_widget = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_translate_coordinates( self._object,dest_widget,src_x,src_y,dest_x,dest_y )
@@ -1693,7 +1693,7 @@ class GtkWidget( gobject__GObject.GObject):
     def create_pango_context(  self, ):
 
         from .gtk3 import PangoContext
-        return PangoContext(None, obj=libgtk3.gtk_widget_create_pango_context( self._object )  or POINTER(c_int)())
+        return PangoContext(None, obj=libgtk3.gtk_widget_create_pango_context( self._object )  or POINTER(c_void_p)())
 
     def is_sensitive(  self, ):
 
@@ -1703,7 +1703,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_window(  self, ):
 
         from .gobject import GdkWindow
-        return GdkWindow(None, obj=libgtk3.gtk_widget_get_window( self._object ) or POINTER(c_int)())
+        return GdkWindow(None, obj=libgtk3.gtk_widget_get_window( self._object ) or POINTER(c_void_p)())
 
     def get_pointer(  self, x, y, ):
 
@@ -1732,14 +1732,14 @@ class GtkWidget( gobject__GObject.GObject):
 
     def is_ancestor(  self, ancestor, ):
         if ancestor: ancestor = ancestor._object
-        else: ancestor = POINTER(c_int)()
+        else: ancestor = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_is_ancestor( self._object,ancestor )
 
     def get_device_enabled(  self, device, ):
         if device: device = device._object
-        else: device = POINTER(c_int)()
+        else: device = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_get_device_enabled( self._object,device )
@@ -1751,11 +1751,11 @@ class GtkWidget( gobject__GObject.GObject):
 
     def gtk_cairo_transform_to_window(  self, cr, widget, window, ):
         if cr: cr = cr._object
-        else: cr = POINTER(c_int)()
+        else: cr = POINTER(c_void_p)()
         if widget: widget = widget._object
-        else: widget = POINTER(c_int)()
+        else: widget = POINTER(c_void_p)()
         if window: window = window._object
-        else: window = POINTER(c_int)()
+        else: window = POINTER(c_void_p)()
 
         
         libgtk3.gtk_cairo_transform_to_window( self._object,cr,widget,window )
@@ -1763,11 +1763,11 @@ class GtkWidget( gobject__GObject.GObject):
     def get_style_context(  self, ):
 
         from .gtk3 import GtkStyleContext
-        return GtkStyleContext(None, obj=libgtk3.gtk_widget_get_style_context( self._object ) or POINTER(c_int)())
+        return GtkStyleContext(None, obj=libgtk3.gtk_widget_get_style_context( self._object ) or POINTER(c_void_p)())
 
     def modify_bg(  self, state, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_bg( self._object,state,color )
@@ -1784,7 +1784,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_style(  self, style, ):
         if style: style = style._object
-        else: style = POINTER(c_int)()
+        else: style = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_style( self._object,style )
@@ -1797,7 +1797,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_visual(  self, ):
 
         from .gobject import GdkVisual
-        return GdkVisual( obj=libgtk3.gtk_widget_get_visual( self._object ) or POINTER(c_int)())
+        return GdkVisual( obj=libgtk3.gtk_widget_get_visual( self._object ) or POINTER(c_void_p)())
 
     def set_double_buffered(  self, double_buffered, ):
 
@@ -1831,9 +1831,9 @@ class GtkWidget( gobject__GObject.GObject):
 
     def intersect(  self, area, intersection, ):
         if area: area = area._object
-        else: area = POINTER(c_int)()
+        else: area = POINTER(c_void_p)()
         if intersection: intersection = intersection._object
-        else: intersection = POINTER(c_int)()
+        else: intersection = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_intersect( self._object,area,intersection )
@@ -1855,7 +1855,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def destroyed(  self, widget_pointer, ):
         if widget_pointer: widget_pointer = widget_pointer._object
-        else: widget_pointer = POINTER(c_int)()
+        else: widget_pointer = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_destroyed( self._object,widget_pointer )
@@ -1868,7 +1868,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_tooltip_window(  self, ):
 
         from .gtk3 import GtkWindow
-        return GtkWindow(None,None, obj=libgtk3.gtk_widget_get_tooltip_window( self._object ) or POINTER(c_int)())
+        return GtkWindow(None,None, obj=libgtk3.gtk_widget_get_tooltip_window( self._object ) or POINTER(c_void_p)())
 
     def reset_rc_styles(  self, ):
 
@@ -1877,21 +1877,21 @@ class GtkWidget( gobject__GObject.GObject):
 
     def get_child_requisition(  self, requisition, ):
         if requisition: requisition = requisition._object
-        else: requisition = POINTER(c_int)()
+        else: requisition = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_get_child_requisition( self._object,requisition )
 
     def override_color(  self, state, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_override_color( self._object,state,color )
 
     def add_device_events(  self, device, events, ):
         if device: device = device._object
-        else: device = POINTER(c_int)()
+        else: device = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_add_device_events( self._object,device,events )
@@ -1924,7 +1924,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_parent(  self, ):
 
         from .gtk3 import GtkWidget
-        return GtkWidget( obj=libgtk3.gtk_widget_get_parent( self._object ) or POINTER(c_int)())
+        return GtkWidget( obj=libgtk3.gtk_widget_get_parent( self._object ) or POINTER(c_void_p)())
 
     def is_drawable(  self, ):
 
@@ -1964,7 +1964,7 @@ class GtkWidget( gobject__GObject.GObject):
     def render_icon_pixbuf(  self, stock_id, size, ):
 
         from .gobject import GdkPixbuf
-        return GdkPixbuf( obj=libgtk3.gtk_widget_render_icon_pixbuf( self._object,stock_id,size ) or POINTER(c_int)())
+        return GdkPixbuf( obj=libgtk3.gtk_widget_render_icon_pixbuf( self._object,stock_id,size ) or POINTER(c_void_p)())
 
     def ensure_style(  self, ):
 
@@ -1989,7 +1989,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_modifier_style(  self, ):
 
         from .gtk3 import GtkRcStyle
-        return GtkRcStyle(None, obj=libgtk3.gtk_widget_get_modifier_style( self._object ) or POINTER(c_int)())
+        return GtkRcStyle(None, obj=libgtk3.gtk_widget_get_modifier_style( self._object ) or POINTER(c_void_p)())
 
     def set_default_direction(  self, dir, ):
 
@@ -2003,7 +2003,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_accel_path(  self, accel_path, accel_group, ):
         if accel_group: accel_group = accel_group._object
-        else: accel_group = POINTER(c_int)()
+        else: accel_group = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_accel_path( self._object,accel_path,accel_group )
@@ -2020,7 +2020,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def class_set_accessible_type(  self, widget_class, type, ):
         if widget_class: widget_class = widget_class._object
-        else: widget_class = POINTER(c_int)()
+        else: widget_class = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_class_set_accessible_type( self._object,widget_class,type )
@@ -2033,7 +2033,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_screen(  self, ):
 
         from .gobject import GdkScreen
-        return GdkScreen( obj=libgtk3.gtk_widget_get_screen( self._object ) or POINTER(c_int)())
+        return GdkScreen( obj=libgtk3.gtk_widget_get_screen( self._object ) or POINTER(c_void_p)())
 
     def compute_expand(  self, orientation, ):
 
@@ -2047,7 +2047,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def add_mnemonic_label(  self, label, ):
         if label: label = label._object
-        else: label = POINTER(c_int)()
+        else: label = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_add_mnemonic_label( self._object,label )
@@ -2055,7 +2055,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_display(  self, ):
 
         from .gobject import GdkDisplay
-        return GdkDisplay( obj=libgtk3.gtk_widget_get_display( self._object ) or POINTER(c_int)())
+        return GdkDisplay( obj=libgtk3.gtk_widget_get_display( self._object ) or POINTER(c_void_p)())
 
     def event(  self, event, ):
 
@@ -2069,11 +2069,11 @@ class GtkWidget( gobject__GObject.GObject):
 
     def class_install_style_property_parser(  self, klass, pspec, parser, ):
         if klass: klass = klass._object
-        else: klass = POINTER(c_int)()
+        else: klass = POINTER(c_void_p)()
         if pspec: pspec = pspec._object
-        else: pspec = POINTER(c_int)()
+        else: pspec = POINTER(c_void_p)()
         if parser: parser = parser._object
-        else: parser = POINTER(c_int)()
+        else: parser = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_class_install_style_property_parser( self._object,klass,pspec,parser )
@@ -2081,19 +2081,19 @@ class GtkWidget( gobject__GObject.GObject):
     def get_toplevel(  self, ):
 
         from .gtk3 import GtkWidget
-        return GtkWidget( obj=libgtk3.gtk_widget_get_toplevel( self._object ) or POINTER(c_int)())
+        return GtkWidget( obj=libgtk3.gtk_widget_get_toplevel( self._object ) or POINTER(c_void_p)())
 
     def get_clipboard(  self, selection, ):
         if selection: selection = selection._object
-        else: selection = POINTER(c_int)()
+        else: selection = POINTER(c_void_p)()
 
         from .gtk3 import GtkClipboard
-        return GtkClipboard( obj=libgtk3.gtk_widget_get_clipboard( self._object,selection ) or POINTER(c_int)())
+        return GtkClipboard( obj=libgtk3.gtk_widget_get_clipboard( self._object,selection ) or POINTER(c_void_p)())
 
     def list_accel_closures(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.gtk_widget_list_accel_closures( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.gtk_widget_list_accel_closures( self._object ) or POINTER(c_void_p)())
 
     def get_has_window(  self, ):
 
@@ -2102,9 +2102,9 @@ class GtkWidget( gobject__GObject.GObject):
 
     def override_cursor(  self, cursor, secondary_cursor, ):
         if cursor: cursor = cursor._object
-        else: cursor = POINTER(c_int)()
+        else: cursor = POINTER(c_void_p)()
         if secondary_cursor: secondary_cursor = secondary_cursor._object
-        else: secondary_cursor = POINTER(c_int)()
+        else: secondary_cursor = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_override_cursor( self._object,cursor,secondary_cursor )
@@ -2122,7 +2122,7 @@ class GtkWidget( gobject__GObject.GObject):
     def render_icon(  self, stock_id, size, detail, ):
 
         from .gobject import GdkPixbuf
-        return GdkPixbuf( obj=libgtk3.gtk_widget_render_icon( self._object,stock_id,size,detail ) or POINTER(c_int)())
+        return GdkPixbuf( obj=libgtk3.gtk_widget_render_icon( self._object,stock_id,size,detail ) or POINTER(c_void_p)())
 
     def get_tooltip_text(  self, ):
 
@@ -2147,11 +2147,11 @@ class GtkWidget( gobject__GObject.GObject):
     def get_pango_context(  self, ):
 
         from .gtk3 import PangoContext
-        return PangoContext( obj=libgtk3.gtk_widget_get_pango_context( self._object )  or POINTER(c_int)())
+        return PangoContext( obj=libgtk3.gtk_widget_get_pango_context( self._object )  or POINTER(c_void_p)())
 
     def get_device_events(  self, device, ):
         if device: device = device._object
-        else: device = POINTER(c_int)()
+        else: device = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_widget_get_device_events( self._object,device )
@@ -2163,16 +2163,16 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_parent(  self, parent, ):
         if parent: parent = parent._object
-        else: parent = POINTER(c_int)()
+        else: parent = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_parent( self._object,parent )
 
     def add_accelerator(  self, accel_signal, accel_group, accel_key, accel_mods, accel_flags, ):
         if accel_group: accel_group = accel_group._object
-        else: accel_group = POINTER(c_int)()
+        else: accel_group = POINTER(c_void_p)()
         if accel_flags: accel_flags = accel_flags._object
-        else: accel_flags = POINTER(c_int)()
+        else: accel_flags = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_add_accelerator( self._object,accel_signal,accel_group,accel_key,accel_mods,accel_flags )
@@ -2194,7 +2194,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def reparent(  self, new_parent, ):
         if new_parent: new_parent = new_parent._object
-        else: new_parent = POINTER(c_int)()
+        else: new_parent = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_reparent( self._object,new_parent )
@@ -2211,7 +2211,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def get_allocation(  self, allocation, ):
         if allocation: allocation = allocation._object
-        else: allocation = POINTER(c_int)()
+        else: allocation = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_get_allocation( self._object,allocation )
@@ -2224,11 +2224,11 @@ class GtkWidget( gobject__GObject.GObject):
     def list_mnemonic_labels(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.gtk_widget_list_mnemonic_labels( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.gtk_widget_list_mnemonic_labels( self._object ) or POINTER(c_void_p)())
 
     def override_symbolic_color(  self, name, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_override_symbolic_color( self._object,name,color )
@@ -2250,7 +2250,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def input_shape_combine_region(  self, region, ):
         if region: region = region._object
-        else: region = POINTER(c_int)()
+        else: region = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_input_shape_combine_region( self._object,region )
@@ -2262,21 +2262,21 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_visual(  self, visual, ):
         if visual: visual = visual._object
-        else: visual = POINTER(c_int)()
+        else: visual = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_visual( self._object,visual )
 
     def style_get_property(  self, property_name, value, ):
         if value: value = value._object
-        else: value = POINTER(c_int)()
+        else: value = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_style_get_property( self._object,property_name,value )
 
     def remove_mnemonic_label(  self, label, ):
         if label: label = label._object
-        else: label = POINTER(c_int)()
+        else: label = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_remove_mnemonic_label( self._object,label )
@@ -2298,7 +2298,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def set_device_events(  self, device, events, ):
         if device: device = device._object
-        else: device = POINTER(c_int)()
+        else: device = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_set_device_events( self._object,device,events )
@@ -2306,7 +2306,7 @@ class GtkWidget( gobject__GObject.GObject):
     def get_path(  self, ):
 
         from .gtk3 import GtkWidgetPath
-        return GtkWidgetPath(None, obj=libgtk3.gtk_widget_get_path( self._object ) or POINTER(c_int)())
+        return GtkWidgetPath(None, obj=libgtk3.gtk_widget_get_path( self._object ) or POINTER(c_void_p)())
 
     def keynav_failed(  self, direction, ):
 
@@ -2316,11 +2316,11 @@ class GtkWidget( gobject__GObject.GObject):
     def get_settings(  self, ):
 
         from .gtk3 import GtkSettings
-        return GtkSettings( obj=libgtk3.gtk_widget_get_settings( self._object ) or POINTER(c_int)())
+        return GtkSettings( obj=libgtk3.gtk_widget_get_settings( self._object ) or POINTER(c_void_p)())
 
     def modify_fg(  self, state, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_fg( self._object,state,color )
@@ -2332,7 +2332,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def modify_base(  self, state, color, ):
         if color: color = color._object
-        else: color = POINTER(c_int)()
+        else: color = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_modify_base( self._object,state,color )
@@ -2340,7 +2340,7 @@ class GtkWidget( gobject__GObject.GObject):
     def create_pango_layout(  self, text, ):
 
         from .gtk3 import PangoLayout
-        return PangoLayout(None,None, obj=libgtk3.gtk_widget_create_pango_layout( self._object,text )  or POINTER(c_int)())
+        return PangoLayout(None,None, obj=libgtk3.gtk_widget_create_pango_layout( self._object,text )  or POINTER(c_void_p)())
 
     def set_hexpand_set(  self, set, ):
 
@@ -2359,7 +2359,7 @@ class GtkWidget( gobject__GObject.GObject):
 
     def get_requisition(  self, requisition, ):
         if requisition: requisition = requisition._object
-        else: requisition = POINTER(c_int)()
+        else: requisition = POINTER(c_void_p)()
 
         
         libgtk3.gtk_widget_get_requisition( self._object,requisition )
@@ -2377,19 +2377,19 @@ class GtkWidget( gobject__GObject.GObject):
     @staticmethod
     def gtk_cairo_should_draw_window( cr, window,):
         if cr: cr = cr._object
-        else: cr = POINTER(c_int)()
+        else: cr = POINTER(c_void_p)()
         if window: window = window._object
-        else: window = POINTER(c_int)()
+        else: window = POINTER(c_void_p)()
         
         return     libgtk3.gtk_cairo_should_draw_window(cr, window, )
 
     @staticmethod
     def class_list_style_properties( klass, n_properties,):
         if klass: klass = klass._object
-        else: klass = POINTER(c_int)()
+        else: klass = POINTER(c_void_p)()
         from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.gtk_widget_class_list_style_properties(klass, n_properties, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def get_default_direction():
         
@@ -2408,15 +2408,15 @@ class GtkWidget( gobject__GObject.GObject):
     @staticmethod
     def class_find_style_property( klass, property_name,):
         if klass: klass = klass._object
-        else: klass = POINTER(c_int)()
+        else: klass = POINTER(c_void_p)()
         from .gobject import GParamSpec
         return GParamSpec( obj=    libgtk3.gtk_widget_class_find_style_property(klass, property_name, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def get_default_style():
         from .gtk3 import GtkStyle
         return GtkStyle( obj=    libgtk3.gtk_widget_get_default_style()
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     def __del__(self):
         libgtk3.gtk_widget_destroy.argtypes=[c_void_p]
         libgtk3.gtk_widget_destroy(self._object)

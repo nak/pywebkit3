@@ -52,56 +52,56 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GdkGeometry = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GError = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
+_GdkGeometry = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -293,7 +293,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.pango_font_description_new.restype = POINTER(c_int)
+            libgtk3.pango_font_description_new.restype = POINTER(c_void_p)
             
             libgtk3.pango_font_description_new.argtypes = []
             self._object = libgtk3.pango_font_description_new()
@@ -307,11 +307,11 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
     def copy(  self, ):
 
         from .gtk3 import PangoFontDescription
-        return PangoFontDescription( obj=libgtk3.pango_font_description_copy( self._object )  or POINTER(c_int)())
+        return PangoFontDescription( obj=libgtk3.pango_font_description_copy( self._object )  or POINTER(c_void_p)())
 
     def equal(  self, desc2, ):
         if desc2: desc2 = desc2._object
-        else: desc2 = POINTER(c_int)()
+        else: desc2 = POINTER(c_void_p)()
 
         
         return libgtk3.pango_font_description_equal( self._object,desc2 )
@@ -378,16 +378,16 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def merge_static(  self, desc_to_merge, replace_existing, ):
         if desc_to_merge: desc_to_merge = desc_to_merge._object
-        else: desc_to_merge = POINTER(c_int)()
+        else: desc_to_merge = POINTER(c_void_p)()
 
         
         libgtk3.pango_font_description_merge_static( self._object,desc_to_merge,replace_existing )
 
     def better_match(  self, old_match, new_match, ):
         if old_match: old_match = old_match._object
-        else: old_match = POINTER(c_int)()
+        else: old_match = POINTER(c_void_p)()
         if new_match: new_match = new_match._object
-        else: new_match = POINTER(c_int)()
+        else: new_match = POINTER(c_void_p)()
 
         
         return libgtk3.pango_font_description_better_match( self._object,old_match,new_match )
@@ -425,7 +425,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
     def copy_static(  self, ):
 
         from .gtk3 import PangoFontDescription
-        return PangoFontDescription( obj=libgtk3.pango_font_description_copy_static( self._object )  or POINTER(c_int)())
+        return PangoFontDescription( obj=libgtk3.pango_font_description_copy_static( self._object )  or POINTER(c_void_p)())
 
     def set_absolute_size(  self, size, ):
 
@@ -434,7 +434,7 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
 
     def merge(  self, desc_to_merge, replace_existing, ):
         if desc_to_merge: desc_to_merge = desc_to_merge._object
-        else: desc_to_merge = POINTER(c_int)()
+        else: desc_to_merge = POINTER(c_void_p)()
 
         
         libgtk3.pango_font_description_merge( self._object,desc_to_merge,replace_existing )
@@ -463,4 +463,4 @@ class PangoFontDescription( gobject__GBoxed.GBoxed):
     def from_string( str,):
         from .gtk3 import PangoFontDescription
         return PangoFontDescription( obj=    libgtk3.pango_font_description_from_string(str, )
-  or POINTER(c_int)())
+  or POINTER(c_void_p)())

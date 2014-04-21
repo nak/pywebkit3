@@ -52,8 +52,8 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
 """Enumerations"""
 
 try:
@@ -77,7 +77,7 @@ class GdkPixbufSimpleAnim( gtk3__GdkPixbufAnimation.GdkPixbufAnimation):
     def __init__( self, rate,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gdk_pixbuf_simple_anim_new.restype = POINTER(c_int)
+            libgtk3.gdk_pixbuf_simple_anim_new.restype = POINTER(c_void_p)
             
             libgtk3.gdk_pixbuf_simple_anim_new.argtypes = [gfloat]
             self._object = libgtk3.gdk_pixbuf_simple_anim_new(rate, )
@@ -85,7 +85,7 @@ class GdkPixbufSimpleAnim( gtk3__GdkPixbufAnimation.GdkPixbufAnimation):
     """Methods"""
     def add_frame(  self, pixbuf, ):
         if pixbuf: pixbuf = pixbuf._object
-        else: pixbuf = POINTER(c_int)()
+        else: pixbuf = POINTER(c_void_p)()
 
         
         libgtk3.gdk_pixbuf_simple_anim_add_frame( self._object,pixbuf )

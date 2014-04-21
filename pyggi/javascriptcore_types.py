@@ -1,6 +1,8 @@
 from ctypes import c_int, c_uint, c_ubyte,c_char_p,  CFUNCTYPE, c_void_p, cdll, CDLL, Structure, c_ushort, POINTER, c_longlong
 from pyggi.webkit3_types import load
 
+from pyggi.gtk3_types import OPAQUE_PTR
+
 libjavascriptcore = load("libjavascriptcoregtk-3.0","0")
 
 JSPropertyAttributes = c_uint;
@@ -9,17 +11,17 @@ JSChar = c_ushort;
 JSType = c_int;
 size_t = c_uint
 
-JSObjectInitializeCallback = CFUNCTYPE( None, POINTER(c_int), POINTER(c_int))
-JSObjectFinalizeCallback = CFUNCTYPE( None, POINTER(c_int))
-JSObjectHasPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectGetPropertyCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectSetPropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectDeletePropertyCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectGetPropertyNamesCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectCallAsFunctionCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), POINTER(c_int), c_int , POINTER(POINTER(c_int)), POINTER(c_int))
-JSObjectCallAsConstructorCallback = CFUNCTYPE( c_longlong, POINTER(c_int), POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
-JSObjectHasInstanceCallback = CFUNCTYPE( c_ubyte, POINTER(c_int), POINTER(c_int), POINTER(c_int), POINTER(c_int))
-JSObjectConvertToTypeCallback =  CFUNCTYPE( c_longlong, POINTER(c_int), c_uint , POINTER(c_int), POINTER(c_int))
+JSObjectInitializeCallback = CFUNCTYPE( None, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectFinalizeCallback = CFUNCTYPE( None, OPAQUE_PTR)
+JSObjectHasPropertyCallback = CFUNCTYPE( c_ubyte, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectGetPropertyCallback = CFUNCTYPE( c_longlong, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectSetPropertyCallback = CFUNCTYPE( c_ubyte, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectDeletePropertyCallback = CFUNCTYPE( c_ubyte, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectGetPropertyNamesCallback = CFUNCTYPE( c_ubyte, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectCallAsFunctionCallback = CFUNCTYPE( c_void_p, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR, c_int , POINTER(OPAQUE_PTR), OPAQUE_PTR)
+JSObjectCallAsConstructorCallback = CFUNCTYPE( c_longlong, OPAQUE_PTR, OPAQUE_PTR, c_uint , OPAQUE_PTR, OPAQUE_PTR)
+JSObjectHasInstanceCallback = CFUNCTYPE( c_ubyte, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR, OPAQUE_PTR)
+JSObjectConvertToTypeCallback =  CFUNCTYPE( c_longlong, OPAQUE_PTR, c_uint , OPAQUE_PTR, OPAQUE_PTR)
 
 class JSStaticValue(Structure):
     _fields_  = [('name', c_char_p),
@@ -39,7 +41,7 @@ class JSClassDefinition(Structure):
                ('attributes', JSClassAttributes),
                
                ('className', c_char_p),
-               ('parentClass', POINTER(c_int)),
+               ('parentClass', OPAQUE_PTR),
                ('staticValues', POINTER(JSStaticValue)),
                ('staticFunctions', POINTER( JSStaticFunction)),
                ('initialize', JSObjectInitializeCallback ),
@@ -57,7 +59,7 @@ class JSClassDefinition(Structure):
 
 kJSClassDefinitionEmpty = libjavascriptcore.kJSClassDefinitionEmpty
 
-NULL = POINTER(c_int)()
+NULL = OPAQUE_PTR()
 
 
 class Asciifier(object):

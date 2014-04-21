@@ -52,10 +52,10 @@ from .webkit3_enums import *
 
     
 """Derived Pointer Types"""
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
 """Enumerations"""
 
 try:
@@ -69,7 +69,7 @@ class WebKitWebWindowFeatures( gobject__GObject.GObject):
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libwebkit3.webkit_web_window_features_new.restype = POINTER(c_int)
+            libwebkit3.webkit_web_window_features_new.restype = POINTER(c_void_p)
             
             libwebkit3.webkit_web_window_features_new.argtypes = []
             self._object = libwebkit3.webkit_web_window_features_new()
@@ -77,7 +77,7 @@ class WebKitWebWindowFeatures( gobject__GObject.GObject):
     """Methods"""
     def equal(  self, features2, ):
         if features2: features2 = features2._object
-        else: features2 = POINTER(c_int)()
+        else: features2 = POINTER(c_void_p)()
 
         
         return libwebkit3.webkit_web_window_features_equal( self._object,features2 )

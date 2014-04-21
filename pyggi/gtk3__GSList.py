@@ -52,58 +52,58 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GdkGeometry = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GError = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
+_GdkGeometry = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -286,10 +286,10 @@ class GSList( object):
     """Methods"""
     def g_slist_insert_before(  self, sibling, data, ):
         if sibling: sibling = sibling._object
-        else: sibling = POINTER(c_int)()
+        else: sibling = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None,None, obj=libgtk3.g_slist_insert_before( self._object,sibling,data ) or POINTER(c_int)())
+        return GSList(None,None, obj=libgtk3.g_slist_insert_before( self._object,sibling,data ) or POINTER(c_void_p)())
 
     def g_slist_free(  self, ):
 
@@ -298,27 +298,27 @@ class GSList( object):
 
     def g_slist_insert_sorted_with_data(  self, data, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None,None,None, obj=libgtk3.g_slist_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_int)())
+        return GSList(None,None,None, obj=libgtk3.g_slist_insert_sorted_with_data( self._object,data,func,user_data ) or POINTER(c_void_p)())
 
     def g_slist_copy(  self, ):
 
         from .gobject import GSList
-        return GSList( obj=libgtk3.g_slist_copy( self._object ) or POINTER(c_int)())
+        return GSList( obj=libgtk3.g_slist_copy( self._object ) or POINTER(c_void_p)())
 
     def g_slist_concat(  self, list2, ):
         if list2: list2 = list2._object
-        else: list2 = POINTER(c_int)()
+        else: list2 = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_concat( self._object,list2 ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_concat( self._object,list2 ) or POINTER(c_void_p)())
 
     def g_slist_nth(  self, n, ):
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_nth( self._object,n ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_nth( self._object,n ) or POINTER(c_void_p)())
 
     def g_slist_free_full(  self, free_func, ):
 
@@ -327,7 +327,7 @@ class GSList( object):
 
     def g_slist_position(  self, llink, ):
         if llink: llink = llink._object
-        else: llink = POINTER(c_int)()
+        else: llink = POINTER(c_void_p)()
 
         
         return libgtk3.g_slist_position( self._object,llink )
@@ -335,43 +335,43 @@ class GSList( object):
     def g_slist_remove(  self, data, ):
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_remove( self._object,data ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_remove( self._object,data ) or POINTER(c_void_p)())
 
     def g_slist_insert(  self, data, position, ):
 
         from .gobject import GSList
-        return GSList(None,None, obj=libgtk3.g_slist_insert( self._object,data,position ) or POINTER(c_int)())
+        return GSList(None,None, obj=libgtk3.g_slist_insert( self._object,data,position ) or POINTER(c_void_p)())
 
     def g_slist_last(  self, ):
 
         from .gobject import GSList
-        return GSList( obj=libgtk3.g_slist_last( self._object ) or POINTER(c_int)())
+        return GSList( obj=libgtk3.g_slist_last( self._object ) or POINTER(c_void_p)())
 
     def g_slist_reverse(  self, ):
 
         from .gobject import GSList
-        return GSList( obj=libgtk3.g_slist_reverse( self._object ) or POINTER(c_int)())
+        return GSList( obj=libgtk3.g_slist_reverse( self._object ) or POINTER(c_void_p)())
 
     def g_slist_find_custom(  self, data, func, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None,None, obj=libgtk3.g_slist_find_custom( self._object,data,func ) or POINTER(c_int)())
+        return GSList(None,None, obj=libgtk3.g_slist_find_custom( self._object,data,func ) or POINTER(c_void_p)())
 
     def g_slist_sort(  self, compare_func, ):
         if compare_func: compare_func = compare_func._object
-        else: compare_func = POINTER(c_int)()
+        else: compare_func = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_sort( self._object,compare_func ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_sort( self._object,compare_func ) or POINTER(c_void_p)())
 
     def g_slist_delete_link(  self, link_, ):
         if link_: link_ = link_._object
-        else: link_ = POINTER(c_int)()
+        else: link_ = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_delete_link( self._object,link_ ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_delete_link( self._object,link_ ) or POINTER(c_void_p)())
 
     def g_slist_length(  self, ):
 
@@ -385,51 +385,51 @@ class GSList( object):
 
     def g_slist_insert_sorted(  self, data, func, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None,None, obj=libgtk3.g_slist_insert_sorted( self._object,data,func ) or POINTER(c_int)())
+        return GSList(None,None, obj=libgtk3.g_slist_insert_sorted( self._object,data,func ) or POINTER(c_void_p)())
 
     def g_slist_remove_all(  self, data, ):
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_remove_all( self._object,data ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_remove_all( self._object,data ) or POINTER(c_void_p)())
 
     def g_slist_sort_with_data(  self, compare_func, user_data, ):
         if compare_func: compare_func = compare_func._object
-        else: compare_func = POINTER(c_int)()
+        else: compare_func = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None,None, obj=libgtk3.g_slist_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_int)())
+        return GSList(None,None, obj=libgtk3.g_slist_sort_with_data( self._object,compare_func,user_data ) or POINTER(c_void_p)())
 
     def g_slist_find(  self, data, ):
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_find( self._object,data ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_find( self._object,data ) or POINTER(c_void_p)())
 
     def g_slist_append(  self, data, ):
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_append( self._object,data ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_append( self._object,data ) or POINTER(c_void_p)())
 
     def g_slist_remove_link(  self, link_, ):
         if link_: link_ = link_._object
-        else: link_ = POINTER(c_int)()
+        else: link_ = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_remove_link( self._object,link_ ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_remove_link( self._object,link_ ) or POINTER(c_void_p)())
 
     def g_slist_copy_deep(  self, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         from .gobject import GSList
-        return GSList(None,None, obj=libgtk3.g_slist_copy_deep( self._object,func,user_data ) or POINTER(c_int)())
+        return GSList(None,None, obj=libgtk3.g_slist_copy_deep( self._object,func,user_data ) or POINTER(c_void_p)())
 
     def g_slist_prepend(  self, data, ):
 
         from .gobject import GSList
-        return GSList(None, obj=libgtk3.g_slist_prepend( self._object,data ) or POINTER(c_int)())
+        return GSList(None, obj=libgtk3.g_slist_prepend( self._object,data ) or POINTER(c_void_p)())
 
     def g_slist_index(  self, data, ):
 
@@ -443,7 +443,7 @@ class GSList( object):
 
     def g_slist_foreach(  self, func, user_data, ):
         if func: func = func._object
-        else: func = POINTER(c_int)()
+        else: func = POINTER(c_void_p)()
 
         
         libgtk3.g_slist_foreach( self._object,func,user_data )
@@ -452,4 +452,4 @@ class GSList( object):
     def g_slist_alloc():
         from .gobject import GSList
         return GSList( obj=    libgtk3.g_slist_alloc()
- or POINTER(c_int)())
+ or POINTER(c_void_p)())

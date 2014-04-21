@@ -52,92 +52,92 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_PangoAttrIterator = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_GError = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_PangoGlyphString = POINTER(c_int)
-_GSList = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
+_GtkRcStyle = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_PangoAttrIterator = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GtkWidgetClass = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_PangoFontMetrics = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_PangoFontset = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_cairo_t = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GtkAccelGroup = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GtkAllocation = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_PangoGlyphString = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -318,7 +318,7 @@ class PangoContext( gobject__GObject.GObject):
     def __init__( self,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.pango_context_new.restype = POINTER(c_int)
+            libgtk3.pango_context_new.restype = POINTER(c_void_p)
             
             libgtk3.pango_context_new.argtypes = []
             self._object = libgtk3.pango_context_new()
@@ -331,25 +331,25 @@ class PangoContext( gobject__GObject.GObject):
 
     def set_language(  self, language, ):
         if language: language = language._object
-        else: language = POINTER(c_int)()
+        else: language = POINTER(c_void_p)()
 
         
         libgtk3.pango_context_set_language( self._object,language )
 
     def pango_itemize(  self, text, start_index, length, attrs, cached_iter, ):
         if attrs: attrs = attrs._object
-        else: attrs = POINTER(c_int)()
+        else: attrs = POINTER(c_void_p)()
         if cached_iter: cached_iter = cached_iter._object
-        else: cached_iter = POINTER(c_int)()
+        else: cached_iter = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList( obj=libgtk3.pango_itemize( self._object,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
+        return GList( obj=libgtk3.pango_itemize( self._object,text,start_index,length,attrs,cached_iter ) or POINTER(c_void_p)())
 
     def pango_shape_full(  self, item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs, ):
         if analysis: analysis = analysis._object
-        else: analysis = POINTER(c_int)()
+        else: analysis = POINTER(c_void_p)()
         if glyphs: glyphs = glyphs._object
-        else: glyphs = POINTER(c_int)()
+        else: glyphs = POINTER(c_void_p)()
 
         
         libgtk3.pango_shape_full( self._object,item_text,item_length,paragraph_text,paragraph_length,analysis,glyphs )
@@ -361,16 +361,16 @@ class PangoContext( gobject__GObject.GObject):
 
     def pango_get_log_attrs(  self, text, length, level, language, log_attrs, attrs_len, ):
         if language: language = language._object
-        else: language = POINTER(c_int)()
+        else: language = POINTER(c_void_p)()
         if log_attrs: log_attrs = log_attrs._object
-        else: log_attrs = POINTER(c_int)()
+        else: log_attrs = POINTER(c_void_p)()
 
         
         libgtk3.pango_get_log_attrs( self._object,text,length,level,language,log_attrs,attrs_len )
 
     def set_matrix(  self, matrix, ):
         if matrix: matrix = matrix._object
-        else: matrix = POINTER(c_int)()
+        else: matrix = POINTER(c_void_p)()
 
         
         libgtk3.pango_context_set_matrix( self._object,matrix )
@@ -378,11 +378,11 @@ class PangoContext( gobject__GObject.GObject):
     def get_matrix(  self, ):
 
         from .gtk3 import PangoMatrix
-        return PangoMatrix( obj=libgtk3.pango_context_get_matrix( self._object )  or POINTER(c_int)())
+        return PangoMatrix( obj=libgtk3.pango_context_get_matrix( self._object )  or POINTER(c_void_p)())
 
     def set_font_description(  self, desc, ):
         if desc: desc = desc._object
-        else: desc = POINTER(c_int)()
+        else: desc = POINTER(c_void_p)()
 
         
         libgtk3.pango_context_set_font_description( self._object,desc )
@@ -394,18 +394,18 @@ class PangoContext( gobject__GObject.GObject):
 
     def load_fontset(  self, desc, language, ):
         if desc: desc = desc._object
-        else: desc = POINTER(c_int)()
+        else: desc = POINTER(c_void_p)()
         if language: language = language._object
-        else: language = POINTER(c_int)()
+        else: language = POINTER(c_void_p)()
 
         from .gtk3 import PangoFontset
-        return PangoFontset( obj=libgtk3.pango_context_load_fontset( self._object,desc,language )  or POINTER(c_int)())
+        return PangoFontset( obj=libgtk3.pango_context_load_fontset( self._object,desc,language )  or POINTER(c_void_p)())
 
     def pango_default_break(  self, text, length, analysis, attrs, attrs_len, ):
         if analysis: analysis = analysis._object
-        else: analysis = POINTER(c_int)()
+        else: analysis = POINTER(c_void_p)()
         if attrs: attrs = attrs._object
-        else: attrs = POINTER(c_int)()
+        else: attrs = POINTER(c_void_p)()
 
         
         libgtk3.pango_default_break( self._object,text,length,analysis,attrs,attrs_len )
@@ -417,23 +417,23 @@ class PangoContext( gobject__GObject.GObject):
 
     def pango_itemize_with_base_dir(  self, base_dir, text, start_index, length, attrs, cached_iter, ):
         if attrs: attrs = attrs._object
-        else: attrs = POINTER(c_int)()
+        else: attrs = POINTER(c_void_p)()
         if cached_iter: cached_iter = cached_iter._object
-        else: cached_iter = POINTER(c_int)()
+        else: cached_iter = POINTER(c_void_p)()
 
         from .gobject import GList
-        return GList( obj=libgtk3.pango_itemize_with_base_dir( self._object,base_dir,text,start_index,length,attrs,cached_iter ) or POINTER(c_int)())
+        return GList( obj=libgtk3.pango_itemize_with_base_dir( self._object,base_dir,text,start_index,length,attrs,cached_iter ) or POINTER(c_void_p)())
 
     def list_families(  self, families, n_families, ):
         if families: families = families._object
-        else: families = POINTER(c_int)()
+        else: families = POINTER(c_void_p)()
 
         
         libgtk3.pango_context_list_families( self._object,families,n_families )
 
     def set_font_map(  self, font_map, ):
         if font_map: font_map = font_map._object
-        else: font_map = POINTER(c_int)()
+        else: font_map = POINTER(c_void_p)()
 
         
         libgtk3.pango_context_set_font_map( self._object,font_map )
@@ -441,18 +441,18 @@ class PangoContext( gobject__GObject.GObject):
     def get_language(  self, ):
 
         from .gtk3 import PangoLanguage
-        return PangoLanguage( obj=libgtk3.pango_context_get_language( self._object )  or POINTER(c_int)())
+        return PangoLanguage( obj=libgtk3.pango_context_get_language( self._object )  or POINTER(c_void_p)())
 
     def get_font_map(  self, ):
 
         from .gtk3 import PangoFontMap
-        return PangoFontMap( obj=libgtk3.pango_context_get_font_map( self._object )  or POINTER(c_int)())
+        return PangoFontMap( obj=libgtk3.pango_context_get_font_map( self._object )  or POINTER(c_void_p)())
 
     def pango_shape(  self, text, length, analysis, glyphs, ):
         if analysis: analysis = analysis._object
-        else: analysis = POINTER(c_int)()
+        else: analysis = POINTER(c_void_p)()
         if glyphs: glyphs = glyphs._object
-        else: glyphs = POINTER(c_int)()
+        else: glyphs = POINTER(c_void_p)()
 
         
         libgtk3.pango_shape( self._object,text,length,analysis,glyphs )
@@ -475,16 +475,16 @@ class PangoContext( gobject__GObject.GObject):
     def get_font_description(  self, ):
 
         from .gtk3 import PangoFontDescription
-        return PangoFontDescription( obj=libgtk3.pango_context_get_font_description( self._object )  or POINTER(c_int)())
+        return PangoFontDescription( obj=libgtk3.pango_context_get_font_description( self._object )  or POINTER(c_void_p)())
 
     def get_metrics(  self, desc, language, ):
         if desc: desc = desc._object
-        else: desc = POINTER(c_int)()
+        else: desc = POINTER(c_void_p)()
         if language: language = language._object
-        else: language = POINTER(c_int)()
+        else: language = POINTER(c_void_p)()
 
         from .gtk3 import PangoFontMetrics
-        return PangoFontMetrics( obj=libgtk3.pango_context_get_metrics( self._object,desc,language )  or POINTER(c_int)())
+        return PangoFontMetrics( obj=libgtk3.pango_context_get_metrics( self._object,desc,language )  or POINTER(c_void_p)())
 
     def get_gravity_hint(  self, ):
 
@@ -493,24 +493,24 @@ class PangoContext( gobject__GObject.GObject):
 
     def pango_break(  self, text, length, analysis, attrs, attrs_len, ):
         if analysis: analysis = analysis._object
-        else: analysis = POINTER(c_int)()
+        else: analysis = POINTER(c_void_p)()
         if attrs: attrs = attrs._object
-        else: attrs = POINTER(c_int)()
+        else: attrs = POINTER(c_void_p)()
 
         
         libgtk3.pango_break( self._object,text,length,analysis,attrs,attrs_len )
 
     def load_font(  self, desc, ):
         if desc: desc = desc._object
-        else: desc = POINTER(c_int)()
+        else: desc = POINTER(c_void_p)()
 
         from .gtk3 import PangoFont
-        return PangoFont( obj=libgtk3.pango_context_load_font( self._object,desc )  or POINTER(c_int)())
+        return PangoFont( obj=libgtk3.pango_context_load_font( self._object,desc )  or POINTER(c_void_p)())
 
     @staticmethod
     def pango_reorder_items( logical_items,):
         if logical_items: logical_items = logical_items._object
-        else: logical_items = POINTER(c_int)()
+        else: logical_items = POINTER(c_void_p)()
         from .gobject import GList
         return GList( obj=    libgtk3.pango_reorder_items(logical_items, )
- or POINTER(c_int)())
+ or POINTER(c_void_p)())

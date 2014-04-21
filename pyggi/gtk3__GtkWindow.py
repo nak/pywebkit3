@@ -52,275 +52,275 @@ from .gtk3_enums import *
 
     
 """Derived Pointer Types"""
-_GtkRcStyle = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkMessageDialog = POINTER(c_int)
-_WebKitNetworkResponse = POINTER(c_int)
-_GtkLabel = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkBin = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkRcStyle = POINTER(c_int)
-_WebKitWebPolicyDecision = POINTER(c_int)
-_PangoEngineShape = POINTER(c_int)
-_GtkRegionFlags = POINTER(c_int)
-_GAsyncResult = POINTER(c_int)
-_cairo_matrix_t = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_cairo_font_options_t = POINTER(c_int)
-_JSValue = POINTER(c_int)
-_GtkProgressBar = POINTER(c_int)
-_JSContext = POINTER(c_int)
-_GtkIconFactory = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GMainLoop = POINTER(c_int)
-_GdkTimeCoord = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_GtkContainer = POINTER(c_int)
-_PangoItem = POINTER(c_int)
-_GClosure = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GMainContext = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GInterface = POINTER(c_int)
-_GtkStyleProvider = POINTER(c_int)
-_JSContextGroup = POINTER(c_int)
-_GFileEnumerator = POINTER(c_int)
-_GtkDialog = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_GtkCssProvider = POINTER(c_int)
-_GtkSymbolicColor = POINTER(c_int)
-_void = POINTER(c_int)
-_GtkStyleProperties = POINTER(c_int)
-_GInputStream = POINTER(c_int)
-_GtkIconInfo = POINTER(c_int)
-_GAppInfo = POINTER(c_int)
-_WebKitWebResource = POINTER(c_int)
-_GBytes = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_PangoFont = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GMainContext = POINTER(c_int)
-_GtkTextBuffer = POINTER(c_int)
-_GtkTargetList = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-_GtkNumerableIcon = POINTER(c_int)
-_GdkAppLaunchContext = POINTER(c_int)
-_GObject = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GtkSymbolicColor = POINTER(c_int)
-_WebKitWebBackForwardList = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_GtkOffscreenWindow = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GAppLaunchContext = POINTER(c_int)
-_PangoAttrIterator = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
-_GtkRequisition = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_GtkIconTheme = POINTER(c_int)
-_GtkSelectionData = POINTER(c_int)
-_GtkWindowGroup = POINTER(c_int)
-_GtkAccelLabel = POINTER(c_int)
-_GtkAdjustment = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_GApplication = POINTER(c_int)
-_GFileMonitor = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_GString = POINTER(c_int)
-_GFileAttributeMatcher = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_WebKitHitTestResult = POINTER(c_int)
-_WebKitWebSettings = POINTER(c_int)
-_GBoxed = POINTER(c_int)
-_GtkPathPriorityType = POINTER(c_int)
-_JSClass = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_JSValue = POINTER(c_int)
-_GdkPoint = POINTER(c_int)
-_GAppInfo = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GSource = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GIOStream = POINTER(c_int)
-_GIOStream = POINTER(c_int)
-_JSString = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_GOutputStream = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GSource = POINTER(c_int)
-_GtkMisc = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_GFileInfo = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_GEmblemedIcon = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GdkGeometry = POINTER(c_int)
-_GAppLauncContext = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_WebKitWebInspector = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_GOptionGroup = POINTER(c_int)
-_GScanner = POINTER(c_int)
-_GFileAttributeInfoList = POINTER(c_int)
-_GCancellable = POINTER(c_int)
-_GtkWidgetClass = POINTER(c_int)
-_GtkContainerClass = POINTER(c_int)
-_GdkEventKey = POINTER(c_int)
-_GtkAdjustment = POINTER(c_int)
-_GdkDragContext = POINTER(c_int)
-_GtkAssistant = POINTER(c_int)
-_GdkDisplay = POINTER(c_int)
-_GFileIOStream = POINTER(c_int)
-_GAppLaunchContext = POINTER(c_int)
-_GtkSettings = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_PangoFontMetrics = POINTER(c_int)
-_GCond = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_cairo_surface_t = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_PangoFontMap = POINTER(c_int)
-_GSList = POINTER(c_int)
-_WebKitWebFrame = POINTER(c_int)
-_JSString = POINTER(c_int)
-_GActionGroup = POINTER(c_int)
-_cairo_region_t = POINTER(c_int)
-_GtkScrolledWindow = POINTER(c_int)
-_WebKitNetworkRequest = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_JSContextGroup = POINTER(c_int)
-_GFile = POINTER(c_int)
-_PangoLayoutIter = POINTER(c_int)
-_GtkClipboard = POINTER(c_int)
-_PangoLayoutRun = POINTER(c_int)
-_GFileInputStream = POINTER(c_int)
-_PangoFontset = POINTER(c_int)
-_GdkWindow = POINTER(c_int)
-_GdkPixbufAnimation = POINTER(c_int)
-_PangoFontDescription = POINTER(c_int)
-_GtkBorder = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-_GError = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GtkAboutDialog = POINTER(c_int)
-_WebKitViewportAttributes = POINTER(c_int)
-_JSClass = POINTER(c_int)
-_WebKitWebHistoryItem = POINTER(c_int)
-_PangoFontFamily = POINTER(c_int)
-_cairo_t = POINTER(c_int)
-_GWeakRef = POINTER(c_int)
-_GdkPixbufAnimationIter = POINTER(c_int)
-_GdkVisual = POINTER(c_int)
-_GdkEventButton = POINTER(c_int)
-_GCancellable = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_GMount = POINTER(c_int)
-_PangoRectangle = POINTER(c_int)
-_GtkAccelGroup = POINTER(c_int)
-_GObject = POINTER(c_int)
-_GPollFD = POINTER(c_int)
-_GtkIconSource = POINTER(c_int)
-_GFile = POINTER(c_int)
-_JSContext = POINTER(c_int)
-_GDrive = POINTER(c_int)
-_PangoFontsetSimple = POINTER(c_int)
-_GtkAllocation = POINTER(c_int)
-_GtkWidget = POINTER(c_int)
-_PangoLayoutLine = POINTER(c_int)
-_GtkIconSet = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_GMutex = POINTER(c_int)
-_GtkImage = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
-_GtkStyleContext = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GdkDeviceManager = POINTER(c_int)
-_GtkStatusbar = POINTER(c_int)
-_GdkCursor = POINTER(c_int)
-_WebKitDOMDocument = POINTER(c_int)
-_PangoMatrix = POINTER(c_int)
-_GtkPrintOperation = POINTER(c_int)
-_GtkThemingEngine = POINTER(c_int)
-_GString = POINTER(c_int)
-_PangoContext = POINTER(c_int)
-_GtkTargetList = POINTER(c_int)
-_GFileInfo = POINTER(c_int)
-_GList = POINTER(c_int)
-_WebKitWebView = POINTER(c_int)
-_WebKitWebWindowFeatures = POINTER(c_int)
-_PangoCoverage = POINTER(c_int)
-_GParamSpec = POINTER(c_int)
-_GList = POINTER(c_int)
-_GdkRGBA = POINTER(c_int)
-_GTimeVal = POINTER(c_int)
-_GtkInvisible = POINTER(c_int)
-_GSourceFuncs = POINTER(c_int)
-_JSPropertyNameAccumulator = POINTER(c_int)
-_PangoGlyphString = POINTER(c_int)
-_JSGlobalContext = POINTER(c_int)
-_GFileIOStream = POINTER(c_int)
-_WebKitSecurityOrigin = POINTER(c_int)
-_GObjectClass = POINTER(c_int)
-_GSList = POINTER(c_int)
-_PangoAnalysis = POINTER(c_int)
-_GtkStylePropertyParser = POINTER(c_int)
-_GdkWindowAttr = POINTER(c_int)
-_SoupMessage = POINTER(c_int)
-_WebKitWebDataSource = POINTER(c_int)
-_GdkAtom = POINTER(c_int)
-_GtkBox = POINTER(c_int)
-_GdkColor = POINTER(c_int)
-_GdkPixbufAnimation = POINTER(c_int)
-_GEmblem = POINTER(c_int)
-_GdkRectangle = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_PangoAttrList = POINTER(c_int)
-_gunichar = POINTER(c_int)
-_GVolume = POINTER(c_int)
-_GdkWMDecoration = POINTER(c_int)
-_PangoLogAttr = POINTER(c_int)
-_PangoLayout = POINTER(c_int)
-_GPollFD = POINTER(c_int)
-_GFileOutputStream = POINTER(c_int)
-_JSObject = POINTER(c_int)
-_GdkDragContext = POINTER(c_int)
-_WebKitDOMNode = POINTER(c_int)
-_GInputStream = POINTER(c_int)
-_GtkStyleProperties = POINTER(c_int)
-_WebKitWebNavigationAction = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GParameter = POINTER(c_int)
-_GtkStyle = POINTER(c_int)
-_GIcon = POINTER(c_int)
-_GtkWindow = POINTER(c_int)
-_GtkGradient = POINTER(c_int)
-_cairo_pattern_t = POINTER(c_int)
-_GdkPixbuf = POINTER(c_int)
-_GtkPackType = POINTER(c_int)
-_GdkScreen = POINTER(c_int)
-_GMountOperation = POINTER(c_int)
-_GValue = POINTER(c_int)
-_GtkWidgetPath = POINTER(c_int)
-_JSPropertyNameArray = POINTER(c_int)
-_GSourceCallbackFuncs = POINTER(c_int)
-_PangoFontFace = POINTER(c_int)
-_GtkTargetEntry = POINTER(c_int)
-_GtkApplication = POINTER(c_int)
-_GtkCssSection = POINTER(c_int)
-_CairoPattern = POINTER(c_int)
-_GByteArray = POINTER(c_int)
-_GdkPixbufSimpleAnim = POINTER(c_int)
-_JSObject = POINTER(c_int)
-_WebKitGeolocationPolicyDecision = POINTER(c_int)
-_PangoLanguage = POINTER(c_int)
-_GdkDevice = POINTER(c_int)
-_PangoTabArray = POINTER(c_int)
+_GtkRcStyle = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkMessageDialog = POINTER(c_void_p)
+_WebKitNetworkResponse = POINTER(c_void_p)
+_GtkLabel = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkBin = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkRcStyle = POINTER(c_void_p)
+_WebKitWebPolicyDecision = POINTER(c_void_p)
+_PangoEngineShape = POINTER(c_void_p)
+_GtkRegionFlags = POINTER(c_void_p)
+_GAsyncResult = POINTER(c_void_p)
+_cairo_matrix_t = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_cairo_font_options_t = POINTER(c_void_p)
+_JSValue = POINTER(c_void_p)
+_GtkProgressBar = POINTER(c_void_p)
+_JSContext = POINTER(c_void_p)
+_GtkIconFactory = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GMainLoop = POINTER(c_void_p)
+_GdkTimeCoord = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_GtkContainer = POINTER(c_void_p)
+_PangoItem = POINTER(c_void_p)
+_GClosure = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GMainContext = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GInterface = POINTER(c_void_p)
+_GtkStyleProvider = POINTER(c_void_p)
+_JSContextGroup = POINTER(c_void_p)
+_GFileEnumerator = POINTER(c_void_p)
+_GtkDialog = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_GtkCssProvider = POINTER(c_void_p)
+_GtkSymbolicColor = POINTER(c_void_p)
+_void = POINTER(c_void_p)
+_GtkStyleProperties = POINTER(c_void_p)
+_GInputStream = POINTER(c_void_p)
+_GtkIconInfo = POINTER(c_void_p)
+_GAppInfo = POINTER(c_void_p)
+_WebKitWebResource = POINTER(c_void_p)
+_GBytes = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_PangoFont = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GMainContext = POINTER(c_void_p)
+_GtkTextBuffer = POINTER(c_void_p)
+_GtkTargetList = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+_GtkNumerableIcon = POINTER(c_void_p)
+_GdkAppLaunchContext = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GtkSymbolicColor = POINTER(c_void_p)
+_WebKitWebBackForwardList = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_GtkOffscreenWindow = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GAppLaunchContext = POINTER(c_void_p)
+_PangoAttrIterator = POINTER(c_void_p)
+_GFileAttributeMatcher = POINTER(c_void_p)
+_GtkRequisition = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_GtkIconTheme = POINTER(c_void_p)
+_GtkSelectionData = POINTER(c_void_p)
+_GtkWindowGroup = POINTER(c_void_p)
+_GtkAccelLabel = POINTER(c_void_p)
+_GtkAdjustment = POINTER(c_void_p)
+_JSGlobalContext = POINTER(c_void_p)
+_GApplication = POINTER(c_void_p)
+_GFileMonitor = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_GString = POINTER(c_void_p)
+_GFileAttributeMatcher = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_WebKitHitTestResult = POINTER(c_void_p)
+_WebKitWebSettings = POINTER(c_void_p)
+_GBoxed = POINTER(c_void_p)
+_GtkPathPriorityType = POINTER(c_void_p)
+_JSClass = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_JSValue = POINTER(c_void_p)
+_GdkPoint = POINTER(c_void_p)
+_GAppInfo = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GSource = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GIOStream = POINTER(c_void_p)
+_GIOStream = POINTER(c_void_p)
+_JSString = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_GOutputStream = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GSource = POINTER(c_void_p)
+_GtkMisc = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_GFileInfo = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_GEmblemedIcon = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GdkGeometry = POINTER(c_void_p)
+_GAppLauncContext = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_WebKitWebInspector = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_GOptionGroup = POINTER(c_void_p)
+_GScanner = POINTER(c_void_p)
+_GFileAttributeInfoList = POINTER(c_void_p)
+_GCancellable = POINTER(c_void_p)
+_GtkWidgetClass = POINTER(c_void_p)
+_GtkContainerClass = POINTER(c_void_p)
+_GdkEventKey = POINTER(c_void_p)
+_GtkAdjustment = POINTER(c_void_p)
+_GdkDragContext = POINTER(c_void_p)
+_GtkAssistant = POINTER(c_void_p)
+_GdkDisplay = POINTER(c_void_p)
+_GFileIOStream = POINTER(c_void_p)
+_GAppLaunchContext = POINTER(c_void_p)
+_GtkSettings = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_PangoFontMetrics = POINTER(c_void_p)
+_GCond = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_cairo_surface_t = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_PangoFontMap = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_WebKitWebFrame = POINTER(c_void_p)
+_JSString = POINTER(c_void_p)
+_GActionGroup = POINTER(c_void_p)
+_cairo_region_t = POINTER(c_void_p)
+_GtkScrolledWindow = POINTER(c_void_p)
+_WebKitNetworkRequest = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_JSContextGroup = POINTER(c_void_p)
+_GFile = POINTER(c_void_p)
+_PangoLayoutIter = POINTER(c_void_p)
+_GtkClipboard = POINTER(c_void_p)
+_PangoLayoutRun = POINTER(c_void_p)
+_GFileInputStream = POINTER(c_void_p)
+_PangoFontset = POINTER(c_void_p)
+_GdkWindow = POINTER(c_void_p)
+_GdkPixbufAnimation = POINTER(c_void_p)
+_PangoFontDescription = POINTER(c_void_p)
+_GtkBorder = POINTER(c_void_p)
+_JSPropertyNameArray = POINTER(c_void_p)
+_GError = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GtkAboutDialog = POINTER(c_void_p)
+_WebKitViewportAttributes = POINTER(c_void_p)
+_JSClass = POINTER(c_void_p)
+_WebKitWebHistoryItem = POINTER(c_void_p)
+_PangoFontFamily = POINTER(c_void_p)
+_cairo_t = POINTER(c_void_p)
+_GWeakRef = POINTER(c_void_p)
+_GdkPixbufAnimationIter = POINTER(c_void_p)
+_GdkVisual = POINTER(c_void_p)
+_GdkEventButton = POINTER(c_void_p)
+_GCancellable = POINTER(c_void_p)
+_CairoPattern = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_GMount = POINTER(c_void_p)
+_PangoRectangle = POINTER(c_void_p)
+_GtkAccelGroup = POINTER(c_void_p)
+_GObject = POINTER(c_void_p)
+_GPollFD = POINTER(c_void_p)
+_GtkIconSource = POINTER(c_void_p)
+_GFile = POINTER(c_void_p)
+_JSContext = POINTER(c_void_p)
+_GDrive = POINTER(c_void_p)
+_PangoFontsetSimple = POINTER(c_void_p)
+_GtkAllocation = POINTER(c_void_p)
+_GtkWidget = POINTER(c_void_p)
+_PangoLayoutLine = POINTER(c_void_p)
+_GtkIconSet = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+_GMutex = POINTER(c_void_p)
+_GtkImage = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
+_GtkStyleContext = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GdkDeviceManager = POINTER(c_void_p)
+_GtkStatusbar = POINTER(c_void_p)
+_GdkCursor = POINTER(c_void_p)
+_WebKitDOMDocument = POINTER(c_void_p)
+_PangoMatrix = POINTER(c_void_p)
+_GtkPrintOperation = POINTER(c_void_p)
+_GtkThemingEngine = POINTER(c_void_p)
+_GString = POINTER(c_void_p)
+_PangoContext = POINTER(c_void_p)
+_GtkTargetList = POINTER(c_void_p)
+_GFileInfo = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_WebKitWebView = POINTER(c_void_p)
+_WebKitWebWindowFeatures = POINTER(c_void_p)
+_PangoCoverage = POINTER(c_void_p)
+_GParamSpec = POINTER(c_void_p)
+_GList = POINTER(c_void_p)
+_GdkRGBA = POINTER(c_void_p)
+_GTimeVal = POINTER(c_void_p)
+_GtkInvisible = POINTER(c_void_p)
+_GSourceFuncs = POINTER(c_void_p)
+_JSPropertyNameAccumulator = POINTER(c_void_p)
+_PangoGlyphString = POINTER(c_void_p)
+_JSGlobalContext = POINTER(c_void_p)
+_GFileIOStream = POINTER(c_void_p)
+_WebKitSecurityOrigin = POINTER(c_void_p)
+_GObjectClass = POINTER(c_void_p)
+_GSList = POINTER(c_void_p)
+_PangoAnalysis = POINTER(c_void_p)
+_GtkStylePropertyParser = POINTER(c_void_p)
+_GdkWindowAttr = POINTER(c_void_p)
+_SoupMessage = POINTER(c_void_p)
+_WebKitWebDataSource = POINTER(c_void_p)
+_GdkAtom = POINTER(c_void_p)
+_GtkBox = POINTER(c_void_p)
+_GdkColor = POINTER(c_void_p)
+_GdkPixbufAnimation = POINTER(c_void_p)
+_GEmblem = POINTER(c_void_p)
+_GdkRectangle = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_PangoAttrList = POINTER(c_void_p)
+_gunichar = POINTER(c_void_p)
+_GVolume = POINTER(c_void_p)
+_GdkWMDecoration = POINTER(c_void_p)
+_PangoLogAttr = POINTER(c_void_p)
+_PangoLayout = POINTER(c_void_p)
+_GPollFD = POINTER(c_void_p)
+_GFileOutputStream = POINTER(c_void_p)
+_JSObject = POINTER(c_void_p)
+_GdkDragContext = POINTER(c_void_p)
+_WebKitDOMNode = POINTER(c_void_p)
+_GInputStream = POINTER(c_void_p)
+_GtkStyleProperties = POINTER(c_void_p)
+_WebKitWebNavigationAction = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GParameter = POINTER(c_void_p)
+_GtkStyle = POINTER(c_void_p)
+_GIcon = POINTER(c_void_p)
+_GtkWindow = POINTER(c_void_p)
+_GtkGradient = POINTER(c_void_p)
+_cairo_pattern_t = POINTER(c_void_p)
+_GdkPixbuf = POINTER(c_void_p)
+_GtkPackType = POINTER(c_void_p)
+_GdkScreen = POINTER(c_void_p)
+_GMountOperation = POINTER(c_void_p)
+_GValue = POINTER(c_void_p)
+_GtkWidgetPath = POINTER(c_void_p)
+_JSPropertyNameArray = POINTER(c_void_p)
+_GSourceCallbackFuncs = POINTER(c_void_p)
+_PangoFontFace = POINTER(c_void_p)
+_GtkTargetEntry = POINTER(c_void_p)
+_GtkApplication = POINTER(c_void_p)
+_GtkCssSection = POINTER(c_void_p)
+_CairoPattern = POINTER(c_void_p)
+_GByteArray = POINTER(c_void_p)
+_GdkPixbufSimpleAnim = POINTER(c_void_p)
+_JSObject = POINTER(c_void_p)
+_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
+_PangoLanguage = POINTER(c_void_p)
+_GdkDevice = POINTER(c_void_p)
+_PangoTabArray = POINTER(c_void_p)
 """Enumerations"""
 GdkWindowType = c_int
 GdkWindowWindowClass = c_int
@@ -967,7 +967,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def __init__( self, type,  obj = None):
         if obj: self._object = obj
         else:
-            libgtk3.gtk_window_new.restype = POINTER(c_int)
+            libgtk3.gtk_window_new.restype = POINTER(c_void_p)
             
             libgtk3.gtk_window_new.argtypes = [GtkWindowType]
             self._object = libgtk3.gtk_window_new(type, )
@@ -985,9 +985,9 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_geometry_hints(  self, geometry_widget, geometry, geom_mask, ):
         if geometry_widget: geometry_widget = geometry_widget._object
-        else: geometry_widget = POINTER(c_int)()
+        else: geometry_widget = POINTER(c_void_p)()
         if geometry: geometry = geometry._object
-        else: geometry = POINTER(c_int)()
+        else: geometry = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_geometry_hints( self._object,geometry_widget,geometry,geom_mask )
@@ -995,7 +995,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_group(  self, ):
 
         from .gtk3 import GtkWindowGroup
-        return GtkWindowGroup(None, obj=libgtk3.gtk_window_get_group( self._object ) or POINTER(c_int)())
+        return GtkWindowGroup(None, obj=libgtk3.gtk_window_get_group( self._object ) or POINTER(c_void_p)())
 
     def set_has_resize_grip(  self, value, ):
 
@@ -1014,7 +1014,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_icon_from_file(  self, filename, err, ):
         if err: err = err._object
-        else: err = POINTER(c_int)()
+        else: err = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_window_set_icon_from_file( self._object,filename,err )
@@ -1026,7 +1026,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def propagate_key_event(  self, event, ):
         if event: event = event._object
-        else: event = POINTER(c_int)()
+        else: event = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_window_propagate_key_event( self._object,event )
@@ -1038,7 +1038,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def get_resize_grip_area(  self, rect, ):
         if rect: rect = rect._object
-        else: rect = POINTER(c_int)()
+        else: rect = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_window_get_resize_grip_area( self._object,rect )
@@ -1050,7 +1050,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_screen(  self, screen, ):
         if screen: screen = screen._object
-        else: screen = POINTER(c_int)()
+        else: screen = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_screen( self._object,screen )
@@ -1082,7 +1082,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_position(  self, position, ):
         if position: position = position._object
-        else: position = POINTER(c_int)()
+        else: position = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_position( self._object,position )
@@ -1134,7 +1134,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_default(  self, default_widget, ):
         if default_widget: default_widget = default_widget._object
-        else: default_widget = POINTER(c_int)()
+        else: default_widget = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_default( self._object,default_widget )
@@ -1156,7 +1156,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_icon(  self, icon, ):
         if icon: icon = icon._object
-        else: icon = POINTER(c_int)()
+        else: icon = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_icon( self._object,icon )
@@ -1214,7 +1214,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_focus(  self, ):
 
         from .gtk3 import GtkWidget
-        return GtkWidget(None, obj=libgtk3.gtk_window_get_focus( self._object ) or POINTER(c_int)())
+        return GtkWidget(None, obj=libgtk3.gtk_window_get_focus( self._object ) or POINTER(c_void_p)())
 
     def set_auto_startup_notification(  self, setting, ):
 
@@ -1233,14 +1233,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_application(  self, application, ):
         if application: application = application._object
-        else: application = POINTER(c_int)()
+        else: application = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_application( self._object,application )
 
     def set_default_icon(  self, icon, ):
         if icon: icon = icon._object
-        else: icon = POINTER(c_int)()
+        else: icon = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_default_icon( self._object,icon )
@@ -1253,7 +1253,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_icon(  self, ):
 
         from .gobject import GdkPixbuf
-        return GdkPixbuf( obj=libgtk3.gtk_window_get_icon( self._object ) or POINTER(c_int)())
+        return GdkPixbuf( obj=libgtk3.gtk_window_get_icon( self._object ) or POINTER(c_void_p)())
 
     def set_role(  self, role, ):
 
@@ -1287,14 +1287,14 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_transient_for(  self, parent, ):
         if parent: parent = parent._object
-        else: parent = POINTER(c_int)()
+        else: parent = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_transient_for( self._object,parent )
 
     def set_icon_list(  self, list, ):
         if list: list = list._object
-        else: list = POINTER(c_int)()
+        else: list = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_icon_list( self._object,list )
@@ -1327,7 +1327,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_transient_for(  self, ):
 
         from .gtk3 import GtkWindow
-        return GtkWindow( obj=libgtk3.gtk_window_get_transient_for( self._object ) or POINTER(c_int)())
+        return GtkWindow( obj=libgtk3.gtk_window_get_transient_for( self._object ) or POINTER(c_void_p)())
 
     def get_window_type(  self, ):
 
@@ -1336,7 +1336,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def remove_mnemonic(  self, keyval, target, ):
         if target: target = target._object
-        else: target = POINTER(c_int)()
+        else: target = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_remove_mnemonic( self._object,keyval,target )
@@ -1359,12 +1359,12 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_application(  self, ):
 
         from .gtk3 import GtkApplication
-        return GtkApplication(None,None, obj=libgtk3.gtk_window_get_application( self._object ) or POINTER(c_int)())
+        return GtkApplication(None,None, obj=libgtk3.gtk_window_get_application( self._object ) or POINTER(c_void_p)())
 
     def get_default_widget(  self, ):
 
         from .gtk3 import GtkWidget
-        return GtkWidget( obj=libgtk3.gtk_window_get_default_widget( self._object ) or POINTER(c_int)())
+        return GtkWidget( obj=libgtk3.gtk_window_get_default_widget( self._object ) or POINTER(c_void_p)())
 
     def set_mnemonic_modifier(  self, modifier, ):
 
@@ -1378,7 +1378,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_default_icon_list(  self, list, ):
         if list: list = list._object
-        else: list = POINTER(c_int)()
+        else: list = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_default_icon_list( self._object,list )
@@ -1391,7 +1391,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_screen(  self, ):
 
         from .gobject import GdkScreen
-        return GdkScreen( obj=libgtk3.gtk_window_get_screen( self._object ) or POINTER(c_int)())
+        return GdkScreen( obj=libgtk3.gtk_window_get_screen( self._object ) or POINTER(c_void_p)())
 
     def set_wmclass(  self, wmclass_name, wmclass_class, ):
 
@@ -1415,7 +1415,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def begin_resize_drag(  self, edge, button, root_x, root_y, timestamp, ):
         if edge: edge = edge._object
-        else: edge = POINTER(c_int)()
+        else: edge = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_begin_resize_drag( self._object,edge,button,root_x,root_y,timestamp )
@@ -1442,7 +1442,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def add_accel_group(  self, accel_group, ):
         if accel_group: accel_group = accel_group._object
-        else: accel_group = POINTER(c_int)()
+        else: accel_group = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_add_accel_group( self._object,accel_group )
@@ -1455,7 +1455,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_icon_list(  self, ):
 
         from .gobject import GList
-        return GList( obj=libgtk3.gtk_window_get_icon_list( self._object ) or POINTER(c_int)())
+        return GList( obj=libgtk3.gtk_window_get_icon_list( self._object ) or POINTER(c_void_p)())
 
     def set_keep_above(  self, setting, ):
 
@@ -1484,7 +1484,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def activate_key(  self, event, ):
         if event: event = event._object
-        else: event = POINTER(c_int)()
+        else: event = POINTER(c_void_p)()
 
         
         return libgtk3.gtk_window_activate_key( self._object,event )
@@ -1506,21 +1506,21 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
 
     def set_focus(  self, focus, ):
         if focus: focus = focus._object
-        else: focus = POINTER(c_int)()
+        else: focus = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_set_focus( self._object,focus )
 
     def add_mnemonic(  self, keyval, target, ):
         if target: target = target._object
-        else: target = POINTER(c_int)()
+        else: target = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_add_mnemonic( self._object,keyval,target )
 
     def remove_accel_group(  self, accel_group, ):
         if accel_group: accel_group = accel_group._object
-        else: accel_group = POINTER(c_int)()
+        else: accel_group = POINTER(c_void_p)()
 
         
         libgtk3.gtk_window_remove_accel_group( self._object,accel_group )
@@ -1538,7 +1538,7 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     @staticmethod
     def set_default_icon_from_file( filename, err,):
         if err: err = err._object
-        else: err = POINTER(c_int)()
+        else: err = POINTER(c_void_p)()
         
         return     libgtk3.gtk_window_set_default_icon_from_file(filename, err, )
 
@@ -1551,9 +1551,9 @@ class GtkWindow( gtk3__GtkBin.GtkBin):
     def get_default_icon_list():
         from .gobject import GList
         return GList( obj=    libgtk3.gtk_window_get_default_icon_list()
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
     @staticmethod
     def list_toplevels():
         from .gobject import GList
         return GList( obj=    libgtk3.gtk_window_list_toplevels()
- or POINTER(c_int)())
+ or POINTER(c_void_p)())
