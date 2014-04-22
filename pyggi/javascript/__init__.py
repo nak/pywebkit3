@@ -34,7 +34,10 @@ list_of_cfuncs = {}
 
 def to_jsfunction( ctxt, func):
     if func in list_of_cfuncs:
-        return list_of_cfuncs[func][0]
+        text = JSString.CreateWithUTF8CString( func.__name__)
+        jsobj = JSObject.MakeFunctionWithCallback(ctxt, text, list_of_cfuncs[func][2])
+        text.Release()
+        return jsobj
     def get_callable( func ):
         def C_Callable( context, function, thisObject,  argumentCount, arguments, exception):
             context = JSContext(obj = context)
@@ -239,6 +242,7 @@ class JSFunction(JSObject):
                                                   jsArgs,
                                                   NULL)
         retval =   to_pythonjs(self._context, retval)
+        
         return retval
 
         

@@ -1,11 +1,16 @@
 tdl = None
 document = None
 _ = None
+
+class Globals:
+    pass
+
 def initialize_common( context, _tdl , jq):
     global tdl
     global document
     global _
-    _ = context.get_jsobject('$')
+    Globals.context = context
+    _ = Globals.context.get_jsobject('$')
     tdl = _tdl
     tdl.require('tdl.fast')
     tdl.require('tdl.io')
@@ -13,13 +18,13 @@ def initialize_common( context, _tdl , jq):
     tdl.require('tdl.math')
     tdl.require('tdl.screenshot')
     tdl.require('tdl.sync')
-    document = context.get_jsobject("document")
+    document = Globals.context.get_jsobject("document")
     assert(document)
     return document
 
-g_syncManager = None
+Globals.g_syncManager = None
 
-g_viewSettingsIndex = 0
+Globals.g_viewSettingsIndex = 0
 g_getCount = 0
 g_putCount = 0
 def make_object( from_dict):
@@ -39,6 +44,7 @@ def make_objects( l ):
     for index  in range(len(l)):
         l[index] = make_object( l[index])
     return l
+
 
 g_viewSettings = [
   #// Inside 1
@@ -168,7 +174,7 @@ g_viewSettings = [
     'tankColorFudge': 1
   }
 ]
-g_viewSettings = make_objects( g_viewSettings )
+Globals.g_viewSettings = make_objects( g_viewSettings )
 
 g = {
   'globals': {
@@ -201,7 +207,9 @@ g = {
   }
 }
 
-g = make_object( g )
+
+
+Globals.g = make_object( g )
 
 g_uiWidgets = {}
 g_logGLCalls = True
@@ -247,17 +255,17 @@ def setViewSettings(index):
         g.globals[name] = value
   
 
-    viewSettings = g_viewSettings[index]
+    viewSettings = Globals.g_viewSettings[index]
     setSettings({globals: viewSettings})
 
 
 def advanceViewSettings():
-    g_viewSettingsIndex = (g_viewSettingsIndex + 1) % g_viewSettings.length
+    Globals.g_viewSettingsIndex = (Globals.g_viewSettingsIndex + 1) % Globals.g_viewSettings.length
     setViewSettings(g_viewSettingsIndex)
 
 
 def resetViewSettings():
-    setViewSettings(g_viewSettingsIndex)
+    setViewSettings(Globals.g_viewSettingsIndex)
 
 
 #/**
@@ -285,10 +293,10 @@ def initializeCommon():
   if (g.net.sync):
       url = "ws:" + window.location.host
       tdl.log("server:", url)
-      g_syncManager.init(url, g.net.slave)
-      if not g.net.slave:
-          g_viewSettingsIndex = 4
-          setViewSettings(g_viewSettingsIndex)
+      Globals.g_syncManager.init(url, g.net.slave)
+      if not 'slave' in g.net:
+          Globals.g_viewSettingsIndex = 4
+          Globals.setViewSettings(g_viewSettingsIndex)
     
   return True
 
@@ -344,9 +352,10 @@ def setupSlider(_, elem, ui, obj):
 
 
 def AddUI(uiObj):
+  document = Globals.context.get_jsobject("document")
   uiElem = document.getElementById('ui')
   for  ui in uiObj:
-      obj = g[ui.obj]
+      obj = Globals.g[ui.obj]
       if not ui.name in obj:
           obj[ui.name] = ui.value
           
@@ -356,7 +365,7 @@ def AddUI(uiObj):
 
 
 def setSettings(settings):
-    g_syncManager.setSettings(settings)
+    Globals.g_syncManager.setSettings(settings)
 
 
 

@@ -24,7 +24,7 @@ logging.error("ENABLE: ")
 scrolled.add( webview )
 
 #webview.open( "http://learningwebgl.com/lessons/lesson04/index.html" )
-webview.open( "http://webglsamples.googlecode.com/hg/aquarium/aquarium.html")
+webview.open("http://webglsamples.googlecode.com/hg/aquarium/aquarium.html")
 window.show_all()
 window.connect( "delete-event", gtk3.main_quit )
 

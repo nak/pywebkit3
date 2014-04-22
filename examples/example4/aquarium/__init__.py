@@ -13,15 +13,15 @@ import math
 # globals
 gl = None                   # the gl context.
 fast = None                 # the fast math lib.
-class Globals:
-    g_fpsTimer = None           # object to measure frames per second
-    setPretty = True
-    checkResTimer = 2
-    clock = 0.0
-    then = 0.0
-    frameCount = 0
-    eyeClock = 0
-    canvas = None               # the canvas
+
+Globals.g_fpsTimer = None           # object to measure frames per second
+Globals.setPretty = True
+Globals.checkResTimer = 2
+Globals.clock = 0.0
+Globals.then = 0.0
+Globals.frameCount = 0
+Globals.eyeClock = 0
+Globals.canvas = None               # the canvas
 
 g_logGLCalls = True   # whether or not to log webgl calls
 g_debug = False      # whether or not to debug.
@@ -96,7 +96,7 @@ g_ui2 = [
   { 'obj': 'innerConst', 'name': 'eta',             'value': 1,     'max':  1.2},
   { 'obj': 'innerConst', 'name': 'tankColorFudge',  'value': 0.8,   'max':  2}
 ]
-g_ui = make_objects(g_ui2)
+Globals.g_ui = make_objects(g_ui2)
 
 g_netUI = [
   { 'obj': 'net',    'name': 'timeout',     'value': 3000,  'max':  3000},
@@ -587,13 +587,13 @@ class Scene(object):
 
 def setShaders():
     name = ''
-    if (not g.options.fog.enabled):
+    if (not Globals.g.options.fog.enabled):
         name += 'noFog'
   
-    if (not g.options.reflection.enabled):
+    if (not Globals.g.options.reflection.enabled):
         name += 'noReflection'
   
-    if (not g.options.normalMaps.enabled):
+    if (not Globals.g.options.normalMaps.enabled):
         name += 'noNormalMaps'
   
     if (name == ''):
@@ -796,7 +796,7 @@ def setupSkybox():
 def setViewSettings(index):
   def setGlobal(name, value):
         _(g_uiWidgets.globals[name]).slider("value", value * 1000)
-        g.globals[name] = value
+        Globals.g.globals[name] = value
   
 
   viewSettings = g_viewSettings[index]
@@ -844,7 +844,7 @@ def main( document ):
   Globals.g_fpsTimer =  tdl.fps.FPSTimer()
   logging.error("GFPS IS %s"%Globals.g_fpsTimer)
   assert(Globals.g_fpsTimer is not None)
-  gl = tdl.webgl.setupWebGL(Globals.canvas, g.globals.canvasAttributes)
+  gl = tdl.webgl.setupWebGL(Globals.canvas, Globals.g.globals.canvasAttributes)
   if (not gl):
       return False
   
@@ -946,22 +946,22 @@ def initialize():
     fogColor = Float32Array([1,1,1,1])
     
     # Sky uniforms.
-    skyConst = {'viewProjectionInverse': skyViewProjectionInverse}
-    skyPer = {}
+    skyConst = make_object({'viewProjectionInverse': skyViewProjectionInverse})
+    skyPer = make_object({})
 
     # Sand uniforms.
-    sandConst = {
+    sandConst = make_object({
         'viewInverse': viewInverse,
         'lightWorldPos': lightWorldPos,
         'lightColor': one4,
         'specular': one4,
         'shininess': 5,
-        'specularFactor': 0.3}
-    sandPer = {
+        'specularFactor': 0.3})
+    sandPer = make_object({
         'world': world,
         'worldViewProjection': worldViewProjection,
         'worldInverse': worldInverse,
-        'worldInverseTranspose': worldInverseTranspose}
+        'worldInverseTranspose': worldInverseTranspose})
     
     # Generic uniforms.
     genericConst = make_object({
@@ -1009,22 +1009,22 @@ def initialize():
         'worldInverseTranspose': worldInverseTranspose})
     
     # Laser uniforms
-    laserConst = {}
-    laserPer = {
-        'worldViewProjection': worldViewProjection}
+    laserConst = make_object({})
+    laserPer = make_object({
+        'worldViewProjection': worldViewProjection})
 
     # Inner uniforms.
-    g.innerConst.viewInverse = viewInverse
-    g.innerConst.lightWorldPos = lightWorldPos
-    g.innerConst.lightColor = one4
-    g.innerConst.specular = one4
-    g.innerConst.shininess = 50
-    g.innerConst.specularFactor = 1
-    innerPer = {
+    Globals.g.innerConst.viewInverse = viewInverse
+    Globals.g.innerConst.lightWorldPos = lightWorldPos
+    Globals.g.innerConst.lightColor = one4
+    Globals.g.innerConst.specular = one4
+    Globals.g.innerConst.shininess = 50
+    Globals.g.innerConst.specularFactor = 1
+    innerPer = make_object({
         'world': world,
         'worldViewProjection': worldViewProjection,
         'worldInverse': worldInverse,
-        'worldInverseTranspose': worldInverseTranspose}
+        'worldInverseTranspose': worldInverseTranspose})
     
     # Fish uniforms.
     fishConst = make_object({
@@ -1042,11 +1042,11 @@ def initialize():
         'scale': 1})
     
     # lightRay uniforms.
-    lightRayConst = {}
+    lightRayConst = make_object({})
     lightRayPer = make_object({
         'worldViewProjection': worldViewProjection,
         'colorMult': Float32Array([1,1,1,1])})
-    theClock = tdl.clock.createClock({True:10, False:None}[g.net.sync or False])
+    theClock = tdl.clock.createClock({True:10, False:None}[Globals.g.net.sync or False])
     def DrawGroup(group, constUniforms, perUniforms):
         numObjects = group.length
         currentModel = None
@@ -1092,14 +1092,14 @@ def initialize():
 
 
         now = theClock.getTime()
-        if (g.net.sync):
+        if (Globals.g.net.sync):
             Globals.clock = now
             Globals.eyeClock = now
 
 
     def setCanvasSize(canvas, newWidth, newHeight):
         changed = False
-        ratio = {True: window.devicePixelRatio, False:1}[g.win.useDevicePixelRation and window.devicePixelRatio]
+        ratio = {True: window.devicePixelRatio, False:1}[Globals.g.win.useDevicePixelRation and window.devicePixelRatio]
         newWidth *= ratio
         newHeight *= ratio
         if (newWidth != canvas.width):
@@ -1137,12 +1137,12 @@ def initialize():
 
 
     #??????????    
-        if ('width' in g.globals and 'height' in g.globals):
-            return setCanvasSize(canvas, g.globals.width, g.globals.height)
+        if ('width' in Globals.g.globals and 'height' in Globals.g.globals):
+            return setCanvasSize(canvas, Globals.g.globals.width, Globals.g.globals.height)
         else:
             return setCanvasSize(canvas, newWidth, newHeight)
     def render(*args):
-        
+      try:    
         
         import logging
         logging.error("RENDER")
@@ -1162,16 +1162,17 @@ def initialize():
         fpsElem.innerHTML = Globals.g_fpsTimer.averageFPS
 
         # If we are running > 40hz then turn on a few more options.
-        if (Globals.setPretty and Globals.g_fpsTimer.averageFPS > 40):
-            Globals.ssetPretty = False
-            if (not g.options.normalMaps.enabled): g.options.normalMaps.toggle() 
-            if (not g.options.reflection.enabled): g.options.reflection.toggle() 
+        #if (Globals.setPretty and Globals.g_fpsTimer.averageFPS > 40):
+        #    Globals.ssetPretty = False
+        #    if (not Globals.g.options.normalMaps.enabled): Globals.g.options.normalMaps.toggle() 
+        #    if (not Globals.g.options.reflection.enabled): Globals.g.options.reflection.toggle() 
 
 
         # See if we should increase/decrease the rendering resolution
+        logging.error("CHECK TIMER")
         Globals.checkResTimer -= elapsedTime
         if (Globals.checkResTimer < 0):
-            if (g.win and g.win.adjustRes):
+            if (Globals.g.win and Globals.g.win.adjustRes):
                 if (Globals.g_fpsTimer.averageFPS > 35):
                     if (increaseCanvasSize(canvas)):
                         Globals.checkResTimer = 2
@@ -1183,26 +1184,28 @@ def initialize():
 
 
 
-
-        if (g.net.sync):
-            Globals.clock = now * g.globals.speed
-            Globals.eyeClock = now * g.globals.eyeSpeed
+        logging.error("SYNC? %s"%Globals.g.net.sync)
+        if (Globals.g.net.sync):
+            Globals.clock = now * Globals.g.globals.speed
+            Globals.eyeClock = now * Globals.g.globals.eyeSpeed
         else:
             # we have our own clock.
-            Globals.clock += elapsedTime * g.globals.speed
-            Globals.eyeClock += elapsedTime * g.globals.eyeSpeed
+            Globals.clock += elapsedTime * Globals.g.globals.speed
+            Globals.eyeClock += elapsedTime * Globals.g.globals.eyeSpeed
 
-        eyePosition[0] = math.sin(Globals.eyeClock) * g.globals.eyeRadius
-        eyePosition[1] = g.globals.eyeHeight
-        eyePosition[2] = math.cos(Globals.eyeClock) * g.globals.eyeRadius
-        target[0] = math.sin(Globals.eyeClock + math.pi) * g.globals.targetRadius
-        target[1] = g.globals.targetHeight
-        target[2] = math.cos(Globals.eyeClock + math.pi) * g.globals.targetRadius
+        logging.error("UPDATE 1")
+        eyePosition[0] = math.sin(Globals.eyeClock) * Globals.g.globals.eyeRadius
+        eyePosition[1] = Globals.g.globals.eyeHeight
+        eyePosition[2] = math.cos(Globals.eyeClock) * Globals.g.globals.eyeRadius
+        target[0] = math.sin(Globals.eyeClock + math.pi) * Globals.g.globals.targetRadius
+        target[1] = Globals.g.globals.targetHeight
+        target[2] = math.cos(Globals.eyeClock + math.pi) * Globals.g.globals.targetRadius
 
-        ambient[0] = g.globals.ambientRed
-        ambient[1] = g.globals.ambientGreen
-        ambient[2] = g.globals.ambientBlue
+        ambient[0] = Globals.g.globals.ambientRed
+        ambient[1] = Globals.g.globals.ambientGreen
+        ambient[2] = Globals.g.globals.ambientBlue
 
+        logging.error("UPDATE 2")
         gl.colorMask(True, True, True, True)
         gl.clearColor(0,0.8,1,0)
         gl.clear(int(gl.COLOR_BUFFER_BIT) | int(gl.DEPTH_BUFFER_BIT) |
@@ -1212,14 +1215,15 @@ def initialize():
         far = 25000
         
         aspect = Globals.canvas.clientWidth / Globals.canvas.clientHeight
-        top = math.tan(tdl.math.degToRad(g.globals.fieldOfView * g.net.fovFudge) * 0.5) * near
+        top = math.tan(tdl.math.degToRad(Globals.g.globals.fieldOfView * Globals.g.net.fovFudge) * 0.5) * near
         bottom = -top
         left = aspect * bottom
         right = aspect * top
         width = abs(right - left)
         height = abs(top - bottom)
-        xOff = width * g.net.offset[0] * g.net.offsetMult
-        yOff = height * g.net.offset[1] * g.net.offsetMult
+        xOff = width * Globals.g.net.offset[0] * Globals.g.net.offsetMult
+        yOff = height * Globals.g.net.offset[1] * Globals.g.net.offsetMult
+        logging.error("UPDATE 3")
         tdl.fast.matrix4.frustum(
           projection,
           left + xOff,
@@ -1234,13 +1238,13 @@ def initialize():
             eyePosition,
             target,
             up)
-        if ('slave' in g.net and g.net.slave):
+        if ('slave' in Globals.g.net and Globals.g.net.slave):
             # compute X fov from y fov
-            fovy = tdl.math.degToRad(g.globals.fieldOfView * g.net.fovFudge)
+            fovy = tdl.math.degToRad(Globals.g.globals.fieldOfView * Globals.g.net.fovFudge)
             fovx = math.atan(
                 math.tan(fovy * 0.5) * Globals.canvas.clientWidth / Globals.canvas.clientHeight) * 2
             fast.matrix4.rotationY(
-                m4t0, g.net.rotYMult * fovx * -g.net.fovMult)
+                m4t0, Globals.g.net.rotYMult * fovx * -g.net.fovMult)
             fast.matrix4.mul(viewInverse, m4t0, viewInverse)
 
         tdl.fast.matrix4.inverse(view, viewInverse)
@@ -1278,7 +1282,7 @@ def initialize():
 
         # Draw Skybox
         #Log("--Draw Sky---------------------------------------")
-        #if (g.options.skybox.enabled) {
+        #if (Globals.g.options.skybox.enabled) {
         #  gl.depthMask(False)
         #  skybox.drawPrep(skyConst)
         #  skybox.draw(skyPer)
@@ -1286,26 +1290,26 @@ def initialize():
         gl.depthMask(True)
 
         if (g_fog):
-            genericConst.fogPower  = g.globals.fogPower
-            genericConst.fogMult   = g.globals.fogMult
-            genericConst.fogOffset = g.globals.fogOffset
-            genericConst.fogOffset = g.globals.fogOffset
+            genericConst.fogPower  = Globals.g.globals.fogPower
+            genericConst.fogMult   = Globals.g.globals.fogMult
+            genericConst.fogOffset = Globals.g.globals.fogOffset
+            genericConst.fogOffset = Globals.g.globals.fogOffset
             genericConst.fogColor  = fogColor
-            fishConst.fogPower     = g.globals.fogPower
-            fishConst.fogMult      = g.globals.fogMult
-            fishConst.fogOffset    = g.globals.fogOffset
+            fishConst.fogPower     = Globals.g.globals.fogPower
+            fishConst.fogMult      = Globals.g.globals.fogMult
+            fishConst.fogOffset    = Globals.g.globals.fogOffset
             fishConst.fogColor     = fogColor
-            g.innerConst.fogPower  = g.globals.fogPower
-            g.innerConst.fogMult   = g.globals.fogMult
-            g.innerConst.fogOffset = g.globals.fogOffset
-            g.innerConst.fogColor  = fogColor
-            seaweedConst.fogPower  = g.globals.fogPower
-            seaweedConst.fogMult   = g.globals.fogMult
-            seaweedConst.fogOffset = g.globals.fogOffset
+            Globals.g.innerConst.fogPower  = Globals.g.globals.fogPower
+            Globals.g.innerConst.fogMult   = Globals.g.globals.fogMult
+            Globals.g.innerConst.fogOffset = Globals.g.globals.fogOffset
+            Globals.g.innerConst.fogColor  = fogColor
+            seaweedConst.fogPower  = Globals.g.globals.fogPower
+            seaweedConst.fogMult   = Globals.g.globals.fogMult
+            seaweedConst.fogOffset = Globals.g.globals.fogOffset
             seaweedConst.fogColor  = fogColor
-            fogColor[0] = g.globals.fogRed
-            fogColor[1] = g.globals.fogGreen
-            fogColor[2] = g.globals.fogBlue
+            fogColor[0] = Globals.g.globals.fogRed
+            fogColor[1] = Globals.g.globals.fogGreen
+            fogColor[2] = Globals.g.globals.fogBlue
 
 
         # Draw Scene
@@ -1322,7 +1326,7 @@ def initialize():
             
             fishInfo = g_fishTable[ff]
             fishName = fishInfo.name
-            numFish = fishInfo.num[g.globals.fishSetting]
+            numFish = fishInfo.num[Globals.g.globals.fishSetting]
             matMul = fast.matrix4.mul
             matInverse = fast.matrix4.inverse
             matScaling = fast.matrix4.scaling
@@ -1331,7 +1335,7 @@ def initialize():
             scene = g_scenes[fishName]
             if (scene and scene.loaded and not scene.bad):
                 fish = scene.models[0]
-                f = g.fish
+                f = Globals.g.fish
                 for  p in fishInfo.constUniforms:
                     fishConst[p] = fishInfo.constUniforms[p]
 
@@ -1376,7 +1380,7 @@ def initialize():
                                  (math.pi * 2)
                     fish.draw(fishPer)
 
-                    if (g.drawLasers and fishInfo.lasers):
+                    if (Globals.g.drawLasers and fishInfo.lasers):
                         fishInfo.fishData[ii] = {
                             position: [
                                 fishPosition[0],
@@ -1393,11 +1397,11 @@ def initialize():
 
 
 
-            Log("--Drew fish-----------------------")
-            if (g.options.tank.enabled):
+            Log("--Drew fish-----------------------%s")
+            if (Globals.g.options.tank.enabled):
                 if (g_sceneGroups.inner):
                     Log("--Draw GlobeInner----------------")
-                    DrawGroup(g_sceneGroups.inner, g.innerConst, innerPer)
+                    DrawGroup(g_sceneGroups.inner, Globals.g.innerConst, innerPer)
 
 
         logging.error("SEAWEED %s"%g_sceneGroups.seaweed)
@@ -1406,9 +1410,9 @@ def initialize():
             DrawGroup(g_sceneGroups.seaweed, seaweedConst, seaweedPer)
 
 
-        logging.error("LASERS %s"%g.drawLasers)
+        logging.error("LASERS %s"%Globals.g.drawLasers)
         # Draw Lasers
-        if (g.drawLasers):
+        if (Globals.g.drawLasers):
             Log("--Draw Lasers---------------------------------------")
             gl.enable(gl.BLEND)
             gl.blendFunc(gl.ONE, gl.ONE)
@@ -1420,7 +1424,7 @@ def initialize():
             laserConst.colorMult = [c * 1, c * 0.1, c * 0.1, c]
             for  ff in range(len(g_fishTable)):
                 fishInfo = g_fishTable[ff]
-                numFish = fishInfo.num[g.globals.fishSetting]
+                numFish = fishInfo.num[Globals.g.globals.fishSetting]
                 fishName = fishInfo.name
                 scene = g_scenes[fishName]
                 center = [0, g_tankHeight, 0]
@@ -1494,14 +1498,14 @@ def initialize():
             gl.depthMask(True)
 
 
-            if (g.options.museum.enabled):
+            if (Globals.g.options.museum.enabled):
                 if (g_sceneGroups.outside):
                     Log("--Draw outside----------------")
                     DrawGroup(g_sceneGroups.outside, outsideConst, outsidePer)
 
 
 
-            bubbleTimer -= elapsedTime * g.globals.speed
+            bubbleTimer -= elapsedTime * Globals.g.globals.speed
             if (bubbleTimer < 0):
                 bubbleTimer = 2 + random.gauss(0.5,0.5) * 8
                 radius = random.gauss(0.5,0.5) * 50
@@ -1516,21 +1520,21 @@ def initialize():
                 bubbleIndex = bubbleIndex % g_numBubbleSets
 
                 fast.matrix4.translation(world, [0, 0, 0])
-                if (g.options.bubbles.enabled):
+                if (Globals.g.options.bubbles.enabled):
                     particleSystem.draw(viewProjection, world, viewInverse)
 
 
             gl.enable(gl.BLEND)
             gl.disable(gl.CULL_FACE)
-            if (g.options.lightRays.enabled):
+            if (Globals.g.options.lightRays.enabled):
                 gl.blendFunc(gl.SRC_ALPHA, gl.ONE)
                 gl.depthMask(False)
                 lightRay.drawPrep(lightRayConst)
                 for ii in range( g_lightRayInfo.length):
                   info = g_lightRayInfo[ii]
                   lerp = info.timer / info.duration
-                  y = math.max(70, math.min(120, g_lightRayY + g.globals.eyeHeight))
-                  info.timer -= elapsedTime * g.globals.speed
+                  y = math.max(70, math.min(120, g_lightRayY + Globals.g.globals.eyeHeight))
+                  info.timer -= elapsedTime * Globals.g.globals.speed
                   if (info.timer < 0):
                       initLightRay(info)
 
@@ -1557,16 +1561,15 @@ def initialize():
         gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA)
         gl.blendEquation(gl.FUNC_ADD)
         
-        if (g.options.tank.enabled):
-            if (g_sceneGroups.outer):
-                Log("--Draw GlobeOuter----------------")
-                DrawGroup(g_sceneGroups.outer, g.innerConst, innerPer)
+        #if (Globals.g.options.tank.enabled):
+        #    if (g_sceneGroups.outer):
+        #        Log("--Draw GlobeOuter----------------")
+        #        DrawGroup(g_sceneGroups.outer, Globals.g.innerConst, innerPer)
 
 
-        logging.error("LASERS OUT %s"%g)
-        logging.error("LASERS OUT %s"%g.drawLasers)
+        logging.error("LASERS OUT %s"%Globals.g.drawLasers)
         # Draw Lasers Outside
-        if (g.drawLasers):
+        if (Globals.g.drawLasers):
             Log("--Draw Lasers Outside---------------------------------------")
             gl.enable(gl.BLEND)
             gl.blendFunc(gl.ONE, gl.ONE)
@@ -1576,7 +1579,7 @@ def initialize():
             laser.drawPrep(laserConst)
             for ff in range(g_fishTable.length):
                 fishInfo = g_fishTable[ff]
-                numFish = fishInfo.num[g.globals.fishSetting]
+                numFish = fishInfo.num[Globals.g.globals.fishSetting]
                 fishName = fishInfo.name
                 scene = g_scenes[fishName]
                 if (scene and scene.loaded and not scene.bad):
@@ -1609,14 +1612,15 @@ def initialize():
         gl.clearColor(0,0,0,1)
         gl.clear(gl.COLOR_BUFFER_BIT)
 
-        # turn off logging after 1 frame.
+        # turn off glogging after 1 frame.
         g_logGLCalls = False
-
         if (not g_drawOnce):
             assert( Globals.canvas._object())
-            window = context.get_jsobject("window")
             g_requestId = tdl.webgl.requestAnimationFrame(  render, Globals.canvas )
-
+      except:
+          import traceback
+          traceback.print_exc()
+          
     if not hasattr(Globals,"render"):
         Globals.render = render
     render()
@@ -1640,7 +1644,7 @@ def setupCountButtons():
       elem.onclick = onclick(elem, ii)
   
 
-  if (g.net.sync):
+  if (Globals.g.net.sync):
       setSetting(document.getElementById("setSetting4"), 4)
   else:
       setSetting(document.getElementById("setSetting2"), 2)
@@ -1664,8 +1668,8 @@ def initUIStuff():
           'tank' : nullf}[option.name]()
 
     optionsContainer = document.getElementById("optionsContainer")
-    for name in g.options:
-        option = g.options[name]
+    for name in Globals.g.options:
+        option = Globals.g.options[name]
         option.name = name
         div = document.createElement('div')
         div.appendChild(document.createTextNode("-" + option.text))
@@ -1693,11 +1697,12 @@ def init( document ):
         global _
         assert(_)
         assert( document )
-        AddUI(g_ui)
+        assert( Globals.g_ui)
+        AddUI(Globals.g_ui)
         
         g_syncManager = tdl.sync.SyncManager(g, updateUI)
         
-        if (g.get('win') and g.win.get('resize')):
+        if (Globals.g.get('win') and Globals.g.win.get('resize')):
             width = screen.availWidth
             height = screen.availHeight
             window.moveTo(0, 0)
@@ -1705,25 +1710,25 @@ def init( document ):
             tdl.log("w", width, "h", height)
 
         
-        if (g.net.get('msg') and g.net.msg.get('length')):
-            _("#msgContainer").append(g.net.msg)
+        if (Globals.g.net.get('msg') and Globals.g.net.msg.get('length')):
+            _("#msgContainer").append(Globals.g.net.msg)
         else:
             _("#msgContainer").hide()
         
 
-        if (g.net.get('sync')):
+        if (Globals.g.net.get('sync')):
             
-            g.globals.fishSetting = 4
-            if (g.net.get('ui') != False):
+            Globals.g.globals.fishSetting = 4
+            if (Globals.g.net.get('ui') != False):
                 AddUI(g_netUI)
                 _("#msgContainer").show()
             
           
 
-        if (not g.net.get('fovFudge')) :
+        if (not Globals.g.net.get('fovFudge')) :
             
-            g.net.fovFudge = 1
-            g.net['fovFudge'] = 1
+            Globals.g.net.fovFudge = 1
+            Globals.g.net['fovFudge'] = 1
 
         def toggle():
             _("#uiContainer").toggle('slow')
@@ -1737,14 +1742,14 @@ def init( document ):
             
         _("#optionsContainer").toggle()
         
-        if g.net.ui == False:
+        if Globals.g.net.ui == False:
             _('#topUI').hide()
         else:
             def keypress(event, *args):
                 return
                 if (event.keyCode == 'l'.charCodeAt(0) or \
                     event.keyCode == 'L'.charCodeAt(0)):
-                    setSettings({'drawLasers': not (g.drawLasers or False)})
+                    setSettings({'drawLasers': not (Globals.g.drawLasers or False)})
                 elif (event.keyCode == ' '.charCodeAt(0)):
                     advanceViewSettings()
                 elif (event.keyCode == 's'.charCodeAt(0) or \
