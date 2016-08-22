@@ -500,11 +500,11 @@ class JSContext( javascriptcore__JSObject.JSObject):
         
         if retval is None:
             names = name.split('.')
-            obj = JSContext.GetGlobalObject(context)
+            globj = JSContext.GetGlobalObject(context)
             import logging
             for n in names:
                 text = JSString.CreateWithUTF8CString( n )
-                obj = obj.GetProperty( text, NULL)
+                obj = globj.GetProperty( text, NULL)
                 text.Release()
                 if not obj:
                     break

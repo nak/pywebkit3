@@ -38,6 +38,8 @@ def to_jsfunction( ctxt, func):
         jsobj = JSObject.MakeFunctionWithCallback(ctxt, text, list_of_cfuncs[func][2])
         text.Release()
         return jsobj
+    if (not hasattr(func, '__call__')) and func.IsFunction(ctxt):
+            func = JSFunction(ctxt, obj=func, thisobj = NULL, name="anon")
     def get_callable( func ):
         def C_Callable( context, function, thisObject,  argumentCount, arguments, exception):
             context = JSContext(obj = context)
@@ -185,17 +187,16 @@ class JSFunction(JSObject):
                 jsarg = to_jsfunction(self._context, arg)
                 assert(jsarg.IsFunction(self._context))
 
-            elif hasattr( arg, '__iter__'):
-                text = JSString.CreateWithUTF8CString("{}")
-                jsarg =JSValue.MakeFromJSONString(self._context, text)
-                jsarg = jsarg.ToObject(self._context,NULL)
-                                         
+            elif isinstance( arg, dict):
+                text = JSString.CreateWithUTF8CString("{}")#"%s"%dict)
+                jsarg =  JSValue.MakeFromJSONString(self._context, text)
+                jsarg = jsarg.ToObject(self._context, NULL)
                 text.Release()
-                for index,value in enumerate(arg):
-                    #recursion here:
+                for key,value in arg.items():
+                    #resucrion here:
                     value = get_jsobj( value)
 
-                    name = JSString.CreateWithUTF8CString( "%d"%index )
+                    name = JSString.CreateWithUTF8CString( key )
                     jsarg.SetProperty( self._context,
                                        name, 
                                        value,
@@ -203,18 +204,19 @@ class JSFunction(JSObject):
                                        NULL)
                     name.Release()
 
-            elif isinstance( arg, dict):
-                text = JSString.CreateWithUTF8CString("%s"%dict)
-                jsarg =  JSValue.MakeFromJSONString(self._context, text)
-                jsarg = jsarg.ToObject(self._context, NULL)
+            elif hasattr( arg, '__iter__'):
+                text = JSString.CreateWithUTF8CString("{}")
+                jsarg =JSValue.MakeFromJSONString(self._context, text)
+                jsarg = jsarg.ToObject(self._context,NULL)
+
                 text.Release()
-                for key,value in arg.items( ):
-                    #resucrion here:
+                for index,value in enumerate(arg):
+                    #recursion here:
                     value = get_jsobj( value)
 
-                    name = JSString.CreateWithUTF8CString( key )
+                    name = JSString.CreateWithUTF8CString( "%d"%index )
                     jsarg.SetProperty( self._context,
-                                       name, 
+                                       name,
                                        value,
                                        kJSPropertyAttributeNone,
                                        NULL)

@@ -2,7 +2,7 @@
 from setuptools import setup, find_packages
 
 setup( name = "PyGGI",
-    version = "0.9.20",
+    version = "0.9.21",
     packages = ["pyggi","pyggi/javascript"],# find_packages(),
     scripts = [],
 

@@ -762,7 +762,7 @@ class JSObject( JSValue ):
                 
                 return val
         elif jstype==kJSTypeBoolean.value:
-                val = prop.ToBoolean( context, NULL)
+                val = prop.ToBoolean( context)
                 setattr(self, attr, val)
                 return val
         elif jstype == kJSTypeString.value:
@@ -802,7 +802,7 @@ class JSObject( JSValue ):
                 
                 return val
             elif jstype==kJSTypeBoolean.value:
-                val = prop.ToBoolean( context, NULL)
+                val = prop.ToBoolean( context)
                 setattr(self, attr, val)
                 return val
             elif jstype == kJSTypeString.value:
