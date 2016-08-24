@@ -65,7 +65,11 @@ NULL = OPAQUE_PTR()
 class Asciifier(object):
     @classmethod
     def from_param(cls, value):
-        if isinstance(value, bytes):
+        if value is None:
+            return None
+        elif isinstance(value, bytes):
             return value
-        else:
+        elif isinstance(value, str):
             return value.encode('ascii')
+        else:
+            return value

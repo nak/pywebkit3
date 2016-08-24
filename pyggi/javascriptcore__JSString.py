@@ -339,12 +339,12 @@ except:
    pass
 try:
     libjavascriptcore.JSStringIsEqualToUTF8CString.restype = bool
-    libjavascriptcore.JSStringIsEqualToUTF8CString.argtypes = [_JSString,c_char_p]
+    libjavascriptcore.JSStringIsEqualToUTF8CString.argtypes = [_JSString,Asciifier]
 except:
    pass
 try:
     libjavascriptcore.JSStringGetUTF8CString.restype = size_t
-    libjavascriptcore.JSStringGetUTF8CString.argtypes = [_JSString,c_char_p,size_t]
+    libjavascriptcore.JSStringGetUTF8CString.argtypes = [_JSString,Asciifier,size_t]
 except:
    pass
 try:
@@ -364,7 +364,7 @@ except:
    pass
 try:
     libjavascriptcore.JSStringCreateWithUTF8CString.restype = _JSString
-    libjavascriptcore.JSStringCreateWithUTF8CString.argtypes = [c_char_p]
+    libjavascriptcore.JSStringCreateWithUTF8CString.argtypes = [Asciifier]
 except:
    pass
 
@@ -397,18 +397,15 @@ class JSString( object):
         return self
 
     def IsEqualToUTF8CString(  self, b, ):
-
-        
-        return libjavascriptcore.JSStringIsEqualToUTF8CString( self._object(),b )
+        return libjavascriptcore.JSStringIsEqualToUTF8CString( self._object(), str(b).encode('ascii') if b is not None else None )
 
     def GetUTF8CString(  self, buffer, bufferSize, ):
+        if buffer is None:
+            return
+        libjavascriptcore.JSStringGetUTF8CString(  self._object(), buffer, bufferSize )
 
-        
-        return libjavascriptcore.JSStringGetUTF8CString( self._object(),buffer, bufferSize);  # str(buffer).encode('ascii'),bufferSize )
 
     def GetMaximumUTF8CStringSize(  self, ):
-
-        
         return libjavascriptcore.JSStringGetMaximumUTF8CStringSize( self._object() )
 
     def GetLength(  self, ):
@@ -419,12 +416,12 @@ class JSString( object):
     @staticmethod
     def CreateWithCharacters( chars, numChars,):
         from .javascriptcore import JSString
-        return JSString( obj=    libjavascriptcore.JSStringCreateWithCharacters(str(chars).encode('ascii'), numChars, )
+        return JSString( obj=libjavascriptcore.JSStringCreateWithCharacters(str(chars).encode('ascii'), numChars, )
   or POINTER(c_void_p)())
     @staticmethod
     def CreateWithUTF8CString( string,):
         from .javascriptcore import JSString
-        string2 =  libjavascriptcore.JSStringCreateWithUTF8CString(string )
+        string2 =  libjavascriptcore.JSStringCreateWithUTF8CString(str(string).encode('ascii') if string is not None else None )
         retval =  JSString( obj=   string2  or POINTER(c_void_p)())
         
         return retval

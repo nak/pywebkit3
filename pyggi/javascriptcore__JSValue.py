@@ -330,7 +330,7 @@ libjavascriptcore.JSValueMakeUndefined.argtypes = [_JSContext]
 libjavascriptcore.JSValueMakeNull.restype = _JSValue
 libjavascriptcore.JSValueMakeNull.argtypes = [_JSContext]
 libjavascriptcore.JSValueMakeBoolean.restype = _JSValue
-libjavascriptcore.JSValueMakeBoolean.argtypes = [_JSContext,c_char]
+libjavascriptcore.JSValueMakeBoolean.argtypes = [_JSContext,c_byte]
 libjavascriptcore.JSValueMakeString.restype = _JSValue
 libjavascriptcore.JSValueMakeString.argtypes = [_JSContext,_JSString]
 libjavascriptcore.JSValueUnprotect.argtypes = [_JSContext,_JSValue]
@@ -551,7 +551,7 @@ class JSValue( object ):
     @staticmethod
     def MakeBoolean( ctx, boolean,):
         from .javascriptcore import JSValue
-        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx._object(), boolean), context=ctx )
+        return JSValue( obj=    libjavascriptcore.JSValueMakeBoolean(ctx._object(), c_byte(boolean)), context=ctx )
 
     @staticmethod
     def MakeString( ctx, string,):

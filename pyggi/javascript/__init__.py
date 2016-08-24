@@ -17,6 +17,7 @@ import traceback
 import importlib
 import collections
 
+
 document = None
 from ctypes import POINTER, c_int
 OPAQUE_PTR = POINTER(c_int)
@@ -48,7 +49,7 @@ def to_jsfunction( ctxt, func):
                 args = []
             else:
                 thisObject = JSObject(obj = thisObject, context = context)
-                args = [thisObject]
+                args = []#thisObject]
             try:
                 for i in range(argumentCount):
                     argument = JSValue(obj = arguments[i],
@@ -81,7 +82,66 @@ def to_jsfunction( ctxt, func):
                     import traceback
                     logging.error(traceback.format_exc())
                     retval = None
-                    
+
+                def get_jsobj( arg ):
+                    if arg is None:
+                        jsarg = JSValue.MakeNull(context)
+
+                    elif isinstance(arg, numbers.Number):
+                        jsarg = JSValue.MakeNumber(context, arg)
+                    elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
+
+                        jsstring = JSString.CreateWithUTF8CString(arg)
+                        jsarg = JSValue.MakeString(context, jsstring)
+
+                        jsstring.Release()
+
+                    elif isinstance( arg, JSObject):
+                        jsarg = arg
+
+                    elif isinstance(arg, collections.Callable):
+                        jsarg = to_jsfunction(context, arg)
+                        assert(jsarg.IsFunction(context))
+
+                    elif arg is True or arg is False:
+                        jsarg = JSValue.MakeBoolean(context, arg)
+
+                    elif isinstance( arg, dict):
+                        text = JSString.CreateWithUTF8CString("{}")#"%s"%dict)
+                        jsarg =  JSValue.MakeFromJSONString(context, text)
+                        jsarg = jsarg.ToObject(context, NULL)
+                        text.Release()
+                        for key,value in arg.items():
+                            #resucrion here:
+                            value = get_jsobj( value)
+
+                            name = JSString.CreateWithUTF8CString( key )
+                            jsarg.SetProperty( context,
+                                               name,
+                                               value,
+                                               kJSPropertyAttributeNone,
+                                               NULL)
+                            name.Release()
+
+                    elif hasattr( arg, '__iter__'):
+                        text = JSString.CreateWithUTF8CString("[]")
+                        jsarg =JSValue.MakeFromJSONString(context, text)
+                        jsarg = jsarg.ToObject(context,NULL)
+
+                        text.Release()
+                        for index,value in enumerate(arg):
+                            #recursion here:
+                            value = get_jsobj( value)
+
+                            jsarg.SetPropertyAtIndex( context,
+                                              unsigned(index),
+                                               value,
+                                               NULL)
+
+                    else:
+                        raise Exception("Unknown type %s to convert to javascript"%type(arg))
+                    return jsarg
+
                 if retval == None:
                     retval = JSValue.MakeNull(context)
                 elif isinstance(retval, numbers.Number):
@@ -91,8 +151,41 @@ def to_jsfunction( ctxt, func):
                     text = JSString.CreateWithUTF8CString(cstring)
                     retval = JSValue.MakeString(context, text);
                     text.Release()
-                elif retval in [True, False]:
+                elif retval is True or retval is False:
                     retval = JSValue.MakeBoolean(context, retval)
+                elif isinstance(retval, dict):
+                    rtv = retval
+                    text = JSString.CreateWithUTF8CString("{}")
+                    retval = JSValue.MakeFromJSONString(context, text)
+                    retval = retval.ToObject(context, NULL)
+                    text.Release()
+                    for key,value in rtv.items():
+                        #resucrion here:
+                        value = get_jsobj( value)
+
+                        name = JSString.CreateWithUTF8CString( key )
+                        retval.SetProperty( context,
+                                           name,
+                                           value,
+                                           kJSPropertyAttributeNone,
+                                           NULL)
+                        name.Release()
+
+                elif hasattr(retval, '__iter__'):
+                    text = JSString.CreateWithUTF8CString("[]")
+                    rtv = retval
+                    retval =JSValue.MakeFromJSONString(context, text)
+                    retval = retval.ToObject(context,NULL)
+
+                    text.Release()
+                    for index,value in enumerate(rtv):
+                        #recursion here:
+                        value = get_jsobj( value)
+
+                        retval.SetPropertyAtIndex(context,
+                                           unsigned(index),
+                                           value,
+                                           NULL)
                 assert( isinstance(retval, JSValue))
                 #retval.Protect(context)#will go out of scope and underlying object needs to be retained
                 retval =  cast(retval._object(), c_void_p)
@@ -170,7 +263,10 @@ class JSFunction(JSObject):
         def get_jsobj( arg ):
             if arg is None:
                 jsarg = JSValue.MakeNull( self._context )
-                
+
+            elif arg is True or arg is False:
+                jsarg = JSValue.MakeBoolean(self._context, arg)
+
             elif isinstance(arg, numbers.Number):
                 jsarg = JSValue.MakeNumber( self._context, arg)
             elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
@@ -205,7 +301,7 @@ class JSFunction(JSObject):
                     name.Release()
 
             elif hasattr( arg, '__iter__'):
-                text = JSString.CreateWithUTF8CString("{}")
+                text = JSString.CreateWithUTF8CString("[]")
                 jsarg =JSValue.MakeFromJSONString(self._context, text)
                 jsarg = jsarg.ToObject(self._context,NULL)
 
@@ -213,14 +309,10 @@ class JSFunction(JSObject):
                 for index,value in enumerate(arg):
                     #recursion here:
                     value = get_jsobj( value)
-
-                    name = JSString.CreateWithUTF8CString( "%d"%index )
-                    jsarg.SetProperty( self._context,
-                                       name,
+                    jsarg.SetPropertyAtIndex( self._context,
+                                        unsigned(index),
                                        value,
-                                       kJSPropertyAttributeNone,
                                        NULL)
-                    name.Release()
 
 
             else:
@@ -428,7 +520,8 @@ class JavascriptClass(object):
             #associated with it
             ns = Namespace.get_namespace( context, modulename)
             assert(ns)
-            assert(str(cast(context._object(), OPAQUE_PTR)) + modulename in iter(Namespace._namespaces.keys()))
+            ptr = cast(context._object(), OPAQUE_PTR)
+            assert(str(ptr) + modulename in iter(Namespace._namespaces.keys()), "No match for %s" %(str(ptr) + modulename))
         else:
             if var_name and modulename == "":
                 #have global namespace:
@@ -513,7 +606,7 @@ class Constructor(JavascriptClass):
         within javascript
         """
         try:
-            return self._pyclass(self._context, *args)
+            return self._pyclass(*args)
         except:
             logging.error("Exception instantiating %s" % self._pyclass)
             logging.error(traceback.format_exc())
@@ -567,7 +660,8 @@ class Namespace(JavascriptClass):
         Get or create the namespace for the given module name
         """
         assert(isinstance(context, JSContext))
-        id = str(cast(context._object(), OPAQUE_PTR)) + modulename
+        ptr = cast(context._object(), OPAQUE_PTR)
+        id = str(ptr) + modulename
         if not id in iter(Namespace._namespaces.keys()):
             if modulename:
                 m = importlib.import_module(modulename)

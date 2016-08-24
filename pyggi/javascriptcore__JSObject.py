@@ -325,7 +325,6 @@ GtkDestDefaults = c_int
 GtkTargetFlags = c_int
 
 from .javascriptcore__JSValue import JSValue
-
 libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue,_JSValue]
 libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
 
@@ -346,7 +345,7 @@ libjavascriptcore.JSObjectCopyPropertyNames.restype = _JSPropertyNameArray
 libjavascriptcore.JSObjectCopyPropertyNames.argtypes = [_JSContext,_JSObject]
 libjavascriptcore.JSObjectMakeFunction.restype = _JSObject
 libjavascriptcore.JSObjectMakeFunction.argtypes = [_JSContext,_JSString,unsigned,_JSString,_JSString,_JSString,c_int,_JSValue]
-libjavascriptcore.JSObjectSetPropertyAtIndex.argtypes = [_JSContext,_JSObject,unsigned,_JSValue,_JSValue]
+libjavascriptcore.argtypes = [_JSContext,_JSObject,unsigned,_JSValue,_JSValue]
 libjavascriptcore.JSPropertyNameArrayRetain.restype = _JSPropertyNameArray
 libjavascriptcore.JSPropertyNameArrayRetain.argtypes = [_JSPropertyNameArray]
 libjavascriptcore.JSClassRelease.argtypes = [_JSObject,_JSClass]
@@ -482,14 +481,13 @@ class JSObject( JSValue ):
     def SetPropertyAtIndex(  self, ctx, propertyIndex, value, exception, ):
         if ctx: ctx = ctx._object()
         else: ctx = OPAQUE_PTR()
-        if propertyIndex: propertyIndex = propertyIndex._object()
-        else: propertyIndex = OPAQUE_PTR()
+        #if propertyIndex: propertyIndex = propertyIndex._object()
+        #else: propertyIndex = OPAQUE_PTR()
         if value: value = value._object()
         else: value = OPAQUE_PTR()
         if exception: exception = exception._object()
         else: exception = OPAQUE_PTR()
 
-        
         if self._object():
             libjavascriptcore.JSObjectSetPropertyAtIndex( ctx,self._object(),propertyIndex,value,exception )
 
@@ -689,7 +687,9 @@ class JSObject( JSValue ):
         if jsClass: jsClass = jsClass._object()
         else: jsClass = OPAQUE_PTR()
         from .javascriptcore import JSObject, JSValue
-        obj =   libjavascriptcore.JSObjectMake(ctx._object(), jsClass, str(data).encode('ascii'))
+        if data is not None:
+            data = str(data).encode('ascii')
+        obj =   libjavascriptcore.JSObjectMake(ctx._object(), jsClass, data)
         return JSObject( obj=  obj,
                          context = ctx)
     @staticmethod
