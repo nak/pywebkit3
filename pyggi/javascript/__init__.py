@@ -53,10 +53,11 @@ def to_jsfunction( ctxt, func):
             try:
                 for i in range(argumentCount):
                     argument = JSValue(obj = arguments[i],
-                                       context = context)
+                                       context = context,
+                                       do_protect=False)
                     valtype = argument.GetType(context)
                     if valtype == kJSTypeObject.value:
-                        jsobject = argument.ToObject(context, NULL)
+                        jsobject = argument.ToObject(context, NULL, do_protect=False)
                         pyarg = _wrapJs(context, jsobject, None)
                         #pyarg._javascript_obj = jsobject
                         args.append(pyarg)
@@ -239,15 +240,16 @@ def to_pythonjs( context, val):
 class JSFunction(JSObject):
 
     def __init__(self, context, obj, thisobj, name,
-                 _call_as_constructor = False):
+                 _call_as_constructor = False, do_protect = True):
         assert(isinstance(context, JSContext))
-        JSObject.__init__(self, obj=obj._object(), context = context)
+        JSObject.__init__(self, obj=obj._object(), context = context, do_protect = do_protect)
         self._thisjsobj = thisobj
         self._jsfuncobj = obj
         if thisobj and not thisobj._object():
             self._thisjsobj = None
         self._name = name
         self._call_as_constructor = _call_as_constructor
+        self._should_unprotect = False
 
     def promote_to_constructor( self ):
         self._call_as_constructor = True
@@ -289,7 +291,7 @@ class JSFunction(JSObject):
                 jsarg = jsarg.ToObject(self._context, NULL)
                 text.Release()
                 for key,value in arg.items():
-                    #resucrion here:
+                    #recursion here:
                     value = get_jsobj( value)
 
                     name = JSString.CreateWithUTF8CString( key )

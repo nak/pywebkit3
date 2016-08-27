@@ -45,6 +45,9 @@
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
 from ctypes import *
+
+
+
 from .gtk3_types import *
 from .javascriptcore_types import *
 import logging
@@ -365,11 +368,75 @@ libjavascriptcore.JSObjectMake.restype = _JSObject
 libjavascriptcore.JSObjectMake.argtypes = [_JSContext,_JSClass,Asciifier]
 libjavascriptcore.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
 
+
+def get_jsobj( context, arg ):
+    from pyggi.javascript import to_jsfunction
+    from .javascript import JSString
+    import numbers
+    import collections
+    if arg is None:
+        jsarg = JSValue.MakeNull( context )
+
+    elif arg is True or arg is False:
+        jsarg = JSValue.MakeBoolean(context, arg)
+
+    elif isinstance(arg, numbers.Number):
+        jsarg = JSValue.MakeNumber(context, arg)
+    elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
+
+        jsstring = JSString.CreateWithUTF8CString(arg)
+        jsarg = JSValue.MakeString(context, jsstring)
+
+
+    elif isinstance( arg, JSObject):
+        jsarg = arg
+
+    elif isinstance(arg, collections.Callable):
+        jsarg = to_jsfunction(context, arg)
+        assert(jsarg.IsFunction(context))
+
+    elif isinstance( arg, dict):
+        text = JSString.CreateWithUTF8CString("{}")#"%s"%dict)
+        jsarg =  JSValue.MakeFromJSONString(context, text)
+        jsarg = jsarg.ToObject(context, NULL)
+        text.Release()
+        for key,value in arg.items():
+            #resucrion here:
+            value = get_jsobj( value)
+
+            name = JSString.CreateWithUTF8CString( key )
+            jsarg.SetProperty( context,
+                               name,
+                               value,
+                               kJSPropertyAttributeNone,
+                               NULL)
+            name.Release()
+
+    elif hasattr( arg, '__iter__'):
+        text = JSString.CreateWithUTF8CString("[]")
+        jsarg =JSValue.MakeFromJSONString(context, text)
+        jsarg = jsarg.ToObject(context,NULL)
+
+        text.Release()
+        for index,value in enumerate(arg):
+            #recursion here:
+            value = get_jsobj( value)
+            jsarg.SetPropertyAtIndex( context,
+                                unsigned(index),
+                               value,
+                               NULL)
+
+
+    else:
+        raise Exception("Unknown type %s to convert to javascript"%type(arg))
+    return jsarg
+
 class JSObject( JSValue ):
     """Class JSObject Constructors"""
-    def __init__(self, obj , context):
+    def __init__(self, obj , context, do_protect=True):
         #assert( isinstance( obj, OPAQUE_PTR))
-        JSValue.__init__(self, obj, context)
+        JSValue.__init__(self, obj, context, do_protect=do_protect)
+        self.Protect(context)
         
     """Methods"""
     def GetProperty(  self, propertyName, exception, ):
@@ -550,7 +617,17 @@ class JSObject( JSValue ):
         if self._object():
             return libjavascriptcore.JSObjectGetPrivate( self._object() )
 
+    def set(self, ctxt, name, value, ):
+        from pyggi.javascript import JSString
+        jsname = JSString.CreateWithUTF8CString(name)
+        jsvalue = get_jsobj(ctxt, value)
+        self.SetProperty(ctxt, jsname, jsvalue, kJSPropertyAttributeNone, None)
+        jsname.Release()
+
     def SetProperty(  self, ctx, propertyName, value, attributes, exception, ):
+        from .javascript import JSString, JSContext
+        assert(isinstance(propertyName, JSString))
+        assert(isinstance(ctx, JSContext))
         if ctx: ctx = ctx._object()
         else: ctx = OPAQUE_PTR()
         if propertyName: propertyName = propertyName._object()
@@ -746,28 +823,22 @@ class JSObject( JSValue ):
         if jstype == kJSTypeNull.value:
             return None#object.__getattribute__(self, attr)
         elif jstype == kJSTypeObject.value or jstype == kJSTypeUndefined.value:
-            propobj = prop.ToObject(context, NULL)
+            propobj = prop.ToObject(context, NULL, do_protect= self._do_protect)
             if propobj.IsFunction(context):
                 from .javascript import JSFunction
-                jsfunc = JSFunction(context, obj = propobj, thisobj = self, name = attr)
-                setattr(self, attr, 
-                        jsfunc)
+                jsfunc = JSFunction(context, obj = propobj, thisobj=self, name=attr, do_protect = self._do_protect)
                 return jsfunc
             else:
-                setattr(self, attr, propobj)
+                propobj._name = attr
                 return propobj
         elif jstype== kJSTypeNumber.value:
                 val = prop.ToNumber( context, NULL)
-                setattr(self, attr, val)    
-                
                 return val
         elif jstype==kJSTypeBoolean.value:
                 val = prop.ToBoolean( context)
-                setattr(self, attr, val)
                 return val
         elif jstype == kJSTypeString.value:
                 val = prop.ToPyString( context, NULL)
-                setattr (self, attr, val)
                 return val
         raise Exception("unknown javascript type")
         
