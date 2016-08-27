@@ -328,7 +328,7 @@ GtkDestDefaults = c_int
 GtkTargetFlags = c_int
 
 from .javascriptcore__JSValue import JSValue
-libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue,_JSValue]
+libjavascriptcore.JSObjectCallAsFunction.argtypes = [_JSContext,_JSObject,_JSObject,c_int,_JSValue, POINTER(_JSValue)]
 libjavascriptcore.JSObjectCallAsFunction.restype = _JSValue
 
 libjavascriptcore.JSObjectSetPrivate.restype = bool
@@ -593,7 +593,16 @@ class JSObject( JSValue ):
                                                            thisObject,
                                                            argumentCount,
                                                            cast(args, OPAQUE_PTR),
-                                                           exception )
+                                                           byref(exception) )
+            if not retval and exception:
+                string = libjavascriptcore.JSValueToStringCopy(ctx._object(), exception, NULL)
+                unicodedata = libjavascriptcore.JSStringGetCharactersPtr(string)
+                cstring = u''
+                length = libjavascriptcore.JSStringGetLength(string)
+                for i in range(length):
+                    cstring += chr(unicodedata[i]) if unicodedata[i] < 256 else '?'
+                    i += 1
+                raise Exception(cstring)
             return JSValue( obj= retval, context = ctx)
 
     def CopyPropertyNames(  self, ctx, ):
@@ -678,9 +687,11 @@ class JSObject( JSValue ):
     def MakeFunctionWithCallback( ctx, name, callAsFunction,):
         if name: name = name._object()
         else: name = OPAQUE_PTR()
-        from .javascriptcore import JSObject
-        return JSObject( obj=    libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx._object(), name, callAsFunction, ),
-                         context = ctx)
+        from pyggi.javascript import JSFunction
+        return JSFunction( obj=    JSObject(obj = libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx._object(), name, callAsFunction, ),
+                                            context = ctx),
+                         context = ctx,
+                            thisobj=None, name=name,)
                          
     @staticmethod
     def MakeArray( ctx, argumentCount, arguments, exception,):

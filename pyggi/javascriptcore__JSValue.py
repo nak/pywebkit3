@@ -360,7 +360,6 @@ class JSValue( object ):
             assert( context )
             libjavascriptcore.JSValueProtect( self._context._object(),
                                               self._object() )
-            print "########### PROECTING %s of typ %s" % (self, self.__class__)
         
     """Methods"""
     def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
@@ -573,7 +572,6 @@ class JSValue( object ):
                    self._object and self._context \
                    and self._object() and self._context._object():
 
-                print "########### UNPROECTEING %s of typ %s:  %s" % (self, self.__class__, getattr(self, '_name'))
                 libjavascriptcore.JSValueUnprotect( self._context._object(),
                                                         self._object() )
         except:

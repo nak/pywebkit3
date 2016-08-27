@@ -332,11 +332,14 @@ class JSFunction(JSObject):
                                                          jsArgs,
                                                          NULL)
         else:
+            exc = JSValue.MakeNull(self._context)
             retval =  self._jsfuncobj.CallAsFunction( self._context,
                                                   self._thisjsobj,
                                                   c_int(len(args)),
                                                   jsArgs,
-                                                  NULL)
+                                                  exc)
+        if not retval:
+            return None
         retval =   to_pythonjs(self._context, retval)
         
         return retval
