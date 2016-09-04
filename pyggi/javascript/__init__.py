@@ -32,30 +32,6 @@ def jsEqual(obj1, obj2):
     return cast(obj1._object(), c_void_p).value == cast(obj2._object(), c_void_p).value
 
 
-def to_pythonjs(context, val):
-    valtype= val.GetType(context)
-    if valtype is None or valtype == kJSTypeNull.value:
-        retvael = None
-    elif valtype == kJSTypeNumber.value:
-        retval = val.ToNumber(context, NULL)
-    elif valtype == kJSTypeBoolean.value:
-        retval = val.ToBoolean(context)
-    elif valtype == kJSTypeString.value:
-        jstext = val.ToStringCopy(context, NULL)
-        length = jstext.GetMaximumUTF8CStringSize()
-        cstring = (c_char * (length+1))()
-        jstext.GetUTF8CString(cstring, length)
-        jstext.Release()
-        retval = cstring.value.decode('ascii')
-    elif valtype == kJSTypeObject.value or valtype == kJSTypeUndefined.value:
-        jsobject = val.ToObject(context, NULL)
-        retval = _wrapJs(context, jsobject, None)
-    else:
-        logging.error("Invalid javascript value type encountered!: %d" % valtype.value)
-        retval = None
-    return retval
-        
-
 class JSFunction(JSObject):
 
     def __init__(self, context, obj, thisobj, name,
