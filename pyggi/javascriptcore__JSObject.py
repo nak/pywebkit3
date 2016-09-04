@@ -647,10 +647,12 @@ def get_jsobj( arg, context ):
         jsarg = _wrapJs(arg)
 
     elif isinstance(arg, collections.Callable):
-        jsarg = to_jsfunction(context, arg)
+        jsarg = JSObject.global_references.get(arg)
+        if jsarg is None:
+            jsarg = to_jsfunction(context, arg)
+            JSObject.global_references[arg] = jsarg # must not let python object go out of scope
         assert(jsarg.IsFunction(context))
         jsarg.references.append(arg)
-        JSObject.global_references[arg] = jsarg # must not let python object go out of scope
 
     elif arg is True or arg is False:
         jsarg = JSValue.MakeBoolean(context, arg)

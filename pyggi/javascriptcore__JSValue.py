@@ -340,14 +340,6 @@ libjavascriptcore.JSValueIsNumber.restype = c_char
 libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
 
 import weakref
-import signal
-
-
-def handler(signo, frame):
-    raise Exception("SIG %s caught " % signo)
-
-signal.signal(4, handler)
-signal.signal(11, handler)
 
 class JSValue( object ):
     """Class JSValue Constructors"""
