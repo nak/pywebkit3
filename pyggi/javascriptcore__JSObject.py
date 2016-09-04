@@ -44,9 +44,10 @@
     # * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     # * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     # */
+import collections
 from ctypes import *
 
-
+import numbers
 
 from .gtk3_types import *
 from .javascriptcore_types import *
@@ -369,8 +370,328 @@ libjavascriptcore.JSObjectMake.argtypes = [_JSContext,_JSClass,Asciifier]
 libjavascriptcore.JSObjectSetProperty.argtypes = [_JSContext,_JSObject,_JSString,_JSValue,JSPropertyAttributes,_JSValue]
 
 
-def get_jsobj( context, arg ):
-    from pyggi.javascript import to_jsfunction
+def _wrapJs(context, jsobj, var_name):
+    """
+    Wrap a provided js object as a python object, with a given
+    js name.  Can set a flag if js object is callable to make
+    it callable in python too.  This is to be used only internally
+    """
+    from javascript import JSContext, JSFunction
+    assert(isinstance(context, JSContext))
+    if jsobj.IsFunction(context):
+        wrapped = JSFunction(context, obj=jsobj, thisobj = NULL, name = var_name)
+    else:
+        wrapped = jsobj#PythonWrapper(context, jsobj, var_name, can_call)
+    return wrapped
+
+
+class JSCallable(object):
+
+    def __init__(self, func):
+        self._func = func
+        self.__name__ = func.__name__
+        self._c_callable = JSObjectCallAsFunctionCallback(self.callable)
+
+    def callable(self, context, function, thisObject,  argumentCount, arguments, exception):
+        from javascript import JSString, JSFunction, JSContext
+        context = JSContext(obj = context)
+        jsargs = []
+        try:
+            args = []
+            for i in range(argumentCount):
+                argument = JSValue(obj = arguments[i],
+                                   context = context,
+                                   do_protect=False)
+                argument.Protect(context)
+                jsargs.append(argument)
+                valtype = argument.GetType(context)
+                if valtype == kJSTypeObject.value:
+                    jsobject = argument.ToObject(context, NULL, do_protect=False)
+                    jsobject.Protect(context)
+                    jsargs.append(jsobject)
+                    pyarg = _wrapJs(context, jsobject, None)
+                    args.append(pyarg)
+                elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
+                    args.append(None)
+                elif valtype == kJSTypeNumber.value:
+                    args.append(argument.ToNumber(context, NULL))
+                elif valtype == kJSTypeBoolean.value:
+                    args.append(argument.ToBoolean(context))
+                elif valtype == kJSTypeString.value:
+                    jstext = argument.ToStringCopy(context, NULL)
+                    length = jstext.GetMaximumUTF8CStringSize()
+                    cstring = (c_char * (length+1))()
+                    jstext.GetUTF8CString(cstring, length)
+                    jstext.Release()
+                    args.append(cstring.value)
+                else:
+                    raise Exception("Invalid javascript value type encountered!: %d" % valtype)
+
+            retval = self._func(*args)
+
+            if retval == None:
+                retval = JSValue.MakeNull(context)
+            elif isinstance(retval, numbers.Number):
+                retval = JSValue.MakeNumber( context, retval)
+            elif isinstance(retval, str):
+                retval += '\0'
+                cstring = c_char_p(retval)
+                text = JSString.CreateWithUTF8CString(cstring)
+                retval = JSValue.MakeString(context, text);
+                text.Release()
+            elif retval is True or retval is False:
+                retval = JSValue.MakeBoolean(context, retval)
+            elif isinstance(retval, dict):
+                rtv = retval
+                text = JSString.CreateWithUTF8CString("{}")
+                retval = JSValue.MakeFromJSONString(context, text)
+                retval = retval.ToObject(context, NULL)
+                text.Release()
+                for key,value in rtv.items():
+                    #resucrion here:
+                    value = get_jsobj(value, context)
+
+                    name = JSString.CreateWithUTF8CString( key )
+                    retval.SetProperty( context,
+                                       name,
+                                       value,
+                                       kJSPropertyAttributeNone,
+                                       NULL)
+                    name.Release()
+
+            elif hasattr(retval, '__iter__'):
+                text = JSString.CreateWithUTF8CString("[]")
+                rtv = retval
+                retval =JSValue.MakeFromJSONString(context, text)
+                retval = retval.ToObject(context,NULL)
+
+                text.Release()
+                for index,value in enumerate(rtv):
+                    #recursion here:
+                    value = get_jsobj(value, context)
+
+                    retval.SetPropertyAtIndex(context,
+                                       unsigned(index),
+                                       value,
+                                       NULL)
+            #assert( isinstance(retval, JSValue))
+            #retval.Protect(context)#will go out of scope and underlying object needs to be retained
+            retvalc = retval._object()
+            p = pointer(retvalc)
+            plonglong = cast(p, POINTER(c_longlong))
+            retvalc = plonglong.contents
+            return retvalc.value
+        except:
+            import traceback
+            traceback.print_exc()
+            logging.error(traceback.format_exc())
+            logging.error("Error in calling argument function ")
+            retval = JSValue.MakeNull(context)
+            retvalc =  retval._object()
+            p = pointer(retvalc)
+            plonglong = cast(p, POINTER(c_longlong))
+            string = JSString.CreateWithUTF8CString(traceback.format_exc())
+            s = JSValue.MakeString(context, string)._strongref
+            exception.contents = s
+            string.Release()
+            return plonglong.contents.value
+        finally:
+            for jsarg in jsargs:
+                jsarg.Unprotect(context)
+
+    def C_callable(self):
+        return self._c_callable
+
+
+def to_jsfunction( ctxt, func):
+    if JSObject.global_references.get(func):
+        return JSObject.global_references[func]
+    from javascript import JSString, JSFunction, JSContext
+    if (not hasattr(func, '__call__')) and func.IsFunction(ctxt):
+            func = JSFunction(ctxt, obj=func, thisobj = NULL, name="anon")
+    def get_callable( func ):
+        def C_Callable( context, function, thisObject,  argumentCount, arguments, exception):
+            context = JSContext(obj = context)
+            jsargs = []
+            try:
+                args = []
+                for i in range(argumentCount):
+                    argument = JSValue(obj = arguments[i],
+                                       context = context,
+                                       do_protect=False)
+                    argument.Protect(context)
+                    jsargs.append(argument)
+                    valtype = argument.GetType(context)
+                    if valtype == kJSTypeObject.value:
+                        jsobject = argument.ToObject(context, NULL, do_protect=False)
+                        jsobject.Protect(context)
+                        jsargs.append(jsobject)
+                        pyarg = _wrapJs(context, jsobject, None)
+                        args.append(pyarg)
+                    elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
+                        args.append(None)
+                    elif valtype == kJSTypeNumber.value:
+                        args.append(argument.ToNumber(context, NULL))
+                    elif valtype == kJSTypeBoolean.value:
+                        args.append(argument.ToBoolean(context))
+                    elif valtype == kJSTypeString.value:
+                        jstext = argument.ToStringCopy(context, NULL)
+                        length = jstext.GetMaximumUTF8CStringSize()
+                        cstring = (c_char * (length+1))()
+                        jstext.GetUTF8CString(cstring, length)
+                        jstext.Release()
+                        args.append(cstring.value)
+                    else:
+                        raise Exception("Invalid javascript value type encountered!: %d" % valtype)
+
+                retval = func(*args)
+
+                if retval == None:
+                    retval = JSValue.MakeNull(context)
+                elif isinstance(retval, numbers.Number):
+                    retval = JSValue.MakeNumber( context, retval)
+                elif isinstance(retval, str):
+                    retval += '\0'
+                    cstring = c_char_p(retval)
+                    text = JSString.CreateWithUTF8CString(cstring)
+                    retval = JSValue.MakeString(context, text);
+                    text.Release()
+                elif retval is True or retval is False:
+                    retval = JSValue.MakeBoolean(context, retval)
+                elif isinstance(retval, dict):
+                    rtv = retval
+                    text = JSString.CreateWithUTF8CString("{}")
+                    retval = JSValue.MakeFromJSONString(context, text)
+                    retval = retval.ToObject(context, NULL)
+                    text.Release()
+                    for key,value in rtv.items():
+                        #resucrion here:
+                        value = get_jsobj(value, context)
+
+                        name = JSString.CreateWithUTF8CString( key )
+                        retval.SetProperty( context,
+                                           name,
+                                           value,
+                                           kJSPropertyAttributeNone,
+                                           NULL)
+                        name.Release()
+
+                elif hasattr(retval, '__iter__'):
+                    text = JSString.CreateWithUTF8CString("[]")
+                    rtv = retval
+                    retval =JSValue.MakeFromJSONString(context, text)
+                    retval = retval.ToObject(context,NULL)
+
+                    text.Release()
+                    for index,value in enumerate(rtv):
+                        #recursion here:
+                        value = get_jsobj(value, context)
+
+                        retval.SetPropertyAtIndex(context,
+                                           unsigned(index),
+                                           value,
+                                           NULL)
+                #assert( isinstance(retval, JSValue))
+                #retval.Protect(context)#will go out of scope and underlying object needs to be retained
+                retvalc = retval._object()
+                p = pointer(retvalc)
+                plonglong = cast(p, POINTER(c_longlong))
+                retvalc = plonglong.contents
+                return retvalc.value
+            except:
+                import traceback
+                traceback.print_exc()
+                logging.error(traceback.format_exc())
+                logging.error("Error in calling argument function ")
+                retval = JSValue.MakeNull(context)
+                retvalc =  retval._object()
+                p = pointer(retvalc)
+                plonglong = cast(p, POINTER(c_longlong))
+                string = JSString.CreateWithUTF8CString(traceback.format_exc())
+                s = JSValue.MakeString(context, string)._strongref
+                exception.contents = s
+                string.Release()
+                return plonglong.contents.value
+            finally:
+                for jsarg in jsargs:
+                    jsarg.Unprotect(context)
+        return C_Callable
+    callable = JSCallable( func )
+    tocall = callable.C_callable()
+    text = JSString.CreateWithUTF8CString( func.__name__ or "anonfunct")
+    jsobj = JSObject.MakeFunctionWithCallback(ctxt, text, tocall)
+    assert (isinstance(jsobj, JSObject))
+    jsobj.references.append(tocall)
+    jsobj.Protect(ctxt)
+    text.Release()
+    JSObject.global_references[func] = callable # cannot let this go out of scope, otherwise
+    # python function object will go out of scope and cause segfault when called
+    if jsobj.IsNull(ctxt):
+        return None
+    return jsobj
+
+def get_jsobj( arg, context ):
+    from javascript import JSString
+    if arg is None:
+        jsarg = JSValue.MakeNull(context)
+
+    elif isinstance(arg, numbers.Number):
+        jsarg = JSValue.MakeNumber(context, arg)
+    elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
+        arg +='\0'
+        jsstring = JSString.CreateWithUTF8CString(arg)
+        jsarg = JSValue.MakeString(context, jsstring)
+        jsstring.Release()
+
+    elif isinstance(arg, JSObject):
+        jsarg = _wrapJs(arg)
+
+    elif isinstance(arg, collections.Callable):
+        jsarg = to_jsfunction(context, arg)
+        assert(jsarg.IsFunction(context))
+        jsarg.references.append(arg)
+        JSObject.global_references[arg] = jsarg # must not let python object go out of scope
+
+    elif arg is True or arg is False:
+        jsarg = JSValue.MakeBoolean(context, arg)
+
+    elif isinstance( arg, dict):
+        from javascript import JSString
+        text = JSString.CreateWithUTF8CString("{}")#"%s"%dict)
+        jsarg =  JSValue.MakeFromJSONString(context, text)
+        jsarg = jsarg.ToObject(context, NULL)
+        text.Release()
+        for key,value in arg.items():
+            #resucrion here:
+            value = get_jsobj( value, context)
+
+            name = JSString.CreateWithUTF8CString( key )
+            jsarg.SetProperty( context,
+                               name,
+                               value,
+                               kJSPropertyAttributeNone,
+                               NULL)
+            name.Release()
+
+    elif hasattr( arg, '__iter__'):
+        text = JSString.CreateWithUTF8CString("[]")
+        jsarg = JSValue.MakeFromJSONString(context, text)
+        jsarg = jsarg.ToObject(context,NULL)
+        text.Release()
+        for index,value in enumerate(arg):
+            #recursion here:
+            value = get_jsobj(value, context)
+
+            jsarg.SetPropertyAtIndex( context,
+                              unsigned(index),
+                               value,
+                               NULL)
+
+    else:
+        raise Exception("Unknown type %s to convert to javascript"%type(arg))
+    return jsarg
+
+def get_jsobjOLD( context, arg ):
     from .javascript import JSString
     import numbers
     import collections
@@ -386,7 +707,7 @@ def get_jsobj( context, arg ):
 
         jsstring = JSString.CreateWithUTF8CString(arg)
         jsarg = JSValue.MakeString(context, jsstring)
-
+        jsstring.Release()
 
     elif isinstance( arg, JSObject):
         jsarg = arg
@@ -402,7 +723,7 @@ def get_jsobj( context, arg ):
         text.Release()
         for key,value in arg.items():
             #resucrion here:
-            value = get_jsobj( value)
+            value = get_jsobj( value, context)
 
             name = JSString.CreateWithUTF8CString( key )
             jsarg.SetProperty( context,
@@ -420,7 +741,7 @@ def get_jsobj( context, arg ):
         text.Release()
         for index,value in enumerate(arg):
             #recursion here:
-            value = get_jsobj( value)
+            value = get_jsobj( value, context)
             jsarg.SetPropertyAtIndex( context,
                                 unsigned(index),
                                value,
@@ -432,12 +753,15 @@ def get_jsobj( context, arg ):
     return jsarg
 
 class JSObject( JSValue ):
+
+    global_references={}
+
     """Class JSObject Constructors"""
     def __init__(self, obj , context, do_protect=True):
         #assert( isinstance( obj, OPAQUE_PTR))
         JSValue.__init__(self, obj, context, do_protect=do_protect)
         self.Protect(context)
-        
+
     """Methods"""
     def GetProperty(  self, propertyName, exception, ):
         if propertyName: propertyName = propertyName._object()
@@ -629,7 +953,7 @@ class JSObject( JSValue ):
     def set(self, ctxt, name, value, ):
         from pyggi.javascript import JSString
         jsname = JSString.CreateWithUTF8CString(name)
-        jsvalue = get_jsobj(ctxt, value)
+        jsvalue = get_jsobj(value, ctxt)
         self.SetProperty(ctxt, jsname, jsvalue, kJSPropertyAttributeNone, None)
         jsname.Release()
 
@@ -688,10 +1012,14 @@ class JSObject( JSValue ):
         if name: name = name._object()
         else: name = OPAQUE_PTR()
         from pyggi.javascript import JSFunction
-        return JSFunction( obj=    JSObject(obj = libjavascriptcore.JSObjectMakeFunctionWithCallback(ctx._object(), name, callAsFunction, ),
-                                            context = ctx),
-                         context = ctx,
-                            thisobj=None, name=name,)
+        obj = libjavascriptcore.JSObjectMakeFunctionWithCallback\
+            (ctx._object(), name, callAsFunction, )
+
+        if libjavascriptcore.JSValueIsNull(ctx._object(), obj):
+            return None
+        return JSFunction( obj=JSObject(obj =obj, context = ctx),
+                           context = ctx,
+                           thisobj=None, name=name,)
                          
     @staticmethod
     def MakeArray( ctx, argumentCount, arguments, exception,):
@@ -854,6 +1182,7 @@ class JSObject( JSValue ):
         raise Exception("unknown javascript type")
         
     def __iter__(self, index):
+        from javascript import JSContext
         if isinstance(self, JSContext):
             context = self
         else:

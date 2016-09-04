@@ -376,11 +376,15 @@ class JSString( object):
         self._object = weakref.ref(obj)
         self._strongref = obj
         #self.Retain()
+
+    def __del__(self):
+        try:
+            self._strongref.Release()
+        except:
+            pass
         
     """Methods"""
     def GetCharactersPtr(  self, ):
-
-        
         return libjavascriptcore.JSStringGetCharactersPtr( self._object() )
 
     def IsEqual(  self, b, ):
@@ -418,12 +422,13 @@ class JSString( object):
         from .javascriptcore import JSString
         return JSString( obj=libjavascriptcore.JSStringCreateWithCharacters(str(chars).encode('ascii'), numChars, )
   or POINTER(c_void_p)())
+
     @staticmethod
     def CreateWithUTF8CString( string,):
         from .javascriptcore import JSString
+        string += '\0'
         string2 =  libjavascriptcore.JSStringCreateWithUTF8CString(str(string).encode('ascii') if string is not None else None )
         retval =  JSString( obj=   string2  or POINTER(c_void_p)())
-        
         return retval
 
     def Release( self ):

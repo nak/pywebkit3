@@ -340,6 +340,14 @@ libjavascriptcore.JSValueIsNumber.restype = c_char
 libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext,_JSValue]
 
 import weakref
+import signal
+
+
+def handler(signo, frame):
+    raise Exception("SIG %s caught " % signo)
+
+signal.signal(4, handler)
+signal.signal(11, handler)
 
 class JSValue( object ):
     """Class JSValue Constructors"""
@@ -349,18 +357,16 @@ class JSValue( object ):
         self._strongref = obj
         self._context = context
         self._name = None
-        self._do_protect = do_protect
-        #import traceback
-        #traceback.print_stack()
-        #import logging
-        #logging.error("=====================")
+        self._do_protect = context is not None #do_protect
         from .javascript import JSContext
         assert( isinstance(context, JSContext) or context == None)
-        if not isinstance(self, JSContext) and do_protect:
+
+        if self._do_protect: #not isinstance(self, JSContext):
             assert( context )
             libjavascriptcore.JSValueProtect( self._context._object(),
                                               self._object() )
-        
+        self.references = []
+
     """Methods"""
     def IsInstanceOfConstructor(  self, ctx, ructor, exception, ):
         if ctx: ctx = ctx._object()
@@ -467,8 +473,6 @@ class JSValue( object ):
     def ToBoolean(  self, ctx, ):
         if ctx: ctx = ctx._object()
         else: ctx = POINTER(c_void_p)()
-
-        
         if self._object():
             return libjavascriptcore.JSValueToBoolean( ctx,self._object() )
 
@@ -501,7 +505,7 @@ class JSValue( object ):
         if self._object():
             return JSString( obj=libjavascriptcore.JSValueCreateJSONString( ctx._object(),self._object(),indent,exception )  or POINTER(c_void_p)())
 
-    def UnprotectNOT(  self, ctx, ):
+    def Unprotect(  self, ctx, ):
         if self._object() and ctx._object():
         
             libjavascriptcore.JSValueUnprotect( ctx._object(),self._object() )
@@ -568,12 +572,12 @@ class JSValue( object ):
     def __del__(self):
         try:
             from .javascriptcore import JSContext
-            if self._do_protect and not isinstance(self, JSContext) and \
-                   self._object and self._context \
-                   and self._object() and self._context._object():
-
-                libjavascriptcore.JSValueUnprotect( self._context._object(),
-                                                        self._object() )
+            from javascript import JSFunction
+            if self._do_protect and \
+                   self._object and \
+                   self._object():
+                libjavascriptcore.JSValueUnprotect(self._context._object(),
+                                                   self._object())
         except:
             import traceback
             traceback.print_exc()

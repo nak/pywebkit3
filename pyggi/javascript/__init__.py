@@ -9,7 +9,6 @@ except:
     unicode = str
 import inspect
 import numbers
-import threading
 from ..javascriptcore import *
 from ctypes import *
 import logging
@@ -28,194 +27,15 @@ def strid(obj):
     except:
         return str(cast(obj._object, c_void_p).value)
 
+
 def jsEqual(obj1, obj2):
-    return cast(obj1._object(), c_void_p).value == cast(obj2._object(), c_void_p).value 
-
-list_of_cfuncs = {}
-
-def to_jsfunction( ctxt, func):
-    if func in list_of_cfuncs:
-        text = JSString.CreateWithUTF8CString( func.__name__)
-        jsobj = JSObject.MakeFunctionWithCallback(ctxt, text, list_of_cfuncs[func][2])
-        text.Release()
-        return jsobj
-    if (not hasattr(func, '__call__')) and func.IsFunction(ctxt):
-            func = JSFunction(ctxt, obj=func, thisobj = NULL, name="anon")
-    def get_callable( func ):
-        def C_Callable( context, function, thisObject,  argumentCount, arguments, exception):
-            context = JSContext(obj = context)
-            if cast(thisObject, c_void_p).value == None:
-                thisObject= NULL#JSObject.MakeNull( context )
-                args = []
-            else:
-                thisObject = JSObject(obj = thisObject, context = context)
-                args = []#thisObject]
-            try:
-                for i in range(argumentCount):
-                    argument = JSValue(obj = arguments[i],
-                                       context = context,
-                                       do_protect=False)
-                    valtype = argument.GetType(context)
-                    if valtype == kJSTypeObject.value:
-                        jsobject = argument.ToObject(context, NULL, do_protect=False)
-                        pyarg = _wrapJs(context, jsobject, None)
-                        #pyarg._javascript_obj = jsobject
-                        args.append(pyarg)
-                    elif valtype == kJSTypeNull.value or valtype == kJSTypeUndefined.value:
-                        args.append(None)
-                    elif valtype == kJSTypeNumber.value:
-                        args.append(argument.ToNumber(context, NULL))
-                    elif valtype == kJSTypeBoolean.value:
-                        args.append(argument.ToBoolean(context))
-                    elif valtype == kJSTypeString.value:
-                        jstext = argument.ToStringCopy(context, NULL)
-                        length = jstext.GetMaximumUTF8CStringSize()
-                        cstring = (c_char * (length))()
-                        jstext.GetUTF8CString(cstring, length)
-                        jstext.Release()
-                        args.append(cstring.value)
-                    else:
-                        logging.error("Invalid javascript value type encountered!: %d" % valtype)
-                        return None
-                try:
-                    retval = func(*args)
-                except:
-                    import traceback
-                    logging.error(traceback.format_exc())
-                    retval = None
-
-                def get_jsobj( arg ):
-                    if arg is None:
-                        jsarg = JSValue.MakeNull(context)
-
-                    elif isinstance(arg, numbers.Number):
-                        jsarg = JSValue.MakeNumber(context, arg)
-                    elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
-
-                        jsstring = JSString.CreateWithUTF8CString(arg)
-                        jsarg = JSValue.MakeString(context, jsstring)
-
-                        jsstring.Release()
-
-                    elif isinstance( arg, JSObject):
-                        jsarg = arg
-
-                    elif isinstance(arg, collections.Callable):
-                        jsarg = to_jsfunction(context, arg)
-                        assert(jsarg.IsFunction(context))
-
-                    elif arg is True or arg is False:
-                        jsarg = JSValue.MakeBoolean(context, arg)
-
-                    elif isinstance( arg, dict):
-                        text = JSString.CreateWithUTF8CString("{}")#"%s"%dict)
-                        jsarg =  JSValue.MakeFromJSONString(context, text)
-                        jsarg = jsarg.ToObject(context, NULL)
-                        text.Release()
-                        for key,value in arg.items():
-                            #resucrion here:
-                            value = get_jsobj( value)
-
-                            name = JSString.CreateWithUTF8CString( key )
-                            jsarg.SetProperty( context,
-                                               name,
-                                               value,
-                                               kJSPropertyAttributeNone,
-                                               NULL)
-                            name.Release()
-
-                    elif hasattr( arg, '__iter__'):
-                        text = JSString.CreateWithUTF8CString("[]")
-                        jsarg =JSValue.MakeFromJSONString(context, text)
-                        jsarg = jsarg.ToObject(context,NULL)
-
-                        text.Release()
-                        for index,value in enumerate(arg):
-                            #recursion here:
-                            value = get_jsobj( value)
-
-                            jsarg.SetPropertyAtIndex( context,
-                                              unsigned(index),
-                                               value,
-                                               NULL)
-
-                    else:
-                        raise Exception("Unknown type %s to convert to javascript"%type(arg))
-                    return jsarg
-
-                if retval == None:
-                    retval = JSValue.MakeNull(context)
-                elif isinstance(retval, numbers.Number):
-                    retval = JSValue.MakeNumber( context, retval)
-                elif isinstance(retval, str):
-                    cstring = c_char_p(retval)
-                    text = JSString.CreateWithUTF8CString(cstring)
-                    retval = JSValue.MakeString(context, text);
-                    text.Release()
-                elif retval is True or retval is False:
-                    retval = JSValue.MakeBoolean(context, retval)
-                elif isinstance(retval, dict):
-                    rtv = retval
-                    text = JSString.CreateWithUTF8CString("{}")
-                    retval = JSValue.MakeFromJSONString(context, text)
-                    retval = retval.ToObject(context, NULL)
-                    text.Release()
-                    for key,value in rtv.items():
-                        #resucrion here:
-                        value = get_jsobj( value)
-
-                        name = JSString.CreateWithUTF8CString( key )
-                        retval.SetProperty( context,
-                                           name,
-                                           value,
-                                           kJSPropertyAttributeNone,
-                                           NULL)
-                        name.Release()
-
-                elif hasattr(retval, '__iter__'):
-                    text = JSString.CreateWithUTF8CString("[]")
-                    rtv = retval
-                    retval =JSValue.MakeFromJSONString(context, text)
-                    retval = retval.ToObject(context,NULL)
-
-                    text.Release()
-                    for index,value in enumerate(rtv):
-                        #recursion here:
-                        value = get_jsobj( value)
-
-                        retval.SetPropertyAtIndex(context,
-                                           unsigned(index),
-                                           value,
-                                           NULL)
-                assert( isinstance(retval, JSValue))
-                #retval.Protect(context)#will go out of scope and underlying object needs to be retained
-                retval =  cast(retval._object(), c_void_p)
-                return retval.value
-            except:
-                import traceback
-                logging.error(traceback.format_exc())
-                logging.error("Error in calling argument function ")
-                return None
-        return C_Callable
-    tocall = get_callable( func )
-    tocall.__name__ = func.__name__
-    
-    cccfunc = JSObjectCallAsFunctionCallback(tocall)
-    tocall.cfunc = cccfunc
-    text = JSString.CreateWithUTF8CString( func.__name__)
-    jsobj = JSObject.MakeFunctionWithCallback(ctxt, text, cccfunc)
-    assert (isinstance(jsobj, JSObject))
-    list_of_cfuncs[func] = (jsobj,tocall, cccfunc, func)
-    text.Release()
-    return jsobj
+    return cast(obj1._object(), c_void_p).value == cast(obj2._object(), c_void_p).value
 
 
-
-def to_pythonjs( context, val): 
+def to_pythonjs(context, val):
     valtype= val.GetType(context)
     if valtype is None or valtype == kJSTypeNull.value:
-        
-        return None
+        retvael = None
     elif valtype == kJSTypeNumber.value:
         retval = val.ToNumber(context, NULL)
     elif valtype == kJSTypeBoolean.value:
@@ -223,11 +43,10 @@ def to_pythonjs( context, val):
     elif valtype == kJSTypeString.value:
         jstext = val.ToStringCopy(context, NULL)
         length = jstext.GetMaximumUTF8CStringSize()
-        cstring = (c_char * (length))()
+        cstring = (c_char * (length+1))()
         jstext.GetUTF8CString(cstring, length)
         jstext.Release()
         retval = cstring.value.decode('ascii')
-        del cstring
     elif valtype == kJSTypeObject.value or valtype == kJSTypeUndefined.value:
         jsobject = val.ToObject(context, NULL)
         retval = _wrapJs(context, jsobject, None)
@@ -242,7 +61,7 @@ class JSFunction(JSObject):
     def __init__(self, context, obj, thisobj, name,
                  _call_as_constructor = False, do_protect = True):
         assert(isinstance(context, JSContext))
-        JSObject.__init__(self, obj=obj._object(), context = context, do_protect = do_protect)
+        JSObject.__init__(self, obj=obj._object(), context = context)
         self._thisjsobj = thisobj
         self._jsfuncobj = obj
         if thisobj and not thisobj._object():
@@ -262,86 +81,27 @@ class JSFunction(JSObject):
         #to the jsfunction by the core engine only when a first call has been fully
         #processed (args will then go away).
         jsArgs = []
-        def get_jsobj( arg ):
-            if arg is None:
-                jsarg = JSValue.MakeNull( self._context )
-
-            elif arg is True or arg is False:
-                jsarg = JSValue.MakeBoolean(self._context, arg)
-
-            elif isinstance(arg, numbers.Number):
-                jsarg = JSValue.MakeNumber( self._context, arg)
-            elif isinstance(arg, str) or isinstance(arg, bytes) or isinstance(arg, bytearray) or isinstance( arg, unicode):
-
-                jsstring = JSString.CreateWithUTF8CString(arg)
-                jsarg = JSValue.MakeString(self._context, jsstring)
-               
-                jsstring.Release()
-
-            elif isinstance( arg, JSObject):
-                jsarg = arg
-
-            elif isinstance(arg, collections.Callable):
-                jsarg = to_jsfunction(self._context, arg)
-                assert(jsarg.IsFunction(self._context))
-
-            elif isinstance( arg, dict):
-                text = JSString.CreateWithUTF8CString("{}")#"%s"%dict)
-                jsarg =  JSValue.MakeFromJSONString(self._context, text)
-                jsarg = jsarg.ToObject(self._context, NULL)
-                text.Release()
-                for key,value in arg.items():
-                    #recursion here:
-                    value = get_jsobj( value)
-
-                    name = JSString.CreateWithUTF8CString( key )
-                    jsarg.SetProperty( self._context,
-                                       name, 
-                                       value,
-                                       kJSPropertyAttributeNone,
-                                       NULL)
-                    name.Release()
-
-            elif hasattr( arg, '__iter__'):
-                text = JSString.CreateWithUTF8CString("[]")
-                jsarg =JSValue.MakeFromJSONString(self._context, text)
-                jsarg = jsarg.ToObject(self._context,NULL)
-
-                text.Release()
-                for index,value in enumerate(arg):
-                    #recursion here:
-                    value = get_jsobj( value)
-                    jsarg.SetPropertyAtIndex( self._context,
-                                        unsigned(index),
-                                       value,
-                                       NULL)
-
-
-            else:
-                raise Exception("Unknown type %s to convert to javascript"%type(arg))
-            return jsarg
         for arg in args:
-            jsArgs.append( get_jsobj(arg ) )
+            jsArgs.append(get_jsobj(arg, self._context) )
         if len(jsArgs)==0:
             jsArgs =  NULL
         else:
-            jsArgs.append(JSValue.MakeNull(self._context))
+           jsArgs.append(JSValue.MakeNull(self._context))
         if self._jsfuncobj.IsConstructor( self._context ) and self._call_as_constructor:
-            retval =  self._jsfuncobj.CallAsConstructor( self._context,
-                                                         c_int(len(args)),
-                                                         jsArgs,
-                                                         NULL)
+            retval = self._jsfuncobj.CallAsConstructor(self._context,
+                                                       c_int(len(args)),
+                                                       jsArgs,
+                                                       NULL)
         else:
             exc = JSValue.MakeNull(self._context)
-            retval =  self._jsfuncobj.CallAsFunction( self._context,
-                                                  self._thisjsobj,
-                                                  c_int(len(args)),
-                                                  jsArgs,
-                                                  exc)
+            retval = self._jsfuncobj.CallAsFunction(self._context,
+                                                    self._thisjsobj,
+                                                    c_int(len(args)),
+                                                    jsArgs,
+                                                    exc)
         if not retval:
             return None
-        retval =   to_pythonjs(self._context, retval)
-        
+        retval = to_pythonjs(self._context, retval)
         return retval
 
         

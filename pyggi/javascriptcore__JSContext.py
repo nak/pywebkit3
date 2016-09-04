@@ -528,11 +528,12 @@ class JSContext( javascriptcore__JSObject.JSObject):
                     retval = None
             if retval:
                 JavascriptClass._globalobjects[ident + name] = retval
+            else:
+                raise Exception("Unknown javascript object by name %s" % name)
             #self._webview.execute_script("python.export_to_python(%s,'%s', %s);" % (name, name, int(can_call)))
             retval = JavascriptClass._globalobjects.get(ident + name)
-            if not retval:
-                raise Exception("Unknown javascript object by name %s" % name)
-        JavascriptClass._globalobjects[ident + name] = retval
-        return retval
+        if retval:
+            JavascriptClass._globalobjects[ident + name] = retval
+            return retval
 
 
