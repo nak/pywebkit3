@@ -5,43 +5,43 @@
     <script type="text/javascript" src="js/ThreeCanvas.js"></script>
     <script type="text/javascript" src="js/Snow.js"></script>
       
-    <link href="assets/css/bootstrap.css" rel="stylesheet">  
-    <link href="assets/css/example-fixed-layout.css" rel="stylesheet">  
+    <link href="assets/css/bootstrap.css" rel="stylesheet"/>
+    <link href="assets/css/example-fixed-layout.css" rel="stylesheet"/>
     <link rel="stylesheet" href="assets/css/pylons.css" type="text/css" media="screen" charset="utf-8" />
     <link type="text/css" href="assets/css/overcast/jquery-ui-1.8.21.custom.css" rel="stylesheet" />
-    <script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>  
-    <script type="text/javascript" src="assets/js/jquery-ui-1.8.16.custom.min.js"></script>  
+    <script type="text/javascript" src="assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-ui-1.8.16.custom.min.js"></script>
     <script type="text/javascript" src="assets/js/cube.js"></script>
     <style>
                 
          #top,#top-small,#bottom{width:100%;}
          #top{color:#000000;height:120px;background:#ffffff url(assets/images/headerbg.png) repeat-x 0 top;position:relative;}
          #cube-viewport{
-          position:relative;
-          height: 200px;
-          width: 200px;
-          -webkit-perspective: 1000px;
-          -webkit-perspective-origin: 0px 0px 0px;    
-          -moz-perspective: 100;
-          -moz-perspective-origin: 0px 0px 0px;    
-          -ms-perspective: 100;
-          -ms-perspective-origin: 0px 0px 0px;    
-          }
+              position:relative;
+              height: 200px;
+              width: 200px;
+              -webkit-perspective: 1000px;
+              -webkit-perspective-origin: 0px 0px 0px;
+              -moz-perspective: 100;
+              -moz-perspective-origin: 0px 0px 0px;
+              -ms-perspective: 100;
+              -ms-perspective-origin: 0px 0px 0px;
+              }
                       
           #cube{
-          position: absolute;
-          top:50px; left:50px;
-          height: 100px;
-          width: 150px;
-          
-          -webkit-transform: rotateX(0deg) translate3d( -25px, -50px, 0px);
-          -webkit-transform-origin: 50px 75px 0px;
-          -webkit-transform-style: preserve-3d;
-          -moz-transform-origin: 0px 0px 0px;
-          -moz-transform-style: preserve-3d;
-          -ms-transform-origin: 0px 0px 0px;
-          -ms-transform-style: preserve-3d;
-          background:none;
+              position: absolute;
+              top:50px; left:50px;
+              height: 100px;
+              width: 150px;
+
+              -webkit-transform: rotateX(0deg) translate3d( -25px, -50px, 0px);
+              -webkit-transform-origin: 50px 75px 0px;
+              -webkit-transform-style: preserve-3d;
+              -moz-transform-origin: 0px 0px 0px;
+              -moz-transform-style: preserve-3d;
+              -ms-transform-origin: 0px 0px 0px;
+              -ms-transform-style: preserve-3d;
+              background:none;
           }
           
           .cubie{
@@ -50,81 +50,79 @@
           
           .cubefront {
           
-          -webkit-transform:  rotateX(90deg)  translate3d(0px,0px,50px)    ;
-          -moz-transform:  rotateX(90deg)  translate3d(0px,0px,50px)    ;
-          -ms-transform:  rotateX(90deg)  translate3d(0px,0px,50px)    ;
-          position:absolute;
-          top:25px; left:50px;
-          background-color:white;
-          width: 100px;
-          height:150px} 
+              -webkit-transform:  rotateX(90deg)  translate3d(0px,0px,50px)    ;
+              -moz-transform:  rotateX(90deg)  translate3d(0px,0px,50px)    ;
+              -ms-transform:  rotateX(90deg)  translate3d(0px,0px,50px)    ;
+              position:absolute;
+              top:25px; left:50px;
+              background-color:white;
+              width: 100px;
+              height:150px}
           
           .cubebottom {
-          -webkit-transform: translate3d(0px,0px,75px) ;
-          -moz-transform: translate3d(0px,0px,75px) ;
-          -ms-transform: translate3d(0px,0px,75px) ;
-          position:absolute;
-          top:50px;
-          left:50px;
-          
-          background-color:green;
-          width:100px; height:100px} 
+              -webkit-transform: translate3d(0px,0px,75px) ;
+              -moz-transform: translate3d(0px,0px,75px) ;
+              -ms-transform: translate3d(0px,0px,75px) ;
+              position:absolute;
+              top:50px;
+              left:50px;
+
+              background-color:green;
+              width:100px; height:100px}
           
           
           
           .cubetop {
-          -webkit-transform: rotateX(180deg) translate3d(0px,0px,75px) ;
-          -moz-transform: rotateX(180deg) translate3d(0px,0px,75px) ;
-          -ms-transform: rotateX(180deg) translate3d(0px,0px,75px) ;
-          position:absolute;
-          
-          top:50px;
-          left:50px;
-          background-color:red;
-          width:100px; height:100px
-          } 
+              -webkit-transform: rotateX(180deg) translate3d(0px,0px,75px) ;
+              -moz-transform: rotateX(180deg) translate3d(0px,0px,75px) ;
+              -ms-transform: rotateX(180deg) translate3d(0px,0px,75px) ;
+              position:absolute;
+
+              top:50px;
+              left:50px;
+              background-color:red;
+              width:100px; height:100px
+              }
           
           
           
           .cubeback {
-          -webkit-transform:  rotateX(-90deg)  translate3d(0px,0px,50px)   ;
-          -moz-transform:  rotateX(90deg)  translate3d(0px,0px,50px)   ;
-          -ms-transform:  rotateX(90deg)  translate3d(0px,0px,50px)   ;
-          position:absolute;
-          top:25px; left:50px;
-          background-color:yellow;
-          width:100px; height:150px } 
+              -webkit-transform:  rotateX(-90deg)  translate3d(0px,0px,50px)   ;
+              -moz-transform:  rotateX(90deg)  translate3d(0px,0px,50px)   ;
+              -ms-transform:  rotateX(90deg)  translate3d(0px,0px,50px)   ;
+              position:absolute;
+              top:25px; left:50px;
+              background-color:yellow;
+              width:100px; height:150px }
           
           
           .cubeleft {
-          -webkit-transform:  rotateY(-90deg) translate3d(0px,0px,50px) ;
-          -moz-transform:  rotateY(-90deg) translate3d(0px,0px,50px); 
-          -ms-transform:  rotateY(-90deg) translate3d(0px,0px,50px); 
-          position:absolute;
-          top:50px; left:25px;
-          background-color:blue;
-          width:150px; height:100px} 
+              -webkit-transform:  rotateY(-90deg) translate3d(0px,0px,50px) ;
+              -moz-transform:  rotateY(-90deg) translate3d(0px,0px,50px);
+              -ms-transform:  rotateY(-90deg) translate3d(0px,0px,50px);
+              position:absolute;
+              top:50px; left:25px;
+              background-color:blue;
+              width:150px; height:100px}
           
           .cuberight {
-          -webkit-transform: rotateY(90deg) translate3d(0px,0px,50px) ;
-                            -moz-transform: rotateY(90deg) translate3d(0px,0px,50px) ; 
-          -ms-transform: rotateY(90deg) translate3d(0px,0px,50px) ; 
-          position:absolute;
-                            top:50px; left:25px;
-          background-color:purple;
-          width:150px; height:100px} 
+              -webkit-transform: rotateY(90deg) translate3d(0px,0px,50px) ;
+                                -moz-transform: rotateY(90deg) translate3d(0px,0px,50px) ;
+              -ms-transform: rotateY(90deg) translate3d(0px,0px,50px) ;
+              position:absolute;
+                                top:50px; left:25px;
+              background-color:purple;
+              width:150px; height:100px}
           
         </style>
   </head>
 
   <body>
     
-    <div class="ui-widget-content container" style='width:100%'>
-      
-     
-      <div style-'text-align:left; diaplty:inline'>
+    <div class=" container" style='width:100%'>
+      <div style='text-align:left; display:inline'>
         <div class="row" >
-          
+
           <div class='span3'>
             <div class='span4'>
               <div id="cube-viewport" >
@@ -142,9 +140,9 @@
                     <div class='cuberight cubie' n='[1,0,0]'  index='4'>
                       <div><center><span>Right</span></center></div>
                     </div>
-                    
+
                     <div class='cubetop cubie' n='[0,1,0]' index='5'>
-                      
+
                       <div><center><span>Top</span></center></div>
                     </div>
                     <div class='cubefront cubie' n='[0,0,1]' index='1'>
@@ -154,20 +152,22 @@
                 </div>
 
               </div>
-          </div>
-          
-          
-            <h3>The orientation of this box in CSS 3D is being updated via a Python object, 
+            </div>
+                <h3>The orientation of this box in CSS 3D is being updated via a Python object,
             called from javascript!!!</h3>
-        </div> <!-- /container -->
-        
-        
-     <!--LET IT SNOW! -->
-     <script>
-      //caled from asset/js/cube.js:
-       cube_init();
-       //python.init();
-     </script>
+          </div>
+
+        </div>
+        </div><!-- /container -->
+         <!--LET IT SNOW! -->
+         <script>
+          //caled from asset/js/cube.js:
+           cube_init();
+           //python.init();
+         </script>
+
+    </div>
+
   </body>
 </html>
 

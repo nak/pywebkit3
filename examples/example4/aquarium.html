@@ -105,18 +105,19 @@ CANVAS {
   padding: 10px;
 }
 </style>
-<link type="text/css" href="http://webglsamples.googlecode.com/hg/jquery-ui-1.8.2.custom/css/ui-lightness/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
-<script type="text/javascript" src="http://webglsamples.googlecode.com/hg/jquery-ui-1.8.2.custom/js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="http://webglsamples.googlecode.com/hg/jquery-ui-1.8.2.custom/js/jquery-ui-1.8.2.custom.min.js"></script>
-<script type="text/javascript" src="http://webglsamples.googlecode.com/hg/khronos/webgl-debug.js"></script>
-<script type="text/javascript" src="http://webglsamples.googlecode.com/hg/tdl/base.js"></script>
+<link type="text/css" href="http://webglsamples.org/jquery-ui-1.8.2.custom/css/ui-lightness/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
 
-<script type="text/javascript" src="http://webglsamples.googlecode.com/aquarium/aquarium-common.js"></script>
-<script type="text/javascript" src="http://webglsamples.googlecode.com/aquarium.js"></script>
+  <script type="text/javascript" src="http://webglsamples.org/jquery-ui-1.8.2.custom/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="http://webglsamples.org/jquery-ui-1.8.2.custom/js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="http://webglsamples.org/khronos/webgl-debug.js"></script>
+<script type="text/javascript" src="http://webglsamples.org/tdl/base.js"></script>
+
+<script type="text/javascript" src="http://webglsamples.org/aquarium/aquarium-common.js"></script>
+<script type="text/javascript" src="http://webglsamples.org/aquarium.js"></script>
 </head>
 
 <body>
-<div id="info"><a href="http://threedlibrary.googlecode.com" target="_blank">tdl.js</a> - aquarium</div>
+<div id="info" name="info"><a href="http://threedlibrary.org" target="_blank">tdl.js</a> - aquarium</div>
 <div class="fpsContainer">
   <div class="fps">fps: <span id="fps"></div>
   <div id="topUI">
@@ -146,9 +147,15 @@ CANVAS {
 </div>
 <div id="msgContainer"></div>
 <script>
-$(document)(function(){
- alert("HERE " + document.getElementById('ui'));
+//alert("HERE!!!! " + $(document));
+$(document).ready(function(){
+ //alert("HERE??? " + document.getElementById('ui'));
 });
+alertElem = function(f, id){
+  alert(f +"," + document.getElementById + ", " +id);
+  alert(id +": "+ document.getElementById(id));
+  //alert("" +f(id));
+  }
 </script>
 </body>
 <script id="texVertexShader" type="text/something-not-javascript">

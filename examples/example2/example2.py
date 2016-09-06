@@ -27,28 +27,29 @@ window.show_all()
 color_block = None
 #must get the object only when javascript has been processed,
 #so setup callback 
-env = webview.get_env()
+context = webview.get_main_frame().get_global_context()
 
 def tryit(*args):
-    window = env.get_jsobject("window")
+    window = context.get_jsobject("window")
     window.alert("Test of setTimeout callback into Python")
 
 def import_element():
-    
-    window = env.get_jsobject("window")
+    window = context.get_jsobject("window")
     window.setTimeout( tryit ,100)
     global color_block
-    color_block = env.get_jsobject( "color_block", can_call=False)
+    color_block = context.get_jsobject("color_block", can_call=False)
     assert(color_block)
 
 webview.on_view_ready( import_element )
+
 #set up a loop to continually increment the color
 color = int("00FF00",16)
 def update_color( increment ):
     global color
-    global color_block
     hex_color = "#%0.6X"%color
+    # make a javascript to set set the color:
     color_block.set_color( hex_color )
+    # keep changing color:
     color += increment + (increment/2)*256 + (increment/4)*256*256
     if color > int('FFFFFF',16):
         color = 0
@@ -59,7 +60,7 @@ class Thread(threading.Thread):
 
     def run(self):
         while self._active:
-            #Must run actualy javascript manipulation in gtk main thread:
+            #Must run actual javascript manipulation in gtk main thread:
             gobject.idle_add( update_color, 20 )
             #we put this code in a real Python thread, to be able to
             #sleep here.  Doing this in the gtk main thread will hamper
@@ -73,7 +74,7 @@ thread._active = True
 
 from pyggi import gobject
 #start the color update thread ONLY when view is ready:
-webview.on_view_ready( thread.start )
+webview.on_view_ready(thread.start)
 
 def do_quit():
     thread._active = False

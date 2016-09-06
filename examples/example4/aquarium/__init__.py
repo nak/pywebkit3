@@ -1771,27 +1771,28 @@ def initialize_aquarium(ctxt, on_view_ready):
     context = ctxt
     assert(ctxt)
     def view_ready( *args):
-        with jquery.initialize( ctxt, on_view_ready) as jq:
-            global tdl
-            global _
-            _ = jq
-            assert(_)
-            tdl = context.get_jsobject("tdl")
-            tdl.require('tdl.buffers')
-            tdl.require('tdl.clock')
-            tdl.require('tdl.fast')
-            tdl.require('tdl.fps')
-            tdl.require('tdl.io')
-            tdl.require('tdl.log')
-            tdl.require('tdl.math')
-            tdl.require('tdl.models')
-            tdl.require('tdl.particles')
-            tdl.require('tdl.primitives')
-            tdl.require('tdl.programs')
-            tdl.require('tdl.sync')
-            tdl.require('tdl.textures')
-            tdl.require('tdl.webgl')
-            document = initialize_common(context, tdl, _)
-            assert(document)
-            init(document)
-    on_view_ready( view_ready )
+        global _
+        global tdl
+        _ = ctxt.get_jsobject('$')
+        context.get_jsobject('alertElem')( context.get_jsobject('document').getElementById, 'ui')
+        assert(context.get_jsobject('document').getElementById('ui') is not None)
+        tdl = context.get_jsobject("tdl")
+        tdl.require('tdl.buffers')
+        tdl.require('tdl.clock')
+        tdl.require('tdl.fast')
+        tdl.require('tdl.fps')
+        tdl.require('tdl.io')
+        tdl.require('tdl.log')
+        tdl.require('tdl.math')
+        tdl.require('tdl.models')
+        tdl.require('tdl.particles')
+        tdl.require('tdl.primitives')
+        tdl.require('tdl.programs')
+        tdl.require('tdl.sync')
+        tdl.require('tdl.textures')
+        tdl.require('tdl.webgl')
+        document = initialize_common(context, tdl, _)
+        assert(document)
+        init(document)
+    import pyggi
+    on_view_ready(view_ready)

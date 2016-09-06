@@ -49,236 +49,13 @@ from .javascriptcore_types import *
 import weakref
 
 """Derived Pointer Types"""
-__GtkRcStyle = POINTER(c_void_p)
-__GdkGeometry = POINTER(c_void_p)
-_WebKitNetworkResponse = POINTER(c_void_p)
-_GdkPixbuf = POINTER(c_void_p)
-__GtkRequisition = POINTER(c_void_p)
-_GtkRcStyle = POINTER(c_void_p)
-__GtkRegionFlags = POINTER(c_void_p)
-__WebKitDOMNode = POINTER(c_void_p)
-_GtkWindow = POINTER(c_void_p)
-__cairo_font_options_t = POINTER(c_void_p)
-__JSValue = POINTER(c_void_p)
-_JSContext = POINTER(c_void_p)
-_GtkIconFactory = POINTER(c_void_p)
-__GdkAtom = POINTER(c_void_p)
-__GdkTimeCoord = POINTER(c_void_p)
-_GdkColor = POINTER(c_void_p)
-__GtkWidgetPath = POINTER(c_void_p)
-_PangoItem = POINTER(c_void_p)
-__GClosure = POINTER(c_void_p)
-_GtkAboutDialog = POINTER(c_void_p)
-__GMainContext = POINTER(c_void_p)
-_GdkDisplay = POINTER(c_void_p)
-__GtkStyleProvider = POINTER(c_void_p)
-_GtkDialog = POINTER(c_void_p)
-__WebKitWebWindowFeatures = POINTER(c_void_p)
 _JSObject = POINTER(c_void_p)
-_GBytes = POINTER(c_void_p)
-_GScanner = POINTER(c_void_p)
-_PangoFont = POINTER(c_void_p)
-_GtkStyleContext = POINTER(c_void_p)
-_GMainContext = POINTER(c_void_p)
-_GBoxed = POINTER(c_void_p)
-__GtkTextBuffer = POINTER(c_void_p)
-_GtkTargetList = POINTER(c_void_p)
-__WebKitWebSettings = POINTER(c_void_p)
-_GdkAppLaunchContext = POINTER(c_void_p)
-__GObject = POINTER(c_void_p)
-__PangoLayout = POINTER(c_void_p)
-_WebKitWebBackForwardList = POINTER(c_void_p)
-_GtkOffscreenWindow = POINTER(c_void_p)
-__GParamSpec = POINTER(c_void_p)
-__PangoAttrIterator = POINTER(c_void_p)
-_GtkRequisition = POINTER(c_void_p)
-_GtkIconSet = POINTER(c_void_p)
-_GtkSelectionData = POINTER(c_void_p)
-_GtkWindowGroup = POINTER(c_void_p)
-_JSGlobalContext = POINTER(c_void_p)
-_PangoLogAttr = POINTER(c_void_p)
-_GString = POINTER(c_void_p)
-__PangoContext = POINTER(c_void_p)
-__JSPropertyNameArray = POINTER(c_void_p)
-_WebKitWebSettings = POINTER(c_void_p)
-__PangoFont = POINTER(c_void_p)
-__GtkPathPriorityType = POINTER(c_void_p)
-__JSClass = POINTER(c_void_p)
-__WebKitWebHistoryItem = POINTER(c_void_p)
 _JSValue = POINTER(c_void_p)
-__GtkSettings = POINTER(c_void_p)
-_GSource = POINTER(c_void_p)
-__PangoFontMap = POINTER(c_void_p)
-__JSString = POINTER(c_void_p)
-__PangoAttrList = POINTER(c_void_p)
-_PangoMatrix = POINTER(c_void_p)
-__GSource = POINTER(c_void_p)
-_GtkApplication = POINTER(c_void_p)
-__PangoAnalysis = POINTER(c_void_p)
-__GMutex = POINTER(c_void_p)
-_PangoFontDescription = POINTER(c_void_p)
-__GdkCursor = POINTER(c_void_p)
-_GtkBorder = POINTER(c_void_p)
-_WebKitWebInspector = POINTER(c_void_p)
-_GdkWindowAttr = POINTER(c_void_p)
-_GOptionGroup = POINTER(c_void_p)
-__GScanner = POINTER(c_void_p)
-__GtkWidgetClass = POINTER(c_void_p)
-__GdkEventKey = POINTER(c_void_p)
-_GdkDragContext = POINTER(c_void_p)
-__GdkDisplay = POINTER(c_void_p)
-_GtkWidgetPath = POINTER(c_void_p)
-_GdkScreen = POINTER(c_void_p)
-_PangoFontMetrics = POINTER(c_void_p)
-__GCond = POINTER(c_void_p)
-_GtkIconSource = POINTER(c_void_p)
-_GdkVisual = POINTER(c_void_p)
-_PangoFontMap = POINTER(c_void_p)
-_GSList = POINTER(c_void_p)
-_WebKitWebFrame = POINTER(c_void_p)
-_JSString = POINTER(c_void_p)
-_GtkWidget = POINTER(c_void_p)
-__WebKitNetworkRequest = POINTER(c_void_p)
-__GdkWindow = POINTER(c_void_p)
-__PangoFontFamily = POINTER(c_void_p)
-__JSContextGroup = POINTER(c_void_p)
-__GPollFD = POINTER(c_void_p)
-__cairo_region_t = POINTER(c_void_p)
-_PangoFontset = POINTER(c_void_p)
-_GdkWindow = POINTER(c_void_p)
-__PangoFontDescription = POINTER(c_void_p)
-__GtkBorder = POINTER(c_void_p)
-__GError = POINTER(c_void_p)
-__PangoCoverage = POINTER(c_void_p)
-_WebKitViewportAttributes = POINTER(c_void_p)
-_JSClass = POINTER(c_void_p)
-_WebKitWebHistoryItem = POINTER(c_void_p)
-_PangoFontFamily = POINTER(c_void_p)
-__cairo_t = POINTER(c_void_p)
-__GWeakRef = POINTER(c_void_p)
-__GdkVisual = POINTER(c_void_p)
-__GdkEventButton = POINTER(c_void_p)
-_GdkDevice = POINTER(c_void_p)
-__PangoRectangle = POINTER(c_void_p)
-__GtkAccelGroup = POINTER(c_void_p)
-_GObject = POINTER(c_void_p)
-__GtkIconSource = POINTER(c_void_p)
-__JSContext = POINTER(c_void_p)
-_PangoFontsetSimple = POINTER(c_void_p)
-__GtkAllocation = POINTER(c_void_p)
-__GtkWidget = POINTER(c_void_p)
-_PangoLayoutLine = POINTER(c_void_p)
-__GtkIconSet = POINTER(c_void_p)
-_WebKitWebView = POINTER(c_void_p)
-__PangoTabArray = POINTER(c_void_p)
-_WebKitHitTestResult = POINTER(c_void_p)
-__GValue = POINTER(c_void_p)
-_GdkDeviceManager = POINTER(c_void_p)
-_GdkCursor = POINTER(c_void_p)
-_WebKitDOMDocument = POINTER(c_void_p)
-__PangoMatrix = POINTER(c_void_p)
-__GtkPrintOperation = POINTER(c_void_p)
-__GString = POINTER(c_void_p)
-_PangoContext = POINTER(c_void_p)
-__GList = POINTER(c_void_p)
-__WebKitWebView = POINTER(c_void_p)
-_WebKitWebWindowFeatures = POINTER(c_void_p)
-_PangoCoverage = POINTER(c_void_p)
-_GParamSpec = POINTER(c_void_p)
-_GList = POINTER(c_void_p)
-__GdkRGBA = POINTER(c_void_p)
-__GTimeVal = POINTER(c_void_p)
-_GtkInvisible = POINTER(c_void_p)
-__GSourceFuncs = POINTER(c_void_p)
-__JSPropertyNameAccumulator = POINTER(c_void_p)
-__PangoGlyphString = POINTER(c_void_p)
-__JSGlobalContext = POINTER(c_void_p)
-_WebKitSecurityOrigin = POINTER(c_void_p)
-__GObjectClass = POINTER(c_void_p)
-__GSList = POINTER(c_void_p)
-_PangoAnalysis = POINTER(c_void_p)
-__GdkWindowAttr = POINTER(c_void_p)
-_SoupMessage = POINTER(c_void_p)
-_WebKitWebDataSource = POINTER(c_void_p)
-__GdkColor = POINTER(c_void_p)
 _JSContextGroup = POINTER(c_void_p)
-__GdkRectangle = POINTER(c_void_p)
-__PangoLanguage = POINTER(c_void_p)
-_PangoAttrList = POINTER(c_void_p)
-__gunichar = POINTER(c_void_p)
-__GdkWMDecoration = POINTER(c_void_p)
-__PangoLogAttr = POINTER(c_void_p)
-_PangoLayout = POINTER(c_void_p)
 _JSPropertyNameArray = POINTER(c_void_p)
-__JSObject = POINTER(c_void_p)
-_WebKitWebNavigationAction = POINTER(c_void_p)
-_GtkStyle = POINTER(c_void_p)
-__GParameter = POINTER(c_void_p)
-__GtkStyle = POINTER(c_void_p)
-__GIcon = POINTER(c_void_p)
-__GtkWindow = POINTER(c_void_p)
-_PangoLayoutRun = POINTER(c_void_p)
-__cairo_pattern_t = POINTER(c_void_p)
-__GdkPixbuf = POINTER(c_void_p)
-_WebKitGeolocationPolicyDecision = POINTER(c_void_p)
-_GtkSettings = POINTER(c_void_p)
-__GSourceCallbackFuncs = POINTER(c_void_p)
-__PangoFontFace = POINTER(c_void_p)
-__GtkTargetEntry = POINTER(c_void_p)
-__GtkApplication = POINTER(c_void_p)
-_GtkClipboard = POINTER(c_void_p)
-_GByteArray = POINTER(c_void_p)
-__GdkScreen = POINTER(c_void_p)
-_PangoLanguage = POINTER(c_void_p)
-__GdkDevice = POINTER(c_void_p)
-_PangoTabArray = POINTER(c_void_p)
-"""Enumerations"""
-PangoStyle = c_int
-PangoWeight = c_int
-PangoVariant = c_int
-PangoStretch = c_int
-PangoFontMask = c_int
-GtkWidgetHelpType = c_int
-GtkTextDirection = c_int
-GtkSizeRequestMode = c_int
-GtkAlign = c_int
-GdkPixbufError = c_int
-GdkColorspace = c_int
-GdkPixbufAlphaMode = c_int
-GtkIconSize = c_int
-GdkWindowType = c_int
-GdkWindowWindowClass = c_int
-GdkWindowHints = c_int
-GdkGravity = c_int
-GdkWindowEdgeh = c_int
-GdkWindowTypeHint = c_int
-GdkWindowAttributesType = c_int
-GdkFilterReturn = c_int
-GdkModifierType = c_int
-GdkWMDecoration = c_int
-GdkWMFunction = c_int
-GdkInputSource = c_int
-GdkInputMode = c_int
-GdkAxisUse = c_int
-GdkDeviceType = c_int
-GdkGrabOwnership = c_int
-GdkCursorType = c_int
-GdkVisualType = c_int
-GdkByteOrder = c_int
-GtkRcFlags = c_int
-GtkRcTokenType = c_int
-PangoWrapMode = c_int
-PangoEllipsizeMode = c_int
-PangoAlignment = c_int
-WebKitLoadStatus = c_int
-WebKitNavigationResponse = c_int
-WebKitWebViewTargetInfo = c_int
-WebKitWebViewViewMode = c_int
-WebKitEditingBehavior = c_int
-GtkDialogFlags = c_int
-GtkResponseType = c_int
-WebKitWebNavigationReason = c_int
-GtkLicense = c_int
+_JSClass = POINTER(c_void_p)
+_JSString = POINTER(c_void_p)
+_JSContext = POINTER(c_void_p)
 
 libjavascriptcore.JSValueToObject.restype = _JSObject
 libjavascriptcore.JSValueToObject.argtypes = [_JSContext, _JSValue, _JSValue]
@@ -325,29 +102,31 @@ libjavascriptcore.JSValueIsInstanceOfConstructor.restype = c_char
 libjavascriptcore.JSValueIsInstanceOfConstructor.argtypes = [_JSContext, _JSValue, _JSObject, _JSValue]
 libjavascriptcore.JSValueIsNumber.restype = c_char
 libjavascriptcore.JSValueIsNumber.argtypes = [_JSContext, _JSValue]
+libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
+libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext, _JSString]
 
 
-# noinspection PyProtectedMember
+# noinspection PyProtectedMember,PyPep8Naming
 class JSValue(object):
     """Class JSValue Constructors"""
 
     def __init__(self, obj, context):
+        if not obj:
+            obj = JSValue.MakeNull(context)._strong_ref
         self._object = weakref.ref(obj)
         self._strong_ref = obj
         self._context = context
         self._name = None
-        self._do_protect = context is not None  # do_protect
+        self._do_protect = context is not None
         from .javascript import JSContext
-        assert (isinstance(context, JSContext) or context == None)
 
-        if self._do_protect:  # not isinstance(self, JSContext):
-            assert context
+        if self._do_protect:
             libjavascriptcore.JSValueProtect(self._context._object(),
                                              self._object())
-        self.references = []
+        self.references = {}
+        assert (isinstance(context, JSContext) or context is None)
 
     """Methods"""
-
     def IsInstanceOfConstructor(self, ctx, ructor, exception, ):
         if ctx:
             ctx = ctx._object()
@@ -364,7 +143,7 @@ class JSValue(object):
         if self._object():
             return libjavascriptcore.JSValueIsInstanceOfConstructor(ctx, self._object(), ructor, exception)
 
-    def ToObject(self, ctx, exception, do_protect=True):
+    def ToObject(self, ctx, exception):
         if exception:
             exception = exception._object()
         else:
@@ -373,8 +152,7 @@ class JSValue(object):
         from .javascriptcore import JSObject
         if self._object():
             return JSObject(obj=libjavascriptcore.JSValueToObject(ctx._object(), self._object(), exception),
-                            context=ctx,
-                            do_protect=do_protect)
+                            context=ctx)
 
     def IsUndefined(self, ctx, ):
         if ctx:
@@ -394,7 +172,6 @@ class JSValue(object):
             jsClass = jsClass._object()
         else:
             jsClass = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsObjectOfClass(ctx, self._object(), jsClass)
 
@@ -407,7 +184,6 @@ class JSValue(object):
             b = b._object()
         else:
             b = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsStrictEqual(ctx, self._object(), b)
 
@@ -416,7 +192,6 @@ class JSValue(object):
             ctx = ctx._object()
         else:
             ctx = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsNull(ctx, self._object())
 
@@ -433,7 +208,6 @@ class JSValue(object):
             ctx = ctx._object()
         else:
             ctx = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsObject(ctx, self._object())
 
@@ -442,7 +216,6 @@ class JSValue(object):
             ctx = ctx._object()
         else:
             ctx = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsBoolean(ctx, self._object())
 
@@ -451,7 +224,6 @@ class JSValue(object):
             ctx = ctx._object()
         else:
             ctx = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsString(ctx, self._object())
 
@@ -473,7 +245,7 @@ class JSValue(object):
     def ToPyString(self, ctx, exception):
         js_text = self.ToStringCopy(ctx, exception)
         length = js_text.GetMaximumUTF8CStringSize()
-        c_string = (c_char * length)()
+        c_string = (c_char*(length+1))()
         js_text.GetUTF8CString(c_string, length)
         js_text.Release()
         return c_string.value
@@ -508,7 +280,6 @@ class JSValue(object):
             exception = exception._object()
         else:
             exception = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueIsEqual(ctx, self._object(), b, exception)
 
@@ -521,7 +292,6 @@ class JSValue(object):
             exception = exception._object()
         else:
             exception = POINTER(c_void_p)()
-
         from .javascriptcore import JSString
         if self._object():
             return JSString(obj=libjavascriptcore.JSValueCreateJSONString(ctx._object(), self._object(), indent,
@@ -539,7 +309,6 @@ class JSValue(object):
                 ctx = ctx._object()
         else:
             ctx = POINTER(c_void_p)()
-
         if self._object():
             return libjavascriptcore.JSValueGetType(ctx, self._object())
 
@@ -553,20 +322,16 @@ class JSValue(object):
 
     @staticmethod
     def MakeNumber(ctx, number, ):
-        from .javascriptcore import JSValue
         obj = libjavascriptcore.JSValueMakeNumber(ctx._object(),
                                                   c_double(number), )
-
         return JSValue(obj, context=ctx)
 
     @staticmethod
     def MakeUndefined(ctx, ):
-        from .javascriptcore import JSValue
         return JSValue(obj=libjavascriptcore.JSValueMakeUndefined(ctx._object(), ), context=ctx)
 
     @staticmethod
     def MakeNull(ctx, ):
-        from .javascriptcore import JSValue
         return JSValue(obj=libjavascriptcore.JSValueMakeNull(ctx._object(), ),
                        context=ctx)
 
@@ -576,14 +341,10 @@ class JSValue(object):
             string = string._object()
         else:
             string = POINTER(c_void_p)()
-        libjavascriptcore.JSValueMakeFromJSONString.restype = _JSValue
-        libjavascriptcore.JSValueMakeFromJSONString.argtypes = [_JSContext, _JSString]
-        from .javascriptcore import JSValue
         return JSValue(obj=libjavascriptcore.JSValueMakeFromJSONString(ctx._object(), string), context=ctx)
 
     @staticmethod
     def MakeBoolean(ctx, boolean, ):
-        from .javascriptcore import JSValue
         return JSValue(obj=libjavascriptcore.JSValueMakeBoolean(ctx._object(), c_byte(boolean)), context=ctx)
 
     @staticmethod
@@ -598,8 +359,6 @@ class JSValue(object):
 
     def __del__(self):
         try:
-            from .javascriptcore import JSContext
-            from javascript import JSFunction
             if self._do_protect:
                 libjavascriptcore.JSValueUnprotect(self._context._object(),
                                                    self._object())

@@ -354,6 +354,7 @@ def setupSlider(_, elem, ui, obj):
 def AddUI(uiObj):
   document = Globals.context.get_jsobject("document")
   uiElem = document.getElementById('ui')
+  Globals.context.get_jsobject("alertElem")('ui', 'ui')
   for  ui in uiObj:
       obj = Globals.g[ui.obj]
       if not ui.name in obj:

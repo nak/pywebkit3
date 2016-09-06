@@ -18,13 +18,13 @@ webview = WebKitWebView()
 settings = webview.get_settings()
 statc = settings.set( "enable-webgl", True, None )
 webview.set_settings( settings )
-aquarium.initialize_aquarium( webview.get_env(), webview.on_view_ready)
+aquarium.initialize_aquarium( webview.get_main_frame().get_global_context(), webview.on_view_ready)
 import logging
 logging.error("ENABLE: ")
 scrolled.add( webview )
 
 #webview.open( "http://learningwebgl.com/lessons/lesson04/index.html" )
-webview.open("http://webglsamples.googlecode.com/hg/aquarium/aquarium.html")
+webview.open("file:///%s/aquarium.html" % os.path.dirname(__file__))
 window.show_all()
 window.connect( "delete-event", gtk3.main_quit )
 

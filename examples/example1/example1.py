@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+"""
+Shows simple example of GTK and bringing up browser window
+"""
 import os.path
 import sys
 sys.path = [ os.path.abspath( os.path.join( os.path.dirname(__file__),"..", ".."))] + \
