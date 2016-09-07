@@ -14,17 +14,7 @@ OPAQUE_PTR = POINTER(c_int)
 document = None
 
 
-def strid(obj):
-    try:
-        return str(cast(obj._strong_ref, c_void_p).value)
-    except:
-        return str(cast(obj._object, c_void_p).value)
-
-
-def jsEqual(obj1, obj2):
-    return cast(obj1._object(), c_void_p).value == cast(obj2._object(), c_void_p).value
-
-
+# noinspection PyProtectedMember
 class JSFunction(JSObject):
     def __init__(self, context, obj, thisobj, name, _call_as_constructor=False):
         assert (isinstance(context, JSContext))
@@ -45,31 +35,24 @@ class JSFunction(JSObject):
         # away until it is called).  It is assumed that a second call will be made
         # to the jsfunction by the core engine only when a first call has been fully
         # processed (args will then go away).
-        js_args = []
-        for arg in args:
-            js_args.append(get_jsobj(arg, self._context))
-        if len(js_args) == 0:
-            js_args = NULL
-        else:
-            js_args.append(JSValue.MakeNull(self._context))
+        js_args = [get_jsobj(arg, self._context) for arg in args] if len(args) else NULL
+        exc = JSValue.MakeNull(self._context)
         if self.IsConstructor(self._context) and self._call_as_constructor:
-            retval = self.CallAsConstructor(self._context,
-                                            c_int(len(args)),
-                                            js_args,
-                                            NULL)
+            return_value = self.CallAsConstructor(self._context,
+                                                  c_int(len(args)),
+                                                  js_args,
+                                                  exc)
         else:
-            exc = JSValue.MakeNull(self._context)
-            retval = self.CallAsFunction(self._context,
-                                         self._thisjsobj,
-                                         c_int(len(args)),
-                                         js_args,
-                                         exc)
-        if not retval:
-            return None
-        retval = to_pythonjs(self._context, retval)
-        return retval
+            return_value = self.CallAsFunction(self._context,
+                                               self._thisjsobj,
+                                               c_int(len(args)),
+                                               js_args,
+                                               exc)
+        # TODO: handle exception
+        return to_pythonjs(self._context, return_value) if return_value else None
 
 
+# noinspection PyProtectedMember,PyBroadException
 class JavascriptClass(object):
     """Class instance which is accessible within a javascript script"""
     _methods = None
@@ -97,7 +80,7 @@ class JavascriptClass(object):
         cls.staticmethods[-1].attributes = 0
 
         # Function to get a function to cast into javascript callback:
-        def getfunc(index_, name_):
+        def getfunc(index_, _):
             callable_ = JSCallable(cls._methods[index_][1], cls._methods[index_][0], deduce_self=True)
             return callable_.callable
 
@@ -112,6 +95,7 @@ class JavascriptClass(object):
             cls._methods_by_name[cls.staticmethods[index].name] = cls._methods[index]
             cls.staticmethods[index].callback_ref = call_method
 
+        # noinspection PyUnusedLocal
         def _init_cb(context_, obj):
             pass
 
@@ -122,7 +106,8 @@ class JavascriptClass(object):
             except:
                 pass
 
-        def constructor_method(context_, function, thisObject, argumentCount, arguments, exception):
+        # noinspection PyUnusedLocal
+        def constructor_method(context_, _, this_object, argumentCount, arguments, exception):
             obj = JSObject.Make(JSContext(context_), cls._classDef, NULL)
             context_ = JSContext(context_)
             args = [context_]
@@ -137,18 +122,20 @@ class JavascriptClass(object):
                 import traceback
                 traceback.print_exc()
                 return_value = JSValue.MakeNull(context_)._strong_ref
-                plonglong = cast(pointer(return_value), POINTER(c_longlong))
+                p_long_long = cast(pointer(return_value), POINTER(c_longlong))
                 string = JSString.CreateWithUTF8CString(traceback.format_exc())
                 s = JSValue.MakeString(context_, string)._strong_ref
                 exception.contents = s
                 string.Release()
-                return plonglong.contents.value
+                return p_long_long.contents.value
 
         JSObject.global_references[constructor_method] = constructor_method
         constructor_static_methods = (JSStaticFunction * 2)()
+        # sentinel:
         constructor_static_methods[-1].name = c_char_p()
         constructor_static_methods[-1].callAsFunction = JSObjectCallAsFunctionCallback()
         constructor_static_methods[-1].attributes = 0
+        # "new" constructor to create instance on javascript side:
         constructor_static_methods[0].name = c_char_p("new_")
         constructor_static_methods[0].attributes = kJSPropertyAttributeReadOnly
         constructor_static_methods[0].callAsFunction = JSObjectCallAsFunctionCallback(constructor_method)
@@ -213,25 +200,25 @@ class JavascriptClass(object):
             try:
                 # if module not explicit, determine it here:
                 if var_name.find('.') >= 0:
-                    modulename = ".".join(var_name.split(".")[:-1])
+                    module_name = ".".join(var_name.split(".")[:-1])
                 else:
                     # Oooh!  global namespace
-                    modulename = ""
+                    module_name = ""
             except:
-                modulename = None
+                module_name = None
         else:
-            modulename = '.'.join(_module.__name__.split('.')[:-1])
+            module_name = '.'.join(_module.__name__.split('.')[:-1])
 
         """This should take no parameters, to prevent repercussions throughout hierarchy"""
         cls = self.__class__
 
-        if modulename:
+        if module_name:
             # if we determined a module name, get/create the namespace
             # associated with it
-            ns = Namespace.get_namespace(context, modulename)
+            ns = Namespace.get_namespace(context, module_name)
             assert ns
         else:
-            if var_name and modulename == "":
+            if var_name and module_name == "":
                 # have global namespace:
                 ns = Namespace.get_global(context)
                 assert ns
@@ -240,8 +227,8 @@ class JavascriptClass(object):
 
         cls._populate(context, ns, _module)
 
-        if not modulename:
-            if var_name and modulename == "":
+        if not module_name:
+            if var_name and module_name == "":
                 # now make the object and squirrel it away:
                 self._javascript_obj = JSObject.Make(context, cls._classDef, None)
             elif var_name == "":
@@ -268,7 +255,7 @@ class JavascriptClass(object):
             pass
 
     @classmethod
-    def export_class(cls, context_, ns):
+    def export_class(cls, context_, _):
         """Export a class to be visible within javascript
         :param ns: namespace or None that class belongs to
         :param context_: context for creating class definition JS object and sucn\h
@@ -276,6 +263,7 @@ class JavascriptClass(object):
         assert (isinstance(context_, JSContext))
 
 
+# noinspection PyProtectedMember
 class Namespace(JavascriptClass):
     _namespaces = {}
 
@@ -320,7 +308,7 @@ class Namespace(JavascriptClass):
         assert (isinstance(context_, JSContext))
         ptr = cast(context_._strong_ref, OPAQUE_PTR)
         id_ = str(ptr) + modulename
-        if not id_ in iter(Namespace._namespaces.keys()):
+        if id_ not in iter(Namespace._namespaces.keys()):
             if modulename:
                 m = importlib.import_module(modulename)
                 Namespace._namespaces[id_] = Namespace(context_, m)
@@ -345,6 +333,7 @@ class Namespace(JavascriptClass):
         cls._populate(self._context, self, self._module)
 
 
+# noinspection PyProtectedMember
 def export_module(context_, module):
     """Export a python module and all JavascriptClass derived
     subclasses to javascript execution environment
